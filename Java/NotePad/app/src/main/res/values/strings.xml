@@ -1,0 +1,9 @@
+<resources>
+    <string name="app_name">NotePad</string>
+    <string name="search_notes">Search notes</string>
+    <string name="new_note">New Note</string>
+    <string name="private_browser">Private Browser</string>
+    <string name="enter_url">Enter URL</string>
+    <string name="empty_notes">No notes yet. Tap + to create one.</string>
+    <string name="triple_tap_hint">Triple tap anywhere to open Private Browser</string>
+</resources>
