@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="utf-8"?>
+<vector xmlns:android="http://schemas.android.com/apk/res/android"
+    android:width="108dp"
+    android:height="108dp"
+    android:viewportWidth="108"
+    android:viewportHeight="108">
+    <!-- Purple rounded square background omitted; adaptive icon will supply background -->
+    <!-- Android head + notepad stylized from provided image -->
+    <group android:translateX="18" android:translateY="18" >
+        <!-- Android head circle-ish -->
+        <path android:fillColor="#FFFFFF" android:pathData="M30,8c-8.284,0 -15,6.716 -15,15v1h30v-1c0,-8.284 -6.716,-15 -15,-15z"/>
+        <!-- Antennae -->
+        <path android:fillColor="#FFFFFF" android:pathData="M22,4l-2,-4 2,0 2,4zM38,4l2,-4 -2,0 -2,4z"/>
+        <!-- Eyes -->
+        <path android:fillColor="#6A1B9A" android:pathData="M26,19a2,2 0 1 0 0.001,0zM36,19a2,2 0 1 0 0.001,0z"/>
+        <!-- Notepad body -->
+        <path android:fillColor="#FFFFFF" android:fillType="nonZero" android:pathData="M15,24c-1.657,0 -3,1.343 -3,3v18c0,1.657 1.343,3 3,3h30c1.657,0 3,-1.343 3,-3L48,27c0,-1.657 -1.343,-3 -3,-3z"/>
+        <!-- Lines -->
+        <path android:fillColor="#6A1B9A" android:pathData="M21,30h18a2,2 0 0 1 0,4H21a2,2 0 0 1 0,-4zM21,37h18a2,2 0 0 1 0,4H21a2,2 0 0 1 0,-4zM21,44h18a2,2 0 0 1 0,4H21a2,2 0 0 1 0,-4z"/>
+    </group>
+</vector>

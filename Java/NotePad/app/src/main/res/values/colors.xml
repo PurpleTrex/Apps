@@ -1,4 +1,5 @@
 <resources>
     <color name="md_theme_light_primary">#6750A4</color>
     <color name="md_theme_dark_primary">#D0BCFF</color>
+    <color name="purplepad_icon_bg">#6A34D9</color>
 </resources>

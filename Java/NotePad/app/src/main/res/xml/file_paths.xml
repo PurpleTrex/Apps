@@ -1,0 +1,5 @@
+<?xml version="1.0" encoding="utf-8"?>
+<paths>
+    <cache-path name="vault_cache" path="." />
+    <files-path name="vault_files" path="secret_vault/" />
+</paths>

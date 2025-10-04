@@ -1,8 +1,7 @@
 <resources xmlns:tools="http://schemas.android.com/tools">
-    <style name="Theme.NotePad" parent="Theme.Material3.DayNight.NoActionBar">
+    <!-- Fallback to baseline Material3 DayNight theme (NoActionBar variant) -->
+    <style name="Theme.NotePad" parent="Theme.Material3.Light.NoActionBar">
         <item name="android:windowTranslucentStatus">false</item>
-        <item name="android:statusBarColor">?attr/colorSurface</item>
-        <item name="android:navigationBarColor">?attr/colorSurface</item>
         <item name="android:windowLightStatusBar">false</item>
         <item name="android:windowLightNavigationBar">false</item>
     </style>

@@ -1,5 +1,5 @@
 <resources>
-    <string name="app_name">NotePad</string>
+    <string name="app_name">PurplePad</string>
     <string name="search_notes">Search notes</string>
     <string name="new_note">New Note</string>
     <string name="private_browser">Private Browser</string>

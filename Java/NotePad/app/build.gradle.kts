@@ -27,13 +27,13 @@ android {
             )
         }
         debug {
-            applicationIdSuffix = ".debug"
         }
     }
 
     compileOptions {
         sourceCompatibility = JavaVersion.VERSION_17
         targetCompatibility = JavaVersion.VERSION_17
+        isCoreLibraryDesugaringEnabled = true
     }
     kotlinOptions {
         jvmTarget = "17"
@@ -81,4 +81,32 @@ dependencies {
 
     // Splash screen
     implementation("androidx.core:core-splashscreen:1.0.1")
+
+    // Coil for image attachments
+    implementation("io.coil-kt:coil-compose:2.5.0")
+
+    // Biometric auth
+    implementation("androidx.biometric:biometric:1.1.0")
+
+    // Encryption (AndroidX Security Crypto)
+    implementation("androidx.security:security-crypto:1.1.0-alpha06")
+
+    // Markdown (CommonMark)
+    implementation("org.commonmark:commonmark:0.21.0")
+
+    // WorkManager (background tasks potential)
+    implementation("androidx.work:work-runtime-ktx:2.9.0")
+
+    // Material Components (provides XML Theme.Material3.* parents referenced in themes.xml)
+    implementation("com.google.android.material:material:1.11.0")
+    
+    // Core library desugaring for java.time APIs on API < 26
+    coreLibraryDesugaring("com.android.tools:desugar_jdk_libs:2.0.4")
+    
+    // OkHttp for DNS-over-HTTPS (DoH) privacy protection
+    implementation("com.squareup.okhttp3:okhttp:4.12.0")
+    implementation("com.squareup.okhttp3:okhttp-dnsoverhttps:4.12.0")
+    
+    // Note: Tor routing via Orbot app (lightweight, user controls Tor)
+    // App auto-detects and prompts to install Orbot if needed
 }

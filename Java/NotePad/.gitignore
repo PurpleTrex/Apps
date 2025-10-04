@@ -13,3 +13,6 @@ captures/
 *.log
 gradle/wrapper/gradle-wrapper.jar
 .DS_Store
+.gradle-dist/
+gradle-*-bin.zip
+

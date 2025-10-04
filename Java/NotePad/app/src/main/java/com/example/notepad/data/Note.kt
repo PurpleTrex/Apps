@@ -10,6 +10,9 @@ data class Note(
     val title: String = "",
     val content: String = "",
     val pinned: Boolean = false,
+    val folderId: Long? = null,
+    val locked: Boolean = false,
+    val deletedAt: Long? = null,
     val createdAt: Long = Instant.now().toEpochMilli(),
     val updatedAt: Long = Instant.now().toEpochMilli()
 )
