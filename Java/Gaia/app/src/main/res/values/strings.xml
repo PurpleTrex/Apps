@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="app_name">Gaia Maps</string>
+    <string name="home_title">Gaia - Offline Navigation</string>
+    <string name="search_hint">Search for a location...</string>
+    <string name="download_maps">Download Maps</string>
+    <string name="settings">Settings</string>
+    <string name="start_navigation">Start Navigation</string>
+    <string name="draw_route">Draw Your Route</string>
+    <string name="sensitive_mode">Sensitive Mode</string>
+    <string name="sensitive_mode_desc">Avoid construction zones and police activity</string>
+    <string name="distraction_free_mode">Distraction-Free Mode</string>
+    <string name="distraction_free_desc">Block all notifications during navigation</string>
+    <string name="navigation_preferences">Navigation Preferences</string>
+    <string name="prefer_interstate">Prefer Interstate Roads</string>
+    <string name="prefer_residential">Prefer Residential Roads</string>
+    <string name="prefer_shortest">Prefer Shortest Route</string>
+    <string name="prefer_fastest">Prefer Fastest Route</string>
+    <string name="report_incident">Report Incident</string>
+    <string name="traffic_accident">Traffic Accident</string>
+    <string name="construction">Construction Zone</string>
+    <string name="police_activity">Police Activity</string>
+    <string name="weather_hazard">Weather Hazard</string>
+    <string name="privacy_notice">No tracking. Your location stays private.</string>
+    <string name="download_city">Select a city to download</string>
+    <string name="downloading">Downloading...</string>
+    <string name="download_complete">Download Complete</string>
+    <string name="navigation_active">Navigation Active</string>
+    <string name="destination">Destination</string>
+    <string name="current_location">Current Location</string>
+    <string name="permissions_required">Location permissions required for navigation</string>
+    <string name="grant_permissions">Grant Permissions</string>
+</resources>
