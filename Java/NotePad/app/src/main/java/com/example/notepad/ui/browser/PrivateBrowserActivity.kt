@@ -21,6 +21,7 @@ import androidx.compose.foundation.layout.*
 import androidx.compose.material3.*
 import androidx.compose.material3.ExperimentalMaterial3Api
 import androidx.compose.material.icons.Icons
+import androidx.compose.material.icons.filled.ArrowBack
 import androidx.compose.material.icons.filled.ArrowForward
 import androidx.compose.material.icons.filled.Close
 import androidx.compose.material.icons.filled.Refresh
@@ -72,6 +73,8 @@ class PrivateBrowserActivity: ComponentActivity() {
         var privacyStatus by remember { mutableStateOf("Initializing...") }
         var showSidebar by remember { mutableStateOf(false) }
         var javaScriptEnabled by remember { mutableStateOf(true) }
+        var canGoBack by remember { mutableStateOf(false) }
+        var canGoForward by remember { mutableStateOf(false) }
         val scope = rememberCoroutineScope()
         
         // Initialize privacy status
@@ -97,6 +100,48 @@ class PrivateBrowserActivity: ComponentActivity() {
                     // Menu button to open sidebar
                     IconButton(onClick = { showSidebar = !showSidebar }) {
                         Icon(Icons.Filled.MoreVert, contentDescription = "Menu")
+                    }
+                    
+                    // Back button
+                    IconButton(
+                        onClick = { 
+                            webView?.goBack()
+                            // Update navigation state
+                            webView?.let { wv ->
+                                canGoBack = wv.canGoBack()
+                                canGoForward = wv.canGoForward()
+                            }
+                        },
+                        enabled = canGoBack
+                    ) {
+                        Icon(
+                            Icons.Filled.ArrowBack, 
+                            contentDescription = "Back",
+                            modifier = Modifier.size(20.dp),
+                            tint = if (canGoBack) MaterialTheme.colorScheme.onPrimaryContainer 
+                                  else MaterialTheme.colorScheme.onPrimaryContainer.copy(alpha = 0.4f)
+                        )
+                    }
+                    
+                    // Forward button
+                    IconButton(
+                        onClick = { 
+                            webView?.goForward()
+                            // Update navigation state
+                            webView?.let { wv ->
+                                canGoBack = wv.canGoBack()
+                                canGoForward = wv.canGoForward()
+                            }
+                        },
+                        enabled = canGoForward
+                    ) {
+                        Icon(
+                            Icons.Filled.ArrowForward, 
+                            contentDescription = "Forward",
+                            modifier = Modifier.size(20.dp),
+                            tint = if (canGoForward) MaterialTheme.colorScheme.onPrimaryContainer 
+                                  else MaterialTheme.colorScheme.onPrimaryContainer.copy(alpha = 0.4f)
+                        )
                     }
                     
                     // URL bar
@@ -196,6 +241,11 @@ class PrivateBrowserActivity: ComponentActivity() {
                                 super.onPageStarted(view, url, favicon)
                                 // Inject privacy scripts as early as possible
                                 view?.evaluateJavascript(getAntiTrackingJs(), null)
+                                // Update navigation state
+                                view?.let { wv ->
+                                    canGoBack = wv.canGoBack()
+                                    canGoForward = wv.canGoForward()
+                                }
                             }
                             
                             override fun onPageFinished(view: WebView?, url: String?) {
@@ -203,6 +253,11 @@ class PrivateBrowserActivity: ComponentActivity() {
                                 loading = false
                                 // Re-inject anti-fingerprinting JavaScript to ensure it's active
                                 view?.evaluateJavascript(getAntiTrackingJs(), null)
+                                // Update navigation state
+                                view?.let { wv ->
+                                    canGoBack = wv.canGoBack()
+                                    canGoForward = wv.canGoForward()
+                                }
                             }
                         }
                         w.webChromeClient = object: WebChromeClient() {
@@ -753,6 +808,16 @@ class PrivateBrowserActivity: ComponentActivity() {
             handlePanicExit()
         } else {
             lastBackPress = currentTime
+            
+            // Check if WebView can go back in history
+            webView?.let { webView ->
+                if (webView.canGoBack()) {
+                    webView.goBack()
+                    return
+                }
+            }
+            
+            // No web history, close the browser
             super.onBackPressed()
         }
     }

@@ -102,6 +102,13 @@ private fun NotePadRoot() {
     var tapTimes by remember { mutableStateOf(listOf<Long>()) }
     var pendingBrowserLaunch by remember { mutableStateOf<Long?>(null) }
     
+    // Simple tap counter for gesture detection
+    var lastTapTime by remember { mutableStateOf(0L) }
+    var consecutiveTaps by remember { mutableStateOf(0) }
+    
+    // Long press menu state
+    var showLongPressMenu by remember { mutableStateOf(false) }
+    
     // Long press destruction tracking (4 seconds silent, then confirm)
     var longPressStartTime by remember { mutableStateOf<Long?>(null) }
     var longPressProgress by remember { mutableStateOf(0f) }
@@ -174,9 +181,48 @@ private fun NotePadRoot() {
                     Modifier
                         .fillMaxSize()
                         .padding(padding)
+                        .pointerInput(Unit) {
+                            detectTapGestures(
+                                onTap = { offset ->
+                                    // Only handle taps on the background, not on components
+                                    val tapTime = System.currentTimeMillis()
+                                    if (tapTime - lastTapTime < 1000) {
+                                        consecutiveTaps++
+                                    } else {
+                                        consecutiveTaps = 1
+                                    }
+                                    lastTapTime = tapTime
+                                    
+                                    // 3 taps opens browser
+                                    if (consecutiveTaps == 3) {
+                                        val intent = Intent(ctx, com.example.notepad.ui.browser.PrivateBrowserActivity::class.java)
+                                        ctx.startActivity(intent)
+                                        consecutiveTaps = 0
+                                    }
+                                },
+                                onLongPress = { offset ->
+                                    // Long press shows menu
+                                    showLongPressMenu = true
+                                }
+                            )
+                        }
                 ) {
-                    Row(Modifier.fillMaxWidth().padding(horizontal = 8.dp)) {
+                    Row(
+                        Modifier.fillMaxWidth().padding(horizontal = 8.dp),
+                        horizontalArrangement = Arrangement.spacedBy(8.dp)
+                    ) {
                         AssistChip(onClick = { vm.toggleTheme() }, label = { Text(if (dark) "Light" else "Dark") })
+                        AssistChip(
+                            onClick = { 
+                                val intent = Intent(ctx, com.example.notepad.ui.ai.AIChattActivity::class.java)
+                                ctx.startActivity(intent)
+                            }, 
+                            label = { 
+                                Row(verticalAlignment = Alignment.CenterVertically) {
+                                    Text("🤖 AI Chat")
+                                }
+                            }
+                        )
                     }
                     if (state.allTags.isNotEmpty()) {
                         LazyRow(Modifier.fillMaxWidth().padding(horizontal = 8.dp)) {
@@ -218,35 +264,49 @@ private fun NotePadRoot() {
                 }
             }
             
-            // Invisible overlay for long-press detection (catches all touches)
-            Box(
-                modifier = Modifier
-                    .fillMaxSize()
-                    .pointerInput(Unit) {
-                        detectTapGestures(
-                            onPress = {
-                                // Long press started - NO visual warning
-                                Log.d("MainActivity", "Long press STARTED (overlay)")
-                                longPressStartTime = System.currentTimeMillis()
-                                
-                                // Wait for release or completion
-                                val released = tryAwaitRelease()
-                                
-                                Log.d("MainActivity", "Long press RELEASED (overlay): $released")
-                                // If released before 4 seconds - cancel
-                                // Only cancel if the timer hasn't already triggered
-                                if (released && longPressStartTime != null) {
-                                    longPressStartTime = null
-                                    longPressProgress = 0f
+
+            // Long press menu dialog
+            if (showLongPressMenu) {
+                AlertDialog(
+                    onDismissRequest = { showLongPressMenu = false },
+                    title = { 
+                        Text(
+                            "🔒 Secret Options",
+                            fontWeight = FontWeight.Bold
+                        ) 
+                    },
+                    text = {
+                        Text("Choose an action:")
+                    },
+                    confirmButton = {
+                        Row {
+                            TextButton(
+                                onClick = {
+                                    showLongPressMenu = false
+                                    val intent = Intent(ctx, com.example.notepad.ui.vault.SecretVaultActivity::class.java)
+                                    ctx.startActivity(intent)
                                 }
-                            },
-                            onTap = {
-                                // Also register taps for triple-tap browser / 4-tap vault
-                                registerTap()
+                            ) {
+                                Text("🗄️ Open Vault")
                             }
-                        )
+                            Spacer(Modifier.width(8.dp))
+                            TextButton(
+                                onClick = {
+                                    showLongPressMenu = false
+                                    showDestructionConfirm = true
+                                }
+                            ) {
+                                Text("💥 Purge", color = Color.Red)
+                            }
+                        }
+                    },
+                    dismissButton = {
+                        TextButton(onClick = { showLongPressMenu = false }) {
+                            Text("Cancel")
+                        }
                     }
-            )
+                )
+            }
             
             // Destruction confirmation dialog (appears AFTER 4 seconds)
             if (showDestructionConfirm) {

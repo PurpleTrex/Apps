@@ -109,4 +109,14 @@ dependencies {
     
     // Note: Tor routing via Orbot app (lightweight, user controls Tor)
     // App auto-detects and prompts to install Orbot if needed
+    
+    // Local AI Chat - Using OkHttp to interface with local inference server
+    // We'll implement a lightweight GGML-based solution
+    
+    // JSON parsing for AI responses
+    implementation("com.google.code.gson:gson:2.10.1")
+    
+    // Download manager for AI models
+    implementation("com.squareup.retrofit2:retrofit:2.9.0")
+    implementation("com.squareup.retrofit2:converter-gson:2.9.0")
 }

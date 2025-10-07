@@ -6,6 +6,7 @@ import android.graphics.Bitmap
 import android.graphics.BitmapFactory
 import android.media.MediaMetadataRetriever
 import android.net.Uri
+import android.provider.DocumentsContract
 import android.util.Log
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.withContext
@@ -77,7 +78,7 @@ class SecretVaultManager(private val context: Context) {
      * Import a file into the vault with encryption.
      * @param deleteSource If true, attempts to delete the source file after import
      */
-    suspend fun importFile(uri: Uri, displayName: String, deleteSource: Boolean = true): Result<VaultItem> = withContext(Dispatchers.IO) {
+    suspend fun importFile(uri: Uri, displayName: String, deleteSource: Boolean = true): Result<Pair<VaultItem, Boolean>> = withContext(Dispatchers.IO) {
         try {
             val inputStream = context.contentResolver.openInputStream(uri)
                 ?: return@withContext Result.failure(Exception("Cannot open file"))
@@ -93,14 +94,38 @@ class SecretVaultManager(private val context: Context) {
                 }
             }
             
-            // Delete source file if requested
+            // Delete source file if requested  
+            var sourceDeleted = false
             if (deleteSource) {
-                try {
-                    context.contentResolver.delete(uri, null, null)
-                    Log.d(TAG, "Source file deleted: $uri")
+                sourceDeleted = try {
+                    // First try content resolver delete
+                    val deleted = context.contentResolver.delete(uri, null, null)
+                    if (deleted > 0) {
+                        Log.d(TAG, "Source file deleted via ContentResolver: $uri")
+                        true
+                    } else {
+                        // If ContentResolver can't delete, try using DocumentsContract for document URIs
+                        if (uri.toString().contains("document")) {
+                            try {
+                                android.provider.DocumentsContract.deleteDocument(context.contentResolver, uri)
+                                Log.d(TAG, "Source file deleted via DocumentsContract: $uri")
+                                true
+                            } catch (e: Exception) {
+                                Log.w(TAG, "DocumentsContract delete failed: ${e.message}")
+                                // Try MediaStore delete as last resort
+                                attemptMediaStoreDelete(uri)
+                            }
+                        } else {
+                            // Try MediaStore delete for media files
+                            attemptMediaStoreDelete(uri)
+                        }
+                    }
                 } catch (e: Exception) {
-                    Log.w(TAG, "Could not delete source file (may not have permission): ${e.message}")
+                    Log.w(TAG, "Could not delete source file: ${e.message}")
+                    attemptMediaStoreDelete(uri)
                 }
+            } else {
+                true // Not attempting to delete, so consider it "successful"
             }
             
             // Generate thumbnail for images/videos
@@ -120,8 +145,8 @@ class SecretVaultManager(private val context: Context) {
             // Save metadata
             saveMetadata(item)
             
-            Log.d(TAG, "File imported to vault: $displayName")
-            Result.success(item)
+            Log.d(TAG, "File imported to vault: $displayName (source deleted: $sourceDeleted)")
+            Result.success(Pair(item, sourceDeleted))
             
         } catch (e: Exception) {
             Log.e(TAG, "Error importing file: ${e.message}", e)
@@ -525,5 +550,49 @@ class SecretVaultManager(private val context: Context) {
             .filter { !it.startsWith("$id|") }
         
         metadataFile.writeText(lines.joinToString("\n"))
+    }
+    
+    private fun attemptMediaStoreDelete(uri: Uri): Boolean {
+        return try {
+            // For MediaStore URIs (images, videos, audio), try to delete via MediaStore
+            val uriString = uri.toString()
+            val deleted = when {
+                uriString.contains("images") -> {
+                    val count = context.contentResolver.delete(
+                        android.provider.MediaStore.Images.Media.EXTERNAL_CONTENT_URI,
+                        "${android.provider.MediaStore.Images.Media._ID} = ?",
+                        arrayOf(android.provider.DocumentsContract.getDocumentId(uri).split(":")[1])
+                    )
+                    Log.d(TAG, "MediaStore Images delete result: $count for $uri")
+                    count > 0
+                }
+                uriString.contains("video") -> {
+                    val count = context.contentResolver.delete(
+                        android.provider.MediaStore.Video.Media.EXTERNAL_CONTENT_URI,
+                        "${android.provider.MediaStore.Video.Media._ID} = ?",
+                        arrayOf(android.provider.DocumentsContract.getDocumentId(uri).split(":")[1])
+                    )
+                    Log.d(TAG, "MediaStore Video delete result: $count for $uri")
+                    count > 0
+                }
+                uriString.contains("audio") -> {
+                    val count = context.contentResolver.delete(
+                        android.provider.MediaStore.Audio.Media.EXTERNAL_CONTENT_URI,
+                        "${android.provider.MediaStore.Audio.Media._ID} = ?",
+                        arrayOf(android.provider.DocumentsContract.getDocumentId(uri).split(":")[1])
+                    )
+                    Log.d(TAG, "MediaStore Audio delete result: $count for $uri")
+                    count > 0
+                }
+                else -> {
+                    Log.w(TAG, "Cannot delete file of unknown type: $uri")
+                    false
+                }
+            }
+            deleted
+        } catch (e: Exception) {
+            Log.e(TAG, "MediaStore delete failed: ${e.message}")
+            false
+        }
     }
 }

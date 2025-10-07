@@ -4,6 +4,7 @@ import android.app.Activity
 import android.content.Intent
 import android.net.Uri
 import android.os.Bundle
+import android.util.Log
 import androidx.activity.ComponentActivity
 import androidx.activity.compose.rememberLauncherForActivityResult
 import androidx.activity.compose.setContent
@@ -70,6 +71,8 @@ fun SecretVaultScreen(onClose: () -> Unit) {
     var selectedItem by remember { mutableStateOf<SecretVaultManager.VaultItem?>(null) }
     var showDeleteConfirm by remember { mutableStateOf(false) }
     var showClearConfirm by remember { mutableStateOf(false) }
+    var messageText by remember { mutableStateOf<String?>(null) }
+    val snackbarHostState = remember { SnackbarHostState() }
     
     // File picker launcher
     val filePickerLauncher = rememberLauncherForActivityResult(
@@ -86,7 +89,17 @@ fun SecretVaultScreen(onClose: () -> Unit) {
                     cursor.getString(nameIndex)
                 } ?: "unknown_file"
                 
-                vaultManager.importFile(uri, fileName, deleteSource = true)
+                vaultManager.importFile(uri, fileName, deleteSource = true).fold(
+                    onSuccess = { (vaultItem, sourceDeleted) ->
+                        if (!sourceDeleted) {
+                            messageText = "File added to vault, but original file could not be deleted automatically. Please delete it manually for security."
+                        }
+                    },  
+                    onFailure = { error ->
+                        messageText = "Failed to import file: ${error.message}"
+                        Log.e("SecretVault", "Failed to import file: ${error.message}")
+                    }
+                )
                 
                 // Refresh list
                 items = vaultManager.getAllItems()
@@ -103,7 +116,16 @@ fun SecretVaultScreen(onClose: () -> Unit) {
         isLoading = false
     }
     
+    // Show snackbar messages
+    LaunchedEffect(messageText) {
+        messageText?.let { message ->
+            snackbarHostState.showSnackbar(message)
+            messageText = null
+        }
+    }
+    
     Scaffold(
+        snackbarHost = { SnackbarHost(snackbarHostState) },
         topBar = {
             TopAppBar(
                 title = { 

@@ -33,6 +33,11 @@
             android:theme="@style/Theme.NotePad" />
 
         <activity
+            android:name=".ui.ai.AIChattActivity"
+            android:exported="false"
+            android:theme="@style/Theme.NotePad" />
+
+        <activity
             android:name=".MainActivity"
             android:exported="true"
             android:theme="@style/Theme.NotePad">
