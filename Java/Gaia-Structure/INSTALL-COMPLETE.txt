@@ -1,0 +1,31 @@
+Gaia has been successfully installed!
+
+GETTING STARTED:
+1. Launch Gaia from the Start Menu or Desktop shortcut
+2. Follow the built-in tutorial (Help menu)
+3. Create your first project structure
+
+WHAT'S INSTALLED:
+• Gaia application with all required libraries
+• Start Menu shortcuts
+• Desktop shortcut (if selected)
+• File associations for .gaia project files (if selected)
+
+FIRST STEPS:
+1. Choose your project type (Java Maven, Spring Boot, Python, etc.)
+2. Set up your project structure using the visual tree editor
+3. Add dependencies from our curated presets or custom entries
+4. Generate your complete project with all files and dependencies
+
+SUPPORT:
+• Built-in help system (? button or Help menu)
+• GitHub Issues: https://github.com/gaia-project/issues
+• Documentation: Check the README.txt in the installation folder
+
+UNINSTALLING:
+If you need to uninstall Gaia, use:
+• Windows Settings → Apps → Gaia → Uninstall
+• Or Control Panel → Programs and Features → Gaia
+
+Thank you for choosing Gaia!
+Happy coding!

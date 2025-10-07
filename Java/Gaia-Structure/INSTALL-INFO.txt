@@ -1,0 +1,37 @@
+Welcome to Gaia Setup!
+
+SYSTEM REQUIREMENTS:
+- Windows 10 version 1809 (October 2018 Update) or later
+- Java Runtime Environment (JRE) 17 or later
+- Minimum 512 MB RAM
+- 200 MB free disk space
+
+ABOUT GAIA:
+Gaia is a powerful project structure creator with automated dependency management. 
+It helps developers quickly set up project scaffolding for various programming 
+languages and frameworks including:
+
+• Java (Maven, Gradle)
+• Spring Boot
+• Python (pip, conda)
+• Node.js (npm, yarn)
+• React
+• Django
+• Flask
+• And many more!
+
+FEATURES:
+• Visual project structure builder
+• Smart dependency management with presets
+• Integration with Maven Central, NPM, PyPI
+• Template saving and loading
+• Cross-platform compatibility
+• Modern, intuitive user interface
+
+JAVA REQUIREMENT:
+If you don't have Java installed, you can download it from:
+https://www.oracle.com/java/technologies/downloads/
+
+The installer will check for Java and guide you if it's not found.
+
+Click Next to continue with the installation.

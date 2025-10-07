@@ -1,0 +1,325 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.scene.text.Font?>
+
+<BorderPane xmlns="http://javafx.com/javafx/17.0.2-ea" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.structurecreation.controller.MainController">
+   <top>
+      <VBox styleClass="header-section">
+         <children>
+            <!-- Menu Bar -->
+            <MenuBar fx:id="menuBar" styleClass="menu-bar">
+               <menus>
+                  <Menu text="File">
+                     <items>
+                        <MenuItem fx:id="newProjectMenuItem" text="New Project" accelerator="Ctrl+N" />
+                        <MenuItem fx:id="openProjectMenuItem" text="Open Project..." accelerator="Ctrl+O" />
+                        <SeparatorMenuItem />
+                        <MenuItem fx:id="saveTemplateMenuItem" text="Save as Template..." accelerator="Ctrl+S" />
+                        <MenuItem fx:id="loadTemplateMenuItem" text="Load Template..." accelerator="Ctrl+L" />
+                        <SeparatorMenuItem />
+                        <MenuItem fx:id="exitMenuItem" text="Exit" accelerator="Alt+F4" />
+                     </items>
+                  </Menu>
+                  <Menu text="Help">
+                     <items>
+                        <MenuItem fx:id="quickStartMenuItem" text="Quick Start Tutorial" accelerator="F1" />
+                        <MenuItem fx:id="dependencyHelpMenuItem" text="Dependency Management Guide" />
+                        <MenuItem fx:id="projectTypesHelpMenuItem" text="Project Types Overview" />
+                        <SeparatorMenuItem />
+                        <MenuItem fx:id="keyboardShortcutsMenuItem" text="Keyboard Shortcuts" />
+                        <MenuItem fx:id="troubleshootingMenuItem" text="Troubleshooting" />
+                        <SeparatorMenuItem />
+                        <MenuItem fx:id="aboutMenuItem" text="About" />
+                     </items>
+                  </Menu>
+               </menus>
+            </MenuBar>
+            
+            <HBox alignment="CENTER_LEFT" spacing="10.0" styleClass="title-bar">
+               <children>
+                  <VBox spacing="2.0">
+                     <children>
+                        <Label text="Gaia" styleClass="app-title">
+                           <font>
+                              <Font name="Segoe UI Semibold" size="24.0" />
+                           </font>
+                        </Label>
+                        <Label text="Project Structure Creator" styleClass="app-subtitle">
+                           <font>
+                              <Font name="Segoe UI" size="12.0" />
+                           </font>
+                        </Label>
+                     </children>
+                  </VBox>
+                  <Region HBox.hgrow="ALWAYS" />
+                  <Button fx:id="helpButton" styleClass="icon-button, help-button" text="❓" />
+                  <Label text="v1.0.0" styleClass="version-label" />
+               </children>
+               <padding>
+                  <Insets bottom="10.0" left="20.0" right="20.0" top="15.0" />
+               </padding>
+            </HBox>
+            <Separator />
+         </children>
+      </VBox>
+   </top>
+   <center>
+      <SplitPane dividerPositions="0.35, 0.65" styleClass="main-split-pane">
+         <items>
+            <!-- Left Panel: Project Structure Tree -->
+            <VBox styleClass="panel">
+               <children>
+                  <HBox alignment="CENTER_LEFT" spacing="10.0" styleClass="panel-header">
+                     <children>
+                        <Label text="Project Structure" styleClass="panel-title">
+                           <font>
+                              <Font name="Segoe UI Semibold" size="16.0" />
+                           </font>
+                        </Label>
+                        <Region HBox.hgrow="ALWAYS" />
+                        <Button fx:id="addFolderButton" styleClass="icon-button" text="📁">
+                           <tooltip>
+                              <Tooltip text="Add a new folder to the selected location" />
+                           </tooltip>
+                        </Button>
+                        <Button fx:id="addFileButton" styleClass="icon-button" text="📄">
+                           <tooltip>
+                              <Tooltip text="Add a new file to the selected location" />
+                           </tooltip>
+                        </Button>
+                        <Button fx:id="renameButton" styleClass="icon-button" text="✏️">
+                           <tooltip>
+                              <Tooltip text="Rename the selected item (F2)" />
+                           </tooltip>
+                        </Button>
+                        <Button fx:id="deleteButton" styleClass="icon-button, danger-button" text="🗑️">
+                           <tooltip>
+                              <Tooltip text="Delete the selected item (Delete key)" />
+                           </tooltip>
+                        </Button>
+                     </children>
+                     <padding>
+                        <Insets bottom="10.0" left="15.0" right="15.0" top="10.0" />
+                     </padding>
+                  </HBox>
+                  <TreeView fx:id="projectTreeView" styleClass="project-tree" VBox.vgrow="ALWAYS">
+                     <VBox.margin>
+                        <Insets bottom="15.0" left="15.0" right="15.0" />
+                     </VBox.margin>
+                  </TreeView>
+               </children>
+            </VBox>
+            
+            <!-- Center Panel: Project Configuration -->
+            <VBox styleClass="panel">
+               <children>
+                  <Label text="Project Configuration" styleClass="panel-title">
+                     <font>
+                        <Font name="Segoe UI Semibold" size="16.0" />
+                     </font>
+                     <VBox.margin>
+                        <Insets bottom="15.0" left="15.0" right="15.0" top="10.0" />
+                     </VBox.margin>
+                  </Label>
+                  
+                  <ScrollPane fitToWidth="true" styleClass="config-scroll" VBox.vgrow="ALWAYS">
+                     <content>
+                        <VBox spacing="20.0">
+                           <children>
+                              <!-- Project Information -->
+                              <VBox spacing="10.0" styleClass="config-group">
+                                 <children>
+                                    <Label text="Project Information" styleClass="group-title" />
+                                    <GridPane hgap="10.0" vgap="10.0">
+                                       <columnConstraints>
+                                          <ColumnConstraints hgrow="NEVER" minWidth="120.0" />
+                                          <ColumnConstraints hgrow="ALWAYS" />
+                                          <ColumnConstraints hgrow="NEVER" />
+                                       </columnConstraints>
+                                       <children>
+                                          <Label text="Project Name:" GridPane.columnIndex="0" GridPane.rowIndex="0" />
+                                          <TextField fx:id="projectNameField" promptText="Enter project name" styleClass="modern-field" GridPane.columnIndex="1" GridPane.rowIndex="0">
+                                             <tooltip>
+                                                <Tooltip text="Enter a name for your project (avoid special characters)" />
+                                             </tooltip>
+                                          </TextField>
+                                          
+                                          <Label text="Location:" GridPane.columnIndex="0" GridPane.rowIndex="1" />
+                                          <TextField fx:id="projectLocationField" promptText="Select project location" styleClass="modern-field" GridPane.columnIndex="1" GridPane.rowIndex="1">
+                                             <tooltip>
+                                                <Tooltip text="Choose where to create your project folder" />
+                                             </tooltip>
+                                          </TextField>
+                                          <Button fx:id="browseLocationButton" styleClass="browse-button" text="Browse" GridPane.columnIndex="2" GridPane.rowIndex="1">
+                                             <tooltip>
+                                                <Tooltip text="Browse for project location folder" />
+                                             </tooltip>
+                                          </Button>
+                                          
+                                          <Label text="Project Type:" GridPane.columnIndex="0" GridPane.rowIndex="2" />
+                                          <ComboBox fx:id="projectTypeComboBox" maxWidth="1.7976931348623157E308" styleClass="modern-combo" GridPane.columnIndex="1" GridPane.rowIndex="2">
+                                             <tooltip>
+                                                <Tooltip text="Select the type of project to create (determines folder structure and dependencies)" />
+                                             </tooltip>
+                                          </ComboBox>
+                                       </children>
+                                    </GridPane>
+                                 </children>
+                              </VBox>
+                              
+                              <!-- Dependencies Section -->
+                              <VBox spacing="10.0" styleClass="config-group">
+                                 <children>
+                                    <HBox alignment="CENTER_LEFT" spacing="10.0">
+                                       <children>
+                                          <Label text="Dependencies" styleClass="group-title" />
+                                          <Region HBox.hgrow="ALWAYS" />
+                                          <Button fx:id="addDependencyButton" styleClass="add-button" text="+ Add Dependency">
+                                             <tooltip>
+                                                <Tooltip text="Use this to add dependencies from the input fields below to your project" />
+                                             </tooltip>
+                                          </Button>
+                                       </children>
+                                    </HBox>
+                                    
+                                    <!-- Dependency Preset Selection -->
+                                    <VBox spacing="8.0">
+                                       <children>
+                                          <Label text="Quick Add from Presets:" styleClass="section-header" />
+                                          <HBox spacing="10.0" alignment="CENTER_LEFT">
+                                             <children>
+                                                <ComboBox fx:id="dependencyPresetComboBox" prefWidth="300.0" promptText="Select a preset dependency..." styleClass="modern-combo">
+                                                   <tooltip>
+                                                      <Tooltip text="Choose from curated, popular dependencies for your project type. Select a project type first to see available presets." />
+                                                   </tooltip>
+                                                </ComboBox>
+                                                <Button fx:id="addPresetButton" styleClass="primary-button" text="Add Preset">
+                                                   <tooltip>
+                                                      <Tooltip text="Add the selected preset dependency to your project. These are tested, compatible versions." />
+                                                   </tooltip>
+                                                </Button>
+                                             </children>
+                                          </HBox>
+                                       </children>
+                                    </VBox>
+                                    
+                                    <Separator />
+                                    
+                                    <!-- Custom Dependency Input -->
+                                    <VBox spacing="8.0">
+                                       <children>
+                                          <Label text="Or Add Custom Dependency:" styleClass="section-header" />
+                                          <HBox spacing="10.0" styleClass="dependency-input">
+                                             <children>
+                                                <ComboBox fx:id="dependencyTypeComboBox" prefWidth="100.0" styleClass="modern-combo">
+                                                   <tooltip>
+                                                      <Tooltip text="Select the package manager type (Maven, NPM, Pip, etc.)" />
+                                                   </tooltip>
+                                                </ComboBox>
+                                                <TextField fx:id="dependencyNameField" promptText="Dependency name" styleClass="modern-field" HBox.hgrow="SOMETIMES">
+                                                   <tooltip>
+                                                      <Tooltip text="Enter the exact name of the dependency (e.g., 'spring-boot-starter-web' for Maven, 'react' for NPM)" />
+                                                   </tooltip>
+                                                </TextField>
+                                                <TextField fx:id="dependencyVersionField" prefWidth="100.0" promptText="Version" styleClass="modern-field">
+                                                   <tooltip>
+                                                      <Tooltip text="Specify version (e.g., '2.7.0') or leave empty for 'latest'" />
+                                                   </tooltip>
+                                                </TextField>
+                                             </children>
+                                          </HBox>
+                                       </children>
+                                    </VBox>
+                                    
+                                    <!-- Dependencies Table -->
+                                    <TableView fx:id="dependenciesTable" prefHeight="200.0" styleClass="modern-table">
+                                       <columns>
+                                          <TableColumn fx:id="dependencyTypeColumn" prefWidth="80.0" text="Type" />
+                                          <TableColumn fx:id="dependencyNameColumn" prefWidth="200.0" text="Name" />
+                                          <TableColumn fx:id="dependencyVersionColumn" prefWidth="100.0" text="Version" />
+                                       </columns>
+                                    </TableView>
+                                    
+                                    <HBox alignment="CENTER_RIGHT" spacing="10.0">
+                                       <children>
+                                          <Button fx:id="removeDependencyButton" styleClass="remove-button" text="Remove Selected" />
+                                       </children>
+                                    </HBox>
+                                 </children>
+                              </VBox>
+                              
+                              <!-- Actions Section -->
+                              <VBox spacing="15.0" styleClass="config-group">
+                                 <children>
+                                    <Label text="Actions" styleClass="group-title" />
+                                    <HBox spacing="15.0">
+                                       <children>
+                                          <Button fx:id="createProjectButton" styleClass="primary-button" text="🚀 Create Project">
+                                             <font>
+                                                <Font name="Segoe UI Semibold" size="14.0" />
+                                             </font>
+                                             <tooltip>
+                                                <Tooltip text="Create the complete project structure with all dependencies (Ctrl+Enter)" />
+                                             </tooltip>
+                                          </Button>
+                                          <Button fx:id="clearAllButton" styleClass="secondary-button" text="Clear All">
+                                             <tooltip>
+                                                <Tooltip text="Clear all project data and start over" />
+                                             </tooltip>
+                                          </Button>
+                                          <Region HBox.hgrow="ALWAYS" />
+                                          <Button fx:id="loadTemplateButton" styleClass="template-button" text="📂 Load Template">
+                                             <tooltip>
+                                                <Tooltip text="Load a saved project template (Ctrl+L)" />
+                                             </tooltip>
+                                          </Button>
+                                          <Button fx:id="saveTemplateButton" styleClass="template-button" text="💾 Save Template">
+                                             <tooltip>
+                                                <Tooltip text="Save current project as a reusable template (Ctrl+S)" />
+                                             </tooltip>
+                                          </Button>
+                                       </children>
+                                    </HBox>
+                                 </children>
+                              </VBox>
+                           </children>
+                           <padding>
+                              <Insets bottom="20.0" left="15.0" right="15.0" top="5.0" />
+                           </padding>
+                        </VBox>
+                     </content>
+                  </ScrollPane>
+               </children>
+            </VBox>
+         </items>
+      </SplitPane>
+   </center>
+   <bottom>
+      <VBox styleClass="status-section">
+         <children>
+            <Separator />
+            <VBox fx:id="progressContainer" spacing="5.0">
+               <children>
+                  <ProgressBar fx:id="progressBar" maxWidth="1.7976931348623157E308" />
+               </children>
+               <padding>
+                  <Insets bottom="5.0" left="20.0" right="20.0" top="5.0" />
+               </padding>
+            </VBox>
+            <HBox alignment="CENTER_LEFT" spacing="15.0" styleClass="status-bar">
+               <children>
+                  <Label fx:id="statusLabel" text="Ready to create your project structure" styleClass="status-text" />
+                  <Region HBox.hgrow="ALWAYS" />
+                  <Label text="Modern Project Creator • Built with JavaFX" styleClass="footer-text" />
+               </children>
+               <padding>
+                  <Insets bottom="10.0" left="20.0" right="20.0" top="10.0" />
+               </padding>
+            </HBox>
+         </children>
+      </VBox>
+   </bottom>
+</BorderPane>

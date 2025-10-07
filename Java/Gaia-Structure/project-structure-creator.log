@@ -1,0 +1,67 @@
+2025-10-07 12:03:15.196 [main] INFO  c.s.ProjectStructureCreatorApp - Launching Project Structure Creator...
+2025-10-07 12:03:15.212 [JavaFX Application Thread] INFO  c.s.ProjectStructureCreatorApp - Starting Project Structure Creator v1.0.0
+2025-10-07 12:03:15.476 [JavaFX Application Thread] INFO  c.s.controller.MainController - Initializing MainController
+2025-10-07 12:03:15.605 [JavaFX Application Thread] INFO  c.s.service.TemplateService - Created templates directory: C:\Users\purple\project-templates
+2025-10-07 12:03:15.644 [JavaFX Application Thread] INFO  c.s.service.TemplateService - Saved template: Java Maven Project to C:\Users\purple\project-templates\Java_Maven_Project.json
+2025-10-07 12:03:15.646 [JavaFX Application Thread] INFO  c.s.service.TemplateService - Saved template: Python Project to C:\Users\purple\project-templates\Python_Project.json
+2025-10-07 12:03:15.648 [JavaFX Application Thread] INFO  c.s.service.TemplateService - Saved template: Node.js Project to C:\Users\purple\project-templates\Node.js_Project.json
+2025-10-07 12:03:15.649 [JavaFX Application Thread] INFO  c.s.service.TemplateService - Saved template: React Application to C:\Users\purple\project-templates\React_Application.json
+2025-10-07 12:03:15.654 [JavaFX Application Thread] INFO  c.s.controller.MainController - MainController initialized successfully
+2025-10-07 12:03:16.192 [JavaFX Application Thread] INFO  c.s.ProjectStructureCreatorApp - Application started successfully
+2025-10-07 12:03:36.445 [JavaFX Application Thread] WARN  c.structurecreation.util.AlertUtils - Showing warning alert: Invalid Dependency - Please enter a dependency name.
+2025-10-07 12:04:00.511 [JavaFX Application Thread] INFO  c.s.ProjectStructureCreatorApp - Application stopping...
+2025-10-07 12:06:38.042 [main] INFO  c.s.ProjectStructureCreatorApp - Launching Project Structure Creator...
+2025-10-07 12:06:38.061 [JavaFX Application Thread] INFO  c.s.ProjectStructureCreatorApp - Starting Project Structure Creator v1.0.0
+2025-10-07 12:06:38.320 [JavaFX Application Thread] INFO  c.s.controller.MainController - Initializing MainController
+2025-10-07 12:06:38.446 [JavaFX Application Thread] INFO  c.s.controller.MainController - MainController initialized successfully
+2025-10-07 12:06:38.879 [JavaFX Application Thread] INFO  c.s.ProjectStructureCreatorApp - Application started successfully
+2025-10-07 12:08:10.885 [JavaFX Application Thread] INFO  c.s.controller.MainController - Added dependency: Gradle mdkndknd 
+2025-10-07 12:08:45.190 [JavaFX Application Thread] INFO  c.s.controller.MainController - Added file: main.py
+2025-10-07 12:08:54.477 [JavaFX Application Thread] INFO  c.s.ProjectStructureCreatorApp - Application stopping...
+2025-10-07 12:17:48.137 [main] INFO  c.s.ProjectStructureCreatorApp - Launching Project Structure Creator...
+2025-10-07 12:17:48.153 [JavaFX Application Thread] INFO  c.s.ProjectStructureCreatorApp - Starting Project Structure Creator v1.0.0
+2025-10-07 12:17:48.407 [JavaFX Application Thread] INFO  c.s.controller.MainController - Initializing MainController
+2025-10-07 12:17:48.532 [JavaFX Application Thread] INFO  c.s.controller.MainController - MainController initialized successfully
+2025-10-07 12:17:49.008 [JavaFX Application Thread] INFO  c.s.ProjectStructureCreatorApp - Application started successfully
+2025-10-07 12:18:02.526 [JavaFX Application Thread] WARN  c.structurecreation.util.AlertUtils - Showing warning alert: Invalid Dependency - Please enter a dependency name.
+2025-10-07 12:18:30.931 [JavaFX Application Thread] INFO  c.s.ProjectStructureCreatorApp - Application stopping...
+2025-10-07 12:28:01.719 [main] INFO  c.s.ProjectStructureCreatorApp - Launching Project Structure Creator...
+2025-10-07 12:28:01.736 [JavaFX Application Thread] INFO  c.s.ProjectStructureCreatorApp - Starting Project Structure Creator v1.0.0
+2025-10-07 12:28:01.992 [JavaFX Application Thread] INFO  c.s.controller.MainController - Initializing MainController
+2025-10-07 12:28:02.277 [JavaFX Application Thread] INFO  c.s.controller.MainController - MainController initialized successfully
+2025-10-07 12:28:02.751 [JavaFX Application Thread] INFO  c.s.ProjectStructureCreatorApp - Application started successfully
+2025-10-07 12:28:19.333 [JavaFX Application Thread] WARN  c.structurecreation.util.AlertUtils - Showing warning alert: Invalid Dependency - Please enter a dependency name.
+2025-10-07 12:28:34.723 [JavaFX Application Thread] WARN  c.structurecreation.util.AlertUtils - Showing warning alert: No Preset Selected - Please select a preset dependency.
+2025-10-07 12:28:36.958 [JavaFX Application Thread] INFO  c.s.ProjectStructureCreatorApp - Application stopping...
+2025-10-07 12:29:17.137 [main] INFO  c.s.ProjectStructureCreatorApp - Launching Project Structure Creator...
+2025-10-07 12:29:17.154 [JavaFX Application Thread] INFO  c.s.ProjectStructureCreatorApp - Starting Project Structure Creator v1.0.0
+2025-10-07 12:29:17.411 [JavaFX Application Thread] INFO  c.s.controller.MainController - Initializing MainController
+2025-10-07 12:29:17.684 [JavaFX Application Thread] INFO  c.s.controller.MainController - MainController initialized successfully
+2025-10-07 12:29:18.145 [JavaFX Application Thread] INFO  c.s.ProjectStructureCreatorApp - Application started successfully
+2025-10-07 12:29:27.780 [JavaFX Application Thread] INFO  c.s.controller.MainController - Updating dependency presets for project type: Java Maven
+2025-10-07 12:29:27.781 [JavaFX Application Thread] INFO  c.s.controller.MainController - Found 5 presets for project type: Java Maven
+2025-10-07 12:29:27.782 [JavaFX Application Thread] INFO  c.s.controller.MainController - Repository URL for Java Maven (Maven): https://repo1.maven.org/maven2/
+2025-10-07 12:29:27.783 [JavaFX Application Thread] INFO  c.s.controller.MainController - Successfully updated dependency preset dropdown with 6 items
+2025-10-07 12:29:34.249 [JavaFX Application Thread] INFO  c.s.controller.MainController - Updating dependency presets for project type: Node.js
+2025-10-07 12:29:34.250 [JavaFX Application Thread] INFO  c.s.controller.MainController - Found 5 presets for project type: Node.js
+2025-10-07 12:29:34.250 [JavaFX Application Thread] INFO  c.s.controller.MainController - Repository URL for Node.js (NPM): https://registry.npmjs.org/
+2025-10-07 12:29:34.251 [JavaFX Application Thread] INFO  c.s.controller.MainController - Successfully updated dependency preset dropdown with 6 items
+2025-10-07 12:29:38.570 [JavaFX Application Thread] INFO  c.s.controller.MainController - Added preset dependency: jest
+2025-10-07 12:29:44.047 [JavaFX Application Thread] INFO  c.s.ProjectStructureCreatorApp - Application stopping...
+2025-10-07 12:36:33.973 [main] INFO  c.s.ProjectStructureCreatorApp - Launching Project Structure Creator...
+2025-10-07 12:36:33.991 [JavaFX Application Thread] INFO  c.s.ProjectStructureCreatorApp - Starting Project Structure Creator v1.0.0
+2025-10-07 12:36:34.304 [JavaFX Application Thread] INFO  c.s.controller.MainController - Initializing MainController
+2025-10-07 12:36:34.633 [JavaFX Application Thread] INFO  c.s.controller.MainController - MainController initialized successfully
+2025-10-07 12:36:35.125 [JavaFX Application Thread] INFO  c.s.ProjectStructureCreatorApp - Application started successfully
+2025-10-07 12:37:36.948 [JavaFX Application Thread] INFO  c.s.service.TutorialService - Displayed Quick Start tutorial
+2025-10-07 12:37:44.592 [JavaFX Application Thread] INFO  c.s.service.TutorialService - Displayed Quick Start tutorial
+2025-10-07 12:37:49.190 [JavaFX Application Thread] INFO  c.s.service.TutorialService - Displayed Dependency Management guide
+2025-10-07 12:37:53.486 [JavaFX Application Thread] INFO  c.s.service.TutorialService - Displayed keyboard shortcuts
+2025-10-07 12:38:00.947 [JavaFX Application Thread] INFO  c.s.service.TutorialService - Displayed troubleshooting guide
+2025-10-07 12:38:04.211 [JavaFX Application Thread] INFO  c.s.ProjectStructureCreatorApp - Application stopping...
+2025-10-07 12:47:31.350 [main] INFO  c.s.ProjectStructureCreatorApp - Launching Gaia Project Structure Creator...
+2025-10-07 12:47:31.367 [JavaFX Application Thread] INFO  c.s.ProjectStructureCreatorApp - Starting Gaia v1.0.0
+2025-10-07 12:47:35.533 [JavaFX Application Thread] INFO  c.s.controller.MainController - Initializing MainController
+2025-10-07 12:47:35.808 [JavaFX Application Thread] INFO  c.s.controller.MainController - MainController initialized successfully
+2025-10-07 12:47:37.846 [JavaFX Application Thread] INFO  c.s.ProjectStructureCreatorApp - Gaia application started successfully
+2025-10-07 12:47:49.975 [JavaFX Application Thread] INFO  c.s.ProjectStructureCreatorApp - Application stopping...

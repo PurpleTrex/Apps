@@ -1,0 +1,792 @@
+/* Modern Windows 11 Style CSS for Project Structure Creator */
+
+/* Root styling with Windows 11 color scheme */
+.root {
+    font-family: "Segoe UI", Arial, sans-serif;
+    -fx-font-family: "Segoe UI", Arial, sans-serif;
+    font-size: 14px;
+    -fx-font-size: 14px;
+    background-color: #f3f3f3;
+    -fx-background-color: #f3f3f3;
+    color: #323130;
+    -fx-text-fill: #323130;
+}
+
+/* Header Section */
+.header-section {
+    background-color: #ffffff;
+    background: linear-gradient(to bottom, #ffffff, #f8f8f8);
+    -fx-background-color: linear-gradient(to bottom, #ffffff, #f8f8f8);
+    border-color: #e1dfdd;
+    -fx-border-color: #e1dfdd;
+    border-width: 0 0 1px 0;
+    -fx-border-width: 0 0 1 0;
+}
+
+.title-bar {
+    background-color: transparent;
+    -fx-background-color: transparent;
+}
+
+.app-title {
+    color: #323130;
+    -fx-text-fill: #323130;
+    font-weight: bold;
+    -fx-font-weight: bold;
+}
+
+.app-subtitle {
+    color: #605e5c;
+    -fx-text-fill: #605e5c;
+    font-style: italic;
+    -fx-font-style: italic;
+}
+
+.version-label {
+    color: #605e5c;
+    -fx-text-fill: #605e5c;
+    font-size: 12px;
+    -fx-font-size: 12px;
+    background-color: #f3f2f1;
+    -fx-background-color: #f3f2f1;
+    border-radius: 12px;
+    -fx-background-radius: 12;
+    padding: 4px 8px 4px 8px;
+    -fx-padding: 4 8 4 8;
+}
+
+/* Main Split Pane */
+.main-split-pane {
+    background-color: #f3f3f3;
+    -fx-background-color: #f3f3f3;
+}
+
+.main-split-pane .split-pane-divider {
+    background-color: #e1dfdd;
+    -fx-background-color: #e1dfdd;
+    -fx-background-insets: 0;
+    padding: 0 2px 0 2px;
+    -fx-padding: 0 2 0 2;
+}
+
+/* Panels */
+.panel {
+    background-color: #ffffff;
+    -fx-background-color: #ffffff;
+    border-radius: 8px;
+    -fx-background-radius: 8;
+    -fx-effect: dropshadow(gaussian, rgba(0,0,0,0.1), 8, 0, 0, 2);
+    border-color: #e1dfdd;
+    -fx-border-color: #e1dfdd;
+    border-radius: 8px;
+    -fx-border-radius: 8;
+    border-width: 1px;
+    -fx-border-width: 1;
+}
+
+.panel-header {
+    background-color: #faf9f8;
+    -fx-background-color: #faf9f8;
+    border-radius: 8px 8px 0 0;
+    -fx-background-radius: 8 8 0 0;
+    border-color: #e1dfdd;
+    -fx-border-color: #e1dfdd;
+    border-width: 0 0 1px 0;
+    -fx-border-width: 0 0 1 0;
+}
+
+.panel-title {
+    color: #323130;
+    -fx-text-fill: #323130;
+    font-weight: bold;
+    -fx-font-weight: bold;
+}
+
+/* Buttons */
+.button {
+    background-color: #ffffff;
+    -fx-background-color: #ffffff;
+    border-color: #8a8886;
+    -fx-border-color: #8a8886;
+    border-radius: 4px;
+    -fx-border-radius: 4;
+    -fx-background-radius: 4;
+    padding: 8px 16px 8px 16px;
+    -fx-padding: 8 16 8 16;
+    color: #323130;
+    -fx-text-fill: #323130;
+    font-size: 14px;
+    -fx-font-size: 14px;
+    cursor: pointer;
+    -fx-cursor: hand;
+}
+
+.button:hover {
+    background-color: #f3f2f1;
+    -fx-background-color: #f3f2f1;
+    border-color: #605e5c;
+    -fx-border-color: #605e5c;
+}
+
+.button:pressed {
+    background-color: #edebe9;
+    -fx-background-color: #edebe9;
+}
+
+.button:disabled {
+    opacity: 0.5;
+    -fx-opacity: 0.5;
+    cursor: default;
+    -fx-cursor: default;
+}
+
+/* Primary Button */
+.primary-button {
+    background-color: #0078d4;
+    -fx-background-color: #0078d4;
+    border-color: #0078d4;
+    -fx-border-color: #0078d4;
+    color: white;
+    -fx-text-fill: white;
+    font-weight: bold;
+    -fx-font-weight: bold;
+    padding: 12px 20px 12px 20px;
+    -fx-padding: 12 20 12 20;
+}
+
+.primary-button:hover {
+    background-color: #106ebe;
+    -fx-background-color: #106ebe;
+    border-color: #106ebe;
+    -fx-border-color: #106ebe;
+}
+
+.primary-button:pressed {
+    background-color: #005a9e;
+    -fx-background-color: #005a9e;
+    border-color: #005a9e;
+    -fx-border-color: #005a9e;
+}
+
+/* Secondary Buttons */
+.secondary-button {
+    background-color: #f3f2f1;
+    -fx-background-color: #f3f2f1;
+    border-color: #8a8886;
+    -fx-border-color: #8a8886;
+    color: #323130;
+    -fx-text-fill: #323130;
+}
+
+.secondary-button:hover {
+    background-color: #edebe9;
+    -fx-background-color: #edebe9;
+    border-color: #605e5c;
+    -fx-border-color: #605e5c;
+}
+
+/* Icon Buttons */
+.icon-button {
+    background-color: transparent;
+    -fx-background-color: transparent;
+    border-color: transparent;
+    -fx-border-color: transparent;
+    padding: 6px;
+    -fx-padding: 6;
+    font-size: 16px;
+    -fx-font-size: 16px;
+    border-radius: 4px;
+    -fx-background-radius: 4;
+    -fx-border-radius: 4;
+    min-width: 32px;
+    -fx-min-width: 32;
+    min-height: 32px;
+    -fx-min-height: 32;
+}
+
+.icon-button:hover {
+    background-color: #f3f2f1;
+    -fx-background-color: #f3f2f1;
+    border-color: #e1dfdd;
+    -fx-border-color: #e1dfdd;
+}
+
+.icon-button:pressed {
+    background-color: #edebe9;
+    -fx-background-color: #edebe9;
+}
+
+/* Danger Button */
+.danger-button:hover {
+    background-color: #fef9f9;
+    -fx-background-color: #fef9f9;
+    border-color: #d13438;
+    -fx-border-color: #d13438;
+    color: #d13438;
+    -fx-text-fill: #d13438;
+}
+
+/* Add/Remove Buttons */
+.add-button {
+    background-color: #107c10;
+    -fx-background-color: #107c10;
+    border-color: #107c10;
+    -fx-border-color: #107c10;
+    color: white;
+    -fx-text-fill: white;
+    font-weight: bold;
+    -fx-font-weight: bold;
+}
+
+.add-button:hover {
+    background-color: #0e6e0e;
+    -fx-background-color: #0e6e0e;
+}
+
+.remove-button {
+    background-color: #d13438;
+    -fx-background-color: #d13438;
+    border-color: #d13438;
+    -fx-border-color: #d13438;
+    color: white;
+    -fx-text-fill: white;
+}
+
+.remove-button:hover {
+    background-color: #b02e31;
+    -fx-background-color: #b02e31;
+}
+
+/* Template Buttons */
+.template-button {
+    background-color: #8764b8;
+    -fx-background-color: #8764b8;
+    border-color: #8764b8;
+    -fx-border-color: #8764b8;
+    color: white;
+    -fx-text-fill: white;
+}
+
+.template-button:hover {
+    background-color: #7659a4;
+    -fx-background-color: #7659a4;
+}
+
+/* Browse Button */
+.browse-button {
+    background-color: #e1dfdd;
+    -fx-background-color: #e1dfdd;
+    border-color: #8a8886;
+    -fx-border-color: #8a8886;
+    padding: 8px 12px 8px 12px;
+    -fx-padding: 8 12 8 12;
+}
+
+.browse-button:hover {
+    background-color: #d2d0ce;
+    -fx-background-color: #d2d0ce;
+}
+
+/* Text Fields */
+.text-field, .modern-field {
+    background-color: #ffffff;
+    -fx-background-color: #ffffff;
+    border-color: #8a8886;
+    -fx-border-color: #8a8886;
+    border-radius: 4px;
+    -fx-border-radius: 4;
+    -fx-background-radius: 4;
+    padding: 8px 12px 8px 12px;
+    -fx-padding: 8 12 8 12;
+    color: #323130;
+    -fx-text-fill: #323130;
+    -fx-prompt-text-fill: #8a8886;
+}
+
+.text-field:focused, .modern-field:focused {
+    border-color: #0078d4;
+    -fx-border-color: #0078d4;
+    border-width: 2px;
+    -fx-border-width: 2;
+}
+
+/* ComboBox */
+.combo-box, .modern-combo {
+    background-color: #ffffff;
+    -fx-background-color: #ffffff;
+    border-color: #8a8886;
+    -fx-border-color: #8a8886;
+    border-radius: 4px;
+    -fx-border-radius: 4;
+    -fx-background-radius: 4;
+}
+
+.combo-box .arrow-button, .modern-combo .arrow-button {
+    background-color: transparent;
+    -fx-background-color: transparent;
+    -fx-background-radius: 0 4 4 0;
+}
+
+.combo-box .arrow, .modern-combo .arrow {
+    background-color: #605e5c;
+    -fx-background-color: #605e5c;
+}
+
+.combo-box:hover, .modern-combo:hover {
+    border-color: #605e5c;
+    -fx-border-color: #605e5c;
+}
+
+.combo-box:focused, .modern-combo:focused {
+    border-color: #0078d4;
+    -fx-border-color: #0078d4;
+    border-width: 2px;
+    -fx-border-width: 2;
+}
+
+/* TreeView */
+.project-tree {
+    background-color: #ffffff;
+    -fx-background-color: #ffffff;
+    border-color: #e1dfdd;
+    -fx-border-color: #e1dfdd;
+    border-radius: 4px;
+    -fx-border-radius: 4;
+    -fx-background-radius: 4;
+}
+
+.project-tree .tree-cell {
+    background-color: transparent;
+    -fx-background-color: transparent;
+    color: #323130;
+    -fx-text-fill: #323130;
+    padding: 4px 8px 4px 8px;
+    -fx-padding: 4 8 4 8;
+}
+
+.project-tree .tree-cell:selected {
+    background-color: #cce8ff;
+    -fx-background-color: #cce8ff;
+    color: #323130;
+    -fx-text-fill: #323130;
+    border-radius: 3px;
+    -fx-background-radius: 3;
+}
+
+.project-tree .tree-cell:hover {
+    background-color: #f3f2f1;
+    -fx-background-color: #f3f2f1;
+    border-radius: 3px;
+    -fx-background-radius: 3;
+}
+
+/* TableView */
+.table-view, .modern-table {
+    background-color: #ffffff;
+    -fx-background-color: #ffffff;
+    border-color: #e1dfdd;
+    -fx-border-color: #e1dfdd;
+    border-radius: 4px;
+    -fx-border-radius: 4;
+    -fx-background-radius: 4;
+}
+
+.table-view .column-header-background, .modern-table .column-header-background {
+    background-color: #faf9f8;
+    -fx-background-color: #faf9f8;
+    border-color: #e1dfdd;
+    -fx-border-color: #e1dfdd;
+    border-width: 0 0 1px 0;
+    -fx-border-width: 0 0 1 0;
+}
+
+.table-view .column-header, .modern-table .column-header {
+    background-color: transparent;
+    -fx-background-color: transparent;
+    color: #323130;
+    -fx-text-fill: #323130;
+    font-weight: bold;
+    -fx-font-weight: bold;
+    border-color: #e1dfdd;
+    -fx-border-color: #e1dfdd;
+    border-width: 0 1px 0 0;
+    -fx-border-width: 0 1 0 0;
+}
+
+.table-view .table-cell, .modern-table .table-cell {
+    color: #323130;
+    -fx-text-fill: #323130;
+    border-color: #e1dfdd;
+    -fx-border-color: #e1dfdd;
+    border-width: 0 0 1px 0;
+    -fx-border-width: 0 0 1 0;
+    padding: 8px;
+    -fx-padding: 8;
+}
+
+.table-view .table-row-cell:selected, .modern-table .table-row-cell:selected {
+    background-color: #cce8ff;
+    -fx-background-color: #cce8ff;
+    color: #323130;
+    -fx-text-fill: #323130;
+}
+
+.table-view .table-row-cell:hover, .modern-table .table-row-cell:hover {
+    background-color: #f3f2f1;
+    -fx-background-color: #f3f2f1;
+}
+
+/* ScrollPane */
+.scroll-pane, .config-scroll {
+    background-color: transparent;
+    -fx-background-color: transparent;
+    border-color: transparent;
+    -fx-border-color: transparent;
+}
+
+.scroll-pane .viewport, .config-scroll .viewport {
+    background-color: transparent;
+    -fx-background-color: transparent;
+}
+
+.scroll-pane .scroll-bar, .config-scroll .scroll-bar {
+    background-color: #faf9f8;
+    -fx-background-color: #faf9f8;
+}
+
+.scroll-pane .scroll-bar .thumb, .config-scroll .scroll-bar .thumb {
+    background-color: #c8c6c4;
+    -fx-background-color: #c8c6c4;
+    border-radius: 8px;
+    -fx-background-radius: 8;
+}
+
+.scroll-pane .scroll-bar .thumb:hover, .config-scroll .scroll-bar .thumb:hover {
+    background-color: #a19f9d;
+    -fx-background-color: #a19f9d;
+}
+
+/* Configuration Groups */
+.config-group {
+    background-color: #fefefe;
+    -fx-background-color: #fefefe;
+    border-color: #e1dfdd;
+    -fx-border-color: #e1dfdd;
+    border-radius: 6px;
+    -fx-border-radius: 6;
+    -fx-background-radius: 6;
+    padding: 15px;
+    -fx-padding: 15;
+    -fx-effect: dropshadow(gaussian, rgba(0,0,0,0.05), 4, 0, 0, 1);
+}
+
+.group-title {
+    color: #323130;
+    -fx-text-fill: #323130;
+    font-weight: bold;
+    -fx-font-weight: bold;
+    font-size: 15px;
+    -fx-font-size: 15px;
+}
+
+.section-header {
+    color: #605e5c;
+    -fx-text-fill: #605e5c;
+    font-weight: bold;
+    -fx-font-weight: bold;
+    font-size: 13px;
+    -fx-font-size: 13px;
+}
+
+/* Dependency Input */
+.dependency-input {
+    background-color: #f8f7f6;
+    -fx-background-color: #f8f7f6;
+    border-color: #e1dfdd;
+    -fx-border-color: #e1dfdd;
+    border-radius: 4px;
+    -fx-border-radius: 4;
+    -fx-background-radius: 4;
+    padding: 10px;
+    -fx-padding: 10;
+}
+
+/* Status Section */
+.status-section {
+    background-color: #ffffff;
+    background: linear-gradient(to top, #f8f8f8, #ffffff);
+    -fx-background-color: linear-gradient(to top, #f8f8f8, #ffffff);
+    border-color: #e1dfdd;
+    -fx-border-color: #e1dfdd;
+    border-width: 1px 0 0 0;
+    -fx-border-width: 1 0 0 0;
+}
+
+.status-bar {
+    background-color: transparent;
+    -fx-background-color: transparent;
+}
+
+.status-text {
+    color: #323130;
+    -fx-text-fill: #323130;
+    font-weight: bold;
+    -fx-font-weight: bold;
+}
+
+.footer-text {
+    color: #8a8886;
+    -fx-text-fill: #8a8886;
+    font-size: 12px;
+    -fx-font-size: 12px;
+}
+
+/* Progress Bar */
+.progress-bar {
+    -fx-accent: #0078d4;
+    background-color: #e1dfdd;
+    -fx-background-color: #e1dfdd;
+    border-radius: 8px;
+    -fx-background-radius: 8;
+}
+
+.progress-bar .bar {
+    background-color: #0078d4;
+    background: linear-gradient(to right, #0078d4, #40e0d0);
+    -fx-background-color: linear-gradient(to right, #0078d4, #40e0d0);
+    border-radius: 8px;
+    -fx-background-radius: 8;
+    -fx-background-insets: 1;
+}
+
+.progress-bar .track {
+    background-color: #e1dfdd;
+    -fx-background-color: #e1dfdd;
+    border-radius: 8px;
+    -fx-background-radius: 8;
+}
+
+/* Separators */
+.separator .line {
+    border-color: #e1dfdd;
+    -fx-border-color: #e1dfdd;
+    border-width: 1px 0 0 0;
+    -fx-border-width: 1 0 0 0;
+}
+
+/* Alert Dialogs */
+.alert .header-panel {
+    background-color: #faf9f8;
+    -fx-background-color: #faf9f8;
+}
+
+.alert .content {
+    background-color: #ffffff;
+    -fx-background-color: #ffffff;
+}
+
+.success-alert .header-panel {
+    background-color: #dff6dd;
+    -fx-background-color: #dff6dd;
+}
+
+/* Tooltips */
+.tooltip {
+    background-color: #605e5c;
+    -fx-background-color: #605e5c;
+    color: white;
+    -fx-text-fill: white;
+    border-radius: 4px;
+    -fx-background-radius: 4;
+    font-size: 12px;
+    -fx-font-size: 12px;
+    padding: 6px 8px 6px 8px;
+    -fx-padding: 6 8 6 8;
+}
+
+/* Focus indicators */
+.button:focused,
+.text-field:focused,
+.combo-box:focused,
+.table-view:focused,
+.tree-view:focused {
+    -fx-effect: dropshadow(gaussian, #0078d4, 3, 0, 0, 0);
+}
+
+/* Disabled state */
+.text-field:disabled,
+.combo-box:disabled,
+.button:disabled {
+    opacity: 0.6;
+    -fx-opacity: 0.6;
+}
+
+/* Modern card styling */
+.card {
+    background-color: #ffffff;
+    -fx-background-color: #ffffff;
+    border-radius: 8px;
+    -fx-background-radius: 8;
+    -fx-effect: dropshadow(gaussian, rgba(0,0,0,0.1), 8, 0, 0, 2);
+    border-color: #e1dfdd;
+    -fx-border-color: #e1dfdd;
+    border-radius: 8px;
+    -fx-border-radius: 8;
+    border-width: 1px;
+    -fx-border-width: 1;
+    padding: 20px;
+    -fx-padding: 20;
+}
+
+/* Hover effects for interactive elements */
+.button:hover,
+.combo-box:hover,
+.text-field:hover {
+    cursor: pointer;
+    -fx-cursor: hand;
+}
+
+.text-field:hover {
+    cursor: text;
+    -fx-cursor: text;
+}
+
+/* Custom scrollbar styling */
+.scroll-bar:horizontal .track,
+.scroll-bar:vertical .track {
+    background-color: transparent;
+    -fx-background-color: transparent;
+}
+
+.scroll-bar:horizontal .thumb,
+.scroll-bar:vertical .thumb {
+    background-color: #c8c6c4;
+    -fx-background-color: #c8c6c4;
+    border-radius: 8px;
+    -fx-background-radius: 8;
+}
+
+.scroll-bar:horizontal .thumb:hover,
+.scroll-bar:vertical .thumb:hover {
+    background-color: #a19f9d;
+    -fx-background-color: #a19f9d;
+}
+
+.scroll-bar:horizontal .thumb:pressed,
+.scroll-bar:vertical .thumb:pressed {
+    background-color: #8a8886;
+    -fx-background-color: #8a8886;
+}
+
+/* Menu styling if needed */
+.context-menu {
+    background-color: #ffffff;
+    -fx-background-color: #ffffff;
+    border-color: #8a8886;
+    -fx-border-color: #8a8886;
+    border-radius: 4px;
+    -fx-border-radius: 4;
+    -fx-background-radius: 4;
+    -fx-effect: dropshadow(gaussian, rgba(0,0,0,0.2), 8, 0, 0, 2);
+}
+
+.menu-item {
+    background-color: transparent;
+    -fx-background-color: transparent;
+    color: #323130;
+    -fx-text-fill: #323130;
+    padding: 8px 16px 8px 16px;
+    -fx-padding: 8 16 8 16;
+}
+
+.menu-item:hover {
+    background-color: #f3f2f1;
+    -fx-background-color: #f3f2f1;
+}
+
+.menu-item:focused {
+    background-color: #cce8ff;
+    -fx-background-color: #cce8ff;
+}
+
+/* Help and Tutorial Styles */
+.help-button {
+    background-color: #0078d4;
+    -fx-background-color: #0078d4;
+    color: white;
+    -fx-text-fill: white;
+    border-radius: 50%;
+    -fx-background-radius: 50%;
+    min-width: 28px;
+    -fx-min-width: 28;
+    min-height: 28px;
+    -fx-min-height: 28;
+    max-width: 28px;
+    -fx-max-width: 28;
+    max-height: 28px;
+    -fx-max-height: 28;
+    font-size: 12px;
+    -fx-font-size: 12;
+    font-weight: bold;
+    -fx-font-weight: bold;
+}
+
+.help-button:hover {
+    background-color: #106ebe;
+    -fx-background-color: #106ebe;
+    -fx-scale-x: 1.1;
+    -fx-scale-y: 1.1;
+}
+
+.help-button:pressed {
+    background-color: #005a9e;
+    -fx-background-color: #005a9e;
+    -fx-scale-x: 0.95;
+    -fx-scale-y: 0.95;
+}
+
+/* Menu Bar Styles */
+.menu-bar {
+    background-color: #fafafa;
+    -fx-background-color: #fafafa;
+    border-color: #e1dfdd;
+    -fx-border-color: #e1dfdd;
+    border-width: 0 0 1px 0;
+    -fx-border-width: 0 0 1 0;
+    font-size: 13px;
+    -fx-font-size: 13;
+}
+
+.menu-bar .menu {
+    background-color: transparent;
+    -fx-background-color: transparent;
+    color: #323130;
+    -fx-text-fill: #323130;
+}
+
+.menu-bar .menu:hover {
+    background-color: #f3f2f1;
+    -fx-background-color: #f3f2f1;
+}
+
+.menu-bar .menu:showing {
+    background-color: #e1dfdd;
+    -fx-background-color: #e1dfdd;
+}
+
+/* Enhanced Tooltips */
+.tooltip {
+    background-color: #323130;
+    -fx-background-color: #323130;
+    color: white;
+    -fx-text-fill: white;
+    font-size: 12px;
+    -fx-font-size: 12;
+    border-radius: 6px;
+    -fx-background-radius: 6;
+    padding: 6px 10px 6px 10px;
+    -fx-padding: 6 10 6 10;
+    max-width: 300px;
+    -fx-max-width: 300;
+    -fx-wrap-text: true;
+}
