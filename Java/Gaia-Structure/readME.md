@@ -5,8 +5,8 @@
   
   **A powerful, modern GUI application for creating project structures with automated dependency management**
   
-  [![Download Latest](https://img.shields.io/badge/Download-Latest%20Release-blue?style=for-the-badge)](../../releases/latest)
-  [![Windows](https://img.shields.io/badge/Windows-10%20%7C%2011-0078d4?style=for-the-badge&logo=windows)](../../releases/latest)
+  [![Download Latest](https://img.shields.io/badge/Download-Latest%20Release-blue?style=for-the-badge)](https://github.com/PurpleTrex/Apps/releases/latest)
+  [![Windows](https://img.shields.io/badge/Windows-10%20%7C%2011-0078d4?style=for-the-badge&logo=windows)](https://github.com/PurpleTrex/Apps/releases/latest)
   [![Java](https://img.shields.io/badge/Java-17%2B-orange?style=for-the-badge&logo=java)](https://www.oracle.com/java/technologies/downloads/)
 </div>
 
@@ -14,7 +14,7 @@
 
 ## Quick Install
 
-1. **Download** the latest [`Gaia-Setup-1.0.0.exe`](../../releases/latest)
+1. **Download** the latest [`Gaia-Setup-1.0.0.exe`](https://github.com/PurpleTrex/Apps/releases/latest)
 2. **Run** the installer as administrator
 3. **Launch** Gaia from Start Menu or Desktop shortcut
 4. **Create** your first project!
@@ -139,8 +139,8 @@ Gaia automatically associates with `.gaia` project files:
 
 ### Getting Help
 - **Built-in Help:** Press `F1` or click the `?` button
-- **Issues:** [Report bugs on GitHub](../../issues)
-- **Discussions:** [Community forum](../../discussions)
+- **Issues:** [Report bugs on GitHub](https://github.com/PurpleTrex/Apps/issues)
+- **Discussions:** [Community forum](https://github.com/PurpleTrex/Apps/discussions)
 
 ## License
 
@@ -160,7 +160,7 @@ This project welcomes contributions! Whether it's:
   
 **Built with love for developers, by developers**
 
-[Download Now](../../releases/latest) • [View Screenshots](../../wiki/Screenshots) • [Report Issues](../../issues)
+[Download Now](https://github.com/PurpleTrex/Apps/releases/latest) • [View Screenshots](https://github.com/PurpleTrex/Apps/wiki/Screenshots) • [Report Issues](https://github.com/PurpleTrex/Apps/issues)
 
 </div>
 cd StructureCreation
