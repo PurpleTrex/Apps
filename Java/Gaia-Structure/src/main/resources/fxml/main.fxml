@@ -23,6 +23,11 @@
                         <MenuItem fx:id="exitMenuItem" text="Exit" accelerator="Alt+F4" />
                      </items>
                   </Menu>
+                  <Menu text="Tools">
+                     <items>
+                        <MenuItem fx:id="environmentInfoMenuItem" text="Environment Information" accelerator="Ctrl+E" />
+                     </items>
+                  </Menu>
                   <Menu text="Help">
                      <items>
                         <MenuItem fx:id="quickStartMenuItem" text="Quick Start Tutorial" accelerator="F1" />
