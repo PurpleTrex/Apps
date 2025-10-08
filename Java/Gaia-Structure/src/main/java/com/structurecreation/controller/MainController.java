@@ -10,6 +10,8 @@ import com.structurecreation.service.DependencyPresetService;
 import com.structurecreation.service.DependencyPresetService.DependencyPreset;
 import com.structurecreation.service.DependencyResolverService;
 import com.structurecreation.service.TutorialService;
+import com.structurecreation.service.EnvironmentManager;
+import com.structurecreation.service.EnvironmentManager.EnvironmentInfo;
 import com.structurecreation.model.ProjectTemplate;
 import com.structurecreation.util.AlertUtils;
 import javafx.application.Platform;
@@ -32,6 +34,7 @@ import org.slf4j.LoggerFactory;
 import java.io.File;
 import java.net.URL;
 import java.util.List;
+import java.util.Map;
 import java.util.Optional;
 import java.util.ResourceBundle;
 
@@ -83,6 +86,7 @@ public class MainController implements Initializable {
     @FXML private MenuItem keyboardShortcutsMenuItem;
     @FXML private MenuItem troubleshootingMenuItem;
     @FXML private MenuItem aboutMenuItem;
+    @FXML private MenuItem environmentInfoMenuItem;
     @FXML private Button helpButton;
 
     // Status and progress
@@ -104,6 +108,16 @@ public class MainController implements Initializable {
     @Override
     public void initialize(URL location, ResourceBundle resources) {
         logger.info("Initializing MainController");
+        
+        // Initialize environment detection in background
+        Task<Void> envDetectionTask = new Task<Void>() {
+            @Override
+            protected Void call() throws Exception {
+                EnvironmentManager.initializeEnvironments();
+                return null;
+            }
+        };
+        new Thread(envDetectionTask).start();
         
         // Initialize services
         projectCreationService = new ProjectCreationService();
@@ -241,6 +255,9 @@ public class MainController implements Initializable {
         keyboardShortcutsMenuItem.setOnAction(e -> tutorialService.showKeyboardShortcuts());
         troubleshootingMenuItem.setOnAction(e -> tutorialService.showTroubleshooting());
         aboutMenuItem.setOnAction(e -> tutorialService.showAbout());
+        
+        // Tools menu actions
+        environmentInfoMenuItem.setOnAction(e -> showEnvironmentInformation());
     }
 
     @FXML
@@ -634,6 +651,7 @@ public class MainController implements Initializable {
     private boolean validateInput() {
         String projectName = projectNameField.getText().trim();
         String projectLocation = projectLocationField.getText().trim();
+        String projectType = projectTypeComboBox.getValue();
         
         if (projectName.isEmpty()) {
             AlertUtils.showWarning("Invalid Input", "Please enter a project name.");
@@ -649,6 +667,48 @@ public class MainController implements Initializable {
         if (!locationDir.exists() || !locationDir.isDirectory()) {
             AlertUtils.showWarning("Invalid Location", "The selected project location does not exist or is not a directory.");
             return false;
+        }
+        
+        // Check if required development tools are available
+        if (projectType != null && !projectType.equals("Custom")) {
+            List<String> missingTools = EnvironmentManager.getMissingTools(projectType);
+            if (!missingTools.isEmpty()) {
+                boolean proceed = AlertUtils.showConfirmation(
+                    "Missing Development Tools",
+                    "The following required tools are not detected:\n" +
+                    String.join("\n", missingTools) + "\n\n" +
+                    "The project will be created, but you may need to install these tools to build and run it.\n\n" +
+                    "Do you want to proceed anyway?"
+                );
+                if (!proceed) {
+                    return false;
+                }
+            }
+        }
+        
+        // Check for dependency conflicts
+        if (!dependencies.isEmpty()) {
+            List<DependencyPreset> presets = new java.util.ArrayList<>();
+            for (Dependency dep : dependencies) {
+                // Create a preset-like object for conflict checking
+                DependencyPreset preset = new DependencyPreset(
+                    dep.getName(), "", dep.getType(), dep.getName(), dep.getVersion(), false
+                );
+                presets.add(preset);
+            }
+            
+            List<String> conflicts = DependencyPresetService.getDependencyConflicts(presets);
+            if (!conflicts.isEmpty()) {
+                boolean proceed = AlertUtils.showConfirmation(
+                    "Dependency Conflicts Detected",
+                    "The following dependency conflicts were detected:\n" +
+                    String.join("\n", conflicts) + "\n\n" +
+                    "Do you want to proceed anyway?"
+                );
+                if (!proceed) {
+                    return false;
+                }
+            }
         }
         
         return true;
@@ -959,5 +1019,95 @@ public class MainController implements Initializable {
             );
             logger.info("Install command for {}: {}", dependency.getName(), installCommand);
         }
+    }
+    
+    /**
+     * Show environment information dialog
+     */
+    private void showEnvironmentInformation() {
+        // Create dialog
+        Dialog<Void> dialog = new Dialog<>();
+        dialog.setTitle("Environment Information");
+        dialog.setHeaderText("Detected Development Environments");
+        
+        // Create content
+        VBox content = new VBox(10);
+        content.setPadding(new Insets(20));
+        
+        // Get all environments
+        Map<String, EnvironmentInfo> environments = EnvironmentManager.getAllEnvironments();
+        
+        // Add environment information
+        GridPane grid = new GridPane();
+        grid.setHgap(15);
+        grid.setVgap(10);
+        grid.setPadding(new Insets(10));
+        
+        int row = 0;
+        for (Map.Entry<String, EnvironmentInfo> entry : environments.entrySet()) {
+            EnvironmentInfo info = entry.getValue();
+            
+            Label nameLabel = new Label(info.getName() + ":");
+            nameLabel.setStyle("-fx-font-weight: bold;");
+            grid.add(nameLabel, 0, row);
+            
+            String status = info.isAvailable() ? 
+                "✓ " + info.getVersion() : 
+                "✗ Not Available";
+            Label statusLabel = new Label(status);
+            statusLabel.setStyle(info.isAvailable() ? 
+                "-fx-text-fill: green;" : 
+                "-fx-text-fill: red;");
+            grid.add(statusLabel, 1, row);
+            
+            row++;
+        }
+        
+        content.getChildren().add(grid);
+        
+        // Add current project type requirements if selected
+        String projectType = projectTypeComboBox.getValue();
+        if (projectType != null && !projectType.equals("Custom")) {
+            Separator separator = new Separator();
+            content.getChildren().add(separator);
+            
+            Label reqLabel = new Label("Required for " + projectType + ":");
+            reqLabel.setStyle("-fx-font-weight: bold; -fx-font-size: 14px;");
+            content.getChildren().add(reqLabel);
+            
+            List<String> required = EnvironmentManager.getRequiredToolsForProjectType(projectType);
+            List<String> missing = EnvironmentManager.getMissingTools(projectType);
+            
+            VBox reqBox = new VBox(5);
+            for (String tool : required) {
+                boolean isMissing = missing.contains(tool);
+                Label toolLabel = new Label((isMissing ? "✗ " : "✓ ") + tool);
+                toolLabel.setStyle(isMissing ? 
+                    "-fx-text-fill: red;" : 
+                    "-fx-text-fill: green;");
+                reqBox.getChildren().add(toolLabel);
+            }
+            content.getChildren().add(reqBox);
+            
+            if (!missing.isEmpty()) {
+                Label warningLabel = new Label("\nWarning: Some required tools are missing!");
+                warningLabel.setStyle("-fx-text-fill: orange; -fx-font-weight: bold;");
+                content.getChildren().add(warningLabel);
+            }
+        }
+        
+        // Add refresh button
+        Button refreshButton = new Button("Refresh");
+        refreshButton.setOnAction(e -> {
+            EnvironmentManager.clearCache();
+            dialog.close();
+            showEnvironmentInformation();
+        });
+        content.getChildren().add(refreshButton);
+        
+        dialog.getDialogPane().setContent(content);
+        dialog.getDialogPane().getButtonTypes().add(ButtonType.CLOSE);
+        
+        dialog.showAndWait();
     }
 }

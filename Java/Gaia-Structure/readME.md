@@ -31,6 +31,8 @@
 - **Custom Dependencies** - Add any package from Maven Central, NPM, PyPI, NuGet
 - **Compatibility Checking** - Automatic validation and conflict resolution
 - **Version Management** - Latest versions with update suggestions
+- **Environment Detection** - Automatically detects installed development tools
+- **Conflict Prevention** - Warns about incompatible dependency combinations
 
 ### **Multi-Platform Support**
 | Platform | Package Manager | File Generation |
@@ -82,6 +84,7 @@
 - **Quick Start Tutorial** - Interactive guide for new users
 - **Dependency Guide** - How to manage packages effectively  
 - **Project Types Overview** - Detailed information about each template
+- **Environment Information** - View detected development tools (Tools → Environment Information)
 - **Keyboard Shortcuts** - Power user productivity tips
 - **Troubleshooting** - Common issues and solutions
 
@@ -93,10 +96,23 @@ Gaia automatically associates with `.gaia` project files:
 
 ## Advanced Features
 
+### Environment Detection & Validation
+- **Automatic Tool Detection** - Detects Java, Maven, Gradle, Node.js, NPM, Python, Pip, Git
+- **Pre-Creation Validation** - Warns about missing required tools before project creation
+- **Version Information** - View installed versions of all detected tools
+- **Project Type Matching** - Ensures required tools are available for selected project type
+- **Real-time Status** - Refresh environment information at any time
+
 ### Template System
 - **Save Templates** - Create reusable project templates
 - **Load Templates** - Quick project setup from saved templates
 - **Export/Import** - Share templates with your team
+
+### Dependency Compatibility
+- **Version Conflict Detection** - Identifies conflicting dependency versions
+- **Compatibility Warnings** - Alerts about known incompatibilities (e.g., Django vs Flask)
+- **Smart Recommendations** - Suggests compatible versions for your project type
+- **Package Manager Validation** - Ensures dependencies match project build tool
 
 ### Project Documentation
 - **Auto-generated README** - Complete project documentation
@@ -110,6 +126,10 @@ Gaia automatically associates with `.gaia` project files:
 
 ## What's New in v1.0.0
 
+- **Environment Detection System** - Automatically detects installed development tools
+- **Enhanced Dependency Validation** - Advanced conflict detection and version compatibility checking
+- **Environment Information Dialog** - View all detected tools and their versions (Tools menu)
+- **Pre-Creation Validation** - Warns about missing tools before project creation
 - **Modern splash screen** with beautiful animations
 - **Silent installation** - No command prompt windows
 - **Enhanced dependency presets** - 40+ curated packages
@@ -131,6 +151,12 @@ Gaia automatically associates with `.gaia` project files:
 - Verify internet connection
 - Check repository availability
 - Try using custom dependency input
+- Use Tools → Environment Information to verify package managers are installed
+
+**Missing development tools?**
+- Use Tools → Environment Information to check which tools are detected
+- Install required tools for your project type (e.g., Maven for Java Maven projects)
+- Refresh environment detection after installing new tools
 
 **Project generation fails?**
 - Ensure sufficient disk space

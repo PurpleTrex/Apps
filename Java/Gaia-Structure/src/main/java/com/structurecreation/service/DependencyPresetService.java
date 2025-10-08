@@ -184,6 +184,87 @@ public class DependencyPresetService {
     }
     
     /**
+     * Check for version conflicts between dependencies
+     */
+    public static List<String> checkVersionConflicts(List<DependencyPreset> selectedDependencies) {
+        List<String> conflicts = new ArrayList<>();
+        Map<String, List<DependencyPreset>> dependencyGroups = new HashMap<>();
+        
+        // Group dependencies by their base name
+        for (DependencyPreset preset : selectedDependencies) {
+            String baseName = preset.getArtifact().split(":")[0];
+            dependencyGroups.computeIfAbsent(baseName, k -> new ArrayList<>()).add(preset);
+        }
+        
+        // Check for version conflicts within groups
+        for (Map.Entry<String, List<DependencyPreset>> entry : dependencyGroups.entrySet()) {
+            if (entry.getValue().size() > 1) {
+                Set<String> versions = new HashSet<>();
+                for (DependencyPreset preset : entry.getValue()) {
+                    versions.add(preset.getVersion());
+                }
+                if (versions.size() > 1) {
+                    conflicts.add("Multiple versions of " + entry.getKey() + " detected: " + versions);
+                }
+            }
+        }
+        
+        return conflicts;
+    }
+    
+    /**
+     * Check if a specific version is compatible with preset versions
+     */
+    public static boolean isVersionCompatible(String projectType, String dependencyName, String version) {
+        List<DependencyPreset> presets = getPresetsForProjectType(projectType);
+        return presets.stream()
+            .filter(preset -> preset.getName().equalsIgnoreCase(dependencyName))
+            .findFirst()
+            .map(preset -> preset.getCompatibleVersions().isEmpty() || 
+                          preset.getCompatibleVersions().contains(version))
+            .orElse(true); // If not in presets, assume compatible
+    }
+    
+    /**
+     * Get dependency conflicts for a list of dependencies
+     */
+    public static List<String> getDependencyConflicts(List<DependencyPreset> selectedDependencies) {
+        List<String> conflicts = new ArrayList<>();
+        
+        // Check version conflicts
+        conflicts.addAll(checkVersionConflicts(selectedDependencies));
+        
+        // Check for known incompatibilities (can be extended)
+        for (int i = 0; i < selectedDependencies.size(); i++) {
+            for (int j = i + 1; j < selectedDependencies.size(); j++) {
+                DependencyPreset dep1 = selectedDependencies.get(i);
+                DependencyPreset dep2 = selectedDependencies.get(j);
+                
+                // Check for known incompatibilities
+                if (areIncompatible(dep1, dep2)) {
+                    conflicts.add(dep1.getName() + " is incompatible with " + dep2.getName());
+                }
+            }
+        }
+        
+        return conflicts;
+    }
+    
+    /**
+     * Check if two dependencies are known to be incompatible
+     */
+    private static boolean areIncompatible(DependencyPreset dep1, DependencyPreset dep2) {
+        // Example: Django and Flask might conflict
+        if ((dep1.getName().equals("Django") && dep2.getName().equals("Flask")) ||
+            (dep1.getName().equals("Flask") && dep2.getName().equals("Django"))) {
+            return true;
+        }
+        
+        // Can be extended with more incompatibility rules
+        return false;
+    }
+    
+    /**
      * Get recommended version for a dependency
      */
     public static String getRecommendedVersion(String projectType, String dependencyName) {
