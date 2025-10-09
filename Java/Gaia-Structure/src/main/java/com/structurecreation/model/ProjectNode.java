@@ -73,6 +73,10 @@ public class ProjectNode {
     public boolean isFile() {
         return type == NodeType.FILE;
     }
+
+    public boolean isDirectory() {
+        return isFolder();
+    }
     
     public void addChild(ProjectNode child) {
         if (this.isFolder()) {

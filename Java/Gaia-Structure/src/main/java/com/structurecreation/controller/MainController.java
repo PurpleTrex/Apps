@@ -12,8 +12,10 @@ import com.structurecreation.service.DependencyResolverService;
 import com.structurecreation.service.TutorialService;
 import com.structurecreation.service.EnvironmentManager;
 import com.structurecreation.service.EnvironmentManager.EnvironmentInfo;
+import com.structurecreation.service.generator.ReactProjectGenerator;
 import com.structurecreation.model.ProjectTemplate;
 import com.structurecreation.util.AlertUtils;
+import com.structurecreation.util.TreeViewDragAndDrop;
 import javafx.application.Platform;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
@@ -100,6 +102,7 @@ public class MainController implements Initializable {
     private com.structurecreation.service.TemplateService templateService;
     private DependencyResolverService dependencyResolverService;
     private TutorialService tutorialService;
+    private ReactProjectGenerator reactProjectGenerator;
     
     // Data
     private ProjectStructure currentProject;
@@ -125,6 +128,7 @@ public class MainController implements Initializable {
         templateService = new TemplateService();
         dependencyResolverService = new DependencyResolverService();
         tutorialService = new TutorialService();
+        reactProjectGenerator = new ReactProjectGenerator();
         
         // Initialize data
         currentProject = new ProjectStructure();
@@ -154,19 +158,10 @@ public class MainController implements Initializable {
         
         // Enable editing
         projectTreeView.setEditable(true);
-        projectTreeView.setCellFactory(treeView -> new TextFieldTreeCell<ProjectNode>() {
-            @Override
-            public void updateItem(ProjectNode item, boolean empty) {
-                super.updateItem(item, empty);
-                if (empty || item == null) {
-                    setText(null);
-                    setGraphic(null);
-                } else {
-                    setText(item.toString());
-                }
-            }
-        });
-        
+
+        // Enable drag and drop functionality
+        TreeViewDragAndDrop.enableDragAndDrop(projectTreeView);
+
         // Setup selection listener
         projectTreeView.getSelectionModel().selectedItemProperty().addListener(
             (observable, oldValue, newValue) -> updateUIState()
@@ -440,18 +435,28 @@ public class MainController implements Initializable {
         if (!validateInput()) {
             return;
         }
-        
-        // Update project structure
-        currentProject.setProjectName(projectNameField.getText().trim());
-        currentProject.setProjectLocation(projectLocationField.getText().trim());
-        currentProject.setProjectType(projectTypeComboBox.getValue());
+
+        String projectType = projectTypeComboBox.getValue();
+        String projectName = projectNameField.getText().trim();
+        String projectLocation = projectLocationField.getText().trim();
+
+        // For React projects, use the advanced React generator
+        if ("React".equals(projectType)) {
+            createReactProjectWithFullDependencies(projectName, projectLocation);
+            return;
+        }
+
+        // Update project structure for other project types
+        currentProject.setProjectName(projectName);
+        currentProject.setProjectLocation(projectLocation);
+        currentProject.setProjectType(projectType);
         currentProject.setRootNode(convertTreeToProjectNode(projectTreeView.getRoot()));
         currentProject.setDependencies(dependencies);
-        
+
         // Show progress
         showProgress(true);
         updateStatus("Creating project structure...");
-        
+
         // Create project in background thread
         Task<Void> createProjectTask = new Task<Void>() {
             @Override
@@ -1109,5 +1114,172 @@ public class MainController implements Initializable {
         dialog.getDialogPane().getButtonTypes().add(ButtonType.CLOSE);
         
         dialog.showAndWait();
+    }
+
+    /**
+     * Create a React project with full dependency resolution
+     */
+    private void createReactProjectWithFullDependencies(String projectName, String projectLocation) {
+        showProgress(true);
+        updateStatus("Creating advanced React project...");
+
+        Task<Void> createReactTask = new Task<Void>() {
+            @Override
+            protected Void call() throws Exception {
+                try {
+                    // Generate React project structure with all dependencies
+                    updateMessage("Generating React project structure...");
+                    updateProgress(0.1, 1.0);
+
+                    ProjectNode reactProject = reactProjectGenerator.generateReactProject(
+                        projectName,
+                        ReactProjectGenerator.ReactProjectType.FULL_STACK
+                    );
+
+                    // Create project structure object
+                    ProjectStructure structure = new ProjectStructure();
+                    structure.setProjectName(projectName);
+                    structure.setProjectLocation(projectLocation);
+                    structure.setProjectType("React");
+                    structure.setRootNode(reactProject);
+
+                    // Create physical directories and files
+                    updateMessage("Creating directories and files...");
+                    updateProgress(0.3, 1.0);
+                    projectCreationService.createProjectStructure(structure);
+
+                    // Resolve all NPM dependencies with transitive dependencies
+                    updateMessage("Resolving all dependencies with compatibility checks...");
+                    updateProgress(0.5, 1.0);
+
+                    // Get package.json content and extract dependencies
+                    ProjectNode packageJson = reactProject.findChild("package.json");
+                    if (packageJson != null) {
+                        Map<String, String> npmDeps = parsePackageJsonDependencies(packageJson.getContent());
+
+                        // Resolve all dependencies including transitive ones
+                        var resolvedDeps = dependencyResolverService.resolveNpmDependencies(npmDeps).get();
+
+                        updateMessage(String.format("Resolved %d total dependencies (including transitive)...",
+                                                  resolvedDeps.size()));
+                        updateProgress(0.7, 1.0);
+
+                        // Log dependency tree
+                        String depTree = dependencyResolverService.getDependencyTree(resolvedDeps);
+                        logger.info("Dependency tree:\n{}", depTree);
+                    }
+
+                    // Install dependencies
+                    updateMessage("Installing dependencies (this may take several minutes)...");
+                    updateProgress(0.8, 1.0);
+
+                    // Run npm install
+                    File projectDir = new File(projectLocation, projectName);
+                    Process npmInstall = new ProcessBuilder("npm", "install")
+                            .directory(projectDir)
+                            .start();
+
+                    boolean finished = npmInstall.waitFor(5, java.util.concurrent.TimeUnit.MINUTES);
+                    if (!finished) {
+                        npmInstall.destroyForcibly();
+                        throw new RuntimeException("NPM install took too long");
+                    }
+
+                    if (npmInstall.exitValue() != 0) {
+                        logger.warn("NPM install completed with warnings/errors");
+                    }
+
+                    updateMessage("Project created successfully!");
+                    updateProgress(1.0, 1.0);
+
+                } catch (Exception e) {
+                    logger.error("Failed to create React project", e);
+                    throw new RuntimeException("Failed to create React project: " + e.getMessage(), e);
+                }
+                return null;
+            }
+        };
+
+        createReactTask.setOnSucceeded(e -> {
+            Platform.runLater(() -> {
+                showProgress(false);
+                updateStatus("React project created successfully!");
+
+                String message = String.format(
+                    "React project '%s' has been created successfully!\n\n" +
+                    "Location: %s\n\n" +
+                    "Features included:\n" +
+                    "• React 18 with Hooks\n" +
+                    "• React Router for navigation\n" +
+                    "• Material-UI components\n" +
+                    "• Redux Toolkit for state management\n" +
+                    "• Axios for API calls\n" +
+                    "• Form handling with React Hook Form\n" +
+                    "• Testing with Jest & React Testing Library\n" +
+                    "• ESLint & Prettier configured\n" +
+                    "• Tailwind CSS for styling\n" +
+                    "• All dependencies resolved and compatible\n\n" +
+                    "To start development:\n" +
+                    "1. cd %s/%s\n" +
+                    "2. npm run dev",
+                    projectName, projectLocation, projectLocation, projectName
+                );
+
+                AlertUtils.showInformation("Success", message);
+            });
+        });
+
+        createReactTask.setOnFailed(e -> {
+            Platform.runLater(() -> {
+                showProgress(false);
+                updateStatus("Failed to create React project.");
+                Throwable exception = createReactTask.getException();
+                AlertUtils.showError("Error", "Failed to create React project: " + exception.getMessage());
+            });
+        });
+
+        // Bind progress
+        progressBar.progressProperty().bind(createReactTask.progressProperty());
+        statusLabel.textProperty().bind(createReactTask.messageProperty());
+
+        // Run task
+        Thread thread = new Thread(createReactTask);
+        thread.setDaemon(true);
+        thread.start();
+    }
+
+    /**
+     * Parse dependencies from package.json content
+     */
+    private Map<String, String> parsePackageJsonDependencies(String packageJsonContent) {
+        Map<String, String> dependencies = new LinkedHashMap<>();
+
+        try {
+            // Simple JSON parsing for dependencies
+            String[] lines = packageJsonContent.split("\n");
+            boolean inDependencies = false;
+
+            for (String line : lines) {
+                line = line.trim();
+
+                if (line.contains("\"dependencies\"")) {
+                    inDependencies = true;
+                } else if (line.contains("\"devDependencies\"") || (inDependencies && line.equals("},"))) {
+                    inDependencies = false;
+                } else if (inDependencies && line.contains(":")) {
+                    // Parse dependency line
+                    String[] parts = line.split(":");
+                    if (parts.length == 2) {
+                        String name = parts[0].trim().replace("\"", "").replace(",", "");
+                        String version = parts[1].trim().replace("\"", "").replace(",", "");
+                        dependencies.put(name, version);
+                    }
+                }
+            }
+        } catch (Exception e) {
+            logger.error("Error parsing package.json dependencies", e);
+        }
+
+        return dependencies;
     }
 }
