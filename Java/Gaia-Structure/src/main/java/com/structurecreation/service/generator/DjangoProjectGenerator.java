@@ -7377,31 +7377,1244 @@ public class DjangoProjectGenerator {
                "        dataset.save()\n" +
                "        \n" +
                "        return analysis\n";
-    private String generateMainCSS() { return "/* Main CSS styles */"; }
-    private String generateMainJS() { return "// Main JavaScript"; }
-    private String generateBaseTemplate() { return "<!-- Base HTML template -->"; }
-    private String generateIndexTemplate() { return "<!-- Index HTML template -->"; }
-    private String generateTestBase() { return "# Base test implementation"; }
-    private String generateConftest() { return "# Pytest configuration"; }
-    private String generateValidators() { return "# Custom validators"; }
-    private String generatePermissions() { return "# Custom permissions"; }
-    private String generateMixins() { return "# Custom mixins"; }
-    private String generateRunDevScript() { return "#!/bin/bash\n# Development run script"; }
-    private String generateMigrateScript() { return "#!/bin/bash\n# Migration script"; }
-    private String generateAPIDocs(DjangoProjectType type) { return "# API Documentation"; }
-    private String generateRequirementsDev() { return "# Development requirements"; }
-    private String generateEnvExample(DjangoProjectType type) { return "# Environment variables example"; }
-    private String generateGitignore() { return "*.pyc\n__pycache__/\ndb.sqlite3\n.env\nvenv/\n*.log"; }
-    private String generatePyprojectToml(String projectName) { return "[tool.black]\nline-length = 88"; }
-    private String generateSetupCfg() { return "[flake8]\nmax-line-length = 88"; }
-    private String generatePytestIni() { return "[pytest]\nDJANGO_SETTINGS_MODULE = project.settings.test"; }
-    private String generatePrecommitConfig() { return "# Pre-commit hooks configuration"; }
-    private String generateEditorconfig() { return "# Editor configuration"; }
-    private String generateReadme(String projectName, DjangoProjectType type) { return "# " + projectName; }
-    private String generateDockerignore() { return "*.pyc\n__pycache__/\n.git/\n.env"; }
-    private String generateNginxConfig(String projectName) { return "# Nginx configuration"; }
-    private String generateEntrypoint() { return "#!/bin/bash\n# Docker entrypoint script"; }
-    private String generateCIWorkflow(String projectName) { return "# GitHub Actions CI workflow"; }
-    private String generateDeployWorkflow(String projectName) { return "# GitHub Actions deploy workflow"; }
-    private String generateDependabotConfig() { return "# Dependabot configuration"; }
+    private String generateMainCSS() {
+        return "/* Django Application Main Styles */\n\n" +
+               ":root {\n" +
+               "    --primary-color: #0C4B33;\n" +
+               "    --secondary-color: #44B78B;\n" +
+               "    --success-color: #28a745;\n" +
+               "    --danger-color: #dc3545;\n" +
+               "    --warning-color: #ffc107;\n" +
+               "    --info-color: #17a2b8;\n" +
+               "    --dark-color: #343a40;\n" +
+               "    --light-color: #f8f9fa;\n" +
+               "    --border-radius: 0.375rem;\n" +
+               "    --box-shadow: 0 0.125rem 0.25rem rgba(0,0,0,0.075);\n" +
+               "    --font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif;\n" +
+               "}\n\n" +
+               "* {\n" +
+               "    margin: 0;\n" +
+               "    padding: 0;\n" +
+               "    box-sizing: border-box;\n" +
+               "}\n\n" +
+               "body {\n" +
+               "    font-family: var(--font-family);\n" +
+               "    font-size: 1rem;\n" +
+               "    line-height: 1.5;\n" +
+               "    color: #212529;\n" +
+               "    background-color: #fff;\n" +
+               "}\n\n" +
+               ".container {\n" +
+               "    width: 100%;\n" +
+               "    max-width: 1200px;\n" +
+               "    margin: 0 auto;\n" +
+               "    padding: 0 15px;\n" +
+               "}\n\n" +
+               "header {\n" +
+               "    background-color: var(--primary-color);\n" +
+               "    color: white;\n" +
+               "    padding: 1rem 0;\n" +
+               "    box-shadow: var(--box-shadow);\n" +
+               "}\n\n" +
+               "nav {\n" +
+               "    display: flex;\n" +
+               "    justify-content: space-between;\n" +
+               "    align-items: center;\n" +
+               "}\n\n" +
+               "nav ul {\n" +
+               "    list-style: none;\n" +
+               "    display: flex;\n" +
+               "    gap: 1.5rem;\n" +
+               "}\n\n" +
+               "nav a {\n" +
+               "    color: white;\n" +
+               "    text-decoration: none;\n" +
+               "    padding: 0.5rem 1rem;\n" +
+               "    border-radius: var(--border-radius);\n" +
+               "    transition: background-color 0.3s ease;\n" +
+               "}\n\n" +
+               "nav a:hover {\n" +
+               "    background-color: rgba(255,255,255,0.1);\n" +
+               "}\n\n" +
+               ".btn {\n" +
+               "    display: inline-block;\n" +
+               "    padding: 0.5rem 1rem;\n" +
+               "    font-size: 1rem;\n" +
+               "    font-weight: 400;\n" +
+               "    line-height: 1.5;\n" +
+               "    text-align: center;\n" +
+               "    text-decoration: none;\n" +
+               "    border: 1px solid transparent;\n" +
+               "    border-radius: var(--border-radius);\n" +
+               "    cursor: pointer;\n" +
+               "    transition: all 0.15s ease-in-out;\n" +
+               "}\n\n" +
+               ".btn-primary {\n" +
+               "    background-color: var(--primary-color);\n" +
+               "    border-color: var(--primary-color);\n" +
+               "    color: white;\n" +
+               "}\n\n" +
+               ".btn-primary:hover {\n" +
+               "    background-color: #0a3d28;\n" +
+               "}\n\n" +
+               ".btn-success {\n" +
+               "    background-color: var(--success-color);\n" +
+               "    border-color: var(--success-color);\n" +
+               "    color: white;\n" +
+               "}\n\n" +
+               ".btn-danger {\n" +
+               "    background-color: var(--danger-color);\n" +
+               "    border-color: var(--danger-color);\n" +
+               "    color: white;\n" +
+               "}\n\n" +
+               ".card {\n" +
+               "    background-color: white;\n" +
+               "    border: 1px solid #dee2e6;\n" +
+               "    border-radius: var(--border-radius);\n" +
+               "    box-shadow: var(--box-shadow);\n" +
+               "    padding: 1.5rem;\n" +
+               "    margin-bottom: 1.5rem;\n" +
+               "}\n\n" +
+               ".form-group {\n" +
+               "    margin-bottom: 1rem;\n" +
+               "}\n\n" +
+               ".form-label {\n" +
+               "    display: block;\n" +
+               "    margin-bottom: 0.5rem;\n" +
+               "    font-weight: 500;\n" +
+               "}\n\n" +
+               ".form-control {\n" +
+               "    display: block;\n" +
+               "    width: 100%;\n" +
+               "    padding: 0.5rem 0.75rem;\n" +
+               "    font-size: 1rem;\n" +
+               "    line-height: 1.5;\n" +
+               "    color: #495057;\n" +
+               "    background-color: #fff;\n" +
+               "    border: 1px solid #ced4da;\n" +
+               "    border-radius: var(--border-radius);\n" +
+               "    transition: border-color 0.15s ease-in-out;\n" +
+               "}\n\n" +
+               ".form-control:focus {\n" +
+               "    outline: none;\n" +
+               "    border-color: var(--primary-color);\n" +
+               "    box-shadow: 0 0 0 0.2rem rgba(12,75,51,0.25);\n" +
+               "}\n\n" +
+               ".alert {\n" +
+               "    padding: 0.75rem 1.25rem;\n" +
+               "    margin-bottom: 1rem;\n" +
+               "    border: 1px solid transparent;\n" +
+               "    border-radius: var(--border-radius);\n" +
+               "}\n\n" +
+               ".alert-success {\n" +
+               "    background-color: #d4edda;\n" +
+               "    border-color: #c3e6cb;\n" +
+               "    color: #155724;\n" +
+               "}\n\n" +
+               ".alert-error, .alert-danger {\n" +
+               "    background-color: #f8d7da;\n" +
+               "    border-color: #f5c6cb;\n" +
+               "    color: #721c24;\n" +
+               "}\n\n" +
+               ".alert-info {\n" +
+               "    background-color: #d1ecf1;\n" +
+               "    border-color: #bee5eb;\n" +
+               "    color: #0c5460;\n" +
+               "}\n\n" +
+               ".table {\n" +
+               "    width: 100%;\n" +
+               "    border-collapse: collapse;\n" +
+               "}\n\n" +
+               ".table th,\n" +
+               ".table td {\n" +
+               "    padding: 0.75rem;\n" +
+               "    text-align: left;\n" +
+               "    border-bottom: 1px solid #dee2e6;\n" +
+               "}\n\n" +
+               ".table th {\n" +
+               "    background-color: var(--light-color);\n" +
+               "    font-weight: 600;\n" +
+               "}\n\n" +
+               "footer {\n" +
+               "    margin-top: 3rem;\n" +
+               "    padding: 2rem 0;\n" +
+               "    background-color: var(--light-color);\n" +
+               "    text-align: center;\n" +
+               "}\n\n" +
+               "@media (max-width: 768px) {\n" +
+               "    nav ul {\n" +
+               "        flex-direction: column;\n" +
+               "        gap: 0.5rem;\n" +
+               "    }\n" +
+               "}\n";
+    }
+
+    private String generateMainJS() {
+        return "// Django Application Main JavaScript\n\n" +
+               "document.addEventListener('DOMContentLoaded', function() {\n" +
+               "    console.log('Django application loaded');\n\n" +
+               "    // CSRF Token handling for AJAX requests\n" +
+               "    const csrftoken = getCookie('csrftoken');\n\n" +
+               "    // Configure AJAX to include CSRF token\n" +
+               "    if (typeof $ !== 'undefined') {\n" +
+               "        $.ajaxSetup({\n" +
+               "            beforeSend: function(xhr, settings) {\n" +
+               "                if (!csrfSafeMethod(settings.type) && !this.crossDomain) {\n" +
+               "                    xhr.setRequestHeader('X-CSRFToken', csrftoken);\n" +
+               "                }\n" +
+               "            }\n" +
+               "        });\n" +
+               "    }\n\n" +
+               "    // Auto-dismiss alerts\n" +
+               "    const alerts = document.querySelectorAll('.alert');\n" +
+               "    alerts.forEach(alert => {\n" +
+               "        setTimeout(() => {\n" +
+               "            alert.style.opacity = '0';\n" +
+               "            setTimeout(() => alert.remove(), 300);\n" +
+               "        }, 5000);\n" +
+               "    });\n\n" +
+               "    // Form validation\n" +
+               "    const forms = document.querySelectorAll('form[data-validate]');\n" +
+               "    forms.forEach(form => {\n" +
+               "        form.addEventListener('submit', function(e) {\n" +
+               "            if (!validateForm(this)) {\n" +
+               "                e.preventDefault();\n" +
+               "            }\n" +
+               "        });\n" +
+               "    });\n" +
+               "});\n\n" +
+               "function getCookie(name) {\n" +
+               "    let cookieValue = null;\n" +
+               "    if (document.cookie && document.cookie !== '') {\n" +
+               "        const cookies = document.cookie.split(';');\n" +
+               "        for (let i = 0; i < cookies.length; i++) {\n" +
+               "            const cookie = cookies[i].trim();\n" +
+               "            if (cookie.substring(0, name.length + 1) === (name + '=')) {\n" +
+               "                cookieValue = decodeURIComponent(cookie.substring(name.length + 1));\n" +
+               "                break;\n" +
+               "            }\n" +
+               "        }\n" +
+               "    }\n" +
+               "    return cookieValue;\n" +
+               "}\n\n" +
+               "function csrfSafeMethod(method) {\n" +
+               "    return (/^(GET|HEAD|OPTIONS|TRACE)$/.test(method));\n" +
+               "}\n\n" +
+               "function validateForm(form) {\n" +
+               "    let isValid = true;\n" +
+               "    const requiredFields = form.querySelectorAll('[required]');\n\n" +
+               "    requiredFields.forEach(field => {\n" +
+               "        if (!field.value.trim()) {\n" +
+               "            showError(field, 'This field is required');\n" +
+               "            isValid = false;\n" +
+               "        } else {\n" +
+               "            clearError(field);\n" +
+               "        }\n" +
+               "    });\n\n" +
+               "    return isValid;\n" +
+               "}\n\n" +
+               "function showError(field, message) {\n" +
+               "    clearError(field);\n" +
+               "    field.classList.add('is-invalid');\n" +
+               "    const errorDiv = document.createElement('div');\n" +
+               "    errorDiv.className = 'invalid-feedback';\n" +
+               "    errorDiv.textContent = message;\n" +
+               "    field.parentNode.appendChild(errorDiv);\n" +
+               "}\n\n" +
+               "function clearError(field) {\n" +
+               "    field.classList.remove('is-invalid');\n" +
+               "    const errorDiv = field.parentNode.querySelector('.invalid-feedback');\n" +
+               "    if (errorDiv) {\n" +
+               "        errorDiv.remove();\n" +
+               "    }\n" +
+               "}\n\n" +
+               "// API Helper for making authenticated requests\n" +
+               "async function apiRequest(url, options = {}) {\n" +
+               "    const csrftoken = getCookie('csrftoken');\n" +
+               "    const defaults = {\n" +
+               "        headers: {\n" +
+               "            'Content-Type': 'application/json',\n" +
+               "            'X-CSRFToken': csrftoken\n" +
+               "        }\n" +
+               "    };\n\n" +
+               "    const config = { ...defaults, ...options };\n" +
+               "    config.headers = { ...defaults.headers, ...options.headers };\n\n" +
+               "    try {\n" +
+               "        const response = await fetch(url, config);\n" +
+               "        const data = await response.json();\n\n" +
+               "        if (!response.ok) {\n" +
+               "            throw new Error(data.error || 'Request failed');\n" +
+               "        }\n\n" +
+               "        return data;\n" +
+               "    } catch (error) {\n" +
+               "        console.error('API Error:', error);\n" +
+               "        throw error;\n" +
+               "    }\n" +
+               "}\n";
+    }
+
+    private String generateBaseTemplate() {
+        return "{% load static %}\n" +
+               "<!DOCTYPE html>\n" +
+               "<html lang=\"en\">\n" +
+               "<head>\n" +
+               "    <meta charset=\"UTF-8\">\n" +
+               "    <meta name=\"viewport\" content=\"width=device-width, initial-scale=1.0\">\n" +
+               "    <meta http-equiv=\"X-UA-Compatible\" content=\"ie=edge\">\n" +
+               "    <title>{% block title %}Django Application{% endblock %}</title>\n\n" +
+               "    <!-- CSS -->\n" +
+               "    <link rel=\"stylesheet\" href=\"{% static 'css/main.css' %}\">\n" +
+               "    {% block extra_css %}{% endblock %}\n" +
+               "</head>\n" +
+               "<body>\n" +
+               "    <!-- Navigation -->\n" +
+               "    <header>\n" +
+               "        <nav class=\"container\">\n" +
+               "            <div class=\"logo\">\n" +
+               "                <a href=\"{% url 'home' %}\">Django App</a>\n" +
+               "            </div>\n" +
+               "            <ul>\n" +
+               "                <li><a href=\"{% url 'home' %}\">Home</a></li>\n" +
+               "                {% if user.is_authenticated %}\n" +
+               "                    <li><a href=\"{% url 'dashboard' %}\">Dashboard</a></li>\n" +
+               "                    <li><a href=\"{% url 'profile' %}\">Profile</a></li>\n" +
+               "                    {% if user.is_staff %}\n" +
+               "                        <li><a href=\"{% url 'admin:index' %}\">Admin</a></li>\n" +
+               "                    {% endif %}\n" +
+               "                    <li><a href=\"{% url 'logout' %}\">Logout</a></li>\n" +
+               "                {% else %}\n" +
+               "                    <li><a href=\"{% url 'login' %}\">Login</a></li>\n" +
+               "                    <li><a href=\"{% url 'register' %}\">Register</a></li>\n" +
+               "                {% endif %}\n" +
+               "            </ul>\n" +
+               "        </nav>\n" +
+               "    </header>\n\n" +
+               "    <!-- Main Content -->\n" +
+               "    <main class=\"container\" style=\"margin-top: 2rem; min-height: calc(100vh - 200px);\">\n" +
+               "        <!-- Messages -->\n" +
+               "        {% if messages %}\n" +
+               "            {% for message in messages %}\n" +
+               "                <div class=\"alert alert-{{ message.tags }}\" role=\"alert\">\n" +
+               "                    {{ message }}\n" +
+               "                </div>\n" +
+               "            {% endfor %}\n" +
+               "        {% endif %}\n\n" +
+               "        <!-- Page Content -->\n" +
+               "        {% block content %}{% endblock %}\n" +
+               "    </main>\n\n" +
+               "    <!-- Footer -->\n" +
+               "    <footer>\n" +
+               "        <div class=\"container\">\n" +
+               "            <p>&copy; {% now 'Y' %} Django Application. All rights reserved.</p>\n" +
+               "        </div>\n" +
+               "    </footer>\n\n" +
+               "    <!-- JavaScript -->\n" +
+               "    <script src=\"{% static 'js/main.js' %}\"></script>\n" +
+               "    {% block extra_js %}{% endblock %}\n" +
+               "</body>\n" +
+               "</html>\n";
+    }
+
+    private String generateIndexTemplate() {
+        return "{% extends 'base.html' %}\n" +
+               "{% load static %}\n\n" +
+               "{% block title %}Home - Django Application{% endblock %}\n\n" +
+               "{% block content %}\n" +
+               "<div class=\"hero\" style=\"text-align: center; padding: 3rem 0;\">\n" +
+               "    <h1>Welcome to Django Application</h1>\n" +
+               "    <p style=\"font-size: 1.2rem; color: #666; margin: 1rem 0;\">A powerful web application built with Django</p>\n\n" +
+               "    {% if not user.is_authenticated %}\n" +
+               "        <div style=\"margin-top: 2rem;\">\n" +
+               "            <a href=\"{% url 'register' %}\" class=\"btn btn-primary\" style=\"margin: 0 0.5rem;\">Get Started</a>\n" +
+               "            <a href=\"{% url 'login' %}\" class=\"btn btn-success\" style=\"margin: 0 0.5rem;\">Sign In</a>\n" +
+               "        </div>\n" +
+               "    {% endif %}\n" +
+               "</div>\n\n" +
+               "<div style=\"display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 1.5rem; margin-top: 3rem;\">\n" +
+               "    <div class=\"card\">\n" +
+               "        <h3>🚀 High Performance</h3>\n" +
+               "        <p>Built with Django for robust and scalable applications</p>\n" +
+               "    </div>\n\n" +
+               "    <div class=\"card\">\n" +
+               "        <h3>🔒 Secure</h3>\n" +
+               "        <p>Enterprise-level security with Django's built-in protection</p>\n" +
+               "    </div>\n\n" +
+               "    <div class=\"card\">\n" +
+               "        <h3>📱 Modern UI</h3>\n" +
+               "        <p>Responsive design that works on all devices</p>\n" +
+               "    </div>\n" +
+               "</div>\n\n" +
+               "{% if user.is_authenticated %}\n" +
+               "<div class=\"card\" style=\"margin-top: 2rem;\">\n" +
+               "    <h2>Welcome back, {{ user.get_full_name|default:user.username }}!</h2>\n" +
+               "    <p>You're logged in and ready to use the application.</p>\n" +
+               "    <a href=\"{% url 'dashboard' %}\" class=\"btn btn-primary\">Go to Dashboard</a>\n" +
+               "</div>\n" +
+               "{% endif %}\n" +
+               "{% endblock %}\n";
+    }
+    private String generateTestBase() {
+        return "\"\"\"Base test classes and utilities.\"\"\"\n\n" +
+               "from django.test import TestCase, Client\n" +
+               "from django.contrib.auth import get_user_model\n" +
+               "from rest_framework.test import APITestCase, APIClient\n" +
+               "from rest_framework_simplejwt.tokens import RefreshToken\n\n" +
+               "User = get_user_model()\n\n" +
+               "class BaseTestCase(TestCase):\n" +
+               "    \"\"\"Base test case with common setup.\"\"\"\n\n" +
+               "    def setUp(self):\n" +
+               "        \"\"\"Set up test data.\"\"\"\n" +
+               "        self.client = Client()\n" +
+               "        self.create_test_users()\n\n" +
+               "    def create_test_users(self):\n" +
+               "        \"\"\"Create test users.\"\"\"\n" +
+               "        self.user = User.objects.create_user(\n" +
+               "            username='testuser',\n" +
+               "            email='test@example.com',\n" +
+               "            password='testpass123'\n" +
+               "        )\n\n" +
+               "        self.admin = User.objects.create_superuser(\n" +
+               "            username='admin',\n" +
+               "            email='admin@example.com',\n" +
+               "            password='adminpass123'\n" +
+               "        )\n\n" +
+               "    def login_user(self, user=None):\n" +
+               "        \"\"\"Log in a user.\"\"\"\n" +
+               "        if user is None:\n" +
+               "            user = self.user\n" +
+               "        self.client.login(username=user.username, password='testpass123')\n\n" +
+               "class BaseAPITestCase(APITestCase):\n" +
+               "    \"\"\"Base API test case with authentication.\"\"\"\n\n" +
+               "    def setUp(self):\n" +
+               "        \"\"\"Set up test data.\"\"\"\n" +
+               "        self.client = APIClient()\n" +
+               "        self.create_test_users()\n\n" +
+               "    def create_test_users(self):\n" +
+               "        \"\"\"Create test users.\"\"\"\n" +
+               "        self.user = User.objects.create_user(\n" +
+               "            username='testuser',\n" +
+               "            email='test@example.com',\n" +
+               "            password='testpass123'\n" +
+               "        )\n\n" +
+               "        self.admin = User.objects.create_superuser(\n" +
+               "            username='admin',\n" +
+               "            email='admin@example.com',\n" +
+               "            password='adminpass123'\n" +
+               "        )\n\n" +
+               "    def get_token(self, user=None):\n" +
+               "        \"\"\"Get JWT token for user.\"\"\"\n" +
+               "        if user is None:\n" +
+               "            user = self.user\n" +
+               "        refresh = RefreshToken.for_user(user)\n" +
+               "        return str(refresh.access_token)\n\n" +
+               "    def authenticate(self, user=None):\n" +
+               "        \"\"\"Authenticate client with JWT token.\"\"\"\n" +
+               "        token = self.get_token(user)\n" +
+               "        self.client.credentials(HTTP_AUTHORIZATION=f'Bearer {token}')\n";
+    }
+
+    private String generateConftest() {
+        return "\"\"\"Pytest configuration and fixtures.\"\"\"\n\n" +
+               "import pytest\n" +
+               "from django.contrib.auth import get_user_model\n" +
+               "from rest_framework.test import APIClient\n\n" +
+               "User = get_user_model()\n\n" +
+               "@pytest.fixture\n" +
+               "def api_client():\n" +
+               "    \"\"\"Return API client.\"\"\"\n" +
+               "    return APIClient()\n\n" +
+               "@pytest.fixture\n" +
+               "@pytest.mark.django_db\n" +
+               "def test_user():\n" +
+               "    \"\"\"Create and return test user.\"\"\"\n" +
+               "    return User.objects.create_user(\n" +
+               "        username='testuser',\n" +
+               "        email='test@example.com',\n" +
+               "        password='testpass123'\n" +
+               "    )\n\n" +
+               "@pytest.fixture\n" +
+               "@pytest.mark.django_db\n" +
+               "def admin_user():\n" +
+               "    \"\"\"Create and return admin user.\"\"\"\n" +
+               "    return User.objects.create_superuser(\n" +
+               "        username='admin',\n" +
+               "        email='admin@example.com',\n" +
+               "        password='adminpass123'\n" +
+               "    )\n\n" +
+               "@pytest.fixture\n" +
+               "def authenticated_client(api_client, test_user):\n" +
+               "    \"\"\"Return authenticated API client.\"\"\"\n" +
+               "    api_client.force_authenticate(user=test_user)\n" +
+               "    return api_client\n\n" +
+               "@pytest.fixture\n" +
+               "def admin_client(api_client, admin_user):\n" +
+               "    \"\"\"Return authenticated admin API client.\"\"\"\n" +
+               "    api_client.force_authenticate(user=admin_user)\n" +
+               "    return api_client\n";
+    }
+
+    private String generateValidators() {
+        return "\"\"\"Custom validators for Django models and forms.\"\"\"\n\n" +
+               "from django.core.exceptions import ValidationError\n" +
+               "from django.utils.translation import gettext_lazy as _\n" +
+               "import re\n\n" +
+               "def validate_username(value):\n" +
+               "    \"\"\"Validate username format.\"\"\"\n" +
+               "    if not re.match(r'^[a-zA-Z0-9_]{3,30}$', value):\n" +
+               "        raise ValidationError(\n" +
+               "            _('Username must be 3-30 characters and contain only letters, numbers, and underscores.'),\n" +
+               "            code='invalid_username'\n" +
+               "        )\n\n" +
+               "def validate_phone_number(value):\n" +
+               "    \"\"\"Validate phone number format.\"\"\"\n" +
+               "    phone_regex = re.compile(r'^\\+?1?\\d{9,15}$')\n" +
+               "    if not phone_regex.match(value):\n" +
+               "        raise ValidationError(\n" +
+               "            _('Invalid phone number format.'),\n" +
+               "            code='invalid_phone'\n" +
+               "        )\n\n" +
+               "def validate_file_size(value, max_size_mb=5):\n" +
+               "    \"\"\"Validate uploaded file size.\"\"\"\n" +
+               "    max_size = max_size_mb * 1024 * 1024\n" +
+               "    if value.size > max_size:\n" +
+               "        raise ValidationError(\n" +
+               "            _(f'File size must not exceed {max_size_mb}MB.'),\n" +
+               "            code='file_too_large'\n" +
+               "        )\n\n" +
+               "def validate_image_extension(value):\n" +
+               "    \"\"\"Validate image file extension.\"\"\"\n" +
+               "    import os\n" +
+               "    ext = os.path.splitext(value.name)[1]\n" +
+               "    valid_extensions = ['.jpg', '.jpeg', '.png', '.gif', '.webp']\n" +
+               "    if ext.lower() not in valid_extensions:\n" +
+               "        raise ValidationError(\n" +
+               "            _(f'Unsupported file extension. Allowed: {', '.join(valid_extensions)}'),\n" +
+               "            code='invalid_extension'\n" +
+               "        )\n\n" +
+               "class PasswordStrengthValidator:\n" +
+               "    \"\"\"Validate password strength.\"\"\"\n\n" +
+               "    def __init__(self, min_length=8, require_uppercase=True, require_lowercase=True,\n" +
+               "                 require_numbers=True, require_special=True):\n" +
+               "        self.min_length = min_length\n" +
+               "        self.require_uppercase = require_uppercase\n" +
+               "        self.require_lowercase = require_lowercase\n" +
+               "        self.require_numbers = require_numbers\n" +
+               "        self.require_special = require_special\n\n" +
+               "    def validate(self, password, user=None):\n" +
+               "        if len(password) < self.min_length:\n" +
+               "            raise ValidationError(\n" +
+               "                _(f'Password must be at least {self.min_length} characters long.'),\n" +
+               "                code='password_too_short'\n" +
+               "            )\n\n" +
+               "        if self.require_uppercase and not re.search(r'[A-Z]', password):\n" +
+               "            raise ValidationError(\n" +
+               "                _('Password must contain at least one uppercase letter.'),\n" +
+               "                code='password_no_upper'\n" +
+               "            )\n\n" +
+               "        if self.require_lowercase and not re.search(r'[a-z]', password):\n" +
+               "            raise ValidationError(\n" +
+               "                _('Password must contain at least one lowercase letter.'),\n" +
+               "                code='password_no_lower'\n" +
+               "            )\n\n" +
+               "        if self.require_numbers and not re.search(r'\\d', password):\n" +
+               "            raise ValidationError(\n" +
+               "                _('Password must contain at least one number.'),\n" +
+               "                code='password_no_number'\n" +
+               "            )\n\n" +
+               "        if self.require_special and not re.search(r'[!@#$%^&*(),.?\":{}|<>]', password):\n" +
+               "            raise ValidationError(\n" +
+               "                _('Password must contain at least one special character.'),\n" +
+               "                code='password_no_special'\n" +
+               "            )\n\n" +
+               "    def get_help_text(self):\n" +
+               "        return _('Your password must meet the strength requirements.')\n";
+    }
+
+    private String generatePermissions() {
+        return "\"\"\"Custom permission classes for Django REST Framework.\"\"\"\n\n" +
+               "from rest_framework import permissions\n\n" +
+               "class IsOwnerOrReadOnly(permissions.BasePermission):\n" +
+               "    \"\"\"Object-level permission to only allow owners to edit.\"\"\"\n\n" +
+               "    def has_object_permission(self, request, view, obj):\n" +
+               "        if request.method in permissions.SAFE_METHODS:\n" +
+               "            return True\n" +
+               "        return obj.owner == request.user or obj.user == request.user\n\n" +
+               "class IsAdminOrReadOnly(permissions.BasePermission):\n" +
+               "    \"\"\"Only admins can modify, others can only read.\"\"\"\n\n" +
+               "    def has_permission(self, request, view):\n" +
+               "        if request.method in permissions.SAFE_METHODS:\n" +
+               "            return True\n" +
+               "        return request.user and request.user.is_staff\n\n" +
+               "class IsOwner(permissions.BasePermission):\n" +
+               "    \"\"\"Only the owner can access the resource.\"\"\"\n\n" +
+               "    def has_object_permission(self, request, view, obj):\n" +
+               "        return obj.owner == request.user or obj.user == request.user\n\n" +
+               "class IsSuperUser(permissions.BasePermission):\n" +
+               "    \"\"\"Only superusers have permission.\"\"\"\n\n" +
+               "    def has_permission(self, request, view):\n" +
+               "        return request.user and request.user.is_superuser\n\n" +
+               "class HasGroupPermission(permissions.BasePermission):\n" +
+               "    \"\"\"Check if user is in required group.\"\"\"\n\n" +
+               "    def has_permission(self, request, view):\n" +
+               "        required_groups = getattr(view, 'required_groups', [])\n" +
+               "        if not required_groups:\n" +
+               "            return True\n" +
+               "        return request.user.groups.filter(name__in=required_groups).exists()\n\n" +
+               "class CanCreateOnly(permissions.BasePermission):\n" +
+               "    \"\"\"Can only create, not read/update/delete.\"\"\"\n\n" +
+               "    def has_permission(self, request, view):\n" +
+               "        return request.method == 'POST'\n";
+    }
+
+    private String generateMixins() {
+        return "\"\"\"Custom mixins for Django views.\"\"\"\n\n" +
+               "from django.contrib import messages\n" +
+               "from django.shortcuts import redirect\n" +
+               "from django.contrib.auth.mixins import LoginRequiredMixin\n" +
+               "from django.core.exceptions import PermissionDenied\n\n" +
+               "class SuperUserRequiredMixin(LoginRequiredMixin):\n" +
+               "    \"\"\"Verify that the current user is a superuser.\"\"\"\n\n" +
+               "    def dispatch(self, request, *args, **kwargs):\n" +
+               "        if not request.user.is_superuser:\n" +
+               "            raise PermissionDenied\n" +
+               "        return super().dispatch(request, *args, **kwargs)\n\n" +
+               "class StaffRequiredMixin(LoginRequiredMixin):\n" +
+               "    \"\"\"Verify that the current user is staff.\"\"\"\n\n" +
+               "    def dispatch(self, request, *args, **kwargs):\n" +
+               "        if not request.user.is_staff:\n" +
+               "            raise PermissionDenied\n" +
+               "        return super().dispatch(request, *args, **kwargs)\n\n" +
+               "class GroupRequiredMixin(LoginRequiredMixin):\n" +
+               "    \"\"\"Verify that the current user is in required group.\"\"\"\n" +
+               "    required_groups = []\n\n" +
+               "    def dispatch(self, request, *args, **kwargs):\n" +
+               "        if not request.user.groups.filter(name__in=self.required_groups).exists():\n" +
+               "            raise PermissionDenied\n" +
+               "        return super().dispatch(request, *args, **kwargs)\n\n" +
+               "class MessageMixin:\n" +
+               "    \"\"\"Add success message after form submission.\"\"\"\n" +
+               "    success_message = ''\n\n" +
+               "    def form_valid(self, form):\n" +
+               "        response = super().form_valid(form)\n" +
+               "        if self.success_message:\n" +
+               "            messages.success(self.request, self.success_message)\n" +
+               "        return response\n\n" +
+               "class AjaxableResponseMixin:\n" +
+               "    \"\"\"Mixin to add AJAX support to a form.\"\"\"\n\n" +
+               "    def form_invalid(self, form):\n" +
+               "        response = super().form_invalid(form)\n" +
+               "        if self.request.is_ajax():\n" +
+               "            return JsonResponse(form.errors, status=400)\n" +
+               "        return response\n\n" +
+               "    def form_valid(self, form):\n" +
+               "        response = super().form_valid(form)\n" +
+               "        if self.request.is_ajax():\n" +
+               "            data = {'pk': self.object.pk}\n" +
+               "            return JsonResponse(data)\n" +
+               "        return response\n";
+    }
+    private String generateRunDevScript() {
+        return "#!/bin/bash\n" +
+               "# Development server startup script\n\n" +
+               "echo \"Starting Django development server...\"\n\n" +
+               "# Load environment variables\n" +
+               "if [ -f .env ]; then\n" +
+               "    export $(cat .env | xargs)\n" +
+               "fi\n\n" +
+               "# Run migrations\n" +
+               "echo \"Running migrations...\"\n" +
+               "python manage.py migrate\n\n" +
+               "# Collect static files\n" +
+               "echo \"Collecting static files...\"\n" +
+               "python manage.py collectstatic --noinput\n\n" +
+               "# Start development server\n" +
+               "echo \"Starting server on port 8000...\"\n" +
+               "python manage.py runserver 0.0.0.0:8000\n";
+    }
+
+    private String generateMigrateScript() {
+        return "#!/bin/bash\n" +
+               "# Database migration script\n\n" +
+               "echo \"Running Django migrations...\"\n\n" +
+               "# Load environment variables\n" +
+               "if [ -f .env ]; then\n" +
+               "    export $(cat .env | xargs)\n" +
+               "fi\n\n" +
+               "# Make migrations\n" +
+               "echo \"Making migrations...\"\n" +
+               "python manage.py makemigrations\n\n" +
+               "# Show migration plan\n" +
+               "echo \"Migration plan:\"\n" +
+               "python manage.py showmigrations\n\n" +
+               "# Apply migrations\n" +
+               "echo \"Applying migrations...\"\n" +
+               "python manage.py migrate\n\n" +
+               "echo \"Migrations completed successfully!\"\n";
+    }
+
+    private String generateAPIDocs(DjangoProjectType type) {
+        return "# API Documentation\n\n" +
+               "## Overview\n\n" +
+               "This document describes the REST API endpoints for this Django application.\n\n" +
+               "## Base URL\n\n" +
+               "```\n" +
+               "http://localhost:8000/api/v1/\n" +
+               "```\n\n" +
+               "## Authentication\n\n" +
+               "The API uses JWT (JSON Web Token) authentication. Include the token in the Authorization header:\n\n" +
+               "```\n" +
+               "Authorization: Bearer <your_token>\n" +
+               "```\n\n" +
+               "## Endpoints\n\n" +
+               "### Authentication\n\n" +
+               "#### Register\n" +
+               "```\n" +
+               "POST /api/v1/auth/register/\n" +
+               "```\n\n" +
+               "**Request:**\n" +
+               "```json\n" +
+               "{\n" +
+               "  \"username\": \"string\",\n" +
+               "  \"email\": \"string\",\n" +
+               "  \"password\": \"string\"\n" +
+               "}\n" +
+               "```\n\n" +
+               "#### Login\n" +
+               "```\n" +
+               "POST /api/v1/auth/login/\n" +
+               "```\n\n" +
+               "**Request:**\n" +
+               "```json\n" +
+               "{\n" +
+               "  \"username\": \"string\",\n" +
+               "  \"password\": \"string\"\n" +
+               "}\n" +
+               "```\n\n" +
+               "**Response:**\n" +
+               "```json\n" +
+               "{\n" +
+               "  \"access\": \"string\",\n" +
+               "  \"refresh\": \"string\"\n" +
+               "}\n" +
+               "```\n\n" +
+               "### Users\n\n" +
+               "#### List Users\n" +
+               "```\n" +
+               "GET /api/v1/users/\n" +
+               "```\n\n" +
+               "#### Get User\n" +
+               "```\n" +
+               "GET /api/v1/users/{id}/\n" +
+               "```\n\n" +
+               "#### Update User\n" +
+               "```\n" +
+               "PUT /api/v1/users/{id}/\n" +
+               "PATCH /api/v1/users/{id}/\n" +
+               "```\n\n" +
+               "#### Delete User\n" +
+               "```\n" +
+               "DELETE /api/v1/users/{id}/\n" +
+               "```\n\n" +
+               "## Error Codes\n\n" +
+               "- `400` - Bad Request\n" +
+               "- `401` - Unauthorized\n" +
+               "- `403` - Forbidden\n" +
+               "- `404` - Not Found\n" +
+               "- `500` - Internal Server Error\n";
+    }
+
+    private String generateRequirementsDev() {
+        return "# Development Dependencies\n\n" +
+               "# Testing\n" +
+               "pytest==7.4.3\n" +
+               "pytest-django==4.7.0\n" +
+               "pytest-cov==4.1.0\n" +
+               "factory-boy==3.3.0\n" +
+               "faker==20.1.0\n" +
+               "coverage==7.3.2\n\n" +
+               "# Code Quality\n" +
+               "black==23.11.0\n" +
+               "flake8==6.1.0\n" +
+               "pylint==3.0.2\n" +
+               "pylint-django==2.5.5\n" +
+               "mypy==1.7.1\n" +
+               "django-stubs==4.2.6\n" +
+               "isort==5.12.0\n\n" +
+               "# Debugging\n" +
+               "django-debug-toolbar==4.2.0\n" +
+               "django-extensions==3.2.3\n" +
+               "ipython==8.18.1\n" +
+               "ipdb==0.13.13\n\n" +
+               "# Documentation\n" +
+               "sphinx==7.2.6\n" +
+               "sphinx-rtd-theme==2.0.0\n\n" +
+               "# Development Tools\n" +
+               "watchdog==3.0.0\n" +
+               "pre-commit==3.5.0\n";
+    }
+
+    private String generateEnvExample(DjangoProjectType type) {
+        return "# Django Settings\n" +
+               "DEBUG=True\n" +
+               "SECRET_KEY=your-secret-key-here-change-in-production\n" +
+               "ALLOWED_HOSTS=localhost,127.0.0.1\n\n" +
+               "# Database\n" +
+               "DATABASE_URL=sqlite:///db.sqlite3\n" +
+               "# DATABASE_URL=postgresql://user:password@localhost:5432/dbname\n\n" +
+               "# Redis\n" +
+               "REDIS_URL=redis://localhost:6379/0\n" +
+               "CELERY_BROKER_URL=redis://localhost:6379/0\n" +
+               "CELERY_RESULT_BACKEND=redis://localhost:6379/0\n\n" +
+               "# Email Configuration\n" +
+               "EMAIL_BACKEND=django.core.mail.backends.console.EmailBackend\n" +
+               "EMAIL_HOST=smtp.gmail.com\n" +
+               "EMAIL_PORT=587\n" +
+               "EMAIL_USE_TLS=True\n" +
+               "EMAIL_HOST_USER=your-email@gmail.com\n" +
+               "EMAIL_HOST_PASSWORD=your-app-password\n" +
+               "DEFAULT_FROM_EMAIL=noreply@example.com\n\n" +
+               "# AWS S3 (if using)\n" +
+               "AWS_ACCESS_KEY_ID=\n" +
+               "AWS_SECRET_ACCESS_KEY=\n" +
+               "AWS_STORAGE_BUCKET_NAME=\n" +
+               "AWS_S3_REGION_NAME=us-east-1\n\n" +
+               "# API Keys\n" +
+               "API_KEY=your-api-key\n\n" +
+               "# Application Settings\n" +
+               "SITE_URL=http://localhost:8000\n" +
+               "CORS_ALLOWED_ORIGINS=http://localhost:3000,http://localhost:8080\n";
+    }
+
+    private String generateGitignore() {
+        return "# Python\n" +
+               "__pycache__/\n" +
+               "*.py[cod]\n" +
+               "*$py.class\n" +
+               "*.so\n" +
+               ".Python\n" +
+               "build/\n" +
+               "develop-eggs/\n" +
+               "dist/\n" +
+               "downloads/\n" +
+               "eggs/\n" +
+               ".eggs/\n" +
+               "lib/\n" +
+               "lib64/\n" +
+               "parts/\n" +
+               "sdist/\n" +
+               "var/\n" +
+               "wheels/\n" +
+               "*.egg-info/\n" +
+               ".installed.cfg\n" +
+               "*.egg\n\n" +
+               "# Django\n" +
+               "*.log\n" +
+               "local_settings.py\n" +
+               "db.sqlite3\n" +
+               "db.sqlite3-journal\n" +
+               "/media\n" +
+               "/static\n" +
+               "staticfiles/\n\n" +
+               "# Environment\n" +
+               ".env\n" +
+               ".env.local\n" +
+               ".env.*.local\n" +
+               "venv/\n" +
+               "ENV/\n" +
+               "env/\n\n" +
+               "# IDE\n" +
+               ".vscode/\n" +
+               ".idea/\n" +
+               "*.swp\n" +
+               "*.swo\n" +
+               "*~\n\n" +
+               "# Testing\n" +
+               ".pytest_cache/\n" +
+               ".coverage\n" +
+               "htmlcov/\n" +
+               ".tox/\n\n" +
+               "# OS\n" +
+               ".DS_Store\n" +
+               "Thumbs.db\n\n" +
+               "# Celery\n" +
+               "celerybeat-schedule\n" +
+               "celerybeat.pid\n";
+    }
+
+    private String generatePyprojectToml(String projectName) {
+        return "[tool.black]\n" +
+               "line-length = 88\n" +
+               "target-version = ['py311']\n" +
+               "include = '\\.pyi?$'\n" +
+               "exclude = '''\n" +
+               "/(\n" +
+               "    \\.git\n" +
+               "  | \\.venv\n" +
+               "  | migrations\n" +
+               "  | build\n" +
+               "  | dist\n" +
+               ")/\n" +
+               "'''\n\n" +
+               "[tool.isort]\n" +
+               "profile = \"black\"\n" +
+               "line_length = 88\n" +
+               "multi_line_output = 3\n" +
+               "include_trailing_comma = true\n" +
+               "skip_glob = [\"*/migrations/*\"]\n\n" +
+               "[tool.pytest.ini_options]\n" +
+               "DJANGO_SETTINGS_MODULE = \"" + projectName + ".settings.test\"\n" +
+               "python_files = [\"test_*.py\", \"*_test.py\", \"tests.py\"]\n" +
+               "addopts = \"-v --cov=. --cov-report=html --cov-report=term\"\n\n" +
+               "[tool.mypy]\n" +
+               "python_version = \"3.11\"\n" +
+               "warn_return_any = true\n" +
+               "warn_unused_configs = true\n" +
+               "plugins = [\"mypy_django_plugin.main\"]\n\n" +
+               "[tool.django-stubs]\n" +
+               "django_settings_module = \"" + projectName + ".settings\"\n\n" +
+               "[build-system]\n" +
+               "requires = [\"setuptools>=61.0\"]\n" +
+               "build-backend = \"setuptools.build_meta\"\n\n" +
+               "[project]\n" +
+               "name = \"" + projectName.toLowerCase().replace(" ", "-") + "\"\n" +
+               "version = \"0.1.0\"\n" +
+               "description = \"Django application\"\n" +
+               "requires-python = \">=3.11\"\n";
+    }
+
+    private String generateSetupCfg() {
+        return "[flake8]\n" +
+               "max-line-length = 88\n" +
+               "extend-ignore = E203, E501, W503\n" +
+               "exclude =\n" +
+               "    .git,\n" +
+               "    __pycache__,\n" +
+               "    */migrations/*,\n" +
+               "    build,\n" +
+               "    dist,\n" +
+               "    venv,\n" +
+               "    .venv\n\n" +
+               "[pylint]\n" +
+               "load-plugins = pylint_django\n" +
+               "django-settings-module = project.settings\n" +
+               "max-line-length = 88\n" +
+               "disable =\n" +
+               "    C0111,\n" +
+               "    C0103,\n" +
+               "    R0903,\n" +
+               "    W0212\n\n" +
+               "[coverage:run]\n" +
+               "source = .\n" +
+               "omit =\n" +
+               "    */tests/*\n" +
+               "    */migrations/*\n" +
+               "    */venv/*\n" +
+               "    */__pycache__/*\n" +
+               "    manage.py\n" +
+               "    */settings/*\n\n" +
+               "[coverage:report]\n" +
+               "precision = 2\n" +
+               "show_missing = true\n" +
+               "skip_covered = false\n";
+    }
+
+    private String generatePytestIni() {
+        return "[pytest]\n" +
+               "DJANGO_SETTINGS_MODULE = project.settings.test\n" +
+               "python_files = test_*.py *_test.py tests.py\n" +
+               "python_classes = Test*\n" +
+               "python_functions = test_*\n" +
+               "addopts =\n" +
+               "    -v\n" +
+               "    --strict-markers\n" +
+               "    --tb=short\n" +
+               "    --cov=.\n" +
+               "    --cov-report=html\n" +
+               "    --cov-report=term-missing:skip-covered\n" +
+               "    --cov-fail-under=80\n" +
+               "    --reuse-db\n" +
+               "markers =\n" +
+               "    unit: Unit tests\n" +
+               "    integration: Integration tests\n" +
+               "    slow: Slow running tests\n" +
+               "    django_db: Tests that require database access\n";
+    }
+
+    private String generatePrecommitConfig() {
+        return "# Pre-commit hooks configuration\n" +
+               "repos:\n" +
+               "  - repo: https://github.com/pre-commit/pre-commit-hooks\n" +
+               "    rev: v4.5.0\n" +
+               "    hooks:\n" +
+               "      - id: trailing-whitespace\n" +
+               "      - id: end-of-file-fixer\n" +
+               "      - id: check-yaml\n" +
+               "      - id: check-added-large-files\n" +
+               "      - id: check-json\n" +
+               "      - id: check-merge-conflict\n" +
+               "      - id: detect-private-key\n\n" +
+               "  - repo: https://github.com/psf/black\n" +
+               "    rev: 23.11.0\n" +
+               "    hooks:\n" +
+               "      - id: black\n" +
+               "        language_version: python3.11\n\n" +
+               "  - repo: https://github.com/pycqa/isort\n" +
+               "    rev: 5.12.0\n" +
+               "    hooks:\n" +
+               "      - id: isort\n" +
+               "        args: [\"--profile\", \"black\"]\n\n" +
+               "  - repo: https://github.com/pycqa/flake8\n" +
+               "    rev: 6.1.0\n" +
+               "    hooks:\n" +
+               "      - id: flake8\n" +
+               "        args: [\"--max-line-length=88\", \"--extend-ignore=E203,W503\"]\n\n" +
+               "  - repo: https://github.com/pre-commit/mirrors-mypy\n" +
+               "    rev: v1.7.1\n" +
+               "    hooks:\n" +
+               "      - id: mypy\n" +
+               "        additional_dependencies: [django-stubs]\n";
+    }
+
+    private String generateEditorconfig() {
+        return "# EditorConfig is awesome: https://EditorConfig.org\n\n" +
+               "root = true\n\n" +
+               "[*]\n" +
+               "charset = utf-8\n" +
+               "end_of_line = lf\n" +
+               "insert_final_newline = true\n" +
+               "trim_trailing_whitespace = true\n\n" +
+               "[*.py]\n" +
+               "indent_style = space\n" +
+               "indent_size = 4\n" +
+               "max_line_length = 88\n\n" +
+               "[*.{js,jsx,ts,tsx,json,css,scss,html}]\n" +
+               "indent_style = space\n" +
+               "indent_size = 2\n\n" +
+               "[*.md]\n" +
+               "trim_trailing_whitespace = false\n\n" +
+               "[Makefile]\n" +
+               "indent_style = tab\n";
+    }
+
+    private String generateDockerignore() {
+        return "**/__pycache__\n" +
+               "**/*.pyc\n" +
+               "**/*.pyo\n" +
+               "**/*.pyd\n" +
+               ".Python\n" +
+               "*.so\n" +
+               "*.egg\n" +
+               "*.egg-info\n" +
+               "dist\n" +
+               "build\n" +
+               ".git\n" +
+               ".gitignore\n" +
+               ".env\n" +
+               ".env.local\n" +
+               "venv/\n" +
+               "ENV/\n" +
+               "env/\n" +
+               ".venv/\n" +
+               ".pytest_cache/\n" +
+               ".coverage\n" +
+               "htmlcov/\n" +
+               "db.sqlite3\n" +
+               "*.log\n" +
+               ".vscode/\n" +
+               ".idea/\n" +
+               "README.md\n" +
+               "docker-compose.yml\n" +
+               "node_modules/\n";
+    }
+
+    private String generateNginxConfig(String projectName) {
+        return "events {\n" +
+               "    worker_connections 1024;\n" +
+               "}\n\n" +
+               "http {\n" +
+               "    upstream django_app {\n" +
+               "        server web:8000;\n" +
+               "    }\n\n" +
+               "    server {\n" +
+               "        listen 80;\n" +
+               "        server_name localhost;\n" +
+               "        client_max_body_size 20M;\n\n" +
+               "        location / {\n" +
+               "            proxy_pass http://django_app;\n" +
+               "            proxy_set_header Host $host;\n" +
+               "            proxy_set_header X-Real-IP $remote_addr;\n" +
+               "            proxy_set_header X-Forwarded-For $proxy_add_x_forwarded_for;\n" +
+               "            proxy_set_header X-Forwarded-Proto $scheme;\n" +
+               "            proxy_redirect off;\n" +
+               "        }\n\n" +
+               "        location /static/ {\n" +
+               "            alias /app/staticfiles/;\n" +
+               "            expires 30d;\n" +
+               "            add_header Cache-Control \"public, immutable\";\n" +
+               "        }\n\n" +
+               "        location /media/ {\n" +
+               "            alias /app/media/;\n" +
+               "            expires 7d;\n" +
+               "        }\n\n" +
+               "        location /health/ {\n" +
+               "            access_log off;\n" +
+               "            return 200 \"healthy\\n\";\n" +
+               "            add_header Content-Type text/plain;\n" +
+               "        }\n" +
+               "    }\n" +
+               "}\n";
+    }
+
+    private String generateEntrypoint() {
+        return "#!/bin/bash\n" +
+               "set -e\n\n" +
+               "echo \"Waiting for database...\"\n" +
+               "while ! nc -z db 5432; do\n" +
+               "  sleep 0.1\n" +
+               "done\n" +
+               "echo \"Database started\"\n\n" +
+               "echo \"Waiting for Redis...\"\n" +
+               "while ! nc -z redis 6379; do\n" +
+               "  sleep 0.1\n" +
+               "done\n" +
+               "echo \"Redis started\"\n\n" +
+               "echo \"Running database migrations...\"\n" +
+               "python manage.py migrate --noinput\n\n" +
+               "echo \"Collecting static files...\"\n" +
+               "python manage.py collectstatic --noinput\n\n" +
+               "echo \"Creating superuser if doesn't exist...\"\n" +
+               "python manage.py shell -c \"from django.contrib.auth import get_user_model; User = get_user_model(); User.objects.filter(username='admin').exists() or User.objects.create_superuser('admin', 'admin@example.com', 'admin123')\" || true\n\n" +
+               "echo \"Starting application...\"\n" +
+               "exec \"$@\"\n";
+    }
+
+    private String generateCIWorkflow(String projectName) {
+        return "name: CI\n\n" +
+               "on:\n" +
+               "  push:\n" +
+               "    branches: [ main, develop ]\n" +
+               "  pull_request:\n" +
+               "    branches: [ main, develop ]\n\n" +
+               "jobs:\n" +
+               "  test:\n" +
+               "    runs-on: ubuntu-latest\n\n" +
+               "    services:\n" +
+               "      postgres:\n" +
+               "        image: postgres:15\n" +
+               "        env:\n" +
+               "          POSTGRES_PASSWORD: postgres\n" +
+               "          POSTGRES_DB: test_db\n" +
+               "        options: >-\n" +
+               "          --health-cmd pg_isready\n" +
+               "          --health-interval 10s\n" +
+               "          --health-timeout 5s\n" +
+               "          --health-retries 5\n" +
+               "        ports:\n" +
+               "          - 5432:5432\n\n" +
+               "      redis:\n" +
+               "        image: redis:7-alpine\n" +
+               "        options: >-\n" +
+               "          --health-cmd \"redis-cli ping\"\n" +
+               "          --health-interval 10s\n" +
+               "          --health-timeout 5s\n" +
+               "          --health-retries 5\n" +
+               "        ports:\n" +
+               "          - 6379:6379\n\n" +
+               "    steps:\n" +
+               "    - uses: actions/checkout@v3\n\n" +
+               "    - name: Set up Python\n" +
+               "      uses: actions/setup-python@v4\n" +
+               "      with:\n" +
+               "        python-version: '3.11'\n\n" +
+               "    - name: Cache dependencies\n" +
+               "      uses: actions/cache@v3\n" +
+               "      with:\n" +
+               "        path: ~/.cache/pip\n" +
+               "        key: ${{ runner.os }}-pip-${{ hashFiles('**/requirements.txt') }}\n\n" +
+               "    - name: Install dependencies\n" +
+               "      run: |\n" +
+               "        python -m pip install --upgrade pip\n" +
+               "        pip install -r requirements.txt\n" +
+               "        pip install -r requirements-dev.txt\n\n" +
+               "    - name: Lint with flake8\n" +
+               "      run: |\n" +
+               "        flake8 .\n\n" +
+               "    - name: Check code formatting\n" +
+               "      run: |\n" +
+               "        black --check .\n\n" +
+               "    - name: Run tests\n" +
+               "      env:\n" +
+               "        DATABASE_URL: postgresql://postgres:postgres@localhost:5432/test_db\n" +
+               "        REDIS_URL: redis://localhost:6379/0\n" +
+               "      run: |\n" +
+               "        pytest --cov=. --cov-report=xml\n\n" +
+               "    - name: Upload coverage\n" +
+               "      uses: codecov/codecov-action@v3\n" +
+               "      with:\n" +
+               "        files: ./coverage.xml\n";
+    }
+
+    private String generateDeployWorkflow(String projectName) {
+        return "name: Deploy\n\n" +
+               "on:\n" +
+               "  push:\n" +
+               "    branches: [ main ]\n" +
+               "  workflow_dispatch:\n\n" +
+               "jobs:\n" +
+               "  deploy:\n" +
+               "    runs-on: ubuntu-latest\n\n" +
+               "    steps:\n" +
+               "    - uses: actions/checkout@v3\n\n" +
+               "    - name: Set up Docker Buildx\n" +
+               "      uses: docker/setup-buildx-action@v2\n\n" +
+               "    - name: Login to Docker Hub\n" +
+               "      uses: docker/login-action@v2\n" +
+               "      with:\n" +
+               "        username: ${{ secrets.DOCKER_USERNAME }}\n" +
+               "        password: ${{ secrets.DOCKER_PASSWORD }}\n\n" +
+               "    - name: Build and push\n" +
+               "      uses: docker/build-push-action@v4\n" +
+               "      with:\n" +
+               "        context: .\n" +
+               "        push: true\n" +
+               "        tags: ${{ secrets.DOCKER_USERNAME }}/" + projectName.toLowerCase().replace(" ", "-") + ":latest\n" +
+               "        cache-from: type=registry,ref=${{ secrets.DOCKER_USERNAME }}/" + projectName.toLowerCase().replace(" ", "-") + ":buildcache\n" +
+               "        cache-to: type=registry,ref=${{ secrets.DOCKER_USERNAME }}/" + projectName.toLowerCase().replace(" ", "-") + ":buildcache,mode=max\n\n" +
+               "    - name: Deploy to production\n" +
+               "      run: |\n" +
+               "        echo \"Add deployment commands here\"\n" +
+               "        # Example: Deploy to cloud provider\n";
+    }
+
+    private String generateDependabotConfig() {
+        return "version: 2\n" +
+               "updates:\n" +
+               "  - package-ecosystem: \"pip\"\n" +
+               "    directory: \"/\"\n" +
+               "    schedule:\n" +
+               "      interval: \"weekly\"\n" +
+               "      day: \"monday\"\n" +
+               "    open-pull-requests-limit: 10\n" +
+               "    reviewers:\n" +
+               "      - \"your-github-username\"\n" +
+               "    assignees:\n" +
+               "      - \"your-github-username\"\n" +
+               "    labels:\n" +
+               "      - \"dependencies\"\n" +
+               "      - \"python\"\n\n" +
+               "  - package-ecosystem: \"docker\"\n" +
+               "    directory: \"/\"\n" +
+               "    schedule:\n" +
+               "      interval: \"weekly\"\n" +
+               "    labels:\n" +
+               "      - \"dependencies\"\n" +
+               "      - \"docker\"\n\n" +
+               "  - package-ecosystem: \"github-actions\"\n" +
+               "    directory: \"/\"\n" +
+               "    schedule:\n" +
+               "      interval: \"weekly\"\n" +
+               "    labels:\n" +
+               "      - \"dependencies\"\n" +
+               "      - \"github-actions\"\n";
+    }
 }
