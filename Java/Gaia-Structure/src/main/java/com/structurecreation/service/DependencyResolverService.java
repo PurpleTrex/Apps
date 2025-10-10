@@ -802,7 +802,6 @@ public class DependencyResolverService {
         for (int i = 0; i < sortedDeps.size(); i++) {
             boolean isLast = (i == sortedDeps.size() - 1);
             String childPrefix = prefix + (isLast ? "└── " : "├── ");
-            String grandchildPrefix = prefix + (isLast ? "    " : "│   ");
             appendDependencyTree(sb, sortedDeps.get(i), childPrefix, new HashSet<>(visited));
         }
     }

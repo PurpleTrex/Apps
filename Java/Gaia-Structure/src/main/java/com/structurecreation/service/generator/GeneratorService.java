@@ -1,8 +1,6 @@
 package com.structurecreation.service.generator;
 
 import com.structurecreation.model.ProjectNode;
-import com.structurecreation.service.repository.NpmRepository;
-import com.structurecreation.service.repository.PyPiRepository;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 

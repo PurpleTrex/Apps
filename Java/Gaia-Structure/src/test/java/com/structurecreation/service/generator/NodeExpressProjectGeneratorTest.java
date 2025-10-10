@@ -74,7 +74,7 @@ class NodeExpressProjectGeneratorTest {
     @DisplayName("Should generate GraphQL API structure")
     void testGraphQLAPIStructure() {
         ProjectNode root = generator.generateNodeExpressProject(TEST_PROJECT_NAME, 
-            NodeExpressProjectGenerator.NodeProjectType.GRAPHQL_API);
+            NodeExpressProjectGenerator.NodeProjectType.GRAPHQL);
 
         ProjectNode src = findChild(root, "src");
         assertNotNull(src);

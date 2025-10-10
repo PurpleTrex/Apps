@@ -130,7 +130,7 @@ class ProjectGeneratorIntegrationTest {
         
         // Spring Boot
         ProjectNode springProject = springBootGenerator.generateSpringBootProject(
-            "Test", "com.test", "test-app", SpringBootProjectGenerator.SpringBootProjectType.BASIC);
+            "Test", "com.test", SpringBootProjectGenerator.SpringBootProjectType.BASIC);
         validateGitignore(springProject, List.of("target/", "*.class"));
         
         // React
@@ -161,7 +161,7 @@ class ProjectGeneratorIntegrationTest {
         
         // Spring Boot
         ProjectNode springProject = springBootGenerator.generateSpringBootProject(
-            projectName, "com.test", "test-app", SpringBootProjectGenerator.SpringBootProjectType.BASIC);
+            projectName, "com.test", SpringBootProjectGenerator.SpringBootProjectType.BASIC);
         validateReadme(springProject, projectName);
         
         // React

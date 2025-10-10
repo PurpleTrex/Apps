@@ -3,7 +3,6 @@ package com.structurecreation.service.generator;
 import com.structurecreation.model.ProjectNode;
 import com.structurecreation.model.Dependency;
 import com.structurecreation.service.DependencyResolverService;
-import com.structurecreation.service.repository.MavenCentralRepository;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
@@ -18,11 +17,13 @@ public class SpringBootProjectGenerator {
     private static final Logger logger = LoggerFactory.getLogger(SpringBootProjectGenerator.class);
 
     private final DependencyResolverService dependencyResolver;
-    private final MavenCentralRepository mavenRepository;
+
+    public SpringBootProjectGenerator(DependencyResolverService dependencyResolver) {
+        this.dependencyResolver = dependencyResolver;
+    }
 
     public SpringBootProjectGenerator() {
         this.dependencyResolver = new DependencyResolverService();
-        this.mavenRepository = new MavenCentralRepository();
     }
 
     /**

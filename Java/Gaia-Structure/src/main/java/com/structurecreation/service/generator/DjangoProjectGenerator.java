@@ -4,12 +4,11 @@ import com.structurecreation.model.ProjectNode;
 import com.structurecreation.service.DependencyResolverService;
 
 import java.util.ArrayList;
-import java.util.HashMap;
 import java.util.List;
-import java.util.Map;
 
 public class DjangoProjectGenerator {
 
+    @SuppressWarnings("unused")
     private final DependencyResolverService dependencyResolver;
 
     public DjangoProjectGenerator(DependencyResolverService dependencyResolver) {
@@ -116,6 +115,9 @@ public class DjangoProjectGenerator {
 
         // Create apps based on project type
         switch (type) {
+            case BASIC:
+                createCoreApp(appsDir);
+                break;
             case REST_API:
                 createAPIApp(appsDir);
                 createAuthApp(appsDir);
@@ -1080,6 +1082,9 @@ public class DjangoProjectGenerator {
         urls.append("    path('admin/', admin.site.urls),\n");
 
         switch (type) {
+            case BASIC:
+                urls.append("    path('', include('apps.core.urls')),\n");
+                break;
             case REST_API:
                 urls.append("    path('api/v1/', include('apps.api.v1.urls')),\n");
                 urls.append("    path('api/auth/', include('apps.authentication.urls')),\n");
@@ -1348,13 +1353,20 @@ public class DjangoProjectGenerator {
             case CMS:
                 deps.add("django-ckeditor==6.7.0");
                 deps.add("django-taggit==5.0.1");
-                deps.add("django-mptt==0.15.0");
+                deps.add("django-mppt==0.15.0");
                 break;
             case MICROSERVICE:
                 deps.add("channels==4.0.0");
                 deps.add("channels-redis==4.1.0");
                 deps.add("daphne==4.0.0");
                 deps.add("grpcio==1.60.0");
+                break;
+            case BASIC:
+            case REST_API:
+            case FULL_STACK:
+            case ANALYTICS:
+            default:
+                // No additional dependencies needed for these types
                 break;
         }
 

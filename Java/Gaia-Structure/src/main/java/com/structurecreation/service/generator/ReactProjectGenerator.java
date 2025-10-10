@@ -2,7 +2,6 @@ package com.structurecreation.service.generator;
 
 import com.structurecreation.model.ProjectNode;
 import com.structurecreation.service.DependencyResolverService;
-import com.structurecreation.service.repository.NpmRepository;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
@@ -17,11 +16,13 @@ public class ReactProjectGenerator {
     private static final Logger logger = LoggerFactory.getLogger(ReactProjectGenerator.class);
 
     private final DependencyResolverService dependencyResolver;
-    private final NpmRepository npmRepository;
+
+    public ReactProjectGenerator(DependencyResolverService dependencyResolver) {
+        this.dependencyResolver = dependencyResolver;
+    }
 
     public ReactProjectGenerator() {
         this.dependencyResolver = new DependencyResolverService();
-        this.npmRepository = new NpmRepository();
     }
 
     /**
@@ -432,7 +433,7 @@ public class ReactProjectGenerator {
 
                 try {
                     // Get latest version that matches the range
-                    String latestVersion = npmRepository.getLatestVersion(packageName).get();
+                    String latestVersion = dependencyResolver.getLatestVersion("NPM", packageName).get();
                     resolved.put(packageName, versionRange.startsWith("^") || versionRange.startsWith("~")
                         ? versionRange : "^" + latestVersion);
                 } catch (Exception e) {

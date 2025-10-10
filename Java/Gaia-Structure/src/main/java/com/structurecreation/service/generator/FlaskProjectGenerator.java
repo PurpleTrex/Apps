@@ -96,6 +96,9 @@ public class FlaskProjectGenerator {
 
         // Create type-specific structure
         switch (type) {
+            case BASIC:
+                // Basic structure already created above
+                break;
             case REST_API:
                 createRESTAPIStructure(appDir);
                 break;
@@ -108,6 +111,9 @@ public class FlaskProjectGenerator {
             case DATA_API:
                 createDataAPIStructure(appDir);
                 break;
+            case ML_API:
+                createMLAPIStructure(appDir);
+                break;
             case ASYNC_APP:
                 createAsyncStructure(appDir);
                 break;
@@ -116,6 +122,9 @@ public class FlaskProjectGenerator {
                 break;
             case WEBSOCKET_APP:
                 createWebSocketStructure(appDir);
+                break;
+            case FULL_STACK:
+                createFullStackStructure(appDir, type);
                 break;
         }
 
@@ -490,6 +499,218 @@ public class FlaskProjectGenerator {
         ProjectNode rooms = new ProjectNode("rooms.py", ProjectNode.NodeType.FILE);
         rooms.setContent(generateWebSocketRooms());
         wsDir.addChild(rooms);
+    }
+
+    private void createMLAPIStructure(ProjectNode appDir) {
+        // ML Models package
+        ProjectNode mlDir = new ProjectNode("ml", ProjectNode.NodeType.FOLDER);
+        appDir.addChild(mlDir);
+
+        ProjectNode mlInit = new ProjectNode("__init__.py", ProjectNode.NodeType.FILE);
+        mlInit.setContent("");
+        mlDir.addChild(mlInit);
+
+        ProjectNode models = new ProjectNode("models.py", ProjectNode.NodeType.FILE);
+        models.setContent(generateMLModels());
+        mlDir.addChild(models);
+
+        ProjectNode predictors = new ProjectNode("predictors.py", ProjectNode.NodeType.FILE);
+        predictors.setContent(generateMLPredictors());
+        mlDir.addChild(predictors);
+
+        ProjectNode trainers = new ProjectNode("trainers.py", ProjectNode.NodeType.FILE);
+        trainers.setContent(generateMLTrainers());
+        mlDir.addChild(trainers);
+
+        ProjectNode evaluators = new ProjectNode("evaluators.py", ProjectNode.NodeType.FILE);
+        evaluators.setContent(generateMLEvaluators());
+        mlDir.addChild(evaluators);
+
+        // Data preprocessing package
+        ProjectNode preprocessingDir = new ProjectNode("preprocessing", ProjectNode.NodeType.FOLDER);
+        appDir.addChild(preprocessingDir);
+
+        ProjectNode preprocessingInit = new ProjectNode("__init__.py", ProjectNode.NodeType.FILE);
+        preprocessingInit.setContent("");
+        preprocessingDir.addChild(preprocessingInit);
+
+        ProjectNode featureEngineering = new ProjectNode("feature_engineering.py", ProjectNode.NodeType.FILE);
+        featureEngineering.setContent(generateFeatureEngineering());
+        preprocessingDir.addChild(featureEngineering);
+
+        ProjectNode dataValidation = new ProjectNode("data_validation.py", ProjectNode.NodeType.FILE);
+        dataValidation.setContent(generateDataValidation());
+        preprocessingDir.addChild(dataValidation);
+
+        ProjectNode scalers = new ProjectNode("scalers.py", ProjectNode.NodeType.FILE);
+        scalers.setContent(generateScalers());
+        preprocessingDir.addChild(scalers);
+
+        // API endpoints for ML
+        ProjectNode mlApiDir = new ProjectNode("api", ProjectNode.NodeType.FOLDER);
+        mlDir.addChild(mlApiDir);
+
+        ProjectNode mlApiInit = new ProjectNode("__init__.py", ProjectNode.NodeType.FILE);
+        mlApiInit.setContent("");
+        mlApiDir.addChild(mlApiInit);
+
+        ProjectNode predictionEndpoints = new ProjectNode("predictions.py", ProjectNode.NodeType.FILE);
+        predictionEndpoints.setContent(generatePredictionEndpoints());
+        mlApiDir.addChild(predictionEndpoints);
+
+        ProjectNode modelManagement = new ProjectNode("model_management.py", ProjectNode.NodeType.FILE);
+        modelManagement.setContent(generateModelManagement());
+        mlApiDir.addChild(modelManagement);
+
+        // Model storage
+        ProjectNode modelsStorageDir = new ProjectNode("model_storage", ProjectNode.NodeType.FOLDER);
+        appDir.addChild(modelsStorageDir);
+
+        ProjectNode modelsReadme = new ProjectNode("README.md", ProjectNode.NodeType.FILE);
+        modelsReadme.setContent("# Model Storage\n\nStore trained models in this directory.\n");
+        modelsStorageDir.addChild(modelsReadme);
+    }
+
+    private void createFullStackStructure(ProjectNode appDir, FlaskProjectType type) {
+        // Frontend package
+        ProjectNode frontendDir = new ProjectNode("frontend", ProjectNode.NodeType.FOLDER);
+        appDir.addChild(frontendDir);
+
+        ProjectNode frontendInit = new ProjectNode("__init__.py", ProjectNode.NodeType.FILE);
+        frontendInit.setContent("");
+        frontendDir.addChild(frontendInit);
+
+        ProjectNode frontendViews = new ProjectNode("views.py", ProjectNode.NodeType.FILE);
+        frontendViews.setContent(generateFrontendViews());
+        frontendDir.addChild(frontendViews);
+
+        ProjectNode frontendForms = new ProjectNode("forms.py", ProjectNode.NodeType.FILE);
+        frontendForms.setContent(generateFrontendForms());
+        frontendDir.addChild(frontendForms);
+
+        // API package for backend
+        ProjectNode apiDir = new ProjectNode("api", ProjectNode.NodeType.FOLDER);
+        appDir.addChild(apiDir);
+
+        ProjectNode apiInit = new ProjectNode("__init__.py", ProjectNode.NodeType.FILE);
+        apiInit.setContent("");
+        apiDir.addChild(apiInit);
+
+        // API v1
+        ProjectNode v1Dir = new ProjectNode("v1", ProjectNode.NodeType.FOLDER);
+        apiDir.addChild(v1Dir);
+
+        ProjectNode v1Init = new ProjectNode("__init__.py", ProjectNode.NodeType.FILE);
+        v1Init.setContent("");
+        v1Dir.addChild(v1Init);
+
+        ProjectNode apiResources = new ProjectNode("resources.py", ProjectNode.NodeType.FILE);
+        apiResources.setContent(generateFullStackAPIResources());
+        v1Dir.addChild(apiResources);
+
+        ProjectNode apiSchemas = new ProjectNode("schemas.py", ProjectNode.NodeType.FILE);
+        apiSchemas.setContent(generateFullStackAPISchemas());
+        v1Dir.addChild(apiSchemas);
+
+        ProjectNode apiRoutes = new ProjectNode("routes.py", ProjectNode.NodeType.FILE);
+        apiRoutes.setContent(generateFullStackAPIRoutes());
+        v1Dir.addChild(apiRoutes);
+
+        // Services layer
+        ProjectNode servicesDir = new ProjectNode("services", ProjectNode.NodeType.FOLDER);
+        appDir.addChild(servicesDir);
+
+        ProjectNode servicesInit = new ProjectNode("__init__.py", ProjectNode.NodeType.FILE);
+        servicesInit.setContent("");
+        servicesDir.addChild(servicesInit);
+
+        ProjectNode userService = new ProjectNode("user_service.py", ProjectNode.NodeType.FILE);
+        userService.setContent(generateUserService());
+        servicesDir.addChild(userService);
+
+        ProjectNode authService = new ProjectNode("auth_service.py", ProjectNode.NodeType.FILE);
+        authService.setContent(generateAuthService());
+        servicesDir.addChild(authService);
+
+        ProjectNode emailService = new ProjectNode("email_service.py", ProjectNode.NodeType.FILE);
+        emailService.setContent(generateEmailService());
+        servicesDir.addChild(emailService);
+
+        // Static files structure
+        ProjectNode staticDir = new ProjectNode("static", ProjectNode.NodeType.FOLDER);
+        appDir.addChild(staticDir);
+
+        // CSS
+        ProjectNode cssDir = new ProjectNode("css", ProjectNode.NodeType.FOLDER);
+        staticDir.addChild(cssDir);
+
+        ProjectNode mainCss = new ProjectNode("main.css", ProjectNode.NodeType.FILE);
+        mainCss.setContent(generateMainCSS());
+        cssDir.addChild(mainCss);
+
+        ProjectNode customCss = new ProjectNode("custom.css", ProjectNode.NodeType.FILE);
+        customCss.setContent(generateCustomCSS());
+        cssDir.addChild(customCss);
+
+        // JavaScript
+        ProjectNode jsDir = new ProjectNode("js", ProjectNode.NodeType.FOLDER);
+        staticDir.addChild(jsDir);
+
+        ProjectNode mainJs = new ProjectNode("main.js", ProjectNode.NodeType.FILE);
+        mainJs.setContent(generateMainJS(type));
+        jsDir.addChild(mainJs);
+
+        ProjectNode apiClient = new ProjectNode("api_client.js", ProjectNode.NodeType.FILE);
+        apiClient.setContent(generateAPIClient());
+        jsDir.addChild(apiClient);
+
+        ProjectNode utils = new ProjectNode("utils.js", ProjectNode.NodeType.FILE);
+        utils.setContent(generateUtilsJS());
+        jsDir.addChild(utils);
+
+        // Images
+        ProjectNode imgDir = new ProjectNode("img", ProjectNode.NodeType.FOLDER);
+        staticDir.addChild(imgDir);
+
+        ProjectNode imgReadme = new ProjectNode("README.md", ProjectNode.NodeType.FILE);
+        imgReadme.setContent("# Images\n\nPlace your images here.\n");
+        imgDir.addChild(imgReadme);
+
+        // Templates
+        ProjectNode templatesDir = new ProjectNode("templates", ProjectNode.NodeType.FOLDER);
+        appDir.addChild(templatesDir);
+
+        ProjectNode baseTemplate = new ProjectNode("base.html", ProjectNode.NodeType.FILE);
+        baseTemplate.setContent(generateBaseTemplate());
+        templatesDir.addChild(baseTemplate);
+
+        ProjectNode indexTemplate = new ProjectNode("index.html", ProjectNode.NodeType.FILE);
+        indexTemplate.setContent(generateIndexTemplate());
+        templatesDir.addChild(indexTemplate);
+
+        // Auth templates
+        ProjectNode authTemplatesDir = new ProjectNode("auth", ProjectNode.NodeType.FOLDER);
+        templatesDir.addChild(authTemplatesDir);
+
+        ProjectNode loginTemplate = new ProjectNode("login.html", ProjectNode.NodeType.FILE);
+        loginTemplate.setContent(generateLoginTemplate());
+        authTemplatesDir.addChild(loginTemplate);
+
+        ProjectNode registerTemplate = new ProjectNode("register.html", ProjectNode.NodeType.FILE);
+        registerTemplate.setContent(generateRegisterTemplate());
+        authTemplatesDir.addChild(registerTemplate);
+
+        // Dashboard templates
+        ProjectNode dashboardTemplatesDir = new ProjectNode("dashboard", ProjectNode.NodeType.FOLDER);
+        templatesDir.addChild(dashboardTemplatesDir);
+
+        ProjectNode dashboardTemplate = new ProjectNode("dashboard.html", ProjectNode.NodeType.FILE);
+        dashboardTemplate.setContent(generateDashboardTemplate());
+        dashboardTemplatesDir.addChild(dashboardTemplate);
+
+        ProjectNode profileTemplate = new ProjectNode("profile.html", ProjectNode.NodeType.FILE);
+        profileTemplate.setContent(generateProfileTemplate());
+        dashboardTemplatesDir.addChild(profileTemplate);
     }
 
     private void addConfigurationFiles(ProjectNode root, String projectName, FlaskProjectType type) {
@@ -903,6 +1124,30 @@ public class FlaskProjectGenerator {
                 deps.add("numpy==1.26.2");
                 deps.add("scikit-learn==1.3.2");
                 deps.add("matplotlib==3.8.2");
+                break;
+            case ML_API:
+                deps.add("pandas==2.1.4");
+                deps.add("numpy==1.26.2");
+                deps.add("scikit-learn==1.3.2");
+                deps.add("joblib==1.3.2");
+                deps.add("tensorflow==2.15.0");
+                break;
+            case MICROSERVICE:
+                deps.add("Flask-RESTful==0.3.10");
+                deps.add("flask-healthcheck==1.0.0");
+                break;
+            case BASIC:
+                // Basic Flask setup, no additional dependencies
+                break;
+            case WEB_APP:
+                deps.add("Flask-WTF==1.2.1");
+                deps.add("email-validator==2.1.0");
+                break;
+            case FULL_STACK:
+                deps.add("Flask-RESTful==0.3.10");
+                deps.add("Flask-WTF==1.2.1");
+                deps.add("email-validator==2.1.0");
+                deps.add("marshmallow==3.20.1");
                 break;
         }
 
@@ -4432,5 +4677,764 @@ public class FlaskProjectGenerator {
                "        echo \"Add deployment commands here\"\n" +
                "        # Example: SSH to server and pull new image\n" +
                "        # ssh user@server 'docker-compose pull && docker-compose up -d'\n";
+    }
+
+    private String generateMLPredictors() {
+        return "\"\"\"ML model predictors.\"\"\"\n\n" +
+               "import numpy as np\n" +
+               "from typing import Dict, Any, List\n" +
+               "import joblib\n" +
+               "import os\n\n" +
+               "class BasePredictor:\n" +
+               "    \"\"\"Base predictor class.\"\"\"\n" +
+               "    \n" +
+               "    def __init__(self, model_path: str):\n" +
+               "        self.model = joblib.load(model_path)\n" +
+               "    \n" +
+               "    def predict(self, data: np.ndarray) -> np.ndarray:\n" +
+               "        return self.model.predict(data)\n" +
+               "    \n" +
+               "    def predict_proba(self, data: np.ndarray) -> np.ndarray:\n" +
+               "        if hasattr(self.model, 'predict_proba'):\n" +
+               "            return self.model.predict_proba(data)\n" +
+               "        return self.predict(data)\n\n" +
+               "class MLPredictor(BasePredictor):\n" +
+               "    \"\"\"ML model predictor.\"\"\"\n" +
+               "    \n" +
+               "    def predict_single(self, features: Dict[str, Any]) -> Dict[str, Any]:\n" +
+               "        data = self._prepare_features(features)\n" +
+               "        prediction = self.predict(data)\n" +
+               "        return {'prediction': prediction[0]}\n" +
+               "    \n" +
+               "    def _prepare_features(self, features: Dict[str, Any]) -> np.ndarray:\n" +
+               "        # Implement feature preparation logic\n" +
+               "        return np.array([list(features.values())])\n";
+    }
+
+    private String generateMLTrainers() {
+        return "\"\"\"ML model trainers.\"\"\"\n\n" +
+               "from sklearn.model_selection import train_test_split, cross_val_score\n" +
+               "from sklearn.metrics import accuracy_score, mean_squared_error\n" +
+               "import joblib\n" +
+               "import numpy as np\n" +
+               "from typing import Tuple, Any\n\n" +
+               "class BaseTrainer:\n" +
+               "    \"\"\"Base trainer class.\"\"\"\n" +
+               "    \n" +
+               "    def __init__(self, model: Any):\n" +
+               "        self.model = model\n" +
+               "    \n" +
+               "    def train(self, X: np.ndarray, y: np.ndarray, test_size: float = 0.2) -> dict:\n" +
+               "        X_train, X_test, y_train, y_test = train_test_split(\n" +
+               "            X, y, test_size=test_size, random_state=42\n" +
+               "        )\n" +
+               "        \n" +
+               "        self.model.fit(X_train, y_train)\n" +
+               "        \n" +
+               "        train_score = self.model.score(X_train, y_train)\n" +
+               "        test_score = self.model.score(X_test, y_test)\n" +
+               "        \n" +
+               "        return {\n" +
+               "            'train_score': train_score,\n" +
+               "            'test_score': test_score,\n" +
+               "            'model': self.model\n" +
+               "        }\n" +
+               "    \n" +
+               "    def save_model(self, path: str):\n" +
+               "        joblib.dump(self.model, path)\n" +
+               "    \n" +
+               "    def cross_validate(self, X: np.ndarray, y: np.ndarray, cv: int = 5) -> dict:\n" +
+               "        scores = cross_val_score(self.model, X, y, cv=cv)\n" +
+               "        return {\n" +
+               "            'mean_score': scores.mean(),\n" +
+               "            'std_score': scores.std(),\n" +
+               "            'all_scores': scores.tolist()\n" +
+               "        }\n";
+    }
+
+    private String generateMLEvaluators() {
+        return "\"\"\"ML model evaluators.\"\"\"\n\n" +
+               "from sklearn.metrics import (\n" +
+               "    accuracy_score, precision_score, recall_score, f1_score,\n" +
+               "    mean_squared_error, mean_absolute_error, r2_score,\n" +
+               "    classification_report, confusion_matrix\n" +
+               ")\n" +
+               "import numpy as np\n" +
+               "from typing import Dict, Any\n\n" +
+               "class ModelEvaluator:\n" +
+               "    \"\"\"Model evaluation utilities.\"\"\"\n" +
+               "    \n" +
+               "    @staticmethod\n" +
+               "    def evaluate_classifier(y_true: np.ndarray, y_pred: np.ndarray) -> Dict[str, Any]:\n" +
+               "        return {\n" +
+               "            'accuracy': accuracy_score(y_true, y_pred),\n" +
+               "            'precision': precision_score(y_true, y_pred, average='weighted'),\n" +
+               "            'recall': recall_score(y_true, y_pred, average='weighted'),\n" +
+               "            'f1': f1_score(y_true, y_pred, average='weighted'),\n" +
+               "            'confusion_matrix': confusion_matrix(y_true, y_pred).tolist(),\n" +
+               "            'classification_report': classification_report(y_true, y_pred)\n" +
+               "        }\n" +
+               "    \n" +
+               "    @staticmethod\n" +
+               "    def evaluate_regressor(y_true: np.ndarray, y_pred: np.ndarray) -> Dict[str, Any]:\n" +
+               "        return {\n" +
+               "            'mse': mean_squared_error(y_true, y_pred),\n" +
+               "            'rmse': np.sqrt(mean_squared_error(y_true, y_pred)),\n" +
+               "            'mae': mean_absolute_error(y_true, y_pred),\n" +
+               "            'r2': r2_score(y_true, y_pred)\n" +
+               "        }\n";
+    }
+
+    private String generateFeatureEngineering() {
+        return "\"\"\"Feature engineering utilities.\"\"\"\n\n" +
+               "import pandas as pd\n" +
+               "import numpy as np\n" +
+               "from typing import List, Dict, Any\n\n" +
+               "class FeatureEngineer:\n" +
+               "    \"\"\"Feature engineering utilities.\"\"\"\n" +
+               "    \n" +
+               "    @staticmethod\n" +
+               "    def create_polynomial_features(df: pd.DataFrame, columns: List[str], degree: int = 2) -> pd.DataFrame:\n" +
+               "        from sklearn.preprocessing import PolynomialFeatures\n" +
+               "        poly = PolynomialFeatures(degree=degree, include_bias=False)\n" +
+               "        poly_features = poly.fit_transform(df[columns])\n" +
+               "        feature_names = poly.get_feature_names_out(columns)\n" +
+               "        return pd.DataFrame(poly_features, columns=feature_names, index=df.index)\n" +
+               "    \n" +
+               "    @staticmethod\n" +
+               "    def create_interaction_features(df: pd.DataFrame, col1: str, col2: str) -> pd.Series:\n" +
+               "        return df[col1] * df[col2]\n" +
+               "    \n" +
+               "    @staticmethod\n" +
+               "    def encode_categorical(df: pd.DataFrame, columns: List[str], method: str = 'onehot') -> pd.DataFrame:\n" +
+               "        if method == 'onehot':\n" +
+               "            return pd.get_dummies(df, columns=columns, drop_first=True)\n" +
+               "        elif method == 'label':\n" +
+               "            from sklearn.preprocessing import LabelEncoder\n" +
+               "            result = df.copy()\n" +
+               "            for col in columns:\n" +
+               "                le = LabelEncoder()\n" +
+               "                result[col] = le.fit_transform(df[col])\n" +
+               "            return result\n" +
+               "        return df\n";
+    }
+
+    private String generateDataValidation() {
+        return "\"\"\"Data validation utilities.\"\"\"\n\n" +
+               "import pandas as pd\n" +
+               "import numpy as np\n" +
+               "from typing import Dict, List, Any\n\n" +
+               "class DataValidator:\n" +
+               "    \"\"\"Data validation utilities.\"\"\"\n" +
+               "    \n" +
+               "    @staticmethod\n" +
+               "    def check_missing_values(df: pd.DataFrame) -> Dict[str, Any]:\n" +
+               "        missing = df.isnull().sum()\n" +
+               "        missing_pct = (missing / len(df)) * 100\n" +
+               "        return {\n" +
+               "            'missing_counts': missing.to_dict(),\n" +
+               "            'missing_percentages': missing_pct.to_dict(),\n" +
+               "            'total_missing': missing.sum()\n" +
+               "        }\n" +
+               "    \n" +
+               "    @staticmethod\n" +
+               "    def check_duplicates(df: pd.DataFrame) -> Dict[str, Any]:\n" +
+               "        duplicates = df.duplicated().sum()\n" +
+               "        return {\n" +
+               "            'duplicate_count': int(duplicates),\n" +
+               "            'duplicate_percentage': float((duplicates / len(df)) * 100)\n" +
+               "        }\n" +
+               "    \n" +
+               "    @staticmethod\n" +
+               "    def validate_schema(df: pd.DataFrame, expected_columns: List[str]) -> Dict[str, Any]:\n" +
+               "        missing_cols = set(expected_columns) - set(df.columns)\n" +
+               "        extra_cols = set(df.columns) - set(expected_columns)\n" +
+               "        return {\n" +
+               "            'is_valid': len(missing_cols) == 0,\n" +
+               "            'missing_columns': list(missing_cols),\n" +
+               "            'extra_columns': list(extra_cols)\n" +
+               "        }\n";
+    }
+
+    private String generateScalers() {
+        return "\"\"\"Data scaling utilities.\"\"\"\n\n" +
+               "import numpy as np\n" +
+               "import pandas as pd\n" +
+               "from sklearn.preprocessing import StandardScaler, MinMaxScaler, RobustScaler\n" +
+               "import joblib\n\n" +
+               "class ScalerManager:\n" +
+               "    \"\"\"Manage data scalers.\"\"\"\n" +
+               "    \n" +
+               "    def __init__(self, scaler_type: str = 'standard'):\n" +
+               "        if scaler_type == 'standard':\n" +
+               "            self.scaler = StandardScaler()\n" +
+               "        elif scaler_type == 'minmax':\n" +
+               "            self.scaler = MinMaxScaler()\n" +
+               "        elif scaler_type == 'robust':\n" +
+               "            self.scaler = RobustScaler()\n" +
+               "        else:\n" +
+               "            raise ValueError(f'Unknown scaler type: {scaler_type}')\n" +
+               "    \n" +
+               "    def fit_transform(self, data: np.ndarray) -> np.ndarray:\n" +
+               "        return self.scaler.fit_transform(data)\n" +
+               "    \n" +
+               "    def transform(self, data: np.ndarray) -> np.ndarray:\n" +
+               "        return self.scaler.transform(data)\n" +
+               "    \n" +
+               "    def inverse_transform(self, data: np.ndarray) -> np.ndarray:\n" +
+               "        return self.scaler.inverse_transform(data)\n" +
+               "    \n" +
+               "    def save(self, path: str):\n" +
+               "        joblib.dump(self.scaler, path)\n" +
+               "    \n" +
+               "    @classmethod\n" +
+               "    def load(cls, path: str):\n" +
+               "        instance = cls.__new__(cls)\n" +
+               "        instance.scaler = joblib.load(path)\n" +
+               "        return instance\n";
+    }
+
+    private String generatePredictionEndpoints() {
+        return "\"\"\"ML prediction endpoints.\"\"\"\n\n" +
+               "from flask import Blueprint, request, jsonify\n" +
+               "from app.ml.predictors import MLPredictor\n" +
+               "import os\n\n" +
+               "ml_bp = Blueprint('ml', __name__, url_prefix='/api/ml')\n\n" +
+               "MODEL_PATH = os.path.join(os.path.dirname(__file__), '..', 'models', 'model.pkl')\n\n" +
+               "@ml_bp.route('/predict', methods=['POST'])\n" +
+               "def predict():\n" +
+               "    \"\"\"Make a prediction.\"\"\"\n" +
+               "    try:\n" +
+               "        data = request.get_json()\n" +
+               "        \n" +
+               "        if not data or 'features' not in data:\n" +
+               "            return jsonify({'error': 'Missing features'}), 400\n" +
+               "        \n" +
+               "        predictor = MLPredictor(MODEL_PATH)\n" +
+               "        result = predictor.predict_single(data['features'])\n" +
+               "        \n" +
+               "        return jsonify({\n" +
+               "            'success': True,\n" +
+               "            'prediction': result['prediction']\n" +
+               "        })\n" +
+               "    except Exception as e:\n" +
+               "        return jsonify({'error': str(e)}), 500\n\n" +
+               "@ml_bp.route('/batch-predict', methods=['POST'])\n" +
+               "def batch_predict():\n" +
+               "    \"\"\"Make batch predictions.\"\"\"\n" +
+               "    try:\n" +
+               "        data = request.get_json()\n" +
+               "        \n" +
+               "        if not data or 'features_list' not in data:\n" +
+               "            return jsonify({'error': 'Missing features_list'}), 400\n" +
+               "        \n" +
+               "        predictor = MLPredictor(MODEL_PATH)\n" +
+               "        predictions = [predictor.predict_single(f) for f in data['features_list']]\n" +
+               "        \n" +
+               "        return jsonify({\n" +
+               "            'success': True,\n" +
+               "            'predictions': predictions\n" +
+               "        })\n" +
+               "    except Exception as e:\n" +
+               "        return jsonify({'error': str(e)}), 500\n";
+    }
+
+    private String generateModelManagement() {
+        return "\"\"\"ML model management endpoints.\"\"\"\n\n" +
+               "from flask import Blueprint, request, jsonify\n" +
+               "from app.ml.trainers import BaseTrainer\n" +
+               "from app.ml.evaluators import ModelEvaluator\n" +
+               "import joblib\n" +
+               "import os\n\n" +
+               "model_mgmt_bp = Blueprint('model_mgmt', __name__, url_prefix='/api/models')\n\n" +
+               "@model_mgmt_bp.route('/list', methods=['GET'])\n" +
+               "def list_models():\n" +
+               "    \"\"\"List available models.\"\"\"\n" +
+               "    models_dir = os.path.join(os.path.dirname(__file__), '..', 'models')\n" +
+               "    models = [f for f in os.listdir(models_dir) if f.endswith('.pkl')]\n" +
+               "    return jsonify({'models': models})\n\n" +
+               "@model_mgmt_bp.route('/info/<model_name>', methods=['GET'])\n" +
+               "def model_info(model_name):\n" +
+               "    \"\"\"Get model information.\"\"\"\n" +
+               "    try:\n" +
+               "        models_dir = os.path.join(os.path.dirname(__file__), '..', 'models')\n" +
+               "        model_path = os.path.join(models_dir, model_name)\n" +
+               "        \n" +
+               "        if not os.path.exists(model_path):\n" +
+               "            return jsonify({'error': 'Model not found'}), 404\n" +
+               "        \n" +
+               "        model = joblib.load(model_path)\n" +
+               "        \n" +
+               "        return jsonify({\n" +
+               "            'name': model_name,\n" +
+               "            'type': type(model).__name__,\n" +
+               "            'size': os.path.getsize(model_path)\n" +
+               "        })\n" +
+               "    except Exception as e:\n" +
+               "        return jsonify({'error': str(e)}), 500\n";
+    }
+
+    private String generateFrontendViews() {
+        return "\"\"\"Frontend views for ML interface.\"\"\"\n\n" +
+               "from flask import Blueprint, render_template\n" +
+               "from flask_login import login_required\n\n" +
+               "frontend_bp = Blueprint('frontend', __name__)\n\n" +
+               "@frontend_bp.route('/predict')\n" +
+               "@login_required\n" +
+               "def predict_view():\n" +
+               "    \"\"\"Prediction interface.\"\"\"\n" +
+               "    return render_template('ml/predict.html')\n\n" +
+               "@frontend_bp.route('/models')\n" +
+               "@login_required\n" +
+               "def models_view():\n" +
+               "    \"\"\"Model management interface.\"\"\"\n" +
+               "    return render_template('ml/models.html')\n\n" +
+               "@frontend_bp.route('/analytics')\n" +
+               "@login_required\n" +
+               "def analytics_view():\n" +
+               "    \"\"\"Analytics interface.\"\"\"\n" +
+               "    return render_template('ml/analytics.html')\n";
+    }
+
+    private String generateFrontendForms() {
+        return "\"\"\"Frontend forms for ML operations.\"\"\"\n\n" +
+               "from flask_wtf import FlaskForm\n" +
+               "from wtforms import StringField, FloatField, SelectField, SubmitField\n" +
+               "from wtforms.validators import DataRequired, NumberRange\n\n" +
+               "class PredictionForm(FlaskForm):\n" +
+               "    \"\"\"Form for making predictions.\"\"\"\n" +
+               "    feature1 = FloatField('Feature 1', validators=[DataRequired()])\n" +
+               "    feature2 = FloatField('Feature 2', validators=[DataRequired()])\n" +
+               "    feature3 = FloatField('Feature 3', validators=[DataRequired()])\n" +
+               "    submit = SubmitField('Predict')\n\n" +
+               "class ModelSelectionForm(FlaskForm):\n" +
+               "    \"\"\"Form for selecting a model.\"\"\"\n" +
+               "    model = SelectField('Model', validators=[DataRequired()])\n" +
+               "    submit = SubmitField('Load Model')\n";
+    }
+
+    private String generateFullStackAPIResources() {
+        return "\"\"\"Full-stack API resources.\"\"\"\n\n" +
+               "from flask import Blueprint, request, jsonify\n" +
+               "from flask_login import login_required, current_user\n" +
+               "from app.models.base import db\n\n" +
+               "api_bp = Blueprint('api', __name__, url_prefix='/api')\n\n" +
+               "@api_bp.route('/items', methods=['GET', 'POST'])\n" +
+               "@login_required\n" +
+               "def items():\n" +
+               "    \"\"\"Handle items.\"\"\"\n" +
+               "    if request.method == 'POST':\n" +
+               "        data = request.get_json()\n" +
+               "        # Create item logic here\n" +
+               "        return jsonify({'message': 'Item created'}), 201\n" +
+               "    else:\n" +
+               "        # List items logic here\n" +
+               "        return jsonify({'items': []})\n\n" +
+               "@api_bp.route('/items/<int:item_id>', methods=['GET', 'PUT', 'DELETE'])\n" +
+               "@login_required\n" +
+               "def item(item_id):\n" +
+               "    \"\"\"Handle individual item.\"\"\"\n" +
+               "    if request.method == 'GET':\n" +
+               "        # Get item logic here\n" +
+               "        return jsonify({'item': {}})\n" +
+               "    elif request.method == 'PUT':\n" +
+               "        data = request.get_json()\n" +
+               "        # Update item logic here\n" +
+               "        return jsonify({'message': 'Item updated'})\n" +
+               "    elif request.method == 'DELETE':\n" +
+               "        # Delete item logic here\n" +
+               "        return jsonify({'message': 'Item deleted'})\n";
+    }
+
+    private String generateFullStackAPISchemas() {
+        return "\"\"\"Full-stack API schemas.\"\"\"\n\n" +
+               "from marshmallow import Schema, fields, validate\n\n" +
+               "class ItemSchema(Schema):\n" +
+               "    \"\"\"Item schema.\"\"\"\n" +
+               "    id = fields.Int(dump_only=True)\n" +
+               "    name = fields.Str(required=True, validate=validate.Length(min=1, max=100))\n" +
+               "    description = fields.Str()\n" +
+               "    created_at = fields.DateTime(dump_only=True)\n" +
+               "    updated_at = fields.DateTime(dump_only=True)\n\n" +
+               "class UserProfileSchema(Schema):\n" +
+               "    \"\"\"User profile schema.\"\"\"\n" +
+               "    id = fields.Int(dump_only=True)\n" +
+               "    username = fields.Str(required=True)\n" +
+               "    email = fields.Email(required=True)\n" +
+               "    first_name = fields.Str()\n" +
+               "    last_name = fields.Str()\n" +
+               "    created_at = fields.DateTime(dump_only=True)\n";
+    }
+
+    private String generateFullStackAPIRoutes() {
+        return "\"\"\"Full-stack API routes initialization.\"\"\"\n\n" +
+               "from flask import Flask\n\n" +
+               "def register_api_routes(app: Flask):\n" +
+               "    \"\"\"Register all API routes.\"\"\"\n" +
+               "    from app.api.resources import api_bp\n" +
+               "    \n" +
+               "    app.register_blueprint(api_bp)\n";
+    }
+
+    private String generateUserService() {
+        return "\"\"\"User service.\"\"\"\n\n" +
+               "from app.models.user import User\n" +
+               "from app.models.base import db\n" +
+               "from typing import Optional, List\n\n" +
+               "class UserService:\n" +
+               "    \"\"\"User service layer.\"\"\"\n" +
+               "    \n" +
+               "    @staticmethod\n" +
+               "    def get_user_by_id(user_id: int) -> Optional[User]:\n" +
+               "        return User.query.get(user_id)\n" +
+               "    \n" +
+               "    @staticmethod\n" +
+               "    def get_user_by_email(email: str) -> Optional[User]:\n" +
+               "        return User.query.filter_by(email=email).first()\n" +
+               "    \n" +
+               "    @staticmethod\n" +
+               "    def create_user(username: str, email: str, password: str) -> User:\n" +
+               "        user = User(username=username, email=email)\n" +
+               "        user.set_password(password)\n" +
+               "        db.session.add(user)\n" +
+               "        db.session.commit()\n" +
+               "        return user\n" +
+               "    \n" +
+               "    @staticmethod\n" +
+               "    def update_user(user: User, **kwargs) -> User:\n" +
+               "        for key, value in kwargs.items():\n" +
+               "            if hasattr(user, key):\n" +
+               "                setattr(user, key, value)\n" +
+               "        db.session.commit()\n" +
+               "        return user\n" +
+               "    \n" +
+               "    @staticmethod\n" +
+               "    def delete_user(user: User):\n" +
+               "        db.session.delete(user)\n" +
+               "        db.session.commit()\n";
+    }
+
+    private String generateAuthService() {
+        return "\"\"\"Authentication service.\"\"\"\n\n" +
+               "from app.models.user import User\n" +
+               "from app.services.user_service import UserService\n" +
+               "from typing import Optional, Tuple\n\n" +
+               "class AuthService:\n" +
+               "    \"\"\"Authentication service layer.\"\"\"\n" +
+               "    \n" +
+               "    @staticmethod\n" +
+               "    def authenticate(email: str, password: str) -> Tuple[bool, Optional[User]]:\n" +
+               "        user = UserService.get_user_by_email(email)\n" +
+               "        \n" +
+               "        if user and user.check_password(password):\n" +
+               "            return True, user\n" +
+               "        return False, None\n" +
+               "    \n" +
+               "    @staticmethod\n" +
+               "    def register(username: str, email: str, password: str) -> Tuple[bool, Optional[User], Optional[str]]:\n" +
+               "        # Check if user already exists\n" +
+               "        if UserService.get_user_by_email(email):\n" +
+               "            return False, None, 'Email already registered'\n" +
+               "        \n" +
+               "        try:\n" +
+               "            user = UserService.create_user(username, email, password)\n" +
+               "            return True, user, None\n" +
+               "        except Exception as e:\n" +
+               "            return False, None, str(e)\n";
+    }
+
+    private String generateEmailService() {
+        return "\"\"\"Email service.\"\"\"\n\n" +
+               "from flask_mail import Message\n" +
+               "from app.extensions import mail\n" +
+               "from flask import current_app\n\n" +
+               "class EmailService:\n" +
+               "    \"\"\"Email service layer.\"\"\"\n" +
+               "    \n" +
+               "    @staticmethod\n" +
+               "    def send_email(subject: str, recipients: list, body: str, html: str = None):\n" +
+               "        msg = Message(\n" +
+               "            subject=subject,\n" +
+               "            recipients=recipients,\n" +
+               "            body=body,\n" +
+               "            html=html,\n" +
+               "            sender=current_app.config.get('MAIL_DEFAULT_SENDER')\n" +
+               "        )\n" +
+               "        mail.send(msg)\n" +
+               "    \n" +
+               "    @staticmethod\n" +
+               "    def send_welcome_email(user):\n" +
+               "        subject = 'Welcome to Our Platform'\n" +
+               "        body = f'Hello {user.username},\\n\\nWelcome to our platform!'\n" +
+               "        EmailService.send_email(subject, [user.email], body)\n" +
+               "    \n" +
+               "    @staticmethod\n" +
+               "    def send_password_reset_email(user, reset_token: str):\n" +
+               "        subject = 'Password Reset Request'\n" +
+               "        body = f'Hello {user.username},\\n\\nYour password reset token: {reset_token}'\n" +
+               "        EmailService.send_email(subject, [user.email], body)\n";
+    }
+
+    private String generateCustomCSS() {
+        return "/* Custom styles */\n\n" +
+               ":root {\n" +
+               "    --primary-color: #007bff;\n" +
+               "    --secondary-color: #6c757d;\n" +
+               "    --success-color: #28a745;\n" +
+               "    --danger-color: #dc3545;\n" +
+               "    --warning-color: #ffc107;\n" +
+               "    --info-color: #17a2b8;\n" +
+               "}\n\n" +
+               ".btn-custom {\n" +
+               "    background-color: var(--primary-color);\n" +
+               "    color: white;\n" +
+               "    padding: 10px 20px;\n" +
+               "    border-radius: 5px;\n" +
+               "    border: none;\n" +
+               "    cursor: pointer;\n" +
+               "}\n\n" +
+               ".btn-custom:hover {\n" +
+               "    opacity: 0.9;\n" +
+               "}\n\n" +
+               ".card-custom {\n" +
+               "    border: 1px solid #dee2e6;\n" +
+               "    border-radius: 8px;\n" +
+               "    padding: 20px;\n" +
+               "    margin-bottom: 20px;\n" +
+               "    box-shadow: 0 2px 4px rgba(0,0,0,0.1);\n" +
+               "}\n\n" +
+               ".form-group {\n" +
+               "    margin-bottom: 15px;\n" +
+               "}\n\n" +
+               ".form-control {\n" +
+               "    width: 100%;\n" +
+               "    padding: 8px 12px;\n" +
+               "    border: 1px solid #ced4da;\n" +
+               "    border-radius: 4px;\n" +
+               "}\n";
+    }
+
+    private String generateAPIClient() {
+        return "// API Client\n\n" +
+               "class APIClient {\n" +
+               "    constructor(baseURL = '/api') {\n" +
+               "        this.baseURL = baseURL;\n" +
+               "    }\n\n" +
+               "    async request(endpoint, options = {}) {\n" +
+               "        const url = `${this.baseURL}${endpoint}`;\n" +
+               "        const config = {\n" +
+               "            headers: {\n" +
+               "                'Content-Type': 'application/json',\n" +
+               "                ...options.headers\n" +
+               "            },\n" +
+               "            ...options\n" +
+               "        };\n\n" +
+               "        try {\n" +
+               "            const response = await fetch(url, config);\n" +
+               "            const data = await response.json();\n" +
+               "            \n" +
+               "            if (!response.ok) {\n" +
+               "                throw new Error(data.error || 'Request failed');\n" +
+               "            }\n" +
+               "            \n" +
+               "            return data;\n" +
+               "        } catch (error) {\n" +
+               "            console.error('API Error:', error);\n" +
+               "            throw error;\n" +
+               "        }\n" +
+               "    }\n\n" +
+               "    get(endpoint, options = {}) {\n" +
+               "        return this.request(endpoint, { method: 'GET', ...options });\n" +
+               "    }\n\n" +
+               "    post(endpoint, data, options = {}) {\n" +
+               "        return this.request(endpoint, {\n" +
+               "            method: 'POST',\n" +
+               "            body: JSON.stringify(data),\n" +
+               "            ...options\n" +
+               "        });\n" +
+               "    }\n\n" +
+               "    put(endpoint, data, options = {}) {\n" +
+               "        return this.request(endpoint, {\n" +
+               "            method: 'PUT',\n" +
+               "            body: JSON.stringify(data),\n" +
+               "            ...options\n" +
+               "        });\n" +
+               "    }\n\n" +
+               "    delete(endpoint, options = {}) {\n" +
+               "        return this.request(endpoint, { method: 'DELETE', ...options });\n" +
+               "    }\n" +
+               "}\n\n" +
+               "const api = new APIClient();\n";
+    }
+
+    private String generateUtilsJS() {
+        return "// Utility functions\n\n" +
+               "const Utils = {\n" +
+               "    formatDate(date) {\n" +
+               "        return new Date(date).toLocaleDateString();\n" +
+               "    },\n\n" +
+               "    formatDateTime(date) {\n" +
+               "        return new Date(date).toLocaleString();\n" +
+               "    },\n\n" +
+               "    debounce(func, wait) {\n" +
+               "        let timeout;\n" +
+               "        return function executedFunction(...args) {\n" +
+               "            const later = () => {\n" +
+               "                clearTimeout(timeout);\n" +
+               "                func(...args);\n" +
+               "            };\n" +
+               "            clearTimeout(timeout);\n" +
+               "            timeout = setTimeout(later, wait);\n" +
+               "        };\n" +
+               "    },\n\n" +
+               "    showAlert(message, type = 'info') {\n" +
+               "        const alert = document.createElement('div');\n" +
+               "        alert.className = `alert alert-${type}`;\n" +
+               "        alert.textContent = message;\n" +
+               "        document.body.appendChild(alert);\n" +
+               "        \n" +
+               "        setTimeout(() => {\n" +
+               "            alert.style.opacity = '0';\n" +
+               "            setTimeout(() => alert.remove(), 300);\n" +
+               "        }, 3000);\n" +
+               "    },\n\n" +
+               "    validateEmail(email) {\n" +
+               "        const re = /^[^\\s@]+@[^\\s@]+\\.[^\\s@]+$/;\n" +
+               "        return re.test(email);\n" +
+               "    }\n" +
+               "};\n";
+    }
+
+    private String generateLoginTemplate() {
+        return "{% extends 'base.html' %}\n\n" +
+               "{% block title %}Login{% endblock %}\n\n" +
+               "{% block content %}\n" +
+               "<div class=\"container\">\n" +
+               "    <div class=\"row justify-content-center\">\n" +
+               "        <div class=\"col-md-6\">\n" +
+               "            <div class=\"card mt-5\">\n" +
+               "                <div class=\"card-header\">\n" +
+               "                    <h3>Login</h3>\n" +
+               "                </div>\n" +
+               "                <div class=\"card-body\">\n" +
+               "                    <form method=\"POST\" action=\"{{ url_for('auth.login') }}\">\n" +
+               "                        {{ form.hidden_tag() }}\n" +
+               "                        <div class=\"form-group\">\n" +
+               "                            {{ form.email.label }}\n" +
+               "                            {{ form.email(class='form-control') }}\n" +
+               "                        </div>\n" +
+               "                        <div class=\"form-group\">\n" +
+               "                            {{ form.password.label }}\n" +
+               "                            {{ form.password(class='form-control') }}\n" +
+               "                        </div>\n" +
+               "                        <div class=\"form-group\">\n" +
+               "                            {{ form.remember_me() }} {{ form.remember_me.label }}\n" +
+               "                        </div>\n" +
+               "                        {{ form.submit(class='btn btn-primary') }}\n" +
+               "                    </form>\n" +
+               "                    <p class=\"mt-3\">Don't have an account? <a href=\"{{ url_for('auth.register') }}\">Register</a></p>\n" +
+               "                </div>\n" +
+               "            </div>\n" +
+               "        </div>\n" +
+               "    </div>\n" +
+               "</div>\n" +
+               "{% endblock %}\n";
+    }
+
+    private String generateRegisterTemplate() {
+        return "{% extends 'base.html' %}\n\n" +
+               "{% block title %}Register{% endblock %}\n\n" +
+               "{% block content %}\n" +
+               "<div class=\"container\">\n" +
+               "    <div class=\"row justify-content-center\">\n" +
+               "        <div class=\"col-md-6\">\n" +
+               "            <div class=\"card mt-5\">\n" +
+               "                <div class=\"card-header\">\n" +
+               "                    <h3>Register</h3>\n" +
+               "                </div>\n" +
+               "                <div class=\"card-body\">\n" +
+               "                    <form method=\"POST\" action=\"{{ url_for('auth.register') }}\">\n" +
+               "                        {{ form.hidden_tag() }}\n" +
+               "                        <div class=\"form-group\">\n" +
+               "                            {{ form.username.label }}\n" +
+               "                            {{ form.username(class='form-control') }}\n" +
+               "                        </div>\n" +
+               "                        <div class=\"form-group\">\n" +
+               "                            {{ form.email.label }}\n" +
+               "                            {{ form.email(class='form-control') }}\n" +
+               "                        </div>\n" +
+               "                        <div class=\"form-group\">\n" +
+               "                            {{ form.password.label }}\n" +
+               "                            {{ form.password(class='form-control') }}\n" +
+               "                        </div>\n" +
+               "                        <div class=\"form-group\">\n" +
+               "                            {{ form.confirm_password.label }}\n" +
+               "                            {{ form.confirm_password(class='form-control') }}\n" +
+               "                        </div>\n" +
+               "                        {{ form.submit(class='btn btn-primary') }}\n" +
+               "                    </form>\n" +
+               "                    <p class=\"mt-3\">Already have an account? <a href=\"{{ url_for('auth.login') }}\">Login</a></p>\n" +
+               "                </div>\n" +
+               "            </div>\n" +
+               "        </div>\n" +
+               "    </div>\n" +
+               "</div>\n" +
+               "{% endblock %}\n";
+    }
+
+    private String generateDashboardTemplate() {
+        return "{% extends 'base.html' %}\n\n" +
+               "{% block title %}Dashboard{% endblock %}\n\n" +
+               "{% block content %}\n" +
+               "<div class=\"container mt-4\">\n" +
+               "    <h1>Dashboard</h1>\n" +
+               "    <div class=\"row mt-4\">\n" +
+               "        <div class=\"col-md-4\">\n" +
+               "            <div class=\"card\">\n" +
+               "                <div class=\"card-body\">\n" +
+               "                    <h5 class=\"card-title\">Total Users</h5>\n" +
+               "                    <p class=\"card-text\">{{ stats.total_users }}</p>\n" +
+               "                </div>\n" +
+               "            </div>\n" +
+               "        </div>\n" +
+               "        <div class=\"col-md-4\">\n" +
+               "            <div class=\"card\">\n" +
+               "                <div class=\"card-body\">\n" +
+               "                    <h5 class=\"card-title\">Active Sessions</h5>\n" +
+               "                    <p class=\"card-text\">{{ stats.active_sessions }}</p>\n" +
+               "                </div>\n" +
+               "            </div>\n" +
+               "        </div>\n" +
+               "        <div class=\"col-md-4\">\n" +
+               "            <div class=\"card\">\n" +
+               "                <div class=\"card-body\">\n" +
+               "                    <h5 class=\"card-title\">Total Requests</h5>\n" +
+               "                    <p class=\"card-text\">{{ stats.total_requests }}</p>\n" +
+               "                </div>\n" +
+               "            </div>\n" +
+               "        </div>\n" +
+               "    </div>\n" +
+               "</div>\n" +
+               "{% endblock %}\n";
+    }
+
+    private String generateProfileTemplate() {
+        return "{% extends 'base.html' %}\n\n" +
+               "{% block title %}Profile{% endblock %}\n\n" +
+               "{% block content %}\n" +
+               "<div class=\"container mt-4\">\n" +
+               "    <h1>User Profile</h1>\n" +
+               "    <div class=\"card mt-4\">\n" +
+               "        <div class=\"card-body\">\n" +
+               "            <h5 class=\"card-title\">{{ current_user.username }}</h5>\n" +
+               "            <p class=\"card-text\">\n" +
+               "                <strong>Email:</strong> {{ current_user.email }}<br>\n" +
+               "                <strong>Member since:</strong> {{ current_user.created_at.strftime('%Y-%m-%d') }}\n" +
+               "            </p>\n" +
+               "            <a href=\"{{ url_for('main.edit_profile') }}\" class=\"btn btn-primary\">Edit Profile</a>\n" +
+               "        </div>\n" +
+               "    </div>\n" +
+               "</div>\n" +
+               "{% endblock %}\n";
     }
 }
