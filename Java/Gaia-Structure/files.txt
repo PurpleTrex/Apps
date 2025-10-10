@@ -1,0 +1,281 @@
+
+    Directory: C:\Users\purple\Desktop\Dev\Git\Java\Gaia-Structure
+
+Mode                 LastWriteTime         Length Name
+----                 -------------         ------ ----
+-a---           10/9/2025  3:13 PM            348 .gitignore
+-a---           10/7/2025 12:55 PM           2448 build-executable.bat
+-a---           10/7/2025  1:00 PM           2831 build-inno-installer.bat
+-a---           10/7/2025 12:55 PM           4190 build-installer.bat
+-a---           10/9/2025  3:13 PM           2882 dependency-reduced-pom.xml
+-a---           10/9/2025  3:13 PM          12075 FEATURE_SHOWCASE.md
+-a---           10/9/2025  4:36 PM              0 files.txt
+-a---           10/7/2025  1:28 PM       24308448 Gaia-Setup-1.0.0.exe
+-a---           10/7/2025  1:28 PM           4581 Gaia-Setup-Fixed.iss
+-a---           10/7/2025 12:59 PM           6659 Gaia-Setup.iss
+-a---           10/7/2025  1:28 PM            321 Gaia.vbs
+-a---           10/9/2025  3:13 PM           7544 IMPLEMENTATION_SUMMARY.md
+-a---           10/7/2025 12:59 PM           1072 INSTALL-COMPLETE.txt
+-a---           10/7/2025 12:59 PM           1068 INSTALL-INFO.txt
+-a---           10/7/2025 12:59 PM           1097 LICENSE.txt
+-a---           10/9/2025  4:16 PM           5502 pom.xml
+-a---           10/7/2025 12:59 PM           3169 preview-installer.bat
+-a---           10/9/2025  3:13 PM          12138 project-structure-creator.log
+-a---           10/9/2025  3:13 PM          15000 readME.md
+-a---           10/7/2025 12:29 PM            565 run-app.bat
+-a---           10/7/2025 12:59 PM           1238 run-gaia.bat
+-a---           10/9/2025  4:01 PM           5649 TEST_IMPLEMENTATION_SUMMARY.md
+
+    Directory: C:\Users\purple\Desktop\Dev\Git\Java\Gaia-Structure\.vscode
+
+Mode                 LastWriteTime         Length Name
+----                 -------------         ------ ----
+-a---           10/7/2025 11:51 AM             68 settings.json
+
+    Directory: C:\Users\purple\Desktop\Dev\Git\Java\Gaia-Structure\installer-dist
+
+Mode                 LastWriteTime         Length Name
+----                 -------------         ------ ----
+-a---           10/7/2025  1:28 PM       24308448 Gaia-Setup-1.0.0.exe
+
+    Directory: C:\Users\purple\Desktop\Dev\Git\Java\Gaia-Structure\setup-images
+
+Mode                 LastWriteTime         Length Name
+----                 -------------         ------ ----
+-a---           10/7/2025 12:59 PM            584 README.txt
+
+    Directory: C:\Users\purple\Desktop\Dev\Git\Java\Gaia-Structure\src\main\java\com\structurecreation
+
+Mode                 LastWriteTime         Length Name
+----                 -------------         ------ ----
+-a---           10/7/2025 12:46 PM           3939 ProjectStructureCreatorApp.java
+-a---           10/7/2025 12:46 PM           5142 SplashScreen.java
+
+    Directory: C:\Users\purple\Desktop\Dev\Git\Java\Gaia-Structure\src\main\java\com\structurecreation\controller
+
+Mode                 LastWriteTime         Length Name
+----                 -------------         ------ ----
+-a---           10/9/2025  4:21 PM          54696 MainController.java
+
+    Directory: C:\Users\purple\Desktop\Dev\Git\Java\Gaia-Structure\src\main\java\com\structurecreation\model
+
+Mode                 LastWriteTime         Length Name
+----                 -------------         ------ ----
+-a---           10/9/2025  4:17 PM           7013 Dependency.java
+-a---           10/9/2025  3:13 PM           3230 ProjectNode.java
+-a---           10/7/2025 11:53 AM           4793 ProjectStructure.java
+-a---           10/7/2025 11:53 AM           9303 ProjectTemplate.java
+
+    Directory: C:\Users\purple\Desktop\Dev\Git\Java\Gaia-Structure\src\main\java\com\structurecreation\service
+
+Mode                 LastWriteTime         Length Name
+----                 -------------         ------ ----
+-a---           10/9/2025  3:13 PM          15133 DependencyPresetService.java
+-a---           10/9/2025  3:13 PM          33125 DependencyResolverService.java
+-a---           10/9/2025  3:13 PM          12883 EnvironmentManager.java
+-a---           10/7/2025 11:53 AM          23944 FileTreeGenerator.java
+-a---           10/7/2025 11:53 AM          36419 ProjectCreationService.java
+-a---           10/7/2025 11:53 AM          17457 TemplateService.java
+-a---           10/7/2025 12:48 PM          13602 TutorialService.java
+
+    Directory: C:\Users\purple\Desktop\Dev\Git\Java\Gaia-Structure\src\main\java\com\structurecreation\service\generator
+
+Mode                 LastWriteTime         Length Name
+----                 -------------         ------ ----
+-a---           10/9/2025  3:13 PM           8615 AbstractProjectGenerator.java
+-a---           10/9/2025  4:28 PM         473357 DjangoProjectGenerator.java
+-a---           10/9/2025  4:28 PM         223984 FlaskProjectGenerator.java
+-a---           10/9/2025  4:31 PM          21942 GeneratorService.java
+-a---           10/9/2025  4:28 PM          81061 NodeExpressProjectGenerator.java
+-a---           10/9/2025  3:13 PM           1648 ProjectGenerator.java
+-a---           10/9/2025  4:28 PM          45994 ReactProjectGenerator.java
+-a---           10/9/2025  4:28 PM          78566 SpringBootProjectGenerator.java
+
+    Directory: C:\Users\purple\Desktop\Dev\Git\Java\Gaia-Structure\src\main\java\com\structurecreation\service\repository
+
+Mode                 LastWriteTime         Length Name
+----                 -------------         ------ ----
+-a---           10/9/2025  3:13 PM          20659 MavenCentralRepository.java
+-a---           10/9/2025  3:13 PM          16236 NpmRepository.java
+-a---           10/9/2025  3:13 PM          15491 PyPiRepository.java
+-a---           10/9/2025  3:13 PM           1859 RepositoryService.java
+
+    Directory: C:\Users\purple\Desktop\Dev\Git\Java\Gaia-Structure\src\main\java\com\structurecreation\util
+
+Mode                 LastWriteTime         Length Name
+----                 -------------         ------ ----
+-a---           10/7/2025 11:53 AM           7292 AlertUtils.java
+-a---           10/9/2025  3:13 PM           2407 EnvironmentDetectionTest.java
+-a---           10/9/2025  3:13 PM          10119 TreeViewDragAndDrop.java
+
+    Directory: C:\Users\purple\Desktop\Dev\Git\Java\Gaia-Structure\src\main\resources
+
+Mode                 LastWriteTime         Length Name
+----                 -------------         ------ ----
+-a---           10/7/2025 11:53 AM            758 logback.xml
+
+    Directory: C:\Users\purple\Desktop\Dev\Git\Java\Gaia-Structure\src\main\resources\css
+
+Mode                 LastWriteTime         Length Name
+----                 -------------         ------ ----
+-a---           10/7/2025 12:48 PM          18446 styles.css
+
+    Directory: C:\Users\purple\Desktop\Dev\Git\Java\Gaia-Structure\src\main\resources\fxml
+
+Mode                 LastWriteTime         Length Name
+----                 -------------         ------ ----
+-a---           10/9/2025  3:13 PM          20385 main.fxml
+
+    Directory: C:\Users\purple\Desktop\Dev\Git\Java\Gaia-Structure\src\main\resources\images
+
+Mode                 LastWriteTime         Length Name
+----                 -------------         ------ ----
+-a---           10/7/2025  1:19 PM           4286 app-icon.ico
+-a---           10/7/2025  1:17 PM         404976 app-icon.png
+
+    Directory: C:\Users\purple\Desktop\Dev\Git\Java\Gaia-Structure\src\test\java\com\structurecreation\service
+
+Mode                 LastWriteTime         Length Name
+----                 -------------         ------ ----
+-a---           10/9/2025  3:13 PM           6814 DependencyPresetServiceTest.java
+-a---           10/9/2025  3:13 PM           4786 EnvironmentManagerTest.java
+
+    Directory: C:\Users\purple\Desktop\Dev\Git\Java\Gaia-Structure\src\test\java\com\structurecreation\service\generator
+
+Mode                 LastWriteTime         Length Name
+----                 -------------         ------ ----
+-a---           10/9/2025  3:59 PM          12599 DjangoProjectGeneratorTest.java
+-a---           10/9/2025  3:57 PM          20637 FlaskProjectGeneratorTest.java
+-a---           10/9/2025  3:59 PM           6981 NodeExpressProjectGeneratorTest.java
+-a---           10/9/2025  3:59 PM          17639 ProjectGeneratorIntegrationTest.java
+-a---           10/9/2025  3:59 PM           6301 ReactProjectGeneratorTest.java
+-a---           10/9/2025  3:59 PM           6435 SpringBootProjectGeneratorTest.java
+
+    Directory: C:\Users\purple\Desktop\Dev\Git\Java\Gaia-Structure\target\classes
+
+Mode                 LastWriteTime         Length Name
+----                 -------------         ------ ----
+-a---           10/7/2025 11:53 AM            758 logback.xml
+
+    Directory: C:\Users\purple\Desktop\Dev\Git\Java\Gaia-Structure\target\classes\com\structurecreation
+
+Mode                 LastWriteTime         Length Name
+----                 -------------         ------ ----
+-a---           10/9/2025  4:20 PM           5409 ProjectStructureCreatorApp.class
+-a---           10/9/2025  4:20 PM           5569 SplashScreen.class
+-a---           10/9/2025  4:20 PM           2497 SplashScreen$1.class
+
+    Directory: C:\Users\purple\Desktop\Dev\Git\Java\Gaia-Structure\target\classes\com\structurecreation\controller
+
+Mode                 LastWriteTime         Length Name
+----                 -------------         ------ ----
+-a---           10/9/2025  4:29 PM          12646 MainController.class
+
+    Directory: C:\Users\purple\Desktop\Dev\Git\Java\Gaia-Structure\target\classes\com\structurecreation\model
+
+Mode                 LastWriteTime         Length Name
+----                 -------------         ------ ----
+-a---           10/9/2025  4:22 PM           7535 Dependency.class
+-a---           10/9/2025  4:20 PM           5488 ProjectNode.class
+-a---           10/9/2025  4:20 PM           1313 ProjectNode$NodeType.class
+-a---           10/9/2025  4:20 PM           6006 ProjectStructure.class
+-a---           10/9/2025  4:20 PM           9641 ProjectTemplate.class
+
+    Directory: C:\Users\purple\Desktop\Dev\Git\Java\Gaia-Structure\target\classes\com\structurecreation\service
+
+Mode                 LastWriteTime         Length Name
+----                 -------------         ------ ----
+-a---           10/9/2025  4:20 PM          32702 DependencyResolverService.class
+-a---           10/9/2025  4:20 PM           1065 DependencyResolverService$ConflictResolution.class
+-a---           10/9/2025  4:20 PM           1702 DependencyResolverService$DependencySearchResult.class
+-a---           10/9/2025  4:20 PM           2168 DependencyResolverService$ResolvedDependency.class
+-a---           10/9/2025  4:20 PM           9392 EnvironmentManager.class
+-a---           10/9/2025  4:20 PM           1867 EnvironmentManager$EnvironmentInfo.class
+-a---           10/9/2025  4:20 PM          14530 ProjectCreationService.class
+-a---           10/9/2025  4:20 PM           1317 ProjectCreationService$CustomProjectGenerator.class
+-a---           10/9/2025  4:20 PM           4035 ProjectCreationService$GradleProjectGenerator.class
+-a---           10/9/2025  4:20 PM           5029 ProjectCreationService$MavenProjectGenerator.class
+-a---           10/9/2025  4:20 PM           3765 ProjectCreationService$NodeJsProjectGenerator.class
+-a---           10/9/2025  4:20 PM            462 ProjectCreationService$ProjectTemplateGenerator.class
+-a---           10/9/2025  4:20 PM           4481 ProjectCreationService$PythonProjectGenerator.class
+-a---           10/9/2025  4:20 PM           4911 ProjectCreationService$ReactProjectGenerator.class
+-a---           10/9/2025  4:20 PM           6426 ProjectCreationService$SpringBootProjectGenerator.class
+-a---           10/9/2025  4:20 PM          15208 TemplateService.class
+-a---           10/9/2025  4:20 PM          11075 TutorialService.class
+
+    Directory: C:\Users\purple\Desktop\Dev\Git\Java\Gaia-Structure\target\classes\com\structurecreation\service\generator
+
+Mode                 LastWriteTime         Length Name
+----                 -------------         ------ ----
+-a---           10/9/2025  4:29 PM         292341 DjangoProjectGenerator.class
+-a---           10/9/2025  4:29 PM           2315 DjangoProjectGenerator$DjangoProjectType.class
+-a---           10/9/2025  4:29 PM         134941 FlaskProjectGenerator.class
+-a---           10/9/2025  4:29 PM           2468 FlaskProjectGenerator$FlaskProjectType.class
+-a---           10/9/2025  4:31 PM          15731 GeneratorService.class
+-a---           10/9/2025  4:31 PM           4901 GeneratorService$ProjectType.class
+-a---           10/9/2025  4:29 PM          53482 NodeExpressProjectGenerator.class
+-a---           10/9/2025  4:29 PM           2367 NodeExpressProjectGenerator$NodeProjectType.class
+-a---           10/9/2025  4:29 PM          31960 ReactProjectGenerator.class
+-a---           10/9/2025  4:29 PM           2142 ReactProjectGenerator$ReactProjectType.class
+-a---           10/9/2025  4:29 PM          53791 SpringBootProjectGenerator.class
+-a---           10/9/2025  4:29 PM           2165 SpringBootProjectGenerator$SpringBootProjectType.class
+
+    Directory: C:\Users\purple\Desktop\Dev\Git\Java\Gaia-Structure\target\classes\com\structurecreation\service\repository
+
+Mode                 LastWriteTime         Length Name
+----                 -------------         ------ ----
+-a---           10/9/2025  4:20 PM          19522 MavenCentralRepository.class
+-a---           10/9/2025  4:20 PM           1397 MavenCentralRepository$CachedVersion.class
+-a---           10/9/2025  4:20 PM           1694 MavenCentralRepository$MavenArtifact.class
+-a---           10/9/2025  4:20 PM           1176 MavenCentralRepository$VersionUpdate.class
+-a---           10/9/2025  4:20 PM          17572 NpmRepository.class
+-a---           10/9/2025  4:20 PM            941 NpmRepository$CacheEntry.class
+-a---           10/9/2025  4:20 PM          17362 PyPiRepository.class
+-a---           10/9/2025  4:20 PM            945 PyPiRepository$CacheEntry.class
+-a---           10/9/2025  4:20 PM            991 RepositoryService.class
+
+    Directory: C:\Users\purple\Desktop\Dev\Git\Java\Gaia-Structure\target\classes\com\structurecreation\util
+
+Mode                 LastWriteTime         Length Name
+----                 -------------         ------ ----
+-a---           10/9/2025  4:20 PM           3742 EnvironmentDetectionTest.class
+-a---           10/9/2025  4:20 PM          12268 TreeViewDragAndDrop.class
+-a---           10/9/2025  4:20 PM           1543 TreeViewDragAndDrop$1.class
+
+    Directory: C:\Users\purple\Desktop\Dev\Git\Java\Gaia-Structure\target\classes\css
+
+Mode                 LastWriteTime         Length Name
+----                 -------------         ------ ----
+-a---           10/7/2025 12:48 PM          18446 styles.css
+
+    Directory: C:\Users\purple\Desktop\Dev\Git\Java\Gaia-Structure\target\classes\fxml
+
+Mode                 LastWriteTime         Length Name
+----                 -------------         ------ ----
+-a---           10/9/2025  3:13 PM          20385 main.fxml
+
+    Directory: C:\Users\purple\Desktop\Dev\Git\Java\Gaia-Structure\target\classes\images
+
+Mode                 LastWriteTime         Length Name
+----                 -------------         ------ ----
+-a---           10/7/2025  1:19 PM           4286 app-icon.ico
+-a---           10/7/2025  1:17 PM         404976 app-icon.png
+
+    Directory: C:\Users\purple\Desktop\Dev\Git\Java\Gaia-Structure\target\maven-status\maven-compiler-plugin\compile\default-compile
+
+Mode                 LastWriteTime         Length Name
+----                 -------------         ------ ----
+-a---           10/9/2025  4:20 PM           2786 createdFiles.lst
+-a---           10/9/2025  4:20 PM           3583 inputFiles.lst
+
+    Directory: C:\Users\purple\Desktop\Dev\Git\Java\Gaia-Structure\target\test-classes\com\structurecreation\service\generator
+
+Mode                 LastWriteTime         Length Name
+----                 -------------         ------ ----
+-a---           10/9/2025  4:22 PM           9968 DjangoProjectGeneratorTest.class
+-a---           10/9/2025  4:22 PM          14729 FlaskProjectGeneratorTest.class
+-a---           10/9/2025  4:29 PM           4909 NodeExpressProjectGeneratorTest.class
+-a---           10/9/2025  4:29 PM          14070 ProjectGeneratorIntegrationTest.class
+-a---           10/9/2025  4:29 PM           5901 ReactProjectGeneratorTest.class
+-a---           10/9/2025  4:29 PM           5204 SpringBootProjectGeneratorTest.class
+

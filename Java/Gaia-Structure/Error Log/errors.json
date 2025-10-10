@@ -1,0 +1,10 @@
+{
+    "timestamp": "",
+    "total_errors": 0,
+    "sources_checked": [
+        "maven_standard",
+        "maven_verbose",
+        "vscode_cli"
+    ],
+    "errors": []
+}

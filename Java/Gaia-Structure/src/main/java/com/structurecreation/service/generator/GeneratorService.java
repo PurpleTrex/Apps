@@ -5,7 +5,6 @@ import com.structurecreation.service.repository.NpmRepository;
 import com.structurecreation.service.repository.PyPiRepository;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
-import org.springframework.stereotype.Service;
 
 import java.util.*;
 
@@ -13,7 +12,6 @@ import java.util.*;
  * Service that manages all project generators and provides a unified interface
  * for generating different types of projects
  */
-@Service
 public class GeneratorService {
     private static final Logger logger = LoggerFactory.getLogger(GeneratorService.class);
 
@@ -39,6 +37,7 @@ public class GeneratorService {
         SPRING_BOOT_BASIC("Spring Boot - Basic REST API", "Java"),
         SPRING_BOOT_WEB("Spring Boot - Web Application", "Java"),
         SPRING_BOOT_MICROSERVICE("Spring Boot - Microservice", "Java"),
+        SPRING_BOOT_ML("Spring Boot - ML/AI API", "Java"),
         SPRING_BOOT_FULL_STACK("Spring Boot - Full Stack", "Java"),
 
         // JavaScript/TypeScript Projects
@@ -46,17 +45,20 @@ public class GeneratorService {
         REACT_REDUX("React - With Redux", "JavaScript"),
         REACT_CONTEXT("React - With Context API", "JavaScript"),
         REACT_TYPESCRIPT("React - TypeScript", "TypeScript"),
+        REACT_ML("React - ML/AI Integration", "JavaScript"),
         REACT_FULL_STACK("React - Full Stack", "JavaScript"),
 
         NODE_EXPRESS_BASIC("Node.js - Express API", "JavaScript"),
         NODE_EXPRESS_TYPESCRIPT("Node.js - TypeScript Express", "TypeScript"),
         NODE_EXPRESS_MVC("Node.js - MVC Pattern", "JavaScript"),
+        NODE_EXPRESS_REST_API("Node.js - REST API", "JavaScript"),
         NODE_EXPRESS_GRAPHQL("Node.js - GraphQL API", "JavaScript"),
         NODE_EXPRESS_REALTIME("Node.js - Real-time with WebSockets", "JavaScript"),
         NODE_EXPRESS_MICROSERVICE("Node.js - Microservice", "JavaScript"),
         NODE_EXPRESS_FULL_STACK("Node.js - Full Stack", "JavaScript"),
 
         // Python Projects
+        DJANGO_BASIC("Django - Basic Application", "Python"),
         DJANGO_REST_API("Django - REST API", "Python"),
         DJANGO_FULL_STACK("Django - Full Stack Web", "Python"),
         DJANGO_MICROSERVICE("Django - Microservice", "Python"),
@@ -126,6 +128,13 @@ public class GeneratorService {
                         SpringBootProjectGenerator.SpringBootProjectType.MICROSERVICE
                     );
                     break;
+                case SPRING_BOOT_ML:
+                    generatedProject = springBootGenerator.generateSpringBootProject(
+                        projectName,
+                        getOption(options, "groupId", "com.example"),
+                        SpringBootProjectGenerator.SpringBootProjectType.ML_API
+                    );
+                    break;
                 case SPRING_BOOT_FULL_STACK:
                     generatedProject = springBootGenerator.generateSpringBootProject(
                         projectName,
@@ -159,6 +168,12 @@ public class GeneratorService {
                         ReactProjectGenerator.ReactProjectType.WITH_TYPESCRIPT
                     );
                     break;
+                case REACT_ML:
+                    generatedProject = reactGenerator.generateReactProject(
+                        projectName,
+                        ReactProjectGenerator.ReactProjectType.ML_API
+                    );
+                    break;
                 case REACT_FULL_STACK:
                     generatedProject = reactGenerator.generateReactProject(
                         projectName,
@@ -183,6 +198,12 @@ public class GeneratorService {
                     generatedProject = nodeExpressGenerator.generateNodeExpressProject(
                         projectName,
                         NodeExpressProjectGenerator.NodeProjectType.MVC
+                    );
+                    break;
+                case NODE_EXPRESS_REST_API:
+                    generatedProject = nodeExpressGenerator.generateNodeExpressProject(
+                        projectName,
+                        NodeExpressProjectGenerator.NodeProjectType.REST_API
                     );
                     break;
                 case NODE_EXPRESS_GRAPHQL:
@@ -211,6 +232,12 @@ public class GeneratorService {
                     break;
 
                 // Django Projects
+                case DJANGO_BASIC:
+                    generatedProject = djangoGenerator.generateDjangoProject(
+                        projectName,
+                        DjangoProjectGenerator.DjangoProjectType.BASIC
+                    );
+                    break;
                 case DJANGO_REST_API:
                     generatedProject = djangoGenerator.generateDjangoProject(
                         projectName,

@@ -1,0 +1,2095 @@
+
+=== VS Code Errors ===
+[]
+
+=== Verbose Maven Output ===
+Apache Maven 3.9.11 (3e54c93a704957b63ee3494413a2b544fd3d825b)
+Maven home: C:\Users\purple\Desktop\Dev\Build Files\MVN\apache-maven-3.9.11-bin\apache-maven-3.9.11
+Java version: 21.0.8, vendor: Oracle Corporation, runtime: C:\Program Files\Java\jdk-21
+Default locale: en_US, platform encoding: UTF-8
+OS name: "windows 10", version: "10.0", arch: "amd64", family: "windows"
+[DEBUG] Created new class realm maven.api
+[DEBUG] Importing foreign packages into class realm maven.api
+[DEBUG]   Imported: javax.annotation.* < plexus.core
+[DEBUG]   Imported: javax.annotation.security.* < plexus.core
+[DEBUG]   Imported: javax.inject.* < plexus.core
+[DEBUG]   Imported: org.apache.maven.* < plexus.core
+[DEBUG]   Imported: org.apache.maven.artifact < plexus.core
+[DEBUG]   Imported: org.apache.maven.classrealm < plexus.core
+[DEBUG]   Imported: org.apache.maven.cli < plexus.core
+[DEBUG]   Imported: org.apache.maven.configuration < plexus.core
+[DEBUG]   Imported: org.apache.maven.exception < plexus.core
+[DEBUG]   Imported: org.apache.maven.execution < plexus.core
+[DEBUG]   Imported: org.apache.maven.execution.scope < plexus.core
+[DEBUG]   Imported: org.apache.maven.graph < plexus.core
+[DEBUG]   Imported: org.apache.maven.lifecycle < plexus.core
+[DEBUG]   Imported: org.apache.maven.model < plexus.core
+[DEBUG]   Imported: org.apache.maven.monitor < plexus.core
+[DEBUG]   Imported: org.apache.maven.plugin < plexus.core
+[DEBUG]   Imported: org.apache.maven.profiles < plexus.core
+[DEBUG]   Imported: org.apache.maven.project < plexus.core
+[DEBUG]   Imported: org.apache.maven.reporting < plexus.core
+[DEBUG]   Imported: org.apache.maven.repository < plexus.core
+[DEBUG]   Imported: org.apache.maven.rtinfo < plexus.core
+[DEBUG]   Imported: org.apache.maven.settings < plexus.core
+[DEBUG]   Imported: org.apache.maven.toolchain < plexus.core
+[DEBUG]   Imported: org.apache.maven.usability < plexus.core
+[DEBUG]   Imported: org.apache.maven.wagon.* < plexus.core
+[DEBUG]   Imported: org.apache.maven.wagon.authentication < plexus.core
+[DEBUG]   Imported: org.apache.maven.wagon.authorization < plexus.core
+[DEBUG]   Imported: org.apache.maven.wagon.events < plexus.core
+[DEBUG]   Imported: org.apache.maven.wagon.observers < plexus.core
+[DEBUG]   Imported: org.apache.maven.wagon.proxy < plexus.core
+[DEBUG]   Imported: org.apache.maven.wagon.repository < plexus.core
+[DEBUG]   Imported: org.apache.maven.wagon.resource < plexus.core
+[DEBUG]   Imported: org.codehaus.classworlds < plexus.core
+[DEBUG]   Imported: org.codehaus.plexus.* < plexus.core
+[DEBUG]   Imported: org.codehaus.plexus.classworlds < plexus.core
+[DEBUG]   Imported: org.codehaus.plexus.component < plexus.core
+[DEBUG]   Imported: org.codehaus.plexus.configuration < plexus.core
+[DEBUG]   Imported: org.codehaus.plexus.container < plexus.core
+[DEBUG]   Imported: org.codehaus.plexus.context < plexus.core
+[DEBUG]   Imported: org.codehaus.plexus.lifecycle < plexus.core
+[DEBUG]   Imported: org.codehaus.plexus.logging < plexus.core
+[DEBUG]   Imported: org.codehaus.plexus.personality < plexus.core
+[DEBUG]   Imported: org.codehaus.plexus.util.xml.Xpp3Dom < plexus.core
+[DEBUG]   Imported: org.codehaus.plexus.util.xml.pull.XmlPullParser < plexus.core
+[DEBUG]   Imported: org.codehaus.plexus.util.xml.pull.XmlPullParserException < plexus.core
+[DEBUG]   Imported: org.codehaus.plexus.util.xml.pull.XmlSerializer < plexus.core
+[DEBUG]   Imported: org.eclipse.aether.* < plexus.core
+[DEBUG]   Imported: org.eclipse.aether.artifact < plexus.core
+[DEBUG]   Imported: org.eclipse.aether.collection < plexus.core
+[DEBUG]   Imported: org.eclipse.aether.deployment < plexus.core
+[DEBUG]   Imported: org.eclipse.aether.graph < plexus.core
+[DEBUG]   Imported: org.eclipse.aether.impl < plexus.core
+[DEBUG]   Imported: org.eclipse.aether.installation < plexus.core
+[DEBUG]   Imported: org.eclipse.aether.internal.impl < plexus.core
+[DEBUG]   Imported: org.eclipse.aether.metadata < plexus.core
+[DEBUG]   Imported: org.eclipse.aether.repository < plexus.core
+[DEBUG]   Imported: org.eclipse.aether.resolution < plexus.core
+[DEBUG]   Imported: org.eclipse.aether.spi < plexus.core
+[DEBUG]   Imported: org.eclipse.aether.transfer < plexus.core
+[DEBUG]   Imported: org.eclipse.aether.util < plexus.core
+[DEBUG]   Imported: org.eclipse.aether.version < plexus.core
+[DEBUG]   Imported: org.fusesource.jansi.* < plexus.core
+[DEBUG]   Imported: org.slf4j.* < plexus.core
+[DEBUG]   Imported: org.slf4j.event.* < plexus.core
+[DEBUG]   Imported: org.slf4j.helpers.* < plexus.core
+[DEBUG]   Imported: org.slf4j.spi.* < plexus.core
+[DEBUG] Populating class realm maven.api
+[DEBUG] Created adapter factory; available factories [file-lock, rwlock-local, semaphore-local, noop]; available name mappers [discriminating, file-gav, file-hgav, file-static, gav, static]
+[INFO] Error stacktraces are turned on.
+[DEBUG] Message scheme: color
+[DEBUG] Message styles: debug info warning error success failure strong mojo project
+[DEBUG] Reading global settings from C:\Users\purple\Desktop\Dev\Build Files\MVN\apache-maven-3.9.11-bin\apache-maven-3.9.11\conf\settings.xml
+[DEBUG] Reading user settings from C:\Users\purple\.m2\settings.xml
+[DEBUG] Reading global toolchains from C:\Users\purple\Desktop\Dev\Build Files\MVN\apache-maven-3.9.11-bin\apache-maven-3.9.11\conf\toolchains.xml
+[DEBUG] Reading user toolchains from C:\Users\purple\.m2\toolchains.xml
+[DEBUG] Using local repository at C:\Users\purple\.m2\repository
+[DEBUG] Using manager EnhancedLocalRepositoryManager with priority 10.0 for C:\Users\purple\.m2\repository
+[INFO] Scanning for projects...
+[DEBUG] Extension realms for project com.structurecreation:project-structure-creator:jar:1.0.0: (none)
+[DEBUG] Looking up lifecycle mappings for packaging jar from ClassRealm[plexus.core, parent: null]
+[DEBUG] === REACTOR BUILD PLAN ================================================
+[DEBUG] Project: com.structurecreation:project-structure-creator:jar:1.0.0
+[DEBUG] Tasks:   [clean, compile]
+[DEBUG] Style:   Regular
+[DEBUG] =======================================================================
+[INFO] 
+[INFO] ----------< com.structurecreation:project-structure-creator >-----------
+[INFO] Building Project Structure Creator 1.0.0
+[INFO]   from pom.xml
+[INFO] --------------------------------[ jar ]---------------------------------
+[DEBUG] Lifecycle clean -> [pre-clean, clean, post-clean]
+[DEBUG] Lifecycle default -> [validate, initialize, generate-sources, process-sources, generate-resources, process-resources, compile, process-classes, generate-test-sources, process-test-sources, generate-test-resources, process-test-resources, test-compile, process-test-classes, test, prepare-package, package, pre-integration-test, integration-test, post-integration-test, verify, install, deploy]
+[DEBUG] Lifecycle site -> [pre-site, site, post-site, site-deploy]
+[DEBUG] Lifecycle clean -> [pre-clean, clean, post-clean]
+[DEBUG] Lifecycle default -> [validate, initialize, generate-sources, process-sources, generate-resources, process-resources, compile, process-classes, generate-test-sources, process-test-sources, generate-test-resources, process-test-resources, test-compile, process-test-classes, test, prepare-package, package, pre-integration-test, integration-test, post-integration-test, verify, install, deploy]
+[DEBUG] Lifecycle site -> [pre-site, site, post-site, site-deploy]
+[DEBUG] Creating adapter using nameMapper 'gav' and factory 'rwlock-local'
+[DEBUG] Lifecycle clean -> [pre-clean, clean, post-clean]
+[DEBUG] Lifecycle default -> [validate, initialize, generate-sources, process-sources, generate-resources, process-resources, compile, process-classes, generate-test-sources, process-test-sources, generate-test-resources, process-test-resources, test-compile, process-test-classes, test, prepare-package, package, pre-integration-test, integration-test, post-integration-test, verify, install, deploy]
+[DEBUG] Lifecycle site -> [pre-site, site, post-site, site-deploy]
+[DEBUG] Lifecycle clean -> [pre-clean, clean, post-clean]
+[DEBUG] Lifecycle default -> [validate, initialize, generate-sources, process-sources, generate-resources, process-resources, compile, process-classes, generate-test-sources, process-test-sources, generate-test-resources, process-test-resources, test-compile, process-test-classes, test, prepare-package, package, pre-integration-test, integration-test, post-integration-test, verify, install, deploy]
+[DEBUG] Lifecycle site -> [pre-site, site, post-site, site-deploy]
+[DEBUG] Lifecycle clean -> [pre-clean, clean, post-clean]
+[DEBUG] Lifecycle default -> [validate, initialize, generate-sources, process-sources, generate-resources, process-resources, compile, process-classes, generate-test-sources, process-test-sources, generate-test-resources, process-test-resources, test-compile, process-test-classes, test, prepare-package, package, pre-integration-test, integration-test, post-integration-test, verify, install, deploy]
+[DEBUG] Lifecycle site -> [pre-site, site, post-site, site-deploy]
+[DEBUG] === PROJECT BUILD PLAN ================================================
+[DEBUG] Project:       com.structurecreation:project-structure-creator:1.0.0
+[DEBUG] Dependencies (collect): []
+[DEBUG] Dependencies (resolve): [compile]
+[DEBUG] Repositories (dependencies): [central (https://repo.maven.apache.org/maven2, default, releases)]
+[DEBUG] Repositories (plugins)     : [central (https://repo.maven.apache.org/maven2, default, releases)]
+[DEBUG] -----------------------------------------------------------------------
+[DEBUG] Goal:          org.apache.maven.plugins:maven-clean-plugin:3.2.0:clean (default-clean)
+[DEBUG] Style:         Regular
+[DEBUG] Configuration: <?xml version="1.0" encoding="UTF-8"?>
+<configuration>
+  <directory default-value="${project.build.directory}"/>
+  <excludeDefaultDirectories default-value="false">${maven.clean.excludeDefaultDirectories}</excludeDefaultDirectories>
+  <failOnError default-value="true">${maven.clean.failOnError}</failOnError>
+  <fast default-value="false">${maven.clean.fast}</fast>
+  <fastDir>${maven.clean.fastDir}</fastDir>
+  <fastMode default-value="background">${maven.clean.fastMode}</fastMode>
+  <followSymLinks default-value="false">${maven.clean.followSymLinks}</followSymLinks>
+  <outputDirectory default-value="${project.build.outputDirectory}"/>
+  <reportDirectory default-value="${project.build.outputDirectory}"/>
+  <retryOnError default-value="true">${maven.clean.retryOnError}</retryOnError>
+  <session default-value="${session}"/>
+  <skip default-value="false">${maven.clean.skip}</skip>
+  <testOutputDirectory default-value="${project.build.testOutputDirectory}"/>
+  <verbose>${maven.clean.verbose}</verbose>
+</configuration>
+[DEBUG] -----------------------------------------------------------------------
+[DEBUG] Goal:          org.apache.maven.plugins:maven-resources-plugin:3.3.1:resources (default-resources)
+[DEBUG] Style:         Regular
+[DEBUG] Configuration: <?xml version="1.0" encoding="UTF-8"?>
+<configuration>
+  <addDefaultExcludes default-value="true"/>
+  <buildFilters default-value="${project.build.filters}"/>
+  <encoding default-value="${project.build.sourceEncoding}"/>
+  <escapeWindowsPaths default-value="true"/>
+  <fileNameFiltering default-value="false"/>
+  <includeEmptyDirs default-value="false"/>
+  <outputDirectory default-value="${project.build.outputDirectory}"/>
+  <overwrite default-value="false"/>
+  <project default-value="${project}"/>
+  <resources default-value="${project.resources}"/>
+  <session default-value="${session}"/>
+  <skip default-value="false">${maven.resources.skip}</skip>
+  <supportMultiLineFiltering default-value="false"/>
+  <useBuildFilters default-value="true"/>
+  <useDefaultDelimiters default-value="true"/>
+</configuration>
+[DEBUG] -----------------------------------------------------------------------
+[DEBUG] Goal:          org.apache.maven.plugins:maven-compiler-plugin:3.11.0:compile (default-compile)
+[DEBUG] Style:         Regular
+[DEBUG] Configuration: <?xml version="1.0" encoding="UTF-8"?>
+<configuration>
+  <basedir default-value="${basedir}"/>
+  <buildDirectory default-value="${project.build.directory}"/>
+  <compilePath default-value="${project.compileClasspathElements}"/>
+  <compileSourceRoots default-value="${project.compileSourceRoots}"/>
+  <compilerId default-value="javac">${maven.compiler.compilerId}</compilerId>
+  <compilerReuseStrategy default-value="${reuseCreated}">${maven.compiler.compilerReuseStrategy}</compilerReuseStrategy>
+  <compilerVersion>${maven.compiler.compilerVersion}</compilerVersion>
+  <createMissingPackageInfoClass default-value="true">${maven.compiler.createMissingPackageInfoClass}</createMissingPackageInfoClass>
+  <debug default-value="true">${maven.compiler.debug}</debug>
+  <debugFileName default-value="javac"/>
+  <debuglevel>${maven.compiler.debuglevel}</debuglevel>
+  <enablePreview default-value="false">${maven.compiler.enablePreview}</enablePreview>
+  <encoding default-value="${project.build.sourceEncoding}">${encoding}</encoding>
+  <executable>${maven.compiler.executable}</executable>
+  <failOnError default-value="true">${maven.compiler.failOnError}</failOnError>
+  <failOnWarning default-value="false">${maven.compiler.failOnWarning}</failOnWarning>
+  <forceJavacCompilerUse default-value="false">${maven.compiler.forceJavacCompilerUse}</forceJavacCompilerUse>
+  <fork default-value="false">${maven.compiler.fork}</fork>
+  <generatedSourcesDirectory default-value="${project.build.directory}/generated-sources/annotations"/>
+  <implicit>${maven.compiler.implicit}</implicit>
+  <maxmem>${maven.compiler.maxmem}</maxmem>
+  <meminitial>${maven.compiler.meminitial}</meminitial>
+  <mojoExecution default-value="${mojoExecution}"/>
+  <optimize default-value="false">${maven.compiler.optimize}</optimize>
+  <outputDirectory default-value="${project.build.outputDirectory}"/>
+  <parameters default-value="false">${maven.compiler.parameters}</parameters>
+  <project default-value="${project}"/>
+  <projectArtifact default-value="${project.artifact}"/>
+  <release>${maven.compiler.release}</release>
+  <session default-value="${session}"/>
+  <showCompilationChanges default-value="false">${maven.compiler.showCompilationChanges}</showCompilationChanges>
+  <showDeprecation default-value="false">${maven.compiler.showDeprecation}</showDeprecation>
+  <showWarnings default-value="true">${maven.compiler.showWarnings}</showWarnings>
+  <skipMain>${maven.main.skip}</skipMain>
+  <skipMultiThreadWarning default-value="false">${maven.compiler.skipMultiThreadWarning}</skipMultiThreadWarning>
+  <source default-value="1.8">17</source>
+  <staleMillis default-value="0">${lastModGranularityMs}</staleMillis>
+  <target default-value="1.8">17</target>
+  <useIncrementalCompilation default-value="true">${maven.compiler.useIncrementalCompilation}</useIncrementalCompilation>
+  <verbose default-value="false">${maven.compiler.verbose}</verbose>
+</configuration>
+[DEBUG] =======================================================================
+[WARNING] 6 problems were encountered while building the effective model for org.openjfx:javafx-controls:jar:19.0.2.1 during dependency collection step for project. Path to offending node from root:
+ -> com.structurecreation:project-structure-creator:jar:1.0.0
+ => org.openjfx:javafx-controls:jar:19.0.2.1 (compile)
+Problems
+* 'profiles.profile.id' Duplicate activation for profile linux-x86_64 @ org.openjfx:javafx:19.0.2.1
+* 'profiles.profile.id' Duplicate activation for profile linux-aarch64 @ org.openjfx:javafx:19.0.2.1
+* 'profiles.profile.id' Duplicate activation for profile macosx-x86_64 @ org.openjfx:javafx:19.0.2.1
+* 'profiles.profile.id' Duplicate activation for profile macosx-aarch64 @ org.openjfx:javafx:19.0.2.1
+* 'profiles.profile.id' Duplicate activation for profile windows-x86_64 @ org.openjfx:javafx:19.0.2.1
+* 'profiles.profile.id' Duplicate activation for profile windows-x86 @ org.openjfx:javafx:19.0.2.1
+[DEBUG] Dependency collection stats {ConflictMarker.analyzeTime=567600, ConflictMarker.markTime=91100, ConflictMarker.nodeCount=46, ConflictIdSorter.graphTime=309800, ConflictIdSorter.topsortTime=296900, ConflictIdSorter.conflictIdCount=25, ConflictIdSorter.conflictIdCycleCount=4, ConflictResolver.totalTime=3861400, ConflictResolver.conflictItemCount=40, DfDependencyCollector.collectTime=107008700, DfDependencyCollector.transformTime=6823200}
+[DEBUG] com.structurecreation:project-structure-creator:jar:1.0.0
+[DEBUG]    org.openjfx:javafx-controls:jar:19.0.2.1:compile
+[DEBUG]       org.openjfx:javafx-controls:jar:win:19.0.2.1:compile
+[DEBUG]       org.openjfx:javafx-graphics:jar:19.0.2.1:compile
+[DEBUG]          org.openjfx:javafx-graphics:jar:win:19.0.2.1:compile
+[DEBUG]          org.openjfx:javafx-base:jar:19.0.2.1:compile
+[DEBUG]             org.openjfx:javafx-base:jar:win:19.0.2.1:compile
+[DEBUG]    org.openjfx:javafx-fxml:jar:19.0.2.1:compile
+[DEBUG]       org.openjfx:javafx-fxml:jar:win:19.0.2.1:compile
+[DEBUG]    com.fasterxml.jackson.core:jackson-databind:jar:2.15.2:compile
+[DEBUG]       com.fasterxml.jackson.core:jackson-annotations:jar:2.15.2:compile
+[DEBUG]       com.fasterxml.jackson.core:jackson-core:jar:2.15.2:compile
+[DEBUG]    com.fasterxml.jackson.datatype:jackson-datatype-jsr310:jar:2.15.2:compile
+[DEBUG]    commons-io:commons-io:jar:2.11.0:compile
+[DEBUG]    org.apache.commons:commons-lang3:jar:3.12.0:compile
+[DEBUG]    ch.qos.logback:logback-classic:jar:1.4.8:compile
+[DEBUG]       ch.qos.logback:logback-core:jar:1.4.8:compile
+[DEBUG]       org.slf4j:slf4j-api:jar:2.0.7:compile
+[DEBUG]    org.junit.jupiter:junit-jupiter:jar:5.9.3:test
+[DEBUG]       org.junit.jupiter:junit-jupiter-api:jar:5.9.3:test
+[DEBUG]          org.opentest4j:opentest4j:jar:1.2.0:test
+[DEBUG]          org.junit.platform:junit-platform-commons:jar:1.9.3:test
+[DEBUG]       org.junit.jupiter:junit-jupiter-engine:jar:5.9.3:test
+[DEBUG]          org.junit.platform:junit-platform-engine:jar:1.9.3:test
+[DEBUG]    org.junit.jupiter:junit-jupiter-params:jar:5.9.3:test
+[DEBUG]       org.apiguardian:apiguardian-api:jar:1.1.2:test
+[INFO] 
+[INFO] --- clean:3.2.0:clean (default-clean) @ project-structure-creator ---
+[DEBUG] Dependency collection stats {ConflictMarker.analyzeTime=22900, ConflictMarker.markTime=44100, ConflictMarker.nodeCount=3, ConflictIdSorter.graphTime=7000, ConflictIdSorter.topsortTime=12800, ConflictIdSorter.conflictIdCount=3, ConflictIdSorter.conflictIdCycleCount=0, ConflictResolver.totalTime=142000, ConflictResolver.conflictItemCount=3, DfDependencyCollector.collectTime=17588100, DfDependencyCollector.transformTime=241900}
+[DEBUG] org.apache.maven.plugins:maven-clean-plugin:jar:3.2.0
+[DEBUG]    org.apache.maven.shared:maven-shared-utils:jar:3.3.4:compile
+[DEBUG]       commons-io:commons-io:jar:2.6:compile
+[DEBUG] Created new class realm plugin>org.apache.maven.plugins:maven-clean-plugin:3.2.0
+[DEBUG] Importing foreign packages into class realm plugin>org.apache.maven.plugins:maven-clean-plugin:3.2.0
+[DEBUG]   Imported:  < maven.api
+[DEBUG] Populating class realm plugin>org.apache.maven.plugins:maven-clean-plugin:3.2.0
+[DEBUG]   Included: org.apache.maven.plugins:maven-clean-plugin:jar:3.2.0
+[DEBUG]   Included: org.apache.maven.shared:maven-shared-utils:jar:3.3.4
+[DEBUG]   Included: commons-io:commons-io:jar:2.6
+[DEBUG] Loading mojo org.apache.maven.plugins:maven-clean-plugin:3.2.0:clean from plugin realm ClassRealm[plugin>org.apache.maven.plugins:maven-clean-plugin:3.2.0, parent: jdk.internal.loader.ClassLoaders$AppClassLoader@70dea4e]
+[DEBUG] Configuring mojo execution 'org.apache.maven.plugins:maven-clean-plugin:3.2.0:clean:default-clean' with basic configurator -->
+[DEBUG]   (f) directory = C:\Users\purple\Desktop\Dev\Git\Java\Gaia-Structure\target
+[DEBUG]   (f) excludeDefaultDirectories = false
+[DEBUG]   (f) failOnError = true
+[DEBUG]   (f) fast = false
+[DEBUG]   (f) fastMode = background
+[DEBUG]   (f) followSymLinks = false
+[DEBUG]   (f) outputDirectory = C:\Users\purple\Desktop\Dev\Git\Java\Gaia-Structure\target\classes
+[DEBUG]   (f) reportDirectory = C:\Users\purple\Desktop\Dev\Git\Java\Gaia-Structure\target\classes
+[DEBUG]   (f) retryOnError = true
+[DEBUG]   (f) session = org.apache.maven.execution.MavenSession@7efe7b87
+[DEBUG]   (f) skip = false
+[DEBUG]   (f) testOutputDirectory = C:\Users\purple\Desktop\Dev\Git\Java\Gaia-Structure\target\test-classes
+[DEBUG] -- end configuration --
+[INFO] Deleting C:\Users\purple\Desktop\Dev\Git\Java\Gaia-Structure\target
+[INFO] Deleting file C:\Users\purple\Desktop\Dev\Git\Java\Gaia-Structure\target\maven-status\maven-compiler-plugin\compile\default-compile\inputFiles.lst
+[INFO] Deleting file C:\Users\purple\Desktop\Dev\Git\Java\Gaia-Structure\target\maven-status\maven-compiler-plugin\compile\default-compile\createdFiles.lst
+[INFO] Deleting directory C:\Users\purple\Desktop\Dev\Git\Java\Gaia-Structure\target\maven-status\maven-compiler-plugin\compile\default-compile
+[INFO] Deleting directory C:\Users\purple\Desktop\Dev\Git\Java\Gaia-Structure\target\maven-status\maven-compiler-plugin\compile
+[INFO] Deleting directory C:\Users\purple\Desktop\Dev\Git\Java\Gaia-Structure\target\maven-status\maven-compiler-plugin
+[INFO] Deleting directory C:\Users\purple\Desktop\Dev\Git\Java\Gaia-Structure\target\maven-status
+[INFO] Deleting directory C:\Users\purple\Desktop\Dev\Git\Java\Gaia-Structure\target\generated-sources\annotations
+[INFO] Deleting directory C:\Users\purple\Desktop\Dev\Git\Java\Gaia-Structure\target\generated-sources
+[INFO] Deleting file C:\Users\purple\Desktop\Dev\Git\Java\Gaia-Structure\target\classes\logback.xml
+[INFO] Deleting file C:\Users\purple\Desktop\Dev\Git\Java\Gaia-Structure\target\classes\images\app-icon.png
+[INFO] Deleting file C:\Users\purple\Desktop\Dev\Git\Java\Gaia-Structure\target\classes\images\app-icon.ico
+[INFO] Deleting directory C:\Users\purple\Desktop\Dev\Git\Java\Gaia-Structure\target\classes\images
+[INFO] Deleting file C:\Users\purple\Desktop\Dev\Git\Java\Gaia-Structure\target\classes\fxml\main.fxml
+[INFO] Deleting directory C:\Users\purple\Desktop\Dev\Git\Java\Gaia-Structure\target\classes\fxml
+[INFO] Deleting file C:\Users\purple\Desktop\Dev\Git\Java\Gaia-Structure\target\classes\css\styles.css
+[INFO] Deleting directory C:\Users\purple\Desktop\Dev\Git\Java\Gaia-Structure\target\classes\css
+[INFO] Deleting file C:\Users\purple\Desktop\Dev\Git\Java\Gaia-Structure\target\classes\com\structurecreation\util\TreeViewDragAndDrop.class
+[INFO] Deleting file C:\Users\purple\Desktop\Dev\Git\Java\Gaia-Structure\target\classes\com\structurecreation\util\TreeViewDragAndDrop$1.class
+[INFO] Deleting file C:\Users\purple\Desktop\Dev\Git\Java\Gaia-Structure\target\classes\com\structurecreation\util\EnvironmentDetectionTest.class
+[INFO] Deleting file C:\Users\purple\Desktop\Dev\Git\Java\Gaia-Structure\target\classes\com\structurecreation\util\AlertUtils.class
+[INFO] Deleting directory C:\Users\purple\Desktop\Dev\Git\Java\Gaia-Structure\target\classes\com\structurecreation\util
+[INFO] Deleting file C:\Users\purple\Desktop\Dev\Git\Java\Gaia-Structure\target\classes\com\structurecreation\SplashScreen.class
+[INFO] Deleting file C:\Users\purple\Desktop\Dev\Git\Java\Gaia-Structure\target\classes\com\structurecreation\SplashScreen$1.class
+[INFO] Deleting file C:\Users\purple\Desktop\Dev\Git\Java\Gaia-Structure\target\classes\com\structurecreation\service\TutorialService.class
+[INFO] Deleting file C:\Users\purple\Desktop\Dev\Git\Java\Gaia-Structure\target\classes\com\structurecreation\service\TemplateService.class
+[INFO] Deleting file C:\Users\purple\Desktop\Dev\Git\Java\Gaia-Structure\target\classes\com\structurecreation\service\repository\RepositoryService.class
+[INFO] Deleting file C:\Users\purple\Desktop\Dev\Git\Java\Gaia-Structure\target\classes\com\structurecreation\service\repository\PyPiRepository.class
+[INFO] Deleting file C:\Users\purple\Desktop\Dev\Git\Java\Gaia-Structure\target\classes\com\structurecreation\service\repository\PyPiRepository$CacheEntry.class
+[INFO] Deleting file C:\Users\purple\Desktop\Dev\Git\Java\Gaia-Structure\target\classes\com\structurecreation\service\repository\NpmRepository.class
+[INFO] Deleting file C:\Users\purple\Desktop\Dev\Git\Java\Gaia-Structure\target\classes\com\structurecreation\service\repository\NpmRepository$CacheEntry.class
+[INFO] Deleting file C:\Users\purple\Desktop\Dev\Git\Java\Gaia-Structure\target\classes\com\structurecreation\service\repository\MavenCentralRepository.class
+[INFO] Deleting file C:\Users\purple\Desktop\Dev\Git\Java\Gaia-Structure\target\classes\com\structurecreation\service\repository\MavenCentralRepository$VersionUpdate.class
+[INFO] Deleting file C:\Users\purple\Desktop\Dev\Git\Java\Gaia-Structure\target\classes\com\structurecreation\service\repository\MavenCentralRepository$MavenArtifact.class
+[INFO] Deleting file C:\Users\purple\Desktop\Dev\Git\Java\Gaia-Structure\target\classes\com\structurecreation\service\repository\MavenCentralRepository$CachedVersion.class
+[INFO] Deleting directory C:\Users\purple\Desktop\Dev\Git\Java\Gaia-Structure\target\classes\com\structurecreation\service\repository
+[INFO] Deleting file C:\Users\purple\Desktop\Dev\Git\Java\Gaia-Structure\target\classes\com\structurecreation\service\ProjectCreationService.class
+[INFO] Deleting file C:\Users\purple\Desktop\Dev\Git\Java\Gaia-Structure\target\classes\com\structurecreation\service\ProjectCreationService$SpringBootProjectGenerator.class
+[INFO] Deleting file C:\Users\purple\Desktop\Dev\Git\Java\Gaia-Structure\target\classes\com\structurecreation\service\ProjectCreationService$ReactProjectGenerator.class
+[INFO] Deleting file C:\Users\purple\Desktop\Dev\Git\Java\Gaia-Structure\target\classes\com\structurecreation\service\ProjectCreationService$PythonProjectGenerator.class
+[INFO] Deleting file C:\Users\purple\Desktop\Dev\Git\Java\Gaia-Structure\target\classes\com\structurecreation\service\ProjectCreationService$ProjectTemplateGenerator.class
+[INFO] Deleting file C:\Users\purple\Desktop\Dev\Git\Java\Gaia-Structure\target\classes\com\structurecreation\service\ProjectCreationService$NodeJsProjectGenerator.class
+[INFO] Deleting file C:\Users\purple\Desktop\Dev\Git\Java\Gaia-Structure\target\classes\com\structurecreation\service\ProjectCreationService$MavenProjectGenerator.class
+[INFO] Deleting file C:\Users\purple\Desktop\Dev\Git\Java\Gaia-Structure\target\classes\com\structurecreation\service\ProjectCreationService$GradleProjectGenerator.class
+[INFO] Deleting file C:\Users\purple\Desktop\Dev\Git\Java\Gaia-Structure\target\classes\com\structurecreation\service\ProjectCreationService$CustomProjectGenerator.class
+[INFO] Deleting file C:\Users\purple\Desktop\Dev\Git\Java\Gaia-Structure\target\classes\com\structurecreation\service\generator\SpringBootProjectGenerator.class
+[INFO] Deleting file C:\Users\purple\Desktop\Dev\Git\Java\Gaia-Structure\target\classes\com\structurecreation\service\generator\SpringBootProjectGenerator$SpringBootProjectType.class
+[INFO] Deleting file C:\Users\purple\Desktop\Dev\Git\Java\Gaia-Structure\target\classes\com\structurecreation\service\generator\ReactProjectGenerator.class
+[INFO] Deleting file C:\Users\purple\Desktop\Dev\Git\Java\Gaia-Structure\target\classes\com\structurecreation\service\generator\ReactProjectGenerator$ReactProjectType.class
+[INFO] Deleting file C:\Users\purple\Desktop\Dev\Git\Java\Gaia-Structure\target\classes\com\structurecreation\service\generator\ProjectGenerator.class
+[INFO] Deleting file C:\Users\purple\Desktop\Dev\Git\Java\Gaia-Structure\target\classes\com\structurecreation\service\generator\NodeExpressProjectGenerator.class
+[INFO] Deleting file C:\Users\purple\Desktop\Dev\Git\Java\Gaia-Structure\target\classes\com\structurecreation\service\generator\NodeExpressProjectGenerator$NodeProjectType.class
+[INFO] Deleting file C:\Users\purple\Desktop\Dev\Git\Java\Gaia-Structure\target\classes\com\structurecreation\service\generator\GeneratorService.class
+[INFO] Deleting file C:\Users\purple\Desktop\Dev\Git\Java\Gaia-Structure\target\classes\com\structurecreation\service\generator\GeneratorService$ProjectType.class
+[INFO] Deleting file C:\Users\purple\Desktop\Dev\Git\Java\Gaia-Structure\target\classes\com\structurecreation\service\generator\FlaskProjectGenerator.class
+[INFO] Deleting file C:\Users\purple\Desktop\Dev\Git\Java\Gaia-Structure\target\classes\com\structurecreation\service\generator\FlaskProjectGenerator$FlaskProjectType.class
+[INFO] Deleting file C:\Users\purple\Desktop\Dev\Git\Java\Gaia-Structure\target\classes\com\structurecreation\service\generator\DjangoProjectGenerator.class
+[INFO] Deleting file C:\Users\purple\Desktop\Dev\Git\Java\Gaia-Structure\target\classes\com\structurecreation\service\generator\DjangoProjectGenerator$DjangoProjectType.class
+[INFO] Deleting file C:\Users\purple\Desktop\Dev\Git\Java\Gaia-Structure\target\classes\com\structurecreation\service\generator\AbstractProjectGenerator.class
+[INFO] Deleting directory C:\Users\purple\Desktop\Dev\Git\Java\Gaia-Structure\target\classes\com\structurecreation\service\generator
+[INFO] Deleting file C:\Users\purple\Desktop\Dev\Git\Java\Gaia-Structure\target\classes\com\structurecreation\service\FileTreeGenerator.class
+[INFO] Deleting file C:\Users\purple\Desktop\Dev\Git\Java\Gaia-Structure\target\classes\com\structurecreation\service\EnvironmentManager.class
+[INFO] Deleting file C:\Users\purple\Desktop\Dev\Git\Java\Gaia-Structure\target\classes\com\structurecreation\service\EnvironmentManager$EnvironmentInfo.class
+[INFO] Deleting file C:\Users\purple\Desktop\Dev\Git\Java\Gaia-Structure\target\classes\com\structurecreation\service\DependencyResolverService.class
+[INFO] Deleting file C:\Users\purple\Desktop\Dev\Git\Java\Gaia-Structure\target\classes\com\structurecreation\service\DependencyResolverService$ResolvedDependency.class
+[INFO] Deleting file C:\Users\purple\Desktop\Dev\Git\Java\Gaia-Structure\target\classes\com\structurecreation\service\DependencyResolverService$DependencySearchResult.class
+[INFO] Deleting file C:\Users\purple\Desktop\Dev\Git\Java\Gaia-Structure\target\classes\com\structurecreation\service\DependencyResolverService$ConflictResolution.class
+[INFO] Deleting file C:\Users\purple\Desktop\Dev\Git\Java\Gaia-Structure\target\classes\com\structurecreation\service\DependencyPresetService.class
+[INFO] Deleting file C:\Users\purple\Desktop\Dev\Git\Java\Gaia-Structure\target\classes\com\structurecreation\service\DependencyPresetService$DependencyPreset.class
+[INFO] Deleting directory C:\Users\purple\Desktop\Dev\Git\Java\Gaia-Structure\target\classes\com\structurecreation\service
+[INFO] Deleting file C:\Users\purple\Desktop\Dev\Git\Java\Gaia-Structure\target\classes\com\structurecreation\ProjectStructureCreatorApp.class
+[INFO] Deleting file C:\Users\purple\Desktop\Dev\Git\Java\Gaia-Structure\target\classes\com\structurecreation\model\ProjectTemplate.class
+[INFO] Deleting file C:\Users\purple\Desktop\Dev\Git\Java\Gaia-Structure\target\classes\com\structurecreation\model\ProjectStructure.class
+[INFO] Deleting file C:\Users\purple\Desktop\Dev\Git\Java\Gaia-Structure\target\classes\com\structurecreation\model\ProjectNode.class
+[INFO] Deleting file C:\Users\purple\Desktop\Dev\Git\Java\Gaia-Structure\target\classes\com\structurecreation\model\ProjectNode$NodeType.class
+[INFO] Deleting file C:\Users\purple\Desktop\Dev\Git\Java\Gaia-Structure\target\classes\com\structurecreation\model\Dependency.class
+[INFO] Deleting directory C:\Users\purple\Desktop\Dev\Git\Java\Gaia-Structure\target\classes\com\structurecreation\model
+[INFO] Deleting file C:\Users\purple\Desktop\Dev\Git\Java\Gaia-Structure\target\classes\com\structurecreation\controller\MainController.class
+[INFO] Deleting file C:\Users\purple\Desktop\Dev\Git\Java\Gaia-Structure\target\classes\com\structurecreation\controller\MainController$6.class
+[INFO] Deleting file C:\Users\purple\Desktop\Dev\Git\Java\Gaia-Structure\target\classes\com\structurecreation\controller\MainController$5.class
+[INFO] Deleting file C:\Users\purple\Desktop\Dev\Git\Java\Gaia-Structure\target\classes\com\structurecreation\controller\MainController$4.class
+[INFO] Deleting file C:\Users\purple\Desktop\Dev\Git\Java\Gaia-Structure\target\classes\com\structurecreation\controller\MainController$3.class
+[INFO] Deleting file C:\Users\purple\Desktop\Dev\Git\Java\Gaia-Structure\target\classes\com\structurecreation\controller\MainController$2.class
+[INFO] Deleting file C:\Users\purple\Desktop\Dev\Git\Java\Gaia-Structure\target\classes\com\structurecreation\controller\MainController$1.class
+[INFO] Deleting directory C:\Users\purple\Desktop\Dev\Git\Java\Gaia-Structure\target\classes\com\structurecreation\controller
+[INFO] Deleting directory C:\Users\purple\Desktop\Dev\Git\Java\Gaia-Structure\target\classes\com\structurecreation
+[INFO] Deleting directory C:\Users\purple\Desktop\Dev\Git\Java\Gaia-Structure\target\classes\com
+[INFO] Deleting directory C:\Users\purple\Desktop\Dev\Git\Java\Gaia-Structure\target\classes
+[INFO] Deleting directory C:\Users\purple\Desktop\Dev\Git\Java\Gaia-Structure\target
+[DEBUG] Skipping non-existing directory C:\Users\purple\Desktop\Dev\Git\Java\Gaia-Structure\target\classes
+[DEBUG] Skipping non-existing directory C:\Users\purple\Desktop\Dev\Git\Java\Gaia-Structure\target\test-classes
+[DEBUG] Skipping non-existing directory C:\Users\purple\Desktop\Dev\Git\Java\Gaia-Structure\target\classes
+[INFO] 
+[INFO] --- resources:3.3.1:resources (default-resources) @ project-structure-creator ---
+[DEBUG] Dependency collection stats {ConflictMarker.analyzeTime=56300, ConflictMarker.markTime=43700, ConflictMarker.nodeCount=13, ConflictIdSorter.graphTime=15100, ConflictIdSorter.topsortTime=9900, ConflictIdSorter.conflictIdCount=9, ConflictIdSorter.conflictIdCycleCount=0, ConflictResolver.totalTime=291800, ConflictResolver.conflictItemCount=13, DfDependencyCollector.collectTime=27718200, DfDependencyCollector.transformTime=431300}
+[DEBUG] org.apache.maven.plugins:maven-resources-plugin:jar:3.3.1
+[DEBUG]    org.codehaus.plexus:plexus-interpolation:jar:1.26:runtime
+[DEBUG]    org.codehaus.plexus:plexus-utils:jar:3.5.1:compile
+[DEBUG]    org.apache.maven.shared:maven-filtering:jar:3.3.1:compile
+[DEBUG]       javax.inject:javax.inject:jar:1:compile
+[DEBUG]       org.slf4j:slf4j-api:jar:1.7.36:compile
+[DEBUG]       org.sonatype.plexus:plexus-build-api:jar:0.0.7:compile
+[DEBUG]    commons-io:commons-io:jar:2.11.0:compile
+[DEBUG]    org.apache.commons:commons-lang3:jar:3.12.0:compile
+[DEBUG] Created new class realm plugin>org.apache.maven.plugins:maven-resources-plugin:3.3.1
+[DEBUG] Importing foreign packages into class realm plugin>org.apache.maven.plugins:maven-resources-plugin:3.3.1
+[DEBUG]   Imported:  < maven.api
+[DEBUG] Populating class realm plugin>org.apache.maven.plugins:maven-resources-plugin:3.3.1
+[DEBUG]   Included: org.apache.maven.plugins:maven-resources-plugin:jar:3.3.1
+[DEBUG]   Included: org.codehaus.plexus:plexus-interpolation:jar:1.26
+[DEBUG]   Included: org.codehaus.plexus:plexus-utils:jar:3.5.1
+[DEBUG]   Included: org.apache.maven.shared:maven-filtering:jar:3.3.1
+[DEBUG]   Included: org.sonatype.plexus:plexus-build-api:jar:0.0.7
+[DEBUG]   Included: commons-io:commons-io:jar:2.11.0
+[DEBUG]   Included: org.apache.commons:commons-lang3:jar:3.12.0
+[DEBUG] Loading mojo org.apache.maven.plugins:maven-resources-plugin:3.3.1:resources from plugin realm ClassRealm[plugin>org.apache.maven.plugins:maven-resources-plugin:3.3.1, parent: jdk.internal.loader.ClassLoaders$AppClassLoader@70dea4e]
+[DEBUG] Configuring mojo execution 'org.apache.maven.plugins:maven-resources-plugin:3.3.1:resources:default-resources' with basic configurator -->
+[DEBUG]   (f) addDefaultExcludes = true
+[DEBUG]   (f) buildFilters = []
+[DEBUG]   (f) encoding = UTF-8
+[DEBUG]   (f) escapeWindowsPaths = true
+[DEBUG]   (f) fileNameFiltering = false
+[DEBUG]   (s) includeEmptyDirs = false
+[DEBUG]   (s) outputDirectory = C:\Users\purple\Desktop\Dev\Git\Java\Gaia-Structure\target\classes
+[DEBUG]   (s) overwrite = false
+[DEBUG]   (f) project = MavenProject: com.structurecreation:project-structure-creator:1.0.0 @ C:\Users\purple\Desktop\Dev\Git\Java\Gaia-Structure\pom.xml
+[DEBUG]   (s) resources = [Resource {targetPath: null, filtering: false, FileSet {directory: C:\Users\purple\Desktop\Dev\Git\Java\Gaia-Structure\src\main\resources, PatternSet [includes: {}, excludes: {}]}}]
+[DEBUG]   (f) session = org.apache.maven.execution.MavenSession@7efe7b87
+[DEBUG]   (f) skip = false
+[DEBUG]   (f) supportMultiLineFiltering = false
+[DEBUG]   (f) useBuildFilters = true
+[DEBUG]   (s) useDefaultDelimiters = true
+[DEBUG] -- end configuration --
+[DEBUG] properties used:
+[DEBUG] classworlds.conf: C:\Users\purple\Desktop\Dev\Build Files\MVN\apache-maven-3.9.11-bin\apache-maven-3.9.11\bin\m2.conf
+[DEBUG] env.=C:: C:\Users\purple\Desktop\Dev\Git\Java\Gaia-Structure
+[DEBUG] env.=EXITCODE: 00000000
+[DEBUG] env.ALLUSERSPROFILE: C:\ProgramData
+[DEBUG] env.APPDATA: C:\Users\purple\AppData\Roaming
+[DEBUG] env.BUNDLED_DEBUGPY_PATH: c:\Users\purple\.vscode\extensions\ms-python.debugpy-2025.14.0-win32-x64\bundled\libs\debugpy
+[DEBUG] env.CHROME_CRASHPAD_PIPE_NAME: \\.\pipe\crashpad_11768_QYVJKULDFFAWXXFF
+[DEBUG] env.CLASSWORLDS_JAR: "C:\Users\purple\Desktop\Dev\Build Files\MVN\apache-maven-3.9.11-bin\apache-maven-3.9.11\boot\plexus-classworlds-2.9.0.jar"
+[DEBUG] env.CLASSWORLDS_LAUNCHER: org.codehaus.plexus.classworlds.launcher.Launcher
+[DEBUG] env.COLORTERM: truecolor
+[DEBUG] env.COMMONPROGRAMFILES: C:\Program Files\Common Files
+[DEBUG] env.COMMONPROGRAMFILES(X86): C:\Program Files (x86)\Common Files
+[DEBUG] env.COMMONPROGRAMW6432: C:\Program Files\Common Files
+[DEBUG] env.COMPUTERNAME: DESKTOP-VH62JHI
+[DEBUG] env.COMSPEC: C:\Windows\system32\cmd.exe
+[DEBUG] env.DRIVERDATA: C:\Windows\System32\Drivers\DriverData
+[DEBUG] env.ERROR_CODE: 0
+[DEBUG] env.EXEC_DIR: C:\Users\purple\Desktop\Dev\Git\Java\Gaia-Structure
+[DEBUG] env.GIT_ASKPASS: c:\Users\purple\AppData\Local\Programs\Microsoft VS Code\resources\app\extensions\git\dist\askpass.sh
+[DEBUG] env.GIT_PAGER: cat
+[DEBUG] env.HOMEDRIVE: C:
+[DEBUG] env.HOMEPATH: \Users\purple
+[DEBUG] env.JAVACMD: C:\Program Files\Common Files\Oracle\Java\javapath\java.exe
+[DEBUG] env.JVMCONFIG: \.mvn\jvm.config
+[DEBUG] env.LANG: en_US.UTF-8
+[DEBUG] env.LOCALAPPDATA: C:\Users\purple\AppData\Local
+[DEBUG] env.LOGONSERVER: \\DESKTOP-VH62JHI
+[DEBUG] env.MAVEN_CMD_LINE_ARGS: clean compile -Dmaven.compiler.showWarnings=true -Dmaven.compiler.showDeprecation=true -Dmaven.compiler.verbose=true -Dmaven.compiler.debug=true -X
+[DEBUG] env.MAVEN_HOME: C:\Users\purple\Desktop\Dev\Build Files\MVN\apache-maven-3.9.11-bin\apache-maven-3.9.11
+[DEBUG] env.MAVEN_OPTS: --enable-native-access=ALL-UNNAMED 
+[DEBUG] env.MAVEN_PROJECTBASEDIR: C:\Users\purple\Desktop\Dev\Git\Java\Gaia-Structure
+[DEBUG] env.MVN_HOME: C:\Users\purple\Desktop\Dev\Build Files\MVN\apache-maven-3.9.11-bin\apache-maven-3.9.11
+[DEBUG] env.NUMBER_OF_PROCESSORS: 12
+[DEBUG] env.ONEDRIVE: C:\Users\purple\OneDrive
+[DEBUG] env.ORIGINAL_XDG_CURRENT_DESKTOP: undefined
+[DEBUG] env.OS: Windows_NT
+[DEBUG] env.PATH: C:\Program Files\PowerShell\7;C:\Program Files\Common Files\Oracle\Java\javapath;C:\Windows\system32;C:\Windows;C:\Windows\System32\Wbem;C:\Windows\System32\WindowsPowerShell\v1.0\;C:\Windows\System32\OpenSSH\;C:\Program Files\Git\cmd;C:\Program Files\nodejs\;C:\Program Files\PowerShell\7\;C:\Program Files\NVIDIA Corporation\NVIDIA App\NvDLISR;C:\Program Files (x86)\NVIDIA Corporation\PhysX\Common;C:\Users\purple\.cargo\bin;C:\Users\purple\AppData\Local\Microsoft\WindowsApps;C:\Users\purple\AppData\Local\Programs\Microsoft VS Code\bin;C:\Users\purple\AppData\Local\GitHubDesktop\bin;C:\Users\purple\AppData\Roaming\npm;c:\Users\purple\.vscode\extensions\ms-python.debugpy-2025.14.0-win32-x64\bundled\scripts\noConfigScripts;c:\Users\purple\AppData\Roaming\Code\User\globalStorage\github.copilot-chat\debugCommand
+[DEBUG] env.PATHEXT: .COM;.EXE;.BAT;.CMD;.VBS;.VBE;.JS;.JSE;.WSF;.WSH;.MSC;.CPL
+[DEBUG] env.POWERSHELL_DISTRIBUTION_CHANNEL: MSI:Windows 10 Home
+[DEBUG] env.PROCESSOR_ARCHITECTURE: AMD64
+[DEBUG] env.PROCESSOR_IDENTIFIER: AMD64 Family 23 Model 113 Stepping 0, AuthenticAMD
+[DEBUG] env.PROCESSOR_LEVEL: 23
+[DEBUG] env.PROCESSOR_REVISION: 7100
+[DEBUG] env.PROGRAMDATA: C:\ProgramData
+[DEBUG] env.PROGRAMFILES: C:\Program Files
+[DEBUG] env.PROGRAMFILES(X86): C:\Program Files (x86)
+[DEBUG] env.PROGRAMW6432: C:\Program Files
+[DEBUG] env.PROMPT: $P$G
+[DEBUG] env.PSMODULEPATH: C:\Users\purple\Documents\PowerShell\Modules;C:\Program Files\PowerShell\Modules;c:\program files\powershell\7\Modules;C:\Program Files\WindowsPowerShell\Modules;C:\Windows\system32\WindowsPowerShell\v1.0\Modules
+[DEBUG] env.PUBLIC: C:\Users\Public
+[DEBUG] env.PYDEVD_DISABLE_FILE_VALIDATION: 1
+[DEBUG] env.PYTHON: C:\Users\purple\AppData\Local\Microsoft\WindowsApps\python3.10.exe
+[DEBUG] env.PYTHONSTARTUP: c:\Users\purple\AppData\Roaming\Code\User\workspaceStorage\b3b48cfdcf1983d90f1e2c403e1ed55c\ms-python.python\pythonrc.py
+[DEBUG] env.PYTHONUSERBASE: C:\Users\purple\AppData\Local\Packages\PythonSoftwareFoundation.Python.3.10_qbz5n2kfra8p0\LocalCache\local-packages
+[DEBUG] env.PYTHON_BASIC_REPL: 1
+[DEBUG] env.SESSIONNAME: Console
+[DEBUG] env.SYSTEMDRIVE: C:
+[DEBUG] env.SYSTEMROOT: C:\Windows
+[DEBUG] env.TEMP: C:\Users\purple\AppData\Local\Temp
+[DEBUG] env.TERM_PROGRAM: vscode
+[DEBUG] env.TERM_PROGRAM_VERSION: 1.105.0
+[DEBUG] env.TMP: C:\Users\purple\AppData\Local\Temp
+[DEBUG] env.USERDOMAIN: DESKTOP-VH62JHI
+[DEBUG] env.USERDOMAIN_ROAMINGPROFILE: DESKTOP-VH62JHI
+[DEBUG] env.USERNAME: purple
+[DEBUG] env.USERPROFILE: C:\Users\purple
+[DEBUG] env.VSCODE_DEBUGPY_ADAPTER_ENDPOINTS: c:\Users\purple\.vscode\extensions\ms-python.debugpy-2025.14.0-win32-x64\.noConfigDebugAdapterEndpoints\endpoint-581b5d263a11cc42.txt
+[DEBUG] env.VSCODE_GIT_ASKPASS_EXTRA_ARGS: 
+[DEBUG] env.VSCODE_GIT_ASKPASS_MAIN: c:\Users\purple\AppData\Local\Programs\Microsoft VS Code\resources\app\extensions\git\dist\askpass-main.js
+[DEBUG] env.VSCODE_GIT_ASKPASS_NODE: C:\Users\purple\AppData\Local\Programs\Microsoft VS Code\Code.exe
+[DEBUG] env.VSCODE_GIT_IPC_HANDLE: \\.\pipe\vscode-git-d14aa65a52-sock
+[DEBUG] env.VSCODE_INJECTION: 1
+[DEBUG] env.VSCODE_PYTHON_AUTOACTIVATE_GUARD: 1
+[DEBUG] env.WDIR: C:\
+[DEBUG] env.WINDIR: C:\Windows
+[DEBUG] file.encoding: UTF-8
+[DEBUG] file.separator: \
+[DEBUG] java.class.path: C:\Users\purple\Desktop\Dev\Build Files\MVN\apache-maven-3.9.11-bin\apache-maven-3.9.11\boot\plexus-classworlds-2.9.0.jar
+[DEBUG] java.class.version: 65.0
+[DEBUG] java.home: C:\Program Files\Java\jdk-21
+[DEBUG] java.io.tmpdir: C:\Users\purple\AppData\Local\Temp\
+[DEBUG] java.library.path: C:\Program Files\Java\jdk-21\bin;C:\Windows\Sun\Java\bin;C:\Windows\system32;C:\Windows;C:\Program Files\PowerShell\7;C:\Program Files\Common Files\Oracle\Java\javapath;C:\Windows\system32;C:\Windows;C:\Windows\System32\Wbem;C:\Windows\System32\WindowsPowerShell\v1.0\;C:\Windows\System32\OpenSSH\;C:\Program Files\Git\cmd;C:\Program Files\nodejs\;C:\Program Files\PowerShell\7\;C:\Program Files\NVIDIA Corporation\NVIDIA App\NvDLISR;C:\Program Files (x86)\NVIDIA Corporation\PhysX\Common;C:\Users\purple\.cargo\bin;C:\Users\purple\AppData\Local\Microsoft\WindowsApps;C:\Users\purple\AppData\Local\Programs\Microsoft VS Code\bin;C:\Users\purple\AppData\Local\GitHubDesktop\bin;C:\Users\purple\AppData\Roaming\npm;c:\Users\purple\.vscode\extensions\ms-python.debugpy-2025.14.0-win32-x64\bundled\scripts\noConfigScripts;c:\Users\purple\AppData\Roaming\Code\User\globalStorage\github.copilot-chat\debugCommand;.
+[DEBUG] java.runtime.name: Java(TM) SE Runtime Environment
+[DEBUG] java.runtime.version: 21.0.8+12-LTS-250
+[DEBUG] java.specification.name: Java Platform API Specification
+[DEBUG] java.specification.vendor: Oracle Corporation
+[DEBUG] java.specification.version: 21
+[DEBUG] java.vendor: Oracle Corporation
+[DEBUG] java.vendor.url: https://java.oracle.com/
+[DEBUG] java.vendor.url.bug: https://bugreport.java.com/bugreport/
+[DEBUG] java.version: 21.0.8
+[DEBUG] java.version.date: 2025-07-15
+[DEBUG] java.vm.compressedOopsMode: Zero based
+[DEBUG] java.vm.info: mixed mode, sharing
+[DEBUG] java.vm.name: Java HotSpot(TM) 64-Bit Server VM
+[DEBUG] java.vm.specification.name: Java Virtual Machine Specification
+[DEBUG] java.vm.specification.vendor: Oracle Corporation
+[DEBUG] java.vm.specification.version: 21
+[DEBUG] java.vm.vendor: Oracle Corporation
+[DEBUG] java.vm.version: 21.0.8+12-LTS-250
+[DEBUG] javafx.maven.plugin.version: 0.0.8
+[DEBUG] javafx.version: 19.0.2.1
+[DEBUG] jdk.debug: release
+[DEBUG] library.jansi.path: C:\Users\purple\Desktop\Dev\Build Files\MVN\apache-maven-3.9.11-bin\apache-maven-3.9.11\lib\jansi-native
+[DEBUG] line.separator: 
+
+[DEBUG] maven.build.timestamp: 2025-10-09T21:52:21Z
+[DEBUG] maven.build.version: Apache Maven 3.9.11 (3e54c93a704957b63ee3494413a2b544fd3d825b)
+[DEBUG] maven.compiler.debug: true
+[DEBUG] maven.compiler.showDeprecation: true
+[DEBUG] maven.compiler.showWarnings: true
+[DEBUG] maven.compiler.source: 17
+[DEBUG] maven.compiler.target: 17
+[DEBUG] maven.compiler.verbose: true
+[DEBUG] maven.conf: C:\Users\purple\Desktop\Dev\Build Files\MVN\apache-maven-3.9.11-bin\apache-maven-3.9.11/conf
+[DEBUG] maven.home: C:\Users\purple\Desktop\Dev\Build Files\MVN\apache-maven-3.9.11-bin\apache-maven-3.9.11
+[DEBUG] maven.multiModuleProjectDirectory: C:\Users\purple\Desktop\Dev\Git\Java\Gaia-Structure
+[DEBUG] maven.version: 3.9.11
+[DEBUG] native.encoding: Cp1252
+[DEBUG] os.arch: amd64
+[DEBUG] os.name: Windows 10
+[DEBUG] os.version: 10.0
+[DEBUG] path.separator: ;
+[DEBUG] project.baseUri: file:/C:/Users/purple/Desktop/Dev/Git/Java/Gaia-Structure/
+[DEBUG] project.build.sourceEncoding: UTF-8
+[DEBUG] stderr.encoding: Cp1252
+[DEBUG] stdout.encoding: Cp1252
+[DEBUG] sun.arch.data.model: 64
+[DEBUG] sun.boot.library.path: C:\Program Files\Java\jdk-21\bin
+[DEBUG] sun.cpu.endian: little
+[DEBUG] sun.cpu.isalist: amd64
+[DEBUG] sun.io.unicode.encoding: UnicodeLittle
+[DEBUG] sun.java.command: org.codehaus.plexus.classworlds.launcher.Launcher clean compile -Dmaven.compiler.showWarnings=true -Dmaven.compiler.showDeprecation=true -Dmaven.compiler.verbose=true -Dmaven.compiler.debug=true -X
+[DEBUG] sun.java.launcher: SUN_STANDARD
+[DEBUG] sun.jnu.encoding: Cp1252
+[DEBUG] sun.management.compiler: HotSpot 64-Bit Tiered Compilers
+[DEBUG] sun.os.patch.level: 
+[DEBUG] user.country: US
+[DEBUG] user.dir: C:\Users\purple\Desktop\Dev\Git\Java\Gaia-Structure
+[DEBUG] user.home: C:\Users\purple
+[DEBUG] user.language: en
+[DEBUG] user.name: purple
+[DEBUG] user.script: 
+[DEBUG] user.variant: 
+[DEBUG] Using 'UTF-8' encoding to copy filtered resources.
+[DEBUG] Using 'UTF-8' encoding to copy filtered properties files.
+[DEBUG] resource with targetPath null
+directory C:\Users\purple\Desktop\Dev\Git\Java\Gaia-Structure\src\main\resources
+excludes []
+includes []
+[DEBUG] ignoreDelta true
+[INFO] Copying 5 resources from src\main\resources to target\classes
+[DEBUG] Copying file css\styles.css
+[DEBUG] file styles.css has a filtered file extension
+[DEBUG] Using 'UTF-8' encoding to copy filtered resource 'styles.css'.
+[DEBUG] copy C:\Users\purple\Desktop\Dev\Git\Java\Gaia-Structure\src\main\resources\css\styles.css to C:\Users\purple\Desktop\Dev\Git\Java\Gaia-Structure\target\classes\css\styles.css
+[DEBUG] Copying file fxml\main.fxml
+[DEBUG] file main.fxml has a filtered file extension
+[DEBUG] Using 'UTF-8' encoding to copy filtered resource 'main.fxml'.
+[DEBUG] copy C:\Users\purple\Desktop\Dev\Git\Java\Gaia-Structure\src\main\resources\fxml\main.fxml to C:\Users\purple\Desktop\Dev\Git\Java\Gaia-Structure\target\classes\fxml\main.fxml
+[DEBUG] Copying file images\app-icon.ico
+[DEBUG] file app-icon.ico has a non filtered file extension
+[DEBUG] Using 'UTF-8' encoding to copy filtered resource 'app-icon.ico'.
+[DEBUG] copy C:\Users\purple\Desktop\Dev\Git\Java\Gaia-Structure\src\main\resources\images\app-icon.ico to C:\Users\purple\Desktop\Dev\Git\Java\Gaia-Structure\target\classes\images\app-icon.ico
+[DEBUG] Copying file images\app-icon.png
+[DEBUG] file app-icon.png has a non filtered file extension
+[DEBUG] Using 'UTF-8' encoding to copy filtered resource 'app-icon.png'.
+[DEBUG] copy C:\Users\purple\Desktop\Dev\Git\Java\Gaia-Structure\src\main\resources\images\app-icon.png to C:\Users\purple\Desktop\Dev\Git\Java\Gaia-Structure\target\classes\images\app-icon.png
+[DEBUG] Copying file logback.xml
+[DEBUG] file logback.xml has a filtered file extension
+[DEBUG] Using 'UTF-8' encoding to copy filtered resource 'logback.xml'.
+[DEBUG] copy C:\Users\purple\Desktop\Dev\Git\Java\Gaia-Structure\src\main\resources\logback.xml to C:\Users\purple\Desktop\Dev\Git\Java\Gaia-Structure\target\classes\logback.xml
+[DEBUG] no user filter components
+[INFO] 
+[INFO] --- compiler:3.11.0:compile (default-compile) @ project-structure-creator ---
+[DEBUG] Using mirror maven-default-http-blocker (http://0.0.0.0/) for apache.snapshots (http://repository.apache.org/snapshots).
+[DEBUG] Dependency collection stats {ConflictMarker.analyzeTime=66700, ConflictMarker.markTime=50500, ConflictMarker.nodeCount=17, ConflictIdSorter.graphTime=16800, ConflictIdSorter.topsortTime=11700, ConflictIdSorter.conflictIdCount=12, ConflictIdSorter.conflictIdCycleCount=0, ConflictResolver.totalTime=295900, ConflictResolver.conflictItemCount=17, DfDependencyCollector.collectTime=43354900, DfDependencyCollector.transformTime=456000}
+[DEBUG] org.apache.maven.plugins:maven-compiler-plugin:jar:3.11.0
+[DEBUG]    org.apache.maven.shared:maven-shared-utils:jar:3.3.4:compile
+[DEBUG]       commons-io:commons-io:jar:2.6:compile
+[DEBUG]    org.apache.maven.shared:maven-shared-incremental:jar:1.1:compile
+[DEBUG]       org.codehaus.plexus:plexus-component-annotations:jar:1.5.5:compile
+[DEBUG]    org.codehaus.plexus:plexus-java:jar:1.1.2:compile
+[DEBUG]       org.ow2.asm:asm:jar:9.4:compile
+[DEBUG]       com.thoughtworks.qdox:qdox:jar:2.0.3:compile (version managed from default)
+[DEBUG]    org.codehaus.plexus:plexus-compiler-api:jar:2.13.0:compile
+[DEBUG]       org.codehaus.plexus:plexus-utils:jar:3.5.0:compile (version managed from default)
+[DEBUG]    org.codehaus.plexus:plexus-compiler-manager:jar:2.13.0:compile
+[DEBUG]    org.codehaus.plexus:plexus-compiler-javac:jar:2.13.0:runtime
+[DEBUG] Created new class realm plugin>org.apache.maven.plugins:maven-compiler-plugin:3.11.0
+[DEBUG] Importing foreign packages into class realm plugin>org.apache.maven.plugins:maven-compiler-plugin:3.11.0
+[DEBUG]   Imported:  < maven.api
+[DEBUG] Populating class realm plugin>org.apache.maven.plugins:maven-compiler-plugin:3.11.0
+[DEBUG]   Included: org.apache.maven.plugins:maven-compiler-plugin:jar:3.11.0
+[DEBUG]   Included: org.apache.maven.shared:maven-shared-utils:jar:3.3.4
+[DEBUG]   Included: commons-io:commons-io:jar:2.6
+[DEBUG]   Included: org.apache.maven.shared:maven-shared-incremental:jar:1.1
+[DEBUG]   Included: org.codehaus.plexus:plexus-component-annotations:jar:1.5.5
+[DEBUG]   Included: org.codehaus.plexus:plexus-java:jar:1.1.2
+[DEBUG]   Included: org.ow2.asm:asm:jar:9.4
+[DEBUG]   Included: com.thoughtworks.qdox:qdox:jar:2.0.3
+[DEBUG]   Included: org.codehaus.plexus:plexus-compiler-api:jar:2.13.0
+[DEBUG]   Included: org.codehaus.plexus:plexus-utils:jar:3.5.0
+[DEBUG]   Included: org.codehaus.plexus:plexus-compiler-manager:jar:2.13.0
+[DEBUG]   Included: org.codehaus.plexus:plexus-compiler-javac:jar:2.13.0
+[DEBUG] Loading mojo org.apache.maven.plugins:maven-compiler-plugin:3.11.0:compile from plugin realm ClassRealm[plugin>org.apache.maven.plugins:maven-compiler-plugin:3.11.0, parent: jdk.internal.loader.ClassLoaders$AppClassLoader@70dea4e]
+[DEBUG] Configuring mojo execution 'org.apache.maven.plugins:maven-compiler-plugin:3.11.0:compile:default-compile' with basic configurator -->
+[DEBUG]   (f) basedir = C:\Users\purple\Desktop\Dev\Git\Java\Gaia-Structure
+[DEBUG]   (f) buildDirectory = C:\Users\purple\Desktop\Dev\Git\Java\Gaia-Structure\target
+[DEBUG]   (f) compilePath = [C:\Users\purple\Desktop\Dev\Git\Java\Gaia-Structure\target\classes, C:\Users\purple\.m2\repository\org\openjfx\javafx-controls\19.0.2.1\javafx-controls-19.0.2.1.jar, C:\Users\purple\.m2\repository\org\openjfx\javafx-controls\19.0.2.1\javafx-controls-19.0.2.1-win.jar, C:\Users\purple\.m2\repository\org\openjfx\javafx-graphics\19.0.2.1\javafx-graphics-19.0.2.1.jar, C:\Users\purple\.m2\repository\org\openjfx\javafx-graphics\19.0.2.1\javafx-graphics-19.0.2.1-win.jar, C:\Users\purple\.m2\repository\org\openjfx\javafx-base\19.0.2.1\javafx-base-19.0.2.1.jar, C:\Users\purple\.m2\repository\org\openjfx\javafx-base\19.0.2.1\javafx-base-19.0.2.1-win.jar, C:\Users\purple\.m2\repository\org\openjfx\javafx-fxml\19.0.2.1\javafx-fxml-19.0.2.1.jar, C:\Users\purple\.m2\repository\org\openjfx\javafx-fxml\19.0.2.1\javafx-fxml-19.0.2.1-win.jar, C:\Users\purple\.m2\repository\com\fasterxml\jackson\core\jackson-databind\2.15.2\jackson-databind-2.15.2.jar, C:\Users\purple\.m2\repository\com\fasterxml\jackson\core\jackson-annotations\2.15.2\jackson-annotations-2.15.2.jar, C:\Users\purple\.m2\repository\com\fasterxml\jackson\core\jackson-core\2.15.2\jackson-core-2.15.2.jar, C:\Users\purple\.m2\repository\com\fasterxml\jackson\datatype\jackson-datatype-jsr310\2.15.2\jackson-datatype-jsr310-2.15.2.jar, C:\Users\purple\.m2\repository\commons-io\commons-io\2.11.0\commons-io-2.11.0.jar, C:\Users\purple\.m2\repository\org\apache\commons\commons-lang3\3.12.0\commons-lang3-3.12.0.jar, C:\Users\purple\.m2\repository\ch\qos\logback\logback-classic\1.4.8\logback-classic-1.4.8.jar, C:\Users\purple\.m2\repository\ch\qos\logback\logback-core\1.4.8\logback-core-1.4.8.jar, C:\Users\purple\.m2\repository\org\slf4j\slf4j-api\2.0.7\slf4j-api-2.0.7.jar]
+[DEBUG]   (f) compileSourceRoots = [C:\Users\purple\Desktop\Dev\Git\Java\Gaia-Structure\src\main\java]
+[DEBUG]   (f) compilerId = javac
+[DEBUG]   (f) createMissingPackageInfoClass = true
+[DEBUG]   (f) debug = true
+[DEBUG]   (f) debugFileName = javac
+[DEBUG]   (f) enablePreview = false
+[DEBUG]   (f) encoding = UTF-8
+[DEBUG]   (f) failOnError = true
+[DEBUG]   (f) failOnWarning = false
+[DEBUG]   (f) forceJavacCompilerUse = false
+[DEBUG]   (f) fork = false
+[DEBUG]   (f) generatedSourcesDirectory = C:\Users\purple\Desktop\Dev\Git\Java\Gaia-Structure\target\generated-sources\annotations
+[DEBUG]   (f) mojoExecution = org.apache.maven.plugins:maven-compiler-plugin:3.11.0:compile {execution: default-compile}
+[DEBUG]   (f) optimize = false
+[DEBUG]   (f) outputDirectory = C:\Users\purple\Desktop\Dev\Git\Java\Gaia-Structure\target\classes
+[DEBUG]   (f) parameters = false
+[DEBUG]   (f) project = MavenProject: com.structurecreation:project-structure-creator:1.0.0 @ C:\Users\purple\Desktop\Dev\Git\Java\Gaia-Structure\pom.xml
+[DEBUG]   (f) projectArtifact = com.structurecreation:project-structure-creator:jar:1.0.0
+[DEBUG]   (f) session = org.apache.maven.execution.MavenSession@7efe7b87
+[DEBUG]   (f) showCompilationChanges = false
+[DEBUG]   (f) showDeprecation = true
+[DEBUG]   (f) showWarnings = true
+[DEBUG]   (f) skipMultiThreadWarning = false
+[DEBUG]   (f) source = 17
+[DEBUG]   (f) staleMillis = 0
+[DEBUG]   (s) target = 17
+[DEBUG]   (f) useIncrementalCompilation = true
+[DEBUG]   (f) verbose = true
+[DEBUG] -- end configuration --
+[DEBUG] Using compiler 'javac'.
+[DEBUG] Adding C:\Users\purple\Desktop\Dev\Git\Java\Gaia-Structure\target\generated-sources\annotations to compile source roots:
+  C:\Users\purple\Desktop\Dev\Git\Java\Gaia-Structure\src\main\java
+[DEBUG] New compile source roots:
+  C:\Users\purple\Desktop\Dev\Git\Java\Gaia-Structure\src\main\java
+  C:\Users\purple\Desktop\Dev\Git\Java\Gaia-Structure\target\generated-sources\annotations
+[DEBUG] CompilerReuseStrategy: reuseCreated
+[DEBUG] useIncrementalCompilation enabled
+[DEBUG] Stale source detected: C:\Users\purple\Desktop\Dev\Git\Java\Gaia-Structure\src\main\java\com\structurecreation\service\EnvironmentManager.java
+[DEBUG] Stale source detected: C:\Users\purple\Desktop\Dev\Git\Java\Gaia-Structure\src\main\java\com\structurecreation\service\DependencyResolverService.java
+[DEBUG] Stale source detected: C:\Users\purple\Desktop\Dev\Git\Java\Gaia-Structure\src\main\java\com\structurecreation\service\TemplateService.java
+[DEBUG] Stale source detected: C:\Users\purple\Desktop\Dev\Git\Java\Gaia-Structure\src\main\java\com\structurecreation\service\TutorialService.java
+[DEBUG] Stale source detected: C:\Users\purple\Desktop\Dev\Git\Java\Gaia-Structure\src\main\java\com\structurecreation\service\generator\NodeExpressProjectGenerator.java
+[DEBUG] Stale source detected: C:\Users\purple\Desktop\Dev\Git\Java\Gaia-Structure\src\main\java\com\structurecreation\service\generator\SpringBootProjectGenerator.java
+[DEBUG] Stale source detected: C:\Users\purple\Desktop\Dev\Git\Java\Gaia-Structure\src\main\java\com\structurecreation\service\generator\GeneratorService.java
+[DEBUG] Stale source detected: C:\Users\purple\Desktop\Dev\Git\Java\Gaia-Structure\src\main\java\com\structurecreation\service\repository\MavenCentralRepository.java
+[DEBUG] Stale source detected: C:\Users\purple\Desktop\Dev\Git\Java\Gaia-Structure\src\main\java\com\structurecreation\service\generator\DjangoProjectGenerator.java
+[DEBUG] Stale source detected: C:\Users\purple\Desktop\Dev\Git\Java\Gaia-Structure\src\main\java\com\structurecreation\model\Dependency.java
+[DEBUG] Stale source detected: C:\Users\purple\Desktop\Dev\Git\Java\Gaia-Structure\src\main\java\com\structurecreation\service\generator\ReactProjectGenerator.java
+[DEBUG] Stale source detected: C:\Users\purple\Desktop\Dev\Git\Java\Gaia-Structure\src\main\java\com\structurecreation\util\TreeViewDragAndDrop.java
+[DEBUG] Stale source detected: C:\Users\purple\Desktop\Dev\Git\Java\Gaia-Structure\src\main\java\com\structurecreation\SplashScreen.java
+[DEBUG] Stale source detected: C:\Users\purple\Desktop\Dev\Git\Java\Gaia-Structure\src\main\java\com\structurecreation\service\FileTreeGenerator.java
+[DEBUG] Stale source detected: C:\Users\purple\Desktop\Dev\Git\Java\Gaia-Structure\src\main\java\com\structurecreation\util\AlertUtils.java
+[DEBUG] Stale source detected: C:\Users\purple\Desktop\Dev\Git\Java\Gaia-Structure\src\main\java\com\structurecreation\model\ProjectStructure.java
+[DEBUG] Stale source detected: C:\Users\purple\Desktop\Dev\Git\Java\Gaia-Structure\src\main\java\com\structurecreation\util\EnvironmentDetectionTest.java
+[DEBUG] Stale source detected: C:\Users\purple\Desktop\Dev\Git\Java\Gaia-Structure\src\main\java\com\structurecreation\service\repository\PyPiRepository.java
+[DEBUG] Stale source detected: C:\Users\purple\Desktop\Dev\Git\Java\Gaia-Structure\src\main\java\com\structurecreation\controller\MainController.java
+[DEBUG] Stale source detected: C:\Users\purple\Desktop\Dev\Git\Java\Gaia-Structure\src\main\java\com\structurecreation\service\DependencyPresetService.java
+[DEBUG] Stale source detected: C:\Users\purple\Desktop\Dev\Git\Java\Gaia-Structure\src\main\java\com\structurecreation\service\ProjectCreationService.java
+[DEBUG] Stale source detected: C:\Users\purple\Desktop\Dev\Git\Java\Gaia-Structure\src\main\java\com\structurecreation\model\ProjectTemplate.java
+[DEBUG] Stale source detected: C:\Users\purple\Desktop\Dev\Git\Java\Gaia-Structure\src\main\java\com\structurecreation\service\generator\ProjectGenerator.java
+[DEBUG] Stale source detected: C:\Users\purple\Desktop\Dev\Git\Java\Gaia-Structure\src\main\java\com\structurecreation\model\ProjectNode.java
+[DEBUG] Stale source detected: C:\Users\purple\Desktop\Dev\Git\Java\Gaia-Structure\src\main\java\com\structurecreation\service\repository\NpmRepository.java
+[DEBUG] Stale source detected: C:\Users\purple\Desktop\Dev\Git\Java\Gaia-Structure\src\main\java\com\structurecreation\service\repository\RepositoryService.java
+[DEBUG] Stale source detected: C:\Users\purple\Desktop\Dev\Git\Java\Gaia-Structure\src\main\java\com\structurecreation\ProjectStructureCreatorApp.java
+[DEBUG] Stale source detected: C:\Users\purple\Desktop\Dev\Git\Java\Gaia-Structure\src\main\java\com\structurecreation\service\generator\FlaskProjectGenerator.java
+[DEBUG] Stale source detected: C:\Users\purple\Desktop\Dev\Git\Java\Gaia-Structure\src\main\java\com\structurecreation\service\generator\AbstractProjectGenerator.java
+[INFO] Changes detected - recompiling the module! :source
+[DEBUG] Classpath:
+[DEBUG]  C:\Users\purple\Desktop\Dev\Git\Java\Gaia-Structure\target\classes
+[DEBUG]  C:\Users\purple\.m2\repository\org\openjfx\javafx-controls\19.0.2.1\javafx-controls-19.0.2.1.jar
+[DEBUG]  C:\Users\purple\.m2\repository\org\openjfx\javafx-controls\19.0.2.1\javafx-controls-19.0.2.1-win.jar
+[DEBUG]  C:\Users\purple\.m2\repository\org\openjfx\javafx-graphics\19.0.2.1\javafx-graphics-19.0.2.1.jar
+[DEBUG]  C:\Users\purple\.m2\repository\org\openjfx\javafx-graphics\19.0.2.1\javafx-graphics-19.0.2.1-win.jar
+[DEBUG]  C:\Users\purple\.m2\repository\org\openjfx\javafx-base\19.0.2.1\javafx-base-19.0.2.1.jar
+[DEBUG]  C:\Users\purple\.m2\repository\org\openjfx\javafx-base\19.0.2.1\javafx-base-19.0.2.1-win.jar
+[DEBUG]  C:\Users\purple\.m2\repository\org\openjfx\javafx-fxml\19.0.2.1\javafx-fxml-19.0.2.1.jar
+[DEBUG]  C:\Users\purple\.m2\repository\org\openjfx\javafx-fxml\19.0.2.1\javafx-fxml-19.0.2.1-win.jar
+[DEBUG]  C:\Users\purple\.m2\repository\com\fasterxml\jackson\core\jackson-databind\2.15.2\jackson-databind-2.15.2.jar
+[DEBUG]  C:\Users\purple\.m2\repository\com\fasterxml\jackson\core\jackson-annotations\2.15.2\jackson-annotations-2.15.2.jar
+[DEBUG]  C:\Users\purple\.m2\repository\com\fasterxml\jackson\core\jackson-core\2.15.2\jackson-core-2.15.2.jar
+[DEBUG]  C:\Users\purple\.m2\repository\com\fasterxml\jackson\datatype\jackson-datatype-jsr310\2.15.2\jackson-datatype-jsr310-2.15.2.jar
+[DEBUG]  C:\Users\purple\.m2\repository\commons-io\commons-io\2.11.0\commons-io-2.11.0.jar
+[DEBUG]  C:\Users\purple\.m2\repository\org\apache\commons\commons-lang3\3.12.0\commons-lang3-3.12.0.jar
+[DEBUG]  C:\Users\purple\.m2\repository\ch\qos\logback\logback-classic\1.4.8\logback-classic-1.4.8.jar
+[DEBUG]  C:\Users\purple\.m2\repository\ch\qos\logback\logback-core\1.4.8\logback-core-1.4.8.jar
+[DEBUG]  C:\Users\purple\.m2\repository\org\slf4j\slf4j-api\2.0.7\slf4j-api-2.0.7.jar
+[DEBUG] Source roots:
+[DEBUG]  C:\Users\purple\Desktop\Dev\Git\Java\Gaia-Structure\src\main\java
+[DEBUG]  C:\Users\purple\Desktop\Dev\Git\Java\Gaia-Structure\target\generated-sources\annotations
+[DEBUG] Command line options:
+[DEBUG] -d C:\Users\purple\Desktop\Dev\Git\Java\Gaia-Structure\target\classes -classpath C:\Users\purple\Desktop\Dev\Git\Java\Gaia-Structure\target\classes;C:\Users\purple\.m2\repository\org\openjfx\javafx-controls\19.0.2.1\javafx-controls-19.0.2.1.jar;C:\Users\purple\.m2\repository\org\openjfx\javafx-controls\19.0.2.1\javafx-controls-19.0.2.1-win.jar;C:\Users\purple\.m2\repository\org\openjfx\javafx-graphics\19.0.2.1\javafx-graphics-19.0.2.1.jar;C:\Users\purple\.m2\repository\org\openjfx\javafx-graphics\19.0.2.1\javafx-graphics-19.0.2.1-win.jar;C:\Users\purple\.m2\repository\org\openjfx\javafx-base\19.0.2.1\javafx-base-19.0.2.1.jar;C:\Users\purple\.m2\repository\org\openjfx\javafx-base\19.0.2.1\javafx-base-19.0.2.1-win.jar;C:\Users\purple\.m2\repository\org\openjfx\javafx-fxml\19.0.2.1\javafx-fxml-19.0.2.1.jar;C:\Users\purple\.m2\repository\org\openjfx\javafx-fxml\19.0.2.1\javafx-fxml-19.0.2.1-win.jar;C:\Users\purple\.m2\repository\com\fasterxml\jackson\core\jackson-databind\2.15.2\jackson-databind-2.15.2.jar;C:\Users\purple\.m2\repository\com\fasterxml\jackson\core\jackson-annotations\2.15.2\jackson-annotations-2.15.2.jar;C:\Users\purple\.m2\repository\com\fasterxml\jackson\core\jackson-core\2.15.2\jackson-core-2.15.2.jar;C:\Users\purple\.m2\repository\com\fasterxml\jackson\datatype\jackson-datatype-jsr310\2.15.2\jackson-datatype-jsr310-2.15.2.jar;C:\Users\purple\.m2\repository\commons-io\commons-io\2.11.0\commons-io-2.11.0.jar;C:\Users\purple\.m2\repository\org\apache\commons\commons-lang3\3.12.0\commons-lang3-3.12.0.jar;C:\Users\purple\.m2\repository\ch\qos\logback\logback-classic\1.4.8\logback-classic-1.4.8.jar;C:\Users\purple\.m2\repository\ch\qos\logback\logback-core\1.4.8\logback-core-1.4.8.jar;C:\Users\purple\.m2\repository\org\slf4j\slf4j-api\2.0.7\slf4j-api-2.0.7.jar; -sourcepath C:\Users\purple\Desktop\Dev\Git\Java\Gaia-Structure\src\main\java;C:\Users\purple\Desktop\Dev\Git\Java\Gaia-Structure\target\generated-sources\annotations; -s C:\Users\purple\Desktop\Dev\Git\Java\Gaia-Structure\target\generated-sources\annotations -g -verbose -deprecation -target 17 -source 17 -encoding UTF-8
+[DEBUG] incrementalBuildHelper#beforeRebuildExecution
+[INFO] Compiling 29 source files with javac [debug verbose deprecation target 17] to target\classes
+[DEBUG] incrementalBuildHelper#afterRebuildExecution
+[WARNING] system modules path not set in conjunction with -source 17
+[WARNING] /C:/Users/purple/Desktop/Dev/Git/Java/Gaia-Structure/src/main/java/com/structurecreation/service/repository/MavenCentralRepository.java:[356,23] URL(java.lang.String) in java.net.URL has been deprecated
+[INFO] /C:/Users/purple/Desktop/Dev/Git/Java/Gaia-Structure/src/main/java/com/structurecreation/service/repository/NpmRepository.java: Some input files use unchecked or unsafe operations.
+[INFO] /C:/Users/purple/Desktop/Dev/Git/Java/Gaia-Structure/src/main/java/com/structurecreation/service/repository/NpmRepository.java: Recompile with -Xlint:unchecked for details.
+[INFO] ------------------------------------------------------------------------
+[INFO] BUILD SUCCESS
+[INFO] ------------------------------------------------------------------------
+[INFO] Total time:  2.484 s
+[INFO] Finished at: 2025-10-09T16:52:23-05:00
+[INFO] ------------------------------------------------------------------------
+[DEBUG] Shutting down adapter factory; available factories [file-lock, rwlock-local, semaphore-local, noop]; available name mappers [discriminating, file-gav, file-hgav, file-static, gav, static]
+[DEBUG] Shutting down 'file-lock' factory
+[DEBUG] Shutting down 'rwlock-local' factory
+[DEBUG] Shutting down 'semaphore-local' factory
+[DEBUG] Shutting down 'noop' factory
+
+[parsing started SimpleFileObject[C:\Users\purple\Desktop\Dev\Git\Java\Gaia-Structure\src\main\java\com\structurecreation\service\DependencyResolverService.java]]
+[parsing completed 48ms]
+[parsing started SimpleFileObject[C:\Users\purple\Desktop\Dev\Git\Java\Gaia-Structure\src\main\java\com\structurecreation\model\ProjectStructure.java]]
+[parsing completed 2ms]
+[parsing started SimpleFileObject[C:\Users\purple\Desktop\Dev\Git\Java\Gaia-Structure\src\main\java\com\structurecreation\util\EnvironmentDetectionTest.java]]
+[parsing completed 0ms]
+[parsing started SimpleFileObject[C:\Users\purple\Desktop\Dev\Git\Java\Gaia-Structure\src\main\java\com\structurecreation\service\ProjectCreationService.java]]
+[parsing completed 18ms]
+[parsing started SimpleFileObject[C:\Users\purple\Desktop\Dev\Git\Java\Gaia-Structure\src\main\java\com\structurecreation\service\TutorialService.java]]
+[parsing completed 2ms]
+[parsing started SimpleFileObject[C:\Users\purple\Desktop\Dev\Git\Java\Gaia-Structure\src\main\java\com\structurecreation\service\generator\FlaskProjectGenerator.java]]
+[parsing completed 30ms]
+[parsing started SimpleFileObject[C:\Users\purple\Desktop\Dev\Git\Java\Gaia-Structure\src\main\java\com\structurecreation\service\generator\SpringBootProjectGenerator.java]]
+[parsing completed 10ms]
+[parsing started SimpleFileObject[C:\Users\purple\Desktop\Dev\Git\Java\Gaia-Structure\src\main\java\com\structurecreation\util\TreeViewDragAndDrop.java]]
+[parsing completed 0ms]
+[parsing started SimpleFileObject[C:\Users\purple\Desktop\Dev\Git\Java\Gaia-Structure\src\main\java\com\structurecreation\service\TemplateService.java]]
+[parsing completed 10ms]
+[parsing started SimpleFileObject[C:\Users\purple\Desktop\Dev\Git\Java\Gaia-Structure\src\main\java\com\structurecreation\ProjectStructureCreatorApp.java]]
+[parsing completed 0ms]
+[parsing started SimpleFileObject[C:\Users\purple\Desktop\Dev\Git\Java\Gaia-Structure\src\main\java\com\structurecreation\service\generator\DjangoProjectGenerator.java]]
+[parsing completed 30ms]
+[parsing started SimpleFileObject[C:\Users\purple\Desktop\Dev\Git\Java\Gaia-Structure\src\main\java\com\structurecreation\service\repository\RepositoryService.java]]
+[parsing completed 0ms]
+[parsing started SimpleFileObject[C:\Users\purple\Desktop\Dev\Git\Java\Gaia-Structure\src\main\java\com\structurecreation\util\AlertUtils.java]]
+[parsing completed 0ms]
+[parsing started SimpleFileObject[C:\Users\purple\Desktop\Dev\Git\Java\Gaia-Structure\src\main\java\com\structurecreation\service\generator\GeneratorService.java]]
+[parsing completed 0ms]
+[parsing started SimpleFileObject[C:\Users\purple\Desktop\Dev\Git\Java\Gaia-Structure\src\main\java\com\structurecreation\service\DependencyPresetService.java]]
+[parsing completed 8ms]
+[parsing started SimpleFileObject[C:\Users\purple\Desktop\Dev\Git\Java\Gaia-Structure\src\main\java\com\structurecreation\service\generator\ReactProjectGenerator.java]]
+[parsing completed 0ms]
+[parsing started SimpleFileObject[C:\Users\purple\Desktop\Dev\Git\Java\Gaia-Structure\src\main\java\com\structurecreation\model\Dependency.java]]
+[parsing completed 0ms]
+[parsing started SimpleFileObject[C:\Users\purple\Desktop\Dev\Git\Java\Gaia-Structure\src\main\java\com\structurecreation\service\repository\NpmRepository.java]]
+[parsing completed 12ms]
+[parsing started SimpleFileObject[C:\Users\purple\Desktop\Dev\Git\Java\Gaia-Structure\src\main\java\com\structurecreation\service\generator\ProjectGenerator.java]]
+[parsing completed 0ms]
+[parsing started SimpleFileObject[C:\Users\purple\Desktop\Dev\Git\Java\Gaia-Structure\src\main\java\com\structurecreation\service\generator\AbstractProjectGenerator.java]]
+[parsing completed 0ms]
+[parsing started SimpleFileObject[C:\Users\purple\Desktop\Dev\Git\Java\Gaia-Structure\src\main\java\com\structurecreation\service\generator\NodeExpressProjectGenerator.java]]
+[parsing completed 10ms]
+[parsing started SimpleFileObject[C:\Users\purple\Desktop\Dev\Git\Java\Gaia-Structure\src\main\java\com\structurecreation\service\repository\MavenCentralRepository.java]]
+[parsing completed 0ms]
+[parsing started SimpleFileObject[C:\Users\purple\Desktop\Dev\Git\Java\Gaia-Structure\src\main\java\com\structurecreation\model\ProjectTemplate.java]]
+[parsing completed 0ms]
+[parsing started SimpleFileObject[C:\Users\purple\Desktop\Dev\Git\Java\Gaia-Structure\src\main\java\com\structurecreation\service\EnvironmentManager.java]]
+[parsing completed 8ms]
+[parsing started SimpleFileObject[C:\Users\purple\Desktop\Dev\Git\Java\Gaia-Structure\src\main\java\com\structurecreation\SplashScreen.java]]
+[parsing completed 0ms]
+[parsing started SimpleFileObject[C:\Users\purple\Desktop\Dev\Git\Java\Gaia-Structure\src\main\java\com\structurecreation\controller\MainController.java]]
+[parsing completed 10ms]
+[parsing started SimpleFileObject[C:\Users\purple\Desktop\Dev\Git\Java\Gaia-Structure\src\main\java\com\structurecreation\service\FileTreeGenerator.java]]
+[parsing completed 0ms]
+[parsing started SimpleFileObject[C:\Users\purple\Desktop\Dev\Git\Java\Gaia-Structure\src\main\java\com\structurecreation\service\repository\PyPiRepository.java]]
+[parsing completed 0ms]
+[parsing started SimpleFileObject[C:\Users\purple\Desktop\Dev\Git\Java\Gaia-Structure\src\main\java\com\structurecreation\model\ProjectNode.java]]
+[parsing completed 0ms]
+[loading /modules/java.base/module-info.class]
+[loading /modules/jdk.hotspot.agent/module-info.class]
+[loading /modules/jdk.charsets/module-info.class]
+[loading /modules/jdk.accessibility/module-info.class]
+[loading /modules/jdk.unsupported.desktop/module-info.class]
+[loading /modules/java.sql/module-info.class]
+[loading /modules/jdk.zipfs/module-info.class]
+[loading /modules/jdk.localedata/module-info.class]
+[loading /modules/jdk.editpad/module-info.class]
+[loading /modules/jdk.crypto.mscapi/module-info.class]
+[loading /modules/java.rmi/module-info.class]
+[loading /modules/jdk.jartool/module-info.class]
+[loading /modules/jdk.unsupported/module-info.class]
+[loading /modules/java.se/module-info.class]
+[loading /modules/java.security.jgss/module-info.class]
+[loading /modules/jdk.incubator.vector/module-info.class]
+[loading /modules/java.net.http/module-info.class]
+[loading /modules/jdk.dynalink/module-info.class]
+[loading /modules/java.sql.rowset/module-info.class]
+[loading /modules/jdk.security.jgss/module-info.class]
+[loading /modules/jdk.compiler/module-info.class]
+[loading /modules/jdk.management.jfr/module-info.class]
+[loading /modules/java.desktop/module-info.class]
+[loading /modules/jdk.naming.rmi/module-info.class]
+[loading /modules/jdk.jdeps/module-info.class]
+[loading /modules/java.smartcardio/module-info.class]
+[loading /modules/jdk.jcmd/module-info.class]
+[loading /modules/jdk.jshell/module-info.class]
+[loading /modules/jdk.attach/module-info.class]
+[loading /modules/java.management.rmi/module-info.class]
+[loading /modules/jdk.jdwp.agent/module-info.class]
+[loading /modules/java.scripting/module-info.class]
+[loading /modules/jdk.internal.le/module-info.class]
+[loading /modules/jdk.jlink/module-info.class]
+[loading /modules/jdk.javadoc/module-info.class]
+[loading /modules/jdk.jstatd/module-info.class]
+[loading /modules/jdk.jsobject/module-info.class]
+[loading /modules/jdk.jdi/module-info.class]
+[loading /modules/jdk.naming.dns/module-info.class]
+[loading /modules/java.security.sasl/module-info.class]
+[loading /modules/java.xml/module-info.class]
+[loading /modules/jdk.internal.vm.ci/module-info.class]
+[loading /modules/jdk.jpackage/module-info.class]
+[loading /modules/jdk.internal.vm.compiler/module-info.class]
+[loading /modules/jdk.xml.dom/module-info.class]
+[loading /modules/java.transaction.xa/module-info.class]
+[loading /modules/java.naming/module-info.class]
+[loading /modules/jdk.jconsole/module-info.class]
+[loading /modules/java.logging/module-info.class]
+[loading /modules/java.datatransfer/module-info.class]
+[loading /modules/java.instrument/module-info.class]
+[loading /modules/jdk.crypto.ec/module-info.class]
+[loading /modules/jdk.crypto.cryptoki/module-info.class]
+[loading /modules/jdk.security.auth/module-info.class]
+[loading /modules/jdk.random/module-info.class]
+[loading /modules/jdk.internal.jvmstat/module-info.class]
+[loading /modules/jdk.sctp/module-info.class]
+[loading /modules/jdk.httpserver/module-info.class]
+[loading /modules/jdk.jfr/module-info.class]
+[loading /modules/java.prefs/module-info.class]
+[loading /modules/jdk.management/module-info.class]
+[loading /modules/jdk.internal.ed/module-info.class]
+[loading /modules/jdk.management.agent/module-info.class]
+[loading /modules/java.compiler/module-info.class]
+[loading /modules/jdk.net/module-info.class]
+[loading /modules/jdk.nio.mapmode/module-info.class]
+[loading /modules/jdk.internal.vm.compiler.management/module-info.class]
+[loading /modules/java.management/module-info.class]
+[loading /modules/jdk.internal.opt/module-info.class]
+[loading /modules/java.xml.crypto/module-info.class]
+[search path for source files: C:\Users\purple\Desktop\Dev\Git\Java\Gaia-Structure\src\main\java,C:\Users\purple\Desktop\Dev\Git\Java\Gaia-Structure\target\generated-sources\annotations]
+[search path for class files: C:\Program Files\Java\jdk-21\lib\modules,C:\Users\purple\Desktop\Dev\Git\Java\Gaia-Structure\target\classes,C:\Users\purple\.m2\repository\org\openjfx\javafx-controls\19.0.2.1\javafx-controls-19.0.2.1.jar,C:\Users\purple\.m2\repository\org\openjfx\javafx-controls\19.0.2.1\javafx-controls-19.0.2.1-win.jar,C:\Users\purple\.m2\repository\org\openjfx\javafx-graphics\19.0.2.1\javafx-graphics-19.0.2.1.jar,C:\Users\purple\.m2\repository\org\openjfx\javafx-graphics\19.0.2.1\javafx-graphics-19.0.2.1-win.jar,C:\Users\purple\.m2\repository\org\openjfx\javafx-base\19.0.2.1\javafx-base-19.0.2.1.jar,C:\Users\purple\.m2\repository\org\openjfx\javafx-base\19.0.2.1\javafx-base-19.0.2.1-win.jar,C:\Users\purple\.m2\repository\org\openjfx\javafx-fxml\19.0.2.1\javafx-fxml-19.0.2.1.jar,C:\Users\purple\.m2\repository\org\openjfx\javafx-fxml\19.0.2.1\javafx-fxml-19.0.2.1-win.jar,C:\Users\purple\.m2\repository\com\fasterxml\jackson\core\jackson-databind\2.15.2\jackson-databind-2.15.2.jar,C:\Users\purple\.m2\repository\com\fasterxml\jackson\core\jackson-annotations\2.15.2\jackson-annotations-2.15.2.jar,C:\Users\purple\.m2\repository\com\fasterxml\jackson\core\jackson-core\2.15.2\jackson-core-2.15.2.jar,C:\Users\purple\.m2\repository\com\fasterxml\jackson\datatype\jackson-datatype-jsr310\2.15.2\jackson-datatype-jsr310-2.15.2.jar,C:\Users\purple\.m2\repository\commons-io\commons-io\2.11.0\commons-io-2.11.0.jar,C:\Users\purple\.m2\repository\org\apache\commons\commons-lang3\3.12.0\commons-lang3-3.12.0.jar,C:\Users\purple\.m2\repository\ch\qos\logback\logback-classic\1.4.8\logback-classic-1.4.8.jar,C:\Users\purple\.m2\repository\ch\qos\logback\logback-core\1.4.8\logback-core-1.4.8.jar,C:\Users\purple\.m2\repository\org\slf4j\slf4j-api\2.0.7\slf4j-api-2.0.7.jar,.]
+[loading C:\Users\purple\.m2\repository\org\slf4j\slf4j-api\2.0.7\slf4j-api-2.0.7.jar(/org/slf4j/Logger.class)]
+[loading C:\Users\purple\.m2\repository\org\slf4j\slf4j-api\2.0.7\slf4j-api-2.0.7.jar(/org/slf4j/LoggerFactory.class)]
+[loading /modules/java.base/java/net/URI.class]
+[loading /modules/java.net.http/java/net/http/HttpClient.class]
+[loading /modules/java.net.http/java/net/http/HttpRequest.class]
+[loading /modules/java.net.http/java/net/http/HttpResponse.class]
+[loading /modules/java.base/java/util/concurrent/CompletableFuture.class]
+[loading /modules/java.base/java/util/concurrent/ConcurrentHashMap.class]
+[loading /modules/java.base/java/util/concurrent/ExecutorService.class]
+[loading /modules/java.base/java/util/concurrent/Executors.class]
+[loading /modules/java.base/java/util/stream/Collectors.class]
+[loading /modules/java.base/java/lang/Object.class]
+[loading /modules/java.base/java/util/Map.class]
+[loading /modules/java.base/java/lang/String.class]
+[loading C:\Users\purple\.m2\repository\com\fasterxml\jackson\core\jackson-databind\2.15.2\jackson-databind-2.15.2.jar(/com/fasterxml/jackson/databind/JsonNode.class)]
+[loading C:\Users\purple\.m2\repository\com\fasterxml\jackson\core\jackson-databind\2.15.2\jackson-databind-2.15.2.jar(/com/fasterxml/jackson/databind/ObjectMapper.class)]
+[loading /modules/java.base/java/io/BufferedReader.class]
+[loading /modules/java.base/java/io/IOException.class]
+[loading /modules/java.base/java/io/InputStreamReader.class]
+[loading /modules/java.base/java/net/HttpURLConnection.class]
+[loading /modules/java.base/java/net/URL.class]
+[loading /modules/java.base/java/net/URLEncoder.class]
+[loading /modules/java.base/java/nio/charset/StandardCharsets.class]
+[loading /modules/java.base/java/util/concurrent/TimeUnit.class]
+[loading /modules/java.base/java/util/List.class]
+[loading /modules/java.base/java/time/Duration.class]
+[loading /modules/java.base/java/util/Objects.class]
+[loading /modules/java.base/java/lang/Boolean.class]
+[loading /modules/java.base/java/util/Set.class]
+[loading /modules/java.base/java/lang/StringBuilder.class]
+[loading C:\Users\purple\.m2\repository\org\openjfx\javafx-base\19.0.2.1\javafx-base-19.0.2.1-win.jar(/javafx/collections/ObservableList.class)]
+[loading /modules/java.base/java/util/ArrayList.class]
+[loading /modules/java.base/java/lang/Enum.class]
+[loading /modules/java.base/java/lang/constant/Constable.class]
+[loading /modules/java.base/java/lang/Comparable.class]
+[loading /modules/java.base/java/io/Serializable.class]
+[loading /modules/java.base/java/nio/file/Files.class]
+[loading /modules/java.base/java/nio/file/Path.class]
+[loading /modules/java.base/java/nio/file/Paths.class]
+[loading /modules/java.base/java/util/HashMap.class]
+[loading /modules/java.base/java/lang/InterruptedException.class]
+[loading C:\Users\purple\.m2\repository\org\openjfx\javafx-graphics\19.0.2.1\javafx-graphics-19.0.2.1-win.jar(/javafx/geometry/Insets.class)]
+[loading C:\Users\purple\.m2\repository\org\openjfx\javafx-graphics\19.0.2.1\javafx-graphics-19.0.2.1-win.jar(/javafx/scene/layout/GridPane.class)]
+[loading C:\Users\purple\.m2\repository\org\openjfx\javafx-graphics\19.0.2.1\javafx-graphics-19.0.2.1-win.jar(/javafx/scene/layout/VBox.class)]
+[loading C:\Users\purple\.m2\repository\org\openjfx\javafx-graphics\19.0.2.1\javafx-graphics-19.0.2.1-win.jar(/javafx/scene/text/Font.class)]
+[loading C:\Users\purple\.m2\repository\org\openjfx\javafx-graphics\19.0.2.1\javafx-graphics-19.0.2.1-win.jar(/javafx/scene/text/FontWeight.class)]
+[loading C:\Users\purple\.m2\repository\org\openjfx\javafx-controls\19.0.2.1\javafx-controls-19.0.2.1-win.jar(/javafx/scene/control/TreeCell.class)]
+[loading C:\Users\purple\.m2\repository\org\openjfx\javafx-controls\19.0.2.1\javafx-controls-19.0.2.1-win.jar(/javafx/scene/control/TreeItem.class)]
+[loading C:\Users\purple\.m2\repository\org\openjfx\javafx-controls\19.0.2.1\javafx-controls-19.0.2.1-win.jar(/javafx/scene/control/TreeView.class)]
+[loading C:\Users\purple\.m2\repository\org\openjfx\javafx-base\19.0.2.1\javafx-base-19.0.2.1-win.jar(/javafx/util/Callback.class)]
+[loading C:\Users\purple\.m2\repository\org\openjfx\javafx-graphics\19.0.2.1\javafx-graphics-19.0.2.1-win.jar(/javafx/scene/input/DataFormat.class)]
+[loading C:\Users\purple\.m2\repository\org\openjfx\javafx-graphics\19.0.2.1\javafx-graphics-19.0.2.1-win.jar(/javafx/scene/input/MouseEvent.class)]
+[loading C:\Users\purple\.m2\repository\org\openjfx\javafx-graphics\19.0.2.1\javafx-graphics-19.0.2.1-win.jar(/javafx/scene/input/DragEvent.class)]
+[loading C:\Users\purple\.m2\repository\com\fasterxml\jackson\core\jackson-databind\2.15.2\jackson-databind-2.15.2.jar(/com/fasterxml/jackson/databind/SerializationFeature.class)]
+[loading C:\Users\purple\.m2\repository\com\fasterxml\jackson\datatype\jackson-datatype-jsr310\2.15.2\jackson-datatype-jsr310-2.15.2.jar(/com/fasterxml/jackson/datatype/jsr310/JavaTimeModule.class)]
+[loading C:\Users\purple\.m2\repository\com\fasterxml\jackson\core\jackson-annotations\2.15.2\jackson-annotations-2.15.2.jar(/com/fasterxml/jackson/annotation/JsonCreator.class)]
+[loading C:\Users\purple\.m2\repository\com\fasterxml\jackson\core\jackson-annotations\2.15.2\jackson-annotations-2.15.2.jar(/com/fasterxml/jackson/annotation/JsonProperty.class)]
+[loading /modules/java.base/java/time/LocalDateTime.class]
+[loading C:\Users\purple\.m2\repository\org\openjfx\javafx-graphics\19.0.2.1\javafx-graphics-19.0.2.1-win.jar(/javafx/application/Application.class)]
+[loading C:\Users\purple\.m2\repository\org\openjfx\javafx-graphics\19.0.2.1\javafx-graphics-19.0.2.1-win.jar(/javafx/concurrent/Task.class)]
+[loading C:\Users\purple\.m2\repository\org\openjfx\javafx-fxml\19.0.2.1\javafx-fxml-19.0.2.1-win.jar(/javafx/fxml/FXMLLoader.class)]
+[loading C:\Users\purple\.m2\repository\org\openjfx\javafx-graphics\19.0.2.1\javafx-graphics-19.0.2.1-win.jar(/javafx/scene/Scene.class)]
+[loading C:\Users\purple\.m2\repository\org\openjfx\javafx-graphics\19.0.2.1\javafx-graphics-19.0.2.1-win.jar(/javafx/scene/image/Image.class)]
+[loading C:\Users\purple\.m2\repository\org\openjfx\javafx-graphics\19.0.2.1\javafx-graphics-19.0.2.1-win.jar(/javafx/stage/Stage.class)]
+[loading C:\Users\purple\.m2\repository\org\openjfx\javafx-graphics\19.0.2.1\javafx-graphics-19.0.2.1-win.jar(/javafx/application/Platform.class)]
+[loading C:\Users\purple\.m2\repository\org\openjfx\javafx-graphics\19.0.2.1\javafx-graphics-19.0.2.1-win.jar(/javafx/geometry/Pos.class)]
+[loading C:\Users\purple\.m2\repository\org\openjfx\javafx-controls\19.0.2.1\javafx-controls-19.0.2.1-win.jar(/javafx/scene/control/Label.class)]
+[loading C:\Users\purple\.m2\repository\org\openjfx\javafx-controls\19.0.2.1\javafx-controls-19.0.2.1-win.jar(/javafx/scene/control/ProgressBar.class)]
+[loading C:\Users\purple\.m2\repository\org\openjfx\javafx-graphics\19.0.2.1\javafx-graphics-19.0.2.1-win.jar(/javafx/scene/image/ImageView.class)]
+[loading C:\Users\purple\.m2\repository\org\openjfx\javafx-graphics\19.0.2.1\javafx-graphics-19.0.2.1-win.jar(/javafx/scene/paint/Color.class)]
+[loading C:\Users\purple\.m2\repository\org\openjfx\javafx-graphics\19.0.2.1\javafx-graphics-19.0.2.1-win.jar(/javafx/stage/StageStyle.class)]
+[loading /modules/java.base/java/lang/Exception.class]
+[loading /modules/java.base/java/lang/Void.class]
+[loading C:\Users\purple\.m2\repository\org\openjfx\javafx-controls\19.0.2.1\javafx-controls-19.0.2.1-win.jar(/javafx/scene/control/Alert.class)]
+[loading C:\Users\purple\.m2\repository\org\openjfx\javafx-controls\19.0.2.1\javafx-controls-19.0.2.1-win.jar(/javafx/scene/control/ButtonType.class)]
+[loading C:\Users\purple\.m2\repository\org\openjfx\javafx-controls\19.0.2.1\javafx-controls-19.0.2.1-win.jar(/javafx/scene/control/TextArea.class)]
+[loading C:\Users\purple\.m2\repository\org\openjfx\javafx-graphics\19.0.2.1\javafx-graphics-19.0.2.1-win.jar(/javafx/scene/layout/Priority.class)]
+[loading /modules/java.base/java/io/PrintWriter.class]
+[loading /modules/java.base/java/io/StringWriter.class]
+[loading /modules/java.base/java/util/Optional.class]
+[loading /modules/java.base/java/lang/Throwable.class]
+[loading C:\Users\purple\.m2\repository\org\openjfx\javafx-controls\19.0.2.1\javafx-controls-19.0.2.1-win.jar(/javafx/scene/control/Alert$AlertType.class)]
+[loading C:\Users\purple\.m2\repository\org\openjfx\javafx-base\19.0.2.1\javafx-base-19.0.2.1-win.jar(/javafx/collections/FXCollections.class)]
+[loading C:\Users\purple\.m2\repository\org\openjfx\javafx-fxml\19.0.2.1\javafx-fxml-19.0.2.1-win.jar(/javafx/fxml/FXML.class)]
+[loading C:\Users\purple\.m2\repository\org\openjfx\javafx-fxml\19.0.2.1\javafx-fxml-19.0.2.1-win.jar(/javafx/fxml/Initializable.class)]
+[loading C:\Users\purple\.m2\repository\org\openjfx\javafx-controls\19.0.2.1\javafx-controls-19.0.2.1-win.jar(/javafx/scene/control/cell/PropertyValueFactory.class)]
+[loading C:\Users\purple\.m2\repository\org\openjfx\javafx-controls\19.0.2.1\javafx-controls-19.0.2.1-win.jar(/javafx/scene/control/cell/TextFieldTreeCell.class)]
+[loading C:\Users\purple\.m2\repository\org\openjfx\javafx-graphics\19.0.2.1\javafx-graphics-19.0.2.1-win.jar(/javafx/stage/DirectoryChooser.class)]
+[loading /modules/java.base/java/io/File.class]
+[loading /modules/java.base/java/util/LinkedHashMap.class]
+[loading /modules/java.base/java/util/ResourceBundle.class]
+[loading C:\Users\purple\.m2\repository\org\openjfx\javafx-controls\19.0.2.1\javafx-controls-19.0.2.1-win.jar(/javafx/scene/control/Button.class)]
+[loading C:\Users\purple\.m2\repository\org\openjfx\javafx-controls\19.0.2.1\javafx-controls-19.0.2.1-win.jar(/javafx/scene/control/TextField.class)]
+[loading C:\Users\purple\.m2\repository\org\openjfx\javafx-controls\19.0.2.1\javafx-controls-19.0.2.1-win.jar(/javafx/scene/control/ComboBox.class)]
+[loading C:\Users\purple\.m2\repository\org\openjfx\javafx-controls\19.0.2.1\javafx-controls-19.0.2.1-win.jar(/javafx/scene/control/TableView.class)]
+[loading C:\Users\purple\.m2\repository\org\openjfx\javafx-controls\19.0.2.1\javafx-controls-19.0.2.1-win.jar(/javafx/scene/control/TableColumn.class)]
+[loading C:\Users\purple\.m2\repository\org\openjfx\javafx-controls\19.0.2.1\javafx-controls-19.0.2.1-win.jar(/javafx/scene/control/MenuItem.class)]
+[loading /modules/java.base/java/time/format/DateTimeFormatter.class]
+[loading C:\Users\purple\.m2\repository\org\openjfx\javafx-controls\19.0.2.1\javafx-controls-19.0.2.1-win.jar(/javafx/scene/control/Dialog.class)]
+[loading /modules/java.base/java/lang/Deprecated.class]
+[loading /modules/java.base/java/lang/Override.class]
+[loading /modules/java.base/java/lang/annotation/Annotation.class]
+[loading C:\Users\purple\.m2\repository\org\openjfx\javafx-base\19.0.2.1\javafx-base-19.0.2.1-win.jar(/javafx/beans/NamedArg.class)]
+[loading C:\Users\purple\.m2\repository\org\openjfx\javafx-base\19.0.2.1\javafx-base-19.0.2.1-win.jar(/javafx/beans/DefaultProperty.class)]
+[loading /modules/java.base/java/lang/annotation/Target.class]
+[loading /modules/java.base/java/lang/annotation/ElementType.class]
+[loading /modules/java.base/java/lang/annotation/Retention.class]
+[loading /modules/java.base/java/lang/annotation/RetentionPolicy.class]
+[loading C:\Users\purple\.m2\repository\com\fasterxml\jackson\core\jackson-annotations\2.15.2\jackson-annotations-2.15.2.jar(/com/fasterxml/jackson/annotation/JsonCreator$Mode.class)]
+[loading C:\Users\purple\.m2\repository\com\fasterxml\jackson\core\jackson-annotations\2.15.2\jackson-annotations-2.15.2.jar(/com/fasterxml/jackson/annotation/JsonProperty$Access.class)]
+[loading /modules/java.base/java/lang/SuppressWarnings.class]
+[loading C:\Users\purple\.m2\repository\org\openjfx\javafx-base\19.0.2.1\javafx-base-19.0.2.1-win.jar(/com/sun/javafx/beans/IDProperty.class)]
+[checking com.structurecreation.service.DependencyResolverService]
+[loading /modules/java.base/java/lang/AutoCloseable.class]
+[loading /modules/java.base/java/lang/Class.class]
+[loading /modules/java.base/jdk/internal/javac/PreviewFeature.class]
+[loading /modules/java.base/jdk/internal/javac/PreviewFeature$Feature.class]
+[loading /modules/java.base/jdk/internal/javac/PreviewFeature$JEP.class]
+[loading /modules/java.base/java/util/AbstractMap.class]
+[loading /modules/java.base/java/util/Collection.class]
+[loading /modules/java.base/java/util/concurrent/Future.class]
+[loading /modules/java.base/java/util/concurrent/CompletionStage.class]
+[loading /modules/java.base/java/util/AbstractList.class]
+[loading /modules/java.base/java/util/AbstractCollection.class]
+[loading /modules/java.base/java/lang/Iterable.class]
+[loading /modules/java.base/java/lang/CharSequence.class]
+[loading /modules/java.base/java/lang/constant/ConstantDesc.class]
+[loading /modules/java.net.http/java/net/http/HttpRequest$Builder.class]
+[loading /modules/java.net.http/java/net/http/HttpResponse$BodyHandlers.class]
+[loading /modules/java.net.http/java/net/http/HttpResponse$BodyHandler.class]
+[loading /modules/java.net.http/java/net/http/HttpResponse$PushPromiseHandler.class]
+[loading /modules/java.base/java/util/function/Function.class]
+[loading C:\Users\purple\.m2\repository\org\slf4j\slf4j-api\2.0.7\slf4j-api-2.0.7.jar(/org/slf4j/Marker.class)]
+[loading /modules/java.base/java/lang/Cloneable.class]
+[loading /modules/java.base/java/util/SequencedCollection.class]
+[loading /modules/java.base/java/lang/Byte.class]
+[loading /modules/java.base/java/lang/Character.class]
+[loading /modules/java.base/java/lang/Short.class]
+[loading /modules/java.base/java/lang/Long.class]
+[loading /modules/java.base/java/lang/Float.class]
+[loading /modules/java.base/java/lang/Integer.class]
+[loading /modules/java.base/java/lang/Double.class]
+[loading /modules/java.base/java/lang/Appendable.class]
+[loading /modules/java.base/java/lang/AbstractStringBuilder.class]
+[loading /modules/java.base/java/lang/StringBuffer.class]
+[loading /modules/java.base/java/util/Iterator.class]
+[loading /modules/java.base/java/util/Locale.class]
+[loading /modules/java.base/java/util/HashSet.class]
+[loading /modules/java.base/java/util/AbstractSet.class]
+[loading /modules/java.base/java/util/function/Supplier.class]
+[loading /modules/java.base/java/util/concurrent/Executor.class]
+[loading /modules/java.base/java/util/concurrent/ExecutionException.class]
+[loading /modules/java.base/java/util/concurrent/TimeoutException.class]
+[loading /modules/java.base/java/util/Map$Entry.class]
+[loading /modules/java.base/java/lang/Math.class]
+[loading /modules/java.base/java/lang/Number.class]
+[loading /modules/java.base/java/util/function/Consumer.class]
+[loading /modules/java.base/java/util/stream/Collector.class]
+[loading /modules/java.base/java/util/stream/Stream.class]
+[loading /modules/java.base/java/util/stream/BaseStream.class]
+[loading /modules/java.base/java/util/function/BiConsumer.class]
+[loading /modules/java.base/java/util/Queue.class]
+[loading /modules/java.base/java/util/LinkedList.class]
+[loading /modules/java.base/java/util/AbstractSequentialList.class]
+[loading /modules/java.base/java/util/Deque.class]
+[loading /modules/java.base/java/util/Comparator.class]
+[loading /modules/java.base/java/lang/Error.class]
+[loading /modules/java.base/java/lang/RuntimeException.class]
+[loading /modules/java.base/java/lang/NumberFormatException.class]
+[loading /modules/java.base/java/lang/IllegalArgumentException.class]
+[loading /modules/java.base/java/lang/invoke/LambdaMetafactory.class]
+[loading /modules/java.base/java/lang/invoke/MethodHandles.class]
+[loading /modules/java.base/java/lang/invoke/MethodHandles$Lookup.class]
+[loading /modules/java.base/java/lang/invoke/MethodType.class]
+[loading /modules/java.base/java/lang/invoke/MethodHandle.class]
+[loading /modules/java.base/java/lang/invoke/StringConcatFactory.class]
+[loading /modules/java.base/java/lang/invoke/CallSite.class]
+[wrote C:\Users\purple\Desktop\Dev\Git\Java\Gaia-Structure\target\classes\com\structurecreation\service\DependencyResolverService$DependencySearchResult.class]
+[wrote C:\Users\purple\Desktop\Dev\Git\Java\Gaia-Structure\target\classes\com\structurecreation\service\DependencyResolverService$ResolvedDependency.class]
+[wrote C:\Users\purple\Desktop\Dev\Git\Java\Gaia-Structure\target\classes\com\structurecreation\service\DependencyResolverService$ConflictResolution.class]
+[wrote C:\Users\purple\Desktop\Dev\Git\Java\Gaia-Structure\target\classes\com\structurecreation\service\DependencyResolverService.class]
+[checking com.structurecreation.service.repository.MavenCentralRepository]
+[loading /modules/java.base/java/lang/System.class]
+[loading /modules/java.base/java/nio/charset/Charset.class]
+[loading C:\Users\purple\.m2\repository\com\fasterxml\jackson\core\jackson-core\2.15.2\jackson-core-2.15.2.jar(/com/fasterxml/jackson/core/Versioned.class)]
+[loading C:\Users\purple\.m2\repository\com\fasterxml\jackson\core\jackson-core\2.15.2\jackson-core-2.15.2.jar(/com/fasterxml/jackson/core/ObjectCodec.class)]
+[loading C:\Users\purple\.m2\repository\com\fasterxml\jackson\core\jackson-core\2.15.2\jackson-core-2.15.2.jar(/com/fasterxml/jackson/core/TreeCodec.class)]
+[loading /modules/java.base/java/io/Reader.class]
+[loading /modules/java.base/java/io/InputStream.class]
+[loading C:\Users\purple\.m2\repository\com\fasterxml\jackson\core\jackson-core\2.15.2\jackson-core-2.15.2.jar(/com/fasterxml/jackson/core/TreeNode.class)]
+[loading C:\Users\purple\.m2\repository\com\fasterxml\jackson\core\jackson-core\2.15.2\jackson-core-2.15.2.jar(/com/fasterxml/jackson/core/JsonParser.class)]
+[loading C:\Users\purple\.m2\repository\com\fasterxml\jackson\core\jackson-core\2.15.2\jackson-core-2.15.2.jar(/com/fasterxml/jackson/core/JsonProcessingException.class)]
+[loading C:\Users\purple\.m2\repository\com\fasterxml\jackson\core\jackson-databind\2.15.2\jackson-databind-2.15.2.jar(/com/fasterxml/jackson/databind/JsonSerializable.class)]
+[loading C:\Users\purple\.m2\repository\com\fasterxml\jackson\core\jackson-databind\2.15.2\jackson-databind-2.15.2.jar(/com/fasterxml/jackson/databind/JsonSerializable$Base.class)]
+[loading /modules/java.base/java/util/Collections.class]
+[loading /modules/java.base/java/net/URLConnection.class]
+[loading /modules/java.base/java/nio/charset/CharsetDecoder.class]
+[loading /modules/java.base/java/lang/Readable.class]
+[loading /modules/java.base/java/io/Closeable.class]
+[loading C:\Users\purple\.m2\repository\com\fasterxml\jackson\core\jackson-core\2.15.2\jackson-core-2.15.2.jar(/com/fasterxml/jackson/core/JacksonException.class)]
+[loading C:\Users\purple\.m2\repository\com\fasterxml\jackson\core\jackson-databind\2.15.2\jackson-databind-2.15.2.jar(/com/fasterxml/jackson/databind/JsonMappingException.class)]
+[loading C:\Users\purple\.m2\repository\com\fasterxml\jackson\core\jackson-databind\2.15.2\jackson-databind-2.15.2.jar(/com/fasterxml/jackson/databind/DatabindException.class)]
+[loading /modules/java.base/java/net/MalformedURLException.class]
+[loading /modules/java.base/java/net/ProtocolException.class]
+[wrote C:\Users\purple\Desktop\Dev\Git\Java\Gaia-Structure\target\classes\com\structurecreation\service\repository\MavenCentralRepository$CachedVersion.class]
+[wrote C:\Users\purple\Desktop\Dev\Git\Java\Gaia-Structure\target\classes\com\structurecreation\service\repository\MavenCentralRepository$MavenArtifact.class]
+[wrote C:\Users\purple\Desktop\Dev\Git\Java\Gaia-Structure\target\classes\com\structurecreation\service\repository\MavenCentralRepository$VersionUpdate.class]
+[wrote C:\Users\purple\Desktop\Dev\Git\Java\Gaia-Structure\target\classes\com\structurecreation\service\repository\MavenCentralRepository.class]
+[checking com.structurecreation.service.repository.RepositoryService]
+[wrote C:\Users\purple\Desktop\Dev\Git\Java\Gaia-Structure\target\classes\com\structurecreation\service\repository\RepositoryService.class]
+[checking com.structurecreation.service.repository.NpmRepository]
+[loading /modules/java.base/java/time/temporal/TemporalAmount.class]
+[loading /modules/java.net.http/java/net/http/HttpClient$Builder.class]
+[loading /modules/java.base/java/util/concurrent/ConcurrentMap.class]
+[loading /modules/java.net.http/java/net/http/HttpRequest$BodyPublishers.class]
+[loading /modules/java.net.http/java/net/http/HttpRequest$BodyPublisher.class]
+[loading /modules/java.base/java/util/function/Predicate.class]
+[wrote C:\Users\purple\Desktop\Dev\Git\Java\Gaia-Structure\target\classes\com\structurecreation\service\repository\NpmRepository$CacheEntry.class]
+[wrote C:\Users\purple\Desktop\Dev\Git\Java\Gaia-Structure\target\classes\com\structurecreation\service\repository\NpmRepository.class]
+[checking com.structurecreation.service.repository.PyPiRepository]
+[loading /modules/java.base/java/util/Arrays.class]
+[wrote C:\Users\purple\Desktop\Dev\Git\Java\Gaia-Structure\target\classes\com\structurecreation\service\repository\PyPiRepository$CacheEntry.class]
+[wrote C:\Users\purple\Desktop\Dev\Git\Java\Gaia-Structure\target\classes\com\structurecreation\service\repository\PyPiRepository.class]
+[checking com.structurecreation.model.Dependency]
+[wrote C:\Users\purple\Desktop\Dev\Git\Java\Gaia-Structure\target\classes\com\structurecreation\model\Dependency.class]
+[checking com.structurecreation.model.ProjectStructure]
+[loading C:\Users\purple\.m2\repository\org\openjfx\javafx-base\19.0.2.1\javafx-base-19.0.2.1-win.jar(/javafx/beans/Observable.class)]
+[wrote C:\Users\purple\Desktop\Dev\Git\Java\Gaia-Structure\target\classes\com\structurecreation\model\ProjectStructure.class]
+[checking com.structurecreation.model.ProjectNode]
+[loading /modules/java.base/java/lang/Enum$EnumDesc.class]
+[loading /modules/java.base/java/lang/constant/DynamicConstantDesc.class]
+[loading /modules/java.base/java/lang/CloneNotSupportedException.class]
+[wrote C:\Users\purple\Desktop\Dev\Git\Java\Gaia-Structure\target\classes\com\structurecreation\model\ProjectNode$NodeType.class]
+[wrote C:\Users\purple\Desktop\Dev\Git\Java\Gaia-Structure\target\classes\com\structurecreation\model\ProjectNode.class]
+[checking com.structurecreation.service.EnvironmentManager]
+[loading /modules/java.base/java/lang/ProcessBuilder.class]
+[loading /modules/java.base/java/lang/Process.class]
+[loading /modules/java.base/java/util/regex/Pattern.class]
+[loading /modules/java.base/java/util/regex/Matcher.class]
+[loading /modules/java.base/java/util/regex/MatchResult.class]
+[wrote C:\Users\purple\Desktop\Dev\Git\Java\Gaia-Structure\target\classes\com\structurecreation\service\EnvironmentManager$EnvironmentInfo.class]
+[wrote C:\Users\purple\Desktop\Dev\Git\Java\Gaia-Structure\target\classes\com\structurecreation\service\EnvironmentManager.class]
+[checking com.structurecreation.util.EnvironmentDetectionTest]
+[loading /modules/java.base/java/io/PrintStream.class]
+[loading /modules/java.base/java/io/FilterOutputStream.class]
+[loading /modules/java.base/java/io/OutputStream.class]
+[loading /modules/java.base/java/io/Flushable.class]
+[wrote C:\Users\purple\Desktop\Dev\Git\Java\Gaia-Structure\target\classes\com\structurecreation\util\EnvironmentDetectionTest.class]
+[checking com.structurecreation.service.ProjectCreationService]
+[loading /modules/java.base/java/nio/file/LinkOption.class]
+[loading /modules/java.base/java/nio/file/attribute/FileAttribute.class]
+[loading /modules/java.base/java/nio/file/Watchable.class]
+[loading /modules/java.base/java/nio/file/OpenOption.class]
+[wrote C:\Users\purple\Desktop\Dev\Git\Java\Gaia-Structure\target\classes\com\structurecreation\service\ProjectCreationService$ProjectTemplateGenerator.class]
+[wrote C:\Users\purple\Desktop\Dev\Git\Java\Gaia-Structure\target\classes\com\structurecreation\service\ProjectCreationService$MavenProjectGenerator.class]
+[wrote C:\Users\purple\Desktop\Dev\Git\Java\Gaia-Structure\target\classes\com\structurecreation\service\ProjectCreationService$GradleProjectGenerator.class]
+[wrote C:\Users\purple\Desktop\Dev\Git\Java\Gaia-Structure\target\classes\com\structurecreation\service\ProjectCreationService$PythonProjectGenerator.class]
+[wrote C:\Users\purple\Desktop\Dev\Git\Java\Gaia-Structure\target\classes\com\structurecreation\service\ProjectCreationService$NodeJsProjectGenerator.class]
+[wrote C:\Users\purple\Desktop\Dev\Git\Java\Gaia-Structure\target\classes\com\structurecreation\service\ProjectCreationService$ReactProjectGenerator.class]
+[wrote C:\Users\purple\Desktop\Dev\Git\Java\Gaia-Structure\target\classes\com\structurecreation\service\ProjectCreationService$SpringBootProjectGenerator.class]
+[wrote C:\Users\purple\Desktop\Dev\Git\Java\Gaia-Structure\target\classes\com\structurecreation\service\ProjectCreationService$CustomProjectGenerator.class]
+[wrote C:\Users\purple\Desktop\Dev\Git\Java\Gaia-Structure\target\classes\com\structurecreation\service\ProjectCreationService.class]
+[checking com.structurecreation.service.TutorialService]
+[loading C:\Users\purple\.m2\repository\org\openjfx\javafx-base\19.0.2.1\javafx-base-19.0.2.1-win.jar(/javafx/event/EventTarget.class)]
+[loading C:\Users\purple\.m2\repository\org\openjfx\javafx-graphics\19.0.2.1\javafx-graphics-19.0.2.1-win.jar(/javafx/scene/Node.class)]
+[loading C:\Users\purple\.m2\repository\org\openjfx\javafx-graphics\19.0.2.1\javafx-graphics-19.0.2.1-win.jar(/javafx/scene/layout/Pane.class)]
+[loading C:\Users\purple\.m2\repository\org\openjfx\javafx-graphics\19.0.2.1\javafx-graphics-19.0.2.1-win.jar(/javafx/scene/layout/Region.class)]
+[loading C:\Users\purple\.m2\repository\org\openjfx\javafx-graphics\19.0.2.1\javafx-graphics-19.0.2.1-win.jar(/javafx/scene/Parent.class)]
+[loading C:\Users\purple\.m2\repository\org\openjfx\javafx-graphics\19.0.2.1\javafx-graphics-19.0.2.1-win.jar(/javafx/css/Styleable.class)]
+[loading C:\Users\purple\.m2\repository\org\openjfx\javafx-controls\19.0.2.1\javafx-controls-19.0.2.1-win.jar(/javafx/scene/control/Labeled.class)]
+[loading C:\Users\purple\.m2\repository\org\openjfx\javafx-controls\19.0.2.1\javafx-controls-19.0.2.1-win.jar(/javafx/scene/control/Control.class)]
+[loading C:\Users\purple\.m2\repository\org\openjfx\javafx-controls\19.0.2.1\javafx-controls-19.0.2.1-win.jar(/javafx/scene/control/Skinnable.class)]
+[loading C:\Users\purple\.m2\repository\org\openjfx\javafx-graphics\19.0.2.1\javafx-graphics-19.0.2.1-win.jar(/javafx/scene/text/FontPosture.class)]
+[loading C:\Users\purple\.m2\repository\org\openjfx\javafx-controls\19.0.2.1\javafx-controls-19.0.2.1-win.jar(/javafx/scene/control/Separator.class)]
+[loading C:\Users\purple\.m2\repository\org\openjfx\javafx-controls\19.0.2.1\javafx-controls-19.0.2.1-win.jar(/javafx/scene/control/DialogPane.class)]
+[wrote C:\Users\purple\Desktop\Dev\Git\Java\Gaia-Structure\target\classes\com\structurecreation\service\TutorialService.class]
+[checking com.structurecreation.service.generator.FlaskProjectGenerator]
+[wrote C:\Users\purple\Desktop\Dev\Git\Java\Gaia-Structure\target\classes\com\structurecreation\service\generator\FlaskProjectGenerator$FlaskProjectType.class]
+[wrote C:\Users\purple\Desktop\Dev\Git\Java\Gaia-Structure\target\classes\com\structurecreation\service\generator\FlaskProjectGenerator.class]
+[checking com.structurecreation.service.generator.SpringBootProjectGenerator]
+[wrote C:\Users\purple\Desktop\Dev\Git\Java\Gaia-Structure\target\classes\com\structurecreation\service\generator\SpringBootProjectGenerator$SpringBootProjectType.class]
+[wrote C:\Users\purple\Desktop\Dev\Git\Java\Gaia-Structure\target\classes\com\structurecreation\service\generator\SpringBootProjectGenerator.class]
+[checking com.structurecreation.util.TreeViewDragAndDrop]
+[loading C:\Users\purple\.m2\repository\org\openjfx\javafx-controls\19.0.2.1\javafx-controls-19.0.2.1-win.jar(/javafx/scene/control/IndexedCell.class)]
+[loading C:\Users\purple\.m2\repository\org\openjfx\javafx-controls\19.0.2.1\javafx-controls-19.0.2.1-win.jar(/javafx/scene/control/Cell.class)]
+[loading C:\Users\purple\.m2\repository\org\openjfx\javafx-controls\19.0.2.1\javafx-controls-19.0.2.1-win.jar(/javafx/scene/control/Skin.class)]
+[loading C:\Users\purple\.m2\repository\org\openjfx\javafx-base\19.0.2.1\javafx-base-19.0.2.1-win.jar(/javafx/beans/property/ReadOnlyObjectProperty.class)]
+[loading C:\Users\purple\.m2\repository\org\openjfx\javafx-base\19.0.2.1\javafx-base-19.0.2.1-win.jar(/javafx/beans/property/ObjectProperty.class)]
+[loading C:\Users\purple\.m2\repository\org\openjfx\javafx-base\19.0.2.1\javafx-base-19.0.2.1-win.jar(/javafx/collections/ObservableSet.class)]
+[loading C:\Users\purple\.m2\repository\org\openjfx\javafx-graphics\19.0.2.1\javafx-graphics-19.0.2.1-win.jar(/javafx/css/CssMetaData.class)]
+[loading C:\Users\purple\.m2\repository\org\openjfx\javafx-base\19.0.2.1\javafx-base-19.0.2.1-win.jar(/javafx/event/EventHandler.class)]
+[loading /modules/java.base/java/util/EventListener.class]
+[loading C:\Users\purple\.m2\repository\org\openjfx\javafx-base\19.0.2.1\javafx-base-19.0.2.1-win.jar(/javafx/event/Event.class)]
+[loading C:\Users\purple\.m2\repository\org\openjfx\javafx-graphics\19.0.2.1\javafx-graphics-19.0.2.1-win.jar(/javafx/scene/input/InputEvent.class)]
+[loading C:\Users\purple\.m2\repository\org\openjfx\javafx-graphics\19.0.2.1\javafx-graphics-19.0.2.1-win.jar(/javafx/scene/input/Dragboard.class)]
+[loading C:\Users\purple\.m2\repository\org\openjfx\javafx-graphics\19.0.2.1\javafx-graphics-19.0.2.1-win.jar(/javafx/scene/input/TransferMode.class)]
+[loading C:\Users\purple\.m2\repository\org\openjfx\javafx-graphics\19.0.2.1\javafx-graphics-19.0.2.1-win.jar(/javafx/scene/input/ClipboardContent.class)]
+[loading C:\Users\purple\.m2\repository\org\openjfx\javafx-graphics\19.0.2.1\javafx-graphics-19.0.2.1-win.jar(/javafx/scene/input/Clipboard.class)]
+[loading C:\Users\purple\.m2\repository\org\openjfx\javafx-graphics\19.0.2.1\javafx-graphics-19.0.2.1-win.jar(/javafx/scene/image/WritableImage.class)]
+[loading /modules/java.base/java/util/EventObject.class]
+[loading C:\Users\purple\.m2\repository\org\openjfx\javafx-controls\19.0.2.1\javafx-controls-19.0.2.1-win.jar(/javafx/scene/control/MultipleSelectionModel.class)]
+[loading C:\Users\purple\.m2\repository\org\openjfx\javafx-controls\19.0.2.1\javafx-controls-19.0.2.1-win.jar(/javafx/scene/control/SelectionModel.class)]
+[wrote C:\Users\purple\Desktop\Dev\Git\Java\Gaia-Structure\target\classes\com\structurecreation\util\TreeViewDragAndDrop$1.class]
+[loading C:\Users\purple\.m2\repository\org\openjfx\javafx-graphics\19.0.2.1\javafx-graphics-19.0.2.1-win.jar(/javafx/scene/SnapshotParameters.class)]
+[wrote C:\Users\purple\Desktop\Dev\Git\Java\Gaia-Structure\target\classes\com\structurecreation\util\TreeViewDragAndDrop.class]
+[checking com.structurecreation.service.TemplateService]
+[loading C:\Users\purple\.m2\repository\com\fasterxml\jackson\core\jackson-databind\2.15.2\jackson-databind-2.15.2.jar(/com/fasterxml/jackson/databind/module/SimpleModule.class)]
+[loading C:\Users\purple\.m2\repository\com\fasterxml\jackson\core\jackson-core\2.15.2\jackson-core-2.15.2.jar(/com/fasterxml/jackson/core/JsonGenerator.class)]
+[loading C:\Users\purple\.m2\repository\com\fasterxml\jackson\core\jackson-core\2.15.2\jackson-core-2.15.2.jar(/com/fasterxml/jackson/core/JsonGenerator$Feature.class)]
+[loading C:\Users\purple\.m2\repository\com\fasterxml\jackson\core\jackson-core\2.15.2\jackson-core-2.15.2.jar(/com/fasterxml/jackson/core/JsonParser$Feature.class)]
+[loading C:\Users\purple\.m2\repository\com\fasterxml\jackson\core\jackson-databind\2.15.2\jackson-databind-2.15.2.jar(/com/fasterxml/jackson/databind/DeserializationFeature.class)]
+[loading C:\Users\purple\.m2\repository\com\fasterxml\jackson\core\jackson-databind\2.15.2\jackson-databind-2.15.2.jar(/com/fasterxml/jackson/databind/MapperFeature.class)]
+[loading /modules/java.base/java/io/Writer.class]
+[loading /modules/java.base/java/io/DataOutput.class]
+[loading /modules/java.base/java/io/DataInput.class]
+[loading C:\Users\purple\.m2\repository\com\fasterxml\jackson\core\jackson-core\2.15.2\jackson-core-2.15.2.jar(/com/fasterxml/jackson/core/exc/StreamReadException.class)]
+[loading C:\Users\purple\.m2\repository\com\fasterxml\jackson\core\jackson-core\2.15.2\jackson-core-2.15.2.jar(/com/fasterxml/jackson/core/type/TypeReference.class)]
+[loading C:\Users\purple\.m2\repository\com\fasterxml\jackson\core\jackson-databind\2.15.2\jackson-databind-2.15.2.jar(/com/fasterxml/jackson/databind/JavaType.class)]
+[loading /modules/java.base/java/util/function/IntFunction.class]
+[loading C:\Users\purple\.m2\repository\com\fasterxml\jackson\core\jackson-core\2.15.2\jackson-core-2.15.2.jar(/com/fasterxml/jackson/core/exc/StreamWriteException.class)]
+[loading C:\Users\purple\.m2\repository\com\fasterxml\jackson\core\jackson-databind\2.15.2\jackson-databind-2.15.2.jar(/com/fasterxml/jackson/databind/Module.class)]
+[wrote C:\Users\purple\Desktop\Dev\Git\Java\Gaia-Structure\target\classes\com\structurecreation\service\TemplateService.class]
+[checking com.structurecreation.model.ProjectTemplate]
+[loading /modules/java.base/java/time/temporal/Temporal.class]
+[loading /modules/java.base/java/time/temporal/TemporalAccessor.class]
+[loading /modules/java.base/java/time/temporal/TemporalAdjuster.class]
+[loading /modules/java.base/java/time/chrono/ChronoLocalDateTime.class]
+[wrote C:\Users\purple\Desktop\Dev\Git\Java\Gaia-Structure\target\classes\com\structurecreation\model\ProjectTemplate.class]
+[checking com.structurecreation.ProjectStructureCreatorApp]
+[loading C:\Users\purple\.m2\repository\org\openjfx\javafx-graphics\19.0.2.1\javafx-graphics-19.0.2.1-win.jar(/javafx/concurrent/Worker.class)]
+[loading /modules/java.base/java/util/concurrent/FutureTask.class]
+[loading /modules/java.base/java/util/concurrent/RunnableFuture.class]
+[loading /modules/java.base/java/lang/Runnable.class]
+[loading C:\Users\purple\.m2\repository\org\openjfx\javafx-graphics\19.0.2.1\javafx-graphics-19.0.2.1-win.jar(/javafx/concurrent/WorkerStateEvent.class)]
+[loading /modules/java.base/java/lang/Thread.class]
+[loading /modules/java.base/java/lang/reflect/GenericDeclaration.class]
+[loading /modules/java.base/java/lang/reflect/AnnotatedElement.class]
+[loading /modules/java.base/java/lang/reflect/Type.class]
+[loading /modules/java.base/java/lang/invoke/TypeDescriptor.class]
+[loading /modules/java.base/java/lang/invoke/TypeDescriptor$OfField.class]
+[loading C:\Users\purple\.m2\repository\org\openjfx\javafx-graphics\19.0.2.1\javafx-graphics-19.0.2.1-win.jar(/javafx/stage/Window.class)]
+[loading C:\Users\purple\.m2\repository\org\openjfx\javafx-graphics\19.0.2.1\javafx-graphics-19.0.2.1-win.jar(/javafx/scene/image/PixelBuffer.class)]
+[wrote C:\Users\purple\Desktop\Dev\Git\Java\Gaia-Structure\target\classes\com\structurecreation\ProjectStructureCreatorApp.class]
+[checking com.structurecreation.SplashScreen]
+[loading C:\Users\purple\.m2\repository\org\openjfx\javafx-controls\19.0.2.1\javafx-controls-19.0.2.1-win.jar(/javafx/scene/control/ProgressIndicator.class)]
+[loading C:\Users\purple\.m2\repository\org\openjfx\javafx-graphics\19.0.2.1\javafx-graphics-19.0.2.1-win.jar(/javafx/concurrent/Task$TaskCallable.class)]
+[loading /modules/java.base/java/util/concurrent/Callable.class]
+[loading C:\Users\purple\.m2\repository\org\openjfx\javafx-base\19.0.2.1\javafx-base-19.0.2.1-win.jar(/javafx/event/EventType.class)]
+[wrote C:\Users\purple\Desktop\Dev\Git\Java\Gaia-Structure\target\classes\com\structurecreation\SplashScreen$1.class]
+[loading C:\Users\purple\.m2\repository\org\openjfx\javafx-graphics\19.0.2.1\javafx-graphics-19.0.2.1-win.jar(/javafx/scene/paint/Paint.class)]
+[wrote C:\Users\purple\Desktop\Dev\Git\Java\Gaia-Structure\target\classes\com\structurecreation\SplashScreen.class]
+[checking com.structurecreation.service.generator.DjangoProjectGenerator]
+[wrote C:\Users\purple\Desktop\Dev\Git\Java\Gaia-Structure\target\classes\com\structurecreation\service\generator\DjangoProjectGenerator$DjangoProjectType.class]
+[wrote C:\Users\purple\Desktop\Dev\Git\Java\Gaia-Structure\target\classes\com\structurecreation\service\generator\DjangoProjectGenerator.class]
+[checking com.structurecreation.util.AlertUtils]
+[loading /modules/java.base/java/lang/Throwable$PrintStreamOrWriter.class]
+[loading C:\Users\purple\.m2\repository\org\openjfx\javafx-controls\19.0.2.1\javafx-controls-19.0.2.1-win.jar(/javafx/scene/control/TextInputControl.class)]
+[wrote C:\Users\purple\Desktop\Dev\Git\Java\Gaia-Structure\target\classes\com\structurecreation\util\AlertUtils.class]
+[checking com.structurecreation.service.generator.GeneratorService]
+[loading /modules/java.base/java/lang/ClassCastException.class]
+[wrote C:\Users\purple\Desktop\Dev\Git\Java\Gaia-Structure\target\classes\com\structurecreation\service\generator\GeneratorService$ProjectType.class]
+[wrote C:\Users\purple\Desktop\Dev\Git\Java\Gaia-Structure\target\classes\com\structurecreation\service\generator\GeneratorService.class]
+[checking com.structurecreation.service.generator.ReactProjectGenerator]
+[wrote C:\Users\purple\Desktop\Dev\Git\Java\Gaia-Structure\target\classes\com\structurecreation\service\generator\ReactProjectGenerator$ReactProjectType.class]
+[wrote C:\Users\purple\Desktop\Dev\Git\Java\Gaia-Structure\target\classes\com\structurecreation\service\generator\ReactProjectGenerator.class]
+[checking com.structurecreation.service.generator.NodeExpressProjectGenerator]
+[wrote C:\Users\purple\Desktop\Dev\Git\Java\Gaia-Structure\target\classes\com\structurecreation\service\generator\NodeExpressProjectGenerator$NodeProjectType.class]
+[wrote C:\Users\purple\Desktop\Dev\Git\Java\Gaia-Structure\target\classes\com\structurecreation\service\generator\NodeExpressProjectGenerator.class]
+[checking com.structurecreation.service.DependencyPresetService]
+[wrote C:\Users\purple\Desktop\Dev\Git\Java\Gaia-Structure\target\classes\com\structurecreation\service\DependencyPresetService$DependencyPreset.class]
+[wrote C:\Users\purple\Desktop\Dev\Git\Java\Gaia-Structure\target\classes\com\structurecreation\service\DependencyPresetService.class]
+[checking com.structurecreation.service.generator.ProjectGenerator]
+[wrote C:\Users\purple\Desktop\Dev\Git\Java\Gaia-Structure\target\classes\com\structurecreation\service\generator\ProjectGenerator.class]
+[checking com.structurecreation.service.generator.AbstractProjectGenerator]
+[wrote C:\Users\purple\Desktop\Dev\Git\Java\Gaia-Structure\target\classes\com\structurecreation\service\generator\AbstractProjectGenerator.class]
+[checking com.structurecreation.controller.MainController]
+[loading C:\Users\purple\.m2\repository\org\openjfx\javafx-base\19.0.2.1\javafx-base-19.0.2.1-win.jar(/javafx/beans/property/ReadOnlyProperty.class)]
+[loading C:\Users\purple\.m2\repository\org\openjfx\javafx-base\19.0.2.1\javafx-base-19.0.2.1-win.jar(/javafx/beans/value/ObservableValue.class)]
+[loading C:\Users\purple\.m2\repository\org\openjfx\javafx-base\19.0.2.1\javafx-base-19.0.2.1-win.jar(/javafx/beans/binding/ObjectExpression.class)]
+[loading C:\Users\purple\.m2\repository\org\openjfx\javafx-base\19.0.2.1\javafx-base-19.0.2.1-win.jar(/javafx/beans/value/ObservableObjectValue.class)]
+[loading C:\Users\purple\.m2\repository\org\openjfx\javafx-base\19.0.2.1\javafx-base-19.0.2.1-win.jar(/javafx/beans/value/ChangeListener.class)]
+[loading C:\Users\purple\.m2\repository\org\openjfx\javafx-base\19.0.2.1\javafx-base-19.0.2.1-win.jar(/javafx/beans/InvalidationListener.class)]
+[loading C:\Users\purple\.m2\repository\org\openjfx\javafx-controls\19.0.2.1\javafx-controls-19.0.2.1-win.jar(/javafx/scene/control/ComboBoxBase.class)]
+[loading C:\Users\purple\.m2\repository\org\openjfx\javafx-controls\19.0.2.1\javafx-controls-19.0.2.1-win.jar(/javafx/scene/control/TableColumnBase.class)]
+[loading C:\Users\purple\.m2\repository\org\openjfx\javafx-controls\19.0.2.1\javafx-controls-19.0.2.1-win.jar(/javafx/scene/control/TableColumn$CellDataFeatures.class)]
+[loading C:\Users\purple\.m2\repository\org\openjfx\javafx-controls\19.0.2.1\javafx-controls-19.0.2.1-win.jar(/javafx/scene/control/TableView$TableViewSelectionModel.class)]
+[loading C:\Users\purple\.m2\repository\org\openjfx\javafx-controls\19.0.2.1\javafx-controls-19.0.2.1-win.jar(/javafx/scene/control/TableSelectionModel.class)]
+[loading C:\Users\purple\.m2\repository\org\openjfx\javafx-controls\19.0.2.1\javafx-controls-19.0.2.1-win.jar(/javafx/scene/control/MultipleSelectionModelBase.class)]
+[loading C:\Users\purple\.m2\repository\org\openjfx\javafx-controls\19.0.2.1\javafx-controls-19.0.2.1-win.jar(/javafx/scene/control/ListView.class)]
+[loading C:\Users\purple\.m2\repository\org\openjfx\javafx-controls\19.0.2.1\javafx-controls-19.0.2.1-win.jar(/javafx/scene/control/ListCell.class)]
+[loading C:\Users\purple\.m2\repository\org\openjfx\javafx-controls\19.0.2.1\javafx-controls-19.0.2.1-win.jar(/javafx/scene/control/Tooltip.class)]
+[loading C:\Users\purple\.m2\repository\org\openjfx\javafx-controls\19.0.2.1\javafx-controls-19.0.2.1-win.jar(/javafx/scene/control/SingleSelectionModel.class)]
+[loading C:\Users\purple\.m2\repository\org\openjfx\javafx-controls\19.0.2.1\javafx-controls-19.0.2.1-win.jar(/javafx/scene/control/ButtonBase.class)]
+[loading C:\Users\purple\.m2\repository\org\openjfx\javafx-base\19.0.2.1\javafx-base-19.0.2.1-win.jar(/javafx/event/ActionEvent.class)]
+[loading C:\Users\purple\.m2\repository\org\openjfx\javafx-base\19.0.2.1\javafx-base-19.0.2.1-win.jar(/javafx/beans/property/ReadOnlyDoubleProperty.class)]
+[loading C:\Users\purple\.m2\repository\org\openjfx\javafx-base\19.0.2.1\javafx-base-19.0.2.1-win.jar(/javafx/beans/property/DoubleProperty.class)]
+[loading C:\Users\purple\.m2\repository\org\openjfx\javafx-base\19.0.2.1\javafx-base-19.0.2.1-win.jar(/javafx/beans/property/Property.class)]
+[loading C:\Users\purple\.m2\repository\org\openjfx\javafx-base\19.0.2.1\javafx-base-19.0.2.1-win.jar(/javafx/beans/value/WritableValue.class)]
+[loading C:\Users\purple\.m2\repository\org\openjfx\javafx-base\19.0.2.1\javafx-base-19.0.2.1-win.jar(/javafx/beans/value/WritableDoubleValue.class)]
+[loading C:\Users\purple\.m2\repository\org\openjfx\javafx-base\19.0.2.1\javafx-base-19.0.2.1-win.jar(/javafx/beans/value/WritableNumberValue.class)]
+[loading C:\Users\purple\.m2\repository\org\openjfx\javafx-base\19.0.2.1\javafx-base-19.0.2.1-win.jar(/javafx/beans/binding/DoubleExpression.class)]
+[loading C:\Users\purple\.m2\repository\org\openjfx\javafx-base\19.0.2.1\javafx-base-19.0.2.1-win.jar(/javafx/beans/value/ObservableDoubleValue.class)]
+[loading C:\Users\purple\.m2\repository\org\openjfx\javafx-base\19.0.2.1\javafx-base-19.0.2.1-win.jar(/javafx/beans/value/ObservableNumberValue.class)]
+[loading C:\Users\purple\.m2\repository\org\openjfx\javafx-base\19.0.2.1\javafx-base-19.0.2.1-win.jar(/javafx/beans/binding/NumberExpressionBase.class)]
+[loading C:\Users\purple\.m2\repository\org\openjfx\javafx-base\19.0.2.1\javafx-base-19.0.2.1-win.jar(/javafx/beans/binding/NumberExpression.class)]
+[loading C:\Users\purple\.m2\repository\org\openjfx\javafx-base\19.0.2.1\javafx-base-19.0.2.1-win.jar(/javafx/beans/property/ReadOnlyStringProperty.class)]
+[loading C:\Users\purple\.m2\repository\org\openjfx\javafx-base\19.0.2.1\javafx-base-19.0.2.1-win.jar(/javafx/beans/property/StringProperty.class)]
+[loading C:\Users\purple\.m2\repository\org\openjfx\javafx-base\19.0.2.1\javafx-base-19.0.2.1-win.jar(/javafx/beans/value/WritableStringValue.class)]
+[loading C:\Users\purple\.m2\repository\org\openjfx\javafx-base\19.0.2.1\javafx-base-19.0.2.1-win.jar(/javafx/beans/value/WritableObjectValue.class)]
+[loading C:\Users\purple\.m2\repository\org\openjfx\javafx-base\19.0.2.1\javafx-base-19.0.2.1-win.jar(/javafx/beans/binding/StringExpression.class)]
+[loading C:\Users\purple\.m2\repository\org\openjfx\javafx-base\19.0.2.1\javafx-base-19.0.2.1-win.jar(/javafx/beans/value/ObservableStringValue.class)]
+[loading C:\Users\purple\.m2\repository\org\openjfx\javafx-controls\19.0.2.1\javafx-controls-19.0.2.1-win.jar(/javafx/scene/control/ChoiceDialog.class)]
+[loading C:\Users\purple\.m2\repository\org\openjfx\javafx-controls\19.0.2.1\javafx-controls-19.0.2.1-win.jar(/javafx/scene/control/TextInputDialog.class)]
+[loading C:\Users\purple\.m2\repository\org\openjfx\javafx-controls\19.0.2.1\javafx-controls-19.0.2.1-win.jar(/javafx/scene/control/ButtonBar.class)]
+[loading C:\Users\purple\.m2\repository\org\openjfx\javafx-controls\19.0.2.1\javafx-controls-19.0.2.1-win.jar(/javafx/scene/control/ButtonBar$ButtonData.class)]
+[wrote C:\Users\purple\Desktop\Dev\Git\Java\Gaia-Structure\target\classes\com\structurecreation\controller\MainController$1.class]
+[wrote C:\Users\purple\Desktop\Dev\Git\Java\Gaia-Structure\target\classes\com\structurecreation\controller\MainController$3.class]
+[wrote C:\Users\purple\Desktop\Dev\Git\Java\Gaia-Structure\target\classes\com\structurecreation\controller\MainController$5.class]
+[wrote C:\Users\purple\Desktop\Dev\Git\Java\Gaia-Structure\target\classes\com\structurecreation\controller\MainController$6.class]
+[wrote C:\Users\purple\Desktop\Dev\Git\Java\Gaia-Structure\target\classes\com\structurecreation\controller\MainController$4.class]
+[wrote C:\Users\purple\Desktop\Dev\Git\Java\Gaia-Structure\target\classes\com\structurecreation\controller\MainController$2.class]
+[wrote C:\Users\purple\Desktop\Dev\Git\Java\Gaia-Structure\target\classes\com\structurecreation\controller\MainController.class]
+[checking com.structurecreation.service.FileTreeGenerator]
+[wrote C:\Users\purple\Desktop\Dev\Git\Java\Gaia-Structure\target\classes\com\structurecreation\service\FileTreeGenerator.class]
+[total 1668ms]
+
+
+=== Standard Maven Output ===
+=== STDOUT for mvn clean compile ===
+[INFO] Scanning for projects...
+[INFO] 
+[INFO] ----------< com.structurecreation:project-structure-creator >-----------
+[INFO] Building Project Structure Creator 1.0.0
+[INFO]   from pom.xml
+[INFO] --------------------------------[ jar ]---------------------------------
+[WARNING] 6 problems were encountered while building the effective model for org.openjfx:javafx-controls:jar:19.0.2.1 during dependency collection step for project (use -X to see details)
+[INFO] 
+[INFO] --- clean:3.2.0:clean (default-clean) @ project-structure-creator ---
+[INFO] Deleting C:\Users\purple\Desktop\Dev\Git\Java\Gaia-Structure\target
+[INFO] 
+[INFO] --- resources:3.3.1:resources (default-resources) @ project-structure-creator ---
+[INFO] Copying 5 resources from src\main\resources to target\classes
+[INFO] 
+[INFO] --- compiler:3.11.0:compile (default-compile) @ project-structure-creator ---
+[INFO] Changes detected - recompiling the module! :source
+[INFO] Compiling 29 source files with javac [debug target 17] to target\classes
+[WARNING] system modules path not set in conjunction with -source 17
+[INFO] /C:/Users/purple/Desktop/Dev/Git/Java/Gaia-Structure/src/main/java/com/structurecreation/service/repository/MavenCentralRepository.java: C:\Users\purple\Desktop\Dev\Git\Java\Gaia-Structure\src\main\java\com\structurecreation\service\repository\MavenCentralRepository.java uses or overrides a deprecated API.
+[INFO] /C:/Users/purple/Desktop/Dev/Git/Java/Gaia-Structure/src/main/java/com/structurecreation/service/repository/MavenCentralRepository.java: Recompile with -Xlint:deprecation for details.
+[INFO] /C:/Users/purple/Desktop/Dev/Git/Java/Gaia-Structure/src/main/java/com/structurecreation/service/repository/NpmRepository.java: Some input files use unchecked or unsafe operations.
+[INFO] /C:/Users/purple/Desktop/Dev/Git/Java/Gaia-Structure/src/main/java/com/structurecreation/service/repository/NpmRepository.java: Recompile with -Xlint:unchecked for details.
+[INFO] ------------------------------------------------------------------------
+[INFO] BUILD SUCCESS
+[INFO] ------------------------------------------------------------------------
+[INFO] Total time:  2.411 s
+[INFO] Finished at: 2025-10-09T16:52:26-05:00
+[INFO] ------------------------------------------------------------------------
+
+=== STDOUT for mvn compile ===
+[INFO] Scanning for projects...
+[INFO] 
+[INFO] ----------< com.structurecreation:project-structure-creator >-----------
+[INFO] Building Project Structure Creator 1.0.0
+[INFO]   from pom.xml
+[INFO] --------------------------------[ jar ]---------------------------------
+[WARNING] 6 problems were encountered while building the effective model for org.openjfx:javafx-controls:jar:19.0.2.1 during dependency collection step for project (use -X to see details)
+[INFO] 
+[INFO] --- resources:3.3.1:resources (default-resources) @ project-structure-creator ---
+[INFO] Copying 5 resources from src\main\resources to target\classes
+[INFO] 
+[INFO] --- compiler:3.11.0:compile (default-compile) @ project-structure-creator ---
+[INFO] Nothing to compile - all classes are up to date
+[INFO] ------------------------------------------------------------------------
+[INFO] BUILD SUCCESS
+[INFO] ------------------------------------------------------------------------
+[INFO] Total time:  0.515 s
+[INFO] Finished at: 2025-10-09T16:52:28-05:00
+[INFO] ------------------------------------------------------------------------
+
+=== STDOUT for mvn clean compile -X ===
+Apache Maven 3.9.11 (3e54c93a704957b63ee3494413a2b544fd3d825b)
+Maven home: C:\Users\purple\Desktop\Dev\Build Files\MVN\apache-maven-3.9.11-bin\apache-maven-3.9.11
+Java version: 21.0.8, vendor: Oracle Corporation, runtime: C:\Program Files\Java\jdk-21
+Default locale: en_US, platform encoding: UTF-8
+OS name: "windows 10", version: "10.0", arch: "amd64", family: "windows"
+[DEBUG] Created new class realm maven.api
+[DEBUG] Importing foreign packages into class realm maven.api
+[DEBUG]   Imported: javax.annotation.* < plexus.core
+[DEBUG]   Imported: javax.annotation.security.* < plexus.core
+[DEBUG]   Imported: javax.inject.* < plexus.core
+[DEBUG]   Imported: org.apache.maven.* < plexus.core
+[DEBUG]   Imported: org.apache.maven.artifact < plexus.core
+[DEBUG]   Imported: org.apache.maven.classrealm < plexus.core
+[DEBUG]   Imported: org.apache.maven.cli < plexus.core
+[DEBUG]   Imported: org.apache.maven.configuration < plexus.core
+[DEBUG]   Imported: org.apache.maven.exception < plexus.core
+[DEBUG]   Imported: org.apache.maven.execution < plexus.core
+[DEBUG]   Imported: org.apache.maven.execution.scope < plexus.core
+[DEBUG]   Imported: org.apache.maven.graph < plexus.core
+[DEBUG]   Imported: org.apache.maven.lifecycle < plexus.core
+[DEBUG]   Imported: org.apache.maven.model < plexus.core
+[DEBUG]   Imported: org.apache.maven.monitor < plexus.core
+[DEBUG]   Imported: org.apache.maven.plugin < plexus.core
+[DEBUG]   Imported: org.apache.maven.profiles < plexus.core
+[DEBUG]   Imported: org.apache.maven.project < plexus.core
+[DEBUG]   Imported: org.apache.maven.reporting < plexus.core
+[DEBUG]   Imported: org.apache.maven.repository < plexus.core
+[DEBUG]   Imported: org.apache.maven.rtinfo < plexus.core
+[DEBUG]   Imported: org.apache.maven.settings < plexus.core
+[DEBUG]   Imported: org.apache.maven.toolchain < plexus.core
+[DEBUG]   Imported: org.apache.maven.usability < plexus.core
+[DEBUG]   Imported: org.apache.maven.wagon.* < plexus.core
+[DEBUG]   Imported: org.apache.maven.wagon.authentication < plexus.core
+[DEBUG]   Imported: org.apache.maven.wagon.authorization < plexus.core
+[DEBUG]   Imported: org.apache.maven.wagon.events < plexus.core
+[DEBUG]   Imported: org.apache.maven.wagon.observers < plexus.core
+[DEBUG]   Imported: org.apache.maven.wagon.proxy < plexus.core
+[DEBUG]   Imported: org.apache.maven.wagon.repository < plexus.core
+[DEBUG]   Imported: org.apache.maven.wagon.resource < plexus.core
+[DEBUG]   Imported: org.codehaus.classworlds < plexus.core
+[DEBUG]   Imported: org.codehaus.plexus.* < plexus.core
+[DEBUG]   Imported: org.codehaus.plexus.classworlds < plexus.core
+[DEBUG]   Imported: org.codehaus.plexus.component < plexus.core
+[DEBUG]   Imported: org.codehaus.plexus.configuration < plexus.core
+[DEBUG]   Imported: org.codehaus.plexus.container < plexus.core
+[DEBUG]   Imported: org.codehaus.plexus.context < plexus.core
+[DEBUG]   Imported: org.codehaus.plexus.lifecycle < plexus.core
+[DEBUG]   Imported: org.codehaus.plexus.logging < plexus.core
+[DEBUG]   Imported: org.codehaus.plexus.personality < plexus.core
+[DEBUG]   Imported: org.codehaus.plexus.util.xml.Xpp3Dom < plexus.core
+[DEBUG]   Imported: org.codehaus.plexus.util.xml.pull.XmlPullParser < plexus.core
+[DEBUG]   Imported: org.codehaus.plexus.util.xml.pull.XmlPullParserException < plexus.core
+[DEBUG]   Imported: org.codehaus.plexus.util.xml.pull.XmlSerializer < plexus.core
+[DEBUG]   Imported: org.eclipse.aether.* < plexus.core
+[DEBUG]   Imported: org.eclipse.aether.artifact < plexus.core
+[DEBUG]   Imported: org.eclipse.aether.collection < plexus.core
+[DEBUG]   Imported: org.eclipse.aether.deployment < plexus.core
+[DEBUG]   Imported: org.eclipse.aether.graph < plexus.core
+[DEBUG]   Imported: org.eclipse.aether.impl < plexus.core
+[DEBUG]   Imported: org.eclipse.aether.installation < plexus.core
+[DEBUG]   Imported: org.eclipse.aether.internal.impl < plexus.core
+[DEBUG]   Imported: org.eclipse.aether.metadata < plexus.core
+[DEBUG]   Imported: org.eclipse.aether.repository < plexus.core
+[DEBUG]   Imported: org.eclipse.aether.resolution < plexus.core
+[DEBUG]   Imported: org.eclipse.aether.spi < plexus.core
+[DEBUG]   Imported: org.eclipse.aether.transfer < plexus.core
+[DEBUG]   Imported: org.eclipse.aether.util < plexus.core
+[DEBUG]   Imported: org.eclipse.aether.version < plexus.core
+[DEBUG]   Imported: org.fusesource.jansi.* < plexus.core
+[DEBUG]   Imported: org.slf4j.* < plexus.core
+[DEBUG]   Imported: org.slf4j.event.* < plexus.core
+[DEBUG]   Imported: org.slf4j.helpers.* < plexus.core
+[DEBUG]   Imported: org.slf4j.spi.* < plexus.core
+[DEBUG] Populating class realm maven.api
+[DEBUG] Created adapter factory; available factories [file-lock, rwlock-local, semaphore-local, noop]; available name mappers [discriminating, file-gav, file-hgav, file-static, gav, static]
+[INFO] Error stacktraces are turned on.
+[DEBUG] Message scheme: color
+[DEBUG] Message styles: debug info warning error success failure strong mojo project
+[DEBUG] Reading global settings from C:\Users\purple\Desktop\Dev\Build Files\MVN\apache-maven-3.9.11-bin\apache-maven-3.9.11\conf\settings.xml
+[DEBUG] Reading user settings from C:\Users\purple\.m2\settings.xml
+[DEBUG] Reading global toolchains from C:\Users\purple\Desktop\Dev\Build Files\MVN\apache-maven-3.9.11-bin\apache-maven-3.9.11\conf\toolchains.xml
+[DEBUG] Reading user toolchains from C:\Users\purple\.m2\toolchains.xml
+[DEBUG] Using local repository at C:\Users\purple\.m2\repository
+[DEBUG] Using manager EnhancedLocalRepositoryManager with priority 10.0 for C:\Users\purple\.m2\repository
+[INFO] Scanning for projects...
+[DEBUG] Extension realms for project com.structurecreation:project-structure-creator:jar:1.0.0: (none)
+[DEBUG] Looking up lifecycle mappings for packaging jar from ClassRealm[plexus.core, parent: null]
+[DEBUG] === REACTOR BUILD PLAN ================================================
+[DEBUG] Project: com.structurecreation:project-structure-creator:jar:1.0.0
+[DEBUG] Tasks:   [clean, compile]
+[DEBUG] Style:   Regular
+[DEBUG] =======================================================================
+[INFO] 
+[INFO] ----------< com.structurecreation:project-structure-creator >-----------
+[INFO] Building Project Structure Creator 1.0.0
+[INFO]   from pom.xml
+[INFO] --------------------------------[ jar ]---------------------------------
+[DEBUG] Lifecycle clean -> [pre-clean, clean, post-clean]
+[DEBUG] Lifecycle default -> [validate, initialize, generate-sources, process-sources, generate-resources, process-resources, compile, process-classes, generate-test-sources, process-test-sources, generate-test-resources, process-test-resources, test-compile, process-test-classes, test, prepare-package, package, pre-integration-test, integration-test, post-integration-test, verify, install, deploy]
+[DEBUG] Lifecycle site -> [pre-site, site, post-site, site-deploy]
+[DEBUG] Lifecycle clean -> [pre-clean, clean, post-clean]
+[DEBUG] Lifecycle default -> [validate, initialize, generate-sources, process-sources, generate-resources, process-resources, compile, process-classes, generate-test-sources, process-test-sources, generate-test-resources, process-test-resources, test-compile, process-test-classes, test, prepare-package, package, pre-integration-test, integration-test, post-integration-test, verify, install, deploy]
+[DEBUG] Lifecycle site -> [pre-site, site, post-site, site-deploy]
+[DEBUG] Creating adapter using nameMapper 'gav' and factory 'rwlock-local'
+[DEBUG] Lifecycle clean -> [pre-clean, clean, post-clean]
+[DEBUG] Lifecycle default -> [validate, initialize, generate-sources, process-sources, generate-resources, process-resources, compile, process-classes, generate-test-sources, process-test-sources, generate-test-resources, process-test-resources, test-compile, process-test-classes, test, prepare-package, package, pre-integration-test, integration-test, post-integration-test, verify, install, deploy]
+[DEBUG] Lifecycle site -> [pre-site, site, post-site, site-deploy]
+[DEBUG] Lifecycle clean -> [pre-clean, clean, post-clean]
+[DEBUG] Lifecycle default -> [validate, initialize, generate-sources, process-sources, generate-resources, process-resources, compile, process-classes, generate-test-sources, process-test-sources, generate-test-resources, process-test-resources, test-compile, process-test-classes, test, prepare-package, package, pre-integration-test, integration-test, post-integration-test, verify, install, deploy]
+[DEBUG] Lifecycle site -> [pre-site, site, post-site, site-deploy]
+[DEBUG] Lifecycle clean -> [pre-clean, clean, post-clean]
+[DEBUG] Lifecycle default -> [validate, initialize, generate-sources, process-sources, generate-resources, process-resources, compile, process-classes, generate-test-sources, process-test-sources, generate-test-resources, process-test-resources, test-compile, process-test-classes, test, prepare-package, package, pre-integration-test, integration-test, post-integration-test, verify, install, deploy]
+[DEBUG] Lifecycle site -> [pre-site, site, post-site, site-deploy]
+[DEBUG] === PROJECT BUILD PLAN ================================================
+[DEBUG] Project:       com.structurecreation:project-structure-creator:1.0.0
+[DEBUG] Dependencies (collect): []
+[DEBUG] Dependencies (resolve): [compile]
+[DEBUG] Repositories (dependencies): [central (https://repo.maven.apache.org/maven2, default, releases)]
+[DEBUG] Repositories (plugins)     : [central (https://repo.maven.apache.org/maven2, default, releases)]
+[DEBUG] -----------------------------------------------------------------------
+[DEBUG] Goal:          org.apache.maven.plugins:maven-clean-plugin:3.2.0:clean (default-clean)
+[DEBUG] Style:         Regular
+[DEBUG] Configuration: <?xml version="1.0" encoding="UTF-8"?>
+<configuration>
+  <directory default-value="${project.build.directory}"/>
+  <excludeDefaultDirectories default-value="false">${maven.clean.excludeDefaultDirectories}</excludeDefaultDirectories>
+  <failOnError default-value="true">${maven.clean.failOnError}</failOnError>
+  <fast default-value="false">${maven.clean.fast}</fast>
+  <fastDir>${maven.clean.fastDir}</fastDir>
+  <fastMode default-value="background">${maven.clean.fastMode}</fastMode>
+  <followSymLinks default-value="false">${maven.clean.followSymLinks}</followSymLinks>
+  <outputDirectory default-value="${project.build.outputDirectory}"/>
+  <reportDirectory default-value="${project.build.outputDirectory}"/>
+  <retryOnError default-value="true">${maven.clean.retryOnError}</retryOnError>
+  <session default-value="${session}"/>
+  <skip default-value="false">${maven.clean.skip}</skip>
+  <testOutputDirectory default-value="${project.build.testOutputDirectory}"/>
+  <verbose>${maven.clean.verbose}</verbose>
+</configuration>
+[DEBUG] -----------------------------------------------------------------------
+[DEBUG] Goal:          org.apache.maven.plugins:maven-resources-plugin:3.3.1:resources (default-resources)
+[DEBUG] Style:         Regular
+[DEBUG] Configuration: <?xml version="1.0" encoding="UTF-8"?>
+<configuration>
+  <addDefaultExcludes default-value="true"/>
+  <buildFilters default-value="${project.build.filters}"/>
+  <encoding default-value="${project.build.sourceEncoding}"/>
+  <escapeWindowsPaths default-value="true"/>
+  <fileNameFiltering default-value="false"/>
+  <includeEmptyDirs default-value="false"/>
+  <outputDirectory default-value="${project.build.outputDirectory}"/>
+  <overwrite default-value="false"/>
+  <project default-value="${project}"/>
+  <resources default-value="${project.resources}"/>
+  <session default-value="${session}"/>
+  <skip default-value="false">${maven.resources.skip}</skip>
+  <supportMultiLineFiltering default-value="false"/>
+  <useBuildFilters default-value="true"/>
+  <useDefaultDelimiters default-value="true"/>
+</configuration>
+[DEBUG] -----------------------------------------------------------------------
+[DEBUG] Goal:          org.apache.maven.plugins:maven-compiler-plugin:3.11.0:compile (default-compile)
+[DEBUG] Style:         Regular
+[DEBUG] Configuration: <?xml version="1.0" encoding="UTF-8"?>
+<configuration>
+  <basedir default-value="${basedir}"/>
+  <buildDirectory default-value="${project.build.directory}"/>
+  <compilePath default-value="${project.compileClasspathElements}"/>
+  <compileSourceRoots default-value="${project.compileSourceRoots}"/>
+  <compilerId default-value="javac">${maven.compiler.compilerId}</compilerId>
+  <compilerReuseStrategy default-value="${reuseCreated}">${maven.compiler.compilerReuseStrategy}</compilerReuseStrategy>
+  <compilerVersion>${maven.compiler.compilerVersion}</compilerVersion>
+  <createMissingPackageInfoClass default-value="true">${maven.compiler.createMissingPackageInfoClass}</createMissingPackageInfoClass>
+  <debug default-value="true">${maven.compiler.debug}</debug>
+  <debugFileName default-value="javac"/>
+  <debuglevel>${maven.compiler.debuglevel}</debuglevel>
+  <enablePreview default-value="false">${maven.compiler.enablePreview}</enablePreview>
+  <encoding default-value="${project.build.sourceEncoding}">${encoding}</encoding>
+  <executable>${maven.compiler.executable}</executable>
+  <failOnError default-value="true">${maven.compiler.failOnError}</failOnError>
+  <failOnWarning default-value="false">${maven.compiler.failOnWarning}</failOnWarning>
+  <forceJavacCompilerUse default-value="false">${maven.compiler.forceJavacCompilerUse}</forceJavacCompilerUse>
+  <fork default-value="false">${maven.compiler.fork}</fork>
+  <generatedSourcesDirectory default-value="${project.build.directory}/generated-sources/annotations"/>
+  <implicit>${maven.compiler.implicit}</implicit>
+  <maxmem>${maven.compiler.maxmem}</maxmem>
+  <meminitial>${maven.compiler.meminitial}</meminitial>
+  <mojoExecution default-value="${mojoExecution}"/>
+  <optimize default-value="false">${maven.compiler.optimize}</optimize>
+  <outputDirectory default-value="${project.build.outputDirectory}"/>
+  <parameters default-value="false">${maven.compiler.parameters}</parameters>
+  <project default-value="${project}"/>
+  <projectArtifact default-value="${project.artifact}"/>
+  <release>${maven.compiler.release}</release>
+  <session default-value="${session}"/>
+  <showCompilationChanges default-value="false">${maven.compiler.showCompilationChanges}</showCompilationChanges>
+  <showDeprecation default-value="false">${maven.compiler.showDeprecation}</showDeprecation>
+  <showWarnings default-value="true">${maven.compiler.showWarnings}</showWarnings>
+  <skipMain>${maven.main.skip}</skipMain>
+  <skipMultiThreadWarning default-value="false">${maven.compiler.skipMultiThreadWarning}</skipMultiThreadWarning>
+  <source default-value="1.8">17</source>
+  <staleMillis default-value="0">${lastModGranularityMs}</staleMillis>
+  <target default-value="1.8">17</target>
+  <useIncrementalCompilation default-value="true">${maven.compiler.useIncrementalCompilation}</useIncrementalCompilation>
+  <verbose default-value="false">${maven.compiler.verbose}</verbose>
+</configuration>
+[DEBUG] =======================================================================
+[WARNING] 6 problems were encountered while building the effective model for org.openjfx:javafx-controls:jar:19.0.2.1 during dependency collection step for project. Path to offending node from root:
+ -> com.structurecreation:project-structure-creator:jar:1.0.0
+ => org.openjfx:javafx-controls:jar:19.0.2.1 (compile)
+Problems
+* 'profiles.profile.id' Duplicate activation for profile linux-x86_64 @ org.openjfx:javafx:19.0.2.1
+* 'profiles.profile.id' Duplicate activation for profile linux-aarch64 @ org.openjfx:javafx:19.0.2.1
+* 'profiles.profile.id' Duplicate activation for profile macosx-x86_64 @ org.openjfx:javafx:19.0.2.1
+* 'profiles.profile.id' Duplicate activation for profile macosx-aarch64 @ org.openjfx:javafx:19.0.2.1
+* 'profiles.profile.id' Duplicate activation for profile windows-x86_64 @ org.openjfx:javafx:19.0.2.1
+* 'profiles.profile.id' Duplicate activation for profile windows-x86 @ org.openjfx:javafx:19.0.2.1
+[DEBUG] Dependency collection stats {ConflictMarker.analyzeTime=502000, ConflictMarker.markTime=88500, ConflictMarker.nodeCount=46, ConflictIdSorter.graphTime=280100, ConflictIdSorter.topsortTime=331600, ConflictIdSorter.conflictIdCount=25, ConflictIdSorter.conflictIdCycleCount=4, ConflictResolver.totalTime=3639700, ConflictResolver.conflictItemCount=40, DfDependencyCollector.collectTime=103542500, DfDependencyCollector.transformTime=6615200}
+[DEBUG] com.structurecreation:project-structure-creator:jar:1.0.0
+[DEBUG]    org.openjfx:javafx-controls:jar:19.0.2.1:compile
+[DEBUG]       org.openjfx:javafx-controls:jar:win:19.0.2.1:compile
+[DEBUG]       org.openjfx:javafx-graphics:jar:19.0.2.1:compile
+[DEBUG]          org.openjfx:javafx-graphics:jar:win:19.0.2.1:compile
+[DEBUG]          org.openjfx:javafx-base:jar:19.0.2.1:compile
+[DEBUG]             org.openjfx:javafx-base:jar:win:19.0.2.1:compile
+[DEBUG]    org.openjfx:javafx-fxml:jar:19.0.2.1:compile
+[DEBUG]       org.openjfx:javafx-fxml:jar:win:19.0.2.1:compile
+[DEBUG]    com.fasterxml.jackson.core:jackson-databind:jar:2.15.2:compile
+[DEBUG]       com.fasterxml.jackson.core:jackson-annotations:jar:2.15.2:compile
+[DEBUG]       com.fasterxml.jackson.core:jackson-core:jar:2.15.2:compile
+[DEBUG]    com.fasterxml.jackson.datatype:jackson-datatype-jsr310:jar:2.15.2:compile
+[DEBUG]    commons-io:commons-io:jar:2.11.0:compile
+[DEBUG]    org.apache.commons:commons-lang3:jar:3.12.0:compile
+[DEBUG]    ch.qos.logback:logback-classic:jar:1.4.8:compile
+[DEBUG]       ch.qos.logback:logback-core:jar:1.4.8:compile
+[DEBUG]       org.slf4j:slf4j-api:jar:2.0.7:compile
+[DEBUG]    org.junit.jupiter:junit-jupiter:jar:5.9.3:test
+[DEBUG]       org.junit.jupiter:junit-jupiter-api:jar:5.9.3:test
+[DEBUG]          org.opentest4j:opentest4j:jar:1.2.0:test
+[DEBUG]          org.junit.platform:junit-platform-commons:jar:1.9.3:test
+[DEBUG]       org.junit.jupiter:junit-jupiter-engine:jar:5.9.3:test
+[DEBUG]          org.junit.platform:junit-platform-engine:jar:1.9.3:test
+[DEBUG]    org.junit.jupiter:junit-jupiter-params:jar:5.9.3:test
+[DEBUG]       org.apiguardian:apiguardian-api:jar:1.1.2:test
+[INFO] 
+[INFO] --- clean:3.2.0:clean (default-clean) @ project-structure-creator ---
+[DEBUG] Dependency collection stats {ConflictMarker.analyzeTime=20100, ConflictMarker.markTime=46300, ConflictMarker.nodeCount=3, ConflictIdSorter.graphTime=5000, ConflictIdSorter.topsortTime=15000, ConflictIdSorter.conflictIdCount=3, ConflictIdSorter.conflictIdCycleCount=0, ConflictResolver.totalTime=85800, ConflictResolver.conflictItemCount=3, DfDependencyCollector.collectTime=16039600, DfDependencyCollector.transformTime=186900}
+[DEBUG] org.apache.maven.plugins:maven-clean-plugin:jar:3.2.0
+[DEBUG]    org.apache.maven.shared:maven-shared-utils:jar:3.3.4:compile
+[DEBUG]       commons-io:commons-io:jar:2.6:compile
+[DEBUG] Created new class realm plugin>org.apache.maven.plugins:maven-clean-plugin:3.2.0
+[DEBUG] Importing foreign packages into class realm plugin>org.apache.maven.plugins:maven-clean-plugin:3.2.0
+[DEBUG]   Imported:  < maven.api
+[DEBUG] Populating class realm plugin>org.apache.maven.plugins:maven-clean-plugin:3.2.0
+[DEBUG]   Included: org.apache.maven.plugins:maven-clean-plugin:jar:3.2.0
+[DEBUG]   Included: org.apache.maven.shared:maven-shared-utils:jar:3.3.4
+[DEBUG]   Included: commons-io:commons-io:jar:2.6
+[DEBUG] Loading mojo org.apache.maven.plugins:maven-clean-plugin:3.2.0:clean from plugin realm ClassRealm[plugin>org.apache.maven.plugins:maven-clean-plugin:3.2.0, parent: jdk.internal.loader.ClassLoaders$AppClassLoader@70dea4e]
+[DEBUG] Configuring mojo execution 'org.apache.maven.plugins:maven-clean-plugin:3.2.0:clean:default-clean' with basic configurator -->
+[DEBUG]   (f) directory = C:\Users\purple\Desktop\Dev\Git\Java\Gaia-Structure\target
+[DEBUG]   (f) excludeDefaultDirectories = false
+[DEBUG]   (f) failOnError = true
+[DEBUG]   (f) fast = false
+[DEBUG]   (f) fastMode = background
+[DEBUG]   (f) followSymLinks = false
+[DEBUG]   (f) outputDirectory = C:\Users\purple\Desktop\Dev\Git\Java\Gaia-Structure\target\classes
+[DEBUG]   (f) reportDirectory = C:\Users\purple\Desktop\Dev\Git\Java\Gaia-Structure\target\classes
+[DEBUG]   (f) retryOnError = true
+[DEBUG]   (f) session = org.apache.maven.execution.MavenSession@2b9f74d0
+[DEBUG]   (f) skip = false
+[DEBUG]   (f) testOutputDirectory = C:\Users\purple\Desktop\Dev\Git\Java\Gaia-Structure\target\test-classes
+[DEBUG] -- end configuration --
+[INFO] Deleting C:\Users\purple\Desktop\Dev\Git\Java\Gaia-Structure\target
+[INFO] Deleting file C:\Users\purple\Desktop\Dev\Git\Java\Gaia-Structure\target\maven-status\maven-compiler-plugin\compile\default-compile\inputFiles.lst
+[INFO] Deleting file C:\Users\purple\Desktop\Dev\Git\Java\Gaia-Structure\target\maven-status\maven-compiler-plugin\compile\default-compile\createdFiles.lst
+[INFO] Deleting directory C:\Users\purple\Desktop\Dev\Git\Java\Gaia-Structure\target\maven-status\maven-compiler-plugin\compile\default-compile
+[INFO] Deleting directory C:\Users\purple\Desktop\Dev\Git\Java\Gaia-Structure\target\maven-status\maven-compiler-plugin\compile
+[INFO] Deleting directory C:\Users\purple\Desktop\Dev\Git\Java\Gaia-Structure\target\maven-status\maven-compiler-plugin
+[INFO] Deleting directory C:\Users\purple\Desktop\Dev\Git\Java\Gaia-Structure\target\maven-status
+[INFO] Deleting directory C:\Users\purple\Desktop\Dev\Git\Java\Gaia-Structure\target\generated-sources\annotations
+[INFO] Deleting directory C:\Users\purple\Desktop\Dev\Git\Java\Gaia-Structure\target\generated-sources
+[INFO] Deleting file C:\Users\purple\Desktop\Dev\Git\Java\Gaia-Structure\target\classes\logback.xml
+[INFO] Deleting file C:\Users\purple\Desktop\Dev\Git\Java\Gaia-Structure\target\classes\images\app-icon.png
+[INFO] Deleting file C:\Users\purple\Desktop\Dev\Git\Java\Gaia-Structure\target\classes\images\app-icon.ico
+[INFO] Deleting directory C:\Users\purple\Desktop\Dev\Git\Java\Gaia-Structure\target\classes\images
+[INFO] Deleting file C:\Users\purple\Desktop\Dev\Git\Java\Gaia-Structure\target\classes\fxml\main.fxml
+[INFO] Deleting directory C:\Users\purple\Desktop\Dev\Git\Java\Gaia-Structure\target\classes\fxml
+[INFO] Deleting file C:\Users\purple\Desktop\Dev\Git\Java\Gaia-Structure\target\classes\css\styles.css
+[INFO] Deleting directory C:\Users\purple\Desktop\Dev\Git\Java\Gaia-Structure\target\classes\css
+[INFO] Deleting file C:\Users\purple\Desktop\Dev\Git\Java\Gaia-Structure\target\classes\com\structurecreation\util\TreeViewDragAndDrop.class
+[INFO] Deleting file C:\Users\purple\Desktop\Dev\Git\Java\Gaia-Structure\target\classes\com\structurecreation\util\TreeViewDragAndDrop$1.class
+[INFO] Deleting file C:\Users\purple\Desktop\Dev\Git\Java\Gaia-Structure\target\classes\com\structurecreation\util\EnvironmentDetectionTest.class
+[INFO] Deleting file C:\Users\purple\Desktop\Dev\Git\Java\Gaia-Structure\target\classes\com\structurecreation\util\AlertUtils.class
+[INFO] Deleting directory C:\Users\purple\Desktop\Dev\Git\Java\Gaia-Structure\target\classes\com\structurecreation\util
+[INFO] Deleting file C:\Users\purple\Desktop\Dev\Git\Java\Gaia-Structure\target\classes\com\structurecreation\SplashScreen.class
+[INFO] Deleting file C:\Users\purple\Desktop\Dev\Git\Java\Gaia-Structure\target\classes\com\structurecreation\SplashScreen$1.class
+[INFO] Deleting file C:\Users\purple\Desktop\Dev\Git\Java\Gaia-Structure\target\classes\com\structurecreation\service\TutorialService.class
+[INFO] Deleting file C:\Users\purple\Desktop\Dev\Git\Java\Gaia-Structure\target\classes\com\structurecreation\service\TemplateService.class
+[INFO] Deleting file C:\Users\purple\Desktop\Dev\Git\Java\Gaia-Structure\target\classes\com\structurecreation\service\repository\RepositoryService.class
+[INFO] Deleting file C:\Users\purple\Desktop\Dev\Git\Java\Gaia-Structure\target\classes\com\structurecreation\service\repository\PyPiRepository.class
+[INFO] Deleting file C:\Users\purple\Desktop\Dev\Git\Java\Gaia-Structure\target\classes\com\structurecreation\service\repository\PyPiRepository$CacheEntry.class
+[INFO] Deleting file C:\Users\purple\Desktop\Dev\Git\Java\Gaia-Structure\target\classes\com\structurecreation\service\repository\NpmRepository.class
+[INFO] Deleting file C:\Users\purple\Desktop\Dev\Git\Java\Gaia-Structure\target\classes\com\structurecreation\service\repository\NpmRepository$CacheEntry.class
+[INFO] Deleting file C:\Users\purple\Desktop\Dev\Git\Java\Gaia-Structure\target\classes\com\structurecreation\service\repository\MavenCentralRepository.class
+[INFO] Deleting file C:\Users\purple\Desktop\Dev\Git\Java\Gaia-Structure\target\classes\com\structurecreation\service\repository\MavenCentralRepository$VersionUpdate.class
+[INFO] Deleting file C:\Users\purple\Desktop\Dev\Git\Java\Gaia-Structure\target\classes\com\structurecreation\service\repository\MavenCentralRepository$MavenArtifact.class
+[INFO] Deleting file C:\Users\purple\Desktop\Dev\Git\Java\Gaia-Structure\target\classes\com\structurecreation\service\repository\MavenCentralRepository$CachedVersion.class
+[INFO] Deleting directory C:\Users\purple\Desktop\Dev\Git\Java\Gaia-Structure\target\classes\com\structurecreation\service\repository
+[INFO] Deleting file C:\Users\purple\Desktop\Dev\Git\Java\Gaia-Structure\target\classes\com\structurecreation\service\ProjectCreationService.class
+[INFO] Deleting file C:\Users\purple\Desktop\Dev\Git\Java\Gaia-Structure\target\classes\com\structurecreation\service\ProjectCreationService$SpringBootProjectGenerator.class
+[INFO] Deleting file C:\Users\purple\Desktop\Dev\Git\Java\Gaia-Structure\target\classes\com\structurecreation\service\ProjectCreationService$ReactProjectGenerator.class
+[INFO] Deleting file C:\Users\purple\Desktop\Dev\Git\Java\Gaia-Structure\target\classes\com\structurecreation\service\ProjectCreationService$PythonProjectGenerator.class
+[INFO] Deleting file C:\Users\purple\Desktop\Dev\Git\Java\Gaia-Structure\target\classes\com\structurecreation\service\ProjectCreationService$ProjectTemplateGenerator.class
+[INFO] Deleting file C:\Users\purple\Desktop\Dev\Git\Java\Gaia-Structure\target\classes\com\structurecreation\service\ProjectCreationService$NodeJsProjectGenerator.class
+[INFO] Deleting file C:\Users\purple\Desktop\Dev\Git\Java\Gaia-Structure\target\classes\com\structurecreation\service\ProjectCreationService$MavenProjectGenerator.class
+[INFO] Deleting file C:\Users\purple\Desktop\Dev\Git\Java\Gaia-Structure\target\classes\com\structurecreation\service\ProjectCreationService$GradleProjectGenerator.class
+[INFO] Deleting file C:\Users\purple\Desktop\Dev\Git\Java\Gaia-Structure\target\classes\com\structurecreation\service\ProjectCreationService$CustomProjectGenerator.class
+[INFO] Deleting file C:\Users\purple\Desktop\Dev\Git\Java\Gaia-Structure\target\classes\com\structurecreation\service\generator\SpringBootProjectGenerator.class
+[INFO] Deleting file C:\Users\purple\Desktop\Dev\Git\Java\Gaia-Structure\target\classes\com\structurecreation\service\generator\SpringBootProjectGenerator$SpringBootProjectType.class
+[INFO] Deleting file C:\Users\purple\Desktop\Dev\Git\Java\Gaia-Structure\target\classes\com\structurecreation\service\generator\ReactProjectGenerator.class
+[INFO] Deleting file C:\Users\purple\Desktop\Dev\Git\Java\Gaia-Structure\target\classes\com\structurecreation\service\generator\ReactProjectGenerator$ReactProjectType.class
+[INFO] Deleting file C:\Users\purple\Desktop\Dev\Git\Java\Gaia-Structure\target\classes\com\structurecreation\service\generator\ProjectGenerator.class
+[INFO] Deleting file C:\Users\purple\Desktop\Dev\Git\Java\Gaia-Structure\target\classes\com\structurecreation\service\generator\NodeExpressProjectGenerator.class
+[INFO] Deleting file C:\Users\purple\Desktop\Dev\Git\Java\Gaia-Structure\target\classes\com\structurecreation\service\generator\NodeExpressProjectGenerator$NodeProjectType.class
+[INFO] Deleting file C:\Users\purple\Desktop\Dev\Git\Java\Gaia-Structure\target\classes\com\structurecreation\service\generator\GeneratorService.class
+[INFO] Deleting file C:\Users\purple\Desktop\Dev\Git\Java\Gaia-Structure\target\classes\com\structurecreation\service\generator\GeneratorService$ProjectType.class
+[INFO] Deleting file C:\Users\purple\Desktop\Dev\Git\Java\Gaia-Structure\target\classes\com\structurecreation\service\generator\FlaskProjectGenerator.class
+[INFO] Deleting file C:\Users\purple\Desktop\Dev\Git\Java\Gaia-Structure\target\classes\com\structurecreation\service\generator\FlaskProjectGenerator$FlaskProjectType.class
+[INFO] Deleting file C:\Users\purple\Desktop\Dev\Git\Java\Gaia-Structure\target\classes\com\structurecreation\service\generator\DjangoProjectGenerator.class
+[INFO] Deleting file C:\Users\purple\Desktop\Dev\Git\Java\Gaia-Structure\target\classes\com\structurecreation\service\generator\DjangoProjectGenerator$DjangoProjectType.class
+[INFO] Deleting file C:\Users\purple\Desktop\Dev\Git\Java\Gaia-Structure\target\classes\com\structurecreation\service\generator\AbstractProjectGenerator.class
+[INFO] Deleting directory C:\Users\purple\Desktop\Dev\Git\Java\Gaia-Structure\target\classes\com\structurecreation\service\generator
+[INFO] Deleting file C:\Users\purple\Desktop\Dev\Git\Java\Gaia-Structure\target\classes\com\structurecreation\service\FileTreeGenerator.class
+[INFO] Deleting file C:\Users\purple\Desktop\Dev\Git\Java\Gaia-Structure\target\classes\com\structurecreation\service\EnvironmentManager.class
+[INFO] Deleting file C:\Users\purple\Desktop\Dev\Git\Java\Gaia-Structure\target\classes\com\structurecreation\service\EnvironmentManager$EnvironmentInfo.class
+[INFO] Deleting file C:\Users\purple\Desktop\Dev\Git\Java\Gaia-Structure\target\classes\com\structurecreation\service\DependencyResolverService.class
+[INFO] Deleting file C:\Users\purple\Desktop\Dev\Git\Java\Gaia-Structure\target\classes\com\structurecreation\service\DependencyResolverService$ResolvedDependency.class
+[INFO] Deleting file C:\Users\purple\Desktop\Dev\Git\Java\Gaia-Structure\target\classes\com\structurecreation\service\DependencyResolverService$DependencySearchResult.class
+[INFO] Deleting file C:\Users\purple\Desktop\Dev\Git\Java\Gaia-Structure\target\classes\com\structurecreation\service\DependencyResolverService$ConflictResolution.class
+[INFO] Deleting file C:\Users\purple\Desktop\Dev\Git\Java\Gaia-Structure\target\classes\com\structurecreation\service\DependencyPresetService.class
+[INFO] Deleting file C:\Users\purple\Desktop\Dev\Git\Java\Gaia-Structure\target\classes\com\structurecreation\service\DependencyPresetService$DependencyPreset.class
+[INFO] Deleting directory C:\Users\purple\Desktop\Dev\Git\Java\Gaia-Structure\target\classes\com\structurecreation\service
+[INFO] Deleting file C:\Users\purple\Desktop\Dev\Git\Java\Gaia-Structure\target\classes\com\structurecreation\ProjectStructureCreatorApp.class
+[INFO] Deleting file C:\Users\purple\Desktop\Dev\Git\Java\Gaia-Structure\target\classes\com\structurecreation\model\ProjectTemplate.class
+[INFO] Deleting file C:\Users\purple\Desktop\Dev\Git\Java\Gaia-Structure\target\classes\com\structurecreation\model\ProjectStructure.class
+[INFO] Deleting file C:\Users\purple\Desktop\Dev\Git\Java\Gaia-Structure\target\classes\com\structurecreation\model\ProjectNode.class
+[INFO] Deleting file C:\Users\purple\Desktop\Dev\Git\Java\Gaia-Structure\target\classes\com\structurecreation\model\ProjectNode$NodeType.class
+[INFO] Deleting file C:\Users\purple\Desktop\Dev\Git\Java\Gaia-Structure\target\classes\com\structurecreation\model\Dependency.class
+[INFO] Deleting directory C:\Users\purple\Desktop\Dev\Git\Java\Gaia-Structure\target\classes\com\structurecreation\model
+[INFO] Deleting file C:\Users\purple\Desktop\Dev\Git\Java\Gaia-Structure\target\classes\com\structurecreation\controller\MainController.class
+[INFO] Deleting file C:\Users\purple\Desktop\Dev\Git\Java\Gaia-Structure\target\classes\com\structurecreation\controller\MainController$6.class
+[INFO] Deleting file C:\Users\purple\Desktop\Dev\Git\Java\Gaia-Structure\target\classes\com\structurecreation\controller\MainController$5.class
+[INFO] Deleting file C:\Users\purple\Desktop\Dev\Git\Java\Gaia-Structure\target\classes\com\structurecreation\controller\MainController$4.class
+[INFO] Deleting file C:\Users\purple\Desktop\Dev\Git\Java\Gaia-Structure\target\classes\com\structurecreation\controller\MainController$3.class
+[INFO] Deleting file C:\Users\purple\Desktop\Dev\Git\Java\Gaia-Structure\target\classes\com\structurecreation\controller\MainController$2.class
+[INFO] Deleting file C:\Users\purple\Desktop\Dev\Git\Java\Gaia-Structure\target\classes\com\structurecreation\controller\MainController$1.class
+[INFO] Deleting directory C:\Users\purple\Desktop\Dev\Git\Java\Gaia-Structure\target\classes\com\structurecreation\controller
+[INFO] Deleting directory C:\Users\purple\Desktop\Dev\Git\Java\Gaia-Structure\target\classes\com\structurecreation
+[INFO] Deleting directory C:\Users\purple\Desktop\Dev\Git\Java\Gaia-Structure\target\classes\com
+[INFO] Deleting directory C:\Users\purple\Desktop\Dev\Git\Java\Gaia-Structure\target\classes
+[INFO] Deleting directory C:\Users\purple\Desktop\Dev\Git\Java\Gaia-Structure\target
+[DEBUG] Skipping non-existing directory C:\Users\purple\Desktop\Dev\Git\Java\Gaia-Structure\target\classes
+[DEBUG] Skipping non-existing directory C:\Users\purple\Desktop\Dev\Git\Java\Gaia-Structure\target\test-classes
+[DEBUG] Skipping non-existing directory C:\Users\purple\Desktop\Dev\Git\Java\Gaia-Structure\target\classes
+[INFO] 
+[INFO] --- resources:3.3.1:resources (default-resources) @ project-structure-creator ---
+[DEBUG] Dependency collection stats {ConflictMarker.analyzeTime=53500, ConflictMarker.markTime=49000, ConflictMarker.nodeCount=13, ConflictIdSorter.graphTime=13000, ConflictIdSorter.topsortTime=9800, ConflictIdSorter.conflictIdCount=9, ConflictIdSorter.conflictIdCycleCount=0, ConflictResolver.totalTime=273800, ConflictResolver.conflictItemCount=13, DfDependencyCollector.collectTime=26046900, DfDependencyCollector.transformTime=413500}
+[DEBUG] org.apache.maven.plugins:maven-resources-plugin:jar:3.3.1
+[DEBUG]    org.codehaus.plexus:plexus-interpolation:jar:1.26:runtime
+[DEBUG]    org.codehaus.plexus:plexus-utils:jar:3.5.1:compile
+[DEBUG]    org.apache.maven.shared:maven-filtering:jar:3.3.1:compile
+[DEBUG]       javax.inject:javax.inject:jar:1:compile
+[DEBUG]       org.slf4j:slf4j-api:jar:1.7.36:compile
+[DEBUG]       org.sonatype.plexus:plexus-build-api:jar:0.0.7:compile
+[DEBUG]    commons-io:commons-io:jar:2.11.0:compile
+[DEBUG]    org.apache.commons:commons-lang3:jar:3.12.0:compile
+[DEBUG] Created new class realm plugin>org.apache.maven.plugins:maven-resources-plugin:3.3.1
+[DEBUG] Importing foreign packages into class realm plugin>org.apache.maven.plugins:maven-resources-plugin:3.3.1
+[DEBUG]   Imported:  < maven.api
+[DEBUG] Populating class realm plugin>org.apache.maven.plugins:maven-resources-plugin:3.3.1
+[DEBUG]   Included: org.apache.maven.plugins:maven-resources-plugin:jar:3.3.1
+[DEBUG]   Included: org.codehaus.plexus:plexus-interpolation:jar:1.26
+[DEBUG]   Included: org.codehaus.plexus:plexus-utils:jar:3.5.1
+[DEBUG]   Included: org.apache.maven.shared:maven-filtering:jar:3.3.1
+[DEBUG]   Included: org.sonatype.plexus:plexus-build-api:jar:0.0.7
+[DEBUG]   Included: commons-io:commons-io:jar:2.11.0
+[DEBUG]   Included: org.apache.commons:commons-lang3:jar:3.12.0
+[DEBUG] Loading mojo org.apache.maven.plugins:maven-resources-plugin:3.3.1:resources from plugin realm ClassRealm[plugin>org.apache.maven.plugins:maven-resources-plugin:3.3.1, parent: jdk.internal.loader.ClassLoaders$AppClassLoader@70dea4e]
+[DEBUG] Configuring mojo execution 'org.apache.maven.plugins:maven-resources-plugin:3.3.1:resources:default-resources' with basic configurator -->
+[DEBUG]   (f) addDefaultExcludes = true
+[DEBUG]   (f) buildFilters = []
+[DEBUG]   (f) encoding = UTF-8
+[DEBUG]   (f) escapeWindowsPaths = true
+[DEBUG]   (f) fileNameFiltering = false
+[DEBUG]   (s) includeEmptyDirs = false
+[DEBUG]   (s) outputDirectory = C:\Users\purple\Desktop\Dev\Git\Java\Gaia-Structure\target\classes
+[DEBUG]   (s) overwrite = false
+[DEBUG]   (f) project = MavenProject: com.structurecreation:project-structure-creator:1.0.0 @ C:\Users\purple\Desktop\Dev\Git\Java\Gaia-Structure\pom.xml
+[DEBUG]   (s) resources = [Resource {targetPath: null, filtering: false, FileSet {directory: C:\Users\purple\Desktop\Dev\Git\Java\Gaia-Structure\src\main\resources, PatternSet [includes: {}, excludes: {}]}}]
+[DEBUG]   (f) session = org.apache.maven.execution.MavenSession@2b9f74d0
+[DEBUG]   (f) skip = false
+[DEBUG]   (f) supportMultiLineFiltering = false
+[DEBUG]   (f) useBuildFilters = true
+[DEBUG]   (s) useDefaultDelimiters = true
+[DEBUG] -- end configuration --
+[DEBUG] properties used:
+[DEBUG] classworlds.conf: C:\Users\purple\Desktop\Dev\Build Files\MVN\apache-maven-3.9.11-bin\apache-maven-3.9.11\bin\m2.conf
+[DEBUG] env.=C:: C:\Users\purple\Desktop\Dev\Git\Java\Gaia-Structure
+[DEBUG] env.=EXITCODE: 00000000
+[DEBUG] env.ALLUSERSPROFILE: C:\ProgramData
+[DEBUG] env.APPDATA: C:\Users\purple\AppData\Roaming
+[DEBUG] env.BUNDLED_DEBUGPY_PATH: c:\Users\purple\.vscode\extensions\ms-python.debugpy-2025.14.0-win32-x64\bundled\libs\debugpy
+[DEBUG] env.CHROME_CRASHPAD_PIPE_NAME: \\.\pipe\crashpad_11768_QYVJKULDFFAWXXFF
+[DEBUG] env.CLASSWORLDS_JAR: "C:\Users\purple\Desktop\Dev\Build Files\MVN\apache-maven-3.9.11-bin\apache-maven-3.9.11\boot\plexus-classworlds-2.9.0.jar"
+[DEBUG] env.CLASSWORLDS_LAUNCHER: org.codehaus.plexus.classworlds.launcher.Launcher
+[DEBUG] env.COLORTERM: truecolor
+[DEBUG] env.COMMONPROGRAMFILES: C:\Program Files\Common Files
+[DEBUG] env.COMMONPROGRAMFILES(X86): C:\Program Files (x86)\Common Files
+[DEBUG] env.COMMONPROGRAMW6432: C:\Program Files\Common Files
+[DEBUG] env.COMPUTERNAME: DESKTOP-VH62JHI
+[DEBUG] env.COMSPEC: C:\Windows\system32\cmd.exe
+[DEBUG] env.DRIVERDATA: C:\Windows\System32\Drivers\DriverData
+[DEBUG] env.ERROR_CODE: 0
+[DEBUG] env.EXEC_DIR: C:\Users\purple\Desktop\Dev\Git\Java\Gaia-Structure
+[DEBUG] env.GIT_ASKPASS: c:\Users\purple\AppData\Local\Programs\Microsoft VS Code\resources\app\extensions\git\dist\askpass.sh
+[DEBUG] env.GIT_PAGER: cat
+[DEBUG] env.HOMEDRIVE: C:
+[DEBUG] env.HOMEPATH: \Users\purple
+[DEBUG] env.JAVACMD: C:\Program Files\Common Files\Oracle\Java\javapath\java.exe
+[DEBUG] env.JVMCONFIG: \.mvn\jvm.config
+[DEBUG] env.LANG: en_US.UTF-8
+[DEBUG] env.LOCALAPPDATA: C:\Users\purple\AppData\Local
+[DEBUG] env.LOGONSERVER: \\DESKTOP-VH62JHI
+[DEBUG] env.MAVEN_CMD_LINE_ARGS: clean compile -X
+[DEBUG] env.MAVEN_HOME: C:\Users\purple\Desktop\Dev\Build Files\MVN\apache-maven-3.9.11-bin\apache-maven-3.9.11
+[DEBUG] env.MAVEN_OPTS: --enable-native-access=ALL-UNNAMED 
+[DEBUG] env.MAVEN_PROJECTBASEDIR: C:\Users\purple\Desktop\Dev\Git\Java\Gaia-Structure
+[DEBUG] env.MVN_HOME: C:\Users\purple\Desktop\Dev\Build Files\MVN\apache-maven-3.9.11-bin\apache-maven-3.9.11
+[DEBUG] env.NUMBER_OF_PROCESSORS: 12
+[DEBUG] env.ONEDRIVE: C:\Users\purple\OneDrive
+[DEBUG] env.ORIGINAL_XDG_CURRENT_DESKTOP: undefined
+[DEBUG] env.OS: Windows_NT
+[DEBUG] env.PATH: C:\Program Files\PowerShell\7;C:\Program Files\Common Files\Oracle\Java\javapath;C:\Windows\system32;C:\Windows;C:\Windows\System32\Wbem;C:\Windows\System32\WindowsPowerShell\v1.0\;C:\Windows\System32\OpenSSH\;C:\Program Files\Git\cmd;C:\Program Files\nodejs\;C:\Program Files\PowerShell\7\;C:\Program Files\NVIDIA Corporation\NVIDIA App\NvDLISR;C:\Program Files (x86)\NVIDIA Corporation\PhysX\Common;C:\Users\purple\.cargo\bin;C:\Users\purple\AppData\Local\Microsoft\WindowsApps;C:\Users\purple\AppData\Local\Programs\Microsoft VS Code\bin;C:\Users\purple\AppData\Local\GitHubDesktop\bin;C:\Users\purple\AppData\Roaming\npm;c:\Users\purple\.vscode\extensions\ms-python.debugpy-2025.14.0-win32-x64\bundled\scripts\noConfigScripts;c:\Users\purple\AppData\Roaming\Code\User\globalStorage\github.copilot-chat\debugCommand
+[DEBUG] env.PATHEXT: .COM;.EXE;.BAT;.CMD;.VBS;.VBE;.JS;.JSE;.WSF;.WSH;.MSC;.CPL
+[DEBUG] env.POWERSHELL_DISTRIBUTION_CHANNEL: MSI:Windows 10 Home
+[DEBUG] env.PROCESSOR_ARCHITECTURE: AMD64
+[DEBUG] env.PROCESSOR_IDENTIFIER: AMD64 Family 23 Model 113 Stepping 0, AuthenticAMD
+[DEBUG] env.PROCESSOR_LEVEL: 23
+[DEBUG] env.PROCESSOR_REVISION: 7100
+[DEBUG] env.PROGRAMDATA: C:\ProgramData
+[DEBUG] env.PROGRAMFILES: C:\Program Files
+[DEBUG] env.PROGRAMFILES(X86): C:\Program Files (x86)
+[DEBUG] env.PROGRAMW6432: C:\Program Files
+[DEBUG] env.PROMPT: $P$G
+[DEBUG] env.PSMODULEPATH: C:\Users\purple\Documents\PowerShell\Modules;C:\Program Files\PowerShell\Modules;c:\program files\powershell\7\Modules;C:\Program Files\WindowsPowerShell\Modules;C:\Windows\system32\WindowsPowerShell\v1.0\Modules
+[DEBUG] env.PUBLIC: C:\Users\Public
+[DEBUG] env.PYDEVD_DISABLE_FILE_VALIDATION: 1
+[DEBUG] env.PYTHON: C:\Users\purple\AppData\Local\Microsoft\WindowsApps\python3.10.exe
+[DEBUG] env.PYTHONSTARTUP: c:\Users\purple\AppData\Roaming\Code\User\workspaceStorage\b3b48cfdcf1983d90f1e2c403e1ed55c\ms-python.python\pythonrc.py
+[DEBUG] env.PYTHONUSERBASE: C:\Users\purple\AppData\Local\Packages\PythonSoftwareFoundation.Python.3.10_qbz5n2kfra8p0\LocalCache\local-packages
+[DEBUG] env.PYTHON_BASIC_REPL: 1
+[DEBUG] env.SESSIONNAME: Console
+[DEBUG] env.SYSTEMDRIVE: C:
+[DEBUG] env.SYSTEMROOT: C:\Windows
+[DEBUG] env.TEMP: C:\Users\purple\AppData\Local\Temp
+[DEBUG] env.TERM_PROGRAM: vscode
+[DEBUG] env.TERM_PROGRAM_VERSION: 1.105.0
+[DEBUG] env.TMP: C:\Users\purple\AppData\Local\Temp
+[DEBUG] env.USERDOMAIN: DESKTOP-VH62JHI
+[DEBUG] env.USERDOMAIN_ROAMINGPROFILE: DESKTOP-VH62JHI
+[DEBUG] env.USERNAME: purple
+[DEBUG] env.USERPROFILE: C:\Users\purple
+[DEBUG] env.VSCODE_DEBUGPY_ADAPTER_ENDPOINTS: c:\Users\purple\.vscode\extensions\ms-python.debugpy-2025.14.0-win32-x64\.noConfigDebugAdapterEndpoints\endpoint-581b5d263a11cc42.txt
+[DEBUG] env.VSCODE_GIT_ASKPASS_EXTRA_ARGS: 
+[DEBUG] env.VSCODE_GIT_ASKPASS_MAIN: c:\Users\purple\AppData\Local\Programs\Microsoft VS Code\resources\app\extensions\git\dist\askpass-main.js
+[DEBUG] env.VSCODE_GIT_ASKPASS_NODE: C:\Users\purple\AppData\Local\Programs\Microsoft VS Code\Code.exe
+[DEBUG] env.VSCODE_GIT_IPC_HANDLE: \\.\pipe\vscode-git-d14aa65a52-sock
+[DEBUG] env.VSCODE_INJECTION: 1
+[DEBUG] env.VSCODE_PYTHON_AUTOACTIVATE_GUARD: 1
+[DEBUG] env.WDIR: C:\
+[DEBUG] env.WINDIR: C:\Windows
+[DEBUG] file.encoding: UTF-8
+[DEBUG] file.separator: \
+[DEBUG] java.class.path: C:\Users\purple\Desktop\Dev\Build Files\MVN\apache-maven-3.9.11-bin\apache-maven-3.9.11\boot\plexus-classworlds-2.9.0.jar
+[DEBUG] java.class.version: 65.0
+[DEBUG] java.home: C:\Program Files\Java\jdk-21
+[DEBUG] java.io.tmpdir: C:\Users\purple\AppData\Local\Temp\
+[DEBUG] java.library.path: C:\Program Files\Java\jdk-21\bin;C:\Windows\Sun\Java\bin;C:\Windows\system32;C:\Windows;C:\Program Files\PowerShell\7;C:\Program Files\Common Files\Oracle\Java\javapath;C:\Windows\system32;C:\Windows;C:\Windows\System32\Wbem;C:\Windows\System32\WindowsPowerShell\v1.0\;C:\Windows\System32\OpenSSH\;C:\Program Files\Git\cmd;C:\Program Files\nodejs\;C:\Program Files\PowerShell\7\;C:\Program Files\NVIDIA Corporation\NVIDIA App\NvDLISR;C:\Program Files (x86)\NVIDIA Corporation\PhysX\Common;C:\Users\purple\.cargo\bin;C:\Users\purple\AppData\Local\Microsoft\WindowsApps;C:\Users\purple\AppData\Local\Programs\Microsoft VS Code\bin;C:\Users\purple\AppData\Local\GitHubDesktop\bin;C:\Users\purple\AppData\Roaming\npm;c:\Users\purple\.vscode\extensions\ms-python.debugpy-2025.14.0-win32-x64\bundled\scripts\noConfigScripts;c:\Users\purple\AppData\Roaming\Code\User\globalStorage\github.copilot-chat\debugCommand;.
+[DEBUG] java.runtime.name: Java(TM) SE Runtime Environment
+[DEBUG] java.runtime.version: 21.0.8+12-LTS-250
+[DEBUG] java.specification.name: Java Platform API Specification
+[DEBUG] java.specification.vendor: Oracle Corporation
+[DEBUG] java.specification.version: 21
+[DEBUG] java.vendor: Oracle Corporation
+[DEBUG] java.vendor.url: https://java.oracle.com/
+[DEBUG] java.vendor.url.bug: https://bugreport.java.com/bugreport/
+[DEBUG] java.version: 21.0.8
+[DEBUG] java.version.date: 2025-07-15
+[DEBUG] java.vm.compressedOopsMode: Zero based
+[DEBUG] java.vm.info: mixed mode, sharing
+[DEBUG] java.vm.name: Java HotSpot(TM) 64-Bit Server VM
+[DEBUG] java.vm.specification.name: Java Virtual Machine Specification
+[DEBUG] java.vm.specification.vendor: Oracle Corporation
+[DEBUG] java.vm.specification.version: 21
+[DEBUG] java.vm.vendor: Oracle Corporation
+[DEBUG] java.vm.version: 21.0.8+12-LTS-250
+[DEBUG] javafx.maven.plugin.version: 0.0.8
+[DEBUG] javafx.version: 19.0.2.1
+[DEBUG] jdk.debug: release
+[DEBUG] library.jansi.path: C:\Users\purple\Desktop\Dev\Build Files\MVN\apache-maven-3.9.11-bin\apache-maven-3.9.11\lib\jansi-native
+[DEBUG] line.separator: 
+
+[DEBUG] maven.build.timestamp: 2025-10-09T21:52:30Z
+[DEBUG] maven.build.version: Apache Maven 3.9.11 (3e54c93a704957b63ee3494413a2b544fd3d825b)
+[DEBUG] maven.compiler.source: 17
+[DEBUG] maven.compiler.target: 17
+[DEBUG] maven.conf: C:\Users\purple\Desktop\Dev\Build Files\MVN\apache-maven-3.9.11-bin\apache-maven-3.9.11/conf
+[DEBUG] maven.home: C:\Users\purple\Desktop\Dev\Build Files\MVN\apache-maven-3.9.11-bin\apache-maven-3.9.11
+[DEBUG] maven.multiModuleProjectDirectory: C:\Users\purple\Desktop\Dev\Git\Java\Gaia-Structure
+[DEBUG] maven.version: 3.9.11
+[DEBUG] native.encoding: Cp1252
+[DEBUG] os.arch: amd64
+[DEBUG] os.name: Windows 10
+[DEBUG] os.version: 10.0
+[DEBUG] path.separator: ;
+[DEBUG] project.baseUri: file:/C:/Users/purple/Desktop/Dev/Git/Java/Gaia-Structure/
+[DEBUG] project.build.sourceEncoding: UTF-8
+[DEBUG] stderr.encoding: Cp1252
+[DEBUG] stdout.encoding: Cp1252
+[DEBUG] sun.arch.data.model: 64
+[DEBUG] sun.boot.library.path: C:\Program Files\Java\jdk-21\bin
+[DEBUG] sun.cpu.endian: little
+[DEBUG] sun.cpu.isalist: amd64
+[DEBUG] sun.io.unicode.encoding: UnicodeLittle
+[DEBUG] sun.java.command: org.codehaus.plexus.classworlds.launcher.Launcher clean compile -X
+[DEBUG] sun.java.launcher: SUN_STANDARD
+[DEBUG] sun.jnu.encoding: Cp1252
+[DEBUG] sun.management.compiler: HotSpot 64-Bit Tiered Compilers
+[DEBUG] sun.os.patch.level: 
+[DEBUG] user.country: US
+[DEBUG] user.dir: C:\Users\purple\Desktop\Dev\Git\Java\Gaia-Structure
+[DEBUG] user.home: C:\Users\purple
+[DEBUG] user.language: en
+[DEBUG] user.name: purple
+[DEBUG] user.script: 
+[DEBUG] user.variant: 
+[DEBUG] Using 'UTF-8' encoding to copy filtered resources.
+[DEBUG] Using 'UTF-8' encoding to copy filtered properties files.
+[DEBUG] resource with targetPath null
+directory C:\Users\purple\Desktop\Dev\Git\Java\Gaia-Structure\src\main\resources
+excludes []
+includes []
+[DEBUG] ignoreDelta true
+[INFO] Copying 5 resources from src\main\resources to target\classes
+[DEBUG] Copying file css\styles.css
+[DEBUG] file styles.css has a filtered file extension
+[DEBUG] Using 'UTF-8' encoding to copy filtered resource 'styles.css'.
+[DEBUG] copy C:\Users\purple\Desktop\Dev\Git\Java\Gaia-Structure\src\main\resources\css\styles.css to C:\Users\purple\Desktop\Dev\Git\Java\Gaia-Structure\target\classes\css\styles.css
+[DEBUG] Copying file fxml\main.fxml
+[DEBUG] file main.fxml has a filtered file extension
+[DEBUG] Using 'UTF-8' encoding to copy filtered resource 'main.fxml'.
+[DEBUG] copy C:\Users\purple\Desktop\Dev\Git\Java\Gaia-Structure\src\main\resources\fxml\main.fxml to C:\Users\purple\Desktop\Dev\Git\Java\Gaia-Structure\target\classes\fxml\main.fxml
+[DEBUG] Copying file images\app-icon.ico
+[DEBUG] file app-icon.ico has a non filtered file extension
+[DEBUG] Using 'UTF-8' encoding to copy filtered resource 'app-icon.ico'.
+[DEBUG] copy C:\Users\purple\Desktop\Dev\Git\Java\Gaia-Structure\src\main\resources\images\app-icon.ico to C:\Users\purple\Desktop\Dev\Git\Java\Gaia-Structure\target\classes\images\app-icon.ico
+[DEBUG] Copying file images\app-icon.png
+[DEBUG] file app-icon.png has a non filtered file extension
+[DEBUG] Using 'UTF-8' encoding to copy filtered resource 'app-icon.png'.
+[DEBUG] copy C:\Users\purple\Desktop\Dev\Git\Java\Gaia-Structure\src\main\resources\images\app-icon.png to C:\Users\purple\Desktop\Dev\Git\Java\Gaia-Structure\target\classes\images\app-icon.png
+[DEBUG] Copying file logback.xml
+[DEBUG] file logback.xml has a filtered file extension
+[DEBUG] Using 'UTF-8' encoding to copy filtered resource 'logback.xml'.
+[DEBUG] copy C:\Users\purple\Desktop\Dev\Git\Java\Gaia-Structure\src\main\resources\logback.xml to C:\Users\purple\Desktop\Dev\Git\Java\Gaia-Structure\target\classes\logback.xml
+[DEBUG] no user filter components
+[INFO] 
+[INFO] --- compiler:3.11.0:compile (default-compile) @ project-structure-creator ---
+[DEBUG] Using mirror maven-default-http-blocker (http://0.0.0.0/) for apache.snapshots (http://repository.apache.org/snapshots).
+[DEBUG] Dependency collection stats {ConflictMarker.analyzeTime=56900, ConflictMarker.markTime=51400, ConflictMarker.nodeCount=17, ConflictIdSorter.graphTime=15200, ConflictIdSorter.topsortTime=11600, ConflictIdSorter.conflictIdCount=12, ConflictIdSorter.conflictIdCycleCount=0, ConflictResolver.totalTime=351900, ConflictResolver.conflictItemCount=17, DfDependencyCollector.collectTime=40461800, DfDependencyCollector.transformTime=503600}
+[DEBUG] org.apache.maven.plugins:maven-compiler-plugin:jar:3.11.0
+[DEBUG]    org.apache.maven.shared:maven-shared-utils:jar:3.3.4:compile
+[DEBUG]       commons-io:commons-io:jar:2.6:compile
+[DEBUG]    org.apache.maven.shared:maven-shared-incremental:jar:1.1:compile
+[DEBUG]       org.codehaus.plexus:plexus-component-annotations:jar:1.5.5:compile
+[DEBUG]    org.codehaus.plexus:plexus-java:jar:1.1.2:compile
+[DEBUG]       org.ow2.asm:asm:jar:9.4:compile
+[DEBUG]       com.thoughtworks.qdox:qdox:jar:2.0.3:compile (version managed from default)
+[DEBUG]    org.codehaus.plexus:plexus-compiler-api:jar:2.13.0:compile
+[DEBUG]       org.codehaus.plexus:plexus-utils:jar:3.5.0:compile (version managed from default)
+[DEBUG]    org.codehaus.plexus:plexus-compiler-manager:jar:2.13.0:compile
+[DEBUG]    org.codehaus.plexus:plexus-compiler-javac:jar:2.13.0:runtime
+[DEBUG] Created new class realm plugin>org.apache.maven.plugins:maven-compiler-plugin:3.11.0
+[DEBUG] Importing foreign packages into class realm plugin>org.apache.maven.plugins:maven-compiler-plugin:3.11.0
+[DEBUG]   Imported:  < maven.api
+[DEBUG] Populating class realm plugin>org.apache.maven.plugins:maven-compiler-plugin:3.11.0
+[DEBUG]   Included: org.apache.maven.plugins:maven-compiler-plugin:jar:3.11.0
+[DEBUG]   Included: org.apache.maven.shared:maven-shared-utils:jar:3.3.4
+[DEBUG]   Included: commons-io:commons-io:jar:2.6
+[DEBUG]   Included: org.apache.maven.shared:maven-shared-incremental:jar:1.1
+[DEBUG]   Included: org.codehaus.plexus:plexus-component-annotations:jar:1.5.5
+[DEBUG]   Included: org.codehaus.plexus:plexus-java:jar:1.1.2
+[DEBUG]   Included: org.ow2.asm:asm:jar:9.4
+[DEBUG]   Included: com.thoughtworks.qdox:qdox:jar:2.0.3
+[DEBUG]   Included: org.codehaus.plexus:plexus-compiler-api:jar:2.13.0
+[DEBUG]   Included: org.codehaus.plexus:plexus-utils:jar:3.5.0
+[DEBUG]   Included: org.codehaus.plexus:plexus-compiler-manager:jar:2.13.0
+[DEBUG]   Included: org.codehaus.plexus:plexus-compiler-javac:jar:2.13.0
+[DEBUG] Loading mojo org.apache.maven.plugins:maven-compiler-plugin:3.11.0:compile from plugin realm ClassRealm[plugin>org.apache.maven.plugins:maven-compiler-plugin:3.11.0, parent: jdk.internal.loader.ClassLoaders$AppClassLoader@70dea4e]
+[DEBUG] Configuring mojo execution 'org.apache.maven.plugins:maven-compiler-plugin:3.11.0:compile:default-compile' with basic configurator -->
+[DEBUG]   (f) basedir = C:\Users\purple\Desktop\Dev\Git\Java\Gaia-Structure
+[DEBUG]   (f) buildDirectory = C:\Users\purple\Desktop\Dev\Git\Java\Gaia-Structure\target
+[DEBUG]   (f) compilePath = [C:\Users\purple\Desktop\Dev\Git\Java\Gaia-Structure\target\classes, C:\Users\purple\.m2\repository\org\openjfx\javafx-controls\19.0.2.1\javafx-controls-19.0.2.1.jar, C:\Users\purple\.m2\repository\org\openjfx\javafx-controls\19.0.2.1\javafx-controls-19.0.2.1-win.jar, C:\Users\purple\.m2\repository\org\openjfx\javafx-graphics\19.0.2.1\javafx-graphics-19.0.2.1.jar, C:\Users\purple\.m2\repository\org\openjfx\javafx-graphics\19.0.2.1\javafx-graphics-19.0.2.1-win.jar, C:\Users\purple\.m2\repository\org\openjfx\javafx-base\19.0.2.1\javafx-base-19.0.2.1.jar, C:\Users\purple\.m2\repository\org\openjfx\javafx-base\19.0.2.1\javafx-base-19.0.2.1-win.jar, C:\Users\purple\.m2\repository\org\openjfx\javafx-fxml\19.0.2.1\javafx-fxml-19.0.2.1.jar, C:\Users\purple\.m2\repository\org\openjfx\javafx-fxml\19.0.2.1\javafx-fxml-19.0.2.1-win.jar, C:\Users\purple\.m2\repository\com\fasterxml\jackson\core\jackson-databind\2.15.2\jackson-databind-2.15.2.jar, C:\Users\purple\.m2\repository\com\fasterxml\jackson\core\jackson-annotations\2.15.2\jackson-annotations-2.15.2.jar, C:\Users\purple\.m2\repository\com\fasterxml\jackson\core\jackson-core\2.15.2\jackson-core-2.15.2.jar, C:\Users\purple\.m2\repository\com\fasterxml\jackson\datatype\jackson-datatype-jsr310\2.15.2\jackson-datatype-jsr310-2.15.2.jar, C:\Users\purple\.m2\repository\commons-io\commons-io\2.11.0\commons-io-2.11.0.jar, C:\Users\purple\.m2\repository\org\apache\commons\commons-lang3\3.12.0\commons-lang3-3.12.0.jar, C:\Users\purple\.m2\repository\ch\qos\logback\logback-classic\1.4.8\logback-classic-1.4.8.jar, C:\Users\purple\.m2\repository\ch\qos\logback\logback-core\1.4.8\logback-core-1.4.8.jar, C:\Users\purple\.m2\repository\org\slf4j\slf4j-api\2.0.7\slf4j-api-2.0.7.jar]
+[DEBUG]   (f) compileSourceRoots = [C:\Users\purple\Desktop\Dev\Git\Java\Gaia-Structure\src\main\java]
+[DEBUG]   (f) compilerId = javac
+[DEBUG]   (f) createMissingPackageInfoClass = true
+[DEBUG]   (f) debug = true
+[DEBUG]   (f) debugFileName = javac
+[DEBUG]   (f) enablePreview = false
+[DEBUG]   (f) encoding = UTF-8
+[DEBUG]   (f) failOnError = true
+[DEBUG]   (f) failOnWarning = false
+[DEBUG]   (f) forceJavacCompilerUse = false
+[DEBUG]   (f) fork = false
+[DEBUG]   (f) generatedSourcesDirectory = C:\Users\purple\Desktop\Dev\Git\Java\Gaia-Structure\target\generated-sources\annotations
+[DEBUG]   (f) mojoExecution = org.apache.maven.plugins:maven-compiler-plugin:3.11.0:compile {execution: default-compile}
+[DEBUG]   (f) optimize = false
+[DEBUG]   (f) outputDirectory = C:\Users\purple\Desktop\Dev\Git\Java\Gaia-Structure\target\classes
+[DEBUG]   (f) parameters = false
+[DEBUG]   (f) project = MavenProject: com.structurecreation:project-structure-creator:1.0.0 @ C:\Users\purple\Desktop\Dev\Git\Java\Gaia-Structure\pom.xml
+[DEBUG]   (f) projectArtifact = com.structurecreation:project-structure-creator:jar:1.0.0
+[DEBUG]   (f) session = org.apache.maven.execution.MavenSession@2b9f74d0
+[DEBUG]   (f) showCompilationChanges = false
+[DEBUG]   (f) showDeprecation = false
+[DEBUG]   (f) showWarnings = true
+[DEBUG]   (f) skipMultiThreadWarning = false
+[DEBUG]   (f) source = 17
+[DEBUG]   (f) staleMillis = 0
+[DEBUG]   (s) target = 17
+[DEBUG]   (f) useIncrementalCompilation = true
+[DEBUG]   (f) verbose = false
+[DEBUG] -- end configuration --
+[DEBUG] Using compiler 'javac'.
+[DEBUG] Adding C:\Users\purple\Desktop\Dev\Git\Java\Gaia-Structure\target\generated-sources\annotations to compile source roots:
+  C:\Users\purple\Desktop\Dev\Git\Java\Gaia-Structure\src\main\java
+[DEBUG] New compile source roots:
+  C:\Users\purple\Desktop\Dev\Git\Java\Gaia-Structure\src\main\java
+  C:\Users\purple\Desktop\Dev\Git\Java\Gaia-Structure\target\generated-sources\annotations
+[DEBUG] CompilerReuseStrategy: reuseCreated
+[DEBUG] useIncrementalCompilation enabled
+[DEBUG] Stale source detected: C:\Users\purple\Desktop\Dev\Git\Java\Gaia-Structure\src\main\java\com\structurecreation\service\EnvironmentManager.java
+[DEBUG] Stale source detected: C:\Users\purple\Desktop\Dev\Git\Java\Gaia-Structure\src\main\java\com\structurecreation\service\DependencyResolverService.java
+[DEBUG] Stale source detected: C:\Users\purple\Desktop\Dev\Git\Java\Gaia-Structure\src\main\java\com\structurecreation\service\TemplateService.java
+[DEBUG] Stale source detected: C:\Users\purple\Desktop\Dev\Git\Java\Gaia-Structure\src\main\java\com\structurecreation\service\TutorialService.java
+[DEBUG] Stale source detected: C:\Users\purple\Desktop\Dev\Git\Java\Gaia-Structure\src\main\java\com\structurecreation\service\generator\NodeExpressProjectGenerator.java
+[DEBUG] Stale source detected: C:\Users\purple\Desktop\Dev\Git\Java\Gaia-Structure\src\main\java\com\structurecreation\service\generator\SpringBootProjectGenerator.java
+[DEBUG] Stale source detected: C:\Users\purple\Desktop\Dev\Git\Java\Gaia-Structure\src\main\java\com\structurecreation\service\generator\GeneratorService.java
+[DEBUG] Stale source detected: C:\Users\purple\Desktop\Dev\Git\Java\Gaia-Structure\src\main\java\com\structurecreation\service\repository\MavenCentralRepository.java
+[DEBUG] Stale source detected: C:\Users\purple\Desktop\Dev\Git\Java\Gaia-Structure\src\main\java\com\structurecreation\service\generator\DjangoProjectGenerator.java
+[DEBUG] Stale source detected: C:\Users\purple\Desktop\Dev\Git\Java\Gaia-Structure\src\main\java\com\structurecreation\model\Dependency.java
+[DEBUG] Stale source detected: C:\Users\purple\Desktop\Dev\Git\Java\Gaia-Structure\src\main\java\com\structurecreation\service\generator\ReactProjectGenerator.java
+[DEBUG] Stale source detected: C:\Users\purple\Desktop\Dev\Git\Java\Gaia-Structure\src\main\java\com\structurecreation\util\TreeViewDragAndDrop.java
+[DEBUG] Stale source detected: C:\Users\purple\Desktop\Dev\Git\Java\Gaia-Structure\src\main\java\com\structurecreation\SplashScreen.java
+[DEBUG] Stale source detected: C:\Users\purple\Desktop\Dev\Git\Java\Gaia-Structure\src\main\java\com\structurecreation\service\FileTreeGenerator.java
+[DEBUG] Stale source detected: C:\Users\purple\Desktop\Dev\Git\Java\Gaia-Structure\src\main\java\com\structurecreation\util\AlertUtils.java
+[DEBUG] Stale source detected: C:\Users\purple\Desktop\Dev\Git\Java\Gaia-Structure\src\main\java\com\structurecreation\model\ProjectStructure.java
+[DEBUG] Stale source detected: C:\Users\purple\Desktop\Dev\Git\Java\Gaia-Structure\src\main\java\com\structurecreation\util\EnvironmentDetectionTest.java
+[DEBUG] Stale source detected: C:\Users\purple\Desktop\Dev\Git\Java\Gaia-Structure\src\main\java\com\structurecreation\service\repository\PyPiRepository.java
+[DEBUG] Stale source detected: C:\Users\purple\Desktop\Dev\Git\Java\Gaia-Structure\src\main\java\com\structurecreation\controller\MainController.java
+[DEBUG] Stale source detected: C:\Users\purple\Desktop\Dev\Git\Java\Gaia-Structure\src\main\java\com\structurecreation\service\DependencyPresetService.java
+[DEBUG] Stale source detected: C:\Users\purple\Desktop\Dev\Git\Java\Gaia-Structure\src\main\java\com\structurecreation\service\ProjectCreationService.java
+[DEBUG] Stale source detected: C:\Users\purple\Desktop\Dev\Git\Java\Gaia-Structure\src\main\java\com\structurecreation\model\ProjectTemplate.java
+[DEBUG] Stale source detected: C:\Users\purple\Desktop\Dev\Git\Java\Gaia-Structure\src\main\java\com\structurecreation\service\generator\ProjectGenerator.java
+[DEBUG] Stale source detected: C:\Users\purple\Desktop\Dev\Git\Java\Gaia-Structure\src\main\java\com\structurecreation\model\ProjectNode.java
+[DEBUG] Stale source detected: C:\Users\purple\Desktop\Dev\Git\Java\Gaia-Structure\src\main\java\com\structurecreation\service\repository\NpmRepository.java
+[DEBUG] Stale source detected: C:\Users\purple\Desktop\Dev\Git\Java\Gaia-Structure\src\main\java\com\structurecreation\service\repository\RepositoryService.java
+[DEBUG] Stale source detected: C:\Users\purple\Desktop\Dev\Git\Java\Gaia-Structure\src\main\java\com\structurecreation\ProjectStructureCreatorApp.java
+[DEBUG] Stale source detected: C:\Users\purple\Desktop\Dev\Git\Java\Gaia-Structure\src\main\java\com\structurecreation\service\generator\FlaskProjectGenerator.java
+[DEBUG] Stale source detected: C:\Users\purple\Desktop\Dev\Git\Java\Gaia-Structure\src\main\java\com\structurecreation\service\generator\AbstractProjectGenerator.java
+[INFO] Changes detected - recompiling the module! :source
+[DEBUG] Classpath:
+[DEBUG]  C:\Users\purple\Desktop\Dev\Git\Java\Gaia-Structure\target\classes
+[DEBUG]  C:\Users\purple\.m2\repository\org\openjfx\javafx-controls\19.0.2.1\javafx-controls-19.0.2.1.jar
+[DEBUG]  C:\Users\purple\.m2\repository\org\openjfx\javafx-controls\19.0.2.1\javafx-controls-19.0.2.1-win.jar
+[DEBUG]  C:\Users\purple\.m2\repository\org\openjfx\javafx-graphics\19.0.2.1\javafx-graphics-19.0.2.1.jar
+[DEBUG]  C:\Users\purple\.m2\repository\org\openjfx\javafx-graphics\19.0.2.1\javafx-graphics-19.0.2.1-win.jar
+[DEBUG]  C:\Users\purple\.m2\repository\org\openjfx\javafx-base\19.0.2.1\javafx-base-19.0.2.1.jar
+[DEBUG]  C:\Users\purple\.m2\repository\org\openjfx\javafx-base\19.0.2.1\javafx-base-19.0.2.1-win.jar
+[DEBUG]  C:\Users\purple\.m2\repository\org\openjfx\javafx-fxml\19.0.2.1\javafx-fxml-19.0.2.1.jar
+[DEBUG]  C:\Users\purple\.m2\repository\org\openjfx\javafx-fxml\19.0.2.1\javafx-fxml-19.0.2.1-win.jar
+[DEBUG]  C:\Users\purple\.m2\repository\com\fasterxml\jackson\core\jackson-databind\2.15.2\jackson-databind-2.15.2.jar
+[DEBUG]  C:\Users\purple\.m2\repository\com\fasterxml\jackson\core\jackson-annotations\2.15.2\jackson-annotations-2.15.2.jar
+[DEBUG]  C:\Users\purple\.m2\repository\com\fasterxml\jackson\core\jackson-core\2.15.2\jackson-core-2.15.2.jar
+[DEBUG]  C:\Users\purple\.m2\repository\com\fasterxml\jackson\datatype\jackson-datatype-jsr310\2.15.2\jackson-datatype-jsr310-2.15.2.jar
+[DEBUG]  C:\Users\purple\.m2\repository\commons-io\commons-io\2.11.0\commons-io-2.11.0.jar
+[DEBUG]  C:\Users\purple\.m2\repository\org\apache\commons\commons-lang3\3.12.0\commons-lang3-3.12.0.jar
+[DEBUG]  C:\Users\purple\.m2\repository\ch\qos\logback\logback-classic\1.4.8\logback-classic-1.4.8.jar
+[DEBUG]  C:\Users\purple\.m2\repository\ch\qos\logback\logback-core\1.4.8\logback-core-1.4.8.jar
+[DEBUG]  C:\Users\purple\.m2\repository\org\slf4j\slf4j-api\2.0.7\slf4j-api-2.0.7.jar
+[DEBUG] Source roots:
+[DEBUG]  C:\Users\purple\Desktop\Dev\Git\Java\Gaia-Structure\src\main\java
+[DEBUG]  C:\Users\purple\Desktop\Dev\Git\Java\Gaia-Structure\target\generated-sources\annotations
+[DEBUG] Command line options:
+[DEBUG] -d C:\Users\purple\Desktop\Dev\Git\Java\Gaia-Structure\target\classes -classpath C:\Users\purple\Desktop\Dev\Git\Java\Gaia-Structure\target\classes;C:\Users\purple\.m2\repository\org\openjfx\javafx-controls\19.0.2.1\javafx-controls-19.0.2.1.jar;C:\Users\purple\.m2\repository\org\openjfx\javafx-controls\19.0.2.1\javafx-controls-19.0.2.1-win.jar;C:\Users\purple\.m2\repository\org\openjfx\javafx-graphics\19.0.2.1\javafx-graphics-19.0.2.1.jar;C:\Users\purple\.m2\repository\org\openjfx\javafx-graphics\19.0.2.1\javafx-graphics-19.0.2.1-win.jar;C:\Users\purple\.m2\repository\org\openjfx\javafx-base\19.0.2.1\javafx-base-19.0.2.1.jar;C:\Users\purple\.m2\repository\org\openjfx\javafx-base\19.0.2.1\javafx-base-19.0.2.1-win.jar;C:\Users\purple\.m2\repository\org\openjfx\javafx-fxml\19.0.2.1\javafx-fxml-19.0.2.1.jar;C:\Users\purple\.m2\repository\org\openjfx\javafx-fxml\19.0.2.1\javafx-fxml-19.0.2.1-win.jar;C:\Users\purple\.m2\repository\com\fasterxml\jackson\core\jackson-databind\2.15.2\jackson-databind-2.15.2.jar;C:\Users\purple\.m2\repository\com\fasterxml\jackson\core\jackson-annotations\2.15.2\jackson-annotations-2.15.2.jar;C:\Users\purple\.m2\repository\com\fasterxml\jackson\core\jackson-core\2.15.2\jackson-core-2.15.2.jar;C:\Users\purple\.m2\repository\com\fasterxml\jackson\datatype\jackson-datatype-jsr310\2.15.2\jackson-datatype-jsr310-2.15.2.jar;C:\Users\purple\.m2\repository\commons-io\commons-io\2.11.0\commons-io-2.11.0.jar;C:\Users\purple\.m2\repository\org\apache\commons\commons-lang3\3.12.0\commons-lang3-3.12.0.jar;C:\Users\purple\.m2\repository\ch\qos\logback\logback-classic\1.4.8\logback-classic-1.4.8.jar;C:\Users\purple\.m2\repository\ch\qos\logback\logback-core\1.4.8\logback-core-1.4.8.jar;C:\Users\purple\.m2\repository\org\slf4j\slf4j-api\2.0.7\slf4j-api-2.0.7.jar; -sourcepath C:\Users\purple\Desktop\Dev\Git\Java\Gaia-Structure\src\main\java;C:\Users\purple\Desktop\Dev\Git\Java\Gaia-Structure\target\generated-sources\annotations; -s C:\Users\purple\Desktop\Dev\Git\Java\Gaia-Structure\target\generated-sources\annotations -g -target 17 -source 17 -encoding UTF-8
+[DEBUG] incrementalBuildHelper#beforeRebuildExecution
+[INFO] Compiling 29 source files with javac [debug target 17] to target\classes
+[DEBUG] incrementalBuildHelper#afterRebuildExecution
+[WARNING] system modules path not set in conjunction with -source 17
+[INFO] /C:/Users/purple/Desktop/Dev/Git/Java/Gaia-Structure/src/main/java/com/structurecreation/service/repository/MavenCentralRepository.java: C:\Users\purple\Desktop\Dev\Git\Java\Gaia-Structure\src\main\java\com\structurecreation\service\repository\MavenCentralRepository.java uses or overrides a deprecated API.
+[INFO] /C:/Users/purple/Desktop/Dev/Git/Java/Gaia-Structure/src/main/java/com/structurecreation/service/repository/MavenCentralRepository.java: Recompile with -Xlint:deprecation for details.
+[INFO] /C:/Users/purple/Desktop/Dev/Git/Java/Gaia-Structure/src/main/java/com/structurecreation/service/repository/NpmRepository.java: Some input files use unchecked or unsafe operations.
+[INFO] /C:/Users/purple/Desktop/Dev/Git/Java/Gaia-Structure/src/main/java/com/structurecreation/service/repository/NpmRepository.java: Recompile with -Xlint:unchecked for details.
+[INFO] ------------------------------------------------------------------------
+[INFO] BUILD SUCCESS
+[INFO] ------------------------------------------------------------------------
+[INFO] Total time:  2.432 s
+[INFO] Finished at: 2025-10-09T16:52:32-05:00
+[INFO] ------------------------------------------------------------------------
+[DEBUG] Shutting down adapter factory; available factories [file-lock, rwlock-local, semaphore-local, noop]; available name mappers [discriminating, file-gav, file-hgav, file-static, gav, static]
+[DEBUG] Shutting down 'file-lock' factory
+[DEBUG] Shutting down 'rwlock-local' factory
+[DEBUG] Shutting down 'semaphore-local' factory
+[DEBUG] Shutting down 'noop' factory
+
+=== STDOUT for mvn clean compile --fail-fast ===
+[INFO] Scanning for projects...
+[INFO] 
+[INFO] ----------< com.structurecreation:project-structure-creator >-----------
+[INFO] Building Project Structure Creator 1.0.0
+[INFO]   from pom.xml
+[INFO] --------------------------------[ jar ]---------------------------------
+[WARNING] 6 problems were encountered while building the effective model for org.openjfx:javafx-controls:jar:19.0.2.1 during dependency collection step for project (use -X to see details)
+[INFO] 
+[INFO] --- clean:3.2.0:clean (default-clean) @ project-structure-creator ---
+[INFO] Deleting C:\Users\purple\Desktop\Dev\Git\Java\Gaia-Structure\target
+[INFO] 
+[INFO] --- resources:3.3.1:resources (default-resources) @ project-structure-creator ---
+[INFO] Copying 5 resources from src\main\resources to target\classes
+[INFO] 
+[INFO] --- compiler:3.11.0:compile (default-compile) @ project-structure-creator ---
+[INFO] Changes detected - recompiling the module! :source
+[INFO] Compiling 29 source files with javac [debug target 17] to target\classes
+[WARNING] system modules path not set in conjunction with -source 17
+[INFO] /C:/Users/purple/Desktop/Dev/Git/Java/Gaia-Structure/src/main/java/com/structurecreation/service/repository/MavenCentralRepository.java: C:\Users\purple\Desktop\Dev\Git\Java\Gaia-Structure\src\main\java\com\structurecreation\service\repository\MavenCentralRepository.java uses or overrides a deprecated API.
+[INFO] /C:/Users/purple/Desktop/Dev/Git/Java/Gaia-Structure/src/main/java/com/structurecreation/service/repository/MavenCentralRepository.java: Recompile with -Xlint:deprecation for details.
+[INFO] /C:/Users/purple/Desktop/Dev/Git/Java/Gaia-Structure/src/main/java/com/structurecreation/service/repository/NpmRepository.java: Some input files use unchecked or unsafe operations.
+[INFO] /C:/Users/purple/Desktop/Dev/Git/Java/Gaia-Structure/src/main/java/com/structurecreation/service/repository/NpmRepository.java: Recompile with -Xlint:unchecked for details.
+[INFO] ------------------------------------------------------------------------
+[INFO] BUILD SUCCESS
+[INFO] ------------------------------------------------------------------------
+[INFO] Total time:  2.525 s
+[INFO] Finished at: 2025-10-09T16:52:35-05:00
+[INFO] ------------------------------------------------------------------------
+
+

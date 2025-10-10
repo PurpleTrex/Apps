@@ -166,7 +166,7 @@ public class Dependency {
         return name + " " + version;
     }
     
-    private String getGroupId() {
+    public String getGroupId() {
         if (name.contains(":")) {
             return name.split(":")[0];
         }
@@ -178,13 +178,29 @@ public class Dependency {
         return "org.example"; // fallback
     }
     
-    private String getArtifactId() {
+    public String getArtifactId() {
         if (name.contains(":")) {
             String[] parts = name.split(":");
             return parts.length > 1 ? parts[1] : parts[0];
         }
         int lastDot = name.lastIndexOf('.');
         return lastDot > 0 ? name.substring(lastDot + 1) : name;
+    }
+    
+    public void setGroupId(String groupId) {
+        // Update name to include groupId
+        if (groupId != null && !groupId.isEmpty()) {
+            String artifactId = getArtifactId();
+            this.name = groupId + ":" + artifactId;
+        }
+    }
+    
+    public void setArtifactId(String artifactId) {
+        // Update name to include artifactId
+        if (artifactId != null && !artifactId.isEmpty()) {
+            String groupId = getGroupId();
+            this.name = groupId + ":" + artifactId;
+        }
     }
     
     @Override

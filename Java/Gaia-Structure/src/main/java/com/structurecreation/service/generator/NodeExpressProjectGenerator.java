@@ -1838,6 +1838,7 @@ public class NodeExpressProjectGenerator {
         BASIC("Basic Node.js Express API"),
         TYPESCRIPT("TypeScript Node.js Express API"),
         MVC("MVC Pattern with Template Engine"),
+        REST_API("RESTful API with Express"),
         GRAPHQL("GraphQL API with Apollo Server"),
         REAL_TIME("Real-time API with WebSockets"),
         MICROSERVICE("Microservice with Message Queue"),

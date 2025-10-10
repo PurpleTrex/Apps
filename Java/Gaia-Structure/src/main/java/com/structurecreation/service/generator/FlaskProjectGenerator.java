@@ -2,26 +2,33 @@ package com.structurecreation.service.generator;
 
 import com.structurecreation.model.ProjectNode;
 import com.structurecreation.service.DependencyResolverService;
-import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.stereotype.Service;
 
 import java.util.ArrayList;
 import java.util.List;
 
-@Service
 public class FlaskProjectGenerator {
 
-    @Autowired
-    private DependencyResolverService dependencyResolver;
+    private final DependencyResolverService dependencyResolver;
+
+    public FlaskProjectGenerator(DependencyResolverService dependencyResolver) {
+        this.dependencyResolver = dependencyResolver;
+    }
+
+    public FlaskProjectGenerator() {
+        this.dependencyResolver = new DependencyResolverService();
+    }
 
     public enum FlaskProjectType {
+        BASIC("Basic Flask Application"),
         REST_API("RESTful API with Flask-RESTful"),
         WEB_APP("Traditional web application"),
         MICROSERVICE("Lightweight microservice"),
         DATA_API("Data science API"),
+        ML_API("Machine Learning API"),
         ASYNC_APP("Async application with Quart"),
         GRAPHQL_API("GraphQL API"),
-        WEBSOCKET_APP("Real-time WebSocket application");
+        WEBSOCKET_APP("Real-time WebSocket application"),
+        FULL_STACK("Full-Stack Flask Application");
 
         private final String description;
 
@@ -35,7 +42,7 @@ public class FlaskProjectGenerator {
     }
 
     public ProjectNode generateFlaskProject(String projectName, FlaskProjectType type) {
-        ProjectNode root = new ProjectNode(projectName, true, null);
+        ProjectNode root = new ProjectNode(projectName, ProjectNode.NodeType.FOLDER);
 
         // Create project structure
         createProjectStructure(root, projectName, type);
@@ -54,36 +61,36 @@ public class FlaskProjectGenerator {
 
     private void createProjectStructure(ProjectNode root, String projectName, FlaskProjectType type) {
         // Application package
-        ProjectNode appDir = new ProjectNode("app", true, root);
+        ProjectNode appDir = new ProjectNode("app", ProjectNode.NodeType.FOLDER);
         root.addChild(appDir);
 
         // __init__.py with app factory
-        ProjectNode appInit = new ProjectNode("__init__.py", false, appDir);
+        ProjectNode appInit = new ProjectNode("__init__.py", ProjectNode.NodeType.FILE);
         appInit.setContent(generateAppFactory(type));
         appDir.addChild(appInit);
 
         // Config module
-        ProjectNode config = new ProjectNode("config.py", false, appDir);
+        ProjectNode config = new ProjectNode("config.py", ProjectNode.NodeType.FILE);
         config.setContent(generateConfig());
         appDir.addChild(config);
 
         // Models directory
-        ProjectNode modelsDir = new ProjectNode("models", true, appDir);
+        ProjectNode modelsDir = new ProjectNode("models", ProjectNode.NodeType.FOLDER);
         appDir.addChild(modelsDir);
 
-        ProjectNode modelsInit = new ProjectNode("__init__.py", false, modelsDir);
+        ProjectNode modelsInit = new ProjectNode("__init__.py", ProjectNode.NodeType.FILE);
         modelsInit.setContent("from .base import db\nfrom .user import User\nfrom .role import Role");
         modelsDir.addChild(modelsInit);
 
-        ProjectNode baseModel = new ProjectNode("base.py", false, modelsDir);
+        ProjectNode baseModel = new ProjectNode("base.py", ProjectNode.NodeType.FILE);
         baseModel.setContent(generateBaseModel());
         modelsDir.addChild(baseModel);
 
-        ProjectNode userModel = new ProjectNode("user.py", false, modelsDir);
+        ProjectNode userModel = new ProjectNode("user.py", ProjectNode.NodeType.FILE);
         userModel.setContent(generateUserModel());
         modelsDir.addChild(userModel);
 
-        ProjectNode roleModel = new ProjectNode("role.py", false, modelsDir);
+        ProjectNode roleModel = new ProjectNode("role.py", ProjectNode.NodeType.FILE);
         roleModel.setContent(generateRoleModel());
         modelsDir.addChild(roleModel);
 
@@ -113,482 +120,482 @@ public class FlaskProjectGenerator {
         }
 
         // Common directories
-        ProjectNode utilsDir = new ProjectNode("utils", true, appDir);
+        ProjectNode utilsDir = new ProjectNode("utils", ProjectNode.NodeType.FOLDER);
         appDir.addChild(utilsDir);
 
-        ProjectNode utilsInit = new ProjectNode("__init__.py", false, utilsDir);
+        ProjectNode utilsInit = new ProjectNode("__init__.py", ProjectNode.NodeType.FILE);
         utilsInit.setContent("");
         utilsDir.addChild(utilsInit);
 
-        ProjectNode validators = new ProjectNode("validators.py", false, utilsDir);
+        ProjectNode validators = new ProjectNode("validators.py", ProjectNode.NodeType.FILE);
         validators.setContent(generateValidators());
         utilsDir.addChild(validators);
 
-        ProjectNode decorators = new ProjectNode("decorators.py", false, utilsDir);
+        ProjectNode decorators = new ProjectNode("decorators.py", ProjectNode.NodeType.FILE);
         decorators.setContent(generateDecorators());
         utilsDir.addChild(decorators);
 
-        ProjectNode helpers = new ProjectNode("helpers.py", false, utilsDir);
+        ProjectNode helpers = new ProjectNode("helpers.py", ProjectNode.NodeType.FILE);
         helpers.setContent(generateHelpers());
         utilsDir.addChild(helpers);
 
         // Extensions
-        ProjectNode extensions = new ProjectNode("extensions.py", false, appDir);
+        ProjectNode extensions = new ProjectNode("extensions.py", ProjectNode.NodeType.FILE);
         extensions.setContent(generateExtensions(type));
         appDir.addChild(extensions);
 
         // Static files
-        ProjectNode staticDir = new ProjectNode("static", true, root);
+        ProjectNode staticDir = new ProjectNode("static", ProjectNode.NodeType.FOLDER);
         root.addChild(staticDir);
 
-        ProjectNode cssDir = new ProjectNode("css", true, staticDir);
+        ProjectNode cssDir = new ProjectNode("css", ProjectNode.NodeType.FOLDER);
         staticDir.addChild(cssDir);
-        ProjectNode mainCss = new ProjectNode("style.css", false, cssDir);
+        ProjectNode mainCss = new ProjectNode("style.css", ProjectNode.NodeType.FILE);
         mainCss.setContent(generateMainCSS());
         cssDir.addChild(mainCss);
 
-        ProjectNode jsDir = new ProjectNode("js", true, staticDir);
+        ProjectNode jsDir = new ProjectNode("js", ProjectNode.NodeType.FOLDER);
         staticDir.addChild(jsDir);
-        ProjectNode mainJs = new ProjectNode("app.js", false, jsDir);
+        ProjectNode mainJs = new ProjectNode("app.js", ProjectNode.NodeType.FILE);
         mainJs.setContent(generateMainJS(type));
         jsDir.addChild(mainJs);
 
-        ProjectNode imgDir = new ProjectNode("img", true, staticDir);
+        ProjectNode imgDir = new ProjectNode("img", ProjectNode.NodeType.FOLDER);
         staticDir.addChild(imgDir);
 
         // Templates
-        ProjectNode templatesDir = new ProjectNode("templates", true, root);
+        ProjectNode templatesDir = new ProjectNode("templates", ProjectNode.NodeType.FOLDER);
         root.addChild(templatesDir);
 
-        ProjectNode baseTemplate = new ProjectNode("base.html", false, templatesDir);
+        ProjectNode baseTemplate = new ProjectNode("base.html", ProjectNode.NodeType.FILE);
         baseTemplate.setContent(generateBaseTemplate());
         templatesDir.addChild(baseTemplate);
 
-        ProjectNode indexTemplate = new ProjectNode("index.html", false, templatesDir);
+        ProjectNode indexTemplate = new ProjectNode("index.html", ProjectNode.NodeType.FILE);
         indexTemplate.setContent(generateIndexTemplate());
         templatesDir.addChild(indexTemplate);
 
-        ProjectNode errorDir = new ProjectNode("errors", true, templatesDir);
+        ProjectNode errorDir = new ProjectNode("errors", ProjectNode.NodeType.FOLDER);
         templatesDir.addChild(errorDir);
 
-        ProjectNode error404 = new ProjectNode("404.html", false, errorDir);
+        ProjectNode error404 = new ProjectNode("404.html", ProjectNode.NodeType.FILE);
         error404.setContent(generate404Template());
         errorDir.addChild(error404);
 
-        ProjectNode error500 = new ProjectNode("500.html", false, errorDir);
+        ProjectNode error500 = new ProjectNode("500.html", ProjectNode.NodeType.FILE);
         error500.setContent(generate500Template());
         errorDir.addChild(error500);
 
         // Tests directory
-        ProjectNode testsDir = new ProjectNode("tests", true, root);
+        ProjectNode testsDir = new ProjectNode("tests", ProjectNode.NodeType.FOLDER);
         root.addChild(testsDir);
 
-        ProjectNode testsInit = new ProjectNode("__init__.py", false, testsDir);
+        ProjectNode testsInit = new ProjectNode("__init__.py", ProjectNode.NodeType.FILE);
         testsInit.setContent("");
         testsDir.addChild(testsInit);
 
-        ProjectNode conftest = new ProjectNode("conftest.py", false, testsDir);
+        ProjectNode conftest = new ProjectNode("conftest.py", ProjectNode.NodeType.FILE);
         conftest.setContent(generateConftest());
         testsDir.addChild(conftest);
 
-        ProjectNode testModels = new ProjectNode("test_models.py", false, testsDir);
+        ProjectNode testModels = new ProjectNode("test_models.py", ProjectNode.NodeType.FILE);
         testModels.setContent(generateTestModels());
         testsDir.addChild(testModels);
 
-        ProjectNode testAPI = new ProjectNode("test_api.py", false, testsDir);
+        ProjectNode testAPI = new ProjectNode("test_api.py", ProjectNode.NodeType.FILE);
         testAPI.setContent(generateTestAPI());
         testsDir.addChild(testAPI);
 
         // Migrations directory
-        ProjectNode migrationsDir = new ProjectNode("migrations", true, root);
+        ProjectNode migrationsDir = new ProjectNode("migrations", ProjectNode.NodeType.FOLDER);
         root.addChild(migrationsDir);
 
         // Instance directory for config
-        ProjectNode instanceDir = new ProjectNode("instance", true, root);
+        ProjectNode instanceDir = new ProjectNode("instance", ProjectNode.NodeType.FOLDER);
         root.addChild(instanceDir);
 
         // Logs directory
-        ProjectNode logsDir = new ProjectNode("logs", true, root);
+        ProjectNode logsDir = new ProjectNode("logs", ProjectNode.NodeType.FOLDER);
         root.addChild(logsDir);
 
         // Scripts directory
-        ProjectNode scriptsDir = new ProjectNode("scripts", true, root);
+        ProjectNode scriptsDir = new ProjectNode("scripts", ProjectNode.NodeType.FOLDER);
         root.addChild(scriptsDir);
 
-        ProjectNode initDb = new ProjectNode("init_db.py", false, scriptsDir);
+        ProjectNode initDb = new ProjectNode("init_db.py", ProjectNode.NodeType.FILE);
         initDb.setContent(generateInitDbScript());
         scriptsDir.addChild(initDb);
 
-        ProjectNode seedDb = new ProjectNode("seed_db.py", false, scriptsDir);
+        ProjectNode seedDb = new ProjectNode("seed_db.py", ProjectNode.NodeType.FILE);
         seedDb.setContent(generateSeedDbScript());
         scriptsDir.addChild(seedDb);
 
         // Documentation
-        ProjectNode docsDir = new ProjectNode("docs", true, root);
+        ProjectNode docsDir = new ProjectNode("docs", ProjectNode.NodeType.FOLDER);
         root.addChild(docsDir);
 
-        ProjectNode apiDocs = new ProjectNode("api.md", false, docsDir);
+        ProjectNode apiDocs = new ProjectNode("api.md", ProjectNode.NodeType.FILE);
         apiDocs.setContent(generateAPIDocs(type));
         docsDir.addChild(apiDocs);
 
         // Main application entry point
-        ProjectNode wsgi = new ProjectNode("wsgi.py", false, root);
+        ProjectNode wsgi = new ProjectNode("wsgi.py", ProjectNode.NodeType.FILE);
         wsgi.setContent(generateWSGI());
         root.addChild(wsgi);
 
-        ProjectNode runApp = new ProjectNode("run.py", false, root);
+        ProjectNode runApp = new ProjectNode("run.py", ProjectNode.NodeType.FILE);
         runApp.setContent(generateRunApp());
         root.addChild(runApp);
     }
 
     private void createRESTAPIStructure(ProjectNode appDir) {
         // API package
-        ProjectNode apiDir = new ProjectNode("api", true, appDir);
+        ProjectNode apiDir = new ProjectNode("api", ProjectNode.NodeType.FOLDER);
         appDir.addChild(apiDir);
 
-        ProjectNode apiInit = new ProjectNode("__init__.py", false, apiDir);
+        ProjectNode apiInit = new ProjectNode("__init__.py", ProjectNode.NodeType.FILE);
         apiInit.setContent("");
         apiDir.addChild(apiInit);
 
         // API v1
-        ProjectNode v1Dir = new ProjectNode("v1", true, apiDir);
+        ProjectNode v1Dir = new ProjectNode("v1", ProjectNode.NodeType.FOLDER);
         apiDir.addChild(v1Dir);
 
-        ProjectNode v1Init = new ProjectNode("__init__.py", false, v1Dir);
+        ProjectNode v1Init = new ProjectNode("__init__.py", ProjectNode.NodeType.FILE);
         v1Init.setContent("");
         v1Dir.addChild(v1Init);
 
         // Resources
-        ProjectNode resourcesDir = new ProjectNode("resources", true, v1Dir);
+        ProjectNode resourcesDir = new ProjectNode("resources", ProjectNode.NodeType.FOLDER);
         v1Dir.addChild(resourcesDir);
 
-        ProjectNode resourcesInit = new ProjectNode("__init__.py", false, resourcesDir);
+        ProjectNode resourcesInit = new ProjectNode("__init__.py", ProjectNode.NodeType.FILE);
         resourcesInit.setContent("");
         resourcesDir.addChild(resourcesInit);
 
-        ProjectNode userResource = new ProjectNode("user.py", false, resourcesDir);
+        ProjectNode userResource = new ProjectNode("user.py", ProjectNode.NodeType.FILE);
         userResource.setContent(generateUserResource());
         resourcesDir.addChild(userResource);
 
-        ProjectNode authResource = new ProjectNode("auth.py", false, resourcesDir);
+        ProjectNode authResource = new ProjectNode("auth.py", ProjectNode.NodeType.FILE);
         authResource.setContent(generateAuthResource());
         resourcesDir.addChild(authResource);
 
         // Schemas
-        ProjectNode schemasDir = new ProjectNode("schemas", true, v1Dir);
+        ProjectNode schemasDir = new ProjectNode("schemas", ProjectNode.NodeType.FOLDER);
         v1Dir.addChild(schemasDir);
 
-        ProjectNode schemasInit = new ProjectNode("__init__.py", false, schemasDir);
+        ProjectNode schemasInit = new ProjectNode("__init__.py", ProjectNode.NodeType.FILE);
         schemasInit.setContent("");
         schemasDir.addChild(schemasInit);
 
-        ProjectNode userSchema = new ProjectNode("user_schema.py", false, schemasDir);
+        ProjectNode userSchema = new ProjectNode("user_schema.py", ProjectNode.NodeType.FILE);
         userSchema.setContent(generateUserSchema());
         schemasDir.addChild(userSchema);
 
-        ProjectNode authSchema = new ProjectNode("auth_schema.py", false, schemasDir);
+        ProjectNode authSchema = new ProjectNode("auth_schema.py", ProjectNode.NodeType.FILE);
         authSchema.setContent(generateAuthSchema());
         schemasDir.addChild(authSchema);
 
         // Routes
-        ProjectNode routes = new ProjectNode("routes.py", false, v1Dir);
+        ProjectNode routes = new ProjectNode("routes.py", ProjectNode.NodeType.FILE);
         routes.setContent(generateAPIRoutes());
         v1Dir.addChild(routes);
 
         // Middleware
-        ProjectNode middleware = new ProjectNode("middleware.py", false, apiDir);
+        ProjectNode middleware = new ProjectNode("middleware.py", ProjectNode.NodeType.FILE);
         middleware.setContent(generateMiddleware());
         apiDir.addChild(middleware);
     }
 
     private void createWebAppStructure(ProjectNode appDir) {
         // Views package
-        ProjectNode viewsDir = new ProjectNode("views", true, appDir);
+        ProjectNode viewsDir = new ProjectNode("views", ProjectNode.NodeType.FOLDER);
         appDir.addChild(viewsDir);
 
-        ProjectNode viewsInit = new ProjectNode("__init__.py", false, viewsDir);
+        ProjectNode viewsInit = new ProjectNode("__init__.py", ProjectNode.NodeType.FILE);
         viewsInit.setContent("");
         viewsDir.addChild(viewsInit);
 
-        ProjectNode mainViews = new ProjectNode("main.py", false, viewsDir);
+        ProjectNode mainViews = new ProjectNode("main.py", ProjectNode.NodeType.FILE);
         mainViews.setContent(generateMainViews());
         viewsDir.addChild(mainViews);
 
-        ProjectNode authViews = new ProjectNode("auth.py", false, viewsDir);
+        ProjectNode authViews = new ProjectNode("auth.py", ProjectNode.NodeType.FILE);
         authViews.setContent(generateAuthViews());
         viewsDir.addChild(authViews);
 
-        ProjectNode adminViews = new ProjectNode("admin.py", false, viewsDir);
+        ProjectNode adminViews = new ProjectNode("admin.py", ProjectNode.NodeType.FILE);
         adminViews.setContent(generateAdminViews());
         viewsDir.addChild(adminViews);
 
         // Forms package
-        ProjectNode formsDir = new ProjectNode("forms", true, appDir);
+        ProjectNode formsDir = new ProjectNode("forms", ProjectNode.NodeType.FOLDER);
         appDir.addChild(formsDir);
 
-        ProjectNode formsInit = new ProjectNode("__init__.py", false, formsDir);
+        ProjectNode formsInit = new ProjectNode("__init__.py", ProjectNode.NodeType.FILE);
         formsInit.setContent("");
         formsDir.addChild(formsInit);
 
-        ProjectNode loginForm = new ProjectNode("auth_forms.py", false, formsDir);
+        ProjectNode loginForm = new ProjectNode("auth_forms.py", ProjectNode.NodeType.FILE);
         loginForm.setContent(generateAuthForms());
         formsDir.addChild(loginForm);
 
-        ProjectNode userForm = new ProjectNode("user_forms.py", false, formsDir);
+        ProjectNode userForm = new ProjectNode("user_forms.py", ProjectNode.NodeType.FILE);
         userForm.setContent(generateUserForms());
         formsDir.addChild(userForm);
     }
 
     private void createMicroserviceStructure(ProjectNode appDir) {
         // Services package
-        ProjectNode servicesDir = new ProjectNode("services", true, appDir);
+        ProjectNode servicesDir = new ProjectNode("services", ProjectNode.NodeType.FOLDER);
         appDir.addChild(servicesDir);
 
-        ProjectNode servicesInit = new ProjectNode("__init__.py", false, servicesDir);
+        ProjectNode servicesInit = new ProjectNode("__init__.py", ProjectNode.NodeType.FILE);
         servicesInit.setContent("");
         servicesDir.addChild(servicesInit);
 
-        ProjectNode dataService = new ProjectNode("data_service.py", false, servicesDir);
+        ProjectNode dataService = new ProjectNode("data_service.py", ProjectNode.NodeType.FILE);
         dataService.setContent(generateDataService());
         servicesDir.addChild(dataService);
 
-        ProjectNode cacheService = new ProjectNode("cache_service.py", false, servicesDir);
+        ProjectNode cacheService = new ProjectNode("cache_service.py", ProjectNode.NodeType.FILE);
         cacheService.setContent(generateCacheService());
         servicesDir.addChild(cacheService);
 
-        ProjectNode messageService = new ProjectNode("message_service.py", false, servicesDir);
+        ProjectNode messageService = new ProjectNode("message_service.py", ProjectNode.NodeType.FILE);
         messageService.setContent(generateMessageService());
         servicesDir.addChild(messageService);
 
         // Handlers
-        ProjectNode handlersDir = new ProjectNode("handlers", true, appDir);
+        ProjectNode handlersDir = new ProjectNode("handlers", ProjectNode.NodeType.FOLDER);
         appDir.addChild(handlersDir);
 
-        ProjectNode handlersInit = new ProjectNode("__init__.py", false, handlersDir);
+        ProjectNode handlersInit = new ProjectNode("__init__.py", ProjectNode.NodeType.FILE);
         handlersInit.setContent("");
         handlersDir.addChild(handlersInit);
 
-        ProjectNode eventHandlers = new ProjectNode("event_handlers.py", false, handlersDir);
+        ProjectNode eventHandlers = new ProjectNode("event_handlers.py", ProjectNode.NodeType.FILE);
         eventHandlers.setContent(generateEventHandlers());
         handlersDir.addChild(eventHandlers);
 
-        ProjectNode errorHandlers = new ProjectNode("error_handlers.py", false, handlersDir);
+        ProjectNode errorHandlers = new ProjectNode("error_handlers.py", ProjectNode.NodeType.FILE);
         errorHandlers.setContent(generateErrorHandlers());
         handlersDir.addChild(errorHandlers);
     }
 
     private void createDataAPIStructure(ProjectNode appDir) {
         // Data processing package
-        ProjectNode dataDir = new ProjectNode("data", true, appDir);
+        ProjectNode dataDir = new ProjectNode("data", ProjectNode.NodeType.FOLDER);
         appDir.addChild(dataDir);
 
-        ProjectNode dataInit = new ProjectNode("__init__.py", false, dataDir);
+        ProjectNode dataInit = new ProjectNode("__init__.py", ProjectNode.NodeType.FILE);
         dataInit.setContent("");
         dataDir.addChild(dataInit);
 
-        ProjectNode processors = new ProjectNode("processors.py", false, dataDir);
+        ProjectNode processors = new ProjectNode("processors.py", ProjectNode.NodeType.FILE);
         processors.setContent(generateDataProcessors());
         dataDir.addChild(processors);
 
-        ProjectNode transformers = new ProjectNode("transformers.py", false, dataDir);
+        ProjectNode transformers = new ProjectNode("transformers.py", ProjectNode.NodeType.FILE);
         transformers.setContent(generateDataTransformers());
         dataDir.addChild(transformers);
 
-        ProjectNode analyzers = new ProjectNode("analyzers.py", false, dataDir);
+        ProjectNode analyzers = new ProjectNode("analyzers.py", ProjectNode.NodeType.FILE);
         analyzers.setContent(generateDataAnalyzers());
         dataDir.addChild(analyzers);
 
         // ML package
-        ProjectNode mlDir = new ProjectNode("ml", true, appDir);
+        ProjectNode mlDir = new ProjectNode("ml", ProjectNode.NodeType.FOLDER);
         appDir.addChild(mlDir);
 
-        ProjectNode mlInit = new ProjectNode("__init__.py", false, mlDir);
+        ProjectNode mlInit = new ProjectNode("__init__.py", ProjectNode.NodeType.FILE);
         mlInit.setContent("");
         mlDir.addChild(mlInit);
 
-        ProjectNode models = new ProjectNode("models.py", false, mlDir);
+        ProjectNode models = new ProjectNode("models.py", ProjectNode.NodeType.FILE);
         models.setContent(generateMLModels());
         mlDir.addChild(models);
 
-        ProjectNode predictors = new ProjectNode("predictors.py", false, mlDir);
+        ProjectNode predictors = new ProjectNode("predictors.py", ProjectNode.NodeType.FILE);
         predictors.setContent(generatePredictors());
         mlDir.addChild(predictors);
     }
 
     private void createAsyncStructure(ProjectNode appDir) {
         // Async handlers
-        ProjectNode asyncDir = new ProjectNode("async_handlers", true, appDir);
+        ProjectNode asyncDir = new ProjectNode("async_handlers", ProjectNode.NodeType.FOLDER);
         appDir.addChild(asyncDir);
 
-        ProjectNode asyncInit = new ProjectNode("__init__.py", false, asyncDir);
+        ProjectNode asyncInit = new ProjectNode("__init__.py", ProjectNode.NodeType.FILE);
         asyncInit.setContent("");
         asyncDir.addChild(asyncInit);
 
-        ProjectNode asyncViews = new ProjectNode("views.py", false, asyncDir);
+        ProjectNode asyncViews = new ProjectNode("views.py", ProjectNode.NodeType.FILE);
         asyncViews.setContent(generateAsyncViews());
         asyncDir.addChild(asyncViews);
 
-        ProjectNode asyncTasks = new ProjectNode("tasks.py", false, asyncDir);
+        ProjectNode asyncTasks = new ProjectNode("tasks.py", ProjectNode.NodeType.FILE);
         asyncTasks.setContent(generateAsyncTasks());
         asyncDir.addChild(asyncTasks);
 
-        ProjectNode asyncWorkers = new ProjectNode("workers.py", false, asyncDir);
+        ProjectNode asyncWorkers = new ProjectNode("workers.py", ProjectNode.NodeType.FILE);
         asyncWorkers.setContent(generateAsyncWorkers());
         asyncDir.addChild(asyncWorkers);
     }
 
     private void createGraphQLStructure(ProjectNode appDir) {
         // GraphQL package
-        ProjectNode graphqlDir = new ProjectNode("graphql", true, appDir);
+        ProjectNode graphqlDir = new ProjectNode("graphql", ProjectNode.NodeType.FOLDER);
         appDir.addChild(graphqlDir);
 
-        ProjectNode graphqlInit = new ProjectNode("__init__.py", false, graphqlDir);
+        ProjectNode graphqlInit = new ProjectNode("__init__.py", ProjectNode.NodeType.FILE);
         graphqlInit.setContent("");
         graphqlDir.addChild(graphqlInit);
 
-        ProjectNode schema = new ProjectNode("schema.py", false, graphqlDir);
+        ProjectNode schema = new ProjectNode("schema.py", ProjectNode.NodeType.FILE);
         schema.setContent(generateGraphQLSchema());
         graphqlDir.addChild(schema);
 
-        ProjectNode queries = new ProjectNode("queries.py", false, graphqlDir);
+        ProjectNode queries = new ProjectNode("queries.py", ProjectNode.NodeType.FILE);
         queries.setContent(generateGraphQLQueries());
         graphqlDir.addChild(queries);
 
-        ProjectNode mutations = new ProjectNode("mutations.py", false, graphqlDir);
+        ProjectNode mutations = new ProjectNode("mutations.py", ProjectNode.NodeType.FILE);
         mutations.setContent(generateGraphQLMutations());
         graphqlDir.addChild(mutations);
 
-        ProjectNode resolvers = new ProjectNode("resolvers.py", false, graphqlDir);
+        ProjectNode resolvers = new ProjectNode("resolvers.py", ProjectNode.NodeType.FILE);
         resolvers.setContent(generateGraphQLResolvers());
         graphqlDir.addChild(resolvers);
     }
 
     private void createWebSocketStructure(ProjectNode appDir) {
         // WebSocket package
-        ProjectNode wsDir = new ProjectNode("websocket", true, appDir);
+        ProjectNode wsDir = new ProjectNode("websocket", ProjectNode.NodeType.FOLDER);
         appDir.addChild(wsDir);
 
-        ProjectNode wsInit = new ProjectNode("__init__.py", false, wsDir);
+        ProjectNode wsInit = new ProjectNode("__init__.py", ProjectNode.NodeType.FILE);
         wsInit.setContent("");
         wsDir.addChild(wsInit);
 
-        ProjectNode events = new ProjectNode("events.py", false, wsDir);
+        ProjectNode events = new ProjectNode("events.py", ProjectNode.NodeType.FILE);
         events.setContent(generateWebSocketEvents());
         wsDir.addChild(events);
 
-        ProjectNode handlers = new ProjectNode("handlers.py", false, wsDir);
+        ProjectNode handlers = new ProjectNode("handlers.py", ProjectNode.NodeType.FILE);
         handlers.setContent(generateWebSocketHandlers());
         wsDir.addChild(handlers);
 
-        ProjectNode rooms = new ProjectNode("rooms.py", false, wsDir);
+        ProjectNode rooms = new ProjectNode("rooms.py", ProjectNode.NodeType.FILE);
         rooms.setContent(generateWebSocketRooms());
         wsDir.addChild(rooms);
     }
 
     private void addConfigurationFiles(ProjectNode root, String projectName, FlaskProjectType type) {
         // requirements.txt
-        ProjectNode requirements = new ProjectNode("requirements.txt", false, root);
+        ProjectNode requirements = new ProjectNode("requirements.txt", ProjectNode.NodeType.FILE);
         requirements.setContent(generateRequirements(type));
         root.addChild(requirements);
 
         // requirements-dev.txt
-        ProjectNode requirementsDev = new ProjectNode("requirements-dev.txt", false, root);
+        ProjectNode requirementsDev = new ProjectNode("requirements-dev.txt", ProjectNode.NodeType.FILE);
         requirementsDev.setContent(generateRequirementsDev());
         root.addChild(requirementsDev);
 
         // .env.example
-        ProjectNode envExample = new ProjectNode(".env.example", false, root);
+        ProjectNode envExample = new ProjectNode(".env.example", ProjectNode.NodeType.FILE);
         envExample.setContent(generateEnvExample(type));
         root.addChild(envExample);
 
         // .gitignore
-        ProjectNode gitignore = new ProjectNode(".gitignore", false, root);
+        ProjectNode gitignore = new ProjectNode(".gitignore", ProjectNode.NodeType.FILE);
         gitignore.setContent(generateGitignore());
         root.addChild(gitignore);
 
         // pyproject.toml
-        ProjectNode pyproject = new ProjectNode("pyproject.toml", false, root);
+        ProjectNode pyproject = new ProjectNode("pyproject.toml", ProjectNode.NodeType.FILE);
         pyproject.setContent(generatePyprojectToml(projectName));
         root.addChild(pyproject);
 
         // setup.cfg
-        ProjectNode setupCfg = new ProjectNode("setup.cfg", false, root);
+        ProjectNode setupCfg = new ProjectNode("setup.cfg", ProjectNode.NodeType.FILE);
         setupCfg.setContent(generateSetupCfg());
         root.addChild(setupCfg);
 
         // setup.py
-        ProjectNode setupPy = new ProjectNode("setup.py", false, root);
+        ProjectNode setupPy = new ProjectNode("setup.py", ProjectNode.NodeType.FILE);
         setupPy.setContent(generateSetupPy(projectName));
         root.addChild(setupPy);
 
         // pytest.ini
-        ProjectNode pytest = new ProjectNode("pytest.ini", false, root);
+        ProjectNode pytest = new ProjectNode("pytest.ini", ProjectNode.NodeType.FILE);
         pytest.setContent(generatePytestIni());
         root.addChild(pytest);
 
         // .flaskenv
-        ProjectNode flaskenv = new ProjectNode(".flaskenv", false, root);
+        ProjectNode flaskenv = new ProjectNode(".flaskenv", ProjectNode.NodeType.FILE);
         flaskenv.setContent(generateFlaskenv());
         root.addChild(flaskenv);
 
         // README.md
-        ProjectNode readme = new ProjectNode("README.md", false, root);
+        ProjectNode readme = new ProjectNode("README.md", ProjectNode.NodeType.FILE);
         readme.setContent(generateReadme(projectName, type));
         root.addChild(readme);
 
         // Makefile
-        ProjectNode makefile = new ProjectNode("Makefile", false, root);
+        ProjectNode makefile = new ProjectNode("Makefile", ProjectNode.NodeType.FILE);
         makefile.setContent(generateMakefile());
         root.addChild(makefile);
     }
 
     private void addDockerSupport(ProjectNode root, String projectName, FlaskProjectType type) {
         // Dockerfile
-        ProjectNode dockerfile = new ProjectNode("Dockerfile", false, root);
+        ProjectNode dockerfile = new ProjectNode("Dockerfile", ProjectNode.NodeType.FILE);
         dockerfile.setContent(generateDockerfile(type));
         root.addChild(dockerfile);
 
         // docker-compose.yml
-        ProjectNode dockerCompose = new ProjectNode("docker-compose.yml", false, root);
+        ProjectNode dockerCompose = new ProjectNode("docker-compose.yml", ProjectNode.NodeType.FILE);
         dockerCompose.setContent(generateDockerCompose(projectName, type));
         root.addChild(dockerCompose);
 
         // .dockerignore
-        ProjectNode dockerignore = new ProjectNode(".dockerignore", false, root);
+        ProjectNode dockerignore = new ProjectNode(".dockerignore", ProjectNode.NodeType.FILE);
         dockerignore.setContent(generateDockerignore());
         root.addChild(dockerignore);
 
         // docker directory
-        ProjectNode dockerDir = new ProjectNode("docker", true, root);
+        ProjectNode dockerDir = new ProjectNode("docker", ProjectNode.NodeType.FOLDER);
         root.addChild(dockerDir);
 
         // nginx config
-        ProjectNode nginxConf = new ProjectNode("nginx.conf", false, dockerDir);
+        ProjectNode nginxConf = new ProjectNode("nginx.conf", ProjectNode.NodeType.FILE);
         nginxConf.setContent(generateNginxConfig(projectName));
         dockerDir.addChild(nginxConf);
 
         // entrypoint script
-        ProjectNode entrypoint = new ProjectNode("entrypoint.sh", false, dockerDir);
+        ProjectNode entrypoint = new ProjectNode("entrypoint.sh", ProjectNode.NodeType.FILE);
         entrypoint.setContent(generateEntrypoint());
         dockerDir.addChild(entrypoint);
     }
 
     private void addCICDPipeline(ProjectNode root, String projectName) {
         // .github directory
-        ProjectNode githubDir = new ProjectNode(".github", true, root);
+        ProjectNode githubDir = new ProjectNode(".github", ProjectNode.NodeType.FOLDER);
         root.addChild(githubDir);
 
         // workflows directory
-        ProjectNode workflowsDir = new ProjectNode("workflows", true, githubDir);
+        ProjectNode workflowsDir = new ProjectNode("workflows", ProjectNode.NodeType.FOLDER);
         githubDir.addChild(workflowsDir);
 
         // CI workflow
-        ProjectNode ciWorkflow = new ProjectNode("ci.yml", false, workflowsDir);
+        ProjectNode ciWorkflow = new ProjectNode("ci.yml", ProjectNode.NodeType.FILE);
         ciWorkflow.setContent(generateCIWorkflow(projectName));
         workflowsDir.addChild(ciWorkflow);
 
         // Deploy workflow
-        ProjectNode deployWorkflow = new ProjectNode("deploy.yml", false, workflowsDir);
+        ProjectNode deployWorkflow = new ProjectNode("deploy.yml", ProjectNode.NodeType.FILE);
         deployWorkflow.setContent(generateDeployWorkflow(projectName));
         workflowsDir.addChild(deployWorkflow);
     }

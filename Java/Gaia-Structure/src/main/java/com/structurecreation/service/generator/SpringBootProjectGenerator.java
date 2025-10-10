@@ -1539,8 +1539,10 @@ public class SpringBootProjectGenerator {
      */
     public enum SpringBootProjectType {
         BASIC("Basic Spring Boot REST API"),
+        REST_API("Spring Boot REST API"),
         WEB("Spring Boot Web Application with Thymeleaf"),
         MICROSERVICE("Spring Boot Microservice with Cloud Config"),
+        ML_API("Spring Boot ML/AI API with TensorFlow"),
         FULL_STACK("Full-Stack Spring Boot Application with Everything");
 
         private final String description;

@@ -1094,6 +1094,9 @@ public class ReactProjectGenerator {
         WITH_REDUX("React with Redux State Management"),
         WITH_CONTEXT("React with Context API"),
         WITH_TYPESCRIPT("React with TypeScript"),
+        TYPESCRIPT_APP("React Application with TypeScript"),
+        WEB_APP("React Web Application"),
+        ML_API("React with ML/AI Integration"),
         FULL_STACK("Full-Stack React Application with Everything");
 
         private final String description;

@@ -32,6 +32,15 @@ public class ProjectNode {
         this.content = content != null ? content : "";
     }
     
+    // Constructor for compatibility with Django/Flask generators
+    public ProjectNode(String name, boolean isDirectory, ProjectNode parent) {
+        this.name = name;
+        this.type = isDirectory ? NodeType.FOLDER : NodeType.FILE;
+        this.children = new ArrayList<>();
+        this.content = "";
+        // Parent reference not stored in current implementation
+    }
+    
     // Getters and Setters
     public String getName() {
         return name;
