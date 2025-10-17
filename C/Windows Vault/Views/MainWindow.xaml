@@ -1,0 +1,343 @@
+<Window x:Class="WindowsVault.Views.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:ui="http://schemas.modernwpf.com/2019"
+        xmlns:views="clr-namespace:WindowsVault.Views"
+        ui:WindowHelper.UseModernWindowStyle="True"
+        Title="Windows Vault" 
+        Height="800" 
+        Width="1200"
+        MinHeight="600"
+        MinWidth="800"
+        WindowStartupLocation="CenterScreen"
+        Icon="/vault-icon.ico">
+
+    
+    <ui:SimpleStackPanel Orientation="Vertical">
+        
+        <!-- Title Bar -->
+        <Grid Height="48" Background="{StaticResource VaultPrimaryBrush}">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="Auto"/>
+                <ColumnDefinition Width="*"/>
+                <ColumnDefinition Width="Auto"/>
+            </Grid.ColumnDefinitions>
+            
+            <!-- App Icon and Title -->
+            <StackPanel Grid.Column="0" Orientation="Horizontal" VerticalAlignment="Center" Margin="16,0">
+                <Image Source="/vault-icon.ico" Width="24" Height="24" Margin="0,0,8,0"/>
+                <TextBlock Text="Windows Vault" 
+                          FontSize="16" 
+                          FontWeight="SemiBold" 
+                          Foreground="White" 
+                          VerticalAlignment="Center"/>
+            </StackPanel>
+            
+            <!-- Search Bar -->
+            <Grid Grid.Column="1" Width="400" HorizontalAlignment="Center" VerticalAlignment="Center">
+                <TextBox x:Name="SearchBox"
+                        Style="{StaticResource SearchBoxStyle}"
+                        Text="{Binding SearchQuery, UpdateSourceTrigger=PropertyChanged}"/>
+                <TextBlock Text="Search your media..."
+                          Foreground="Gray"
+                          VerticalAlignment="Center"
+                          Margin="16,0,0,0"
+                          IsHitTestVisible="False">
+                    <TextBlock.Style>
+                        <Style TargetType="TextBlock">
+                            <Setter Property="Visibility" Value="Collapsed"/>
+                            <Style.Triggers>
+                                <DataTrigger Binding="{Binding Text, ElementName=SearchBox}" Value="">
+                                    <Setter Property="Visibility" Value="Visible"/>
+                                </DataTrigger>
+                            </Style.Triggers>
+                        </Style>
+                    </TextBlock.Style>
+                </TextBlock>
+            </Grid>
+            
+            <!-- Action Buttons -->
+            <StackPanel Grid.Column="2" Orientation="Horizontal" VerticalAlignment="Center" Margin="16,0">
+                <Button x:Name="AddMediaButton"
+                       Content="Add Media"
+                       Style="{StaticResource AccentButtonStyle}"
+                       Command="{Binding AddMediaAsyncCommand}"
+                       Click="AddMediaButton_Click"
+                       Margin="0,0,8,0"/>
+                <Button x:Name="SettingsButton"
+                       Content="⚙"
+                       FontSize="16"
+                       Width="36"
+                       Height="36"
+                       Command="{Binding ShowSettingsCommand}"
+                       Click="SettingsButton_Click"/>
+            </StackPanel>
+        </Grid>
+        
+        <!-- Main Content Area -->
+        <Grid>
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="250"/>
+                <ColumnDefinition Width="*"/>
+            </Grid.ColumnDefinitions>
+            
+            <!-- Sidebar Navigation -->
+            <Border Grid.Column="0" 
+                   Background="{DynamicResource SystemControlBackgroundChromeMediumLowBrush}"
+                   BorderBrush="{DynamicResource SystemControlForegroundBaseLowBrush}"
+                   BorderThickness="0,0,1,0">
+                
+                <Grid Margin="12">
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="Auto"/>
+                        <RowDefinition Height="*"/>
+                        <RowDefinition Height="Auto"/>
+                    </Grid.RowDefinitions>
+                    
+                    <!-- Navigation Menu -->
+                    <StackPanel Grid.Row="0">
+                        <TextBlock Text="LIBRARY" 
+                                  FontSize="12" 
+                                  FontWeight="SemiBold" 
+                                  Foreground="{DynamicResource SystemControlForegroundBaseMediumBrush}"
+                                  Margin="16,16,16,8"/>
+                        
+                        <RadioButton x:Name="AllMediaButton"
+                                    Content="📁 All Media"
+                                    Style="{StaticResource NavigationButtonStyle}"
+                                    IsChecked="True"
+                                    Command="{Binding ShowAllMediaAsyncCommand}"
+                                    Click="AllMediaButton_Click"
+                                    Margin="0,4"/>
+                        
+                        <RadioButton x:Name="ImagesButton"
+                                    Content="🖼️ Images"
+                                    Style="{StaticResource NavigationButtonStyle}"
+                                    Command="{Binding ShowImagesAsyncCommand}"
+                                    Click="ImagesButton_Click"
+                                    Margin="0,4"/>
+                        
+                        <RadioButton x:Name="VideosButton"
+                                    Content="🎥 Videos"
+                                    Style="{StaticResource NavigationButtonStyle}"
+                                    Command="{Binding ShowVideosAsyncCommand}"
+                                    Click="VideosButton_Click"
+                                    Margin="0,4"/>
+                        
+                        <RadioButton x:Name="AudioButton"
+                                    Content="🎵 Audio"
+                                    Style="{StaticResource NavigationButtonStyle}"
+                                    Command="{Binding ShowAudioAsyncCommand}"
+                                    Click="AudioButton_Click"
+                                    Margin="0,4"/>
+                        
+                        <RadioButton x:Name="FavoritesButton"
+                                    Content="⭐ Favorites"
+                                    Style="{StaticResource NavigationButtonStyle}"
+                                    Command="{Binding ShowFavoritesAsyncCommand}"
+                                    Click="FavoritesButton_Click"
+                                    Margin="0,4"/>
+                        
+                        <Separator Margin="8,16"/>
+                        
+                        <!-- Tags Section Header -->
+                        <Grid>
+                            <Grid.ColumnDefinitions>
+                                <ColumnDefinition Width="*"/>
+                                <ColumnDefinition Width="Auto"/>
+                            </Grid.ColumnDefinitions>
+                            
+                            <TextBlock Text="TAGS" 
+                                      FontSize="12" 
+                                      FontWeight="SemiBold" 
+                                      Foreground="{DynamicResource SystemControlForegroundBaseMediumBrush}"
+                                      Margin="16,0"/>
+                            
+                            <Button Grid.Column="1"
+                                   Content="+"
+                                   Width="24"
+                                   Height="24"
+                                   FontSize="16"
+                                   Command="{Binding AddTagAsyncCommand}"
+                                   Click="AddTagButton_Click"
+                                   ToolTip="Add new tag"/>
+                        </Grid>
+                    </StackPanel>
+                    
+                    <!-- Tags List (Scrollable) -->
+                    <ScrollViewer Grid.Row="1" VerticalScrollBarVisibility="Auto" Margin="0,8">
+                        <ItemsControl ItemsSource="{Binding Tags}">
+                            <ItemsControl.ItemTemplate>
+                                <DataTemplate>
+                                    <CheckBox Margin="16,4" Command="{Binding DataContext.ToggleTagFilterCommand, RelativeSource={RelativeSource AncestorType=Window}}" CommandParameter="{Binding}">
+                                        <StackPanel Orientation="Horizontal">
+                                            <Ellipse Width="12" Height="12" Fill="{Binding Color}" Margin="0,0,8,0"/>
+                                            <TextBlock Text="{Binding Name}"/>
+                                            <TextBlock Foreground="{DynamicResource SystemControlForegroundBaseMediumBrush}"
+                                                      FontSize="11">
+                                                <TextBlock.Text>
+                                                    <MultiBinding StringFormat=" ({0})">
+                                                        <Binding Path="UsageCount"/>
+                                                    </MultiBinding>
+                                                </TextBlock.Text>
+                                            </TextBlock>
+                                        </StackPanel>
+                                    </CheckBox>
+                                </DataTemplate>
+                            </ItemsControl.ItemTemplate>
+                        </ItemsControl>
+                    </ScrollViewer>
+                    
+                    <!-- Manage Tags Button (Always visible at bottom) -->
+                    <Button Grid.Row="2" 
+                           Content="🏷️ Manage Tags..."
+                           Command="{Binding ManageTagsCommand}"
+                           Click="ManageTagsButton_Click"
+                           HorizontalAlignment="Stretch"
+                           Height="36"
+                           Margin="16,8"
+                           FontWeight="SemiBold"
+                           Style="{StaticResource AccentButtonStyle}"/>
+                    
+                </Grid>
+            </Border>
+            
+            <!-- Main Content Area -->
+            <Grid Grid.Column="1">
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="Auto"/>
+                    <RowDefinition Height="*"/>
+                    <RowDefinition Height="Auto"/>
+                </Grid.RowDefinitions>
+                
+                <!-- Toolbar -->
+                <Border Grid.Row="0" 
+                       Background="{DynamicResource SystemControlBackgroundBaseLowBrush}"
+                       BorderBrush="{DynamicResource SystemControlForegroundBaseLowBrush}"
+                       BorderThickness="0,0,0,1"
+                       Padding="16,12">
+                    
+                    <Grid>
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="*"/>
+                            <ColumnDefinition Width="Auto"/>
+                        </Grid.ColumnDefinitions>
+                        
+                        <!-- View Controls -->
+                        <StackPanel Grid.Column="0" Orientation="Horizontal">
+                            <TextBlock Text="View:" VerticalAlignment="Center" Margin="0,0,8,0"/>
+                            
+                            <ToggleButton x:Name="GridViewButton"
+                                         Content="⊞"
+                                         IsChecked="True"
+                                         ToolTip="Grid View"
+                                         Width="32"
+                                         Height="32"
+                                         Margin="0,0,4,0"/>
+                            
+                            <ToggleButton x:Name="ListViewButton"
+                                         Content="☰"
+                                         ToolTip="List View"
+                                         Width="32"
+                                         Height="32"
+                                         Margin="0,0,16,0"/>
+                            
+                            <Slider x:Name="ZoomSlider"
+                                   Width="120"
+                                   Minimum="100"
+                                   Maximum="400"
+                                   Value="200"
+                                   VerticalAlignment="Center"
+                                   ToolTip="Thumbnail Size"/>
+                        </StackPanel>
+                        
+                        <!-- Sort and Filter -->
+                        <StackPanel Grid.Column="1" Orientation="Horizontal">
+                            <TextBlock Text="Sort:" VerticalAlignment="Center" Margin="0,0,8,0"/>
+                            <ComboBox x:Name="SortComboBox" 
+                                     Width="140"
+                                     SelectedIndex="0"
+                                     SelectionChanged="SortComboBox_SelectionChanged">
+                                <ComboBoxItem Content="Date Added"/>
+                                <ComboBoxItem Content="Name"/>
+                                <ComboBoxItem Content="Size"/>
+                                <ComboBoxItem Content="Rating"/>
+                                <ComboBoxItem Content="Date Modified"/>
+                            </ComboBox>
+                            
+                            <Button x:Name="SortOrderButton"
+                                   Content="↓"
+                                   Width="32"
+                                   Height="32"
+                                   Margin="4,0,0,0"
+                                   ToolTip="Sort Order"
+                                   Click="SortOrderButton_Click"/>
+                        </StackPanel>
+                    </Grid>
+                </Border>
+                
+                <!-- Media Grid -->
+                <ScrollViewer Grid.Row="1" 
+                             VerticalScrollBarVisibility="Auto"
+                             HorizontalScrollBarVisibility="Disabled">
+                    
+                    <ItemsControl x:Name="MediaItemsControl" ItemsSource="{Binding FilteredMediaFiles}">
+                        <ItemsControl.ItemsPanel>
+                            <ItemsPanelTemplate>
+                                <WrapPanel Orientation="Horizontal"/>
+                            </ItemsPanelTemplate>
+                        </ItemsControl.ItemsPanel>
+                        
+                        <ItemsControl.ItemTemplate>
+                            <DataTemplate>
+                                <views:MediaItemControl DataContext="{Binding}" 
+                                                      ThumbnailSize="{Binding ElementName=ZoomSlider, Path=Value}"
+                                                      MouseDoubleClick="MediaItem_DoubleClick"/>
+                            </DataTemplate>
+                        </ItemsControl.ItemTemplate>
+                    </ItemsControl>
+                    
+                </ScrollViewer>
+                
+                <!-- Status Bar -->
+                <Border Grid.Row="2" 
+                       Background="{DynamicResource SystemControlBackgroundBaseLowBrush}"
+                       BorderBrush="{DynamicResource SystemControlForegroundBaseLowBrush}"
+                       BorderThickness="0,1,0,0"
+                       Padding="16,8">
+                    
+                    <Grid>
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="*"/>
+                            <ColumnDefinition Width="Auto"/>
+                        </Grid.ColumnDefinitions>
+                        
+                        <TextBlock Grid.Column="0" 
+                                  Text="{Binding StatusText}" 
+                                  VerticalAlignment="Center"/>
+                        
+                        <StackPanel Grid.Column="1" Orientation="Horizontal">
+                            <TextBlock VerticalAlignment="Center" Margin="0,0,16,0">
+                                <TextBlock.Text>
+                                    <MultiBinding StringFormat="{}{0} items">
+                                        <Binding Path="FilteredMediaFiles.Count"/>
+                                    </MultiBinding>
+                                </TextBlock.Text>
+                            </TextBlock>
+                            
+                            <TextBlock VerticalAlignment="Center"
+                                      Visibility="{Binding SelectedMediaFile, Converter={StaticResource NullToVisibilityConverter}}">
+                                <TextBlock.Text>
+                                    <MultiBinding StringFormat="Selected: {0}">
+                                        <Binding Path="SelectedMediaFile.FileSizeFormatted"/>
+                                    </MultiBinding>
+                                </TextBlock.Text>
+                            </TextBlock>
+                        </StackPanel>
+                    </Grid>
+                </Border>
+                
+            </Grid>
+        </Grid>
+    </ui:SimpleStackPanel>
+</Window>

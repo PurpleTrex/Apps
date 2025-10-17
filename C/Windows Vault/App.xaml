@@ -1,0 +1,31 @@
+<Application x:Class="WindowsVault.App"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:ui="http://schemas.modernwpf.com/2019"
+             xmlns:converters="clr-namespace:WindowsVault.Converters">
+    <Application.Resources>
+        <ResourceDictionary>
+            <ResourceDictionary.MergedDictionaries>
+                <ui:ThemeResources />
+                <ui:XamlControlsResources />
+                <ResourceDictionary Source="Styles/VaultStyles.xaml"/>
+            </ResourceDictionary.MergedDictionaries>
+            
+            <!-- Global Color Scheme -->
+            <SolidColorBrush x:Key="VaultPrimaryBrush" Color="#0078D4"/>
+            <SolidColorBrush x:Key="VaultSecondaryBrush" Color="#106EBE"/>
+            <SolidColorBrush x:Key="VaultAccentBrush" Color="#FFB900"/>
+            <SolidColorBrush x:Key="VaultSuccessBrush" Color="#107C10"/>
+            <SolidColorBrush x:Key="VaultWarningBrush" Color="#FF8C00"/>
+            <SolidColorBrush x:Key="VaultErrorBrush" Color="#D13438"/>
+            
+            <!-- Converters -->
+            <converters:BooleanToVisibilityConverter x:Key="BooleanToVisibilityConverter"/>
+            <converters:NullToVisibilityConverter x:Key="NullToVisibilityConverter"/>
+            <converters:NullToBooleanConverter x:Key="NullToBoolConverter"/>
+            <converters:StringToVisibilityConverter x:Key="StringToVisibilityConverter"/>
+            <converters:FileSizeConverter x:Key="FileSizeConverter"/>
+            
+        </ResourceDictionary>
+    </Application.Resources>
+</Application>

@@ -1,0 +1,9 @@
+Windows Vault
+A windows program that allows users to save or move all media to it
+Will be able to run all image types, gifs, videos ect.
+Use external programs on windows machine to run the media
+User sets up tags. When media is either moved or saved into the vault the user will assign tags
+Needs advanced filtering logic using the tags so user can filter all media types via filters 
+Needs fully implimented internal database with relationship logic and data structure 
+User should be able to edit and make new tags freely
+UI MUST be 2025 windows 11 focused and use modern libraries for GUI, user experience ect.
