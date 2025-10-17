@@ -40,6 +40,21 @@ namespace WindowsVault.Services
 
         public async Task<Tag> CreateTagAsync(string name, string? color = null, string? description = null)
         {
+            // Input validation
+            if (string.IsNullOrWhiteSpace(name))
+                throw new ArgumentException("Tag name cannot be null or empty", nameof(name));
+
+            if (name.Length > 100)
+                throw new ArgumentException("Tag name cannot exceed 100 characters", nameof(name));
+
+            // Validate color format if provided
+            if (!string.IsNullOrEmpty(color) && !System.Text.RegularExpressions.Regex.IsMatch(color, @"^#[0-9A-Fa-f]{6}$"))
+                throw new ArgumentException("Color must be in hex format (#RRGGBB)", nameof(color));
+
+            // Validate description length
+            if (description != null && description.Length > 500)
+                throw new ArgumentException("Description cannot exceed 500 characters", nameof(description));
+
             if (await TagExistsAsync(name))
                 throw new InvalidOperationException($"Tag '{name}' already exists");
 
@@ -59,8 +74,32 @@ namespace WindowsVault.Services
 
         public async Task<bool> UpdateTagAsync(Tag tag)
         {
+            // Input validation
+            if (tag == null)
+                throw new ArgumentNullException(nameof(tag));
+
+            if (tag.Id <= 0)
+                throw new ArgumentException("Invalid tag ID", nameof(tag));
+
+            if (string.IsNullOrWhiteSpace(tag.Name))
+                throw new ArgumentException("Tag name cannot be null or empty", nameof(tag));
+
+            if (tag.Name.Length > 100)
+                throw new ArgumentException("Tag name cannot exceed 100 characters", nameof(tag));
+
+            // Validate color format
+            if (!string.IsNullOrEmpty(tag.Color) && !System.Text.RegularExpressions.Regex.IsMatch(tag.Color, @"^#[0-9A-Fa-f]{6}$"))
+                throw new ArgumentException("Color must be in hex format (#RRGGBB)", nameof(tag));
+
             var existingTag = await _context.Tags.FindAsync(tag.Id);
             if (existingTag == null) return false;
+
+            // Check if name is being changed to one that already exists
+            var duplicateTag = await _context.Tags
+                .FirstOrDefaultAsync(t => t.Name.ToLower() == tag.Name.ToLower() && t.Id != tag.Id);
+
+            if (duplicateTag != null)
+                throw new InvalidOperationException($"A tag with name '{tag.Name}' already exists");
 
             existingTag.Name = tag.Name.Trim();
             existingTag.Color = tag.Color;
@@ -71,6 +110,10 @@ namespace WindowsVault.Services
 
         public async Task<bool> DeleteTagAsync(int id)
         {
+            // Input validation
+            if (id <= 0)
+                throw new ArgumentException("Invalid tag ID", nameof(id));
+
             var tag = await _context.Tags.FindAsync(id);
             if (tag == null) return false;
 
@@ -78,7 +121,7 @@ namespace WindowsVault.Services
             var associations = await _context.MediaFileTags
                 .Where(mft => mft.TagId == id)
                 .ToListAsync();
-            
+
             _context.MediaFileTags.RemoveRange(associations);
             _context.Tags.Remove(tag);
 

@@ -14,7 +14,7 @@ namespace WindowsVault.Views
             InitializeComponent();
             _viewModel = viewModel;
             DataContext = _viewModel;
-            
+
             Loaded += TagManagementWindow_Loaded;
         }
 
@@ -23,90 +23,6 @@ namespace WindowsVault.Views
             if (_viewModel != null)
             {
                 await _viewModel.InitializeAsync();
-            }
-        }
-
-        private async void CreateTagButton_Click(object sender, RoutedEventArgs e)
-        {
-            System.Diagnostics.Debug.WriteLine("Create Tag button clicked!");
-            
-            // Manually call the CreateTagAsync method since command binding isn't working
-            if (_viewModel != null)
-            {
-                System.Diagnostics.Debug.WriteLine($"Calling CreateTagAsync with Tag Name: '{_viewModel.NewTagName}', Color: '{_viewModel.NewTagColor}'");
-                
-                // Call the method through reflection to access the private method
-                var method = _viewModel.GetType().GetMethod("CreateTagAsync", System.Reflection.BindingFlags.NonPublic | System.Reflection.BindingFlags.Instance);
-                if (method != null)
-                {
-                    var task = method.Invoke(_viewModel, null) as System.Threading.Tasks.Task;
-                    if (task != null)
-                    {
-                        await task;
-                        await ModernDialog.ShowSuccessAsync($"Tag '{_viewModel.NewTagName}' created successfully!\nCheck the sidebar.");
-                    }
-                }
-                else
-                {
-                    await ModernDialog.ShowErrorAsync("Could not find CreateTagAsync method!");
-                }
-            }
-        }
-
-        private async void UpdateTagButton_Click(object sender, RoutedEventArgs e)
-        {
-            System.Diagnostics.Debug.WriteLine("Update Tag button clicked!");
-            
-            // Manually call the UpdateTagAsync method
-            if (_viewModel != null)
-            {
-                System.Diagnostics.Debug.WriteLine($"Calling UpdateTagAsync with Tag Name: '{_viewModel.SelectedTagName}', Color: '{_viewModel.SelectedTagColor}'");
-                
-                var method = _viewModel.GetType().GetMethod("UpdateTagAsync", System.Reflection.BindingFlags.NonPublic | System.Reflection.BindingFlags.Instance);
-                if (method != null)
-                {
-                    var task = method.Invoke(_viewModel, null) as System.Threading.Tasks.Task;
-                    if (task != null)
-                    {
-                        await task;
-                        await ModernDialog.ShowSuccessAsync("Tag updated successfully!");
-                    }
-                }
-                else
-                {
-                    await ModernDialog.ShowErrorAsync("Could not find UpdateTagAsync method!");
-                }
-            }
-        }
-
-        private async void DeleteTagButton_Click(object sender, RoutedEventArgs e)
-        {
-            System.Diagnostics.Debug.WriteLine("Delete Tag button clicked!");
-            
-            // Manually call the DeleteTagAsync method
-            if (_viewModel != null)
-            {
-                if (_viewModel.SelectedTag == null)
-                {
-                    await ModernDialog.ShowErrorAsync("No tag selected!");
-                    return;
-                }
-
-                System.Diagnostics.Debug.WriteLine($"Calling DeleteTagAsync for Tag: '{_viewModel.SelectedTag.Name}'");
-                
-                var method = _viewModel.GetType().GetMethod("DeleteTagAsync", System.Reflection.BindingFlags.NonPublic | System.Reflection.BindingFlags.Instance);
-                if (method != null)
-                {
-                    var task = method.Invoke(_viewModel, null) as System.Threading.Tasks.Task;
-                    if (task != null)
-                    {
-                        await task;
-                    }
-                }
-                else
-                {
-                    await ModernDialog.ShowErrorAsync("Could not find DeleteTagAsync method!");
-                }
             }
         }
 

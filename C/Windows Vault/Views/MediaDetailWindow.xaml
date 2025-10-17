@@ -69,13 +69,45 @@
                     <TextBlock Text="{Binding MediaFile.DateAdded, StringFormat='Added: {0:MMM dd, yyyy}'}"
                               Foreground="{DynamicResource SystemControlForegroundBaseMediumBrush}"/>
                 </StackPanel>
-                
+
+                <!-- Rating Section -->
+                <StackPanel Margin="0,16,0,0">
+                    <TextBlock Text="Rating"
+                              FontWeight="SemiBold"
+                              FontSize="14"
+                              Margin="0,0,0,8"/>
+
+                    <StackPanel Orientation="Horizontal">
+                        <Button x:Name="Star1" Content="★" FontSize="24" Click="SetRating_Click" Tag="1"
+                                Background="Transparent" BorderThickness="0" Padding="4,0" Cursor="Hand"
+                                Foreground="{DynamicResource SystemControlForegroundBaseMediumBrush}"/>
+                        <Button x:Name="Star2" Content="★" FontSize="24" Click="SetRating_Click" Tag="2"
+                                Background="Transparent" BorderThickness="0" Padding="4,0" Cursor="Hand"
+                                Foreground="{DynamicResource SystemControlForegroundBaseMediumBrush}"/>
+                        <Button x:Name="Star3" Content="★" FontSize="24" Click="SetRating_Click" Tag="3"
+                                Background="Transparent" BorderThickness="0" Padding="4,0" Cursor="Hand"
+                                Foreground="{DynamicResource SystemControlForegroundBaseMediumBrush}"/>
+                        <Button x:Name="Star4" Content="★" FontSize="24" Click="SetRating_Click" Tag="4"
+                                Background="Transparent" BorderThickness="0" Padding="4,0" Cursor="Hand"
+                                Foreground="{DynamicResource SystemControlForegroundBaseMediumBrush}"/>
+                        <Button x:Name="Star5" Content="★" FontSize="24" Click="SetRating_Click" Tag="5"
+                                Background="Transparent" BorderThickness="0" Padding="4,0" Cursor="Hand"
+                                Foreground="{DynamicResource SystemControlForegroundBaseMediumBrush}"/>
+                    </StackPanel>
+
+                    <TextBlock x:Name="RatingText"
+                              Text="{Binding MediaFile.Rating, StringFormat='Current Rating: {0:F1} / 5.0'}"
+                              FontSize="12"
+                              Foreground="{DynamicResource SystemControlForegroundBaseMediumBrush}"
+                              Margin="0,8,0,0"/>
+                </StackPanel>
+
                 <!-- Actions -->
-                <Button Content="⭐ Toggle Favorite" 
+                <Button Content="⭐ Toggle Favorite"
                         Click="ToggleFavoriteButton_Click"
                         Style="{StaticResource AccentButtonStyle}"
                         HorizontalAlignment="Stretch"
-                        Margin="0,8,0,0"/>
+                        Margin="0,16,0,0"/>
             </StackPanel>
         </Border>
         

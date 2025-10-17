@@ -75,73 +75,86 @@
                     <StackPanel>
                         <TextBlock Text="Tag Editor" FontSize="16" FontWeight="SemiBold" Margin="0,0,0,16"/>
 
-                    <!-- Create New Tag Section -->
-                    <TextBlock Text="Create New Tag" FontSize="14" FontWeight="Medium" Margin="0,0,0,8"/>
-                    
-                    <TextBlock Text="Tag Name:" Margin="0,0,0,4"/>
-                    <TextBox Text="{Binding NewTagName, UpdateSourceTrigger=PropertyChanged}" Margin="0,0,0,8"/>
-                    
-                    <TextBlock Text="Color:" Margin="0,0,0,4"/>
-                    <StackPanel Orientation="Horizontal" Margin="0,0,0,8">
-                        <TextBox Text="{Binding NewTagColor, UpdateSourceTrigger=PropertyChanged}" 
-                                 Width="80" 
-                                 Margin="0,0,8,0"
-                                 Name="NewTagColorTextBox"/>
-                        <Border Width="24" 
-                                Height="24" 
-                                Background="{Binding NewTagColor}" 
-                                CornerRadius="3" 
-                                BorderBrush="Gray" 
-                                BorderThickness="1"
-                                Cursor="Hand"
-                                MouseLeftButtonDown="NewTagColorPicker_Click"
-                                ToolTip="Click to pick a color"/>
-                    </StackPanel>
-                    
-                    <Button Content="Create Tag" 
-                            Command="{Binding CreateTagAsyncCommand}"
-                            Style="{StaticResource AccentButtonStyle}"
-                            Click="CreateTagButton_Click"
-                            Margin="0,0,0,24"/>
+                        <!-- Create New Tag Section (Always Visible) -->
+                        <StackPanel Visibility="{Binding SelectedTag, Converter={StaticResource InverseNullToVisibilityConverter}, FallbackValue=Visible}">
+                            <TextBlock Text="Create New Tag" FontSize="14" FontWeight="Medium" Margin="0,0,0,8"/>
 
-                    <Separator Margin="0,0,0,16"/>
+                            <TextBlock Text="Tag Name:" Margin="0,0,0,4"/>
+                            <TextBox Text="{Binding NewTagName, UpdateSourceTrigger=PropertyChanged}" Margin="0,0,0,8"/>
 
-                    <!-- Edit Selected Tag Section -->
-                    <TextBlock Text="Edit Selected Tag" FontSize="14" FontWeight="Medium" Margin="0,0,0,8"/>
-                    
-                    <TextBlock Text="Tag Name:" Margin="0,0,0,4"/>
-                    <TextBox Text="{Binding SelectedTagName, UpdateSourceTrigger=PropertyChanged}" 
-                             Name="SelectedTagNameBox"
-                             Margin="0,0,0,8"/>
-                    
-                    <TextBlock Text="Color:" Margin="0,0,0,4"/>
-                    <StackPanel Orientation="Horizontal" Margin="0,0,0,8">
-                        <TextBox Text="{Binding SelectedTagColor, UpdateSourceTrigger=PropertyChanged}" 
-                                 Width="80" 
-                                 Margin="0,0,8,0"
-                                 Name="SelectedTagColorBox"/>
-                        <Border Width="24" 
-                                Height="24" 
-                                Background="{Binding SelectedTagColor}" 
-                                CornerRadius="3" 
-                                BorderBrush="Gray" 
-                                BorderThickness="1"
-                                Cursor="Hand"
-                                MouseLeftButtonDown="SelectedTagColorPicker_Click"
-                                ToolTip="Click to pick a color"/>
-                    </StackPanel>
-                    
-                    <StackPanel Orientation="Horizontal">
-                        <Button Content="Update" 
-                                Command="{Binding UpdateTagAsyncCommand}"
-                                Click="UpdateTagButton_Click"
-                                Name="UpdateTagButton"
-                                Margin="0,0,8,0"/>
-                        <Button Content="Delete" 
-                                Command="{Binding DeleteTagAsyncCommand}"
-                                Click="DeleteTagButton_Click"
-                                Name="DeleteTagButton"
-                                Style="{StaticResource DangerButtonStyle}"/>
+                            <TextBlock Text="Color:" Margin="0,0,0,4"/>
+                            <StackPanel Orientation="Horizontal" Margin="0,0,0,8">
+                                <TextBox Text="{Binding NewTagColor, UpdateSourceTrigger=PropertyChanged}"
+                                         Width="80"
+                                         Margin="0,0,8,0"
+                                         Name="NewTagColorTextBox"/>
+                                <Border Width="24"
+                                        Height="24"
+                                        Background="{Binding NewTagColor}"
+                                        CornerRadius="3"
+                                        BorderBrush="Gray"
+                                        BorderThickness="1"
+                                        Cursor="Hand"
+                                        MouseLeftButtonDown="NewTagColorPicker_Click"
+                                        ToolTip="Click to pick a color"/>
+                            </StackPanel>
+
+                            <Button Content="Create Tag"
+                                    Command="{Binding CreateTagCommand}"
+                                    Style="{StaticResource AccentButtonStyle}"
+                                    Margin="0,0,0,16"/>
+
+                            <!-- Instruction when no tag selected -->
+                            <Border Background="{DynamicResource SystemControlBackgroundChromeMediumLowBrush}"
+                                    CornerRadius="4"
+                                    Padding="12">
+                                <TextBlock Text="Select a tag from the list to edit or delete it"
+                                           TextAlignment="Center"
+                                           Foreground="{DynamicResource SystemControlForegroundBaseMediumBrush}"
+                                           FontStyle="Italic"/>
+                            </Border>
+                        </StackPanel>
+
+                        <!-- Edit Selected Tag Section (Only visible when tag selected) -->
+                        <StackPanel Visibility="{Binding SelectedTag, Converter={StaticResource NullToVisibilityConverter}}">
+                            <TextBlock Text="Edit Selected Tag" FontSize="14" FontWeight="Medium" Margin="0,0,0,8"/>
+
+                            <TextBlock Text="Tag Name:" Margin="0,0,0,4"/>
+                            <TextBox Text="{Binding SelectedTagName, UpdateSourceTrigger=PropertyChanged}"
+                                     Name="SelectedTagNameBox"
+                                     Margin="0,0,0,8"/>
+
+                            <TextBlock Text="Color:" Margin="0,0,0,4"/>
+                            <StackPanel Orientation="Horizontal" Margin="0,0,0,8">
+                                <TextBox Text="{Binding SelectedTagColor, UpdateSourceTrigger=PropertyChanged}"
+                                         Width="80"
+                                         Margin="0,0,8,0"
+                                         Name="SelectedTagColorBox"/>
+                                <Border Width="24"
+                                        Height="24"
+                                        Background="{Binding SelectedTagColor}"
+                                        CornerRadius="3"
+                                        BorderBrush="Gray"
+                                        BorderThickness="1"
+                                        Cursor="Hand"
+                                        MouseLeftButtonDown="SelectedTagColorPicker_Click"
+                                        ToolTip="Click to pick a color"/>
+                            </StackPanel>
+
+                            <StackPanel Orientation="Horizontal" Margin="0,0,0,16">
+                                <Button Content="Update"
+                                        Command="{Binding UpdateTagCommand}"
+                                        Name="UpdateTagButton"
+                                        Margin="0,0,8,0"/>
+                                <Button Content="Delete"
+                                        Command="{Binding DeleteTagCommand}"
+                                        Name="DeleteTagButton"
+                                        Style="{StaticResource DangerButtonStyle}"
+                                        Margin="0,0,8,0"/>
+                                <Button Content="Deselect"
+                                        Command="{Binding DeselectTagCommand}"
+                                        ToolTip="Deselect tag to create a new one"/>
+                            </StackPanel>
                         </StackPanel>
                     </StackPanel>
                 </ScrollViewer>

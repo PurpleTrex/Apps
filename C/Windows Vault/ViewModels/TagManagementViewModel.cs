@@ -173,6 +173,13 @@ namespace WindowsVault.ViewModels
             }
         }
 
+        [RelayCommand]
+        private void DeselectTag()
+        {
+            SelectedTag = null;
+            StatusMessage = "Tag deselected. You can now create a new tag.";
+        }
+
         partial void OnSelectedTagChanged(Tag? value)
         {
             if (value != null)

@@ -21,10 +21,16 @@
             
             <!-- Converters -->
             <converters:BooleanToVisibilityConverter x:Key="BooleanToVisibilityConverter"/>
+            <converters:InverseBooleanToVisibilityConverter x:Key="InverseBooleanToVisibilityConverter"/>
             <converters:NullToVisibilityConverter x:Key="NullToVisibilityConverter"/>
+            <converters:InverseNullToVisibilityConverter x:Key="InverseNullToVisibilityConverter"/>
             <converters:NullToBooleanConverter x:Key="NullToBoolConverter"/>
             <converters:StringToVisibilityConverter x:Key="StringToVisibilityConverter"/>
             <converters:FileSizeConverter x:Key="FileSizeConverter"/>
+            <converters:CountToBooleanConverter x:Key="CountToBooleanConverter"/>
+            <converters:CountToVisibilityConverter x:Key="CountToVisibilityConverter"/>
+            <converters:SelectionModeTextConverter x:Key="SelectionModeTextConverter"/>
+            <converters:RatingToVisibilityConverter x:Key="RatingToVisibilityConverter"/>
             
         </ResourceDictionary>
     </Application.Resources>

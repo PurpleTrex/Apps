@@ -1,0 +1,62 @@
+2025-10-17 12:29:19.786 -05:00 [INF] Windows Vault application starting...
+2025-10-17 12:29:21.607 -05:00 [INF] Executed DbCommand (12ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+PRAGMA journal_mode = 'wal';
+2025-10-17 12:29:21.681 -05:00 [INF] Executed DbCommand (0ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+CREATE TABLE "MediaFiles" (
+    "Id" INTEGER NOT NULL CONSTRAINT "PK_MediaFiles" PRIMARY KEY AUTOINCREMENT,
+    "FileName" TEXT NOT NULL,
+    "FilePath" TEXT NOT NULL,
+    "VaultPath" TEXT NOT NULL,
+    "FileExtension" TEXT NOT NULL,
+    "MediaType" INTEGER NOT NULL,
+    "FileSizeBytes" INTEGER NOT NULL,
+    "FileHash" TEXT NULL,
+    "DateAdded" TEXT NOT NULL,
+    "DateModified" TEXT NOT NULL,
+    "DateTaken" TEXT NULL,
+    "Width" INTEGER NULL,
+    "Height" INTEGER NULL,
+    "Duration" TEXT NULL,
+    "Description" TEXT NULL,
+    "Rating" REAL NOT NULL,
+    "IsFavorite" INTEGER NOT NULL,
+    "IsDeleted" INTEGER NOT NULL,
+    "ThumbnailPath" TEXT NULL
+);
+2025-10-17 12:29:21.682 -05:00 [INF] Executed DbCommand (0ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+CREATE TABLE "Tags" (
+    "Id" INTEGER NOT NULL CONSTRAINT "PK_Tags" PRIMARY KEY AUTOINCREMENT,
+    "Name" TEXT NOT NULL,
+    "Color" TEXT NULL,
+    "Description" TEXT NULL,
+    "DateCreated" TEXT NOT NULL,
+    "UsageCount" INTEGER NOT NULL
+);
+2025-10-17 12:29:21.682 -05:00 [INF] Executed DbCommand (0ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+CREATE TABLE "MediaFileTags" (
+    "Id" INTEGER NOT NULL CONSTRAINT "PK_MediaFileTags" PRIMARY KEY AUTOINCREMENT,
+    "MediaFileId" INTEGER NOT NULL,
+    "TagId" INTEGER NOT NULL,
+    "DateAssigned" TEXT NOT NULL,
+    CONSTRAINT "FK_MediaFileTags_MediaFiles_MediaFileId" FOREIGN KEY ("MediaFileId") REFERENCES "MediaFiles" ("Id") ON DELETE CASCADE,
+    CONSTRAINT "FK_MediaFileTags_Tags_TagId" FOREIGN KEY ("TagId") REFERENCES "Tags" ("Id") ON DELETE CASCADE
+);
+2025-10-17 12:29:21.683 -05:00 [INF] Executed DbCommand (0ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+CREATE INDEX "IX_MediaFiles_DateAdded" ON "MediaFiles" ("DateAdded");
+2025-10-17 12:29:21.683 -05:00 [INF] Executed DbCommand (0ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+CREATE INDEX "IX_MediaFiles_FileHash" ON "MediaFiles" ("FileHash");
+2025-10-17 12:29:21.683 -05:00 [INF] Executed DbCommand (0ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+CREATE INDEX "IX_MediaFiles_FileName" ON "MediaFiles" ("FileName");
+2025-10-17 12:29:21.683 -05:00 [INF] Executed DbCommand (0ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+CREATE INDEX "IX_MediaFiles_IsDeleted" ON "MediaFiles" ("IsDeleted");
+2025-10-17 12:29:21.683 -05:00 [INF] Executed DbCommand (0ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+CREATE INDEX "IX_MediaFiles_IsFavorite" ON "MediaFiles" ("IsFavorite");
+2025-10-17 12:29:21.683 -05:00 [INF] Executed DbCommand (0ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+CREATE INDEX "IX_MediaFiles_MediaType" ON "MediaFiles" ("MediaType");
+2025-10-17 12:29:21.683 -05:00 [INF] Executed DbCommand (0ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+CREATE UNIQUE INDEX "IX_MediaFileTags_MediaFileId_TagId" ON "MediaFileTags" ("MediaFileId", "TagId");
+2025-10-17 12:29:21.683 -05:00 [INF] Executed DbCommand (0ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+CREATE INDEX "IX_MediaFileTags_TagId" ON "MediaFileTags" ("TagId");
+2025-10-17 12:29:21.683 -05:00 [INF] Executed DbCommand (0ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+CREATE UNIQUE INDEX "IX_Tags_Name" ON "Tags" ("Name");
+2025-10-17 12:29:21.703 -05:00 [INF] Vault directory initialized: WindowsVault

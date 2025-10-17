@@ -127,21 +127,32 @@
                     </ItemsControl.ItemTemplate>
                 </ItemsControl>
                 
-                <!-- File Info -->
-                <StackPanel Grid.Row="1" Orientation="Horizontal">
-                    <TextBlock Text="{Binding FileSizeFormatted}" 
-                              FontSize="10"
-                              Foreground="{DynamicResource SystemControlForegroundBaseMediumBrush}"
-                              Margin="0,0,8,0"/>
-                    
-                    <TextBlock FontSize="10"
-                              Foreground="{DynamicResource SystemControlForegroundBaseMediumBrush}">
-                        <TextBlock.Text>
-                            <MultiBinding StringFormat="{}{0:MM/dd/yyyy}">
-                                <Binding Path="DateAdded"/>
-                            </MultiBinding>
-                        </TextBlock.Text>
-                    </TextBlock>
+                <!-- File Info and Rating -->
+                <StackPanel Grid.Row="1">
+                    <StackPanel Orientation="Horizontal" Margin="0,0,0,2">
+                        <TextBlock Text="{Binding FileSizeFormatted}"
+                                  FontSize="10"
+                                  Foreground="{DynamicResource SystemControlForegroundBaseMediumBrush}"
+                                  Margin="0,0,8,0"/>
+
+                        <TextBlock FontSize="10"
+                                  Foreground="{DynamicResource SystemControlForegroundBaseMediumBrush}">
+                            <TextBlock.Text>
+                                <MultiBinding StringFormat="{}{0:MM/dd/yyyy}">
+                                    <Binding Path="DateAdded"/>
+                                </MultiBinding>
+                            </TextBlock.Text>
+                        </TextBlock>
+                    </StackPanel>
+
+                    <!-- Rating Display -->
+                    <StackPanel Orientation="Horizontal">
+                        <TextBlock Text="★" FontSize="10" Foreground="#FFD700" Visibility="{Binding Rating, Converter={StaticResource RatingToVisibilityConverter}}"/>
+                        <TextBlock Text="★" FontSize="10" Foreground="#FFD700" Visibility="{Binding Rating, Converter={StaticResource RatingToVisibilityConverter}, ConverterParameter=2}"/>
+                        <TextBlock Text="★" FontSize="10" Foreground="#FFD700" Visibility="{Binding Rating, Converter={StaticResource RatingToVisibilityConverter}, ConverterParameter=3}"/>
+                        <TextBlock Text="★" FontSize="10" Foreground="#FFD700" Visibility="{Binding Rating, Converter={StaticResource RatingToVisibilityConverter}, ConverterParameter=4}"/>
+                        <TextBlock Text="★" FontSize="10" Foreground="#FFD700" Visibility="{Binding Rating, Converter={StaticResource RatingToVisibilityConverter}, ConverterParameter=5}"/>
+                    </StackPanel>
                 </StackPanel>
             </Grid>
         </Grid>

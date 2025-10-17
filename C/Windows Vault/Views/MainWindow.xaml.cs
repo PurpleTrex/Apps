@@ -6,6 +6,8 @@ using System.Threading.Tasks;
 using WindowsVault.ViewModels;
 using WindowsVault.Models;
 using System;
+using System.Collections.Generic;
+using System.Linq;
 
 namespace WindowsVault.Views
 {
@@ -21,8 +23,11 @@ namespace WindowsVault.Views
             _viewModel = viewModel;
             _serviceProvider = serviceProvider;
             DataContext = _viewModel;
-            
+
             Loaded += MainWindow_Loaded;
+
+            // Add keyboard shortcuts
+            this.PreviewKeyDown += MainWindow_PreviewKeyDown;
         }
 
         private async void MainWindow_Loaded(object sender, RoutedEventArgs e)
@@ -75,198 +80,181 @@ namespace WindowsVault.Views
                 await mediaDetailWindow.InitializeAsync(mediaFile);
                 mediaDetailWindow.Owner = this;
                 mediaDetailWindow.ShowDialog();
-                
+
                 // Refresh the view after closing
                 if (_viewModel != null)
                 {
-                    var refreshMethod = _viewModel.GetType().GetMethod("LoadMediaFilesAsync", System.Reflection.BindingFlags.NonPublic | System.Reflection.BindingFlags.Instance);
-                    if (refreshMethod != null)
+                    await _viewModel.LoadMediaFilesAsync();
+                    _viewModel.ApplyFilters();
+                }
+            }
+        }
+
+        // Keyboard shortcuts handler
+        private async void MainWindow_PreviewKeyDown(object sender, KeyEventArgs e)
+        {
+            if (_viewModel == null) return;
+
+            // Ctrl+A - Select All
+            if (e.Key == Key.A && (Keyboard.Modifiers & ModifierKeys.Control) == ModifierKeys.Control)
+            {
+                _viewModel.SelectAll();
+                e.Handled = true;
+            }
+            // Delete - Delete selected items
+            else if (e.Key == Key.Delete)
+            {
+                if (_viewModel.SelectedMediaFiles.Count > 0)
+                {
+                    await _viewModel.DeleteSelectedAsync();
+                    e.Handled = true;
+                }
+            }
+            // Escape - Clear selection
+            else if (e.Key == Key.Escape)
+            {
+                if (_viewModel.SelectedMediaFiles.Count > 0)
+                {
+                    _viewModel.ClearSelection();
+                    e.Handled = true;
+                }
+            }
+            // Enter - Open selected item (if only one selected)
+            else if (e.Key == Key.Enter)
+            {
+                if (_viewModel.SelectedMediaFiles.Count == 1)
+                {
+                    var mediaFile = _viewModel.SelectedMediaFiles.First();
+                    var mediaDetailWindow = _serviceProvider.GetRequiredService<MediaDetailWindow>();
+                    await mediaDetailWindow.InitializeAsync(mediaFile);
+                    mediaDetailWindow.Owner = this;
+                    mediaDetailWindow.ShowDialog();
+
+                    // Refresh after closing
+                    await _viewModel.LoadMediaFilesAsync();
+                    _viewModel.ApplyFilters();
+                    e.Handled = true;
+                }
+            }
+        }
+
+        // Drag & Drop Implementation
+        private void MediaGrid_DragOver(object sender, DragEventArgs e)
+        {
+            // Check if the dragged data contains files
+            if (e.Data.GetDataPresent(DataFormats.FileDrop))
+            {
+                e.Effects = DragDropEffects.Copy;
+            }
+            else
+            {
+                e.Effects = DragDropEffects.None;
+            }
+            e.Handled = true;
+        }
+
+        private async void MediaGrid_Drop(object sender, DragEventArgs e)
+        {
+            if (_viewModel == null) return;
+
+            try
+            {
+                if (e.Data.GetDataPresent(DataFormats.FileDrop))
+                {
+                    string[] files = (string[])e.Data.GetData(DataFormats.FileDrop);
+
+                    if (files != null && files.Length > 0)
                     {
-                        await (refreshMethod.Invoke(_viewModel, null) as System.Threading.Tasks.Task);
+                        _viewModel.IsLoading = true;
+                        _viewModel.StatusText = $"Processing {files.Length} dropped file(s)...";
+
+                        var addedCount = 0;
+                        var skippedCount = 0;
+                        var addedMediaFiles = new List<MediaFile>();
+
+                        // Get MediaFileService from service provider
+                        var mediaFileService = _serviceProvider.GetService<WindowsVault.Services.IMediaFileService>();
+
+                        if (mediaFileService == null)
+                        {
+                            MessageBox.Show("Media file service not available", "Error",
+                                MessageBoxButton.OK, MessageBoxImage.Error);
+                            return;
+                        }
+
+                        foreach (var filePath in files)
+                        {
+                            try
+                            {
+                                // Check if it's a directory
+                                if (System.IO.Directory.Exists(filePath))
+                                {
+                                    _viewModel.StatusText = $"Importing folder: {System.IO.Path.GetFileName(filePath)}...";
+
+                                    var progress = new Progress<string>(message => _viewModel.StatusText = message);
+                                    await mediaFileService.ImportDirectoryAsync(filePath, progress);
+                                }
+                                else if (System.IO.File.Exists(filePath))
+                                {
+                                    _viewModel.StatusText = $"Adding {System.IO.Path.GetFileName(filePath)}...";
+                                    var mediaFile = await mediaFileService.AddMediaFileAsync(filePath);
+                                    addedMediaFiles.Add(mediaFile);
+                                    addedCount++;
+                                }
+                            }
+                            catch (InvalidOperationException)
+                            {
+                                skippedCount++; // Duplicate or unsupported file
+                            }
+                            catch (Exception ex)
+                            {
+                                System.Diagnostics.Debug.WriteLine($"Error adding dropped file {filePath}: {ex}");
+                                skippedCount++;
+                            }
+                        }
+
+                        // Reload media files
+                        var loadMethod = _viewModel.GetType().GetMethod("LoadMediaFilesAsync",
+                            System.Reflection.BindingFlags.NonPublic | System.Reflection.BindingFlags.Instance);
+
+                        if (loadMethod != null)
+                        {
+                            await (loadMethod.Invoke(_viewModel, null) as Task);
+                        }
+
+                        var applyFiltersMethod = _viewModel.GetType().GetMethod("ApplyFilters",
+                            System.Reflection.BindingFlags.NonPublic | System.Reflection.BindingFlags.Instance);
+
+                        applyFiltersMethod?.Invoke(_viewModel, null);
+
+                        _viewModel.StatusText = $"Added {addedCount} file(s), skipped {skippedCount}";
+
+                        // Prompt for tag assignment if files were added
+                        if (addedMediaFiles.Count > 0)
+                        {
+                            var promptMethod = _viewModel.GetType().GetMethod("PromptForTagAssignmentAsync",
+                                System.Reflection.BindingFlags.NonPublic | System.Reflection.BindingFlags.Instance);
+
+                            if (promptMethod != null)
+                            {
+                                await (promptMethod.Invoke(_viewModel, new object[] { addedMediaFiles }) as Task);
+                            }
+                        }
                     }
                 }
             }
-        }
-
-        private async void ManageTagsButton_Click(object sender, RoutedEventArgs e)
-        {
-            System.Diagnostics.Debug.WriteLine("Manage Tags button clicked!");
-            
-            if (_viewModel != null)
+            catch (Exception ex)
             {
-                // Manually call the ManageTags method
-                var method = _viewModel.GetType().GetMethod("ManageTags", System.Reflection.BindingFlags.NonPublic | System.Reflection.BindingFlags.Instance);
-                if (method != null)
-                {
-                    var task = method.Invoke(_viewModel, null) as System.Threading.Tasks.Task;
-                    if (task != null)
-                    {
-                        await task;
-                        System.Diagnostics.Debug.WriteLine("ManageTags completed, tags should be refreshed.");
-                    }
-                }
-                else
-                {
-                    MessageBox.Show("Could not find ManageTags method!", "Error", MessageBoxButton.OK);
-                }
+                _viewModel.StatusText = $"Error processing dropped files: {ex.Message}";
+                System.Diagnostics.Debug.WriteLine($"Drop Error: {ex}");
+                MessageBox.Show($"Error processing dropped files: {ex.Message}", "Error",
+                    MessageBoxButton.OK, MessageBoxImage.Error);
             }
-        }
-
-        private async void AddMediaButton_Click(object sender, RoutedEventArgs e)
-        {
-            System.Diagnostics.Debug.WriteLine("Add Media button clicked!");
-            
-            if (_viewModel != null)
+            finally
             {
-                // Manually call the AddMediaAsync method
-                var method = _viewModel.GetType().GetMethod("AddMediaAsync", System.Reflection.BindingFlags.NonPublic | System.Reflection.BindingFlags.Instance);
-                if (method != null)
+                if (_viewModel != null)
                 {
-                    var task = method.Invoke(_viewModel, null) as System.Threading.Tasks.Task;
-                    if (task != null)
-                    {
-                        await task;
-                        System.Diagnostics.Debug.WriteLine("AddMediaAsync completed.");
-                    }
-                }
-                else
-                {
-                    MessageBox.Show("Could not find AddMediaAsync method!", "Error", MessageBoxButton.OK);
-                }
-            }
-        }
-
-        private async void AllMediaButton_Click(object sender, RoutedEventArgs e)
-        {
-            if (_viewModel != null)
-            {
-                var method = _viewModel.GetType().GetMethod("ShowAllMediaAsync", System.Reflection.BindingFlags.NonPublic | System.Reflection.BindingFlags.Instance);
-                if (method != null)
-                {
-                    await (method.Invoke(_viewModel, null) as System.Threading.Tasks.Task);
-                }
-            }
-        }
-
-        private async void ImagesButton_Click(object sender, RoutedEventArgs e)
-        {
-            if (_viewModel != null)
-            {
-                var method = _viewModel.GetType().GetMethod("ShowImagesAsync", System.Reflection.BindingFlags.NonPublic | System.Reflection.BindingFlags.Instance);
-                if (method != null)
-                {
-                    await (method.Invoke(_viewModel, null) as System.Threading.Tasks.Task);
-                }
-            }
-        }
-
-        private async void VideosButton_Click(object sender, RoutedEventArgs e)
-        {
-            if (_viewModel != null)
-            {
-                var method = _viewModel.GetType().GetMethod("ShowVideosAsync", System.Reflection.BindingFlags.NonPublic | System.Reflection.BindingFlags.Instance);
-                if (method != null)
-                {
-                    await (method.Invoke(_viewModel, null) as System.Threading.Tasks.Task);
-                }
-            }
-        }
-
-        private async void AudioButton_Click(object sender, RoutedEventArgs e)
-        {
-            if (_viewModel != null)
-            {
-                var method = _viewModel.GetType().GetMethod("ShowAudioAsync", System.Reflection.BindingFlags.NonPublic | System.Reflection.BindingFlags.Instance);
-                if (method != null)
-                {
-                    await (method.Invoke(_viewModel, null) as System.Threading.Tasks.Task);
-                }
-            }
-        }
-
-        private async void FavoritesButton_Click(object sender, RoutedEventArgs e)
-        {
-            if (_viewModel != null)
-            {
-                var method = _viewModel.GetType().GetMethod("ShowFavoritesAsync", System.Reflection.BindingFlags.NonPublic | System.Reflection.BindingFlags.Instance);
-                if (method != null)
-                {
-                    await (method.Invoke(_viewModel, null) as System.Threading.Tasks.Task);
-                }
-            }
-        }
-
-        private async void AddTagButton_Click(object sender, RoutedEventArgs e)
-        {
-            if (_viewModel != null)
-            {
-                var method = _viewModel.GetType().GetMethod("AddTagAsync", System.Reflection.BindingFlags.NonPublic | System.Reflection.BindingFlags.Instance);
-                if (method != null)
-                {
-                    await (method.Invoke(_viewModel, null) as System.Threading.Tasks.Task);
-                }
-            }
-        }
-
-        private async void SettingsButton_Click(object sender, RoutedEventArgs e)
-        {
-            if (_viewModel != null)
-            {
-                var method = _viewModel.GetType().GetMethod("ShowSettings", System.Reflection.BindingFlags.NonPublic | System.Reflection.BindingFlags.Instance);
-                if (method != null)
-                {
-                    await (method.Invoke(_viewModel, null) as System.Threading.Tasks.Task);
-                }
-            }
-        }
-
-        private void SelectModeButton_Click(object sender, RoutedEventArgs e)
-        {
-            if (_viewModel != null)
-            {
-                var method = _viewModel.GetType().GetMethod("ToggleSelectionMode", System.Reflection.BindingFlags.NonPublic | System.Reflection.BindingFlags.Instance);
-                method?.Invoke(_viewModel, null);
-            }
-        }
-
-        private void SelectAllButton_Click(object sender, RoutedEventArgs e)
-        {
-            if (_viewModel != null)
-            {
-                var method = _viewModel.GetType().GetMethod("SelectAll", System.Reflection.BindingFlags.NonPublic | System.Reflection.BindingFlags.Instance);
-                method?.Invoke(_viewModel, null);
-            }
-        }
-
-        private void ClearSelectionButton_Click(object sender, RoutedEventArgs e)
-        {
-            if (_viewModel != null)
-            {
-                var method = _viewModel.GetType().GetMethod("ClearSelection", System.Reflection.BindingFlags.NonPublic | System.Reflection.BindingFlags.Instance);
-                method?.Invoke(_viewModel, null);
-            }
-        }
-
-        private async void DeleteSelectedButton_Click(object sender, RoutedEventArgs e)
-        {
-            if (_viewModel != null)
-            {
-                var method = _viewModel.GetType().GetMethod("DeleteSelectedAsync", System.Reflection.BindingFlags.NonPublic | System.Reflection.BindingFlags.Instance);
-                if (method != null)
-                {
-                    await (method.Invoke(_viewModel, null) as System.Threading.Tasks.Task);
-                }
-            }
-        }
-
-        private async void AssignTagsButton_Click(object sender, RoutedEventArgs e)
-        {
-            if (_viewModel != null)
-            {
-                var method = _viewModel.GetType().GetMethod("AssignTagsToSelectedAsync", System.Reflection.BindingFlags.NonPublic | System.Reflection.BindingFlags.Instance);
-                if (method != null)
-                {
-                    await (method.Invoke(_viewModel, null) as System.Threading.Tasks.Task);
+                    _viewModel.IsLoading = false;
                 }
             }
         }

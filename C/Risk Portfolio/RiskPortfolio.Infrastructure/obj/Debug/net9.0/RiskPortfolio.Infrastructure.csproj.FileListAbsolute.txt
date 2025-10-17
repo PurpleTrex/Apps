@@ -1,0 +1,16 @@
+D:\Users\jhamm\Desktop\Projects\Apps\C\Risk Portfolio\RiskPortfolio.Infrastructure\obj\Debug\net9.0\RiskPortfolio.Infrastructure.csproj.AssemblyReference.cache
+D:\Users\jhamm\Desktop\Projects\Apps\C\Risk Portfolio\RiskPortfolio.Infrastructure\obj\Debug\net9.0\RiskPortfolio.Infrastructure.GeneratedMSBuildEditorConfig.editorconfig
+D:\Users\jhamm\Desktop\Projects\Apps\C\Risk Portfolio\RiskPortfolio.Infrastructure\obj\Debug\net9.0\RiskPortfolio.Infrastructure.AssemblyInfoInputs.cache
+D:\Users\jhamm\Desktop\Projects\Apps\C\Risk Portfolio\RiskPortfolio.Infrastructure\obj\Debug\net9.0\RiskPortfolio.Infrastructure.AssemblyInfo.cs
+D:\Users\jhamm\Desktop\Projects\Apps\C\Risk Portfolio\RiskPortfolio.Infrastructure\obj\Debug\net9.0\RiskPortfolio.Infrastructure.csproj.CoreCompileInputs.cache
+D:\Users\jhamm\Desktop\Projects\Apps\C\Risk Portfolio\RiskPortfolio.Infrastructure\obj\Debug\net9.0\RiskPortfolio.Infrastructure.sourcelink.json
+D:\Users\jhamm\Desktop\Projects\Apps\C\Risk Portfolio\RiskPortfolio.Infrastructure\bin\Debug\net9.0\RiskPortfolio.Infrastructure.deps.json
+D:\Users\jhamm\Desktop\Projects\Apps\C\Risk Portfolio\RiskPortfolio.Infrastructure\bin\Debug\net9.0\RiskPortfolio.Infrastructure.dll
+D:\Users\jhamm\Desktop\Projects\Apps\C\Risk Portfolio\RiskPortfolio.Infrastructure\bin\Debug\net9.0\RiskPortfolio.Infrastructure.pdb
+D:\Users\jhamm\Desktop\Projects\Apps\C\Risk Portfolio\RiskPortfolio.Infrastructure\bin\Debug\net9.0\RiskPortfolio.Core.dll
+D:\Users\jhamm\Desktop\Projects\Apps\C\Risk Portfolio\RiskPortfolio.Infrastructure\bin\Debug\net9.0\RiskPortfolio.Core.pdb
+D:\Users\jhamm\Desktop\Projects\Apps\C\Risk Portfolio\RiskPortfolio.Infrastructure\obj\Debug\net9.0\RiskPort.841BE851.Up2Date
+D:\Users\jhamm\Desktop\Projects\Apps\C\Risk Portfolio\RiskPortfolio.Infrastructure\obj\Debug\net9.0\RiskPortfolio.Infrastructure.dll
+D:\Users\jhamm\Desktop\Projects\Apps\C\Risk Portfolio\RiskPortfolio.Infrastructure\obj\Debug\net9.0\refint\RiskPortfolio.Infrastructure.dll
+D:\Users\jhamm\Desktop\Projects\Apps\C\Risk Portfolio\RiskPortfolio.Infrastructure\obj\Debug\net9.0\RiskPortfolio.Infrastructure.pdb
+D:\Users\jhamm\Desktop\Projects\Apps\C\Risk Portfolio\RiskPortfolio.Infrastructure\obj\Debug\net9.0\ref\RiskPortfolio.Infrastructure.dll

@@ -62,15 +62,13 @@
                        Content="Add Media"
                        Style="{StaticResource AccentButtonStyle}"
                        Command="{Binding AddMediaAsyncCommand}"
-                       Click="AddMediaButton_Click"
                        Margin="0,0,8,0"/>
                 <Button x:Name="SettingsButton"
                        Content="⚙"
                        FontSize="16"
                        Width="36"
                        Height="36"
-                       Command="{Binding ShowSettingsCommand}"
-                       Click="SettingsButton_Click"/>
+                       Command="{Binding ShowSettingsCommand}"/>
             </StackPanel>
         </Grid>
         
@@ -107,35 +105,30 @@
                                     Style="{StaticResource NavigationButtonStyle}"
                                     IsChecked="True"
                                     Command="{Binding ShowAllMediaAsyncCommand}"
-                                    Click="AllMediaButton_Click"
                                     Margin="0,4"/>
-                        
+
                         <RadioButton x:Name="ImagesButton"
                                     Content="🖼️ Images"
                                     Style="{StaticResource NavigationButtonStyle}"
                                     Command="{Binding ShowImagesAsyncCommand}"
-                                    Click="ImagesButton_Click"
                                     Margin="0,4"/>
-                        
+
                         <RadioButton x:Name="VideosButton"
                                     Content="🎥 Videos"
                                     Style="{StaticResource NavigationButtonStyle}"
                                     Command="{Binding ShowVideosAsyncCommand}"
-                                    Click="VideosButton_Click"
                                     Margin="0,4"/>
-                        
+
                         <RadioButton x:Name="AudioButton"
                                     Content="🎵 Audio"
                                     Style="{StaticResource NavigationButtonStyle}"
                                     Command="{Binding ShowAudioAsyncCommand}"
-                                    Click="AudioButton_Click"
                                     Margin="0,4"/>
-                        
+
                         <RadioButton x:Name="FavoritesButton"
                                     Content="⭐ Favorites"
                                     Style="{StaticResource NavigationButtonStyle}"
                                     Command="{Binding ShowFavoritesAsyncCommand}"
-                                    Click="FavoritesButton_Click"
                                     Margin="0,4"/>
                         
                         <Separator Margin="8,16"/>
@@ -159,7 +152,6 @@
                                    Height="24"
                                    FontSize="16"
                                    Command="{Binding AddTagAsyncCommand}"
-                                   Click="AddTagButton_Click"
                                    ToolTip="Add new tag"/>
                         </Grid>
                     </StackPanel>
@@ -189,10 +181,9 @@
                     </ScrollViewer>
                     
                     <!-- Manage Tags Button (Always visible at bottom) -->
-                    <Button Grid.Row="2" 
+                    <Button Grid.Row="2"
                            Content="🏷️ Manage Tags..."
                            Command="{Binding ManageTagsCommand}"
-                           Click="ManageTagsButton_Click"
                            HorizontalAlignment="Stretch"
                            Height="36"
                            Margin="16,8"
@@ -211,22 +202,22 @@
                 </Grid.RowDefinitions>
                 
                 <!-- Toolbar -->
-                <Border Grid.Row="0" 
+                <Border Grid.Row="0"
                        Background="{DynamicResource SystemControlBackgroundBaseLowBrush}"
                        BorderBrush="{DynamicResource SystemControlForegroundBaseLowBrush}"
                        BorderThickness="0,0,0,1"
                        Padding="16,12">
-                    
+
                     <Grid>
                         <Grid.ColumnDefinitions>
                             <ColumnDefinition Width="*"/>
                             <ColumnDefinition Width="Auto"/>
                         </Grid.ColumnDefinitions>
-                        
+
                         <!-- View Controls -->
                         <StackPanel Grid.Column="0" Orientation="Horizontal">
                             <TextBlock Text="View:" VerticalAlignment="Center" Margin="0,0,8,0"/>
-                            
+
                             <ToggleButton x:Name="GridViewButton"
                                          Content="⊞"
                                          IsChecked="True"
@@ -234,27 +225,56 @@
                                          Width="32"
                                          Height="32"
                                          Margin="0,0,4,0"/>
-                            
+
                             <ToggleButton x:Name="ListViewButton"
                                          Content="☰"
                                          ToolTip="List View"
                                          Width="32"
                                          Height="32"
                                          Margin="0,0,16,0"/>
-                            
+
                             <Slider x:Name="ZoomSlider"
                                    Width="120"
                                    Minimum="100"
                                    Maximum="400"
                                    Value="200"
                                    VerticalAlignment="Center"
-                                   ToolTip="Thumbnail Size"/>
+                                   ToolTip="Thumbnail Size"
+                                   Margin="0,0,16,0"/>
+
+                            <!-- Selection Actions (visible when items selected) -->
+                            <StackPanel Orientation="Horizontal"
+                                       Visibility="{Binding SelectedMediaFiles.Count, Converter={StaticResource CountToVisibilityConverter}}">
+                                <Separator Style="{StaticResource {x:Static ToolBar.SeparatorStyleKey}}" Margin="0,0,8,0"/>
+
+                                <Button Content="Assign Tags"
+                                       Command="{Binding AssignTagsToSelectedAsyncCommand}"
+                                       Margin="0,0,4,0"
+                                       Height="32"
+                                       Padding="12,0"/>
+
+                                <Button Content="Delete Selected"
+                                       Command="{Binding DeleteSelectedAsyncCommand}"
+                                       Height="32"
+                                       Padding="12,0"
+                                       Style="{StaticResource DangerButtonStyle}"/>
+
+                                <TextBlock VerticalAlignment="Center"
+                                          Margin="8,0,0,0"
+                                          FontWeight="Medium">
+                                    <TextBlock.Text>
+                                        <MultiBinding StringFormat="{}{0} selected">
+                                            <Binding Path="SelectedMediaFiles.Count"/>
+                                        </MultiBinding>
+                                    </TextBlock.Text>
+                                </TextBlock>
+                            </StackPanel>
                         </StackPanel>
-                        
+
                         <!-- Sort and Filter -->
                         <StackPanel Grid.Column="1" Orientation="Horizontal">
                             <TextBlock Text="Sort:" VerticalAlignment="Center" Margin="0,0,8,0"/>
-                            <ComboBox x:Name="SortComboBox" 
+                            <ComboBox x:Name="SortComboBox"
                                      Width="140"
                                      SelectedIndex="0"
                                      SelectionChanged="SortComboBox_SelectionChanged">
@@ -264,7 +284,7 @@
                                 <ComboBoxItem Content="Rating"/>
                                 <ComboBoxItem Content="Date Modified"/>
                             </ComboBox>
-                            
+
                             <Button x:Name="SortOrderButton"
                                    Content="↓"
                                    Width="32"
@@ -277,11 +297,16 @@
                 </Border>
                 
                 <!-- Media Grid -->
-                <ScrollViewer Grid.Row="1" 
+                <ScrollViewer Grid.Row="1"
                              VerticalScrollBarVisibility="Auto"
-                             HorizontalScrollBarVisibility="Disabled">
-                    
-                    <ItemsControl x:Name="MediaItemsControl" ItemsSource="{Binding FilteredMediaFiles}">
+                             HorizontalScrollBarVisibility="Disabled"
+                             AllowDrop="True"
+                             Drop="MediaGrid_Drop"
+                             DragOver="MediaGrid_DragOver">
+
+                    <ItemsControl x:Name="MediaItemsControl"
+                                  ItemsSource="{Binding FilteredMediaFiles}"
+                                  AllowDrop="True">
                         <ItemsControl.ItemsPanel>
                             <ItemsPanelTemplate>
                                 <WrapPanel Orientation="Horizontal"/>

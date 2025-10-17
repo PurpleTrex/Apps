@@ -23,6 +23,52 @@ namespace WindowsVault.Views
             if (_viewModel != null)
             {
                 await _viewModel.InitializeAsync(mediaFile);
+                UpdateRatingStars();
+            }
+        }
+
+        private void UpdateRatingStars()
+        {
+            if (_viewModel?.MediaFile == null) return;
+
+            var rating = (int)_viewModel.MediaFile.Rating;
+
+            // Update star colors based on rating
+            Star1.Foreground = rating >= 1 ? System.Windows.Media.Brushes.Gold : System.Windows.Media.Brushes.Gray;
+            Star2.Foreground = rating >= 2 ? System.Windows.Media.Brushes.Gold : System.Windows.Media.Brushes.Gray;
+            Star3.Foreground = rating >= 3 ? System.Windows.Media.Brushes.Gold : System.Windows.Media.Brushes.Gray;
+            Star4.Foreground = rating >= 4 ? System.Windows.Media.Brushes.Gold : System.Windows.Media.Brushes.Gray;
+            Star5.Foreground = rating >= 5 ? System.Windows.Media.Brushes.Gold : System.Windows.Media.Brushes.Gray;
+        }
+
+        private async void SetRating_Click(object sender, RoutedEventArgs e)
+        {
+            if (_viewModel?.MediaFile == null) return;
+
+            if (sender is System.Windows.Controls.Button button && button.Tag is string ratingStr)
+            {
+                if (int.TryParse(ratingStr, out int rating) && rating >= 1 && rating <= 5)
+                {
+                    _viewModel.MediaFile.Rating = rating;
+
+                    // Update the UI
+                    UpdateRatingStars();
+                    RatingText.Text = $"Current Rating: {rating:F1} / 5.0";
+
+                    // Save to database
+                    if (_viewModel != null)
+                    {
+                        var method = _viewModel.GetType().GetMethod("SaveMediaFileAsync",
+                            System.Reflection.BindingFlags.Public | System.Reflection.BindingFlags.NonPublic | System.Reflection.BindingFlags.Instance);
+
+                        if (method != null)
+                        {
+                            await (method.Invoke(_viewModel, null) as Task);
+                        }
+                    }
+
+                    await ModernDialog.ShowSuccessAsync($"Rating set to {rating} stars!");
+                }
             }
         }
 

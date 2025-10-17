@@ -35,24 +35,29 @@ namespace WindowsVault.Views
                 var mainWindow = Window.GetWindow(this) as MainWindow;
                 if (mainWindow != null)
                 {
-                    var viewModelField = mainWindow.GetType().GetField("_viewModel", 
+                    var viewModelField = mainWindow.GetType().GetField("_viewModel",
                         System.Reflection.BindingFlags.NonPublic | System.Reflection.BindingFlags.Instance);
                     var viewModel = viewModelField?.GetValue(mainWindow);
-                    
+
                     if (viewModel != null)
                     {
-                        // Get SelectedMediaFiles collection
+                        // Get SelectedMediaFiles and FilteredMediaFiles collections
                         var selectedFilesProperty = viewModel.GetType().GetProperty("SelectedMediaFiles");
                         var selectedFiles = selectedFilesProperty?.GetValue(viewModel) as System.Collections.ObjectModel.ObservableCollection<MediaFile>;
-                        
-                        if (selectedFiles != null)
+
+                        var filteredFilesProperty = viewModel.GetType().GetProperty("FilteredMediaFiles");
+                        var filteredFiles = filteredFilesProperty?.GetValue(viewModel) as System.Collections.ObjectModel.ObservableCollection<MediaFile>;
+
+                        if (selectedFiles != null && filteredFiles != null)
                         {
-                            bool isCtrlPressed = System.Windows.Input.Keyboard.IsKeyDown(System.Windows.Input.Key.LeftCtrl) || 
+                            bool isCtrlPressed = System.Windows.Input.Keyboard.IsKeyDown(System.Windows.Input.Key.LeftCtrl) ||
                                                System.Windows.Input.Keyboard.IsKeyDown(System.Windows.Input.Key.RightCtrl);
-                            
+                            bool isShiftPressed = System.Windows.Input.Keyboard.IsKeyDown(System.Windows.Input.Key.LeftShift) ||
+                                                System.Windows.Input.Keyboard.IsKeyDown(System.Windows.Input.Key.RightShift);
+
                             if (isCtrlPressed)
                             {
-                                // Toggle selection
+                                // Ctrl+Click: Toggle selection
                                 if (mediaFile.IsSelected)
                                 {
                                     mediaFile.IsSelected = false;
@@ -64,15 +69,53 @@ namespace WindowsVault.Views
                                     selectedFiles.Add(mediaFile);
                                 }
                             }
+                            else if (isShiftPressed && selectedFiles.Count > 0)
+                            {
+                                // Shift+Click: Select range
+                                var lastSelectedFile = selectedFiles.LastOrDefault();
+                                if (lastSelectedFile != null && lastSelectedFile != mediaFile)
+                                {
+                                    var startIndex = filteredFiles.IndexOf(lastSelectedFile);
+                                    var endIndex = filteredFiles.IndexOf(mediaFile);
+
+                                    if (startIndex >= 0 && endIndex >= 0)
+                                    {
+                                        var minIndex = Math.Min(startIndex, endIndex);
+                                        var maxIndex = Math.Max(startIndex, endIndex);
+
+                                        // Clear existing selections first
+                                        foreach (var file in selectedFiles.ToArray())
+                                        {
+                                            file.IsSelected = false;
+                                        }
+                                        selectedFiles.Clear();
+
+                                        // Select all items in range
+                                        for (int i = minIndex; i <= maxIndex; i++)
+                                        {
+                                            var file = filteredFiles[i];
+                                            file.IsSelected = true;
+                                            selectedFiles.Add(file);
+                                        }
+                                    }
+                                }
+                                else
+                                {
+                                    // If no previous selection, just select this one
+                                    mediaFile.IsSelected = true;
+                                    if (!selectedFiles.Contains(mediaFile))
+                                        selectedFiles.Add(mediaFile);
+                                }
+                            }
                             else
                             {
-                                // Single select - clear others
+                                // Normal click: Single select - clear others
                                 foreach (var file in selectedFiles.ToArray())
                                 {
                                     file.IsSelected = false;
                                 }
                                 selectedFiles.Clear();
-                                
+
                                 mediaFile.IsSelected = true;
                                 selectedFiles.Add(mediaFile);
                             }

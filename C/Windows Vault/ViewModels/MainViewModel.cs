@@ -374,7 +374,7 @@ namespace WindowsVault.ViewModels
             ApplyFilters();
         }
 
-        private async Task LoadMediaFilesAsync()
+        public async Task LoadMediaFilesAsync()
         {
             var mediaFiles = await _mediaFileService.GetAllMediaFilesAsync();
             MediaFiles.Clear();
@@ -399,7 +399,7 @@ namespace WindowsVault.ViewModels
             System.Diagnostics.Debug.WriteLine($"MainViewModel: Tags collection now has {Tags.Count} items");
         }
 
-        private void ApplyFilters()
+        public void ApplyFilters()
         {
             var filtered = MediaFiles.AsEnumerable();
 
@@ -435,36 +435,30 @@ namespace WindowsVault.ViewModels
             {
                 // Get all available tags
                 var allTags = await _tagService.GetAllTagsAsync();
-                
-                if (!allTags.Any())
+
+                // Always show the bulk tag assignment dialog, even if no tags exist yet
+                // (users can create tags directly in the dialog)
+                var bulkTagViewModel = _serviceProvider.GetRequiredService<BulkTagAssignmentViewModel>();
+                await bulkTagViewModel.InitializeAsync(mediaFiles);
+
+                var bulkTagDialog = new Views.BulkTagAssignmentDialog
                 {
-                    StatusText = "No tags available. Create tags first in Tag Management.";
-                    return;
+                    DataContext = bulkTagViewModel,
+                    Owner = Application.Current.MainWindow
+                };
+
+                var result = bulkTagDialog.ShowDialog();
+
+                if (result == true)
+                {
+                    // Refresh the view to show new tags
+                    await LoadMediaFilesAsync();
+                    ApplyFilters();
+                    StatusText = $"Tags successfully assigned to {mediaFiles.Count} file(s)";
                 }
-
-                // Show tag selection dialog
-                var tagDialog = new Views.TagSelectionDialog(allTags);
-                var result = tagDialog.ShowDialog();
-
-                if (result == true && tagDialog.TagsAssigned)
+                else
                 {
-                    var selectedTags = tagDialog.GetSelectedTags();
-                    
-                    if (selectedTags.Any())
-                    {
-                        // Assign selected tags to all imported media files
-                        foreach (var mediaFile in mediaFiles)
-                        {
-                            foreach (var tag in selectedTags)
-                            {
-                                await _mediaFileService.AddTagToMediaFileAsync(mediaFile.Id, tag.Id);
-                            }
-                        }
-
-                        // Refresh the view
-                        await LoadMediaFilesAsync();
-                        StatusText = $"Tags assigned to {mediaFiles.Count} file(s)";
-                    }
+                    StatusText = $"Added {mediaFiles.Count} file(s) without tags";
                 }
             }
             catch (Exception ex)
@@ -500,25 +494,30 @@ namespace WindowsVault.ViewModels
         }
 
         [RelayCommand]
-        private void SelectAll()
+        public void SelectAll()
         {
             SelectedMediaFiles.Clear();
             foreach (var file in FilteredMediaFiles)
             {
                 SelectedMediaFiles.Add(file);
+                file.IsSelected = true;
             }
             StatusText = $"All {SelectedMediaFiles.Count} items selected";
         }
 
         [RelayCommand]
-        private void ClearSelection()
+        public void ClearSelection()
         {
+            foreach (var file in SelectedMediaFiles)
+            {
+                file.IsSelected = false;
+            }
             SelectedMediaFiles.Clear();
             StatusText = "Selection cleared";
         }
 
         [RelayCommand]
-        private async Task DeleteSelectedAsync()
+        public async Task DeleteSelectedAsync()
         {
             if (SelectedMediaFiles.Count == 0)
             {
@@ -546,6 +545,7 @@ namespace WindowsVault.ViewModels
                     SelectedMediaFiles.Clear();
                     IsSelectionMode = false;
                     await LoadMediaFilesAsync();
+                    ApplyFilters();
                     IsLoading = false;
                     StatusText = $"Deleted {deletedCount} items successfully";
                     

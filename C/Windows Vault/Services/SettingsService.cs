@@ -3,6 +3,7 @@ using Newtonsoft.Json;
 using System;
 using System.Collections.Generic;
 using System.IO;
+using System.Linq;
 using System.Threading.Tasks;
 
 namespace WindowsVault.Services
@@ -79,6 +80,27 @@ namespace WindowsVault.Services
 
         public async Task SetVaultPathAsync(string path)
         {
+            // Input validation
+            if (string.IsNullOrWhiteSpace(path))
+                throw new ArgumentException("Vault path cannot be null or empty", nameof(path));
+
+            // Validate path
+            if (!Path.IsPathRooted(path))
+                throw new ArgumentException("Vault path must be an absolute path", nameof(path));
+
+            // Ensure directory exists or can be created
+            if (!Directory.Exists(path))
+            {
+                try
+                {
+                    Directory.CreateDirectory(path);
+                }
+                catch (Exception ex)
+                {
+                    throw new InvalidOperationException($"Cannot create vault directory: {path}", ex);
+                }
+            }
+
             await SetSettingAsync("VaultPath", path);
         }
 
@@ -101,6 +123,10 @@ namespace WindowsVault.Services
 
         public async Task SetBackupIntervalHoursAsync(int hours)
         {
+            // Input validation
+            if (hours < 1 || hours > 168) // 1 hour to 1 week
+                throw new ArgumentException("Backup interval must be between 1 and 168 hours", nameof(hours));
+
             await SetSettingAsync("BackupIntervalHours", hours);
         }
 
@@ -112,6 +138,10 @@ namespace WindowsVault.Services
 
         public async Task SetThumbnailSizeAsync(int size)
         {
+            // Input validation
+            if (size < 50 || size > 1000)
+                throw new ArgumentException("Thumbnail size must be between 50 and 1000 pixels", nameof(size));
+
             await SetSettingAsync("ThumbnailSize", size);
         }
 
@@ -134,6 +164,22 @@ namespace WindowsVault.Services
         public async Task<Dictionary<string, object>> GetAllSettingsAsync()
         {
             return new Dictionary<string, object>(_settings);
+        }
+
+        public async Task<List<int>> GetRecentTagIdsAsync()
+        {
+            var recentTagIds = await GetSettingAsync<List<int>>("RecentTagIds");
+            return recentTagIds ?? new List<int>();
+        }
+
+        public async Task SaveRecentTagIdsAsync(List<int> tagIds)
+        {
+            // Keep only the last 20 recent tag IDs
+            if (tagIds.Count > 20)
+            {
+                tagIds = tagIds.Take(20).ToList();
+            }
+            await SetSettingAsync("RecentTagIds", tagIds);
         }
 
         private Dictionary<string, object> LoadSettings()

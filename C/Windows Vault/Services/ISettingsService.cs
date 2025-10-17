@@ -19,5 +19,7 @@ namespace WindowsVault.Services
         Task SetDarkModeEnabledAsync(bool enabled);
         Task ResetToDefaultsAsync();
         Task<Dictionary<string, object>> GetAllSettingsAsync();
+        Task<List<int>> GetRecentTagIdsAsync();
+        Task SaveRecentTagIdsAsync(List<int> tagIds);
     }
 }
