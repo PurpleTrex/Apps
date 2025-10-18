@@ -43,6 +43,24 @@ builder.Services.AddScoped<IValidator<CreatePortfolioRequest>, CreatePortfolioRe
 builder.Services.AddScoped<IValidator<AddOrUpdatePositionRequest>, AddOrUpdatePositionRequestValidator>();
 builder.Services.AddScoped<IValidator<UpdatePortfolioOwnerRequest>, UpdatePortfolioOwnerRequestValidator>();
 
+// Add CORS configuration
+builder.Services.AddCors(options =>
+{
+    options.AddPolicy("AllowFrontend", policy =>
+    {
+        policy.WithOrigins(
+            "https://riskport.vercel.app",
+            "https://*.vercel.app",
+            "http://localhost:5173",
+            "http://localhost:3000"
+        )
+        .SetIsOriginAllowedToAllowWildcardSubdomains()
+        .AllowAnyMethod()
+        .AllowAnyHeader()
+        .AllowCredentials();
+    });
+});
+
 builder.Services.AddHangfire((serviceProvider, configuration) =>
 {
     configuration
@@ -69,6 +87,9 @@ if (app.Environment.IsDevelopment())
 app.UseHttpsRedirection();
 
 app.UseRouting();
+
+// Add CORS middleware (must be after UseRouting and before UseAuthorization)
+app.UseCors("AllowFrontend");
 
 app.UseAuthorization();
 
