@@ -8,7 +8,7 @@ public sealed record RiskAssessmentResult(
     decimal TotalValue,
     decimal ValueAtRisk,
     RiskClassification Classification,
-    DateTimeOffset CalculatedAt
+    DateTime CalculatedAt
 );
 
 public enum RiskClassification

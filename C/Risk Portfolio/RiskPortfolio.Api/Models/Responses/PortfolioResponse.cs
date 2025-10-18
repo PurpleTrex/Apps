@@ -13,8 +13,8 @@ public sealed record PortfolioResponse(
     decimal RiskScore,
     decimal ValueAtRisk,
     RiskClassification RiskClassification,
-    DateTimeOffset CreatedAt,
-    DateTimeOffset? LastEvaluatedAt,
+    DateTime CreatedAt,
+    DateTime? LastEvaluatedAt,
     IReadOnlyCollection<PositionResponse> Positions
 );
 

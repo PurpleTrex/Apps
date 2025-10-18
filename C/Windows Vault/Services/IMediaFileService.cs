@@ -24,5 +24,6 @@ namespace WindowsVault.Services
         Task ImportDirectoryAsync(string directoryPath, IProgress<string>? progress = null);
         Task<bool> AddTagToMediaFileAsync(int mediaFileId, int tagId);
         Task<bool> RemoveTagFromMediaFileAsync(int mediaFileId, int tagId);
+        Task<int> CleanupDeletedRecordsAsync();
     }
 }

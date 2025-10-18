@@ -9,5 +9,5 @@ public sealed record RiskAssessmentResponse(
     decimal TotalValue,
     decimal ValueAtRisk,
     RiskClassification Classification,
-    DateTimeOffset CalculatedAt
+    DateTime CalculatedAt
 );

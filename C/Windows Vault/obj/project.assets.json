@@ -5847,24 +5847,31 @@
     ]
   },
   "packageFolders": {
-    "D:\\Users\\jhamm\\.nuget\\packages\\": {}
+    "C:\\Users\\purple\\.nuget\\packages\\": {},
+    "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages": {}
   },
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "D:\\Users\\jhamm\\Desktop\\Projects\\Apps\\C\\Windows Vault\\WindowsVault.csproj",
+      "projectUniqueName": "C:\\Users\\purple\\Desktop\\Dev\\Git\\C\\Windows Vault\\WindowsVault.csproj",
       "projectName": "WindowsVault",
-      "projectPath": "D:\\Users\\jhamm\\Desktop\\Projects\\Apps\\C\\Windows Vault\\WindowsVault.csproj",
-      "packagesPath": "D:\\Users\\jhamm\\.nuget\\packages\\",
-      "outputPath": "D:\\Users\\jhamm\\Desktop\\Projects\\Apps\\C\\Windows Vault\\obj\\",
+      "projectPath": "C:\\Users\\purple\\Desktop\\Dev\\Git\\C\\Windows Vault\\WindowsVault.csproj",
+      "packagesPath": "C:\\Users\\purple\\.nuget\\packages\\",
+      "outputPath": "C:\\Users\\purple\\Desktop\\Dev\\Git\\C\\Windows Vault\\obj\\",
       "projectStyle": "PackageReference",
+      "fallbackFolders": [
+        "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"
+      ],
       "configFilePaths": [
-        "D:\\Users\\jhamm\\AppData\\Roaming\\NuGet\\NuGet.Config"
+        "C:\\Users\\purple\\AppData\\Roaming\\NuGet\\NuGet.Config",
+        "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.FallbackLocation.config",
+        "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
       ],
       "originalTargetFrameworks": [
         "net9.0-windows"
       ],
       "sources": {
+        "C:\\Program Files (x86)\\Microsoft SDKs\\NuGetPackages\\": {},
         "https://api.nuget.org/v3/index.json": {}
       },
       "frameworks": {

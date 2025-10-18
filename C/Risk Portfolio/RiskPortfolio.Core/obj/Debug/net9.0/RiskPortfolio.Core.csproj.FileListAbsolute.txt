@@ -10,3 +10,15 @@ D:\Users\jhamm\Desktop\Projects\Apps\C\Risk Portfolio\RiskPortfolio.Core\obj\Deb
 D:\Users\jhamm\Desktop\Projects\Apps\C\Risk Portfolio\RiskPortfolio.Core\obj\Debug\net9.0\refint\RiskPortfolio.Core.dll
 D:\Users\jhamm\Desktop\Projects\Apps\C\Risk Portfolio\RiskPortfolio.Core\obj\Debug\net9.0\RiskPortfolio.Core.pdb
 D:\Users\jhamm\Desktop\Projects\Apps\C\Risk Portfolio\RiskPortfolio.Core\obj\Debug\net9.0\ref\RiskPortfolio.Core.dll
+C:\Users\purple\Desktop\Dev\Git\C\Risk Portfolio\RiskPortfolio.Core\bin\Debug\net9.0\RiskPortfolio.Core.deps.json
+C:\Users\purple\Desktop\Dev\Git\C\Risk Portfolio\RiskPortfolio.Core\bin\Debug\net9.0\RiskPortfolio.Core.dll
+C:\Users\purple\Desktop\Dev\Git\C\Risk Portfolio\RiskPortfolio.Core\bin\Debug\net9.0\RiskPortfolio.Core.pdb
+C:\Users\purple\Desktop\Dev\Git\C\Risk Portfolio\RiskPortfolio.Core\obj\Debug\net9.0\RiskPortfolio.Core.GeneratedMSBuildEditorConfig.editorconfig
+C:\Users\purple\Desktop\Dev\Git\C\Risk Portfolio\RiskPortfolio.Core\obj\Debug\net9.0\RiskPortfolio.Core.AssemblyInfoInputs.cache
+C:\Users\purple\Desktop\Dev\Git\C\Risk Portfolio\RiskPortfolio.Core\obj\Debug\net9.0\RiskPortfolio.Core.AssemblyInfo.cs
+C:\Users\purple\Desktop\Dev\Git\C\Risk Portfolio\RiskPortfolio.Core\obj\Debug\net9.0\RiskPortfolio.Core.csproj.CoreCompileInputs.cache
+C:\Users\purple\Desktop\Dev\Git\C\Risk Portfolio\RiskPortfolio.Core\obj\Debug\net9.0\RiskPortfolio.Core.sourcelink.json
+C:\Users\purple\Desktop\Dev\Git\C\Risk Portfolio\RiskPortfolio.Core\obj\Debug\net9.0\RiskPortfolio.Core.dll
+C:\Users\purple\Desktop\Dev\Git\C\Risk Portfolio\RiskPortfolio.Core\obj\Debug\net9.0\refint\RiskPortfolio.Core.dll
+C:\Users\purple\Desktop\Dev\Git\C\Risk Portfolio\RiskPortfolio.Core\obj\Debug\net9.0\RiskPortfolio.Core.pdb
+C:\Users\purple\Desktop\Dev\Git\C\Risk Portfolio\RiskPortfolio.Core\obj\Debug\net9.0\ref\RiskPortfolio.Core.dll

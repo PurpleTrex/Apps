@@ -189,7 +189,6 @@ namespace WindowsVault.Services
                 .Where(mft => mft.TagId == tagId)
                 .Include(mft => mft.MediaFile)
                 .Select(mft => mft.MediaFile)
-                .Where(mf => !mf.IsDeleted)
                 .ToListAsync();
         }
 

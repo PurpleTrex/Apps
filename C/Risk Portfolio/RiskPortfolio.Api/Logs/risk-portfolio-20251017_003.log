@@ -1,0 +1,622 @@
+2025-10-17 19:54:32.143 -05:00 [INF] Applying database migrations...
+2025-10-17 19:54:32.224 -05:00 [INF] Database migrations completed
+2025-10-17 19:54:32.246 -05:00 [ERR] Hosting failed to start
+System.IO.IOException: Failed to bind to address http://127.0.0.1:5012: address already in use.
+ ---> Microsoft.AspNetCore.Connections.AddressInUseException: Only one usage of each socket address (protocol/network address/port) is normally permitted.
+ ---> System.Net.Sockets.SocketException (10048): Only one usage of each socket address (protocol/network address/port) is normally permitted.
+   at System.Net.Sockets.Socket.UpdateStatusAfterSocketErrorAndThrowException(SocketError error, Boolean disconnectOnFailure, String callerName)
+   at System.Net.Sockets.Socket.DoBind(EndPoint endPointSnapshot, SocketAddress socketAddress)
+   at System.Net.Sockets.Socket.Bind(EndPoint localEP)
+   at Microsoft.AspNetCore.Server.Kestrel.Transport.Sockets.SocketTransportOptions.CreateDefaultBoundListenSocket(EndPoint endpoint)
+   at Microsoft.AspNetCore.Server.Kestrel.Transport.Sockets.SocketConnectionListener.Bind()
+   --- End of inner exception stack trace ---
+   at Microsoft.AspNetCore.Server.Kestrel.Transport.Sockets.SocketConnectionListener.Bind()
+   at Microsoft.AspNetCore.Server.Kestrel.Transport.Sockets.SocketTransportFactory.BindAsync(EndPoint endpoint, CancellationToken cancellationToken)
+   at Microsoft.AspNetCore.Server.Kestrel.Core.Internal.Infrastructure.TransportManager.BindAsync(EndPoint endPoint, ConnectionDelegate connectionDelegate, EndpointConfig endpointConfig, CancellationToken cancellationToken)
+   at Microsoft.AspNetCore.Server.Kestrel.Core.KestrelServerImpl.<>c__DisplayClass28_0`1.<<StartAsync>g__OnBind|0>d.MoveNext()
+--- End of stack trace from previous location ---
+   at Microsoft.AspNetCore.Server.Kestrel.Core.Internal.AddressBinder.BindEndpointAsync(ListenOptions endpoint, AddressBindContext context, CancellationToken cancellationToken)
+   --- End of inner exception stack trace ---
+   at Microsoft.AspNetCore.Server.Kestrel.Core.Internal.AddressBinder.BindEndpointAsync(ListenOptions endpoint, AddressBindContext context, CancellationToken cancellationToken)
+   at Microsoft.AspNetCore.Server.Kestrel.Core.LocalhostListenOptions.BindAsync(AddressBindContext context, CancellationToken cancellationToken)
+   at Microsoft.AspNetCore.Server.Kestrel.Core.Internal.AddressBinder.AddressesStrategy.BindAsync(AddressBindContext context, CancellationToken cancellationToken)
+   at Microsoft.AspNetCore.Server.Kestrel.Core.KestrelServerImpl.BindAsync(CancellationToken cancellationToken)
+   at Microsoft.AspNetCore.Server.Kestrel.Core.KestrelServerImpl.StartAsync[TContext](IHttpApplication`1 application, CancellationToken cancellationToken)
+   at Microsoft.AspNetCore.Hosting.GenericWebHostService.StartAsync(CancellationToken cancellationToken)
+   at Microsoft.Extensions.Hosting.Internal.Host.<StartAsync>b__14_1(IHostedService service, CancellationToken token)
+   at Microsoft.Extensions.Hosting.Internal.Host.ForeachService[T](IEnumerable`1 services, CancellationToken token, Boolean concurrent, Boolean abortOnFirstException, List`1 exceptions, Func`3 operation)
+2025-10-17 19:56:34.751 -05:00 [INF] Applying database migrations...
+2025-10-17 19:56:34.832 -05:00 [INF] Database migrations completed
+2025-10-17 19:56:34.854 -05:00 [INF] Now listening on: http://localhost:5012
+2025-10-17 19:56:34.863 -05:00 [INF] Application started. Press Ctrl+C to shut down.
+2025-10-17 19:56:34.864 -05:00 [INF] Hosting environment: Development
+2025-10-17 19:56:34.864 -05:00 [INF] Content root path: C:\Users\purple\Desktop\Dev\Git\C\Risk Portfolio\RiskPortfolio.Api
+2025-10-17 19:56:35.501 -05:00 [INF] Executed DbCommand (2ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT "p"."Id", "p"."BaseCurrency", "p"."CreatedAt", "p"."LastEvaluatedAt", "p"."Name", "p"."Owner", "p"."RiskScore", "p"."ValueAtRisk", "a"."Id", "a"."AveragePrice", "a"."CurrentPrice", "a"."PortfolioId", "a"."Quantity", "a"."Symbol", "a"."Volatility"
+FROM "Portfolios" AS "p"
+LEFT JOIN "AssetPositions" AS "a" ON "p"."Id" = "a"."PortfolioId"
+ORDER BY "p"."Name", "p"."Id"
+2025-10-17 19:56:35.543 -05:00 [INF] Executed DbCommand (2ms) [Parameters=[@__id_0='?' (DbType = Guid)], CommandType='"Text"', CommandTimeout='30']
+SELECT "p0"."Id", "p0"."BaseCurrency", "p0"."CreatedAt", "p0"."LastEvaluatedAt", "p0"."Name", "p0"."Owner", "p0"."RiskScore", "p0"."ValueAtRisk", "a"."Id", "a"."AveragePrice", "a"."CurrentPrice", "a"."PortfolioId", "a"."Quantity", "a"."Symbol", "a"."Volatility"
+FROM (
+    SELECT "p"."Id", "p"."BaseCurrency", "p"."CreatedAt", "p"."LastEvaluatedAt", "p"."Name", "p"."Owner", "p"."RiskScore", "p"."ValueAtRisk"
+    FROM "Portfolios" AS "p"
+    WHERE "p"."Id" = @__id_0
+    LIMIT 2
+) AS "p0"
+LEFT JOIN "AssetPositions" AS "a" ON "p0"."Id" = "a"."PortfolioId"
+ORDER BY "p0"."Id"
+2025-10-17 19:56:35.587 -05:00 [INF] Calculated risk for portfolio "cbeb9144-c262-4d09-b209-ab9192b8f139" - Score: 55.15, VAR: 111548.20, Classification: "Elevated"
+2025-10-17 19:56:35.662 -05:00 [INF] Executed DbCommand (6ms) [Parameters=[@p7='?' (DbType = Guid), @p0='?' (Size = 3), @p1='?' (DbType = DateTime), @p2='?' (DbType = DateTime), @p3='?' (Size = 17), @p4='?' (Size = 11), @p5='?' (DbType = Decimal), @p6='?' (DbType = Decimal)], CommandType='"Text"', CommandTimeout='30']
+UPDATE "Portfolios" SET "BaseCurrency" = @p0, "CreatedAt" = @p1, "LastEvaluatedAt" = @p2, "Name" = @p3, "Owner" = @p4, "RiskScore" = @p5, "ValueAtRisk" = @p6
+WHERE "Id" = @p7
+RETURNING 1;
+2025-10-17 19:56:35.672 -05:00 [INF] Updated portfolio "cbeb9144-c262-4d09-b209-ab9192b8f139"
+2025-10-17 19:56:43.832 -05:00 [WRN] Failed to establish Redis connection using localhost:6379. Falling back to memory cache only.
+StackExchange.Redis.RedisConnectionException: It was not possible to connect to the redis server(s). Error connecting right now. To allow this multiplexer to continue retrying until it's able to connect, use abortConnect=false in your connection string or AbortOnConnectFail=false; in your code.
+   at StackExchange.Redis.ConnectionMultiplexer.ConnectImplAsync(ConfigurationOptions configuration, TextWriter writer, Nullable`1 serverType) in /_/src/StackExchange.Redis/ConnectionMultiplexer.cs:line 620
+   at RiskPortfolio.Infrastructure.Caching.RedisConnectionFactory.GetConnectionAsync() in C:\Users\purple\Desktop\Dev\Git\C\Risk Portfolio\RiskPortfolio.Infrastructure\Caching\RedisConnectionFactory.cs:line 41
+2025-10-17 19:56:43.856 -05:00 [INF] Executed DbCommand (0ms) [Parameters=[@__id_0='?' (DbType = Guid)], CommandType='"Text"', CommandTimeout='30']
+SELECT "p0"."Id", "p0"."BaseCurrency", "p0"."CreatedAt", "p0"."LastEvaluatedAt", "p0"."Name", "p0"."Owner", "p0"."RiskScore", "p0"."ValueAtRisk", "a"."Id", "a"."AveragePrice", "a"."CurrentPrice", "a"."PortfolioId", "a"."Quantity", "a"."Symbol", "a"."Volatility"
+FROM (
+    SELECT "p"."Id", "p"."BaseCurrency", "p"."CreatedAt", "p"."LastEvaluatedAt", "p"."Name", "p"."Owner", "p"."RiskScore", "p"."ValueAtRisk"
+    FROM "Portfolios" AS "p"
+    WHERE "p"."Id" = @__id_0
+    LIMIT 2
+) AS "p0"
+LEFT JOIN "AssetPositions" AS "a" ON "p0"."Id" = "a"."PortfolioId"
+ORDER BY "p0"."Id"
+2025-10-17 19:56:43.866 -05:00 [INF] Calculated risk for portfolio "2f78e0ed-0adc-4a32-abe7-5ecd371a0ed0" - Score: 13.98, VAR: 125989.15, Classification: "Low"
+2025-10-17 19:56:43.870 -05:00 [INF] Executed DbCommand (1ms) [Parameters=[@p7='?' (DbType = Guid), @p0='?' (Size = 3), @p1='?' (DbType = DateTime), @p2='?' (DbType = DateTime), @p3='?' (Size = 21), @p4='?' (Size = 16), @p5='?' (DbType = Decimal), @p6='?' (DbType = Decimal)], CommandType='"Text"', CommandTimeout='30']
+UPDATE "Portfolios" SET "BaseCurrency" = @p0, "CreatedAt" = @p1, "LastEvaluatedAt" = @p2, "Name" = @p3, "Owner" = @p4, "RiskScore" = @p5, "ValueAtRisk" = @p6
+WHERE "Id" = @p7
+RETURNING 1;
+2025-10-17 19:56:43.875 -05:00 [INF] Updated portfolio "2f78e0ed-0adc-4a32-abe7-5ecd371a0ed0"
+2025-10-17 19:56:43.876 -05:00 [INF] Executed DbCommand (0ms) [Parameters=[@__id_0='?' (DbType = Guid)], CommandType='"Text"', CommandTimeout='30']
+SELECT "p0"."Id", "p0"."BaseCurrency", "p0"."CreatedAt", "p0"."LastEvaluatedAt", "p0"."Name", "p0"."Owner", "p0"."RiskScore", "p0"."ValueAtRisk", "a"."Id", "a"."AveragePrice", "a"."CurrentPrice", "a"."PortfolioId", "a"."Quantity", "a"."Symbol", "a"."Volatility"
+FROM (
+    SELECT "p"."Id", "p"."BaseCurrency", "p"."CreatedAt", "p"."LastEvaluatedAt", "p"."Name", "p"."Owner", "p"."RiskScore", "p"."ValueAtRisk"
+    FROM "Portfolios" AS "p"
+    WHERE "p"."Id" = @__id_0
+    LIMIT 2
+) AS "p0"
+LEFT JOIN "AssetPositions" AS "a" ON "p0"."Id" = "a"."PortfolioId"
+ORDER BY "p0"."Id"
+2025-10-17 19:56:43.878 -05:00 [INF] Calculated risk for portfolio "d832c8a6-108f-4a3a-8e9b-f6b1eb1f2884" - Score: 73.23, VAR: 489868.07, Classification: "Critical"
+2025-10-17 19:56:43.881 -05:00 [INF] Executed DbCommand (1ms) [Parameters=[@p7='?' (DbType = Guid), @p0='?' (Size = 3), @p1='?' (DbType = DateTime), @p2='?' (DbType = DateTime), @p3='?' (Size = 15), @p4='?' (Size = 11), @p5='?' (DbType = Decimal), @p6='?' (DbType = Decimal)], CommandType='"Text"', CommandTimeout='30']
+UPDATE "Portfolios" SET "BaseCurrency" = @p0, "CreatedAt" = @p1, "LastEvaluatedAt" = @p2, "Name" = @p3, "Owner" = @p4, "RiskScore" = @p5, "ValueAtRisk" = @p6
+WHERE "Id" = @p7
+RETURNING 1;
+2025-10-17 19:56:43.885 -05:00 [INF] Updated portfolio "d832c8a6-108f-4a3a-8e9b-f6b1eb1f2884"
+2025-10-17 19:56:43.886 -05:00 [INF] Executed DbCommand (0ms) [Parameters=[@__id_0='?' (DbType = Guid)], CommandType='"Text"', CommandTimeout='30']
+SELECT "p0"."Id", "p0"."BaseCurrency", "p0"."CreatedAt", "p0"."LastEvaluatedAt", "p0"."Name", "p0"."Owner", "p0"."RiskScore", "p0"."ValueAtRisk", "a"."Id", "a"."AveragePrice", "a"."CurrentPrice", "a"."PortfolioId", "a"."Quantity", "a"."Symbol", "a"."Volatility"
+FROM (
+    SELECT "p"."Id", "p"."BaseCurrency", "p"."CreatedAt", "p"."LastEvaluatedAt", "p"."Name", "p"."Owner", "p"."RiskScore", "p"."ValueAtRisk"
+    FROM "Portfolios" AS "p"
+    WHERE "p"."Id" = @__id_0
+    LIMIT 2
+) AS "p0"
+LEFT JOIN "AssetPositions" AS "a" ON "p0"."Id" = "a"."PortfolioId"
+ORDER BY "p0"."Id"
+2025-10-17 19:56:43.889 -05:00 [INF] Calculated risk for portfolio "619ec6f1-c6a6-40b2-9762-699bd41205d6" - Score: 15.46, VAR: 38113.36, Classification: "Moderate"
+2025-10-17 19:56:43.891 -05:00 [INF] Executed DbCommand (1ms) [Parameters=[@p7='?' (DbType = Guid), @p0='?' (Size = 3), @p1='?' (DbType = DateTime), @p2='?' (DbType = DateTime), @p3='?' (Size = 25), @p4='?' (Size = 12), @p5='?' (DbType = Decimal), @p6='?' (DbType = Decimal)], CommandType='"Text"', CommandTimeout='30']
+UPDATE "Portfolios" SET "BaseCurrency" = @p0, "CreatedAt" = @p1, "LastEvaluatedAt" = @p2, "Name" = @p3, "Owner" = @p4, "RiskScore" = @p5, "ValueAtRisk" = @p6
+WHERE "Id" = @p7
+RETURNING 1;
+2025-10-17 19:56:43.895 -05:00 [INF] Updated portfolio "619ec6f1-c6a6-40b2-9762-699bd41205d6"
+2025-10-17 19:56:43.897 -05:00 [INF] Executed DbCommand (0ms) [Parameters=[@__id_0='?' (DbType = Guid)], CommandType='"Text"', CommandTimeout='30']
+SELECT "p0"."Id", "p0"."BaseCurrency", "p0"."CreatedAt", "p0"."LastEvaluatedAt", "p0"."Name", "p0"."Owner", "p0"."RiskScore", "p0"."ValueAtRisk", "a"."Id", "a"."AveragePrice", "a"."CurrentPrice", "a"."PortfolioId", "a"."Quantity", "a"."Symbol", "a"."Volatility"
+FROM (
+    SELECT "p"."Id", "p"."BaseCurrency", "p"."CreatedAt", "p"."LastEvaluatedAt", "p"."Name", "p"."Owner", "p"."RiskScore", "p"."ValueAtRisk"
+    FROM "Portfolios" AS "p"
+    WHERE "p"."Id" = @__id_0
+    LIMIT 2
+) AS "p0"
+LEFT JOIN "AssetPositions" AS "a" ON "p0"."Id" = "a"."PortfolioId"
+ORDER BY "p0"."Id"
+2025-10-17 19:56:43.899 -05:00 [INF] Calculated risk for portfolio "b4894ac3-c4a6-460e-bb5b-7c798b826ead" - Score: 42.00, VAR: 77330.13, Classification: "Elevated"
+2025-10-17 19:56:43.902 -05:00 [INF] Executed DbCommand (1ms) [Parameters=[@p7='?' (DbType = Guid), @p0='?' (Size = 3), @p1='?' (DbType = DateTime), @p2='?' (DbType = DateTime), @p3='?' (Size = 20), @p4='?' (Size = 12), @p5='?' (DbType = Decimal), @p6='?' (DbType = Decimal)], CommandType='"Text"', CommandTimeout='30']
+UPDATE "Portfolios" SET "BaseCurrency" = @p0, "CreatedAt" = @p1, "LastEvaluatedAt" = @p2, "Name" = @p3, "Owner" = @p4, "RiskScore" = @p5, "ValueAtRisk" = @p6
+WHERE "Id" = @p7
+RETURNING 1;
+2025-10-17 19:56:43.906 -05:00 [INF] Updated portfolio "b4894ac3-c4a6-460e-bb5b-7c798b826ead"
+2025-10-17 19:56:43.908 -05:00 [INF] Executed DbCommand (0ms) [Parameters=[@__id_0='?' (DbType = Guid)], CommandType='"Text"', CommandTimeout='30']
+SELECT "p0"."Id", "p0"."BaseCurrency", "p0"."CreatedAt", "p0"."LastEvaluatedAt", "p0"."Name", "p0"."Owner", "p0"."RiskScore", "p0"."ValueAtRisk", "a"."Id", "a"."AveragePrice", "a"."CurrentPrice", "a"."PortfolioId", "a"."Quantity", "a"."Symbol", "a"."Volatility"
+FROM (
+    SELECT "p"."Id", "p"."BaseCurrency", "p"."CreatedAt", "p"."LastEvaluatedAt", "p"."Name", "p"."Owner", "p"."RiskScore", "p"."ValueAtRisk"
+    FROM "Portfolios" AS "p"
+    WHERE "p"."Id" = @__id_0
+    LIMIT 2
+) AS "p0"
+LEFT JOIN "AssetPositions" AS "a" ON "p0"."Id" = "a"."PortfolioId"
+ORDER BY "p0"."Id"
+2025-10-17 19:56:43.910 -05:00 [INF] Calculated risk for portfolio "bef54ca4-04a5-4537-8197-fbac92d1cf02" - Score: 36.02, VAR: 63499.93, Classification: "Elevated"
+2025-10-17 19:56:43.913 -05:00 [INF] Executed DbCommand (1ms) [Parameters=[@p7='?' (DbType = Guid), @p0='?' (Size = 3), @p1='?' (DbType = DateTime), @p2='?' (DbType = DateTime), @p3='?' (Size = 16), @p4='?' (Size = 11), @p5='?' (DbType = Decimal), @p6='?' (DbType = Decimal)], CommandType='"Text"', CommandTimeout='30']
+UPDATE "Portfolios" SET "BaseCurrency" = @p0, "CreatedAt" = @p1, "LastEvaluatedAt" = @p2, "Name" = @p3, "Owner" = @p4, "RiskScore" = @p5, "ValueAtRisk" = @p6
+WHERE "Id" = @p7
+RETURNING 1;
+2025-10-17 19:56:43.917 -05:00 [INF] Updated portfolio "bef54ca4-04a5-4537-8197-fbac92d1cf02"
+2025-10-17 19:56:43.919 -05:00 [INF] Executed DbCommand (0ms) [Parameters=[@__id_0='?' (DbType = Guid)], CommandType='"Text"', CommandTimeout='30']
+SELECT "p0"."Id", "p0"."BaseCurrency", "p0"."CreatedAt", "p0"."LastEvaluatedAt", "p0"."Name", "p0"."Owner", "p0"."RiskScore", "p0"."ValueAtRisk", "a"."Id", "a"."AveragePrice", "a"."CurrentPrice", "a"."PortfolioId", "a"."Quantity", "a"."Symbol", "a"."Volatility"
+FROM (
+    SELECT "p"."Id", "p"."BaseCurrency", "p"."CreatedAt", "p"."LastEvaluatedAt", "p"."Name", "p"."Owner", "p"."RiskScore", "p"."ValueAtRisk"
+    FROM "Portfolios" AS "p"
+    WHERE "p"."Id" = @__id_0
+    LIMIT 2
+) AS "p0"
+LEFT JOIN "AssetPositions" AS "a" ON "p0"."Id" = "a"."PortfolioId"
+ORDER BY "p0"."Id"
+2025-10-17 19:56:43.921 -05:00 [INF] Calculated risk for portfolio "9a61c192-01f8-48a6-a001-e68ae4a71c2e" - Score: 27.48, VAR: 116342.49, Classification: "Moderate"
+2025-10-17 19:56:43.923 -05:00 [INF] Executed DbCommand (1ms) [Parameters=[@p7='?' (DbType = Guid), @p0='?' (Size = 3), @p1='?' (DbType = DateTime), @p2='?' (DbType = DateTime), @p3='?' (Size = 19), @p4='?' (Size = 12), @p5='?' (DbType = Decimal), @p6='?' (DbType = Decimal)], CommandType='"Text"', CommandTimeout='30']
+UPDATE "Portfolios" SET "BaseCurrency" = @p0, "CreatedAt" = @p1, "LastEvaluatedAt" = @p2, "Name" = @p3, "Owner" = @p4, "RiskScore" = @p5, "ValueAtRisk" = @p6
+WHERE "Id" = @p7
+RETURNING 1;
+2025-10-17 19:56:43.928 -05:00 [INF] Updated portfolio "9a61c192-01f8-48a6-a001-e68ae4a71c2e"
+2025-10-17 19:56:43.929 -05:00 [INF] Executed DbCommand (0ms) [Parameters=[@__id_0='?' (DbType = Guid)], CommandType='"Text"', CommandTimeout='30']
+SELECT "p0"."Id", "p0"."BaseCurrency", "p0"."CreatedAt", "p0"."LastEvaluatedAt", "p0"."Name", "p0"."Owner", "p0"."RiskScore", "p0"."ValueAtRisk", "a"."Id", "a"."AveragePrice", "a"."CurrentPrice", "a"."PortfolioId", "a"."Quantity", "a"."Symbol", "a"."Volatility"
+FROM (
+    SELECT "p"."Id", "p"."BaseCurrency", "p"."CreatedAt", "p"."LastEvaluatedAt", "p"."Name", "p"."Owner", "p"."RiskScore", "p"."ValueAtRisk"
+    FROM "Portfolios" AS "p"
+    WHERE "p"."Id" = @__id_0
+    LIMIT 2
+) AS "p0"
+LEFT JOIN "AssetPositions" AS "a" ON "p0"."Id" = "a"."PortfolioId"
+ORDER BY "p0"."Id"
+2025-10-17 19:56:43.931 -05:00 [INF] Calculated risk for portfolio "713c396d-dc12-443d-9f70-137925cbde66" - Score: 22.54, VAR: 118174.38, Classification: "Moderate"
+2025-10-17 19:56:43.934 -05:00 [INF] Executed DbCommand (1ms) [Parameters=[@p7='?' (DbType = Guid), @p0='?' (Size = 3), @p1='?' (DbType = DateTime), @p2='?' (DbType = DateTime), @p3='?' (Size = 21), @p4='?' (Size = 19), @p5='?' (DbType = Decimal), @p6='?' (DbType = Decimal)], CommandType='"Text"', CommandTimeout='30']
+UPDATE "Portfolios" SET "BaseCurrency" = @p0, "CreatedAt" = @p1, "LastEvaluatedAt" = @p2, "Name" = @p3, "Owner" = @p4, "RiskScore" = @p5, "ValueAtRisk" = @p6
+WHERE "Id" = @p7
+RETURNING 1;
+2025-10-17 19:56:43.939 -05:00 [INF] Updated portfolio "713c396d-dc12-443d-9f70-137925cbde66"
+2025-10-17 19:56:43.940 -05:00 [INF] Executed DbCommand (0ms) [Parameters=[@__id_0='?' (DbType = Guid)], CommandType='"Text"', CommandTimeout='30']
+SELECT "p0"."Id", "p0"."BaseCurrency", "p0"."CreatedAt", "p0"."LastEvaluatedAt", "p0"."Name", "p0"."Owner", "p0"."RiskScore", "p0"."ValueAtRisk", "a"."Id", "a"."AveragePrice", "a"."CurrentPrice", "a"."PortfolioId", "a"."Quantity", "a"."Symbol", "a"."Volatility"
+FROM (
+    SELECT "p"."Id", "p"."BaseCurrency", "p"."CreatedAt", "p"."LastEvaluatedAt", "p"."Name", "p"."Owner", "p"."RiskScore", "p"."ValueAtRisk"
+    FROM "Portfolios" AS "p"
+    WHERE "p"."Id" = @__id_0
+    LIMIT 2
+) AS "p0"
+LEFT JOIN "AssetPositions" AS "a" ON "p0"."Id" = "a"."PortfolioId"
+ORDER BY "p0"."Id"
+2025-10-17 19:56:43.943 -05:00 [INF] Calculated risk for portfolio "86025381-1624-43f6-a010-f42e3bceea35" - Score: 22.64, VAR: 69412.85, Classification: "Moderate"
+2025-10-17 19:56:43.946 -05:00 [INF] Executed DbCommand (1ms) [Parameters=[@p7='?' (DbType = Guid), @p0='?' (Size = 3), @p1='?' (DbType = DateTime), @p2='?' (DbType = DateTime), @p3='?' (Size = 20), @p4='?' (Size = 14), @p5='?' (DbType = Decimal), @p6='?' (DbType = Decimal)], CommandType='"Text"', CommandTimeout='30']
+UPDATE "Portfolios" SET "BaseCurrency" = @p0, "CreatedAt" = @p1, "LastEvaluatedAt" = @p2, "Name" = @p3, "Owner" = @p4, "RiskScore" = @p5, "ValueAtRisk" = @p6
+WHERE "Id" = @p7
+RETURNING 1;
+2025-10-17 19:56:43.950 -05:00 [INF] Updated portfolio "86025381-1624-43f6-a010-f42e3bceea35"
+2025-10-17 19:56:43.951 -05:00 [INF] Executed DbCommand (0ms) [Parameters=[@__id_0='?' (DbType = Guid)], CommandType='"Text"', CommandTimeout='30']
+SELECT "p0"."Id", "p0"."BaseCurrency", "p0"."CreatedAt", "p0"."LastEvaluatedAt", "p0"."Name", "p0"."Owner", "p0"."RiskScore", "p0"."ValueAtRisk", "a"."Id", "a"."AveragePrice", "a"."CurrentPrice", "a"."PortfolioId", "a"."Quantity", "a"."Symbol", "a"."Volatility"
+FROM (
+    SELECT "p"."Id", "p"."BaseCurrency", "p"."CreatedAt", "p"."LastEvaluatedAt", "p"."Name", "p"."Owner", "p"."RiskScore", "p"."ValueAtRisk"
+    FROM "Portfolios" AS "p"
+    WHERE "p"."Id" = @__id_0
+    LIMIT 2
+) AS "p0"
+LEFT JOIN "AssetPositions" AS "a" ON "p0"."Id" = "a"."PortfolioId"
+ORDER BY "p0"."Id"
+2025-10-17 19:56:43.953 -05:00 [INF] Calculated risk for portfolio "fe192c38-a96f-442c-966a-873faa03e508" - Score: 32.54, VAR: 199831.97, Classification: "Moderate"
+2025-10-17 19:56:43.956 -05:00 [INF] Executed DbCommand (1ms) [Parameters=[@p7='?' (DbType = Guid), @p0='?' (Size = 3), @p1='?' (DbType = DateTime), @p2='?' (DbType = DateTime), @p3='?' (Size = 16), @p4='?' (Size = 13), @p5='?' (DbType = Decimal), @p6='?' (DbType = Decimal)], CommandType='"Text"', CommandTimeout='30']
+UPDATE "Portfolios" SET "BaseCurrency" = @p0, "CreatedAt" = @p1, "LastEvaluatedAt" = @p2, "Name" = @p3, "Owner" = @p4, "RiskScore" = @p5, "ValueAtRisk" = @p6
+WHERE "Id" = @p7
+RETURNING 1;
+2025-10-17 19:56:43.961 -05:00 [INF] Updated portfolio "fe192c38-a96f-442c-966a-873faa03e508"
+2025-10-17 19:56:43.962 -05:00 [INF] Executed DbCommand (0ms) [Parameters=[@__id_0='?' (DbType = Guid)], CommandType='"Text"', CommandTimeout='30']
+SELECT "p0"."Id", "p0"."BaseCurrency", "p0"."CreatedAt", "p0"."LastEvaluatedAt", "p0"."Name", "p0"."Owner", "p0"."RiskScore", "p0"."ValueAtRisk", "a"."Id", "a"."AveragePrice", "a"."CurrentPrice", "a"."PortfolioId", "a"."Quantity", "a"."Symbol", "a"."Volatility"
+FROM (
+    SELECT "p"."Id", "p"."BaseCurrency", "p"."CreatedAt", "p"."LastEvaluatedAt", "p"."Name", "p"."Owner", "p"."RiskScore", "p"."ValueAtRisk"
+    FROM "Portfolios" AS "p"
+    WHERE "p"."Id" = @__id_0
+    LIMIT 2
+) AS "p0"
+LEFT JOIN "AssetPositions" AS "a" ON "p0"."Id" = "a"."PortfolioId"
+ORDER BY "p0"."Id"
+2025-10-17 19:56:43.964 -05:00 [INF] Calculated risk for portfolio "35f5db1d-94a5-4f84-91a5-f58aa79c47b4" - Score: 25.00, VAR: 1019.38, Classification: "Moderate"
+2025-10-17 19:56:43.967 -05:00 [INF] Executed DbCommand (1ms) [Parameters=[@p7='?' (DbType = Guid), @p0='?' (Size = 3), @p1='?' (DbType = DateTime), @p2='?' (DbType = DateTime), @p3='?' (Size = 14), @p4='?' (Size = 10), @p5='?' (DbType = Decimal), @p6='?' (DbType = Decimal)], CommandType='"Text"', CommandTimeout='30']
+UPDATE "Portfolios" SET "BaseCurrency" = @p0, "CreatedAt" = @p1, "LastEvaluatedAt" = @p2, "Name" = @p3, "Owner" = @p4, "RiskScore" = @p5, "ValueAtRisk" = @p6
+WHERE "Id" = @p7
+RETURNING 1;
+2025-10-17 19:56:43.972 -05:00 [INF] Updated portfolio "35f5db1d-94a5-4f84-91a5-f58aa79c47b4"
+2025-10-17 19:57:05.057 -05:00 [INF] Request starting HTTP/1.1 GET http://localhost:5012/api/portfolios - null null
+2025-10-17 19:57:05.071 -05:00 [WRN] Failed to determine the https port for redirect.
+2025-10-17 19:57:05.090 -05:00 [INF] Executing endpoint 'RiskPortfolio.Api.Controllers.PortfoliosController.GetAllAsync (RiskPortfolio.Api)'
+2025-10-17 19:57:05.100 -05:00 [INF] Route matched with {action = "GetAll", controller = "Portfolios"}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.ActionResult`1[System.Collections.Generic.IEnumerable`1[RiskPortfolio.Api.Models.Responses.PortfolioResponse]]] GetAllAsync(System.Threading.CancellationToken) on controller RiskPortfolio.Api.Controllers.PortfoliosController (RiskPortfolio.Api).
+2025-10-17 19:57:05.164 -05:00 [INF] Executed DbCommand (0ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT "p"."Id", "p"."BaseCurrency", "p"."CreatedAt", "p"."LastEvaluatedAt", "p"."Name", "p"."Owner", "p"."RiskScore", "p"."ValueAtRisk", "a"."Id", "a"."AveragePrice", "a"."CurrentPrice", "a"."PortfolioId", "a"."Quantity", "a"."Symbol", "a"."Volatility"
+FROM "Portfolios" AS "p"
+LEFT JOIN "AssetPositions" AS "a" ON "p"."Id" = "a"."PortfolioId"
+ORDER BY "p"."Name", "p"."Id"
+2025-10-17 19:57:05.171 -05:00 [INF] Executing OkObjectResult, writing value of type 'System.Collections.Generic.List`1[[RiskPortfolio.Api.Models.Responses.PortfolioResponse, RiskPortfolio.Api, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]]'.
+2025-10-17 19:57:05.208 -05:00 [INF] Executed action RiskPortfolio.Api.Controllers.PortfoliosController.GetAllAsync (RiskPortfolio.Api) in 103.7293ms
+2025-10-17 19:57:05.210 -05:00 [INF] Executed endpoint 'RiskPortfolio.Api.Controllers.PortfoliosController.GetAllAsync (RiskPortfolio.Api)'
+2025-10-17 19:57:05.212 -05:00 [INF] HTTP GET /api/portfolios responded 200 in 148.8174 ms
+2025-10-17 19:57:05.214 -05:00 [INF] Request finished HTTP/1.1 GET http://localhost:5012/api/portfolios - 200 null application/json; charset=utf-8 158.1141ms
+2025-10-17 20:00:04.996 -05:00 [INF] Executed DbCommand (0ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT "p"."Id", "p"."BaseCurrency", "p"."CreatedAt", "p"."LastEvaluatedAt", "p"."Name", "p"."Owner", "p"."RiskScore", "p"."ValueAtRisk", "a"."Id", "a"."AveragePrice", "a"."CurrentPrice", "a"."PortfolioId", "a"."Quantity", "a"."Symbol", "a"."Volatility"
+FROM "Portfolios" AS "p"
+LEFT JOIN "AssetPositions" AS "a" ON "p"."Id" = "a"."PortfolioId"
+ORDER BY "p"."Name", "p"."Id"
+2025-10-17 20:00:04.999 -05:00 [INF] Executed DbCommand (0ms) [Parameters=[@__id_0='?' (DbType = Guid)], CommandType='"Text"', CommandTimeout='30']
+SELECT "p0"."Id", "p0"."BaseCurrency", "p0"."CreatedAt", "p0"."LastEvaluatedAt", "p0"."Name", "p0"."Owner", "p0"."RiskScore", "p0"."ValueAtRisk", "a"."Id", "a"."AveragePrice", "a"."CurrentPrice", "a"."PortfolioId", "a"."Quantity", "a"."Symbol", "a"."Volatility"
+FROM (
+    SELECT "p"."Id", "p"."BaseCurrency", "p"."CreatedAt", "p"."LastEvaluatedAt", "p"."Name", "p"."Owner", "p"."RiskScore", "p"."ValueAtRisk"
+    FROM "Portfolios" AS "p"
+    WHERE "p"."Id" = @__id_0
+    LIMIT 2
+) AS "p0"
+LEFT JOIN "AssetPositions" AS "a" ON "p0"."Id" = "a"."PortfolioId"
+ORDER BY "p0"."Id"
+2025-10-17 20:00:05.001 -05:00 [INF] Calculated risk for portfolio "cbeb9144-c262-4d09-b209-ab9192b8f139" - Score: 55.15, VAR: 111548.20, Classification: "Elevated"
+2025-10-17 20:00:05.009 -05:00 [INF] Executed DbCommand (6ms) [Parameters=[@p7='?' (DbType = Guid), @p0='?' (Size = 3), @p1='?' (DbType = DateTime), @p2='?' (DbType = DateTime), @p3='?' (Size = 17), @p4='?' (Size = 11), @p5='?' (DbType = Decimal), @p6='?' (DbType = Decimal)], CommandType='"Text"', CommandTimeout='30']
+UPDATE "Portfolios" SET "BaseCurrency" = @p0, "CreatedAt" = @p1, "LastEvaluatedAt" = @p2, "Name" = @p3, "Owner" = @p4, "RiskScore" = @p5, "ValueAtRisk" = @p6
+WHERE "Id" = @p7
+RETURNING 1;
+2025-10-17 20:00:05.013 -05:00 [INF] Updated portfolio "cbeb9144-c262-4d09-b209-ab9192b8f139"
+2025-10-17 20:00:05.014 -05:00 [INF] Executed DbCommand (0ms) [Parameters=[@__id_0='?' (DbType = Guid)], CommandType='"Text"', CommandTimeout='30']
+SELECT "p0"."Id", "p0"."BaseCurrency", "p0"."CreatedAt", "p0"."LastEvaluatedAt", "p0"."Name", "p0"."Owner", "p0"."RiskScore", "p0"."ValueAtRisk", "a"."Id", "a"."AveragePrice", "a"."CurrentPrice", "a"."PortfolioId", "a"."Quantity", "a"."Symbol", "a"."Volatility"
+FROM (
+    SELECT "p"."Id", "p"."BaseCurrency", "p"."CreatedAt", "p"."LastEvaluatedAt", "p"."Name", "p"."Owner", "p"."RiskScore", "p"."ValueAtRisk"
+    FROM "Portfolios" AS "p"
+    WHERE "p"."Id" = @__id_0
+    LIMIT 2
+) AS "p0"
+LEFT JOIN "AssetPositions" AS "a" ON "p0"."Id" = "a"."PortfolioId"
+ORDER BY "p0"."Id"
+2025-10-17 20:00:05.016 -05:00 [INF] Calculated risk for portfolio "2f78e0ed-0adc-4a32-abe7-5ecd371a0ed0" - Score: 13.98, VAR: 125989.15, Classification: "Low"
+2025-10-17 20:00:05.019 -05:00 [INF] Executed DbCommand (1ms) [Parameters=[@p7='?' (DbType = Guid), @p0='?' (Size = 3), @p1='?' (DbType = DateTime), @p2='?' (DbType = DateTime), @p3='?' (Size = 21), @p4='?' (Size = 16), @p5='?' (DbType = Decimal), @p6='?' (DbType = Decimal)], CommandType='"Text"', CommandTimeout='30']
+UPDATE "Portfolios" SET "BaseCurrency" = @p0, "CreatedAt" = @p1, "LastEvaluatedAt" = @p2, "Name" = @p3, "Owner" = @p4, "RiskScore" = @p5, "ValueAtRisk" = @p6
+WHERE "Id" = @p7
+RETURNING 1;
+2025-10-17 20:00:05.023 -05:00 [INF] Updated portfolio "2f78e0ed-0adc-4a32-abe7-5ecd371a0ed0"
+2025-10-17 20:00:05.024 -05:00 [INF] Executed DbCommand (0ms) [Parameters=[@__id_0='?' (DbType = Guid)], CommandType='"Text"', CommandTimeout='30']
+SELECT "p0"."Id", "p0"."BaseCurrency", "p0"."CreatedAt", "p0"."LastEvaluatedAt", "p0"."Name", "p0"."Owner", "p0"."RiskScore", "p0"."ValueAtRisk", "a"."Id", "a"."AveragePrice", "a"."CurrentPrice", "a"."PortfolioId", "a"."Quantity", "a"."Symbol", "a"."Volatility"
+FROM (
+    SELECT "p"."Id", "p"."BaseCurrency", "p"."CreatedAt", "p"."LastEvaluatedAt", "p"."Name", "p"."Owner", "p"."RiskScore", "p"."ValueAtRisk"
+    FROM "Portfolios" AS "p"
+    WHERE "p"."Id" = @__id_0
+    LIMIT 2
+) AS "p0"
+LEFT JOIN "AssetPositions" AS "a" ON "p0"."Id" = "a"."PortfolioId"
+ORDER BY "p0"."Id"
+2025-10-17 20:00:05.026 -05:00 [INF] Calculated risk for portfolio "d832c8a6-108f-4a3a-8e9b-f6b1eb1f2884" - Score: 73.23, VAR: 489868.07, Classification: "Critical"
+2025-10-17 20:00:05.029 -05:00 [INF] Executed DbCommand (1ms) [Parameters=[@p7='?' (DbType = Guid), @p0='?' (Size = 3), @p1='?' (DbType = DateTime), @p2='?' (DbType = DateTime), @p3='?' (Size = 15), @p4='?' (Size = 11), @p5='?' (DbType = Decimal), @p6='?' (DbType = Decimal)], CommandType='"Text"', CommandTimeout='30']
+UPDATE "Portfolios" SET "BaseCurrency" = @p0, "CreatedAt" = @p1, "LastEvaluatedAt" = @p2, "Name" = @p3, "Owner" = @p4, "RiskScore" = @p5, "ValueAtRisk" = @p6
+WHERE "Id" = @p7
+RETURNING 1;
+2025-10-17 20:00:05.033 -05:00 [INF] Updated portfolio "d832c8a6-108f-4a3a-8e9b-f6b1eb1f2884"
+2025-10-17 20:00:05.035 -05:00 [INF] Executed DbCommand (0ms) [Parameters=[@__id_0='?' (DbType = Guid)], CommandType='"Text"', CommandTimeout='30']
+SELECT "p0"."Id", "p0"."BaseCurrency", "p0"."CreatedAt", "p0"."LastEvaluatedAt", "p0"."Name", "p0"."Owner", "p0"."RiskScore", "p0"."ValueAtRisk", "a"."Id", "a"."AveragePrice", "a"."CurrentPrice", "a"."PortfolioId", "a"."Quantity", "a"."Symbol", "a"."Volatility"
+FROM (
+    SELECT "p"."Id", "p"."BaseCurrency", "p"."CreatedAt", "p"."LastEvaluatedAt", "p"."Name", "p"."Owner", "p"."RiskScore", "p"."ValueAtRisk"
+    FROM "Portfolios" AS "p"
+    WHERE "p"."Id" = @__id_0
+    LIMIT 2
+) AS "p0"
+LEFT JOIN "AssetPositions" AS "a" ON "p0"."Id" = "a"."PortfolioId"
+ORDER BY "p0"."Id"
+2025-10-17 20:00:05.037 -05:00 [INF] Calculated risk for portfolio "619ec6f1-c6a6-40b2-9762-699bd41205d6" - Score: 15.46, VAR: 38113.36, Classification: "Moderate"
+2025-10-17 20:00:05.039 -05:00 [INF] Executed DbCommand (1ms) [Parameters=[@p7='?' (DbType = Guid), @p0='?' (Size = 3), @p1='?' (DbType = DateTime), @p2='?' (DbType = DateTime), @p3='?' (Size = 25), @p4='?' (Size = 12), @p5='?' (DbType = Decimal), @p6='?' (DbType = Decimal)], CommandType='"Text"', CommandTimeout='30']
+UPDATE "Portfolios" SET "BaseCurrency" = @p0, "CreatedAt" = @p1, "LastEvaluatedAt" = @p2, "Name" = @p3, "Owner" = @p4, "RiskScore" = @p5, "ValueAtRisk" = @p6
+WHERE "Id" = @p7
+RETURNING 1;
+2025-10-17 20:00:05.044 -05:00 [INF] Updated portfolio "619ec6f1-c6a6-40b2-9762-699bd41205d6"
+2025-10-17 20:00:05.045 -05:00 [INF] Executed DbCommand (0ms) [Parameters=[@__id_0='?' (DbType = Guid)], CommandType='"Text"', CommandTimeout='30']
+SELECT "p0"."Id", "p0"."BaseCurrency", "p0"."CreatedAt", "p0"."LastEvaluatedAt", "p0"."Name", "p0"."Owner", "p0"."RiskScore", "p0"."ValueAtRisk", "a"."Id", "a"."AveragePrice", "a"."CurrentPrice", "a"."PortfolioId", "a"."Quantity", "a"."Symbol", "a"."Volatility"
+FROM (
+    SELECT "p"."Id", "p"."BaseCurrency", "p"."CreatedAt", "p"."LastEvaluatedAt", "p"."Name", "p"."Owner", "p"."RiskScore", "p"."ValueAtRisk"
+    FROM "Portfolios" AS "p"
+    WHERE "p"."Id" = @__id_0
+    LIMIT 2
+) AS "p0"
+LEFT JOIN "AssetPositions" AS "a" ON "p0"."Id" = "a"."PortfolioId"
+ORDER BY "p0"."Id"
+2025-10-17 20:00:05.047 -05:00 [INF] Calculated risk for portfolio "b4894ac3-c4a6-460e-bb5b-7c798b826ead" - Score: 42.00, VAR: 77330.13, Classification: "Elevated"
+2025-10-17 20:00:05.049 -05:00 [INF] Executed DbCommand (1ms) [Parameters=[@p7='?' (DbType = Guid), @p0='?' (Size = 3), @p1='?' (DbType = DateTime), @p2='?' (DbType = DateTime), @p3='?' (Size = 20), @p4='?' (Size = 12), @p5='?' (DbType = Decimal), @p6='?' (DbType = Decimal)], CommandType='"Text"', CommandTimeout='30']
+UPDATE "Portfolios" SET "BaseCurrency" = @p0, "CreatedAt" = @p1, "LastEvaluatedAt" = @p2, "Name" = @p3, "Owner" = @p4, "RiskScore" = @p5, "ValueAtRisk" = @p6
+WHERE "Id" = @p7
+RETURNING 1;
+2025-10-17 20:00:05.053 -05:00 [INF] Updated portfolio "b4894ac3-c4a6-460e-bb5b-7c798b826ead"
+2025-10-17 20:00:05.054 -05:00 [INF] Executed DbCommand (0ms) [Parameters=[@__id_0='?' (DbType = Guid)], CommandType='"Text"', CommandTimeout='30']
+SELECT "p0"."Id", "p0"."BaseCurrency", "p0"."CreatedAt", "p0"."LastEvaluatedAt", "p0"."Name", "p0"."Owner", "p0"."RiskScore", "p0"."ValueAtRisk", "a"."Id", "a"."AveragePrice", "a"."CurrentPrice", "a"."PortfolioId", "a"."Quantity", "a"."Symbol", "a"."Volatility"
+FROM (
+    SELECT "p"."Id", "p"."BaseCurrency", "p"."CreatedAt", "p"."LastEvaluatedAt", "p"."Name", "p"."Owner", "p"."RiskScore", "p"."ValueAtRisk"
+    FROM "Portfolios" AS "p"
+    WHERE "p"."Id" = @__id_0
+    LIMIT 2
+) AS "p0"
+LEFT JOIN "AssetPositions" AS "a" ON "p0"."Id" = "a"."PortfolioId"
+ORDER BY "p0"."Id"
+2025-10-17 20:00:05.056 -05:00 [INF] Calculated risk for portfolio "bef54ca4-04a5-4537-8197-fbac92d1cf02" - Score: 36.02, VAR: 63499.93, Classification: "Elevated"
+2025-10-17 20:00:05.059 -05:00 [INF] Executed DbCommand (1ms) [Parameters=[@p7='?' (DbType = Guid), @p0='?' (Size = 3), @p1='?' (DbType = DateTime), @p2='?' (DbType = DateTime), @p3='?' (Size = 16), @p4='?' (Size = 11), @p5='?' (DbType = Decimal), @p6='?' (DbType = Decimal)], CommandType='"Text"', CommandTimeout='30']
+UPDATE "Portfolios" SET "BaseCurrency" = @p0, "CreatedAt" = @p1, "LastEvaluatedAt" = @p2, "Name" = @p3, "Owner" = @p4, "RiskScore" = @p5, "ValueAtRisk" = @p6
+WHERE "Id" = @p7
+RETURNING 1;
+2025-10-17 20:00:05.063 -05:00 [INF] Updated portfolio "bef54ca4-04a5-4537-8197-fbac92d1cf02"
+2025-10-17 20:00:05.065 -05:00 [INF] Executed DbCommand (0ms) [Parameters=[@__id_0='?' (DbType = Guid)], CommandType='"Text"', CommandTimeout='30']
+SELECT "p0"."Id", "p0"."BaseCurrency", "p0"."CreatedAt", "p0"."LastEvaluatedAt", "p0"."Name", "p0"."Owner", "p0"."RiskScore", "p0"."ValueAtRisk", "a"."Id", "a"."AveragePrice", "a"."CurrentPrice", "a"."PortfolioId", "a"."Quantity", "a"."Symbol", "a"."Volatility"
+FROM (
+    SELECT "p"."Id", "p"."BaseCurrency", "p"."CreatedAt", "p"."LastEvaluatedAt", "p"."Name", "p"."Owner", "p"."RiskScore", "p"."ValueAtRisk"
+    FROM "Portfolios" AS "p"
+    WHERE "p"."Id" = @__id_0
+    LIMIT 2
+) AS "p0"
+LEFT JOIN "AssetPositions" AS "a" ON "p0"."Id" = "a"."PortfolioId"
+ORDER BY "p0"."Id"
+2025-10-17 20:00:05.066 -05:00 [INF] Calculated risk for portfolio "9a61c192-01f8-48a6-a001-e68ae4a71c2e" - Score: 27.48, VAR: 116342.49, Classification: "Moderate"
+2025-10-17 20:00:05.069 -05:00 [INF] Executed DbCommand (1ms) [Parameters=[@p7='?' (DbType = Guid), @p0='?' (Size = 3), @p1='?' (DbType = DateTime), @p2='?' (DbType = DateTime), @p3='?' (Size = 19), @p4='?' (Size = 12), @p5='?' (DbType = Decimal), @p6='?' (DbType = Decimal)], CommandType='"Text"', CommandTimeout='30']
+UPDATE "Portfolios" SET "BaseCurrency" = @p0, "CreatedAt" = @p1, "LastEvaluatedAt" = @p2, "Name" = @p3, "Owner" = @p4, "RiskScore" = @p5, "ValueAtRisk" = @p6
+WHERE "Id" = @p7
+RETURNING 1;
+2025-10-17 20:00:05.073 -05:00 [INF] Updated portfolio "9a61c192-01f8-48a6-a001-e68ae4a71c2e"
+2025-10-17 20:00:05.074 -05:00 [INF] Executed DbCommand (0ms) [Parameters=[@__id_0='?' (DbType = Guid)], CommandType='"Text"', CommandTimeout='30']
+SELECT "p0"."Id", "p0"."BaseCurrency", "p0"."CreatedAt", "p0"."LastEvaluatedAt", "p0"."Name", "p0"."Owner", "p0"."RiskScore", "p0"."ValueAtRisk", "a"."Id", "a"."AveragePrice", "a"."CurrentPrice", "a"."PortfolioId", "a"."Quantity", "a"."Symbol", "a"."Volatility"
+FROM (
+    SELECT "p"."Id", "p"."BaseCurrency", "p"."CreatedAt", "p"."LastEvaluatedAt", "p"."Name", "p"."Owner", "p"."RiskScore", "p"."ValueAtRisk"
+    FROM "Portfolios" AS "p"
+    WHERE "p"."Id" = @__id_0
+    LIMIT 2
+) AS "p0"
+LEFT JOIN "AssetPositions" AS "a" ON "p0"."Id" = "a"."PortfolioId"
+ORDER BY "p0"."Id"
+2025-10-17 20:00:05.076 -05:00 [INF] Calculated risk for portfolio "713c396d-dc12-443d-9f70-137925cbde66" - Score: 22.54, VAR: 118174.38, Classification: "Moderate"
+2025-10-17 20:00:05.079 -05:00 [INF] Executed DbCommand (1ms) [Parameters=[@p7='?' (DbType = Guid), @p0='?' (Size = 3), @p1='?' (DbType = DateTime), @p2='?' (DbType = DateTime), @p3='?' (Size = 21), @p4='?' (Size = 19), @p5='?' (DbType = Decimal), @p6='?' (DbType = Decimal)], CommandType='"Text"', CommandTimeout='30']
+UPDATE "Portfolios" SET "BaseCurrency" = @p0, "CreatedAt" = @p1, "LastEvaluatedAt" = @p2, "Name" = @p3, "Owner" = @p4, "RiskScore" = @p5, "ValueAtRisk" = @p6
+WHERE "Id" = @p7
+RETURNING 1;
+2025-10-17 20:00:05.084 -05:00 [INF] Updated portfolio "713c396d-dc12-443d-9f70-137925cbde66"
+2025-10-17 20:00:05.085 -05:00 [INF] Executed DbCommand (0ms) [Parameters=[@__id_0='?' (DbType = Guid)], CommandType='"Text"', CommandTimeout='30']
+SELECT "p0"."Id", "p0"."BaseCurrency", "p0"."CreatedAt", "p0"."LastEvaluatedAt", "p0"."Name", "p0"."Owner", "p0"."RiskScore", "p0"."ValueAtRisk", "a"."Id", "a"."AveragePrice", "a"."CurrentPrice", "a"."PortfolioId", "a"."Quantity", "a"."Symbol", "a"."Volatility"
+FROM (
+    SELECT "p"."Id", "p"."BaseCurrency", "p"."CreatedAt", "p"."LastEvaluatedAt", "p"."Name", "p"."Owner", "p"."RiskScore", "p"."ValueAtRisk"
+    FROM "Portfolios" AS "p"
+    WHERE "p"."Id" = @__id_0
+    LIMIT 2
+) AS "p0"
+LEFT JOIN "AssetPositions" AS "a" ON "p0"."Id" = "a"."PortfolioId"
+ORDER BY "p0"."Id"
+2025-10-17 20:00:05.087 -05:00 [INF] Calculated risk for portfolio "86025381-1624-43f6-a010-f42e3bceea35" - Score: 22.64, VAR: 69412.85, Classification: "Moderate"
+2025-10-17 20:00:05.091 -05:00 [INF] Executed DbCommand (1ms) [Parameters=[@p7='?' (DbType = Guid), @p0='?' (Size = 3), @p1='?' (DbType = DateTime), @p2='?' (DbType = DateTime), @p3='?' (Size = 20), @p4='?' (Size = 14), @p5='?' (DbType = Decimal), @p6='?' (DbType = Decimal)], CommandType='"Text"', CommandTimeout='30']
+UPDATE "Portfolios" SET "BaseCurrency" = @p0, "CreatedAt" = @p1, "LastEvaluatedAt" = @p2, "Name" = @p3, "Owner" = @p4, "RiskScore" = @p5, "ValueAtRisk" = @p6
+WHERE "Id" = @p7
+RETURNING 1;
+2025-10-17 20:00:05.095 -05:00 [INF] Updated portfolio "86025381-1624-43f6-a010-f42e3bceea35"
+2025-10-17 20:00:05.096 -05:00 [INF] Executed DbCommand (0ms) [Parameters=[@__id_0='?' (DbType = Guid)], CommandType='"Text"', CommandTimeout='30']
+SELECT "p0"."Id", "p0"."BaseCurrency", "p0"."CreatedAt", "p0"."LastEvaluatedAt", "p0"."Name", "p0"."Owner", "p0"."RiskScore", "p0"."ValueAtRisk", "a"."Id", "a"."AveragePrice", "a"."CurrentPrice", "a"."PortfolioId", "a"."Quantity", "a"."Symbol", "a"."Volatility"
+FROM (
+    SELECT "p"."Id", "p"."BaseCurrency", "p"."CreatedAt", "p"."LastEvaluatedAt", "p"."Name", "p"."Owner", "p"."RiskScore", "p"."ValueAtRisk"
+    FROM "Portfolios" AS "p"
+    WHERE "p"."Id" = @__id_0
+    LIMIT 2
+) AS "p0"
+LEFT JOIN "AssetPositions" AS "a" ON "p0"."Id" = "a"."PortfolioId"
+ORDER BY "p0"."Id"
+2025-10-17 20:00:05.098 -05:00 [INF] Calculated risk for portfolio "fe192c38-a96f-442c-966a-873faa03e508" - Score: 32.54, VAR: 199831.97, Classification: "Moderate"
+2025-10-17 20:00:05.101 -05:00 [INF] Executed DbCommand (1ms) [Parameters=[@p7='?' (DbType = Guid), @p0='?' (Size = 3), @p1='?' (DbType = DateTime), @p2='?' (DbType = DateTime), @p3='?' (Size = 16), @p4='?' (Size = 13), @p5='?' (DbType = Decimal), @p6='?' (DbType = Decimal)], CommandType='"Text"', CommandTimeout='30']
+UPDATE "Portfolios" SET "BaseCurrency" = @p0, "CreatedAt" = @p1, "LastEvaluatedAt" = @p2, "Name" = @p3, "Owner" = @p4, "RiskScore" = @p5, "ValueAtRisk" = @p6
+WHERE "Id" = @p7
+RETURNING 1;
+2025-10-17 20:00:05.106 -05:00 [INF] Updated portfolio "fe192c38-a96f-442c-966a-873faa03e508"
+2025-10-17 20:00:05.107 -05:00 [INF] Executed DbCommand (0ms) [Parameters=[@__id_0='?' (DbType = Guid)], CommandType='"Text"', CommandTimeout='30']
+SELECT "p0"."Id", "p0"."BaseCurrency", "p0"."CreatedAt", "p0"."LastEvaluatedAt", "p0"."Name", "p0"."Owner", "p0"."RiskScore", "p0"."ValueAtRisk", "a"."Id", "a"."AveragePrice", "a"."CurrentPrice", "a"."PortfolioId", "a"."Quantity", "a"."Symbol", "a"."Volatility"
+FROM (
+    SELECT "p"."Id", "p"."BaseCurrency", "p"."CreatedAt", "p"."LastEvaluatedAt", "p"."Name", "p"."Owner", "p"."RiskScore", "p"."ValueAtRisk"
+    FROM "Portfolios" AS "p"
+    WHERE "p"."Id" = @__id_0
+    LIMIT 2
+) AS "p0"
+LEFT JOIN "AssetPositions" AS "a" ON "p0"."Id" = "a"."PortfolioId"
+ORDER BY "p0"."Id"
+2025-10-17 20:00:05.109 -05:00 [INF] Calculated risk for portfolio "35f5db1d-94a5-4f84-91a5-f58aa79c47b4" - Score: 25.00, VAR: 1019.38, Classification: "Moderate"
+2025-10-17 20:00:05.112 -05:00 [INF] Executed DbCommand (1ms) [Parameters=[@p7='?' (DbType = Guid), @p0='?' (Size = 3), @p1='?' (DbType = DateTime), @p2='?' (DbType = DateTime), @p3='?' (Size = 14), @p4='?' (Size = 10), @p5='?' (DbType = Decimal), @p6='?' (DbType = Decimal)], CommandType='"Text"', CommandTimeout='30']
+UPDATE "Portfolios" SET "BaseCurrency" = @p0, "CreatedAt" = @p1, "LastEvaluatedAt" = @p2, "Name" = @p3, "Owner" = @p4, "RiskScore" = @p5, "ValueAtRisk" = @p6
+WHERE "Id" = @p7
+RETURNING 1;
+2025-10-17 20:00:05.116 -05:00 [INF] Updated portfolio "35f5db1d-94a5-4f84-91a5-f58aa79c47b4"
+2025-10-17 20:05:24.990 -05:00 [INF] Application is shutting down...
+2025-10-17 20:07:50.167 -05:00 [INF] Applying database migrations...
+2025-10-17 20:07:50.246 -05:00 [INF] Database migrations completed
+2025-10-17 20:07:50.268 -05:00 [INF] Now listening on: http://localhost:5012
+2025-10-17 20:07:50.277 -05:00 [INF] Application started. Press Ctrl+C to shut down.
+2025-10-17 20:07:50.277 -05:00 [INF] Hosting environment: Development
+2025-10-17 20:07:50.278 -05:00 [INF] Content root path: C:\Users\purple\Desktop\Dev\Git\C\Risk Portfolio\RiskPortfolio.Api
+2025-10-17 20:07:50.904 -05:00 [INF] Executed DbCommand (2ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT "p"."Id", "p"."BaseCurrency", "p"."CreatedAt", "p"."LastEvaluatedAt", "p"."Name", "p"."Owner", "p"."RiskScore", "p"."ValueAtRisk", "a"."Id", "a"."AveragePrice", "a"."CurrentPrice", "a"."PortfolioId", "a"."Quantity", "a"."Symbol", "a"."Volatility"
+FROM "Portfolios" AS "p"
+LEFT JOIN "AssetPositions" AS "a" ON "p"."Id" = "a"."PortfolioId"
+ORDER BY "p"."Name", "p"."Id"
+2025-10-17 20:07:50.946 -05:00 [INF] Executed DbCommand (2ms) [Parameters=[@__id_0='?' (DbType = Guid)], CommandType='"Text"', CommandTimeout='30']
+SELECT "p0"."Id", "p0"."BaseCurrency", "p0"."CreatedAt", "p0"."LastEvaluatedAt", "p0"."Name", "p0"."Owner", "p0"."RiskScore", "p0"."ValueAtRisk", "a"."Id", "a"."AveragePrice", "a"."CurrentPrice", "a"."PortfolioId", "a"."Quantity", "a"."Symbol", "a"."Volatility"
+FROM (
+    SELECT "p"."Id", "p"."BaseCurrency", "p"."CreatedAt", "p"."LastEvaluatedAt", "p"."Name", "p"."Owner", "p"."RiskScore", "p"."ValueAtRisk"
+    FROM "Portfolios" AS "p"
+    WHERE "p"."Id" = @__id_0
+    LIMIT 2
+) AS "p0"
+LEFT JOIN "AssetPositions" AS "a" ON "p0"."Id" = "a"."PortfolioId"
+ORDER BY "p0"."Id"
+2025-10-17 20:07:50.998 -05:00 [INF] Calculated risk for portfolio "cbeb9144-c262-4d09-b209-ab9192b8f139" - Score: 55.15, VAR: 111548.20, Classification: "Elevated"
+2025-10-17 20:07:51.064 -05:00 [INF] Executed DbCommand (5ms) [Parameters=[@p7='?' (DbType = Guid), @p0='?' (Size = 3), @p1='?' (DbType = DateTime), @p2='?' (DbType = DateTime), @p3='?' (Size = 17), @p4='?' (Size = 11), @p5='?' (DbType = Decimal), @p6='?' (DbType = Decimal)], CommandType='"Text"', CommandTimeout='30']
+UPDATE "Portfolios" SET "BaseCurrency" = @p0, "CreatedAt" = @p1, "LastEvaluatedAt" = @p2, "Name" = @p3, "Owner" = @p4, "RiskScore" = @p5, "ValueAtRisk" = @p6
+WHERE "Id" = @p7
+RETURNING 1;
+2025-10-17 20:07:51.073 -05:00 [INF] Updated portfolio "cbeb9144-c262-4d09-b209-ab9192b8f139"
+2025-10-17 20:07:59.280 -05:00 [WRN] Failed to establish Redis connection using localhost:6379. Falling back to memory cache only.
+StackExchange.Redis.RedisConnectionException: It was not possible to connect to the redis server(s). Error connecting right now. To allow this multiplexer to continue retrying until it's able to connect, use abortConnect=false in your connection string or AbortOnConnectFail=false; in your code.
+   at StackExchange.Redis.ConnectionMultiplexer.ConnectImplAsync(ConfigurationOptions configuration, TextWriter writer, Nullable`1 serverType) in /_/src/StackExchange.Redis/ConnectionMultiplexer.cs:line 620
+   at RiskPortfolio.Infrastructure.Caching.RedisConnectionFactory.GetConnectionAsync() in C:\Users\purple\Desktop\Dev\Git\C\Risk Portfolio\RiskPortfolio.Infrastructure\Caching\RedisConnectionFactory.cs:line 41
+2025-10-17 20:07:59.304 -05:00 [INF] Executed DbCommand (0ms) [Parameters=[@__id_0='?' (DbType = Guid)], CommandType='"Text"', CommandTimeout='30']
+SELECT "p0"."Id", "p0"."BaseCurrency", "p0"."CreatedAt", "p0"."LastEvaluatedAt", "p0"."Name", "p0"."Owner", "p0"."RiskScore", "p0"."ValueAtRisk", "a"."Id", "a"."AveragePrice", "a"."CurrentPrice", "a"."PortfolioId", "a"."Quantity", "a"."Symbol", "a"."Volatility"
+FROM (
+    SELECT "p"."Id", "p"."BaseCurrency", "p"."CreatedAt", "p"."LastEvaluatedAt", "p"."Name", "p"."Owner", "p"."RiskScore", "p"."ValueAtRisk"
+    FROM "Portfolios" AS "p"
+    WHERE "p"."Id" = @__id_0
+    LIMIT 2
+) AS "p0"
+LEFT JOIN "AssetPositions" AS "a" ON "p0"."Id" = "a"."PortfolioId"
+ORDER BY "p0"."Id"
+2025-10-17 20:07:59.308 -05:00 [INF] Calculated risk for portfolio "2f78e0ed-0adc-4a32-abe7-5ecd371a0ed0" - Score: 13.98, VAR: 125989.15, Classification: "Low"
+2025-10-17 20:07:59.316 -05:00 [INF] Executed DbCommand (6ms) [Parameters=[@p7='?' (DbType = Guid), @p0='?' (Size = 3), @p1='?' (DbType = DateTime), @p2='?' (DbType = DateTime), @p3='?' (Size = 21), @p4='?' (Size = 16), @p5='?' (DbType = Decimal), @p6='?' (DbType = Decimal)], CommandType='"Text"', CommandTimeout='30']
+UPDATE "Portfolios" SET "BaseCurrency" = @p0, "CreatedAt" = @p1, "LastEvaluatedAt" = @p2, "Name" = @p3, "Owner" = @p4, "RiskScore" = @p5, "ValueAtRisk" = @p6
+WHERE "Id" = @p7
+RETURNING 1;
+2025-10-17 20:07:59.321 -05:00 [INF] Updated portfolio "2f78e0ed-0adc-4a32-abe7-5ecd371a0ed0"
+2025-10-17 20:07:59.323 -05:00 [INF] Executed DbCommand (0ms) [Parameters=[@__id_0='?' (DbType = Guid)], CommandType='"Text"', CommandTimeout='30']
+SELECT "p0"."Id", "p0"."BaseCurrency", "p0"."CreatedAt", "p0"."LastEvaluatedAt", "p0"."Name", "p0"."Owner", "p0"."RiskScore", "p0"."ValueAtRisk", "a"."Id", "a"."AveragePrice", "a"."CurrentPrice", "a"."PortfolioId", "a"."Quantity", "a"."Symbol", "a"."Volatility"
+FROM (
+    SELECT "p"."Id", "p"."BaseCurrency", "p"."CreatedAt", "p"."LastEvaluatedAt", "p"."Name", "p"."Owner", "p"."RiskScore", "p"."ValueAtRisk"
+    FROM "Portfolios" AS "p"
+    WHERE "p"."Id" = @__id_0
+    LIMIT 2
+) AS "p0"
+LEFT JOIN "AssetPositions" AS "a" ON "p0"."Id" = "a"."PortfolioId"
+ORDER BY "p0"."Id"
+2025-10-17 20:07:59.325 -05:00 [INF] Calculated risk for portfolio "d832c8a6-108f-4a3a-8e9b-f6b1eb1f2884" - Score: 73.23, VAR: 489868.07, Classification: "Critical"
+2025-10-17 20:07:59.327 -05:00 [INF] Executed DbCommand (1ms) [Parameters=[@p7='?' (DbType = Guid), @p0='?' (Size = 3), @p1='?' (DbType = DateTime), @p2='?' (DbType = DateTime), @p3='?' (Size = 15), @p4='?' (Size = 11), @p5='?' (DbType = Decimal), @p6='?' (DbType = Decimal)], CommandType='"Text"', CommandTimeout='30']
+UPDATE "Portfolios" SET "BaseCurrency" = @p0, "CreatedAt" = @p1, "LastEvaluatedAt" = @p2, "Name" = @p3, "Owner" = @p4, "RiskScore" = @p5, "ValueAtRisk" = @p6
+WHERE "Id" = @p7
+RETURNING 1;
+2025-10-17 20:07:59.331 -05:00 [INF] Updated portfolio "d832c8a6-108f-4a3a-8e9b-f6b1eb1f2884"
+2025-10-17 20:07:59.333 -05:00 [INF] Executed DbCommand (0ms) [Parameters=[@__id_0='?' (DbType = Guid)], CommandType='"Text"', CommandTimeout='30']
+SELECT "p0"."Id", "p0"."BaseCurrency", "p0"."CreatedAt", "p0"."LastEvaluatedAt", "p0"."Name", "p0"."Owner", "p0"."RiskScore", "p0"."ValueAtRisk", "a"."Id", "a"."AveragePrice", "a"."CurrentPrice", "a"."PortfolioId", "a"."Quantity", "a"."Symbol", "a"."Volatility"
+FROM (
+    SELECT "p"."Id", "p"."BaseCurrency", "p"."CreatedAt", "p"."LastEvaluatedAt", "p"."Name", "p"."Owner", "p"."RiskScore", "p"."ValueAtRisk"
+    FROM "Portfolios" AS "p"
+    WHERE "p"."Id" = @__id_0
+    LIMIT 2
+) AS "p0"
+LEFT JOIN "AssetPositions" AS "a" ON "p0"."Id" = "a"."PortfolioId"
+ORDER BY "p0"."Id"
+2025-10-17 20:07:59.335 -05:00 [INF] Calculated risk for portfolio "619ec6f1-c6a6-40b2-9762-699bd41205d6" - Score: 15.46, VAR: 38113.36, Classification: "Moderate"
+2025-10-17 20:07:59.337 -05:00 [INF] Executed DbCommand (1ms) [Parameters=[@p7='?' (DbType = Guid), @p0='?' (Size = 3), @p1='?' (DbType = DateTime), @p2='?' (DbType = DateTime), @p3='?' (Size = 25), @p4='?' (Size = 12), @p5='?' (DbType = Decimal), @p6='?' (DbType = Decimal)], CommandType='"Text"', CommandTimeout='30']
+UPDATE "Portfolios" SET "BaseCurrency" = @p0, "CreatedAt" = @p1, "LastEvaluatedAt" = @p2, "Name" = @p3, "Owner" = @p4, "RiskScore" = @p5, "ValueAtRisk" = @p6
+WHERE "Id" = @p7
+RETURNING 1;
+2025-10-17 20:07:59.342 -05:00 [INF] Updated portfolio "619ec6f1-c6a6-40b2-9762-699bd41205d6"
+2025-10-17 20:07:59.343 -05:00 [INF] Executed DbCommand (0ms) [Parameters=[@__id_0='?' (DbType = Guid)], CommandType='"Text"', CommandTimeout='30']
+SELECT "p0"."Id", "p0"."BaseCurrency", "p0"."CreatedAt", "p0"."LastEvaluatedAt", "p0"."Name", "p0"."Owner", "p0"."RiskScore", "p0"."ValueAtRisk", "a"."Id", "a"."AveragePrice", "a"."CurrentPrice", "a"."PortfolioId", "a"."Quantity", "a"."Symbol", "a"."Volatility"
+FROM (
+    SELECT "p"."Id", "p"."BaseCurrency", "p"."CreatedAt", "p"."LastEvaluatedAt", "p"."Name", "p"."Owner", "p"."RiskScore", "p"."ValueAtRisk"
+    FROM "Portfolios" AS "p"
+    WHERE "p"."Id" = @__id_0
+    LIMIT 2
+) AS "p0"
+LEFT JOIN "AssetPositions" AS "a" ON "p0"."Id" = "a"."PortfolioId"
+ORDER BY "p0"."Id"
+2025-10-17 20:07:59.345 -05:00 [INF] Calculated risk for portfolio "b4894ac3-c4a6-460e-bb5b-7c798b826ead" - Score: 42.00, VAR: 77330.13, Classification: "Elevated"
+2025-10-17 20:07:59.348 -05:00 [INF] Executed DbCommand (1ms) [Parameters=[@p7='?' (DbType = Guid), @p0='?' (Size = 3), @p1='?' (DbType = DateTime), @p2='?' (DbType = DateTime), @p3='?' (Size = 20), @p4='?' (Size = 12), @p5='?' (DbType = Decimal), @p6='?' (DbType = Decimal)], CommandType='"Text"', CommandTimeout='30']
+UPDATE "Portfolios" SET "BaseCurrency" = @p0, "CreatedAt" = @p1, "LastEvaluatedAt" = @p2, "Name" = @p3, "Owner" = @p4, "RiskScore" = @p5, "ValueAtRisk" = @p6
+WHERE "Id" = @p7
+RETURNING 1;
+2025-10-17 20:07:59.352 -05:00 [INF] Updated portfolio "b4894ac3-c4a6-460e-bb5b-7c798b826ead"
+2025-10-17 20:07:59.353 -05:00 [INF] Executed DbCommand (0ms) [Parameters=[@__id_0='?' (DbType = Guid)], CommandType='"Text"', CommandTimeout='30']
+SELECT "p0"."Id", "p0"."BaseCurrency", "p0"."CreatedAt", "p0"."LastEvaluatedAt", "p0"."Name", "p0"."Owner", "p0"."RiskScore", "p0"."ValueAtRisk", "a"."Id", "a"."AveragePrice", "a"."CurrentPrice", "a"."PortfolioId", "a"."Quantity", "a"."Symbol", "a"."Volatility"
+FROM (
+    SELECT "p"."Id", "p"."BaseCurrency", "p"."CreatedAt", "p"."LastEvaluatedAt", "p"."Name", "p"."Owner", "p"."RiskScore", "p"."ValueAtRisk"
+    FROM "Portfolios" AS "p"
+    WHERE "p"."Id" = @__id_0
+    LIMIT 2
+) AS "p0"
+LEFT JOIN "AssetPositions" AS "a" ON "p0"."Id" = "a"."PortfolioId"
+ORDER BY "p0"."Id"
+2025-10-17 20:07:59.355 -05:00 [INF] Calculated risk for portfolio "bef54ca4-04a5-4537-8197-fbac92d1cf02" - Score: 36.02, VAR: 63499.93, Classification: "Elevated"
+2025-10-17 20:07:59.358 -05:00 [INF] Executed DbCommand (1ms) [Parameters=[@p7='?' (DbType = Guid), @p0='?' (Size = 3), @p1='?' (DbType = DateTime), @p2='?' (DbType = DateTime), @p3='?' (Size = 16), @p4='?' (Size = 11), @p5='?' (DbType = Decimal), @p6='?' (DbType = Decimal)], CommandType='"Text"', CommandTimeout='30']
+UPDATE "Portfolios" SET "BaseCurrency" = @p0, "CreatedAt" = @p1, "LastEvaluatedAt" = @p2, "Name" = @p3, "Owner" = @p4, "RiskScore" = @p5, "ValueAtRisk" = @p6
+WHERE "Id" = @p7
+RETURNING 1;
+2025-10-17 20:07:59.362 -05:00 [INF] Updated portfolio "bef54ca4-04a5-4537-8197-fbac92d1cf02"
+2025-10-17 20:07:59.364 -05:00 [INF] Executed DbCommand (0ms) [Parameters=[@__id_0='?' (DbType = Guid)], CommandType='"Text"', CommandTimeout='30']
+SELECT "p0"."Id", "p0"."BaseCurrency", "p0"."CreatedAt", "p0"."LastEvaluatedAt", "p0"."Name", "p0"."Owner", "p0"."RiskScore", "p0"."ValueAtRisk", "a"."Id", "a"."AveragePrice", "a"."CurrentPrice", "a"."PortfolioId", "a"."Quantity", "a"."Symbol", "a"."Volatility"
+FROM (
+    SELECT "p"."Id", "p"."BaseCurrency", "p"."CreatedAt", "p"."LastEvaluatedAt", "p"."Name", "p"."Owner", "p"."RiskScore", "p"."ValueAtRisk"
+    FROM "Portfolios" AS "p"
+    WHERE "p"."Id" = @__id_0
+    LIMIT 2
+) AS "p0"
+LEFT JOIN "AssetPositions" AS "a" ON "p0"."Id" = "a"."PortfolioId"
+ORDER BY "p0"."Id"
+2025-10-17 20:07:59.366 -05:00 [INF] Calculated risk for portfolio "9a61c192-01f8-48a6-a001-e68ae4a71c2e" - Score: 27.48, VAR: 116342.49, Classification: "Moderate"
+2025-10-17 20:07:59.368 -05:00 [INF] Executed DbCommand (1ms) [Parameters=[@p7='?' (DbType = Guid), @p0='?' (Size = 3), @p1='?' (DbType = DateTime), @p2='?' (DbType = DateTime), @p3='?' (Size = 19), @p4='?' (Size = 12), @p5='?' (DbType = Decimal), @p6='?' (DbType = Decimal)], CommandType='"Text"', CommandTimeout='30']
+UPDATE "Portfolios" SET "BaseCurrency" = @p0, "CreatedAt" = @p1, "LastEvaluatedAt" = @p2, "Name" = @p3, "Owner" = @p4, "RiskScore" = @p5, "ValueAtRisk" = @p6
+WHERE "Id" = @p7
+RETURNING 1;
+2025-10-17 20:07:59.373 -05:00 [INF] Updated portfolio "9a61c192-01f8-48a6-a001-e68ae4a71c2e"
+2025-10-17 20:07:59.374 -05:00 [INF] Executed DbCommand (0ms) [Parameters=[@__id_0='?' (DbType = Guid)], CommandType='"Text"', CommandTimeout='30']
+SELECT "p0"."Id", "p0"."BaseCurrency", "p0"."CreatedAt", "p0"."LastEvaluatedAt", "p0"."Name", "p0"."Owner", "p0"."RiskScore", "p0"."ValueAtRisk", "a"."Id", "a"."AveragePrice", "a"."CurrentPrice", "a"."PortfolioId", "a"."Quantity", "a"."Symbol", "a"."Volatility"
+FROM (
+    SELECT "p"."Id", "p"."BaseCurrency", "p"."CreatedAt", "p"."LastEvaluatedAt", "p"."Name", "p"."Owner", "p"."RiskScore", "p"."ValueAtRisk"
+    FROM "Portfolios" AS "p"
+    WHERE "p"."Id" = @__id_0
+    LIMIT 2
+) AS "p0"
+LEFT JOIN "AssetPositions" AS "a" ON "p0"."Id" = "a"."PortfolioId"
+ORDER BY "p0"."Id"
+2025-10-17 20:07:59.376 -05:00 [INF] Calculated risk for portfolio "713c396d-dc12-443d-9f70-137925cbde66" - Score: 22.54, VAR: 118174.38, Classification: "Moderate"
+2025-10-17 20:07:59.379 -05:00 [INF] Executed DbCommand (1ms) [Parameters=[@p7='?' (DbType = Guid), @p0='?' (Size = 3), @p1='?' (DbType = DateTime), @p2='?' (DbType = DateTime), @p3='?' (Size = 21), @p4='?' (Size = 19), @p5='?' (DbType = Decimal), @p6='?' (DbType = Decimal)], CommandType='"Text"', CommandTimeout='30']
+UPDATE "Portfolios" SET "BaseCurrency" = @p0, "CreatedAt" = @p1, "LastEvaluatedAt" = @p2, "Name" = @p3, "Owner" = @p4, "RiskScore" = @p5, "ValueAtRisk" = @p6
+WHERE "Id" = @p7
+RETURNING 1;
+2025-10-17 20:07:59.383 -05:00 [INF] Updated portfolio "713c396d-dc12-443d-9f70-137925cbde66"
+2025-10-17 20:07:59.384 -05:00 [INF] Executed DbCommand (0ms) [Parameters=[@__id_0='?' (DbType = Guid)], CommandType='"Text"', CommandTimeout='30']
+SELECT "p0"."Id", "p0"."BaseCurrency", "p0"."CreatedAt", "p0"."LastEvaluatedAt", "p0"."Name", "p0"."Owner", "p0"."RiskScore", "p0"."ValueAtRisk", "a"."Id", "a"."AveragePrice", "a"."CurrentPrice", "a"."PortfolioId", "a"."Quantity", "a"."Symbol", "a"."Volatility"
+FROM (
+    SELECT "p"."Id", "p"."BaseCurrency", "p"."CreatedAt", "p"."LastEvaluatedAt", "p"."Name", "p"."Owner", "p"."RiskScore", "p"."ValueAtRisk"
+    FROM "Portfolios" AS "p"
+    WHERE "p"."Id" = @__id_0
+    LIMIT 2
+) AS "p0"
+LEFT JOIN "AssetPositions" AS "a" ON "p0"."Id" = "a"."PortfolioId"
+ORDER BY "p0"."Id"
+2025-10-17 20:07:59.386 -05:00 [INF] Calculated risk for portfolio "86025381-1624-43f6-a010-f42e3bceea35" - Score: 22.64, VAR: 69412.85, Classification: "Moderate"
+2025-10-17 20:07:59.389 -05:00 [INF] Executed DbCommand (1ms) [Parameters=[@p7='?' (DbType = Guid), @p0='?' (Size = 3), @p1='?' (DbType = DateTime), @p2='?' (DbType = DateTime), @p3='?' (Size = 20), @p4='?' (Size = 14), @p5='?' (DbType = Decimal), @p6='?' (DbType = Decimal)], CommandType='"Text"', CommandTimeout='30']
+UPDATE "Portfolios" SET "BaseCurrency" = @p0, "CreatedAt" = @p1, "LastEvaluatedAt" = @p2, "Name" = @p3, "Owner" = @p4, "RiskScore" = @p5, "ValueAtRisk" = @p6
+WHERE "Id" = @p7
+RETURNING 1;
+2025-10-17 20:07:59.393 -05:00 [INF] Updated portfolio "86025381-1624-43f6-a010-f42e3bceea35"
+2025-10-17 20:07:59.395 -05:00 [INF] Executed DbCommand (0ms) [Parameters=[@__id_0='?' (DbType = Guid)], CommandType='"Text"', CommandTimeout='30']
+SELECT "p0"."Id", "p0"."BaseCurrency", "p0"."CreatedAt", "p0"."LastEvaluatedAt", "p0"."Name", "p0"."Owner", "p0"."RiskScore", "p0"."ValueAtRisk", "a"."Id", "a"."AveragePrice", "a"."CurrentPrice", "a"."PortfolioId", "a"."Quantity", "a"."Symbol", "a"."Volatility"
+FROM (
+    SELECT "p"."Id", "p"."BaseCurrency", "p"."CreatedAt", "p"."LastEvaluatedAt", "p"."Name", "p"."Owner", "p"."RiskScore", "p"."ValueAtRisk"
+    FROM "Portfolios" AS "p"
+    WHERE "p"."Id" = @__id_0
+    LIMIT 2
+) AS "p0"
+LEFT JOIN "AssetPositions" AS "a" ON "p0"."Id" = "a"."PortfolioId"
+ORDER BY "p0"."Id"
+2025-10-17 20:07:59.397 -05:00 [INF] Calculated risk for portfolio "fe192c38-a96f-442c-966a-873faa03e508" - Score: 32.54, VAR: 199831.97, Classification: "Moderate"
+2025-10-17 20:07:59.399 -05:00 [INF] Executed DbCommand (1ms) [Parameters=[@p7='?' (DbType = Guid), @p0='?' (Size = 3), @p1='?' (DbType = DateTime), @p2='?' (DbType = DateTime), @p3='?' (Size = 16), @p4='?' (Size = 13), @p5='?' (DbType = Decimal), @p6='?' (DbType = Decimal)], CommandType='"Text"', CommandTimeout='30']
+UPDATE "Portfolios" SET "BaseCurrency" = @p0, "CreatedAt" = @p1, "LastEvaluatedAt" = @p2, "Name" = @p3, "Owner" = @p4, "RiskScore" = @p5, "ValueAtRisk" = @p6
+WHERE "Id" = @p7
+RETURNING 1;
+2025-10-17 20:07:59.404 -05:00 [INF] Updated portfolio "fe192c38-a96f-442c-966a-873faa03e508"
+2025-10-17 20:07:59.405 -05:00 [INF] Executed DbCommand (0ms) [Parameters=[@__id_0='?' (DbType = Guid)], CommandType='"Text"', CommandTimeout='30']
+SELECT "p0"."Id", "p0"."BaseCurrency", "p0"."CreatedAt", "p0"."LastEvaluatedAt", "p0"."Name", "p0"."Owner", "p0"."RiskScore", "p0"."ValueAtRisk", "a"."Id", "a"."AveragePrice", "a"."CurrentPrice", "a"."PortfolioId", "a"."Quantity", "a"."Symbol", "a"."Volatility"
+FROM (
+    SELECT "p"."Id", "p"."BaseCurrency", "p"."CreatedAt", "p"."LastEvaluatedAt", "p"."Name", "p"."Owner", "p"."RiskScore", "p"."ValueAtRisk"
+    FROM "Portfolios" AS "p"
+    WHERE "p"."Id" = @__id_0
+    LIMIT 2
+) AS "p0"
+LEFT JOIN "AssetPositions" AS "a" ON "p0"."Id" = "a"."PortfolioId"
+ORDER BY "p0"."Id"
+2025-10-17 20:07:59.407 -05:00 [INF] Calculated risk for portfolio "35f5db1d-94a5-4f84-91a5-f58aa79c47b4" - Score: 25.00, VAR: 1019.38, Classification: "Moderate"
+2025-10-17 20:07:59.410 -05:00 [INF] Executed DbCommand (1ms) [Parameters=[@p7='?' (DbType = Guid), @p0='?' (Size = 3), @p1='?' (DbType = DateTime), @p2='?' (DbType = DateTime), @p3='?' (Size = 14), @p4='?' (Size = 10), @p5='?' (DbType = Decimal), @p6='?' (DbType = Decimal)], CommandType='"Text"', CommandTimeout='30']
+UPDATE "Portfolios" SET "BaseCurrency" = @p0, "CreatedAt" = @p1, "LastEvaluatedAt" = @p2, "Name" = @p3, "Owner" = @p4, "RiskScore" = @p5, "ValueAtRisk" = @p6
+WHERE "Id" = @p7
+RETURNING 1;
+2025-10-17 20:07:59.414 -05:00 [INF] Updated portfolio "35f5db1d-94a5-4f84-91a5-f58aa79c47b4"
+2025-10-17 20:08:27.370 -05:00 [INF] Request starting HTTP/1.1 GET http://localhost:5012/api/portfolios - null null
+2025-10-17 20:08:27.383 -05:00 [WRN] Failed to determine the https port for redirect.
+2025-10-17 20:08:27.402 -05:00 [INF] Executing endpoint 'RiskPortfolio.Api.Controllers.PortfoliosController.GetAllAsync (RiskPortfolio.Api)'
+2025-10-17 20:08:27.414 -05:00 [INF] Route matched with {action = "GetAll", controller = "Portfolios"}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.ActionResult`1[System.Collections.Generic.IEnumerable`1[RiskPortfolio.Api.Models.Responses.PortfolioResponse]]] GetAllAsync(System.Threading.CancellationToken) on controller RiskPortfolio.Api.Controllers.PortfoliosController (RiskPortfolio.Api).
+2025-10-17 20:08:27.471 -05:00 [INF] Executed DbCommand (0ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT "p"."Id", "p"."BaseCurrency", "p"."CreatedAt", "p"."LastEvaluatedAt", "p"."Name", "p"."Owner", "p"."RiskScore", "p"."ValueAtRisk", "a"."Id", "a"."AveragePrice", "a"."CurrentPrice", "a"."PortfolioId", "a"."Quantity", "a"."Symbol", "a"."Volatility"
+FROM "Portfolios" AS "p"
+LEFT JOIN "AssetPositions" AS "a" ON "p"."Id" = "a"."PortfolioId"
+ORDER BY "p"."Name", "p"."Id"
+2025-10-17 20:08:27.480 -05:00 [INF] Executing OkObjectResult, writing value of type 'System.Collections.Generic.List`1[[RiskPortfolio.Api.Models.Responses.PortfolioResponse, RiskPortfolio.Api, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]]'.
+2025-10-17 20:08:27.516 -05:00 [INF] Executed action RiskPortfolio.Api.Controllers.PortfoliosController.GetAllAsync (RiskPortfolio.Api) in 98.7314ms
+2025-10-17 20:08:27.519 -05:00 [INF] Executed endpoint 'RiskPortfolio.Api.Controllers.PortfoliosController.GetAllAsync (RiskPortfolio.Api)'
+2025-10-17 20:08:27.521 -05:00 [INF] HTTP GET /api/portfolios responded 200 in 145.2140 ms
+2025-10-17 20:08:27.523 -05:00 [INF] Request finished HTTP/1.1 GET http://localhost:5012/api/portfolios - 200 null application/json; charset=utf-8 154.1993ms
+2025-10-17 20:26:27.928 -05:00 [WRN] Stopping the server due to DomainUnload or ProcessExit event...
+2025-10-17 20:26:27.930 -05:00 [WRN] Server desktop-vh62jhi:2152:0c17cd3b caught shutdown signal...
+2025-10-17 20:26:27.931 -05:00 [WRN] Server desktop-vh62jhi:2152:0c17cd3b stopped non-gracefully due to ServerWatchdog, ServerJobCancellationWatcher, Worker, DelayedJobScheduler, RecurringJobScheduler. Outstanding work on those dispatchers could be aborted, and there can be delays in background processing. This server instance will be incorrectly shown as active for a while. To avoid non-graceful shutdowns, investigate what prevents from stopping gracefully and add CancellationToken support for those methods.

@@ -63,7 +63,7 @@ public sealed class PortfoliosController : ControllerBase
         return Ok(responses);
     }
 
-    [HttpGet("{id:guid}")]
+    [HttpGet("{id:guid}", Name = "GetByIdAsync")]
     [ProducesResponseType(typeof(PortfolioResponse), 200)]
     [ProducesResponseType(404)]
     public async Task<ActionResult<PortfolioResponse>> GetByIdAsync(Guid id, CancellationToken cancellationToken)

@@ -45,7 +45,7 @@ public class RiskAssessmentService : IRiskAssessmentService
     public async Task<RiskAssessmentResult> CalculateAsync(Portfolio portfolio, CancellationToken cancellationToken = default)
     {
         var cached = await _cache.GetAsync(portfolio.Id, cancellationToken);
-        if (cached != null && cached.CalculatedAt > DateTimeOffset.UtcNow.AddMinutes(-_options.CacheMinutes))
+        if (cached != null && cached.CalculatedAt > DateTime.UtcNow.AddMinutes(-_options.CacheMinutes))
         {
             return cached;
         }
@@ -62,7 +62,7 @@ public class RiskAssessmentService : IRiskAssessmentService
         var totalValue = portfolio.TotalValue;
         if (totalValue == 0)
         {
-            var zeroResult = new RiskAssessmentResult(portfolio.Id, 0, 0, 0, RiskClassification.Unspecified, DateTimeOffset.UtcNow);
+            var zeroResult = new RiskAssessmentResult(portfolio.Id, 0, 0, 0, RiskClassification.Unspecified, DateTime.UtcNow);
             portfolio.UpdateRiskMetrics(0, 0, zeroResult.CalculatedAt);
             return Task.FromResult(zeroResult);
         }
@@ -73,7 +73,7 @@ public class RiskAssessmentService : IRiskAssessmentService
         var weightedVolatility = CalculateWeightedVolatility(portfolio, totalValue);
         var valueAtRisk = totalValue * weightedVolatility * _options.StressMultiplier;
         var classification = ClassifyRisk(riskScore);
-        var calculatedAt = DateTimeOffset.UtcNow;
+        var calculatedAt = DateTime.UtcNow;
 
         portfolio.UpdateRiskMetrics(riskScore, valueAtRisk, calculatedAt);
 

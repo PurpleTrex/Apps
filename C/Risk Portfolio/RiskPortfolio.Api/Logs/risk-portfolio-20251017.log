@@ -1,0 +1,321 @@
+2025-10-17 17:35:36.465 -05:00 [INF] Applying database migrations...
+2025-10-17 17:35:36.515 -05:00 [INF] 202410170001: Migration_20241017_CreatePortfolioSchema migrating
+2025-10-17 17:35:36.529 -05:00 [INF] CreateSchema portfolio
+2025-10-17 17:35:36.530 -05:00 [ERR] Schemas are not supported
+FluentMigrator.Exceptions.DatabaseOperationNotSupportedException: Schemas are not supported
+   at FluentMigrator.Runner.Generators.CompatibilityModeExtension.HandleCompatibility(CompatibilityMode mode, String message)
+   at FluentMigrator.Runner.Generators.Generic.GenericGenerator.Generate(CreateSchemaExpression expression)
+   at FluentMigrator.Runner.Processors.ConnectionlessProcessor.Process(CreateSchemaExpression expression)
+   at FluentMigrator.Expressions.CreateSchemaExpression.ExecuteWith(IMigrationProcessor processor)
+   at FluentMigrator.Runner.MigrationRunner.<>c__DisplayClass75_0.<ExecuteExpressions>b__1()
+   at FluentMigrator.Runner.StopWatch.Time(Action action)
+   at FluentMigrator.Runner.MigrationRunner.AnnounceTime(String message, Action action)
+   at FluentMigrator.Runner.MigrationRunner.ExecuteExpressions(ICollection`1 expressions)
+2025-10-17 17:35:36.536 -05:00 [ERR] Hosting failed to start
+FluentMigrator.Exceptions.DatabaseOperationNotSupportedException: Schemas are not supported
+   at FluentMigrator.Runner.Generators.CompatibilityModeExtension.HandleCompatibility(CompatibilityMode mode, String message)
+   at FluentMigrator.Runner.Generators.Generic.GenericGenerator.Generate(CreateSchemaExpression expression)
+   at FluentMigrator.Runner.Processors.ConnectionlessProcessor.Process(CreateSchemaExpression expression)
+   at FluentMigrator.Expressions.CreateSchemaExpression.ExecuteWith(IMigrationProcessor processor)
+   at FluentMigrator.Runner.MigrationRunner.<>c__DisplayClass75_0.<ExecuteExpressions>b__1()
+   at FluentMigrator.Runner.StopWatch.Time(Action action)
+   at FluentMigrator.Runner.MigrationRunner.AnnounceTime(String message, Action action)
+   at FluentMigrator.Runner.MigrationRunner.ExecuteExpressions(ICollection`1 expressions)
+   at FluentMigrator.Runner.MigrationRunner.ExecuteMigration(IMigration migration, Action`2 getExpressions)
+   at FluentMigrator.Runner.MigrationRunner.ApplyMigrationUp(IMigrationInfo migrationInfo, Boolean useTransaction)
+   at FluentMigrator.Runner.MigrationRunner.MigrateUp(Int64 targetVersion, Boolean useAutomaticTransactionManagement)
+   at FluentMigrator.Runner.MigrationRunner.MigrateUp(Boolean useAutomaticTransactionManagement)
+   at FluentMigrator.Runner.MigrationRunner.MigrateUp()
+   at RiskPortfolio.Infrastructure.Hosting.MigrationHostedService.StartAsync(CancellationToken cancellationToken) in C:\Users\purple\Desktop\Dev\Git\C\Risk Portfolio\RiskPortfolio.Infrastructure\Hosting\MigrationHostedService.cs:line 29
+   at Microsoft.Extensions.Hosting.Internal.Host.<StartAsync>b__14_1(IHostedService service, CancellationToken token)
+   at Microsoft.Extensions.Hosting.Internal.Host.ForeachService[T](IEnumerable`1 services, CancellationToken token, Boolean concurrent, Boolean abortOnFirstException, List`1 exceptions, Func`3 operation)
+2025-10-17 17:36:05.002 -05:00 [INF] Applying database migrations...
+2025-10-17 17:36:05.048 -05:00 [INF] 202410170001: Migration_20241017_CreatePortfolioSchema migrating
+2025-10-17 17:36:05.061 -05:00 [INF] CreateSchema portfolio
+2025-10-17 17:36:05.062 -05:00 [ERR] Schemas are not supported
+FluentMigrator.Exceptions.DatabaseOperationNotSupportedException: Schemas are not supported
+   at FluentMigrator.Runner.Generators.CompatibilityModeExtension.HandleCompatibility(CompatibilityMode mode, String message)
+   at FluentMigrator.Runner.Generators.Generic.GenericGenerator.Generate(CreateSchemaExpression expression)
+   at FluentMigrator.Runner.Processors.ConnectionlessProcessor.Process(CreateSchemaExpression expression)
+   at FluentMigrator.Expressions.CreateSchemaExpression.ExecuteWith(IMigrationProcessor processor)
+   at FluentMigrator.Runner.MigrationRunner.<>c__DisplayClass75_0.<ExecuteExpressions>b__1()
+   at FluentMigrator.Runner.StopWatch.Time(Action action)
+   at FluentMigrator.Runner.MigrationRunner.AnnounceTime(String message, Action action)
+   at FluentMigrator.Runner.MigrationRunner.ExecuteExpressions(ICollection`1 expressions)
+2025-10-17 17:36:05.069 -05:00 [ERR] Hosting failed to start
+FluentMigrator.Exceptions.DatabaseOperationNotSupportedException: Schemas are not supported
+   at FluentMigrator.Runner.Generators.CompatibilityModeExtension.HandleCompatibility(CompatibilityMode mode, String message)
+   at FluentMigrator.Runner.Generators.Generic.GenericGenerator.Generate(CreateSchemaExpression expression)
+   at FluentMigrator.Runner.Processors.ConnectionlessProcessor.Process(CreateSchemaExpression expression)
+   at FluentMigrator.Expressions.CreateSchemaExpression.ExecuteWith(IMigrationProcessor processor)
+   at FluentMigrator.Runner.MigrationRunner.<>c__DisplayClass75_0.<ExecuteExpressions>b__1()
+   at FluentMigrator.Runner.StopWatch.Time(Action action)
+   at FluentMigrator.Runner.MigrationRunner.AnnounceTime(String message, Action action)
+   at FluentMigrator.Runner.MigrationRunner.ExecuteExpressions(ICollection`1 expressions)
+   at FluentMigrator.Runner.MigrationRunner.ExecuteMigration(IMigration migration, Action`2 getExpressions)
+   at FluentMigrator.Runner.MigrationRunner.ApplyMigrationUp(IMigrationInfo migrationInfo, Boolean useTransaction)
+   at FluentMigrator.Runner.MigrationRunner.MigrateUp(Int64 targetVersion, Boolean useAutomaticTransactionManagement)
+   at FluentMigrator.Runner.MigrationRunner.MigrateUp(Boolean useAutomaticTransactionManagement)
+   at FluentMigrator.Runner.MigrationRunner.MigrateUp()
+   at RiskPortfolio.Infrastructure.Hosting.MigrationHostedService.StartAsync(CancellationToken cancellationToken) in C:\Users\purple\Desktop\Dev\Git\C\Risk Portfolio\RiskPortfolio.Infrastructure\Hosting\MigrationHostedService.cs:line 29
+   at Microsoft.Extensions.Hosting.Internal.Host.<StartAsync>b__14_1(IHostedService service, CancellationToken token)
+   at Microsoft.Extensions.Hosting.Internal.Host.ForeachService[T](IEnumerable`1 services, CancellationToken token, Boolean concurrent, Boolean abortOnFirstException, List`1 exceptions, Func`3 operation)
+2025-10-17 17:38:23.273 -05:00 [INF] Applying database migrations...
+2025-10-17 17:38:23.319 -05:00 [INF] 202410170001: Migration_20241017_CreatePortfolioSchema migrating
+2025-10-17 17:38:23.332 -05:00 [INF] CreateTable Portfolios
+2025-10-17 17:38:23.337 -05:00 [ERR] Unsupported DbType 'DateTimeOffset'
+System.NotSupportedException: Unsupported DbType 'DateTimeOffset'
+   at FluentMigrator.Runner.Generators.Base.TypeMapBase.GetTypeMap(DbType type, Nullable`1 size, Nullable`1 precision)
+   at FluentMigrator.Runner.Generators.SQLite.SQLiteTypeMap.GetTypeMap(DbType type, Nullable`1 size, Nullable`1 precision)
+   at FluentMigrator.Runner.Generators.Base.ColumnBase.GetTypeMap(DbType value, Nullable`1 size, Nullable`1 precision)
+   at FluentMigrator.Runner.Generators.Base.ColumnBase.FormatType(ColumnDefinition column)
+   at FluentMigrator.Runner.Generators.Base.ColumnBase.Generate(ColumnDefinition column)
+   at FluentMigrator.Runner.Generators.Base.ColumnBase.<Generate>b__23_1(ColumnDefinition x)
+   at System.Linq.Enumerable.ListSelectIterator`2.Fill(ReadOnlySpan`1 source, Span`1 destination, Func`2 func)
+   at System.Linq.Enumerable.ListSelectIterator`2.ToArray()
+   at FluentMigrator.Runner.Generators.Base.ColumnBase.Generate(IEnumerable`1 columns, String tableName)
+   at FluentMigrator.Runner.Generators.SQLite.SQLiteColumn.Generate(IEnumerable`1 columns, String tableName)
+   at FluentMigrator.Runner.Generators.Generic.GenericGenerator.Generate(CreateTableExpression expression)
+   at FluentMigrator.Runner.Processors.ConnectionlessProcessor.Process(CreateTableExpression expression)
+   at FluentMigrator.Expressions.CreateTableExpression.ExecuteWith(IMigrationProcessor processor)
+   at FluentMigrator.Runner.MigrationRunner.<>c__DisplayClass75_0.<ExecuteExpressions>b__1()
+   at FluentMigrator.Runner.StopWatch.Time(Action action)
+   at FluentMigrator.Runner.MigrationRunner.AnnounceTime(String message, Action action)
+   at FluentMigrator.Runner.MigrationRunner.ExecuteExpressions(ICollection`1 expressions)
+2025-10-17 17:38:23.343 -05:00 [ERR] Hosting failed to start
+System.NotSupportedException: Unsupported DbType 'DateTimeOffset'
+   at FluentMigrator.Runner.Generators.Base.TypeMapBase.GetTypeMap(DbType type, Nullable`1 size, Nullable`1 precision)
+   at FluentMigrator.Runner.Generators.SQLite.SQLiteTypeMap.GetTypeMap(DbType type, Nullable`1 size, Nullable`1 precision)
+   at FluentMigrator.Runner.Generators.Base.ColumnBase.GetTypeMap(DbType value, Nullable`1 size, Nullable`1 precision)
+   at FluentMigrator.Runner.Generators.Base.ColumnBase.FormatType(ColumnDefinition column)
+   at FluentMigrator.Runner.Generators.Base.ColumnBase.Generate(ColumnDefinition column)
+   at FluentMigrator.Runner.Generators.Base.ColumnBase.<Generate>b__23_1(ColumnDefinition x)
+   at System.Linq.Enumerable.ListSelectIterator`2.Fill(ReadOnlySpan`1 source, Span`1 destination, Func`2 func)
+   at System.Linq.Enumerable.ListSelectIterator`2.ToArray()
+   at FluentMigrator.Runner.Generators.Base.ColumnBase.Generate(IEnumerable`1 columns, String tableName)
+   at FluentMigrator.Runner.Generators.SQLite.SQLiteColumn.Generate(IEnumerable`1 columns, String tableName)
+   at FluentMigrator.Runner.Generators.Generic.GenericGenerator.Generate(CreateTableExpression expression)
+   at FluentMigrator.Runner.Processors.ConnectionlessProcessor.Process(CreateTableExpression expression)
+   at FluentMigrator.Expressions.CreateTableExpression.ExecuteWith(IMigrationProcessor processor)
+   at FluentMigrator.Runner.MigrationRunner.<>c__DisplayClass75_0.<ExecuteExpressions>b__1()
+   at FluentMigrator.Runner.StopWatch.Time(Action action)
+   at FluentMigrator.Runner.MigrationRunner.AnnounceTime(String message, Action action)
+   at FluentMigrator.Runner.MigrationRunner.ExecuteExpressions(ICollection`1 expressions)
+   at FluentMigrator.Runner.MigrationRunner.ExecuteMigration(IMigration migration, Action`2 getExpressions)
+   at FluentMigrator.Runner.MigrationRunner.ApplyMigrationUp(IMigrationInfo migrationInfo, Boolean useTransaction)
+   at FluentMigrator.Runner.MigrationRunner.MigrateUp(Int64 targetVersion, Boolean useAutomaticTransactionManagement)
+   at FluentMigrator.Runner.MigrationRunner.MigrateUp(Boolean useAutomaticTransactionManagement)
+   at FluentMigrator.Runner.MigrationRunner.MigrateUp()
+   at RiskPortfolio.Infrastructure.Hosting.MigrationHostedService.StartAsync(CancellationToken cancellationToken) in C:\Users\purple\Desktop\Dev\Git\C\Risk Portfolio\RiskPortfolio.Infrastructure\Hosting\MigrationHostedService.cs:line 29
+   at Microsoft.Extensions.Hosting.Internal.Host.<StartAsync>b__14_1(IHostedService service, CancellationToken token)
+   at Microsoft.Extensions.Hosting.Internal.Host.ForeachService[T](IEnumerable`1 services, CancellationToken token, Boolean concurrent, Boolean abortOnFirstException, List`1 exceptions, Func`3 operation)
+2025-10-17 17:40:38.968 -05:00 [INF] Applying database migrations...
+2025-10-17 17:40:39.014 -05:00 [INF] 202410170001: Migration_20241017_CreatePortfolioSchema migrating
+2025-10-17 17:40:39.026 -05:00 [INF] CreateTable Portfolios
+2025-10-17 17:40:39.031 -05:00 [INF] CREATE TABLE "Portfolios" ("Id" UNIQUEIDENTIFIER NOT NULL, "Name" TEXT NOT NULL, "Owner" TEXT NOT NULL, "BaseCurrency" TEXT NOT NULL, "RiskScore" NUMERIC NOT NULL DEFAULT 0, "ValueAtRisk" NUMERIC NOT NULL DEFAULT 0, "CreatedAt" DATETIME NOT NULL DEFAULT CURRENT_TIMESTAMP, "LastEvaluatedAt" DATETIME, CONSTRAINT "PK_Portfolios" PRIMARY KEY ("Id"))
+2025-10-17 17:40:39.043 -05:00 [INF] => 0.0048299s
+2025-10-17 17:40:39.044 -05:00 [INF] CreateTable AssetPositions
+2025-10-17 17:40:39.044 -05:00 [INF] CREATE TABLE "AssetPositions" ("Id" UNIQUEIDENTIFIER NOT NULL, "PortfolioId" UNIQUEIDENTIFIER NOT NULL, "Symbol" TEXT NOT NULL, "Quantity" NUMERIC NOT NULL, "AveragePrice" NUMERIC NOT NULL, "CurrentPrice" NUMERIC NOT NULL, "Volatility" NUMERIC NOT NULL, CONSTRAINT "PK_AssetPositions" PRIMARY KEY ("Id"))
+2025-10-17 17:40:39.044 -05:00 [INF] => 0.0001625s
+2025-10-17 17:40:39.045 -05:00 [INF] CreateIndex AssetPositions (PortfolioId)
+2025-10-17 17:40:39.045 -05:00 [INF] CREATE INDEX "IX_AssetPositions_Portfolio" ON "AssetPositions" ("PortfolioId" ASC)
+2025-10-17 17:40:39.045 -05:00 [INF] => 0.0006084s
+2025-10-17 17:40:39.045 -05:00 [INF] CreateForeignKey FK_AssetPositions_Portfolios AssetPositions(PortfolioId) Portfolios(Id)
+2025-10-17 17:40:39.046 -05:00 [ERR] Foreign keys are not supported in SQLite
+FluentMigrator.Exceptions.DatabaseOperationNotSupportedException: Foreign keys are not supported in SQLite
+   at FluentMigrator.Runner.Generators.CompatibilityModeExtension.HandleCompatibility(CompatibilityMode mode, String message)
+   at FluentMigrator.Runner.Generators.SQLite.SQLiteGenerator.Generate(CreateForeignKeyExpression expression)
+   at FluentMigrator.Runner.Processors.ConnectionlessProcessor.Process(CreateForeignKeyExpression expression)
+   at FluentMigrator.Expressions.CreateForeignKeyExpression.ExecuteWith(IMigrationProcessor processor)
+   at FluentMigrator.Runner.MigrationRunner.<>c__DisplayClass75_0.<ExecuteExpressions>b__1()
+   at FluentMigrator.Runner.StopWatch.Time(Action action)
+   at FluentMigrator.Runner.MigrationRunner.AnnounceTime(String message, Action action)
+   at FluentMigrator.Runner.MigrationRunner.ExecuteExpressions(ICollection`1 expressions)
+2025-10-17 17:40:39.051 -05:00 [ERR] Hosting failed to start
+FluentMigrator.Exceptions.DatabaseOperationNotSupportedException: Foreign keys are not supported in SQLite
+   at FluentMigrator.Runner.Generators.CompatibilityModeExtension.HandleCompatibility(CompatibilityMode mode, String message)
+   at FluentMigrator.Runner.Generators.SQLite.SQLiteGenerator.Generate(CreateForeignKeyExpression expression)
+   at FluentMigrator.Runner.Processors.ConnectionlessProcessor.Process(CreateForeignKeyExpression expression)
+   at FluentMigrator.Expressions.CreateForeignKeyExpression.ExecuteWith(IMigrationProcessor processor)
+   at FluentMigrator.Runner.MigrationRunner.<>c__DisplayClass75_0.<ExecuteExpressions>b__1()
+   at FluentMigrator.Runner.StopWatch.Time(Action action)
+   at FluentMigrator.Runner.MigrationRunner.AnnounceTime(String message, Action action)
+   at FluentMigrator.Runner.MigrationRunner.ExecuteExpressions(ICollection`1 expressions)
+   at FluentMigrator.Runner.MigrationRunner.ExecuteMigration(IMigration migration, Action`2 getExpressions)
+   at FluentMigrator.Runner.MigrationRunner.ApplyMigrationUp(IMigrationInfo migrationInfo, Boolean useTransaction)
+   at FluentMigrator.Runner.MigrationRunner.MigrateUp(Int64 targetVersion, Boolean useAutomaticTransactionManagement)
+   at FluentMigrator.Runner.MigrationRunner.MigrateUp(Boolean useAutomaticTransactionManagement)
+   at FluentMigrator.Runner.MigrationRunner.MigrateUp()
+   at RiskPortfolio.Infrastructure.Hosting.MigrationHostedService.StartAsync(CancellationToken cancellationToken) in C:\Users\purple\Desktop\Dev\Git\C\Risk Portfolio\RiskPortfolio.Infrastructure\Hosting\MigrationHostedService.cs:line 29
+   at Microsoft.Extensions.Hosting.Internal.Host.<StartAsync>b__14_1(IHostedService service, CancellationToken token)
+   at Microsoft.Extensions.Hosting.Internal.Host.ForeachService[T](IEnumerable`1 services, CancellationToken token, Boolean concurrent, Boolean abortOnFirstException, List`1 exceptions, Func`3 operation)
+2025-10-17 17:42:09.244 -05:00 [INF] Applying database migrations...
+2025-10-17 17:42:09.290 -05:00 [INF] 202410170001: Migration_20241017_CreatePortfolioSchema migrating
+2025-10-17 17:42:09.300 -05:00 [INF] CreateTable Portfolios
+2025-10-17 17:42:09.305 -05:00 [INF] CREATE TABLE "Portfolios" ("Id" UNIQUEIDENTIFIER NOT NULL, "Name" TEXT NOT NULL, "Owner" TEXT NOT NULL, "BaseCurrency" TEXT NOT NULL, "RiskScore" NUMERIC NOT NULL DEFAULT 0, "ValueAtRisk" NUMERIC NOT NULL DEFAULT 0, "CreatedAt" DATETIME NOT NULL DEFAULT CURRENT_TIMESTAMP, "LastEvaluatedAt" DATETIME, CONSTRAINT "PK_Portfolios" PRIMARY KEY ("Id"))
+2025-10-17 17:42:09.313 -05:00 [INF] => 0.0048451s
+2025-10-17 17:42:09.314 -05:00 [INF] CreateTable AssetPositions
+2025-10-17 17:42:09.314 -05:00 [INF] CREATE TABLE "AssetPositions" ("Id" UNIQUEIDENTIFIER NOT NULL, "PortfolioId" UNIQUEIDENTIFIER NOT NULL, "Symbol" TEXT NOT NULL, "Quantity" NUMERIC NOT NULL, "AveragePrice" NUMERIC NOT NULL, "CurrentPrice" NUMERIC NOT NULL, "Volatility" NUMERIC NOT NULL, CONSTRAINT "PK_AssetPositions" PRIMARY KEY ("Id"))
+2025-10-17 17:42:09.314 -05:00 [INF] => 9.99E-05s
+2025-10-17 17:42:09.314 -05:00 [INF] CreateIndex AssetPositions (PortfolioId)
+2025-10-17 17:42:09.315 -05:00 [INF] CREATE INDEX "IX_AssetPositions_Portfolio" ON "AssetPositions" ("PortfolioId" ASC)
+2025-10-17 17:42:09.315 -05:00 [INF] => 0.0004671s
+2025-10-17 17:42:09.315 -05:00 [INF] CreateIndex AssetPositions (Symbol)
+2025-10-17 17:42:09.315 -05:00 [INF] CREATE INDEX "IX_AssetPositions_Symbol" ON "AssetPositions" ("Symbol" ASC)
+2025-10-17 17:42:09.315 -05:00 [INF] => 2.56E-05s
+2025-10-17 17:42:09.316 -05:00 [INF] INSERT INTO "VersionInfo" ("Version", "AppliedOn", "Description") VALUES (202410170001, CURRENT_TIMESTAMP, 'Migration_20241017_CreatePortfolioSchema')
+2025-10-17 17:42:09.316 -05:00 [INF] 202410170001: Migration_20241017_CreatePortfolioSchema migrated
+2025-10-17 17:42:09.316 -05:00 [INF] => 0.0011759s
+2025-10-17 17:42:09.317 -05:00 [INF] Database migrations completed
+2025-10-17 17:42:09.382 -05:00 [INF] Now listening on: http://localhost:5012
+2025-10-17 17:42:09.394 -05:00 [INF] Application started. Press Ctrl+C to shut down.
+2025-10-17 17:42:09.394 -05:00 [INF] Hosting environment: Development
+2025-10-17 17:42:09.394 -05:00 [INF] Content root path: C:\Users\purple\Desktop\Dev\Git\C\Risk Portfolio\RiskPortfolio.Api
+2025-10-17 17:42:11.415 -05:00 [WRN] Failed to process the job '1': an exception occurred. Retry attempt 1 of 10 will be performed in 00:00:38.
+System.InvalidOperationException: The member 'Portfolio._positions' cannot use field '_positions' because it is already used by 'Portfolio.Positions'.
+   at Microsoft.EntityFrameworkCore.Infrastructure.ModelValidator.<ValidateFieldMapping>g__Validate|24_0(ITypeBase typeBase)
+   at Microsoft.EntityFrameworkCore.Infrastructure.ModelValidator.ValidateFieldMapping(IModel model, IDiagnosticsLogger`1 logger)
+   at Microsoft.EntityFrameworkCore.Infrastructure.ModelValidator.Validate(IModel model, IDiagnosticsLogger`1 logger)
+   at Microsoft.EntityFrameworkCore.Infrastructure.RelationalModelValidator.Validate(IModel model, IDiagnosticsLogger`1 logger)
+   at Microsoft.EntityFrameworkCore.Sqlite.Infrastructure.Internal.SqliteModelValidator.Validate(IModel model, IDiagnosticsLogger`1 logger)
+   at Microsoft.EntityFrameworkCore.Infrastructure.ModelRuntimeInitializer.Initialize(IModel model, Boolean designTime, IDiagnosticsLogger`1 validationLogger)
+   at Microsoft.EntityFrameworkCore.Infrastructure.ModelSource.CreateModel(DbContext context, ModelCreationDependencies modelCreationDependencies, Boolean designTime)
+   at Microsoft.EntityFrameworkCore.Infrastructure.ModelSource.GetModel(DbContext context, ModelCreationDependencies modelCreationDependencies, Boolean designTime)
+   at Microsoft.EntityFrameworkCore.Internal.DbContextServices.CreateModel(Boolean designTime)
+   at Microsoft.EntityFrameworkCore.Internal.DbContextServices.get_Model()
+   at Microsoft.EntityFrameworkCore.Infrastructure.EntityFrameworkServicesBuilder.<>c.<TryAddCoreServices>b__8_4(IServiceProvider p)
+   at Microsoft.Extensions.DependencyInjection.ServiceLookup.CallSiteVisitor`2.VisitCallSiteMain(ServiceCallSite callSite, TArgument argument)
+   at Microsoft.Extensions.DependencyInjection.ServiceLookup.CallSiteRuntimeResolver.VisitCache(ServiceCallSite callSite, RuntimeResolverContext context, ServiceProviderEngineScope serviceProviderEngine, RuntimeResolverLock lockType)
+   at Microsoft.Extensions.DependencyInjection.ServiceLookup.CallSiteRuntimeResolver.VisitScopeCache(ServiceCallSite callSite, RuntimeResolverContext context)
+   at Microsoft.Extensions.DependencyInjection.ServiceLookup.CallSiteVisitor`2.VisitCallSite(ServiceCallSite callSite, TArgument argument)
+   at Microsoft.Extensions.DependencyInjection.ServiceLookup.CallSiteRuntimeResolver.VisitConstructor(ConstructorCallSite constructorCallSite, RuntimeResolverContext context)
+   at Microsoft.Extensions.DependencyInjection.ServiceLookup.CallSiteVisitor`2.VisitCallSiteMain(ServiceCallSite callSite, TArgument argument)
+   at Microsoft.Extensions.DependencyInjection.ServiceLookup.CallSiteRuntimeResolver.VisitCache(ServiceCallSite callSite, RuntimeResolverContext context, ServiceProviderEngineScope serviceProviderEngine, RuntimeResolverLock lockType)
+   at Microsoft.Extensions.DependencyInjection.ServiceLookup.CallSiteRuntimeResolver.VisitScopeCache(ServiceCallSite callSite, RuntimeResolverContext context)
+   at Microsoft.Extensions.DependencyInjection.ServiceLookup.CallSiteVisitor`2.VisitCallSite(ServiceCallSite callSite, TArgument argument)
+   at Microsoft.Extensions.DependencyInjection.ServiceLookup.CallSiteRuntimeResolver.VisitConstructor(ConstructorCallSite constructorCallSite, RuntimeResolverContext context)
+   at Microsoft.Extensions.DependencyInjection.ServiceLookup.CallSiteVisitor`2.VisitCallSiteMain(ServiceCallSite callSite, TArgument argument)
+   at Microsoft.Extensions.DependencyInjection.ServiceLookup.CallSiteRuntimeResolver.VisitCache(ServiceCallSite callSite, RuntimeResolverContext context, ServiceProviderEngineScope serviceProviderEngine, RuntimeResolverLock lockType)
+   at Microsoft.Extensions.DependencyInjection.ServiceLookup.CallSiteRuntimeResolver.VisitScopeCache(ServiceCallSite callSite, RuntimeResolverContext context)
+   at Microsoft.Extensions.DependencyInjection.ServiceLookup.CallSiteVisitor`2.VisitCallSite(ServiceCallSite callSite, TArgument argument)
+   at Microsoft.Extensions.DependencyInjection.ServiceLookup.CallSiteRuntimeResolver.VisitConstructor(ConstructorCallSite constructorCallSite, RuntimeResolverContext context)
+   at Microsoft.Extensions.DependencyInjection.ServiceLookup.CallSiteVisitor`2.VisitCallSiteMain(ServiceCallSite callSite, TArgument argument)
+   at Microsoft.Extensions.DependencyInjection.ServiceLookup.CallSiteRuntimeResolver.VisitCache(ServiceCallSite callSite, RuntimeResolverContext context, ServiceProviderEngineScope serviceProviderEngine, RuntimeResolverLock lockType)
+   at Microsoft.Extensions.DependencyInjection.ServiceLookup.CallSiteRuntimeResolver.VisitScopeCache(ServiceCallSite callSite, RuntimeResolverContext context)
+   at Microsoft.Extensions.DependencyInjection.ServiceLookup.CallSiteVisitor`2.VisitCallSite(ServiceCallSite callSite, TArgument argument)
+   at Microsoft.Extensions.DependencyInjection.ServiceLookup.CallSiteRuntimeResolver.VisitConstructor(ConstructorCallSite constructorCallSite, RuntimeResolverContext context)
+   at Microsoft.Extensions.DependencyInjection.ServiceLookup.CallSiteVisitor`2.VisitCallSiteMain(ServiceCallSite callSite, TArgument argument)
+   at Microsoft.Extensions.DependencyInjection.ServiceLookup.CallSiteRuntimeResolver.VisitCache(ServiceCallSite callSite, RuntimeResolverContext context, ServiceProviderEngineScope serviceProviderEngine, RuntimeResolverLock lockType)
+   at Microsoft.Extensions.DependencyInjection.ServiceLookup.CallSiteRuntimeResolver.VisitScopeCache(ServiceCallSite callSite, RuntimeResolverContext context)
+   at Microsoft.Extensions.DependencyInjection.ServiceLookup.CallSiteVisitor`2.VisitCallSite(ServiceCallSite callSite, TArgument argument)
+   at Microsoft.Extensions.DependencyInjection.ServiceLookup.CallSiteRuntimeResolver.VisitConstructor(ConstructorCallSite constructorCallSite, RuntimeResolverContext context)
+   at Microsoft.Extensions.DependencyInjection.ServiceLookup.CallSiteVisitor`2.VisitCallSiteMain(ServiceCallSite callSite, TArgument argument)
+   at Microsoft.Extensions.DependencyInjection.ServiceLookup.CallSiteRuntimeResolver.VisitCache(ServiceCallSite callSite, RuntimeResolverContext context, ServiceProviderEngineScope serviceProviderEngine, RuntimeResolverLock lockType)
+   at Microsoft.Extensions.DependencyInjection.ServiceLookup.CallSiteRuntimeResolver.VisitScopeCache(ServiceCallSite callSite, RuntimeResolverContext context)
+   at Microsoft.Extensions.DependencyInjection.ServiceLookup.CallSiteVisitor`2.VisitCallSite(ServiceCallSite callSite, TArgument argument)
+   at Microsoft.Extensions.DependencyInjection.ServiceLookup.CallSiteRuntimeResolver.Resolve(ServiceCallSite callSite, ServiceProviderEngineScope scope)
+   at Microsoft.Extensions.DependencyInjection.ServiceLookup.DynamicServiceProviderEngine.<>c__DisplayClass2_0.<RealizeService>b__0(ServiceProviderEngineScope scope)
+   at Microsoft.Extensions.DependencyInjection.ServiceProvider.GetService(ServiceIdentifier serviceIdentifier, ServiceProviderEngineScope serviceProviderEngineScope)
+   at Microsoft.Extensions.DependencyInjection.ServiceLookup.ServiceProviderEngineScope.GetService(Type serviceType)
+   at Microsoft.Extensions.DependencyInjection.ServiceProviderServiceExtensions.GetRequiredService(IServiceProvider provider, Type serviceType)
+   at Microsoft.Extensions.DependencyInjection.ServiceProviderServiceExtensions.GetRequiredService[T](IServiceProvider provider)
+   at Microsoft.EntityFrameworkCore.DbContext.get_DbContextDependencies()
+   at Microsoft.EntityFrameworkCore.DbContext.Set[TEntity]()
+   at RiskPortfolio.Infrastructure.Data.RiskPortfolioDbContext.get_Portfolios() in C:\Users\purple\Desktop\Dev\Git\C\Risk Portfolio\RiskPortfolio.Infrastructure\Data\RiskPortfolioDbContext.cs:line 12
+   at RiskPortfolio.Infrastructure.Repositories.PortfolioRepository.<GetAllAsync>b__5_0(CancellationToken ct) in C:\Users\purple\Desktop\Dev\Git\C\Risk Portfolio\RiskPortfolio.Infrastructure\Repositories\PortfolioRepository.cs:line 44
+   at Polly.Retry.AsyncRetryEngine.ImplementationAsync[TResult](Func`3 action, Context context, CancellationToken cancellationToken, ExceptionPredicates shouldRetryExceptionPredicates, ResultPredicates`1 shouldRetryResultPredicates, Func`5 onRetryAsync, Int32 permittedRetryCount, IEnumerable`1 sleepDurationsEnumerable, Func`4 sleepDurationProvider, Boolean continueOnCapturedContext)
+   at Polly.AsyncPolicy.ExecuteAsync[TResult](Func`3 action, Context context, CancellationToken cancellationToken, Boolean continueOnCapturedContext)
+   at RiskPortfolio.Infrastructure.Jobs.RiskRecalculationJob.ExecuteAsync(CancellationToken cancellationToken) in C:\Users\purple\Desktop\Dev\Git\C\Risk Portfolio\RiskPortfolio.Infrastructure\Jobs\RiskRecalculationJob.cs:line 32
+   at System.RuntimeMethodHandle.InvokeMethod(Object target, Void** arguments, Signature sig, Boolean isConstructor)
+   at System.Reflection.MethodBaseInvoker.InvokeWithNoArgs(Object obj, BindingFlags invokeAttr)
+2025-10-17 17:42:55.644 -05:00 [WRN] Failed to process the job '1': an exception occurred. Retry attempt 2 of 10 will be performed in 00:00:26.
+System.InvalidOperationException: The member 'Portfolio._positions' cannot use field '_positions' because it is already used by 'Portfolio.Positions'.
+   at Microsoft.EntityFrameworkCore.Infrastructure.ModelValidator.<ValidateFieldMapping>g__Validate|24_0(ITypeBase typeBase)
+   at Microsoft.EntityFrameworkCore.Infrastructure.ModelValidator.ValidateFieldMapping(IModel model, IDiagnosticsLogger`1 logger)
+   at Microsoft.EntityFrameworkCore.Infrastructure.ModelValidator.Validate(IModel model, IDiagnosticsLogger`1 logger)
+   at Microsoft.EntityFrameworkCore.Infrastructure.RelationalModelValidator.Validate(IModel model, IDiagnosticsLogger`1 logger)
+   at Microsoft.EntityFrameworkCore.Sqlite.Infrastructure.Internal.SqliteModelValidator.Validate(IModel model, IDiagnosticsLogger`1 logger)
+   at Microsoft.EntityFrameworkCore.Infrastructure.ModelRuntimeInitializer.Initialize(IModel model, Boolean designTime, IDiagnosticsLogger`1 validationLogger)
+   at Microsoft.EntityFrameworkCore.Infrastructure.ModelSource.CreateModel(DbContext context, ModelCreationDependencies modelCreationDependencies, Boolean designTime)
+   at Microsoft.EntityFrameworkCore.Infrastructure.ModelSource.GetModel(DbContext context, ModelCreationDependencies modelCreationDependencies, Boolean designTime)
+   at Microsoft.EntityFrameworkCore.Internal.DbContextServices.CreateModel(Boolean designTime)
+   at Microsoft.EntityFrameworkCore.Internal.DbContextServices.get_Model()
+   at Microsoft.EntityFrameworkCore.Infrastructure.EntityFrameworkServicesBuilder.<>c.<TryAddCoreServices>b__8_4(IServiceProvider p)
+   at Microsoft.Extensions.DependencyInjection.ServiceLookup.CallSiteRuntimeResolver.VisitCache(ServiceCallSite callSite, RuntimeResolverContext context, ServiceProviderEngineScope serviceProviderEngine, RuntimeResolverLock lockType)
+   at Microsoft.Extensions.DependencyInjection.ServiceLookup.CallSiteVisitor`2.VisitCallSite(ServiceCallSite callSite, TArgument argument)
+   at Microsoft.Extensions.DependencyInjection.ServiceLookup.CallSiteRuntimeResolver.VisitConstructor(ConstructorCallSite constructorCallSite, RuntimeResolverContext context)
+   at Microsoft.Extensions.DependencyInjection.ServiceLookup.CallSiteRuntimeResolver.VisitCache(ServiceCallSite callSite, RuntimeResolverContext context, ServiceProviderEngineScope serviceProviderEngine, RuntimeResolverLock lockType)
+   at Microsoft.Extensions.DependencyInjection.ServiceLookup.CallSiteVisitor`2.VisitCallSite(ServiceCallSite callSite, TArgument argument)
+   at Microsoft.Extensions.DependencyInjection.ServiceLookup.CallSiteRuntimeResolver.VisitConstructor(ConstructorCallSite constructorCallSite, RuntimeResolverContext context)
+   at Microsoft.Extensions.DependencyInjection.ServiceLookup.CallSiteRuntimeResolver.VisitCache(ServiceCallSite callSite, RuntimeResolverContext context, ServiceProviderEngineScope serviceProviderEngine, RuntimeResolverLock lockType)
+   at Microsoft.Extensions.DependencyInjection.ServiceLookup.CallSiteVisitor`2.VisitCallSite(ServiceCallSite callSite, TArgument argument)
+   at Microsoft.Extensions.DependencyInjection.ServiceLookup.CallSiteRuntimeResolver.VisitConstructor(ConstructorCallSite constructorCallSite, RuntimeResolverContext context)
+   at Microsoft.Extensions.DependencyInjection.ServiceLookup.CallSiteRuntimeResolver.VisitCache(ServiceCallSite callSite, RuntimeResolverContext context, ServiceProviderEngineScope serviceProviderEngine, RuntimeResolverLock lockType)
+   at Microsoft.Extensions.DependencyInjection.ServiceLookup.CallSiteVisitor`2.VisitCallSite(ServiceCallSite callSite, TArgument argument)
+   at Microsoft.Extensions.DependencyInjection.ServiceLookup.CallSiteRuntimeResolver.VisitConstructor(ConstructorCallSite constructorCallSite, RuntimeResolverContext context)
+   at Microsoft.Extensions.DependencyInjection.ServiceLookup.CallSiteRuntimeResolver.VisitCache(ServiceCallSite callSite, RuntimeResolverContext context, ServiceProviderEngineScope serviceProviderEngine, RuntimeResolverLock lockType)
+   at Microsoft.Extensions.DependencyInjection.ServiceLookup.CallSiteVisitor`2.VisitCallSite(ServiceCallSite callSite, TArgument argument)
+   at Microsoft.Extensions.DependencyInjection.ServiceLookup.CallSiteRuntimeResolver.VisitConstructor(ConstructorCallSite constructorCallSite, RuntimeResolverContext context)
+   at Microsoft.Extensions.DependencyInjection.ServiceLookup.CallSiteRuntimeResolver.VisitCache(ServiceCallSite callSite, RuntimeResolverContext context, ServiceProviderEngineScope serviceProviderEngine, RuntimeResolverLock lockType)
+   at Microsoft.Extensions.DependencyInjection.ServiceLookup.CallSiteVisitor`2.VisitCallSite(ServiceCallSite callSite, TArgument argument)
+   at Microsoft.Extensions.DependencyInjection.ServiceLookup.CallSiteRuntimeResolver.Resolve(ServiceCallSite callSite, ServiceProviderEngineScope scope)
+   at Microsoft.Extensions.DependencyInjection.ServiceLookup.DynamicServiceProviderEngine.<>c__DisplayClass2_0.<RealizeService>b__0(ServiceProviderEngineScope scope)
+   at Microsoft.Extensions.DependencyInjection.ServiceProvider.GetService(ServiceIdentifier serviceIdentifier, ServiceProviderEngineScope serviceProviderEngineScope)
+   at Microsoft.Extensions.DependencyInjection.ServiceLookup.ServiceProviderEngineScope.GetService(Type serviceType)
+   at Microsoft.Extensions.DependencyInjection.ServiceProviderServiceExtensions.GetRequiredService(IServiceProvider provider, Type serviceType)
+   at Microsoft.Extensions.DependencyInjection.ServiceProviderServiceExtensions.GetRequiredService[T](IServiceProvider provider)
+   at Microsoft.EntityFrameworkCore.DbContext.get_DbContextDependencies()
+   at Microsoft.EntityFrameworkCore.DbContext.Set[TEntity]()
+   at RiskPortfolio.Infrastructure.Data.RiskPortfolioDbContext.get_Portfolios() in C:\Users\purple\Desktop\Dev\Git\C\Risk Portfolio\RiskPortfolio.Infrastructure\Data\RiskPortfolioDbContext.cs:line 12
+   at RiskPortfolio.Infrastructure.Repositories.PortfolioRepository.<GetAllAsync>b__5_0(CancellationToken ct) in C:\Users\purple\Desktop\Dev\Git\C\Risk Portfolio\RiskPortfolio.Infrastructure\Repositories\PortfolioRepository.cs:line 44
+   at Polly.Retry.AsyncRetryEngine.ImplementationAsync[TResult](Func`3 action, Context context, CancellationToken cancellationToken, ExceptionPredicates shouldRetryExceptionPredicates, ResultPredicates`1 shouldRetryResultPredicates, Func`5 onRetryAsync, Int32 permittedRetryCount, IEnumerable`1 sleepDurationsEnumerable, Func`4 sleepDurationProvider, Boolean continueOnCapturedContext)
+   at Polly.AsyncPolicy.ExecuteAsync[TResult](Func`3 action, Context context, CancellationToken cancellationToken, Boolean continueOnCapturedContext)
+   at RiskPortfolio.Infrastructure.Jobs.RiskRecalculationJob.ExecuteAsync(CancellationToken cancellationToken) in C:\Users\purple\Desktop\Dev\Git\C\Risk Portfolio\RiskPortfolio.Infrastructure\Jobs\RiskRecalculationJob.cs:line 32
+   at InvokeStub_TaskAwaiter.GetResult(Object, Object, IntPtr*)
+   at System.Reflection.MethodBaseInvoker.InvokeWithNoArgs(Object obj, BindingFlags invokeAttr)
+2025-10-17 17:43:25.693 -05:00 [WRN] Failed to process the job '1': an exception occurred. Retry attempt 3 of 10 will be performed in 00:01:28.
+System.InvalidOperationException: The member 'Portfolio._positions' cannot use field '_positions' because it is already used by 'Portfolio.Positions'.
+   at Microsoft.EntityFrameworkCore.Infrastructure.ModelValidator.<ValidateFieldMapping>g__Validate|24_0(ITypeBase typeBase)
+   at Microsoft.EntityFrameworkCore.Infrastructure.ModelValidator.ValidateFieldMapping(IModel model, IDiagnosticsLogger`1 logger)
+   at Microsoft.EntityFrameworkCore.Infrastructure.ModelValidator.Validate(IModel model, IDiagnosticsLogger`1 logger)
+   at Microsoft.EntityFrameworkCore.Infrastructure.RelationalModelValidator.Validate(IModel model, IDiagnosticsLogger`1 logger)
+   at Microsoft.EntityFrameworkCore.Sqlite.Infrastructure.Internal.SqliteModelValidator.Validate(IModel model, IDiagnosticsLogger`1 logger)
+   at Microsoft.EntityFrameworkCore.Infrastructure.ModelRuntimeInitializer.Initialize(IModel model, Boolean designTime, IDiagnosticsLogger`1 validationLogger)
+   at Microsoft.EntityFrameworkCore.Infrastructure.ModelSource.CreateModel(DbContext context, ModelCreationDependencies modelCreationDependencies, Boolean designTime)
+   at Microsoft.EntityFrameworkCore.Infrastructure.ModelSource.GetModel(DbContext context, ModelCreationDependencies modelCreationDependencies, Boolean designTime)
+   at Microsoft.EntityFrameworkCore.Internal.DbContextServices.CreateModel(Boolean designTime)
+   at Microsoft.EntityFrameworkCore.Internal.DbContextServices.get_Model()
+   at Microsoft.EntityFrameworkCore.Infrastructure.EntityFrameworkServicesBuilder.<>c.<TryAddCoreServices>b__8_4(IServiceProvider p)
+   at Microsoft.Extensions.DependencyInjection.ServiceLookup.CallSiteVisitor`2.VisitCallSiteMain(ServiceCallSite callSite, TArgument argument)
+   at Microsoft.Extensions.DependencyInjection.ServiceLookup.CallSiteRuntimeResolver.VisitCache(ServiceCallSite callSite, RuntimeResolverContext context, ServiceProviderEngineScope serviceProviderEngine, RuntimeResolverLock lockType)
+   at Microsoft.Extensions.DependencyInjection.ServiceLookup.CallSiteVisitor`2.VisitCallSite(ServiceCallSite callSite, TArgument argument)
+   at Microsoft.Extensions.DependencyInjection.ServiceLookup.CallSiteVisitor`2.VisitCallSiteMain(ServiceCallSite callSite, TArgument argument)
+   at Microsoft.Extensions.DependencyInjection.ServiceLookup.CallSiteRuntimeResolver.VisitCache(ServiceCallSite callSite, RuntimeResolverContext context, ServiceProviderEngineScope serviceProviderEngine, RuntimeResolverLock lockType)
+   at Microsoft.Extensions.DependencyInjection.ServiceLookup.CallSiteVisitor`2.VisitCallSite(ServiceCallSite callSite, TArgument argument)
+   at Microsoft.Extensions.DependencyInjection.ServiceLookup.CallSiteVisitor`2.VisitCallSiteMain(ServiceCallSite callSite, TArgument argument)
+   at Microsoft.Extensions.DependencyInjection.ServiceLookup.CallSiteRuntimeResolver.VisitCache(ServiceCallSite callSite, RuntimeResolverContext context, ServiceProviderEngineScope serviceProviderEngine, RuntimeResolverLock lockType)
+   at Microsoft.Extensions.DependencyInjection.ServiceLookup.CallSiteVisitor`2.VisitCallSite(ServiceCallSite callSite, TArgument argument)
+   at Microsoft.Extensions.DependencyInjection.ServiceLookup.CallSiteVisitor`2.VisitCallSiteMain(ServiceCallSite callSite, TArgument argument)
+   at Microsoft.Extensions.DependencyInjection.ServiceLookup.CallSiteRuntimeResolver.VisitCache(ServiceCallSite callSite, RuntimeResolverContext context, ServiceProviderEngineScope serviceProviderEngine, RuntimeResolverLock lockType)
+   at Microsoft.Extensions.DependencyInjection.ServiceLookup.CallSiteVisitor`2.VisitCallSite(ServiceCallSite callSite, TArgument argument)
+   at Microsoft.Extensions.DependencyInjection.ServiceLookup.CallSiteVisitor`2.VisitCallSiteMain(ServiceCallSite callSite, TArgument argument)
+   at Microsoft.Extensions.DependencyInjection.ServiceLookup.CallSiteRuntimeResolver.VisitCache(ServiceCallSite callSite, RuntimeResolverContext context, ServiceProviderEngineScope serviceProviderEngine, RuntimeResolverLock lockType)
+   at Microsoft.Extensions.DependencyInjection.ServiceLookup.CallSiteVisitor`2.VisitCallSite(ServiceCallSite callSite, TArgument argument)
+   at Microsoft.Extensions.DependencyInjection.ServiceLookup.CallSiteVisitor`2.VisitCallSiteMain(ServiceCallSite callSite, TArgument argument)
+   at Microsoft.Extensions.DependencyInjection.ServiceLookup.CallSiteRuntimeResolver.VisitCache(ServiceCallSite callSite, RuntimeResolverContext context, ServiceProviderEngineScope serviceProviderEngine, RuntimeResolverLock lockType)
+   at Microsoft.Extensions.DependencyInjection.ServiceLookup.CallSiteVisitor`2.VisitCallSite(ServiceCallSite callSite, TArgument argument)
+   at Microsoft.Extensions.DependencyInjection.ServiceLookup.CallSiteRuntimeResolver.Resolve(ServiceCallSite callSite, ServiceProviderEngineScope scope)
+   at Microsoft.Extensions.DependencyInjection.ServiceLookup.DynamicServiceProviderEngine.<>c__DisplayClass2_0.<RealizeService>b__0(ServiceProviderEngineScope scope)
+   at Microsoft.Extensions.DependencyInjection.ServiceProvider.GetService(ServiceIdentifier serviceIdentifier, ServiceProviderEngineScope serviceProviderEngineScope)
+   at Microsoft.Extensions.DependencyInjection.ServiceLookup.ServiceProviderEngineScope.GetService(Type serviceType)
+   at Microsoft.Extensions.DependencyInjection.ServiceProviderServiceExtensions.GetRequiredService(IServiceProvider provider, Type serviceType)
+   at Microsoft.Extensions.DependencyInjection.ServiceProviderServiceExtensions.GetRequiredService[T](IServiceProvider provider)
+   at Microsoft.EntityFrameworkCore.DbContext.get_DbContextDependencies()
+   at Microsoft.EntityFrameworkCore.DbContext.Set[TEntity]()
+   at RiskPortfolio.Infrastructure.Data.RiskPortfolioDbContext.get_Portfolios() in C:\Users\purple\Desktop\Dev\Git\C\Risk Portfolio\RiskPortfolio.Infrastructure\Data\RiskPortfolioDbContext.cs:line 12
+   at RiskPortfolio.Infrastructure.Repositories.PortfolioRepository.<GetAllAsync>b__5_0(CancellationToken ct) in C:\Users\purple\Desktop\Dev\Git\C\Risk Portfolio\RiskPortfolio.Infrastructure\Repositories\PortfolioRepository.cs:line 44
+   at Polly.Retry.AsyncRetryEngine.ImplementationAsync[TResult](Func`3 action, Context context, CancellationToken cancellationToken, ExceptionPredicates shouldRetryExceptionPredicates, ResultPredicates`1 shouldRetryResultPredicates, Func`5 onRetryAsync, Int32 permittedRetryCount, IEnumerable`1 sleepDurationsEnumerable, Func`4 sleepDurationProvider, Boolean continueOnCapturedContext)
+   at Polly.AsyncPolicy.ExecuteAsync[TResult](Func`3 action, Context context, CancellationToken cancellationToken, Boolean continueOnCapturedContext)
+   at RiskPortfolio.Infrastructure.Jobs.RiskRecalculationJob.ExecuteAsync(CancellationToken cancellationToken) in C:\Users\purple\Desktop\Dev\Git\C\Risk Portfolio\RiskPortfolio.Infrastructure\Jobs\RiskRecalculationJob.cs:line 32
+   at InvokeStub_TaskAwaiter.GetResult(Object, Object, IntPtr*)
+   at System.Reflection.MethodBaseInvoker.InvokeWithNoArgs(Object obj, BindingFlags invokeAttr)

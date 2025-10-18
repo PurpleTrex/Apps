@@ -8,7 +8,7 @@ public class AssetPositionEntityTypeConfiguration : IEntityTypeConfiguration<Ass
 {
     public void Configure(EntityTypeBuilder<AssetPosition> builder)
     {
-        builder.ToTable("AssetPositions", schema: "portfolio");
+        builder.ToTable("AssetPositions");
 
         builder.HasKey(p => p.Id);
 

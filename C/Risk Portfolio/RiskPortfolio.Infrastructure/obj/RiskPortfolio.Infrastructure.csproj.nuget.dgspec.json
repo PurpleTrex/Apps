@@ -1,25 +1,31 @@
 {
   "format": 1,
   "restore": {
-    "D:\\Users\\jhamm\\Desktop\\Projects\\Apps\\C\\Risk Portfolio\\RiskPortfolio.Infrastructure\\RiskPortfolio.Infrastructure.csproj": {}
+    "C:\\Users\\purple\\Desktop\\Dev\\Git\\C\\Risk Portfolio\\RiskPortfolio.Infrastructure\\RiskPortfolio.Infrastructure.csproj": {}
   },
   "projects": {
-    "D:\\Users\\jhamm\\Desktop\\Projects\\Apps\\C\\Risk Portfolio\\RiskPortfolio.Core\\RiskPortfolio.Core.csproj": {
+    "C:\\Users\\purple\\Desktop\\Dev\\Git\\C\\Risk Portfolio\\RiskPortfolio.Core\\RiskPortfolio.Core.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "D:\\Users\\jhamm\\Desktop\\Projects\\Apps\\C\\Risk Portfolio\\RiskPortfolio.Core\\RiskPortfolio.Core.csproj",
+        "projectUniqueName": "C:\\Users\\purple\\Desktop\\Dev\\Git\\C\\Risk Portfolio\\RiskPortfolio.Core\\RiskPortfolio.Core.csproj",
         "projectName": "RiskPortfolio.Core",
-        "projectPath": "D:\\Users\\jhamm\\Desktop\\Projects\\Apps\\C\\Risk Portfolio\\RiskPortfolio.Core\\RiskPortfolio.Core.csproj",
-        "packagesPath": "D:\\Users\\jhamm\\.nuget\\packages\\",
-        "outputPath": "D:\\Users\\jhamm\\Desktop\\Projects\\Apps\\C\\Risk Portfolio\\RiskPortfolio.Core\\obj\\",
+        "projectPath": "C:\\Users\\purple\\Desktop\\Dev\\Git\\C\\Risk Portfolio\\RiskPortfolio.Core\\RiskPortfolio.Core.csproj",
+        "packagesPath": "C:\\Users\\purple\\.nuget\\packages\\",
+        "outputPath": "C:\\Users\\purple\\Desktop\\Dev\\Git\\C\\Risk Portfolio\\RiskPortfolio.Core\\obj\\",
         "projectStyle": "PackageReference",
+        "fallbackFolders": [
+          "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"
+        ],
         "configFilePaths": [
-          "D:\\Users\\jhamm\\AppData\\Roaming\\NuGet\\NuGet.Config"
+          "C:\\Users\\purple\\AppData\\Roaming\\NuGet\\NuGet.Config",
+          "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.FallbackLocation.config",
+          "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
         ],
         "originalTargetFrameworks": [
           "net9.0"
         ],
         "sources": {
+          "C:\\Program Files (x86)\\Microsoft SDKs\\NuGetPackages\\": {},
           "https://api.nuget.org/v3/index.json": {}
         },
         "frameworks": {
@@ -63,30 +69,36 @@
         }
       }
     },
-    "D:\\Users\\jhamm\\Desktop\\Projects\\Apps\\C\\Risk Portfolio\\RiskPortfolio.Infrastructure\\RiskPortfolio.Infrastructure.csproj": {
+    "C:\\Users\\purple\\Desktop\\Dev\\Git\\C\\Risk Portfolio\\RiskPortfolio.Infrastructure\\RiskPortfolio.Infrastructure.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "D:\\Users\\jhamm\\Desktop\\Projects\\Apps\\C\\Risk Portfolio\\RiskPortfolio.Infrastructure\\RiskPortfolio.Infrastructure.csproj",
+        "projectUniqueName": "C:\\Users\\purple\\Desktop\\Dev\\Git\\C\\Risk Portfolio\\RiskPortfolio.Infrastructure\\RiskPortfolio.Infrastructure.csproj",
         "projectName": "RiskPortfolio.Infrastructure",
-        "projectPath": "D:\\Users\\jhamm\\Desktop\\Projects\\Apps\\C\\Risk Portfolio\\RiskPortfolio.Infrastructure\\RiskPortfolio.Infrastructure.csproj",
-        "packagesPath": "D:\\Users\\jhamm\\.nuget\\packages\\",
-        "outputPath": "D:\\Users\\jhamm\\Desktop\\Projects\\Apps\\C\\Risk Portfolio\\RiskPortfolio.Infrastructure\\obj\\",
+        "projectPath": "C:\\Users\\purple\\Desktop\\Dev\\Git\\C\\Risk Portfolio\\RiskPortfolio.Infrastructure\\RiskPortfolio.Infrastructure.csproj",
+        "packagesPath": "C:\\Users\\purple\\.nuget\\packages\\",
+        "outputPath": "C:\\Users\\purple\\Desktop\\Dev\\Git\\C\\Risk Portfolio\\RiskPortfolio.Infrastructure\\obj\\",
         "projectStyle": "PackageReference",
+        "fallbackFolders": [
+          "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"
+        ],
         "configFilePaths": [
-          "D:\\Users\\jhamm\\AppData\\Roaming\\NuGet\\NuGet.Config"
+          "C:\\Users\\purple\\AppData\\Roaming\\NuGet\\NuGet.Config",
+          "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.FallbackLocation.config",
+          "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
         ],
         "originalTargetFrameworks": [
           "net9.0"
         ],
         "sources": {
+          "C:\\Program Files (x86)\\Microsoft SDKs\\NuGetPackages\\": {},
           "https://api.nuget.org/v3/index.json": {}
         },
         "frameworks": {
           "net9.0": {
             "targetAlias": "net9.0",
             "projectReferences": {
-              "D:\\Users\\jhamm\\Desktop\\Projects\\Apps\\C\\Risk Portfolio\\RiskPortfolio.Core\\RiskPortfolio.Core.csproj": {
-                "projectPath": "D:\\Users\\jhamm\\Desktop\\Projects\\Apps\\C\\Risk Portfolio\\RiskPortfolio.Core\\RiskPortfolio.Core.csproj"
+              "C:\\Users\\purple\\Desktop\\Dev\\Git\\C\\Risk Portfolio\\RiskPortfolio.Core\\RiskPortfolio.Core.csproj": {
+                "projectPath": "C:\\Users\\purple\\Desktop\\Dev\\Git\\C\\Risk Portfolio\\RiskPortfolio.Core\\RiskPortfolio.Core.csproj"
               }
             }
           }
@@ -109,47 +121,55 @@
           "dependencies": {
             "FluentMigrator": {
               "target": "Package",
-              "version": "[5.0.0, )"
+              "version": "[7.1.0, )"
             },
             "FluentMigrator.Runner": {
               "target": "Package",
-              "version": "[5.0.0, )"
+              "version": "[7.1.0, )"
+            },
+            "FluentMigrator.Runner.SQLite": {
+              "target": "Package",
+              "version": "[7.1.0, )"
             },
             "Microsoft.EntityFrameworkCore": {
               "target": "Package",
-              "version": "[9.0.0, )"
+              "version": "[9.0.10, )"
             },
             "Microsoft.EntityFrameworkCore.SqlServer": {
               "target": "Package",
-              "version": "[9.0.0, )"
+              "version": "[9.0.10, )"
+            },
+            "Microsoft.EntityFrameworkCore.Sqlite": {
+              "target": "Package",
+              "version": "[9.0.10, )"
             },
             "Microsoft.Extensions.Configuration": {
               "target": "Package",
-              "version": "[9.0.0, )"
+              "version": "[9.0.10, )"
             },
             "Microsoft.Extensions.Configuration.Binder": {
               "target": "Package",
-              "version": "[9.0.0, )"
+              "version": "[9.0.10, )"
             },
             "Microsoft.Extensions.DependencyInjection": {
               "target": "Package",
-              "version": "[9.0.0, )"
+              "version": "[9.0.10, )"
             },
             "Microsoft.Extensions.Hosting": {
               "target": "Package",
-              "version": "[9.0.0, )"
+              "version": "[9.0.10, )"
             },
             "Microsoft.Extensions.Logging.Abstractions": {
               "target": "Package",
-              "version": "[9.0.0, )"
+              "version": "[9.0.10, )"
             },
             "Microsoft.Extensions.Options": {
               "target": "Package",
-              "version": "[9.0.0, )"
+              "version": "[9.0.10, )"
             },
             "Microsoft.Extensions.Options.ConfigurationExtensions": {
               "target": "Package",
-              "version": "[9.0.0, )"
+              "version": "[9.0.10, )"
             },
             "Polly": {
               "target": "Package",

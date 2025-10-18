@@ -66,7 +66,7 @@
                         <Run Text="{Binding MediaFile.Height, Mode=OneWay}"/>
                     </TextBlock>
                     
-                    <TextBlock Text="{Binding MediaFile.DateAdded, StringFormat='Added: {0:MMM dd, yyyy}'}"
+                    <TextBlock Text="{Binding MediaFile.DateAdded, StringFormat={}Added: {0:MMM dd, yyyy}}"
                               Foreground="{DynamicResource SystemControlForegroundBaseMediumBrush}"/>
                 </StackPanel>
 
@@ -96,7 +96,7 @@
                     </StackPanel>
 
                     <TextBlock x:Name="RatingText"
-                              Text="{Binding MediaFile.Rating, StringFormat='Current Rating: {0:F1} / 5.0'}"
+                              Text="{Binding MediaFile.Rating, StringFormat={}Current Rating: {0:F1} / 5.0}"
                               FontSize="12"
                               Foreground="{DynamicResource SystemControlForegroundBaseMediumBrush}"
                               Margin="0,8,0,0"/>

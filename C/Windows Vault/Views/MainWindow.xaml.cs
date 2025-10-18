@@ -30,6 +30,122 @@ namespace WindowsVault.Views
             this.PreviewKeyDown += MainWindow_PreviewKeyDown;
         }
 
+        private async void AddMediaButton_Click(object sender, RoutedEventArgs e)
+        {
+            if (_viewModel != null)
+            {
+                // Call the method directly via reflection or make it public
+                // For now, let's implement the logic here
+                await AddMediaAsync();
+            }
+        }
+
+        private async Task AddMediaAsync()
+        {
+            if (_viewModel == null) return;
+
+            try
+            {
+                _viewModel.StatusText = "Opening file dialog...";
+                
+                var openFileDialog = new Microsoft.Win32.OpenFileDialog
+                {
+                    Title = "Select Media Files",
+                    Multiselect = true,
+                    Filter = "All Supported|*.jpg;*.jpeg;*.png;*.gif;*.bmp;*.tiff;*.webp;*.mp4;*.avi;*.mkv;*.mov;*.wmv;*.flv;*.webm;*.mp3;*.wav;*.flac;*.aac;*.ogg|" +
+                            "Images|*.jpg;*.jpeg;*.png;*.gif;*.bmp;*.tiff;*.webp|" +
+                            "Videos|*.mp4;*.avi;*.mkv;*.mov;*.wmv;*.flv;*.webm|" +
+                            "Audio|*.mp3;*.wav;*.flac;*.aac;*.ogg|" +
+                            "All Files|*.*"
+                };
+
+                var dialogResult = openFileDialog.ShowDialog();
+                System.Diagnostics.Debug.WriteLine($"File dialog result: {dialogResult}");
+
+                if (dialogResult == true)
+                {
+                    _viewModel.IsLoading = true;
+                    var addedCount = 0;
+                    var skippedCount = 0;
+                    var addedMediaFiles = new List<MediaFile>();
+
+                    // Get MediaFileService from service provider
+                    var mediaFileService = _serviceProvider.GetService<WindowsVault.Services.IMediaFileService>();
+
+                    if (mediaFileService == null)
+                    {
+                        MessageBox.Show("Media file service not available", "Error",
+                            MessageBoxButton.OK, MessageBoxImage.Error);
+                        return;
+                    }
+
+                    foreach (var fileName in openFileDialog.FileNames)
+                    {
+                        try
+                        {
+                            _viewModel.StatusText = $"Adding {System.IO.Path.GetFileName(fileName)}...";
+                            var mediaFile = await mediaFileService.AddMediaFileAsync(fileName);
+                            _viewModel.MediaFiles.Add(mediaFile);
+                            addedMediaFiles.Add(mediaFile);
+                            addedCount++;
+                        }
+                        catch (InvalidOperationException)
+                        {
+                            skippedCount++; // Duplicate file
+                        }
+                        catch (Exception ex)
+                        {
+                            _viewModel.StatusText = $"Error adding {System.IO.Path.GetFileName(fileName)}: {ex.Message}";
+                            System.Diagnostics.Debug.WriteLine($"AddMedia Error: {ex}");
+                        }
+                    }
+
+                    // Refresh the filtered list
+                    _viewModel.ApplyFilters();
+                    _viewModel.StatusText = $"Added {addedCount} files, skipped {skippedCount} duplicates";
+
+                    // Prompt for tag assignment if files were added
+                    if (addedMediaFiles.Count > 0)
+                    {
+                        await _viewModel.PromptForTagAssignmentAsync(addedMediaFiles);
+                    }
+                }
+                else
+                {
+                    _viewModel.StatusText = "File selection cancelled";
+                }
+            }
+            catch (Exception ex)
+            {
+                _viewModel.StatusText = $"Error opening file dialog: {ex.Message}";
+                System.Diagnostics.Debug.WriteLine($"AddMediaAsync Error: {ex}");
+            }
+            finally
+            {
+                _viewModel.IsLoading = false;
+            }
+        }
+
+        private async void SettingsButton_Click(object sender, RoutedEventArgs e)
+        {
+            if (_viewModel != null)
+            {
+                _viewModel.StatusText = "Opening settings...";
+                var settingsWindow = _serviceProvider.GetRequiredService<SettingsWindow>();
+                settingsWindow.Owner = this;
+                settingsWindow.ShowDialog();
+                _viewModel.StatusText = "Ready";
+            }
+        }
+
+        private async void DeleteSelectedButton_Click(object sender, RoutedEventArgs e)
+        {
+            if (_viewModel != null && _viewModel.SelectedMediaFiles.Count > 0)
+            {
+                await _viewModel.DeleteSelectedAsync();
+            }
+        }
+
         private async void MainWindow_Loaded(object sender, RoutedEventArgs e)
         {
             if (_viewModel != null)
@@ -162,6 +278,8 @@ namespace WindowsVault.Views
                 if (e.Data.GetDataPresent(DataFormats.FileDrop))
                 {
                     string[] files = (string[])e.Data.GetData(DataFormats.FileDrop);
+                    
+                    System.Diagnostics.Debug.WriteLine($"===== DROP: Received {files?.Length ?? 0} file(s) =====");
 
                     if (files != null && files.Length > 0)
                     {
@@ -184,61 +302,81 @@ namespace WindowsVault.Views
 
                         foreach (var filePath in files)
                         {
+                            System.Diagnostics.Debug.WriteLine($"Processing dropped file: {filePath}");
+                            
                             try
                             {
                                 // Check if it's a directory
                                 if (System.IO.Directory.Exists(filePath))
                                 {
+                                    System.Diagnostics.Debug.WriteLine($"  -> Is directory, importing...");
                                     _viewModel.StatusText = $"Importing folder: {System.IO.Path.GetFileName(filePath)}...";
+
+                                    // Track files before import for tag assignment
+                                    var beforeCount = _viewModel.MediaFiles.Count;
+                                    var beforeIds = _viewModel.MediaFiles.Select(m => m.Id).ToHashSet();
 
                                     var progress = new Progress<string>(message => _viewModel.StatusText = message);
                                     await mediaFileService.ImportDirectoryAsync(filePath, progress);
+                                    
+                                    // Reload all media files after directory import
+                                    await _viewModel.LoadMediaFilesAsync();
+                                    
+                                    // Find newly added files for tag assignment
+                                    var newFiles = _viewModel.MediaFiles.Where(m => !beforeIds.Contains(m.Id)).ToList();
+                                    addedMediaFiles.AddRange(newFiles);
+                                    addedCount += newFiles.Count;
+                                    System.Diagnostics.Debug.WriteLine($"  -> Directory imported: {newFiles.Count} new files found");
                                 }
                                 else if (System.IO.File.Exists(filePath))
                                 {
+                                    System.Diagnostics.Debug.WriteLine($"  -> Is file, adding...");
                                     _viewModel.StatusText = $"Adding {System.IO.Path.GetFileName(filePath)}...";
                                     var mediaFile = await mediaFileService.AddMediaFileAsync(filePath);
+                                    _viewModel.MediaFiles.Add(mediaFile); // Add to the collection
                                     addedMediaFiles.Add(mediaFile);
                                     addedCount++;
+                                    System.Diagnostics.Debug.WriteLine($"  -> Successfully added file!");
+                                }
+                                else
+                                {
+                                    System.Diagnostics.Debug.WriteLine($"  -> Path doesn't exist!");
                                 }
                             }
-                            catch (InvalidOperationException)
+                            catch (InvalidOperationException ex)
                             {
+                                System.Diagnostics.Debug.WriteLine($"  -> Skipped (InvalidOperation): {ex.Message}");
+                                MessageBox.Show($"File skipped: {System.IO.Path.GetFileName(filePath)}\n\nReason: {ex.Message}", 
+                                    "File Skipped", MessageBoxButton.OK, MessageBoxImage.Warning);
                                 skippedCount++; // Duplicate or unsupported file
                             }
                             catch (Exception ex)
                             {
+                                System.Diagnostics.Debug.WriteLine($"  -> Error: {ex.Message}");
+                                System.Diagnostics.Debug.WriteLine($"  -> Stack: {ex.StackTrace}");
+                                MessageBox.Show($"Error adding file: {System.IO.Path.GetFileName(filePath)}\n\nError: {ex.Message}", 
+                                    "Error", MessageBoxButton.OK, MessageBoxImage.Error);
                                 System.Diagnostics.Debug.WriteLine($"Error adding dropped file {filePath}: {ex}");
                                 skippedCount++;
                             }
                         }
 
-                        // Reload media files
-                        var loadMethod = _viewModel.GetType().GetMethod("LoadMediaFilesAsync",
-                            System.Reflection.BindingFlags.NonPublic | System.Reflection.BindingFlags.Instance);
-
-                        if (loadMethod != null)
-                        {
-                            await (loadMethod.Invoke(_viewModel, null) as Task);
-                        }
-
-                        var applyFiltersMethod = _viewModel.GetType().GetMethod("ApplyFilters",
-                            System.Reflection.BindingFlags.NonPublic | System.Reflection.BindingFlags.Instance);
-
-                        applyFiltersMethod?.Invoke(_viewModel, null);
+                        // Refresh the filtered list
+                        _viewModel.ApplyFilters();
 
                         _viewModel.StatusText = $"Added {addedCount} file(s), skipped {skippedCount}";
+
+                        System.Diagnostics.Debug.WriteLine($"Drop completed: addedCount={addedCount}, addedMediaFiles.Count={addedMediaFiles.Count}");
 
                         // Prompt for tag assignment if files were added
                         if (addedMediaFiles.Count > 0)
                         {
-                            var promptMethod = _viewModel.GetType().GetMethod("PromptForTagAssignmentAsync",
-                                System.Reflection.BindingFlags.NonPublic | System.Reflection.BindingFlags.Instance);
-
-                            if (promptMethod != null)
-                            {
-                                await (promptMethod.Invoke(_viewModel, new object[] { addedMediaFiles }) as Task);
-                            }
+                            System.Diagnostics.Debug.WriteLine($"Calling PromptForTagAssignmentAsync with {addedMediaFiles.Count} files");
+                            await _viewModel.PromptForTagAssignmentAsync(addedMediaFiles);
+                        }
+                        else
+                        {
+                            System.Diagnostics.Debug.WriteLine("No files in addedMediaFiles list - not showing tag dialog");
                         }
                     }
                 }

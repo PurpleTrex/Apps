@@ -1,12 +1,13 @@
 using System;
 using System.Collections.Generic;
+using System.ComponentModel;
 using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
 using System.Linq;
 
 namespace WindowsVault.Models
 {
-    public class MediaFile
+    public class MediaFile : INotifyPropertyChanged
     {
         [Key]
         public int Id { get; set; }
@@ -65,11 +66,35 @@ namespace WindowsVault.Models
         [NotMapped]
         public IEnumerable<Tag> Tags => MediaFileTags.Select(mft => mft.Tag);
 
+        private bool _isSelected = false;
         [NotMapped]
-        public bool IsSelected { get; set; } = false;
+        public bool IsSelected 
+        { 
+            get => _isSelected;
+            set 
+            { 
+                if (_isSelected != value)
+                {
+                    _isSelected = value;
+                    OnPropertyChanged(nameof(IsSelected));
+                }
+            }
+        }
 
+        private bool _isSelectionMode = false;
         [NotMapped]
-        public bool IsSelectionMode { get; set; } = false;
+        public bool IsSelectionMode 
+        { 
+            get => _isSelectionMode;
+            set 
+            { 
+                if (_isSelectionMode != value)
+                {
+                    _isSelectionMode = value;
+                    OnPropertyChanged(nameof(IsSelectionMode));
+                }
+            }
+        }
 
         [NotMapped]
         public string FileSizeFormatted
@@ -88,6 +113,13 @@ namespace WindowsVault.Models
 
                 return $"{size:0.##} {sizes[order]}";
             }
+        }
+
+        public event PropertyChangedEventHandler? PropertyChanged;
+
+        protected virtual void OnPropertyChanged(string propertyName)
+        {
+            PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(propertyName));
         }
     }
 

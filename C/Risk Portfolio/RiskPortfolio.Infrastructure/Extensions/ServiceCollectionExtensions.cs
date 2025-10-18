@@ -27,20 +27,22 @@ public static class ServiceCollectionExtensions
         services.Configure<DatabaseOptions>(configuration.GetSection(DatabaseOptions.SectionName));
         services.Configure<CachingOptions>(configuration.GetSection(CachingOptions.SectionName));
         services.Configure<RiskAssessmentOptions>(configuration.GetSection(RiskAssessmentOptions.SectionName));
+        services.Configure<AlphaVantageOptions>(configuration.GetSection(AlphaVantageOptions.SectionName));
+        services.Configure<MarketDataRefreshOptions>(configuration.GetSection(MarketDataRefreshOptions.SectionName));
 
         services.AddDbContext<RiskPortfolioDbContext>((provider, options) =>
         {
             var dbOptions = provider.GetRequiredService<IOptions<DatabaseOptions>>().Value;
-            options.UseSqlServer(dbOptions.ConnectionString, sqlOptions =>
-            {
-                sqlOptions.EnableRetryOnFailure();
-            });
+            options.UseSqlite(dbOptions.ConnectionString);
         });
 
         services.AddScoped<IPortfolioRepository, PortfolioRepository>();
         services.AddScoped<IRiskAssessmentService, RiskAssessmentService>();
         services.AddSingleton<IRiskMetricCache, PortfolioRiskCache>();
         services.AddSingleton<IRedisConnectionFactory, RedisConnectionFactory>();
+        
+        // Add HttpClient for Alpha Vantage
+        services.AddHttpClient<IMarketDataService, AlphaVantageMarketDataService>();
 
         services.AddTransient<RiskRecalculationJob>();
 
@@ -58,13 +60,14 @@ public static class ServiceCollectionExtensions
         services.AddFluentMigratorCore()
             .ConfigureRunner(rb =>
             {
-                rb.AddSqlServer()
+                rb.AddSQLite()
                   .WithGlobalConnectionString(databaseOptions.ConnectionString)
                   .ScanIn(typeof(Migration_20241017_CreatePortfolioSchema).Assembly).For.Migrations();
             })
             .AddLogging(lb => lb.AddFluentMigratorConsole());
 
         services.AddHostedService<MigrationHostedService>();
+        services.AddHostedService<MarketDataRefreshJob>();
 
         return services;
     }

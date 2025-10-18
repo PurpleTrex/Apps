@@ -17,8 +17,8 @@ public class Portfolio
     public string BaseCurrency { get; private set; }
     public decimal RiskScore { get; private set; }
     public decimal ValueAtRisk { get; private set; }
-    public DateTimeOffset CreatedAt { get; private set; } = DateTimeOffset.UtcNow;
-    public DateTimeOffset? LastEvaluatedAt { get; private set; }
+    public DateTime CreatedAt { get; private set; } = DateTime.UtcNow;
+    public DateTime? LastEvaluatedAt { get; private set; }
     public IReadOnlyCollection<AssetPosition> Positions => _positions.AsReadOnly();
 
     public Portfolio(string name, string owner, string baseCurrency)
@@ -78,7 +78,7 @@ public class Portfolio
         _positions.RemoveAt(index);
     }
 
-    public void UpdateRiskMetrics(decimal riskScore, decimal valueAtRisk, DateTimeOffset evaluatedAt)
+    public void UpdateRiskMetrics(decimal riskScore, decimal valueAtRisk, DateTime evaluatedAt)
     {
         if (riskScore < 0)
         {

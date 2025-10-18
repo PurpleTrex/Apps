@@ -1,0 +1,1026 @@
+2025-10-17 18:00:23.158 -05:00 [INF] Applying database migrations...
+2025-10-17 18:00:23.244 -05:00 [INF] Database migrations completed
+2025-10-17 18:00:23.265 -05:00 [ERR] Hosting failed to start
+System.IO.IOException: Failed to bind to address http://127.0.0.1:5012: address already in use.
+ ---> Microsoft.AspNetCore.Connections.AddressInUseException: Only one usage of each socket address (protocol/network address/port) is normally permitted.
+ ---> System.Net.Sockets.SocketException (10048): Only one usage of each socket address (protocol/network address/port) is normally permitted.
+   at System.Net.Sockets.Socket.UpdateStatusAfterSocketErrorAndThrowException(SocketError error, Boolean disconnectOnFailure, String callerName)
+   at System.Net.Sockets.Socket.DoBind(EndPoint endPointSnapshot, SocketAddress socketAddress)
+   at System.Net.Sockets.Socket.Bind(EndPoint localEP)
+   at Microsoft.AspNetCore.Server.Kestrel.Transport.Sockets.SocketTransportOptions.CreateDefaultBoundListenSocket(EndPoint endpoint)
+   at Microsoft.AspNetCore.Server.Kestrel.Transport.Sockets.SocketConnectionListener.Bind()
+   --- End of inner exception stack trace ---
+   at Microsoft.AspNetCore.Server.Kestrel.Transport.Sockets.SocketConnectionListener.Bind()
+   at Microsoft.AspNetCore.Server.Kestrel.Transport.Sockets.SocketTransportFactory.BindAsync(EndPoint endpoint, CancellationToken cancellationToken)
+   at Microsoft.AspNetCore.Server.Kestrel.Core.Internal.Infrastructure.TransportManager.BindAsync(EndPoint endPoint, ConnectionDelegate connectionDelegate, EndpointConfig endpointConfig, CancellationToken cancellationToken)
+   at Microsoft.AspNetCore.Server.Kestrel.Core.KestrelServerImpl.<>c__DisplayClass28_0`1.<<StartAsync>g__OnBind|0>d.MoveNext()
+--- End of stack trace from previous location ---
+   at Microsoft.AspNetCore.Server.Kestrel.Core.Internal.AddressBinder.BindEndpointAsync(ListenOptions endpoint, AddressBindContext context, CancellationToken cancellationToken)
+   --- End of inner exception stack trace ---
+   at Microsoft.AspNetCore.Server.Kestrel.Core.Internal.AddressBinder.BindEndpointAsync(ListenOptions endpoint, AddressBindContext context, CancellationToken cancellationToken)
+   at Microsoft.AspNetCore.Server.Kestrel.Core.LocalhostListenOptions.BindAsync(AddressBindContext context, CancellationToken cancellationToken)
+   at Microsoft.AspNetCore.Server.Kestrel.Core.Internal.AddressBinder.AddressesStrategy.BindAsync(AddressBindContext context, CancellationToken cancellationToken)
+   at Microsoft.AspNetCore.Server.Kestrel.Core.KestrelServerImpl.BindAsync(CancellationToken cancellationToken)
+   at Microsoft.AspNetCore.Server.Kestrel.Core.KestrelServerImpl.StartAsync[TContext](IHttpApplication`1 application, CancellationToken cancellationToken)
+   at Microsoft.AspNetCore.Hosting.GenericWebHostService.StartAsync(CancellationToken cancellationToken)
+   at Microsoft.Extensions.Hosting.Internal.Host.<StartAsync>b__14_1(IHostedService service, CancellationToken token)
+   at Microsoft.Extensions.Hosting.Internal.Host.ForeachService[T](IEnumerable`1 services, CancellationToken token, Boolean concurrent, Boolean abortOnFirstException, List`1 exceptions, Func`3 operation)
+2025-10-17 18:02:45.111 -05:00 [INF] Applying database migrations...
+2025-10-17 18:02:45.191 -05:00 [INF] Database migrations completed
+2025-10-17 18:02:45.211 -05:00 [INF] Now listening on: http://localhost:5012
+2025-10-17 18:02:45.218 -05:00 [INF] Application started. Press Ctrl+C to shut down.
+2025-10-17 18:02:45.218 -05:00 [INF] Hosting environment: Development
+2025-10-17 18:02:45.218 -05:00 [INF] Content root path: C:\Users\purple\Desktop\Dev\Git\C\Risk Portfolio\RiskPortfolio.Api
+2025-10-17 18:02:45.809 -05:00 [INF] Executed DbCommand (2ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT "p"."Id", "p"."BaseCurrency", "p"."CreatedAt", "p"."LastEvaluatedAt", "p"."Name", "p"."Owner", "p"."RiskScore", "p"."ValueAtRisk", "a"."Id", "a"."AveragePrice", "a"."CurrentPrice", "a"."PortfolioId", "a"."Quantity", "a"."Symbol", "a"."Volatility"
+FROM "Portfolios" AS "p"
+LEFT JOIN "AssetPositions" AS "a" ON "p"."Id" = "a"."PortfolioId"
+ORDER BY "p"."Name", "p"."Id"
+2025-10-17 18:03:10.587 -05:00 [INF] Request starting HTTP/1.1 GET http://localhost:5012/api/portfolios - null null
+2025-10-17 18:03:10.603 -05:00 [WRN] Failed to determine the https port for redirect.
+2025-10-17 18:03:10.618 -05:00 [INF] Executing endpoint 'RiskPortfolio.Api.Controllers.PortfoliosController.GetAllAsync (RiskPortfolio.Api)'
+2025-10-17 18:03:10.632 -05:00 [INF] Route matched with {action = "GetAll", controller = "Portfolios"}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.ActionResult`1[System.Collections.Generic.IEnumerable`1[RiskPortfolio.Api.Models.Responses.PortfolioResponse]]] GetAllAsync(System.Threading.CancellationToken) on controller RiskPortfolio.Api.Controllers.PortfoliosController (RiskPortfolio.Api).
+2025-10-17 18:03:10.700 -05:00 [INF] Executed DbCommand (0ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT "p"."Id", "p"."BaseCurrency", "p"."CreatedAt", "p"."LastEvaluatedAt", "p"."Name", "p"."Owner", "p"."RiskScore", "p"."ValueAtRisk", "a"."Id", "a"."AveragePrice", "a"."CurrentPrice", "a"."PortfolioId", "a"."Quantity", "a"."Symbol", "a"."Volatility"
+FROM "Portfolios" AS "p"
+LEFT JOIN "AssetPositions" AS "a" ON "p"."Id" = "a"."PortfolioId"
+ORDER BY "p"."Name", "p"."Id"
+2025-10-17 18:03:10.704 -05:00 [INF] Executing OkObjectResult, writing value of type 'System.Collections.Generic.List`1[[RiskPortfolio.Api.Models.Responses.PortfolioResponse, RiskPortfolio.Api, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]]'.
+2025-10-17 18:03:10.734 -05:00 [INF] Executed action RiskPortfolio.Api.Controllers.PortfoliosController.GetAllAsync (RiskPortfolio.Api) in 99.8295ms
+2025-10-17 18:03:10.735 -05:00 [INF] Executed endpoint 'RiskPortfolio.Api.Controllers.PortfoliosController.GetAllAsync (RiskPortfolio.Api)'
+2025-10-17 18:03:10.736 -05:00 [INF] HTTP GET /api/portfolios responded 200 in 143.2826 ms
+2025-10-17 18:03:10.737 -05:00 [INF] Request finished HTTP/1.1 GET http://localhost:5012/api/portfolios - 200 null application/json; charset=utf-8 151.0431ms
+2025-10-17 18:16:39.384 -05:00 [INF] Applying database migrations...
+2025-10-17 18:16:39.466 -05:00 [INF] Database migrations completed
+2025-10-17 18:16:39.487 -05:00 [INF] Now listening on: http://localhost:5012
+2025-10-17 18:16:39.496 -05:00 [INF] Application started. Press Ctrl+C to shut down.
+2025-10-17 18:16:39.497 -05:00 [INF] Hosting environment: Development
+2025-10-17 18:16:39.498 -05:00 [INF] Content root path: C:\Users\purple\Desktop\Dev\Git\C\Risk Portfolio\RiskPortfolio.Api
+2025-10-17 18:16:40.138 -05:00 [INF] Executed DbCommand (2ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT "p"."Id", "p"."BaseCurrency", "p"."CreatedAt", "p"."LastEvaluatedAt", "p"."Name", "p"."Owner", "p"."RiskScore", "p"."ValueAtRisk", "a"."Id", "a"."AveragePrice", "a"."CurrentPrice", "a"."PortfolioId", "a"."Quantity", "a"."Symbol", "a"."Volatility"
+FROM "Portfolios" AS "p"
+LEFT JOIN "AssetPositions" AS "a" ON "p"."Id" = "a"."PortfolioId"
+ORDER BY "p"."Name", "p"."Id"
+2025-10-17 18:16:42.101 -05:00 [INF] Request starting HTTP/1.1 GET http://localhost:5012/api/portfolios - null null
+2025-10-17 18:16:42.115 -05:00 [WRN] Failed to determine the https port for redirect.
+2025-10-17 18:16:42.127 -05:00 [INF] Executing endpoint 'RiskPortfolio.Api.Controllers.PortfoliosController.GetAllAsync (RiskPortfolio.Api)'
+2025-10-17 18:16:42.137 -05:00 [INF] Route matched with {action = "GetAll", controller = "Portfolios"}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.ActionResult`1[System.Collections.Generic.IEnumerable`1[RiskPortfolio.Api.Models.Responses.PortfolioResponse]]] GetAllAsync(System.Threading.CancellationToken) on controller RiskPortfolio.Api.Controllers.PortfoliosController (RiskPortfolio.Api).
+2025-10-17 18:16:42.200 -05:00 [INF] Executed DbCommand (0ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT "p"."Id", "p"."BaseCurrency", "p"."CreatedAt", "p"."LastEvaluatedAt", "p"."Name", "p"."Owner", "p"."RiskScore", "p"."ValueAtRisk", "a"."Id", "a"."AveragePrice", "a"."CurrentPrice", "a"."PortfolioId", "a"."Quantity", "a"."Symbol", "a"."Volatility"
+FROM "Portfolios" AS "p"
+LEFT JOIN "AssetPositions" AS "a" ON "p"."Id" = "a"."PortfolioId"
+ORDER BY "p"."Name", "p"."Id"
+2025-10-17 18:16:42.205 -05:00 [INF] Executing OkObjectResult, writing value of type 'System.Collections.Generic.List`1[[RiskPortfolio.Api.Models.Responses.PortfolioResponse, RiskPortfolio.Api, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]]'.
+2025-10-17 18:16:42.237 -05:00 [INF] Executed action RiskPortfolio.Api.Controllers.PortfoliosController.GetAllAsync (RiskPortfolio.Api) in 96.1698ms
+2025-10-17 18:16:42.239 -05:00 [INF] Executed endpoint 'RiskPortfolio.Api.Controllers.PortfoliosController.GetAllAsync (RiskPortfolio.Api)'
+2025-10-17 18:16:42.241 -05:00 [INF] HTTP GET /api/portfolios responded 200 in 134.3234 ms
+2025-10-17 18:16:42.243 -05:00 [INF] Request finished HTTP/1.1 GET http://localhost:5012/api/portfolios - 200 null application/json; charset=utf-8 143.3507ms
+2025-10-17 18:18:52.298 -05:00 [INF] Request starting HTTP/1.1 GET http://localhost:5012/api/portfolios - null null
+2025-10-17 18:18:52.302 -05:00 [INF] Executing endpoint 'RiskPortfolio.Api.Controllers.PortfoliosController.GetAllAsync (RiskPortfolio.Api)'
+2025-10-17 18:18:52.303 -05:00 [INF] Route matched with {action = "GetAll", controller = "Portfolios"}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.ActionResult`1[System.Collections.Generic.IEnumerable`1[RiskPortfolio.Api.Models.Responses.PortfolioResponse]]] GetAllAsync(System.Threading.CancellationToken) on controller RiskPortfolio.Api.Controllers.PortfoliosController (RiskPortfolio.Api).
+2025-10-17 18:18:52.316 -05:00 [INF] Executed DbCommand (0ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT "p"."Id", "p"."BaseCurrency", "p"."CreatedAt", "p"."LastEvaluatedAt", "p"."Name", "p"."Owner", "p"."RiskScore", "p"."ValueAtRisk", "a"."Id", "a"."AveragePrice", "a"."CurrentPrice", "a"."PortfolioId", "a"."Quantity", "a"."Symbol", "a"."Volatility"
+FROM "Portfolios" AS "p"
+LEFT JOIN "AssetPositions" AS "a" ON "p"."Id" = "a"."PortfolioId"
+ORDER BY "p"."Name", "p"."Id"
+2025-10-17 18:18:52.318 -05:00 [INF] Executing OkObjectResult, writing value of type 'System.Collections.Generic.List`1[[RiskPortfolio.Api.Models.Responses.PortfolioResponse, RiskPortfolio.Api, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]]'.
+2025-10-17 18:18:52.320 -05:00 [INF] Executed action RiskPortfolio.Api.Controllers.PortfoliosController.GetAllAsync (RiskPortfolio.Api) in 15.2903ms
+2025-10-17 18:18:52.321 -05:00 [INF] Executed endpoint 'RiskPortfolio.Api.Controllers.PortfoliosController.GetAllAsync (RiskPortfolio.Api)'
+2025-10-17 18:18:52.322 -05:00 [INF] HTTP GET /api/portfolios responded 200 in 21.2071 ms
+2025-10-17 18:18:52.323 -05:00 [INF] Request finished HTTP/1.1 GET http://localhost:5012/api/portfolios - 200 null application/json; charset=utf-8 24.8804ms
+2025-10-17 19:30:12.244 -05:00 [INF] Executed DbCommand (4ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT "p"."Id", "p"."BaseCurrency", "p"."CreatedAt", "p"."LastEvaluatedAt", "p"."Name", "p"."Owner", "p"."RiskScore", "p"."ValueAtRisk", "a"."Id", "a"."AveragePrice", "a"."CurrentPrice", "a"."PortfolioId", "a"."Quantity", "a"."Symbol", "a"."Volatility"
+FROM "Portfolios" AS "p"
+LEFT JOIN "AssetPositions" AS "a" ON "p"."Id" = "a"."PortfolioId"
+ORDER BY "p"."Name", "p"."Id"
+2025-10-17 19:30:14.311 -05:00 [INF] Request starting HTTP/1.1 GET http://localhost:5012/api/portfolios - null null
+2025-10-17 19:30:14.324 -05:00 [INF] Executing endpoint 'RiskPortfolio.Api.Controllers.PortfoliosController.GetAllAsync (RiskPortfolio.Api)'
+2025-10-17 19:30:14.329 -05:00 [INF] Route matched with {action = "GetAll", controller = "Portfolios"}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.ActionResult`1[System.Collections.Generic.IEnumerable`1[RiskPortfolio.Api.Models.Responses.PortfolioResponse]]] GetAllAsync(System.Threading.CancellationToken) on controller RiskPortfolio.Api.Controllers.PortfoliosController (RiskPortfolio.Api).
+2025-10-17 19:30:14.341 -05:00 [INF] Executed DbCommand (0ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT "p"."Id", "p"."BaseCurrency", "p"."CreatedAt", "p"."LastEvaluatedAt", "p"."Name", "p"."Owner", "p"."RiskScore", "p"."ValueAtRisk", "a"."Id", "a"."AveragePrice", "a"."CurrentPrice", "a"."PortfolioId", "a"."Quantity", "a"."Symbol", "a"."Volatility"
+FROM "Portfolios" AS "p"
+LEFT JOIN "AssetPositions" AS "a" ON "p"."Id" = "a"."PortfolioId"
+ORDER BY "p"."Name", "p"."Id"
+2025-10-17 19:30:14.345 -05:00 [INF] Executing OkObjectResult, writing value of type 'System.Collections.Generic.List`1[[RiskPortfolio.Api.Models.Responses.PortfolioResponse, RiskPortfolio.Api, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]]'.
+2025-10-17 19:30:14.349 -05:00 [INF] Executed action RiskPortfolio.Api.Controllers.PortfoliosController.GetAllAsync (RiskPortfolio.Api) in 17.4803ms
+2025-10-17 19:30:14.350 -05:00 [INF] Executed endpoint 'RiskPortfolio.Api.Controllers.PortfoliosController.GetAllAsync (RiskPortfolio.Api)'
+2025-10-17 19:30:14.351 -05:00 [INF] HTTP GET /api/portfolios responded 200 in 34.9093 ms
+2025-10-17 19:30:14.353 -05:00 [INF] Request finished HTTP/1.1 GET http://localhost:5012/api/portfolios - 200 null application/json; charset=utf-8 43.4014ms
+2025-10-17 19:30:48.131 -05:00 [INF] Request starting HTTP/1.1 GET http://localhost:5012/api/portfolios - null null
+2025-10-17 19:30:48.133 -05:00 [INF] Executing endpoint 'RiskPortfolio.Api.Controllers.PortfoliosController.GetAllAsync (RiskPortfolio.Api)'
+2025-10-17 19:30:48.137 -05:00 [INF] Route matched with {action = "GetAll", controller = "Portfolios"}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.ActionResult`1[System.Collections.Generic.IEnumerable`1[RiskPortfolio.Api.Models.Responses.PortfolioResponse]]] GetAllAsync(System.Threading.CancellationToken) on controller RiskPortfolio.Api.Controllers.PortfoliosController (RiskPortfolio.Api).
+2025-10-17 19:30:48.139 -05:00 [INF] Executed DbCommand (0ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT "p"."Id", "p"."BaseCurrency", "p"."CreatedAt", "p"."LastEvaluatedAt", "p"."Name", "p"."Owner", "p"."RiskScore", "p"."ValueAtRisk", "a"."Id", "a"."AveragePrice", "a"."CurrentPrice", "a"."PortfolioId", "a"."Quantity", "a"."Symbol", "a"."Volatility"
+FROM "Portfolios" AS "p"
+LEFT JOIN "AssetPositions" AS "a" ON "p"."Id" = "a"."PortfolioId"
+ORDER BY "p"."Name", "p"."Id"
+2025-10-17 19:30:48.141 -05:00 [INF] Executing OkObjectResult, writing value of type 'System.Collections.Generic.List`1[[RiskPortfolio.Api.Models.Responses.PortfolioResponse, RiskPortfolio.Api, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]]'.
+2025-10-17 19:30:48.142 -05:00 [INF] Executed action RiskPortfolio.Api.Controllers.PortfoliosController.GetAllAsync (RiskPortfolio.Api) in 4.128ms
+2025-10-17 19:30:48.143 -05:00 [INF] Executed endpoint 'RiskPortfolio.Api.Controllers.PortfoliosController.GetAllAsync (RiskPortfolio.Api)'
+2025-10-17 19:30:48.144 -05:00 [INF] HTTP GET /api/portfolios responded 200 in 10.7444 ms
+2025-10-17 19:30:48.145 -05:00 [INF] Request finished HTTP/1.1 GET http://localhost:5012/api/portfolios - 200 null application/json; charset=utf-8 13.7532ms
+2025-10-17 19:33:08.235 -05:00 [INF] Request starting HTTP/1.1 GET http://localhost:5012/api/portfolios - null null
+2025-10-17 19:33:08.237 -05:00 [INF] Executing endpoint 'RiskPortfolio.Api.Controllers.PortfoliosController.GetAllAsync (RiskPortfolio.Api)'
+2025-10-17 19:33:08.238 -05:00 [INF] Route matched with {action = "GetAll", controller = "Portfolios"}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.ActionResult`1[System.Collections.Generic.IEnumerable`1[RiskPortfolio.Api.Models.Responses.PortfolioResponse]]] GetAllAsync(System.Threading.CancellationToken) on controller RiskPortfolio.Api.Controllers.PortfoliosController (RiskPortfolio.Api).
+2025-10-17 19:33:08.241 -05:00 [INF] Executed DbCommand (0ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT "p"."Id", "p"."BaseCurrency", "p"."CreatedAt", "p"."LastEvaluatedAt", "p"."Name", "p"."Owner", "p"."RiskScore", "p"."ValueAtRisk", "a"."Id", "a"."AveragePrice", "a"."CurrentPrice", "a"."PortfolioId", "a"."Quantity", "a"."Symbol", "a"."Volatility"
+FROM "Portfolios" AS "p"
+LEFT JOIN "AssetPositions" AS "a" ON "p"."Id" = "a"."PortfolioId"
+ORDER BY "p"."Name", "p"."Id"
+2025-10-17 19:33:08.243 -05:00 [INF] Executing OkObjectResult, writing value of type 'System.Collections.Generic.List`1[[RiskPortfolio.Api.Models.Responses.PortfolioResponse, RiskPortfolio.Api, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]]'.
+2025-10-17 19:33:08.244 -05:00 [INF] Executed action RiskPortfolio.Api.Controllers.PortfoliosController.GetAllAsync (RiskPortfolio.Api) in 4.709ms
+2025-10-17 19:33:08.245 -05:00 [INF] Executed endpoint 'RiskPortfolio.Api.Controllers.PortfoliosController.GetAllAsync (RiskPortfolio.Api)'
+2025-10-17 19:33:08.246 -05:00 [INF] HTTP GET /api/portfolios responded 200 in 8.6922 ms
+2025-10-17 19:33:08.247 -05:00 [INF] Request finished HTTP/1.1 GET http://localhost:5012/api/portfolios - 200 null application/json; charset=utf-8 12.7387ms
+2025-10-17 19:33:09.904 -05:00 [INF] Request starting HTTP/1.1 GET http://localhost:5012/api/portfolios - null null
+2025-10-17 19:33:09.907 -05:00 [INF] Executing endpoint 'RiskPortfolio.Api.Controllers.PortfoliosController.GetAllAsync (RiskPortfolio.Api)'
+2025-10-17 19:33:09.907 -05:00 [INF] Route matched with {action = "GetAll", controller = "Portfolios"}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.ActionResult`1[System.Collections.Generic.IEnumerable`1[RiskPortfolio.Api.Models.Responses.PortfolioResponse]]] GetAllAsync(System.Threading.CancellationToken) on controller RiskPortfolio.Api.Controllers.PortfoliosController (RiskPortfolio.Api).
+2025-10-17 19:33:09.910 -05:00 [INF] Executed DbCommand (0ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT "p"."Id", "p"."BaseCurrency", "p"."CreatedAt", "p"."LastEvaluatedAt", "p"."Name", "p"."Owner", "p"."RiskScore", "p"."ValueAtRisk", "a"."Id", "a"."AveragePrice", "a"."CurrentPrice", "a"."PortfolioId", "a"."Quantity", "a"."Symbol", "a"."Volatility"
+FROM "Portfolios" AS "p"
+LEFT JOIN "AssetPositions" AS "a" ON "p"."Id" = "a"."PortfolioId"
+ORDER BY "p"."Name", "p"."Id"
+2025-10-17 19:33:09.911 -05:00 [INF] Executing OkObjectResult, writing value of type 'System.Collections.Generic.List`1[[RiskPortfolio.Api.Models.Responses.PortfolioResponse, RiskPortfolio.Api, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]]'.
+2025-10-17 19:33:09.912 -05:00 [INF] Executed action RiskPortfolio.Api.Controllers.PortfoliosController.GetAllAsync (RiskPortfolio.Api) in 3.8992ms
+2025-10-17 19:33:09.913 -05:00 [INF] Executed endpoint 'RiskPortfolio.Api.Controllers.PortfoliosController.GetAllAsync (RiskPortfolio.Api)'
+2025-10-17 19:33:09.914 -05:00 [INF] HTTP GET /api/portfolios responded 200 in 7.6171 ms
+2025-10-17 19:33:09.915 -05:00 [INF] Request finished HTTP/1.1 GET http://localhost:5012/api/portfolios - 200 null application/json; charset=utf-8 10.7309ms
+2025-10-17 19:34:18.007 -05:00 [INF] Request starting HTTP/1.1 GET http://localhost:5012/api/portfolios - null null
+2025-10-17 19:34:18.008 -05:00 [INF] Executing endpoint 'RiskPortfolio.Api.Controllers.PortfoliosController.GetAllAsync (RiskPortfolio.Api)'
+2025-10-17 19:34:18.009 -05:00 [INF] Route matched with {action = "GetAll", controller = "Portfolios"}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.ActionResult`1[System.Collections.Generic.IEnumerable`1[RiskPortfolio.Api.Models.Responses.PortfolioResponse]]] GetAllAsync(System.Threading.CancellationToken) on controller RiskPortfolio.Api.Controllers.PortfoliosController (RiskPortfolio.Api).
+2025-10-17 19:34:18.011 -05:00 [INF] Executed DbCommand (0ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT "p"."Id", "p"."BaseCurrency", "p"."CreatedAt", "p"."LastEvaluatedAt", "p"."Name", "p"."Owner", "p"."RiskScore", "p"."ValueAtRisk", "a"."Id", "a"."AveragePrice", "a"."CurrentPrice", "a"."PortfolioId", "a"."Quantity", "a"."Symbol", "a"."Volatility"
+FROM "Portfolios" AS "p"
+LEFT JOIN "AssetPositions" AS "a" ON "p"."Id" = "a"."PortfolioId"
+ORDER BY "p"."Name", "p"."Id"
+2025-10-17 19:34:18.013 -05:00 [INF] Executing OkObjectResult, writing value of type 'System.Collections.Generic.List`1[[RiskPortfolio.Api.Models.Responses.PortfolioResponse, RiskPortfolio.Api, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]]'.
+2025-10-17 19:34:18.014 -05:00 [INF] Executed action RiskPortfolio.Api.Controllers.PortfoliosController.GetAllAsync (RiskPortfolio.Api) in 3.3625ms
+2025-10-17 19:34:18.015 -05:00 [INF] Executed endpoint 'RiskPortfolio.Api.Controllers.PortfoliosController.GetAllAsync (RiskPortfolio.Api)'
+2025-10-17 19:34:18.015 -05:00 [INF] HTTP GET /api/portfolios responded 200 in 7.1249 ms
+2025-10-17 19:34:18.017 -05:00 [INF] Request finished HTTP/1.1 GET http://localhost:5012/api/portfolios - 200 null application/json; charset=utf-8 10.0828ms
+2025-10-17 19:34:20.626 -05:00 [INF] Request starting HTTP/1.1 GET http://localhost:5012/api/portfolios - null null
+2025-10-17 19:34:20.628 -05:00 [INF] Executing endpoint 'RiskPortfolio.Api.Controllers.PortfoliosController.GetAllAsync (RiskPortfolio.Api)'
+2025-10-17 19:34:20.629 -05:00 [INF] Route matched with {action = "GetAll", controller = "Portfolios"}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.ActionResult`1[System.Collections.Generic.IEnumerable`1[RiskPortfolio.Api.Models.Responses.PortfolioResponse]]] GetAllAsync(System.Threading.CancellationToken) on controller RiskPortfolio.Api.Controllers.PortfoliosController (RiskPortfolio.Api).
+2025-10-17 19:34:20.632 -05:00 [INF] Executed DbCommand (0ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT "p"."Id", "p"."BaseCurrency", "p"."CreatedAt", "p"."LastEvaluatedAt", "p"."Name", "p"."Owner", "p"."RiskScore", "p"."ValueAtRisk", "a"."Id", "a"."AveragePrice", "a"."CurrentPrice", "a"."PortfolioId", "a"."Quantity", "a"."Symbol", "a"."Volatility"
+FROM "Portfolios" AS "p"
+LEFT JOIN "AssetPositions" AS "a" ON "p"."Id" = "a"."PortfolioId"
+ORDER BY "p"."Name", "p"."Id"
+2025-10-17 19:34:20.633 -05:00 [INF] Executing OkObjectResult, writing value of type 'System.Collections.Generic.List`1[[RiskPortfolio.Api.Models.Responses.PortfolioResponse, RiskPortfolio.Api, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]]'.
+2025-10-17 19:34:20.635 -05:00 [INF] Executed action RiskPortfolio.Api.Controllers.PortfoliosController.GetAllAsync (RiskPortfolio.Api) in 4.2453ms
+2025-10-17 19:34:20.635 -05:00 [INF] Executed endpoint 'RiskPortfolio.Api.Controllers.PortfoliosController.GetAllAsync (RiskPortfolio.Api)'
+2025-10-17 19:34:20.636 -05:00 [INF] HTTP GET /api/portfolios responded 200 in 8.4264 ms
+2025-10-17 19:34:20.638 -05:00 [INF] Request finished HTTP/1.1 GET http://localhost:5012/api/portfolios - 200 null application/json; charset=utf-8 11.2001ms
+2025-10-17 19:35:57.496 -05:00 [INF] Request starting HTTP/1.1 GET http://localhost:5012/api/portfolios - null null
+2025-10-17 19:35:57.498 -05:00 [INF] Executing endpoint 'RiskPortfolio.Api.Controllers.PortfoliosController.GetAllAsync (RiskPortfolio.Api)'
+2025-10-17 19:35:57.498 -05:00 [INF] Route matched with {action = "GetAll", controller = "Portfolios"}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.ActionResult`1[System.Collections.Generic.IEnumerable`1[RiskPortfolio.Api.Models.Responses.PortfolioResponse]]] GetAllAsync(System.Threading.CancellationToken) on controller RiskPortfolio.Api.Controllers.PortfoliosController (RiskPortfolio.Api).
+2025-10-17 19:35:57.501 -05:00 [INF] Executed DbCommand (0ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT "p"."Id", "p"."BaseCurrency", "p"."CreatedAt", "p"."LastEvaluatedAt", "p"."Name", "p"."Owner", "p"."RiskScore", "p"."ValueAtRisk", "a"."Id", "a"."AveragePrice", "a"."CurrentPrice", "a"."PortfolioId", "a"."Quantity", "a"."Symbol", "a"."Volatility"
+FROM "Portfolios" AS "p"
+LEFT JOIN "AssetPositions" AS "a" ON "p"."Id" = "a"."PortfolioId"
+ORDER BY "p"."Name", "p"."Id"
+2025-10-17 19:35:57.503 -05:00 [INF] Executing OkObjectResult, writing value of type 'System.Collections.Generic.List`1[[RiskPortfolio.Api.Models.Responses.PortfolioResponse, RiskPortfolio.Api, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]]'.
+2025-10-17 19:35:57.504 -05:00 [INF] Executed action RiskPortfolio.Api.Controllers.PortfoliosController.GetAllAsync (RiskPortfolio.Api) in 3.9513ms
+2025-10-17 19:35:57.505 -05:00 [INF] Executed endpoint 'RiskPortfolio.Api.Controllers.PortfoliosController.GetAllAsync (RiskPortfolio.Api)'
+2025-10-17 19:35:57.505 -05:00 [INF] HTTP GET /api/portfolios responded 200 in 7.6840 ms
+2025-10-17 19:35:57.506 -05:00 [INF] Request finished HTTP/1.1 GET http://localhost:5012/api/portfolios - 200 null application/json; charset=utf-8 10.4268ms
+2025-10-17 19:41:47.014 -05:00 [INF] Request starting HTTP/1.1 GET http://localhost:5012/api/portfolios - null null
+2025-10-17 19:41:47.016 -05:00 [INF] Executing endpoint 'RiskPortfolio.Api.Controllers.PortfoliosController.GetAllAsync (RiskPortfolio.Api)'
+2025-10-17 19:41:47.017 -05:00 [INF] Route matched with {action = "GetAll", controller = "Portfolios"}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.ActionResult`1[System.Collections.Generic.IEnumerable`1[RiskPortfolio.Api.Models.Responses.PortfolioResponse]]] GetAllAsync(System.Threading.CancellationToken) on controller RiskPortfolio.Api.Controllers.PortfoliosController (RiskPortfolio.Api).
+2025-10-17 19:41:47.021 -05:00 [INF] Executed DbCommand (0ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT "p"."Id", "p"."BaseCurrency", "p"."CreatedAt", "p"."LastEvaluatedAt", "p"."Name", "p"."Owner", "p"."RiskScore", "p"."ValueAtRisk", "a"."Id", "a"."AveragePrice", "a"."CurrentPrice", "a"."PortfolioId", "a"."Quantity", "a"."Symbol", "a"."Volatility"
+FROM "Portfolios" AS "p"
+LEFT JOIN "AssetPositions" AS "a" ON "p"."Id" = "a"."PortfolioId"
+ORDER BY "p"."Name", "p"."Id"
+2025-10-17 19:41:47.023 -05:00 [INF] Executing OkObjectResult, writing value of type 'System.Collections.Generic.List`1[[RiskPortfolio.Api.Models.Responses.PortfolioResponse, RiskPortfolio.Api, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]]'.
+2025-10-17 19:41:47.024 -05:00 [INF] Executed action RiskPortfolio.Api.Controllers.PortfoliosController.GetAllAsync (RiskPortfolio.Api) in 6.334ms
+2025-10-17 19:41:47.025 -05:00 [INF] Executed endpoint 'RiskPortfolio.Api.Controllers.PortfoliosController.GetAllAsync (RiskPortfolio.Api)'
+2025-10-17 19:41:47.026 -05:00 [INF] HTTP GET /api/portfolios responded 200 in 10.5186 ms
+2025-10-17 19:41:47.027 -05:00 [INF] Request finished HTTP/1.1 GET http://localhost:5012/api/portfolios - 200 null application/json; charset=utf-8 13.6521ms
+2025-10-17 19:44:10.561 -05:00 [INF] Request starting HTTP/1.1 GET http://localhost:5012/api/portfolios - null null
+2025-10-17 19:44:10.563 -05:00 [INF] Executing endpoint 'RiskPortfolio.Api.Controllers.PortfoliosController.GetAllAsync (RiskPortfolio.Api)'
+2025-10-17 19:44:10.564 -05:00 [INF] Route matched with {action = "GetAll", controller = "Portfolios"}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.ActionResult`1[System.Collections.Generic.IEnumerable`1[RiskPortfolio.Api.Models.Responses.PortfolioResponse]]] GetAllAsync(System.Threading.CancellationToken) on controller RiskPortfolio.Api.Controllers.PortfoliosController (RiskPortfolio.Api).
+2025-10-17 19:44:10.566 -05:00 [INF] Executed DbCommand (0ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT "p"."Id", "p"."BaseCurrency", "p"."CreatedAt", "p"."LastEvaluatedAt", "p"."Name", "p"."Owner", "p"."RiskScore", "p"."ValueAtRisk", "a"."Id", "a"."AveragePrice", "a"."CurrentPrice", "a"."PortfolioId", "a"."Quantity", "a"."Symbol", "a"."Volatility"
+FROM "Portfolios" AS "p"
+LEFT JOIN "AssetPositions" AS "a" ON "p"."Id" = "a"."PortfolioId"
+ORDER BY "p"."Name", "p"."Id"
+2025-10-17 19:44:10.568 -05:00 [INF] Executing OkObjectResult, writing value of type 'System.Collections.Generic.List`1[[RiskPortfolio.Api.Models.Responses.PortfolioResponse, RiskPortfolio.Api, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]]'.
+2025-10-17 19:44:10.569 -05:00 [INF] Executed action RiskPortfolio.Api.Controllers.PortfoliosController.GetAllAsync (RiskPortfolio.Api) in 3.2162ms
+2025-10-17 19:44:10.569 -05:00 [INF] Executed endpoint 'RiskPortfolio.Api.Controllers.PortfoliosController.GetAllAsync (RiskPortfolio.Api)'
+2025-10-17 19:44:10.570 -05:00 [INF] HTTP GET /api/portfolios responded 200 in 6.8109 ms
+2025-10-17 19:44:10.571 -05:00 [INF] Request finished HTTP/1.1 GET http://localhost:5012/api/portfolios - 200 null application/json; charset=utf-8 9.2464ms
+2025-10-17 19:45:01.057 -05:00 [INF] Application is shutting down...
+2025-10-17 19:45:06.877 -05:00 [INF] Applying database migrations...
+2025-10-17 19:45:06.957 -05:00 [INF] Database migrations completed
+2025-10-17 19:45:06.980 -05:00 [INF] Now listening on: http://localhost:5012
+2025-10-17 19:45:06.989 -05:00 [INF] Application started. Press Ctrl+C to shut down.
+2025-10-17 19:45:06.989 -05:00 [INF] Hosting environment: Development
+2025-10-17 19:45:06.990 -05:00 [INF] Content root path: C:\Users\purple\Desktop\Dev\Git\C\Risk Portfolio\RiskPortfolio.Api
+2025-10-17 19:45:07.578 -05:00 [INF] Executed DbCommand (2ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT "p"."Id", "p"."BaseCurrency", "p"."CreatedAt", "p"."LastEvaluatedAt", "p"."Name", "p"."Owner", "p"."RiskScore", "p"."ValueAtRisk", "a"."Id", "a"."AveragePrice", "a"."CurrentPrice", "a"."PortfolioId", "a"."Quantity", "a"."Symbol", "a"."Volatility"
+FROM "Portfolios" AS "p"
+LEFT JOIN "AssetPositions" AS "a" ON "p"."Id" = "a"."PortfolioId"
+ORDER BY "p"."Name", "p"."Id"
+2025-10-17 19:45:15.581 -05:00 [INF] Request starting HTTP/1.1 GET http://localhost:5012/api/portfolios - null null
+2025-10-17 19:45:15.594 -05:00 [WRN] Failed to determine the https port for redirect.
+2025-10-17 19:45:15.608 -05:00 [INF] Executing endpoint 'RiskPortfolio.Api.Controllers.PortfoliosController.GetAllAsync (RiskPortfolio.Api)'
+2025-10-17 19:45:15.620 -05:00 [INF] Route matched with {action = "GetAll", controller = "Portfolios"}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.ActionResult`1[System.Collections.Generic.IEnumerable`1[RiskPortfolio.Api.Models.Responses.PortfolioResponse]]] GetAllAsync(System.Threading.CancellationToken) on controller RiskPortfolio.Api.Controllers.PortfoliosController (RiskPortfolio.Api).
+2025-10-17 19:45:15.684 -05:00 [INF] Executed DbCommand (0ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT "p"."Id", "p"."BaseCurrency", "p"."CreatedAt", "p"."LastEvaluatedAt", "p"."Name", "p"."Owner", "p"."RiskScore", "p"."ValueAtRisk", "a"."Id", "a"."AveragePrice", "a"."CurrentPrice", "a"."PortfolioId", "a"."Quantity", "a"."Symbol", "a"."Volatility"
+FROM "Portfolios" AS "p"
+LEFT JOIN "AssetPositions" AS "a" ON "p"."Id" = "a"."PortfolioId"
+ORDER BY "p"."Name", "p"."Id"
+2025-10-17 19:45:15.690 -05:00 [INF] Executing OkObjectResult, writing value of type 'System.Collections.Generic.List`1[[RiskPortfolio.Api.Models.Responses.PortfolioResponse, RiskPortfolio.Api, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]]'.
+2025-10-17 19:45:15.723 -05:00 [INF] Executed action RiskPortfolio.Api.Controllers.PortfoliosController.GetAllAsync (RiskPortfolio.Api) in 99.4134ms
+2025-10-17 19:45:15.726 -05:00 [INF] Executed endpoint 'RiskPortfolio.Api.Controllers.PortfoliosController.GetAllAsync (RiskPortfolio.Api)'
+2025-10-17 19:45:15.728 -05:00 [INF] HTTP GET /api/portfolios responded 200 in 141.5157 ms
+2025-10-17 19:45:15.730 -05:00 [INF] Request finished HTTP/1.1 GET http://localhost:5012/api/portfolios - 200 null application/json; charset=utf-8 150.4989ms
+2025-10-17 19:48:18.524 -05:00 [INF] Request starting HTTP/1.1 GET http://localhost:5012/api/portfolios - null null
+2025-10-17 19:48:18.528 -05:00 [INF] Executing endpoint 'RiskPortfolio.Api.Controllers.PortfoliosController.GetAllAsync (RiskPortfolio.Api)'
+2025-10-17 19:48:18.528 -05:00 [INF] Route matched with {action = "GetAll", controller = "Portfolios"}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.ActionResult`1[System.Collections.Generic.IEnumerable`1[RiskPortfolio.Api.Models.Responses.PortfolioResponse]]] GetAllAsync(System.Threading.CancellationToken) on controller RiskPortfolio.Api.Controllers.PortfoliosController (RiskPortfolio.Api).
+2025-10-17 19:48:18.541 -05:00 [INF] Executed DbCommand (0ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT "p"."Id", "p"."BaseCurrency", "p"."CreatedAt", "p"."LastEvaluatedAt", "p"."Name", "p"."Owner", "p"."RiskScore", "p"."ValueAtRisk", "a"."Id", "a"."AveragePrice", "a"."CurrentPrice", "a"."PortfolioId", "a"."Quantity", "a"."Symbol", "a"."Volatility"
+FROM "Portfolios" AS "p"
+LEFT JOIN "AssetPositions" AS "a" ON "p"."Id" = "a"."PortfolioId"
+ORDER BY "p"."Name", "p"."Id"
+2025-10-17 19:48:18.543 -05:00 [INF] Executing OkObjectResult, writing value of type 'System.Collections.Generic.List`1[[RiskPortfolio.Api.Models.Responses.PortfolioResponse, RiskPortfolio.Api, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]]'.
+2025-10-17 19:48:18.544 -05:00 [INF] Executed action RiskPortfolio.Api.Controllers.PortfoliosController.GetAllAsync (RiskPortfolio.Api) in 14.5945ms
+2025-10-17 19:48:18.545 -05:00 [INF] Executed endpoint 'RiskPortfolio.Api.Controllers.PortfoliosController.GetAllAsync (RiskPortfolio.Api)'
+2025-10-17 19:48:18.546 -05:00 [INF] HTTP GET /api/portfolios responded 200 in 19.5205 ms
+2025-10-17 19:48:18.547 -05:00 [INF] Request finished HTTP/1.1 GET http://localhost:5012/api/portfolios - 200 null application/json; charset=utf-8 23.0802ms
+2025-10-17 19:49:00.669 -05:00 [INF] Request starting HTTP/1.1 GET http://localhost:5012/api/portfolios - null null
+2025-10-17 19:49:00.671 -05:00 [INF] Executing endpoint 'RiskPortfolio.Api.Controllers.PortfoliosController.GetAllAsync (RiskPortfolio.Api)'
+2025-10-17 19:49:00.672 -05:00 [INF] Route matched with {action = "GetAll", controller = "Portfolios"}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.ActionResult`1[System.Collections.Generic.IEnumerable`1[RiskPortfolio.Api.Models.Responses.PortfolioResponse]]] GetAllAsync(System.Threading.CancellationToken) on controller RiskPortfolio.Api.Controllers.PortfoliosController (RiskPortfolio.Api).
+2025-10-17 19:49:00.677 -05:00 [INF] Executed DbCommand (0ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT "p"."Id", "p"."BaseCurrency", "p"."CreatedAt", "p"."LastEvaluatedAt", "p"."Name", "p"."Owner", "p"."RiskScore", "p"."ValueAtRisk", "a"."Id", "a"."AveragePrice", "a"."CurrentPrice", "a"."PortfolioId", "a"."Quantity", "a"."Symbol", "a"."Volatility"
+FROM "Portfolios" AS "p"
+LEFT JOIN "AssetPositions" AS "a" ON "p"."Id" = "a"."PortfolioId"
+ORDER BY "p"."Name", "p"."Id"
+2025-10-17 19:49:00.679 -05:00 [INF] Executing OkObjectResult, writing value of type 'System.Collections.Generic.List`1[[RiskPortfolio.Api.Models.Responses.PortfolioResponse, RiskPortfolio.Api, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]]'.
+2025-10-17 19:49:00.680 -05:00 [INF] Executed action RiskPortfolio.Api.Controllers.PortfoliosController.GetAllAsync (RiskPortfolio.Api) in 6.8269ms
+2025-10-17 19:49:00.681 -05:00 [INF] Executed endpoint 'RiskPortfolio.Api.Controllers.PortfoliosController.GetAllAsync (RiskPortfolio.Api)'
+2025-10-17 19:49:00.682 -05:00 [INF] HTTP GET /api/portfolios responded 200 in 10.6463 ms
+2025-10-17 19:49:00.682 -05:00 [INF] Request finished HTTP/1.1 GET http://localhost:5012/api/portfolios - 200 null application/json; charset=utf-8 13.4853ms
+2025-10-17 19:55:05.377 -05:00 [INF] Request starting HTTP/1.1 POST http://localhost:5012/api/portfolios - application/json 866
+2025-10-17 19:55:05.380 -05:00 [INF] Executing endpoint 'RiskPortfolio.Api.Controllers.PortfoliosController.CreateAsync (RiskPortfolio.Api)'
+2025-10-17 19:55:05.384 -05:00 [INF] Route matched with {action = "Create", controller = "Portfolios"}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.ActionResult`1[RiskPortfolio.Api.Models.Responses.PortfolioResponse]] CreateAsync(RiskPortfolio.Api.Models.Requests.CreatePortfolioRequest, System.Threading.CancellationToken) on controller RiskPortfolio.Api.Controllers.PortfoliosController (RiskPortfolio.Api).
+2025-10-17 19:55:13.628 -05:00 [WRN] Failed to establish Redis connection using localhost:6379. Falling back to memory cache only.
+StackExchange.Redis.RedisConnectionException: It was not possible to connect to the redis server(s). Error connecting right now. To allow this multiplexer to continue retrying until it's able to connect, use abortConnect=false in your connection string or AbortOnConnectFail=false; in your code.
+   at StackExchange.Redis.ConnectionMultiplexer.ConnectImplAsync(ConfigurationOptions configuration, TextWriter writer, Nullable`1 serverType) in /_/src/StackExchange.Redis/ConnectionMultiplexer.cs:line 620
+   at RiskPortfolio.Infrastructure.Caching.RedisConnectionFactory.GetConnectionAsync() in C:\Users\purple\Desktop\Dev\Git\C\Risk Portfolio\RiskPortfolio.Infrastructure\Caching\RedisConnectionFactory.cs:line 41
+2025-10-17 19:55:13.653 -05:00 [INF] Calculated risk for portfolio "fe192c38-a96f-442c-966a-873faa03e508" - Score: 32.54, VAR: 199831.97, Classification: "Moderate"
+2025-10-17 19:55:13.774 -05:00 [INF] Executed DbCommand (3ms) [Parameters=[@p0='?' (DbType = Guid), @p1='?' (Size = 3), @p2='?' (DbType = DateTime), @p3='?' (DbType = DateTime), @p4='?' (Size = 16), @p5='?' (Size = 13), @p6='?' (DbType = Decimal), @p7='?' (DbType = Decimal)], CommandType='"Text"', CommandTimeout='30']
+INSERT INTO "Portfolios" ("Id", "BaseCurrency", "CreatedAt", "LastEvaluatedAt", "Name", "Owner", "RiskScore", "ValueAtRisk")
+VALUES (@p0, @p1, @p2, @p3, @p4, @p5, @p6, @p7);
+2025-10-17 19:55:13.777 -05:00 [INF] Executed DbCommand (0ms) [Parameters=[@p0='?' (DbType = Guid), @p1='?' (DbType = Decimal), @p2='?' (DbType = Decimal), @p3='?' (DbType = Guid), @p4='?' (DbType = Decimal), @p5='?' (Size = 4), @p6='?' (DbType = Decimal)], CommandType='"Text"', CommandTimeout='30']
+INSERT INTO "AssetPositions" ("Id", "AveragePrice", "CurrentPrice", "PortfolioId", "Quantity", "Symbol", "Volatility")
+VALUES (@p0, @p1, @p2, @p3, @p4, @p5, @p6);
+2025-10-17 19:55:13.779 -05:00 [INF] Executed DbCommand (0ms) [Parameters=[@p0='?' (DbType = Guid), @p1='?' (DbType = Decimal), @p2='?' (DbType = Decimal), @p3='?' (DbType = Guid), @p4='?' (DbType = Decimal), @p5='?' (Size = 4), @p6='?' (DbType = Decimal)], CommandType='"Text"', CommandTimeout='30']
+INSERT INTO "AssetPositions" ("Id", "AveragePrice", "CurrentPrice", "PortfolioId", "Quantity", "Symbol", "Volatility")
+VALUES (@p0, @p1, @p2, @p3, @p4, @p5, @p6);
+2025-10-17 19:55:13.780 -05:00 [INF] Executed DbCommand (0ms) [Parameters=[@p0='?' (DbType = Guid), @p1='?' (DbType = Decimal), @p2='?' (DbType = Decimal), @p3='?' (DbType = Guid), @p4='?' (DbType = Decimal), @p5='?' (Size = 4), @p6='?' (DbType = Decimal)], CommandType='"Text"', CommandTimeout='30']
+INSERT INTO "AssetPositions" ("Id", "AveragePrice", "CurrentPrice", "PortfolioId", "Quantity", "Symbol", "Volatility")
+VALUES (@p0, @p1, @p2, @p3, @p4, @p5, @p6);
+2025-10-17 19:55:13.782 -05:00 [INF] Executed DbCommand (0ms) [Parameters=[@p0='?' (DbType = Guid), @p1='?' (DbType = Decimal), @p2='?' (DbType = Decimal), @p3='?' (DbType = Guid), @p4='?' (DbType = Decimal), @p5='?' (Size = 4), @p6='?' (DbType = Decimal)], CommandType='"Text"', CommandTimeout='30']
+INSERT INTO "AssetPositions" ("Id", "AveragePrice", "CurrentPrice", "PortfolioId", "Quantity", "Symbol", "Volatility")
+VALUES (@p0, @p1, @p2, @p3, @p4, @p5, @p6);
+2025-10-17 19:55:13.783 -05:00 [INF] Executed DbCommand (0ms) [Parameters=[@p0='?' (DbType = Guid), @p1='?' (DbType = Decimal), @p2='?' (DbType = Decimal), @p3='?' (DbType = Guid), @p4='?' (DbType = Decimal), @p5='?' (Size = 5), @p6='?' (DbType = Decimal)], CommandType='"Text"', CommandTimeout='30']
+INSERT INTO "AssetPositions" ("Id", "AveragePrice", "CurrentPrice", "PortfolioId", "Quantity", "Symbol", "Volatility")
+VALUES (@p0, @p1, @p2, @p3, @p4, @p5, @p6);
+2025-10-17 19:55:13.794 -05:00 [INF] Persisted new portfolio "fe192c38-a96f-442c-966a-873faa03e508" (Tech Growth Fund)
+2025-10-17 19:55:13.796 -05:00 [INF] Created portfolio "fe192c38-a96f-442c-966a-873faa03e508"
+2025-10-17 19:55:13.799 -05:00 [INF] Executing CreatedAtActionResult, writing value of type 'RiskPortfolio.Api.Models.Responses.PortfolioResponse'.
+2025-10-17 19:55:13.807 -05:00 [INF] Executed action RiskPortfolio.Api.Controllers.PortfoliosController.CreateAsync (RiskPortfolio.Api) in 8422.4699ms
+2025-10-17 19:55:13.809 -05:00 [INF] Executed endpoint 'RiskPortfolio.Api.Controllers.PortfoliosController.CreateAsync (RiskPortfolio.Api)'
+2025-10-17 19:55:13.810 -05:00 [ERR] HTTP POST /api/portfolios responded 500 in 8430.6013 ms
+System.InvalidOperationException: No route matches the supplied values.
+   at Microsoft.AspNetCore.Mvc.CreatedAtActionResult.OnFormatting(ActionContext context)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ObjectResultExecutor.ExecuteAsyncCore(ActionContext context, ObjectResult result, Type objectType, Object value)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ObjectResultExecutor.ExecuteAsync(ActionContext context, ObjectResult result)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ResourceInvoker.ResultNext[TFilter,TFilterAsync](State& next, Scope& scope, Object& state, Boolean& isCompleted)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ResourceInvoker.InvokeNextResultFilterAsync[TFilter,TFilterAsync]()
+--- End of stack trace from previous location ---
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ResourceInvoker.Rethrow(ResultExecutedContextSealed context)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ResourceInvoker.ResultNext[TFilter,TFilterAsync](State& next, Scope& scope, Object& state, Boolean& isCompleted)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ResourceInvoker.InvokeResultFilters()
+--- End of stack trace from previous location ---
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ResourceInvoker.<InvokeFilterPipelineAsync>g__Awaited|20_0(ResourceInvoker invoker, Task lastTask, State next, Scope scope, Object state, Boolean isCompleted)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ResourceInvoker.<InvokeAsync>g__Logged|17_1(ResourceInvoker invoker)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ResourceInvoker.<InvokeAsync>g__Logged|17_1(ResourceInvoker invoker)
+   at Microsoft.AspNetCore.Routing.EndpointMiddleware.<Invoke>g__AwaitRequestTask|7_0(Endpoint endpoint, Task requestTask, ILogger logger)
+   at Microsoft.AspNetCore.Authorization.AuthorizationMiddleware.Invoke(HttpContext context)
+   at Swashbuckle.AspNetCore.SwaggerUI.SwaggerUIMiddleware.Invoke(HttpContext httpContext)
+   at Swashbuckle.AspNetCore.Swagger.SwaggerMiddleware.Invoke(HttpContext httpContext, ISwaggerProvider swaggerProvider)
+   at Serilog.AspNetCore.RequestLoggingMiddleware.Invoke(HttpContext httpContext)
+2025-10-17 19:55:13.818 -05:00 [ERR] An unhandled exception has occurred while executing the request.
+System.InvalidOperationException: No route matches the supplied values.
+   at Microsoft.AspNetCore.Mvc.CreatedAtActionResult.OnFormatting(ActionContext context)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ObjectResultExecutor.ExecuteAsyncCore(ActionContext context, ObjectResult result, Type objectType, Object value)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ObjectResultExecutor.ExecuteAsync(ActionContext context, ObjectResult result)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ResourceInvoker.ResultNext[TFilter,TFilterAsync](State& next, Scope& scope, Object& state, Boolean& isCompleted)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ResourceInvoker.InvokeNextResultFilterAsync[TFilter,TFilterAsync]()
+--- End of stack trace from previous location ---
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ResourceInvoker.Rethrow(ResultExecutedContextSealed context)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ResourceInvoker.ResultNext[TFilter,TFilterAsync](State& next, Scope& scope, Object& state, Boolean& isCompleted)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ResourceInvoker.InvokeResultFilters()
+--- End of stack trace from previous location ---
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ResourceInvoker.<InvokeFilterPipelineAsync>g__Awaited|20_0(ResourceInvoker invoker, Task lastTask, State next, Scope scope, Object state, Boolean isCompleted)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ResourceInvoker.<InvokeAsync>g__Logged|17_1(ResourceInvoker invoker)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ResourceInvoker.<InvokeAsync>g__Logged|17_1(ResourceInvoker invoker)
+   at Microsoft.AspNetCore.Routing.EndpointMiddleware.<Invoke>g__AwaitRequestTask|7_0(Endpoint endpoint, Task requestTask, ILogger logger)
+   at Microsoft.AspNetCore.Authorization.AuthorizationMiddleware.Invoke(HttpContext context)
+   at Swashbuckle.AspNetCore.SwaggerUI.SwaggerUIMiddleware.Invoke(HttpContext httpContext)
+   at Swashbuckle.AspNetCore.Swagger.SwaggerMiddleware.Invoke(HttpContext httpContext, ISwaggerProvider swaggerProvider)
+   at Serilog.AspNetCore.RequestLoggingMiddleware.Invoke(HttpContext httpContext)
+   at Microsoft.AspNetCore.Authentication.AuthenticationMiddleware.Invoke(HttpContext context)
+   at Microsoft.AspNetCore.Diagnostics.DeveloperExceptionPageMiddlewareImpl.Invoke(HttpContext context)
+2025-10-17 19:55:13.826 -05:00 [INF] Request finished HTTP/1.1 POST http://localhost:5012/api/portfolios - 500 null text/plain; charset=utf-8 8448.7162ms
+2025-10-17 19:55:14.353 -05:00 [INF] Request starting HTTP/1.1 POST http://localhost:5012/api/portfolios - application/json 1008
+2025-10-17 19:55:14.357 -05:00 [INF] Executing endpoint 'RiskPortfolio.Api.Controllers.PortfoliosController.CreateAsync (RiskPortfolio.Api)'
+2025-10-17 19:55:14.358 -05:00 [INF] Route matched with {action = "Create", controller = "Portfolios"}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.ActionResult`1[RiskPortfolio.Api.Models.Responses.PortfolioResponse]] CreateAsync(RiskPortfolio.Api.Models.Requests.CreatePortfolioRequest, System.Threading.CancellationToken) on controller RiskPortfolio.Api.Controllers.PortfoliosController (RiskPortfolio.Api).
+2025-10-17 19:55:14.361 -05:00 [INF] Calculated risk for portfolio "619ec6f1-c6a6-40b2-9762-699bd41205d6" - Score: 15.46, VAR: 38113.36, Classification: "Moderate"
+2025-10-17 19:55:14.370 -05:00 [INF] Executed DbCommand (6ms) [Parameters=[@p0='?' (DbType = Guid), @p1='?' (Size = 3), @p2='?' (DbType = DateTime), @p3='?' (DbType = DateTime), @p4='?' (Size = 25), @p5='?' (Size = 12), @p6='?' (DbType = Decimal), @p7='?' (DbType = Decimal)], CommandType='"Text"', CommandTimeout='30']
+INSERT INTO "Portfolios" ("Id", "BaseCurrency", "CreatedAt", "LastEvaluatedAt", "Name", "Owner", "RiskScore", "ValueAtRisk")
+VALUES (@p0, @p1, @p2, @p3, @p4, @p5, @p6, @p7);
+2025-10-17 19:55:14.373 -05:00 [INF] Executed DbCommand (0ms) [Parameters=[@p0='?' (DbType = Guid), @p1='?' (DbType = Decimal), @p2='?' (DbType = Decimal), @p3='?' (DbType = Guid), @p4='?' (DbType = Decimal), @p5='?' (Size = 2), @p6='?' (DbType = Decimal)], CommandType='"Text"', CommandTimeout='30']
+INSERT INTO "AssetPositions" ("Id", "AveragePrice", "CurrentPrice", "PortfolioId", "Quantity", "Symbol", "Volatility")
+VALUES (@p0, @p1, @p2, @p3, @p4, @p5, @p6);
+2025-10-17 19:55:14.374 -05:00 [INF] Executed DbCommand (0ms) [Parameters=[@p0='?' (DbType = Guid), @p1='?' (DbType = Decimal), @p2='?' (DbType = Decimal), @p3='?' (DbType = Guid), @p4='?' (DbType = Decimal), @p5='?' (Size = 3), @p6='?' (DbType = Decimal)], CommandType='"Text"', CommandTimeout='30']
+INSERT INTO "AssetPositions" ("Id", "AveragePrice", "CurrentPrice", "PortfolioId", "Quantity", "Symbol", "Volatility")
+VALUES (@p0, @p1, @p2, @p3, @p4, @p5, @p6);
+2025-10-17 19:55:14.375 -05:00 [INF] Executed DbCommand (0ms) [Parameters=[@p0='?' (DbType = Guid), @p1='?' (DbType = Decimal), @p2='?' (DbType = Decimal), @p3='?' (DbType = Guid), @p4='?' (DbType = Decimal), @p5='?' (Size = 2), @p6='?' (DbType = Decimal)], CommandType='"Text"', CommandTimeout='30']
+INSERT INTO "AssetPositions" ("Id", "AveragePrice", "CurrentPrice", "PortfolioId", "Quantity", "Symbol", "Volatility")
+VALUES (@p0, @p1, @p2, @p3, @p4, @p5, @p6);
+2025-10-17 19:55:14.378 -05:00 [INF] Executed DbCommand (0ms) [Parameters=[@p0='?' (DbType = Guid), @p1='?' (DbType = Decimal), @p2='?' (DbType = Decimal), @p3='?' (DbType = Guid), @p4='?' (DbType = Decimal), @p5='?' (Size = 3), @p6='?' (DbType = Decimal)], CommandType='"Text"', CommandTimeout='30']
+INSERT INTO "AssetPositions" ("Id", "AveragePrice", "CurrentPrice", "PortfolioId", "Quantity", "Symbol", "Volatility")
+VALUES (@p0, @p1, @p2, @p3, @p4, @p5, @p6);
+2025-10-17 19:55:14.379 -05:00 [INF] Executed DbCommand (0ms) [Parameters=[@p0='?' (DbType = Guid), @p1='?' (DbType = Decimal), @p2='?' (DbType = Decimal), @p3='?' (DbType = Guid), @p4='?' (DbType = Decimal), @p5='?' (Size = 2), @p6='?' (DbType = Decimal)], CommandType='"Text"', CommandTimeout='30']
+INSERT INTO "AssetPositions" ("Id", "AveragePrice", "CurrentPrice", "PortfolioId", "Quantity", "Symbol", "Volatility")
+VALUES (@p0, @p1, @p2, @p3, @p4, @p5, @p6);
+2025-10-17 19:55:14.381 -05:00 [INF] Executed DbCommand (0ms) [Parameters=[@p0='?' (DbType = Guid), @p1='?' (DbType = Decimal), @p2='?' (DbType = Decimal), @p3='?' (DbType = Guid), @p4='?' (DbType = Decimal), @p5='?' (Size = 1), @p6='?' (DbType = Decimal)], CommandType='"Text"', CommandTimeout='30']
+INSERT INTO "AssetPositions" ("Id", "AveragePrice", "CurrentPrice", "PortfolioId", "Quantity", "Symbol", "Volatility")
+VALUES (@p0, @p1, @p2, @p3, @p4, @p5, @p6);
+2025-10-17 19:55:14.387 -05:00 [INF] Persisted new portfolio "619ec6f1-c6a6-40b2-9762-699bd41205d6" (Dividend Income Portfolio)
+2025-10-17 19:55:14.388 -05:00 [INF] Created portfolio "619ec6f1-c6a6-40b2-9762-699bd41205d6"
+2025-10-17 19:55:14.389 -05:00 [INF] Executing CreatedAtActionResult, writing value of type 'RiskPortfolio.Api.Models.Responses.PortfolioResponse'.
+2025-10-17 19:55:14.390 -05:00 [INF] Executed action RiskPortfolio.Api.Controllers.PortfoliosController.CreateAsync (RiskPortfolio.Api) in 31.3021ms
+2025-10-17 19:55:14.391 -05:00 [INF] Executed endpoint 'RiskPortfolio.Api.Controllers.PortfoliosController.CreateAsync (RiskPortfolio.Api)'
+2025-10-17 19:55:14.392 -05:00 [ERR] HTTP POST /api/portfolios responded 500 in 35.6940 ms
+System.InvalidOperationException: No route matches the supplied values.
+   at Microsoft.AspNetCore.Mvc.CreatedAtActionResult.OnFormatting(ActionContext context)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ObjectResultExecutor.ExecuteAsyncCore(ActionContext context, ObjectResult result, Type objectType, Object value)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ObjectResultExecutor.ExecuteAsync(ActionContext context, ObjectResult result)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ResourceInvoker.ResultNext[TFilter,TFilterAsync](State& next, Scope& scope, Object& state, Boolean& isCompleted)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ResourceInvoker.InvokeNextResultFilterAsync[TFilter,TFilterAsync]()
+--- End of stack trace from previous location ---
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ResourceInvoker.Rethrow(ResultExecutedContextSealed context)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ResourceInvoker.ResultNext[TFilter,TFilterAsync](State& next, Scope& scope, Object& state, Boolean& isCompleted)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ResourceInvoker.InvokeResultFilters()
+--- End of stack trace from previous location ---
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ResourceInvoker.<InvokeFilterPipelineAsync>g__Awaited|20_0(ResourceInvoker invoker, Task lastTask, State next, Scope scope, Object state, Boolean isCompleted)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ResourceInvoker.<InvokeAsync>g__Logged|17_1(ResourceInvoker invoker)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ResourceInvoker.<InvokeAsync>g__Logged|17_1(ResourceInvoker invoker)
+   at Microsoft.AspNetCore.Routing.EndpointMiddleware.<Invoke>g__AwaitRequestTask|7_0(Endpoint endpoint, Task requestTask, ILogger logger)
+   at Microsoft.AspNetCore.Authorization.AuthorizationMiddleware.Invoke(HttpContext context)
+   at Swashbuckle.AspNetCore.SwaggerUI.SwaggerUIMiddleware.Invoke(HttpContext httpContext)
+   at Swashbuckle.AspNetCore.Swagger.SwaggerMiddleware.Invoke(HttpContext httpContext, ISwaggerProvider swaggerProvider)
+   at Serilog.AspNetCore.RequestLoggingMiddleware.Invoke(HttpContext httpContext)
+2025-10-17 19:55:14.397 -05:00 [ERR] An unhandled exception has occurred while executing the request.
+System.InvalidOperationException: No route matches the supplied values.
+   at Microsoft.AspNetCore.Mvc.CreatedAtActionResult.OnFormatting(ActionContext context)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ObjectResultExecutor.ExecuteAsyncCore(ActionContext context, ObjectResult result, Type objectType, Object value)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ObjectResultExecutor.ExecuteAsync(ActionContext context, ObjectResult result)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ResourceInvoker.ResultNext[TFilter,TFilterAsync](State& next, Scope& scope, Object& state, Boolean& isCompleted)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ResourceInvoker.InvokeNextResultFilterAsync[TFilter,TFilterAsync]()
+--- End of stack trace from previous location ---
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ResourceInvoker.Rethrow(ResultExecutedContextSealed context)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ResourceInvoker.ResultNext[TFilter,TFilterAsync](State& next, Scope& scope, Object& state, Boolean& isCompleted)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ResourceInvoker.InvokeResultFilters()
+--- End of stack trace from previous location ---
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ResourceInvoker.<InvokeFilterPipelineAsync>g__Awaited|20_0(ResourceInvoker invoker, Task lastTask, State next, Scope scope, Object state, Boolean isCompleted)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ResourceInvoker.<InvokeAsync>g__Logged|17_1(ResourceInvoker invoker)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ResourceInvoker.<InvokeAsync>g__Logged|17_1(ResourceInvoker invoker)
+   at Microsoft.AspNetCore.Routing.EndpointMiddleware.<Invoke>g__AwaitRequestTask|7_0(Endpoint endpoint, Task requestTask, ILogger logger)
+   at Microsoft.AspNetCore.Authorization.AuthorizationMiddleware.Invoke(HttpContext context)
+   at Swashbuckle.AspNetCore.SwaggerUI.SwaggerUIMiddleware.Invoke(HttpContext httpContext)
+   at Swashbuckle.AspNetCore.Swagger.SwaggerMiddleware.Invoke(HttpContext httpContext, ISwaggerProvider swaggerProvider)
+   at Serilog.AspNetCore.RequestLoggingMiddleware.Invoke(HttpContext httpContext)
+   at Microsoft.AspNetCore.Authentication.AuthenticationMiddleware.Invoke(HttpContext context)
+   at Microsoft.AspNetCore.Diagnostics.DeveloperExceptionPageMiddlewareImpl.Invoke(HttpContext context)
+2025-10-17 19:55:14.402 -05:00 [INF] Request finished HTTP/1.1 POST http://localhost:5012/api/portfolios - 500 null text/plain; charset=utf-8 48.4063ms
+2025-10-17 19:55:14.911 -05:00 [INF] Request starting HTTP/1.1 POST http://localhost:5012/api/portfolios - application/json 714
+2025-10-17 19:55:14.913 -05:00 [INF] Executing endpoint 'RiskPortfolio.Api.Controllers.PortfoliosController.CreateAsync (RiskPortfolio.Api)'
+2025-10-17 19:55:14.913 -05:00 [INF] Route matched with {action = "Create", controller = "Portfolios"}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.ActionResult`1[RiskPortfolio.Api.Models.Responses.PortfolioResponse]] CreateAsync(RiskPortfolio.Api.Models.Requests.CreatePortfolioRequest, System.Threading.CancellationToken) on controller RiskPortfolio.Api.Controllers.PortfoliosController (RiskPortfolio.Api).
+2025-10-17 19:55:14.915 -05:00 [INF] Calculated risk for portfolio "d832c8a6-108f-4a3a-8e9b-f6b1eb1f2884" - Score: 73.23, VAR: 489868.07, Classification: "Critical"
+2025-10-17 19:55:14.919 -05:00 [INF] Executed DbCommand (1ms) [Parameters=[@p0='?' (DbType = Guid), @p1='?' (Size = 3), @p2='?' (DbType = DateTime), @p3='?' (DbType = DateTime), @p4='?' (Size = 15), @p5='?' (Size = 11), @p6='?' (DbType = Decimal), @p7='?' (DbType = Decimal)], CommandType='"Text"', CommandTimeout='30']
+INSERT INTO "Portfolios" ("Id", "BaseCurrency", "CreatedAt", "LastEvaluatedAt", "Name", "Owner", "RiskScore", "ValueAtRisk")
+VALUES (@p0, @p1, @p2, @p3, @p4, @p5, @p6, @p7);
+2025-10-17 19:55:14.921 -05:00 [INF] Executed DbCommand (0ms) [Parameters=[@p0='?' (DbType = Guid), @p1='?' (DbType = Decimal), @p2='?' (DbType = Decimal), @p3='?' (DbType = Guid), @p4='?' (DbType = Decimal), @p5='?' (Size = 4), @p6='?' (DbType = Decimal)], CommandType='"Text"', CommandTimeout='30']
+INSERT INTO "AssetPositions" ("Id", "AveragePrice", "CurrentPrice", "PortfolioId", "Quantity", "Symbol", "Volatility")
+VALUES (@p0, @p1, @p2, @p3, @p4, @p5, @p6);
+2025-10-17 19:55:14.922 -05:00 [INF] Executed DbCommand (0ms) [Parameters=[@p0='?' (DbType = Guid), @p1='?' (DbType = Decimal), @p2='?' (DbType = Decimal), @p3='?' (DbType = Guid), @p4='?' (DbType = Decimal), @p5='?' (Size = 3), @p6='?' (DbType = Decimal)], CommandType='"Text"', CommandTimeout='30']
+INSERT INTO "AssetPositions" ("Id", "AveragePrice", "CurrentPrice", "PortfolioId", "Quantity", "Symbol", "Volatility")
+VALUES (@p0, @p1, @p2, @p3, @p4, @p5, @p6);
+2025-10-17 19:55:14.924 -05:00 [INF] Executed DbCommand (0ms) [Parameters=[@p0='?' (DbType = Guid), @p1='?' (DbType = Decimal), @p2='?' (DbType = Decimal), @p3='?' (DbType = Guid), @p4='?' (DbType = Decimal), @p5='?' (Size = 4), @p6='?' (DbType = Decimal)], CommandType='"Text"', CommandTimeout='30']
+INSERT INTO "AssetPositions" ("Id", "AveragePrice", "CurrentPrice", "PortfolioId", "Quantity", "Symbol", "Volatility")
+VALUES (@p0, @p1, @p2, @p3, @p4, @p5, @p6);
+2025-10-17 19:55:14.925 -05:00 [INF] Executed DbCommand (0ms) [Parameters=[@p0='?' (DbType = Guid), @p1='?' (DbType = Decimal), @p2='?' (DbType = Decimal), @p3='?' (DbType = Guid), @p4='?' (DbType = Decimal), @p5='?' (Size = 3), @p6='?' (DbType = Decimal)], CommandType='"Text"', CommandTimeout='30']
+INSERT INTO "AssetPositions" ("Id", "AveragePrice", "CurrentPrice", "PortfolioId", "Quantity", "Symbol", "Volatility")
+VALUES (@p0, @p1, @p2, @p3, @p4, @p5, @p6);
+2025-10-17 19:55:14.930 -05:00 [INF] Persisted new portfolio "d832c8a6-108f-4a3a-8e9b-f6b1eb1f2884" (Crypto Ventures)
+2025-10-17 19:55:14.930 -05:00 [INF] Created portfolio "d832c8a6-108f-4a3a-8e9b-f6b1eb1f2884"
+2025-10-17 19:55:14.931 -05:00 [INF] Executing CreatedAtActionResult, writing value of type 'RiskPortfolio.Api.Models.Responses.PortfolioResponse'.
+2025-10-17 19:55:14.932 -05:00 [INF] Executed action RiskPortfolio.Api.Controllers.PortfoliosController.CreateAsync (RiskPortfolio.Api) in 17.7518ms
+2025-10-17 19:55:14.933 -05:00 [INF] Executed endpoint 'RiskPortfolio.Api.Controllers.PortfoliosController.CreateAsync (RiskPortfolio.Api)'
+2025-10-17 19:55:14.934 -05:00 [ERR] HTTP POST /api/portfolios responded 500 in 20.8992 ms
+System.InvalidOperationException: No route matches the supplied values.
+   at Microsoft.AspNetCore.Mvc.CreatedAtActionResult.OnFormatting(ActionContext context)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ObjectResultExecutor.ExecuteAsyncCore(ActionContext context, ObjectResult result, Type objectType, Object value)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ObjectResultExecutor.ExecuteAsync(ActionContext context, ObjectResult result)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ResourceInvoker.ResultNext[TFilter,TFilterAsync](State& next, Scope& scope, Object& state, Boolean& isCompleted)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ResourceInvoker.InvokeNextResultFilterAsync[TFilter,TFilterAsync]()
+--- End of stack trace from previous location ---
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ResourceInvoker.Rethrow(ResultExecutedContextSealed context)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ResourceInvoker.ResultNext[TFilter,TFilterAsync](State& next, Scope& scope, Object& state, Boolean& isCompleted)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ResourceInvoker.InvokeResultFilters()
+--- End of stack trace from previous location ---
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ResourceInvoker.<InvokeFilterPipelineAsync>g__Awaited|20_0(ResourceInvoker invoker, Task lastTask, State next, Scope scope, Object state, Boolean isCompleted)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ResourceInvoker.<InvokeAsync>g__Logged|17_1(ResourceInvoker invoker)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ResourceInvoker.<InvokeAsync>g__Logged|17_1(ResourceInvoker invoker)
+   at Microsoft.AspNetCore.Routing.EndpointMiddleware.<Invoke>g__AwaitRequestTask|7_0(Endpoint endpoint, Task requestTask, ILogger logger)
+   at Microsoft.AspNetCore.Authorization.AuthorizationMiddleware.Invoke(HttpContext context)
+   at Swashbuckle.AspNetCore.SwaggerUI.SwaggerUIMiddleware.Invoke(HttpContext httpContext)
+   at Swashbuckle.AspNetCore.Swagger.SwaggerMiddleware.Invoke(HttpContext httpContext, ISwaggerProvider swaggerProvider)
+   at Serilog.AspNetCore.RequestLoggingMiddleware.Invoke(HttpContext httpContext)
+2025-10-17 19:55:14.938 -05:00 [ERR] An unhandled exception has occurred while executing the request.
+System.InvalidOperationException: No route matches the supplied values.
+   at Microsoft.AspNetCore.Mvc.CreatedAtActionResult.OnFormatting(ActionContext context)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ObjectResultExecutor.ExecuteAsyncCore(ActionContext context, ObjectResult result, Type objectType, Object value)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ObjectResultExecutor.ExecuteAsync(ActionContext context, ObjectResult result)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ResourceInvoker.ResultNext[TFilter,TFilterAsync](State& next, Scope& scope, Object& state, Boolean& isCompleted)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ResourceInvoker.InvokeNextResultFilterAsync[TFilter,TFilterAsync]()
+--- End of stack trace from previous location ---
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ResourceInvoker.Rethrow(ResultExecutedContextSealed context)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ResourceInvoker.ResultNext[TFilter,TFilterAsync](State& next, Scope& scope, Object& state, Boolean& isCompleted)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ResourceInvoker.InvokeResultFilters()
+--- End of stack trace from previous location ---
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ResourceInvoker.<InvokeFilterPipelineAsync>g__Awaited|20_0(ResourceInvoker invoker, Task lastTask, State next, Scope scope, Object state, Boolean isCompleted)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ResourceInvoker.<InvokeAsync>g__Logged|17_1(ResourceInvoker invoker)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ResourceInvoker.<InvokeAsync>g__Logged|17_1(ResourceInvoker invoker)
+   at Microsoft.AspNetCore.Routing.EndpointMiddleware.<Invoke>g__AwaitRequestTask|7_0(Endpoint endpoint, Task requestTask, ILogger logger)
+   at Microsoft.AspNetCore.Authorization.AuthorizationMiddleware.Invoke(HttpContext context)
+   at Swashbuckle.AspNetCore.SwaggerUI.SwaggerUIMiddleware.Invoke(HttpContext httpContext)
+   at Swashbuckle.AspNetCore.Swagger.SwaggerMiddleware.Invoke(HttpContext httpContext, ISwaggerProvider swaggerProvider)
+   at Serilog.AspNetCore.RequestLoggingMiddleware.Invoke(HttpContext httpContext)
+   at Microsoft.AspNetCore.Authentication.AuthenticationMiddleware.Invoke(HttpContext context)
+   at Microsoft.AspNetCore.Diagnostics.DeveloperExceptionPageMiddlewareImpl.Invoke(HttpContext context)
+2025-10-17 19:55:14.942 -05:00 [INF] Request finished HTTP/1.1 POST http://localhost:5012/api/portfolios - 500 null text/plain; charset=utf-8 30.4515ms
+2025-10-17 19:55:15.460 -05:00 [INF] Request starting HTTP/1.1 POST http://localhost:5012/api/portfolios - application/json 861
+2025-10-17 19:55:15.462 -05:00 [INF] Executing endpoint 'RiskPortfolio.Api.Controllers.PortfoliosController.CreateAsync (RiskPortfolio.Api)'
+2025-10-17 19:55:15.463 -05:00 [INF] Route matched with {action = "Create", controller = "Portfolios"}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.ActionResult`1[RiskPortfolio.Api.Models.Responses.PortfolioResponse]] CreateAsync(RiskPortfolio.Api.Models.Requests.CreatePortfolioRequest, System.Threading.CancellationToken) on controller RiskPortfolio.Api.Controllers.PortfoliosController (RiskPortfolio.Api).
+2025-10-17 19:55:15.464 -05:00 [INF] Calculated risk for portfolio "9a61c192-01f8-48a6-a001-e68ae4a71c2e" - Score: 27.48, VAR: 116342.49, Classification: "Moderate"
+2025-10-17 19:55:15.472 -05:00 [INF] Executed DbCommand (5ms) [Parameters=[@p0='?' (DbType = Guid), @p1='?' (Size = 3), @p2='?' (DbType = DateTime), @p3='?' (DbType = DateTime), @p4='?' (Size = 19), @p5='?' (Size = 12), @p6='?' (DbType = Decimal), @p7='?' (DbType = Decimal)], CommandType='"Text"', CommandTimeout='30']
+INSERT INTO "Portfolios" ("Id", "BaseCurrency", "CreatedAt", "LastEvaluatedAt", "Name", "Owner", "RiskScore", "ValueAtRisk")
+VALUES (@p0, @p1, @p2, @p3, @p4, @p5, @p6, @p7);
+2025-10-17 19:55:15.474 -05:00 [INF] Executed DbCommand (0ms) [Parameters=[@p0='?' (DbType = Guid), @p1='?' (DbType = Decimal), @p2='?' (DbType = Decimal), @p3='?' (DbType = Guid), @p4='?' (DbType = Decimal), @p5='?' (Size = 3), @p6='?' (DbType = Decimal)], CommandType='"Text"', CommandTimeout='30']
+INSERT INTO "AssetPositions" ("Id", "AveragePrice", "CurrentPrice", "PortfolioId", "Quantity", "Symbol", "Volatility")
+VALUES (@p0, @p1, @p2, @p3, @p4, @p5, @p6);
+2025-10-17 19:55:15.475 -05:00 [INF] Executed DbCommand (0ms) [Parameters=[@p0='?' (DbType = Guid), @p1='?' (DbType = Decimal), @p2='?' (DbType = Decimal), @p3='?' (DbType = Guid), @p4='?' (DbType = Decimal), @p5='?' (Size = 3), @p6='?' (DbType = Decimal)], CommandType='"Text"', CommandTimeout='30']
+INSERT INTO "AssetPositions" ("Id", "AveragePrice", "CurrentPrice", "PortfolioId", "Quantity", "Symbol", "Volatility")
+VALUES (@p0, @p1, @p2, @p3, @p4, @p5, @p6);
+2025-10-17 19:55:15.477 -05:00 [INF] Executed DbCommand (0ms) [Parameters=[@p0='?' (DbType = Guid), @p1='?' (DbType = Decimal), @p2='?' (DbType = Decimal), @p3='?' (DbType = Guid), @p4='?' (DbType = Decimal), @p5='?' (Size = 4), @p6='?' (DbType = Decimal)], CommandType='"Text"', CommandTimeout='30']
+INSERT INTO "AssetPositions" ("Id", "AveragePrice", "CurrentPrice", "PortfolioId", "Quantity", "Symbol", "Volatility")
+VALUES (@p0, @p1, @p2, @p3, @p4, @p5, @p6);
+2025-10-17 19:55:15.478 -05:00 [INF] Executed DbCommand (0ms) [Parameters=[@p0='?' (DbType = Guid), @p1='?' (DbType = Decimal), @p2='?' (DbType = Decimal), @p3='?' (DbType = Guid), @p4='?' (DbType = Decimal), @p5='?' (Size = 3), @p6='?' (DbType = Decimal)], CommandType='"Text"', CommandTimeout='30']
+INSERT INTO "AssetPositions" ("Id", "AveragePrice", "CurrentPrice", "PortfolioId", "Quantity", "Symbol", "Volatility")
+VALUES (@p0, @p1, @p2, @p3, @p4, @p5, @p6);
+2025-10-17 19:55:15.480 -05:00 [INF] Executed DbCommand (0ms) [Parameters=[@p0='?' (DbType = Guid), @p1='?' (DbType = Decimal), @p2='?' (DbType = Decimal), @p3='?' (DbType = Guid), @p4='?' (DbType = Decimal), @p5='?' (Size = 4), @p6='?' (DbType = Decimal)], CommandType='"Text"', CommandTimeout='30']
+INSERT INTO "AssetPositions" ("Id", "AveragePrice", "CurrentPrice", "PortfolioId", "Quantity", "Symbol", "Volatility")
+VALUES (@p0, @p1, @p2, @p3, @p4, @p5, @p6);
+2025-10-17 19:55:15.485 -05:00 [INF] Persisted new portfolio "9a61c192-01f8-48a6-a001-e68ae4a71c2e" (European Blue Chips)
+2025-10-17 19:55:15.486 -05:00 [INF] Created portfolio "9a61c192-01f8-48a6-a001-e68ae4a71c2e"
+2025-10-17 19:55:15.487 -05:00 [INF] Executing CreatedAtActionResult, writing value of type 'RiskPortfolio.Api.Models.Responses.PortfolioResponse'.
+2025-10-17 19:55:15.488 -05:00 [INF] Executed action RiskPortfolio.Api.Controllers.PortfoliosController.CreateAsync (RiskPortfolio.Api) in 24.1693ms
+2025-10-17 19:55:15.489 -05:00 [INF] Executed endpoint 'RiskPortfolio.Api.Controllers.PortfoliosController.CreateAsync (RiskPortfolio.Api)'
+2025-10-17 19:55:15.489 -05:00 [ERR] HTTP POST /api/portfolios responded 500 in 27.4545 ms
+System.InvalidOperationException: No route matches the supplied values.
+   at Microsoft.AspNetCore.Mvc.CreatedAtActionResult.OnFormatting(ActionContext context)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ObjectResultExecutor.ExecuteAsyncCore(ActionContext context, ObjectResult result, Type objectType, Object value)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ObjectResultExecutor.ExecuteAsync(ActionContext context, ObjectResult result)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ResourceInvoker.ResultNext[TFilter,TFilterAsync](State& next, Scope& scope, Object& state, Boolean& isCompleted)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ResourceInvoker.InvokeNextResultFilterAsync[TFilter,TFilterAsync]()
+--- End of stack trace from previous location ---
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ResourceInvoker.Rethrow(ResultExecutedContextSealed context)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ResourceInvoker.ResultNext[TFilter,TFilterAsync](State& next, Scope& scope, Object& state, Boolean& isCompleted)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ResourceInvoker.InvokeResultFilters()
+--- End of stack trace from previous location ---
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ResourceInvoker.<InvokeFilterPipelineAsync>g__Awaited|20_0(ResourceInvoker invoker, Task lastTask, State next, Scope scope, Object state, Boolean isCompleted)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ResourceInvoker.<InvokeAsync>g__Logged|17_1(ResourceInvoker invoker)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ResourceInvoker.<InvokeAsync>g__Logged|17_1(ResourceInvoker invoker)
+   at Microsoft.AspNetCore.Routing.EndpointMiddleware.<Invoke>g__AwaitRequestTask|7_0(Endpoint endpoint, Task requestTask, ILogger logger)
+   at Microsoft.AspNetCore.Authorization.AuthorizationMiddleware.Invoke(HttpContext context)
+   at Swashbuckle.AspNetCore.SwaggerUI.SwaggerUIMiddleware.Invoke(HttpContext httpContext)
+   at Swashbuckle.AspNetCore.Swagger.SwaggerMiddleware.Invoke(HttpContext httpContext, ISwaggerProvider swaggerProvider)
+   at Serilog.AspNetCore.RequestLoggingMiddleware.Invoke(HttpContext httpContext)
+2025-10-17 19:55:15.493 -05:00 [ERR] An unhandled exception has occurred while executing the request.
+System.InvalidOperationException: No route matches the supplied values.
+   at Microsoft.AspNetCore.Mvc.CreatedAtActionResult.OnFormatting(ActionContext context)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ObjectResultExecutor.ExecuteAsyncCore(ActionContext context, ObjectResult result, Type objectType, Object value)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ObjectResultExecutor.ExecuteAsync(ActionContext context, ObjectResult result)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ResourceInvoker.ResultNext[TFilter,TFilterAsync](State& next, Scope& scope, Object& state, Boolean& isCompleted)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ResourceInvoker.InvokeNextResultFilterAsync[TFilter,TFilterAsync]()
+--- End of stack trace from previous location ---
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ResourceInvoker.Rethrow(ResultExecutedContextSealed context)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ResourceInvoker.ResultNext[TFilter,TFilterAsync](State& next, Scope& scope, Object& state, Boolean& isCompleted)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ResourceInvoker.InvokeResultFilters()
+--- End of stack trace from previous location ---
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ResourceInvoker.<InvokeFilterPipelineAsync>g__Awaited|20_0(ResourceInvoker invoker, Task lastTask, State next, Scope scope, Object state, Boolean isCompleted)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ResourceInvoker.<InvokeAsync>g__Logged|17_1(ResourceInvoker invoker)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ResourceInvoker.<InvokeAsync>g__Logged|17_1(ResourceInvoker invoker)
+   at Microsoft.AspNetCore.Routing.EndpointMiddleware.<Invoke>g__AwaitRequestTask|7_0(Endpoint endpoint, Task requestTask, ILogger logger)
+   at Microsoft.AspNetCore.Authorization.AuthorizationMiddleware.Invoke(HttpContext context)
+   at Swashbuckle.AspNetCore.SwaggerUI.SwaggerUIMiddleware.Invoke(HttpContext httpContext)
+   at Swashbuckle.AspNetCore.Swagger.SwaggerMiddleware.Invoke(HttpContext httpContext, ISwaggerProvider swaggerProvider)
+   at Serilog.AspNetCore.RequestLoggingMiddleware.Invoke(HttpContext httpContext)
+   at Microsoft.AspNetCore.Authentication.AuthenticationMiddleware.Invoke(HttpContext context)
+   at Microsoft.AspNetCore.Diagnostics.DeveloperExceptionPageMiddlewareImpl.Invoke(HttpContext context)
+2025-10-17 19:55:15.497 -05:00 [INF] Request finished HTTP/1.1 POST http://localhost:5012/api/portfolios - 500 null text/plain; charset=utf-8 36.5291ms
+2025-10-17 19:55:16.006 -05:00 [INF] Request starting HTTP/1.1 POST http://localhost:5012/api/portfolios - application/json 713
+2025-10-17 19:55:16.007 -05:00 [INF] Executing endpoint 'RiskPortfolio.Api.Controllers.PortfoliosController.CreateAsync (RiskPortfolio.Api)'
+2025-10-17 19:55:16.008 -05:00 [INF] Route matched with {action = "Create", controller = "Portfolios"}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.ActionResult`1[RiskPortfolio.Api.Models.Responses.PortfolioResponse]] CreateAsync(RiskPortfolio.Api.Models.Requests.CreatePortfolioRequest, System.Threading.CancellationToken) on controller RiskPortfolio.Api.Controllers.PortfoliosController (RiskPortfolio.Api).
+2025-10-17 19:55:16.009 -05:00 [INF] Calculated risk for portfolio "b4894ac3-c4a6-460e-bb5b-7c798b826ead" - Score: 42.00, VAR: 77330.13, Classification: "Elevated"
+2025-10-17 19:55:16.017 -05:00 [INF] Executed DbCommand (5ms) [Parameters=[@p0='?' (DbType = Guid), @p1='?' (Size = 3), @p2='?' (DbType = DateTime), @p3='?' (DbType = DateTime), @p4='?' (Size = 20), @p5='?' (Size = 12), @p6='?' (DbType = Decimal), @p7='?' (DbType = Decimal)], CommandType='"Text"', CommandTimeout='30']
+INSERT INTO "Portfolios" ("Id", "BaseCurrency", "CreatedAt", "LastEvaluatedAt", "Name", "Owner", "RiskScore", "ValueAtRisk")
+VALUES (@p0, @p1, @p2, @p3, @p4, @p5, @p6, @p7);
+2025-10-17 19:55:16.018 -05:00 [INF] Executed DbCommand (0ms) [Parameters=[@p0='?' (DbType = Guid), @p1='?' (DbType = Decimal), @p2='?' (DbType = Decimal), @p3='?' (DbType = Guid), @p4='?' (DbType = Decimal), @p5='?' (Size = 3), @p6='?' (DbType = Decimal)], CommandType='"Text"', CommandTimeout='30']
+INSERT INTO "AssetPositions" ("Id", "AveragePrice", "CurrentPrice", "PortfolioId", "Quantity", "Symbol", "Volatility")
+VALUES (@p0, @p1, @p2, @p3, @p4, @p5, @p6);
+2025-10-17 19:55:16.019 -05:00 [INF] Executed DbCommand (0ms) [Parameters=[@p0='?' (DbType = Guid), @p1='?' (DbType = Decimal), @p2='?' (DbType = Decimal), @p3='?' (DbType = Guid), @p4='?' (DbType = Decimal), @p5='?' (Size = 4), @p6='?' (DbType = Decimal)], CommandType='"Text"', CommandTimeout='30']
+INSERT INTO "AssetPositions" ("Id", "AveragePrice", "CurrentPrice", "PortfolioId", "Quantity", "Symbol", "Volatility")
+VALUES (@p0, @p1, @p2, @p3, @p4, @p5, @p6);
+2025-10-17 19:55:16.021 -05:00 [INF] Executed DbCommand (0ms) [Parameters=[@p0='?' (DbType = Guid), @p1='?' (DbType = Decimal), @p2='?' (DbType = Decimal), @p3='?' (DbType = Guid), @p4='?' (DbType = Decimal), @p5='?' (Size = 4), @p6='?' (DbType = Decimal)], CommandType='"Text"', CommandTimeout='30']
+INSERT INTO "AssetPositions" ("Id", "AveragePrice", "CurrentPrice", "PortfolioId", "Quantity", "Symbol", "Volatility")
+VALUES (@p0, @p1, @p2, @p3, @p4, @p5, @p6);
+2025-10-17 19:55:16.022 -05:00 [INF] Executed DbCommand (0ms) [Parameters=[@p0='?' (DbType = Guid), @p1='?' (DbType = Decimal), @p2='?' (DbType = Decimal), @p3='?' (DbType = Guid), @p4='?' (DbType = Decimal), @p5='?' (Size = 4), @p6='?' (DbType = Decimal)], CommandType='"Text"', CommandTimeout='30']
+INSERT INTO "AssetPositions" ("Id", "AveragePrice", "CurrentPrice", "PortfolioId", "Quantity", "Symbol", "Volatility")
+VALUES (@p0, @p1, @p2, @p3, @p4, @p5, @p6);
+2025-10-17 19:55:16.027 -05:00 [INF] Persisted new portfolio "b4894ac3-c4a6-460e-bb5b-7c798b826ead" (ESG Sustainable Fund)
+2025-10-17 19:55:16.028 -05:00 [INF] Created portfolio "b4894ac3-c4a6-460e-bb5b-7c798b826ead"
+2025-10-17 19:55:16.029 -05:00 [INF] Executing CreatedAtActionResult, writing value of type 'RiskPortfolio.Api.Models.Responses.PortfolioResponse'.
+2025-10-17 19:55:16.030 -05:00 [INF] Executed action RiskPortfolio.Api.Controllers.PortfoliosController.CreateAsync (RiskPortfolio.Api) in 21.0145ms
+2025-10-17 19:55:16.030 -05:00 [INF] Executed endpoint 'RiskPortfolio.Api.Controllers.PortfoliosController.CreateAsync (RiskPortfolio.Api)'
+2025-10-17 19:55:16.031 -05:00 [ERR] HTTP POST /api/portfolios responded 500 in 23.6995 ms
+System.InvalidOperationException: No route matches the supplied values.
+   at Microsoft.AspNetCore.Mvc.CreatedAtActionResult.OnFormatting(ActionContext context)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ObjectResultExecutor.ExecuteAsyncCore(ActionContext context, ObjectResult result, Type objectType, Object value)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ObjectResultExecutor.ExecuteAsync(ActionContext context, ObjectResult result)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ResourceInvoker.ResultNext[TFilter,TFilterAsync](State& next, Scope& scope, Object& state, Boolean& isCompleted)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ResourceInvoker.InvokeNextResultFilterAsync[TFilter,TFilterAsync]()
+--- End of stack trace from previous location ---
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ResourceInvoker.Rethrow(ResultExecutedContextSealed context)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ResourceInvoker.ResultNext[TFilter,TFilterAsync](State& next, Scope& scope, Object& state, Boolean& isCompleted)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ResourceInvoker.InvokeResultFilters()
+--- End of stack trace from previous location ---
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ResourceInvoker.<InvokeFilterPipelineAsync>g__Awaited|20_0(ResourceInvoker invoker, Task lastTask, State next, Scope scope, Object state, Boolean isCompleted)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ResourceInvoker.<InvokeAsync>g__Logged|17_1(ResourceInvoker invoker)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ResourceInvoker.<InvokeAsync>g__Logged|17_1(ResourceInvoker invoker)
+   at Microsoft.AspNetCore.Routing.EndpointMiddleware.<Invoke>g__AwaitRequestTask|7_0(Endpoint endpoint, Task requestTask, ILogger logger)
+   at Microsoft.AspNetCore.Authorization.AuthorizationMiddleware.Invoke(HttpContext context)
+   at Swashbuckle.AspNetCore.SwaggerUI.SwaggerUIMiddleware.Invoke(HttpContext httpContext)
+   at Swashbuckle.AspNetCore.Swagger.SwaggerMiddleware.Invoke(HttpContext httpContext, ISwaggerProvider swaggerProvider)
+   at Serilog.AspNetCore.RequestLoggingMiddleware.Invoke(HttpContext httpContext)
+2025-10-17 19:55:16.034 -05:00 [ERR] An unhandled exception has occurred while executing the request.
+System.InvalidOperationException: No route matches the supplied values.
+   at Microsoft.AspNetCore.Mvc.CreatedAtActionResult.OnFormatting(ActionContext context)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ObjectResultExecutor.ExecuteAsyncCore(ActionContext context, ObjectResult result, Type objectType, Object value)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ObjectResultExecutor.ExecuteAsync(ActionContext context, ObjectResult result)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ResourceInvoker.ResultNext[TFilter,TFilterAsync](State& next, Scope& scope, Object& state, Boolean& isCompleted)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ResourceInvoker.InvokeNextResultFilterAsync[TFilter,TFilterAsync]()
+--- End of stack trace from previous location ---
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ResourceInvoker.Rethrow(ResultExecutedContextSealed context)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ResourceInvoker.ResultNext[TFilter,TFilterAsync](State& next, Scope& scope, Object& state, Boolean& isCompleted)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ResourceInvoker.InvokeResultFilters()
+--- End of stack trace from previous location ---
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ResourceInvoker.<InvokeFilterPipelineAsync>g__Awaited|20_0(ResourceInvoker invoker, Task lastTask, State next, Scope scope, Object state, Boolean isCompleted)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ResourceInvoker.<InvokeAsync>g__Logged|17_1(ResourceInvoker invoker)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ResourceInvoker.<InvokeAsync>g__Logged|17_1(ResourceInvoker invoker)
+   at Microsoft.AspNetCore.Routing.EndpointMiddleware.<Invoke>g__AwaitRequestTask|7_0(Endpoint endpoint, Task requestTask, ILogger logger)
+   at Microsoft.AspNetCore.Authorization.AuthorizationMiddleware.Invoke(HttpContext context)
+   at Swashbuckle.AspNetCore.SwaggerUI.SwaggerUIMiddleware.Invoke(HttpContext httpContext)
+   at Swashbuckle.AspNetCore.Swagger.SwaggerMiddleware.Invoke(HttpContext httpContext, ISwaggerProvider swaggerProvider)
+   at Serilog.AspNetCore.RequestLoggingMiddleware.Invoke(HttpContext httpContext)
+   at Microsoft.AspNetCore.Authentication.AuthenticationMiddleware.Invoke(HttpContext context)
+   at Microsoft.AspNetCore.Diagnostics.DeveloperExceptionPageMiddlewareImpl.Invoke(HttpContext context)
+2025-10-17 19:55:16.039 -05:00 [INF] Request finished HTTP/1.1 POST http://localhost:5012/api/portfolios - 500 null text/plain; charset=utf-8 33.0819ms
+2025-10-17 19:55:16.547 -05:00 [INF] Request starting HTTP/1.1 POST http://localhost:5012/api/portfolios - application/json 852
+2025-10-17 19:55:16.548 -05:00 [INF] Executing endpoint 'RiskPortfolio.Api.Controllers.PortfoliosController.CreateAsync (RiskPortfolio.Api)'
+2025-10-17 19:55:16.549 -05:00 [INF] Route matched with {action = "Create", controller = "Portfolios"}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.ActionResult`1[RiskPortfolio.Api.Models.Responses.PortfolioResponse]] CreateAsync(RiskPortfolio.Api.Models.Requests.CreatePortfolioRequest, System.Threading.CancellationToken) on controller RiskPortfolio.Api.Controllers.PortfoliosController (RiskPortfolio.Api).
+2025-10-17 19:55:16.551 -05:00 [INF] Calculated risk for portfolio "bef54ca4-04a5-4537-8197-fbac92d1cf02" - Score: 36.02, VAR: 63499.93, Classification: "Elevated"
+2025-10-17 19:55:16.558 -05:00 [INF] Executed DbCommand (5ms) [Parameters=[@p0='?' (DbType = Guid), @p1='?' (Size = 3), @p2='?' (DbType = DateTime), @p3='?' (DbType = DateTime), @p4='?' (Size = 16), @p5='?' (Size = 11), @p6='?' (DbType = Decimal), @p7='?' (DbType = Decimal)], CommandType='"Text"', CommandTimeout='30']
+INSERT INTO "Portfolios" ("Id", "BaseCurrency", "CreatedAt", "LastEvaluatedAt", "Name", "Owner", "RiskScore", "ValueAtRisk")
+VALUES (@p0, @p1, @p2, @p3, @p4, @p5, @p6, @p7);
+2025-10-17 19:55:16.560 -05:00 [INF] Executed DbCommand (0ms) [Parameters=[@p0='?' (DbType = Guid), @p1='?' (DbType = Decimal), @p2='?' (DbType = Decimal), @p3='?' (DbType = Guid), @p4='?' (DbType = Decimal), @p5='?' (Size = 3), @p6='?' (DbType = Decimal)], CommandType='"Text"', CommandTimeout='30']
+INSERT INTO "AssetPositions" ("Id", "AveragePrice", "CurrentPrice", "PortfolioId", "Quantity", "Symbol", "Volatility")
+VALUES (@p0, @p1, @p2, @p3, @p4, @p5, @p6);
+2025-10-17 19:55:16.561 -05:00 [INF] Executed DbCommand (0ms) [Parameters=[@p0='?' (DbType = Guid), @p1='?' (DbType = Decimal), @p2='?' (DbType = Decimal), @p3='?' (DbType = Guid), @p4='?' (DbType = Decimal), @p5='?' (Size = 4), @p6='?' (DbType = Decimal)], CommandType='"Text"', CommandTimeout='30']
+INSERT INTO "AssetPositions" ("Id", "AveragePrice", "CurrentPrice", "PortfolioId", "Quantity", "Symbol", "Volatility")
+VALUES (@p0, @p1, @p2, @p3, @p4, @p5, @p6);
+2025-10-17 19:55:16.562 -05:00 [INF] Executed DbCommand (0ms) [Parameters=[@p0='?' (DbType = Guid), @p1='?' (DbType = Decimal), @p2='?' (DbType = Decimal), @p3='?' (DbType = Guid), @p4='?' (DbType = Decimal), @p5='?' (Size = 4), @p6='?' (DbType = Decimal)], CommandType='"Text"', CommandTimeout='30']
+INSERT INTO "AssetPositions" ("Id", "AveragePrice", "CurrentPrice", "PortfolioId", "Quantity", "Symbol", "Volatility")
+VALUES (@p0, @p1, @p2, @p3, @p4, @p5, @p6);
+2025-10-17 19:55:16.564 -05:00 [INF] Executed DbCommand (0ms) [Parameters=[@p0='?' (DbType = Guid), @p1='?' (DbType = Decimal), @p2='?' (DbType = Decimal), @p3='?' (DbType = Guid), @p4='?' (DbType = Decimal), @p5='?' (Size = 3), @p6='?' (DbType = Decimal)], CommandType='"Text"', CommandTimeout='30']
+INSERT INTO "AssetPositions" ("Id", "AveragePrice", "CurrentPrice", "PortfolioId", "Quantity", "Symbol", "Volatility")
+VALUES (@p0, @p1, @p2, @p3, @p4, @p5, @p6);
+2025-10-17 19:55:16.565 -05:00 [INF] Executed DbCommand (0ms) [Parameters=[@p0='?' (DbType = Guid), @p1='?' (DbType = Decimal), @p2='?' (DbType = Decimal), @p3='?' (DbType = Guid), @p4='?' (DbType = Decimal), @p5='?' (Size = 4), @p6='?' (DbType = Decimal)], CommandType='"Text"', CommandTimeout='30']
+INSERT INTO "AssetPositions" ("Id", "AveragePrice", "CurrentPrice", "PortfolioId", "Quantity", "Symbol", "Volatility")
+VALUES (@p0, @p1, @p2, @p3, @p4, @p5, @p6);
+2025-10-17 19:55:16.570 -05:00 [INF] Persisted new portfolio "bef54ca4-04a5-4537-8197-fbac92d1cf02" (Emerging Markets)
+2025-10-17 19:55:16.570 -05:00 [INF] Created portfolio "bef54ca4-04a5-4537-8197-fbac92d1cf02"
+2025-10-17 19:55:16.571 -05:00 [INF] Executing CreatedAtActionResult, writing value of type 'RiskPortfolio.Api.Models.Responses.PortfolioResponse'.
+2025-10-17 19:55:16.572 -05:00 [INF] Executed action RiskPortfolio.Api.Controllers.PortfoliosController.CreateAsync (RiskPortfolio.Api) in 22.0769ms
+2025-10-17 19:55:16.573 -05:00 [INF] Executed endpoint 'RiskPortfolio.Api.Controllers.PortfoliosController.CreateAsync (RiskPortfolio.Api)'
+2025-10-17 19:55:16.574 -05:00 [ERR] HTTP POST /api/portfolios responded 500 in 25.1656 ms
+System.InvalidOperationException: No route matches the supplied values.
+   at Microsoft.AspNetCore.Mvc.CreatedAtActionResult.OnFormatting(ActionContext context)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ObjectResultExecutor.ExecuteAsyncCore(ActionContext context, ObjectResult result, Type objectType, Object value)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ObjectResultExecutor.ExecuteAsync(ActionContext context, ObjectResult result)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ResourceInvoker.ResultNext[TFilter,TFilterAsync](State& next, Scope& scope, Object& state, Boolean& isCompleted)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ResourceInvoker.InvokeNextResultFilterAsync[TFilter,TFilterAsync]()
+--- End of stack trace from previous location ---
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ResourceInvoker.Rethrow(ResultExecutedContextSealed context)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ResourceInvoker.ResultNext[TFilter,TFilterAsync](State& next, Scope& scope, Object& state, Boolean& isCompleted)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ResourceInvoker.InvokeResultFilters()
+--- End of stack trace from previous location ---
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ResourceInvoker.<InvokeFilterPipelineAsync>g__Awaited|20_0(ResourceInvoker invoker, Task lastTask, State next, Scope scope, Object state, Boolean isCompleted)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ResourceInvoker.<InvokeAsync>g__Logged|17_1(ResourceInvoker invoker)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ResourceInvoker.<InvokeAsync>g__Logged|17_1(ResourceInvoker invoker)
+   at Microsoft.AspNetCore.Routing.EndpointMiddleware.<Invoke>g__AwaitRequestTask|7_0(Endpoint endpoint, Task requestTask, ILogger logger)
+   at Microsoft.AspNetCore.Authorization.AuthorizationMiddleware.Invoke(HttpContext context)
+   at Swashbuckle.AspNetCore.SwaggerUI.SwaggerUIMiddleware.Invoke(HttpContext httpContext)
+   at Swashbuckle.AspNetCore.Swagger.SwaggerMiddleware.Invoke(HttpContext httpContext, ISwaggerProvider swaggerProvider)
+   at Serilog.AspNetCore.RequestLoggingMiddleware.Invoke(HttpContext httpContext)
+2025-10-17 19:55:16.578 -05:00 [ERR] An unhandled exception has occurred while executing the request.
+System.InvalidOperationException: No route matches the supplied values.
+   at Microsoft.AspNetCore.Mvc.CreatedAtActionResult.OnFormatting(ActionContext context)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ObjectResultExecutor.ExecuteAsyncCore(ActionContext context, ObjectResult result, Type objectType, Object value)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ObjectResultExecutor.ExecuteAsync(ActionContext context, ObjectResult result)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ResourceInvoker.ResultNext[TFilter,TFilterAsync](State& next, Scope& scope, Object& state, Boolean& isCompleted)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ResourceInvoker.InvokeNextResultFilterAsync[TFilter,TFilterAsync]()
+--- End of stack trace from previous location ---
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ResourceInvoker.Rethrow(ResultExecutedContextSealed context)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ResourceInvoker.ResultNext[TFilter,TFilterAsync](State& next, Scope& scope, Object& state, Boolean& isCompleted)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ResourceInvoker.InvokeResultFilters()
+--- End of stack trace from previous location ---
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ResourceInvoker.<InvokeFilterPipelineAsync>g__Awaited|20_0(ResourceInvoker invoker, Task lastTask, State next, Scope scope, Object state, Boolean isCompleted)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ResourceInvoker.<InvokeAsync>g__Logged|17_1(ResourceInvoker invoker)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ResourceInvoker.<InvokeAsync>g__Logged|17_1(ResourceInvoker invoker)
+   at Microsoft.AspNetCore.Routing.EndpointMiddleware.<Invoke>g__AwaitRequestTask|7_0(Endpoint endpoint, Task requestTask, ILogger logger)
+   at Microsoft.AspNetCore.Authorization.AuthorizationMiddleware.Invoke(HttpContext context)
+   at Swashbuckle.AspNetCore.SwaggerUI.SwaggerUIMiddleware.Invoke(HttpContext httpContext)
+   at Swashbuckle.AspNetCore.Swagger.SwaggerMiddleware.Invoke(HttpContext httpContext, ISwaggerProvider swaggerProvider)
+   at Serilog.AspNetCore.RequestLoggingMiddleware.Invoke(HttpContext httpContext)
+   at Microsoft.AspNetCore.Authentication.AuthenticationMiddleware.Invoke(HttpContext context)
+   at Microsoft.AspNetCore.Diagnostics.DeveloperExceptionPageMiddlewareImpl.Invoke(HttpContext context)
+2025-10-17 19:55:16.582 -05:00 [INF] Request finished HTTP/1.1 POST http://localhost:5012/api/portfolios - 500 null text/plain; charset=utf-8 35.1953ms
+2025-10-17 19:55:17.106 -05:00 [INF] Request starting HTTP/1.1 POST http://localhost:5012/api/portfolios - application/json 869
+2025-10-17 19:55:17.108 -05:00 [INF] Executing endpoint 'RiskPortfolio.Api.Controllers.PortfoliosController.CreateAsync (RiskPortfolio.Api)'
+2025-10-17 19:55:17.108 -05:00 [INF] Route matched with {action = "Create", controller = "Portfolios"}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.ActionResult`1[RiskPortfolio.Api.Models.Responses.PortfolioResponse]] CreateAsync(RiskPortfolio.Api.Models.Requests.CreatePortfolioRequest, System.Threading.CancellationToken) on controller RiskPortfolio.Api.Controllers.PortfoliosController (RiskPortfolio.Api).
+2025-10-17 19:55:17.110 -05:00 [INF] Calculated risk for portfolio "713c396d-dc12-443d-9f70-137925cbde66" - Score: 22.54, VAR: 118174.38, Classification: "Moderate"
+2025-10-17 19:55:17.113 -05:00 [INF] Executed DbCommand (1ms) [Parameters=[@p0='?' (DbType = Guid), @p1='?' (Size = 3), @p2='?' (DbType = DateTime), @p3='?' (DbType = DateTime), @p4='?' (Size = 21), @p5='?' (Size = 19), @p6='?' (DbType = Decimal), @p7='?' (DbType = Decimal)], CommandType='"Text"', CommandTimeout='30']
+INSERT INTO "Portfolios" ("Id", "BaseCurrency", "CreatedAt", "LastEvaluatedAt", "Name", "Owner", "RiskScore", "ValueAtRisk")
+VALUES (@p0, @p1, @p2, @p3, @p4, @p5, @p6, @p7);
+2025-10-17 19:55:17.115 -05:00 [INF] Executed DbCommand (0ms) [Parameters=[@p0='?' (DbType = Guid), @p1='?' (DbType = Decimal), @p2='?' (DbType = Decimal), @p3='?' (DbType = Guid), @p4='?' (DbType = Decimal), @p5='?' (Size = 3), @p6='?' (DbType = Decimal)], CommandType='"Text"', CommandTimeout='30']
+INSERT INTO "AssetPositions" ("Id", "AveragePrice", "CurrentPrice", "PortfolioId", "Quantity", "Symbol", "Volatility")
+VALUES (@p0, @p1, @p2, @p3, @p4, @p5, @p6);
+2025-10-17 19:55:17.117 -05:00 [INF] Executed DbCommand (0ms) [Parameters=[@p0='?' (DbType = Guid), @p1='?' (DbType = Decimal), @p2='?' (DbType = Decimal), @p3='?' (DbType = Guid), @p4='?' (DbType = Decimal), @p5='?' (Size = 3), @p6='?' (DbType = Decimal)], CommandType='"Text"', CommandTimeout='30']
+INSERT INTO "AssetPositions" ("Id", "AveragePrice", "CurrentPrice", "PortfolioId", "Quantity", "Symbol", "Volatility")
+VALUES (@p0, @p1, @p2, @p3, @p4, @p5, @p6);
+2025-10-17 19:55:17.119 -05:00 [INF] Executed DbCommand (0ms) [Parameters=[@p0='?' (DbType = Guid), @p1='?' (DbType = Decimal), @p2='?' (DbType = Decimal), @p3='?' (DbType = Guid), @p4='?' (DbType = Decimal), @p5='?' (Size = 3), @p6='?' (DbType = Decimal)], CommandType='"Text"', CommandTimeout='30']
+INSERT INTO "AssetPositions" ("Id", "AveragePrice", "CurrentPrice", "PortfolioId", "Quantity", "Symbol", "Volatility")
+VALUES (@p0, @p1, @p2, @p3, @p4, @p5, @p6);
+2025-10-17 19:55:17.120 -05:00 [INF] Executed DbCommand (0ms) [Parameters=[@p0='?' (DbType = Guid), @p1='?' (DbType = Decimal), @p2='?' (DbType = Decimal), @p3='?' (DbType = Guid), @p4='?' (DbType = Decimal), @p5='?' (Size = 4), @p6='?' (DbType = Decimal)], CommandType='"Text"', CommandTimeout='30']
+INSERT INTO "AssetPositions" ("Id", "AveragePrice", "CurrentPrice", "PortfolioId", "Quantity", "Symbol", "Volatility")
+VALUES (@p0, @p1, @p2, @p3, @p4, @p5, @p6);
+2025-10-17 19:55:17.122 -05:00 [INF] Executed DbCommand (0ms) [Parameters=[@p0='?' (DbType = Guid), @p1='?' (DbType = Decimal), @p2='?' (DbType = Decimal), @p3='?' (DbType = Guid), @p4='?' (DbType = Decimal), @p5='?' (Size = 4), @p6='?' (DbType = Decimal)], CommandType='"Text"', CommandTimeout='30']
+INSERT INTO "AssetPositions" ("Id", "AveragePrice", "CurrentPrice", "PortfolioId", "Quantity", "Symbol", "Volatility")
+VALUES (@p0, @p1, @p2, @p3, @p4, @p5, @p6);
+2025-10-17 19:55:17.128 -05:00 [INF] Persisted new portfolio "713c396d-dc12-443d-9f70-137925cbde66" (Healthcare Innovation)
+2025-10-17 19:55:17.129 -05:00 [INF] Created portfolio "713c396d-dc12-443d-9f70-137925cbde66"
+2025-10-17 19:55:17.129 -05:00 [INF] Executing CreatedAtActionResult, writing value of type 'RiskPortfolio.Api.Models.Responses.PortfolioResponse'.
+2025-10-17 19:55:17.130 -05:00 [INF] Executed action RiskPortfolio.Api.Controllers.PortfoliosController.CreateAsync (RiskPortfolio.Api) in 20.9191ms
+2025-10-17 19:55:17.131 -05:00 [INF] Executed endpoint 'RiskPortfolio.Api.Controllers.PortfoliosController.CreateAsync (RiskPortfolio.Api)'
+2025-10-17 19:55:17.131 -05:00 [ERR] HTTP POST /api/portfolios responded 500 in 23.9324 ms
+System.InvalidOperationException: No route matches the supplied values.
+   at Microsoft.AspNetCore.Mvc.CreatedAtActionResult.OnFormatting(ActionContext context)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ObjectResultExecutor.ExecuteAsyncCore(ActionContext context, ObjectResult result, Type objectType, Object value)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ObjectResultExecutor.ExecuteAsync(ActionContext context, ObjectResult result)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ResourceInvoker.ResultNext[TFilter,TFilterAsync](State& next, Scope& scope, Object& state, Boolean& isCompleted)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ResourceInvoker.InvokeNextResultFilterAsync[TFilter,TFilterAsync]()
+--- End of stack trace from previous location ---
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ResourceInvoker.Rethrow(ResultExecutedContextSealed context)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ResourceInvoker.ResultNext[TFilter,TFilterAsync](State& next, Scope& scope, Object& state, Boolean& isCompleted)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ResourceInvoker.InvokeResultFilters()
+--- End of stack trace from previous location ---
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ResourceInvoker.<InvokeFilterPipelineAsync>g__Awaited|20_0(ResourceInvoker invoker, Task lastTask, State next, Scope scope, Object state, Boolean isCompleted)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ResourceInvoker.<InvokeAsync>g__Logged|17_1(ResourceInvoker invoker)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ResourceInvoker.<InvokeAsync>g__Logged|17_1(ResourceInvoker invoker)
+   at Microsoft.AspNetCore.Routing.EndpointMiddleware.<Invoke>g__AwaitRequestTask|7_0(Endpoint endpoint, Task requestTask, ILogger logger)
+   at Microsoft.AspNetCore.Authorization.AuthorizationMiddleware.Invoke(HttpContext context)
+   at Swashbuckle.AspNetCore.SwaggerUI.SwaggerUIMiddleware.Invoke(HttpContext httpContext)
+   at Swashbuckle.AspNetCore.Swagger.SwaggerMiddleware.Invoke(HttpContext httpContext, ISwaggerProvider swaggerProvider)
+   at Serilog.AspNetCore.RequestLoggingMiddleware.Invoke(HttpContext httpContext)
+2025-10-17 19:55:17.136 -05:00 [ERR] An unhandled exception has occurred while executing the request.
+System.InvalidOperationException: No route matches the supplied values.
+   at Microsoft.AspNetCore.Mvc.CreatedAtActionResult.OnFormatting(ActionContext context)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ObjectResultExecutor.ExecuteAsyncCore(ActionContext context, ObjectResult result, Type objectType, Object value)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ObjectResultExecutor.ExecuteAsync(ActionContext context, ObjectResult result)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ResourceInvoker.ResultNext[TFilter,TFilterAsync](State& next, Scope& scope, Object& state, Boolean& isCompleted)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ResourceInvoker.InvokeNextResultFilterAsync[TFilter,TFilterAsync]()
+--- End of stack trace from previous location ---
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ResourceInvoker.Rethrow(ResultExecutedContextSealed context)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ResourceInvoker.ResultNext[TFilter,TFilterAsync](State& next, Scope& scope, Object& state, Boolean& isCompleted)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ResourceInvoker.InvokeResultFilters()
+--- End of stack trace from previous location ---
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ResourceInvoker.<InvokeFilterPipelineAsync>g__Awaited|20_0(ResourceInvoker invoker, Task lastTask, State next, Scope scope, Object state, Boolean isCompleted)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ResourceInvoker.<InvokeAsync>g__Logged|17_1(ResourceInvoker invoker)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ResourceInvoker.<InvokeAsync>g__Logged|17_1(ResourceInvoker invoker)
+   at Microsoft.AspNetCore.Routing.EndpointMiddleware.<Invoke>g__AwaitRequestTask|7_0(Endpoint endpoint, Task requestTask, ILogger logger)
+   at Microsoft.AspNetCore.Authorization.AuthorizationMiddleware.Invoke(HttpContext context)
+   at Swashbuckle.AspNetCore.SwaggerUI.SwaggerUIMiddleware.Invoke(HttpContext httpContext)
+   at Swashbuckle.AspNetCore.Swagger.SwaggerMiddleware.Invoke(HttpContext httpContext, ISwaggerProvider swaggerProvider)
+   at Serilog.AspNetCore.RequestLoggingMiddleware.Invoke(HttpContext httpContext)
+   at Microsoft.AspNetCore.Authentication.AuthenticationMiddleware.Invoke(HttpContext context)
+   at Microsoft.AspNetCore.Diagnostics.DeveloperExceptionPageMiddlewareImpl.Invoke(HttpContext context)
+2025-10-17 19:55:17.140 -05:00 [INF] Request finished HTTP/1.1 POST http://localhost:5012/api/portfolios - 500 null text/plain; charset=utf-8 33.6004ms
+2025-10-17 19:55:17.658 -05:00 [INF] Request starting HTTP/1.1 POST http://localhost:5012/api/portfolios - application/json 862
+2025-10-17 19:55:17.660 -05:00 [INF] Executing endpoint 'RiskPortfolio.Api.Controllers.PortfoliosController.CreateAsync (RiskPortfolio.Api)'
+2025-10-17 19:55:17.661 -05:00 [INF] Route matched with {action = "Create", controller = "Portfolios"}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.ActionResult`1[RiskPortfolio.Api.Models.Responses.PortfolioResponse]] CreateAsync(RiskPortfolio.Api.Models.Requests.CreatePortfolioRequest, System.Threading.CancellationToken) on controller RiskPortfolio.Api.Controllers.PortfoliosController (RiskPortfolio.Api).
+2025-10-17 19:55:17.663 -05:00 [INF] Calculated risk for portfolio "86025381-1624-43f6-a010-f42e3bceea35" - Score: 22.64, VAR: 69412.85, Classification: "Moderate"
+2025-10-17 19:55:17.671 -05:00 [INF] Executed DbCommand (5ms) [Parameters=[@p0='?' (DbType = Guid), @p1='?' (Size = 3), @p2='?' (DbType = DateTime), @p3='?' (DbType = DateTime), @p4='?' (Size = 20), @p5='?' (Size = 14), @p6='?' (DbType = Decimal), @p7='?' (DbType = Decimal)], CommandType='"Text"', CommandTimeout='30']
+INSERT INTO "Portfolios" ("Id", "BaseCurrency", "CreatedAt", "LastEvaluatedAt", "Name", "Owner", "RiskScore", "ValueAtRisk")
+VALUES (@p0, @p1, @p2, @p3, @p4, @p5, @p6, @p7);
+2025-10-17 19:55:17.673 -05:00 [INF] Executed DbCommand (0ms) [Parameters=[@p0='?' (DbType = Guid), @p1='?' (DbType = Decimal), @p2='?' (DbType = Decimal), @p3='?' (DbType = Guid), @p4='?' (DbType = Decimal), @p5='?' (Size = 3), @p6='?' (DbType = Decimal)], CommandType='"Text"', CommandTimeout='30']
+INSERT INTO "AssetPositions" ("Id", "AveragePrice", "CurrentPrice", "PortfolioId", "Quantity", "Symbol", "Volatility")
+VALUES (@p0, @p1, @p2, @p3, @p4, @p5, @p6);
+2025-10-17 19:55:17.674 -05:00 [INF] Executed DbCommand (0ms) [Parameters=[@p0='?' (DbType = Guid), @p1='?' (DbType = Decimal), @p2='?' (DbType = Decimal), @p3='?' (DbType = Guid), @p4='?' (DbType = Decimal), @p5='?' (Size = 4), @p6='?' (DbType = Decimal)], CommandType='"Text"', CommandTimeout='30']
+INSERT INTO "AssetPositions" ("Id", "AveragePrice", "CurrentPrice", "PortfolioId", "Quantity", "Symbol", "Volatility")
+VALUES (@p0, @p1, @p2, @p3, @p4, @p5, @p6);
+2025-10-17 19:55:17.676 -05:00 [INF] Executed DbCommand (0ms) [Parameters=[@p0='?' (DbType = Guid), @p1='?' (DbType = Decimal), @p2='?' (DbType = Decimal), @p3='?' (DbType = Guid), @p4='?' (DbType = Decimal), @p5='?' (Size = 3), @p6='?' (DbType = Decimal)], CommandType='"Text"', CommandTimeout='30']
+INSERT INTO "AssetPositions" ("Id", "AveragePrice", "CurrentPrice", "PortfolioId", "Quantity", "Symbol", "Volatility")
+VALUES (@p0, @p1, @p2, @p3, @p4, @p5, @p6);
+2025-10-17 19:55:17.677 -05:00 [INF] Executed DbCommand (0ms) [Parameters=[@p0='?' (DbType = Guid), @p1='?' (DbType = Decimal), @p2='?' (DbType = Decimal), @p3='?' (DbType = Guid), @p4='?' (DbType = Decimal), @p5='?' (Size = 3), @p6='?' (DbType = Decimal)], CommandType='"Text"', CommandTimeout='30']
+INSERT INTO "AssetPositions" ("Id", "AveragePrice", "CurrentPrice", "PortfolioId", "Quantity", "Symbol", "Volatility")
+VALUES (@p0, @p1, @p2, @p3, @p4, @p5, @p6);
+2025-10-17 19:55:17.678 -05:00 [INF] Executed DbCommand (0ms) [Parameters=[@p0='?' (DbType = Guid), @p1='?' (DbType = Decimal), @p2='?' (DbType = Decimal), @p3='?' (DbType = Guid), @p4='?' (DbType = Decimal), @p5='?' (Size = 1), @p6='?' (DbType = Decimal)], CommandType='"Text"', CommandTimeout='30']
+INSERT INTO "AssetPositions" ("Id", "AveragePrice", "CurrentPrice", "PortfolioId", "Quantity", "Symbol", "Volatility")
+VALUES (@p0, @p1, @p2, @p3, @p4, @p5, @p6);
+2025-10-17 19:55:17.683 -05:00 [INF] Persisted new portfolio "86025381-1624-43f6-a010-f42e3bceea35" (Real Estate Holdings)
+2025-10-17 19:55:17.684 -05:00 [INF] Created portfolio "86025381-1624-43f6-a010-f42e3bceea35"
+2025-10-17 19:55:17.684 -05:00 [INF] Executing CreatedAtActionResult, writing value of type 'RiskPortfolio.Api.Models.Responses.PortfolioResponse'.
+2025-10-17 19:55:17.685 -05:00 [INF] Executed action RiskPortfolio.Api.Controllers.PortfoliosController.CreateAsync (RiskPortfolio.Api) in 22.6066ms
+2025-10-17 19:55:17.686 -05:00 [INF] Executed endpoint 'RiskPortfolio.Api.Controllers.PortfoliosController.CreateAsync (RiskPortfolio.Api)'
+2025-10-17 19:55:17.687 -05:00 [ERR] HTTP POST /api/portfolios responded 500 in 26.7366 ms
+System.InvalidOperationException: No route matches the supplied values.
+   at Microsoft.AspNetCore.Mvc.CreatedAtActionResult.OnFormatting(ActionContext context)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ObjectResultExecutor.ExecuteAsyncCore(ActionContext context, ObjectResult result, Type objectType, Object value)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ObjectResultExecutor.ExecuteAsync(ActionContext context, ObjectResult result)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ResourceInvoker.ResultNext[TFilter,TFilterAsync](State& next, Scope& scope, Object& state, Boolean& isCompleted)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ResourceInvoker.InvokeNextResultFilterAsync[TFilter,TFilterAsync]()
+--- End of stack trace from previous location ---
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ResourceInvoker.Rethrow(ResultExecutedContextSealed context)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ResourceInvoker.ResultNext[TFilter,TFilterAsync](State& next, Scope& scope, Object& state, Boolean& isCompleted)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ResourceInvoker.InvokeResultFilters()
+--- End of stack trace from previous location ---
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ResourceInvoker.<InvokeFilterPipelineAsync>g__Awaited|20_0(ResourceInvoker invoker, Task lastTask, State next, Scope scope, Object state, Boolean isCompleted)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ResourceInvoker.<InvokeAsync>g__Logged|17_1(ResourceInvoker invoker)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ResourceInvoker.<InvokeAsync>g__Logged|17_1(ResourceInvoker invoker)
+   at Microsoft.AspNetCore.Routing.EndpointMiddleware.<Invoke>g__AwaitRequestTask|7_0(Endpoint endpoint, Task requestTask, ILogger logger)
+   at Microsoft.AspNetCore.Authorization.AuthorizationMiddleware.Invoke(HttpContext context)
+   at Swashbuckle.AspNetCore.SwaggerUI.SwaggerUIMiddleware.Invoke(HttpContext httpContext)
+   at Swashbuckle.AspNetCore.Swagger.SwaggerMiddleware.Invoke(HttpContext httpContext, ISwaggerProvider swaggerProvider)
+   at Serilog.AspNetCore.RequestLoggingMiddleware.Invoke(HttpContext httpContext)
+2025-10-17 19:55:17.691 -05:00 [ERR] An unhandled exception has occurred while executing the request.
+System.InvalidOperationException: No route matches the supplied values.
+   at Microsoft.AspNetCore.Mvc.CreatedAtActionResult.OnFormatting(ActionContext context)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ObjectResultExecutor.ExecuteAsyncCore(ActionContext context, ObjectResult result, Type objectType, Object value)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ObjectResultExecutor.ExecuteAsync(ActionContext context, ObjectResult result)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ResourceInvoker.ResultNext[TFilter,TFilterAsync](State& next, Scope& scope, Object& state, Boolean& isCompleted)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ResourceInvoker.InvokeNextResultFilterAsync[TFilter,TFilterAsync]()
+--- End of stack trace from previous location ---
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ResourceInvoker.Rethrow(ResultExecutedContextSealed context)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ResourceInvoker.ResultNext[TFilter,TFilterAsync](State& next, Scope& scope, Object& state, Boolean& isCompleted)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ResourceInvoker.InvokeResultFilters()
+--- End of stack trace from previous location ---
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ResourceInvoker.<InvokeFilterPipelineAsync>g__Awaited|20_0(ResourceInvoker invoker, Task lastTask, State next, Scope scope, Object state, Boolean isCompleted)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ResourceInvoker.<InvokeAsync>g__Logged|17_1(ResourceInvoker invoker)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ResourceInvoker.<InvokeAsync>g__Logged|17_1(ResourceInvoker invoker)
+   at Microsoft.AspNetCore.Routing.EndpointMiddleware.<Invoke>g__AwaitRequestTask|7_0(Endpoint endpoint, Task requestTask, ILogger logger)
+   at Microsoft.AspNetCore.Authorization.AuthorizationMiddleware.Invoke(HttpContext context)
+   at Swashbuckle.AspNetCore.SwaggerUI.SwaggerUIMiddleware.Invoke(HttpContext httpContext)
+   at Swashbuckle.AspNetCore.Swagger.SwaggerMiddleware.Invoke(HttpContext httpContext, ISwaggerProvider swaggerProvider)
+   at Serilog.AspNetCore.RequestLoggingMiddleware.Invoke(HttpContext httpContext)
+   at Microsoft.AspNetCore.Authentication.AuthenticationMiddleware.Invoke(HttpContext context)
+   at Microsoft.AspNetCore.Diagnostics.DeveloperExceptionPageMiddlewareImpl.Invoke(HttpContext context)
+2025-10-17 19:55:17.695 -05:00 [INF] Request finished HTTP/1.1 POST http://localhost:5012/api/portfolios - 500 null text/plain; charset=utf-8 36.5029ms
+2025-10-17 19:55:18.207 -05:00 [INF] Request starting HTTP/1.1 POST http://localhost:5012/api/portfolios - application/json 864
+2025-10-17 19:55:18.209 -05:00 [INF] Executing endpoint 'RiskPortfolio.Api.Controllers.PortfoliosController.CreateAsync (RiskPortfolio.Api)'
+2025-10-17 19:55:18.209 -05:00 [INF] Route matched with {action = "Create", controller = "Portfolios"}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.ActionResult`1[RiskPortfolio.Api.Models.Responses.PortfolioResponse]] CreateAsync(RiskPortfolio.Api.Models.Requests.CreatePortfolioRequest, System.Threading.CancellationToken) on controller RiskPortfolio.Api.Controllers.PortfoliosController (RiskPortfolio.Api).
+2025-10-17 19:55:18.211 -05:00 [INF] Calculated risk for portfolio "2f78e0ed-0adc-4a32-abe7-5ecd371a0ed0" - Score: 13.98, VAR: 125989.15, Classification: "Low"
+2025-10-17 19:55:18.219 -05:00 [INF] Executed DbCommand (6ms) [Parameters=[@p0='?' (DbType = Guid), @p1='?' (Size = 3), @p2='?' (DbType = DateTime), @p3='?' (DbType = DateTime), @p4='?' (Size = 21), @p5='?' (Size = 16), @p6='?' (DbType = Decimal), @p7='?' (DbType = Decimal)], CommandType='"Text"', CommandTimeout='30']
+INSERT INTO "Portfolios" ("Id", "BaseCurrency", "CreatedAt", "LastEvaluatedAt", "Name", "Owner", "RiskScore", "ValueAtRisk")
+VALUES (@p0, @p1, @p2, @p3, @p4, @p5, @p6, @p7);
+2025-10-17 19:55:18.221 -05:00 [INF] Executed DbCommand (0ms) [Parameters=[@p0='?' (DbType = Guid), @p1='?' (DbType = Decimal), @p2='?' (DbType = Decimal), @p3='?' (DbType = Guid), @p4='?' (DbType = Decimal), @p5='?' (Size = 3), @p6='?' (DbType = Decimal)], CommandType='"Text"', CommandTimeout='30']
+INSERT INTO "AssetPositions" ("Id", "AveragePrice", "CurrentPrice", "PortfolioId", "Quantity", "Symbol", "Volatility")
+VALUES (@p0, @p1, @p2, @p3, @p4, @p5, @p6);
+2025-10-17 19:55:18.222 -05:00 [INF] Executed DbCommand (0ms) [Parameters=[@p0='?' (DbType = Guid), @p1='?' (DbType = Decimal), @p2='?' (DbType = Decimal), @p3='?' (DbType = Guid), @p4='?' (DbType = Decimal), @p5='?' (Size = 3), @p6='?' (DbType = Decimal)], CommandType='"Text"', CommandTimeout='30']
+INSERT INTO "AssetPositions" ("Id", "AveragePrice", "CurrentPrice", "PortfolioId", "Quantity", "Symbol", "Volatility")
+VALUES (@p0, @p1, @p2, @p3, @p4, @p5, @p6);
+2025-10-17 19:55:18.224 -05:00 [INF] Executed DbCommand (0ms) [Parameters=[@p0='?' (DbType = Guid), @p1='?' (DbType = Decimal), @p2='?' (DbType = Decimal), @p3='?' (DbType = Guid), @p4='?' (DbType = Decimal), @p5='?' (Size = 3), @p6='?' (DbType = Decimal)], CommandType='"Text"', CommandTimeout='30']
+INSERT INTO "AssetPositions" ("Id", "AveragePrice", "CurrentPrice", "PortfolioId", "Quantity", "Symbol", "Volatility")
+VALUES (@p0, @p1, @p2, @p3, @p4, @p5, @p6);
+2025-10-17 19:55:18.225 -05:00 [INF] Executed DbCommand (0ms) [Parameters=[@p0='?' (DbType = Guid), @p1='?' (DbType = Decimal), @p2='?' (DbType = Decimal), @p3='?' (DbType = Guid), @p4='?' (DbType = Decimal), @p5='?' (Size = 3), @p6='?' (DbType = Decimal)], CommandType='"Text"', CommandTimeout='30']
+INSERT INTO "AssetPositions" ("Id", "AveragePrice", "CurrentPrice", "PortfolioId", "Quantity", "Symbol", "Volatility")
+VALUES (@p0, @p1, @p2, @p3, @p4, @p5, @p6);
+2025-10-17 19:55:18.227 -05:00 [INF] Executed DbCommand (0ms) [Parameters=[@p0='?' (DbType = Guid), @p1='?' (DbType = Decimal), @p2='?' (DbType = Decimal), @p3='?' (DbType = Guid), @p4='?' (DbType = Decimal), @p5='?' (Size = 3), @p6='?' (DbType = Decimal)], CommandType='"Text"', CommandTimeout='30']
+INSERT INTO "AssetPositions" ("Id", "AveragePrice", "CurrentPrice", "PortfolioId", "Quantity", "Symbol", "Volatility")
+VALUES (@p0, @p1, @p2, @p3, @p4, @p5, @p6);
+2025-10-17 19:55:18.232 -05:00 [INF] Persisted new portfolio "2f78e0ed-0adc-4a32-abe7-5ecd371a0ed0" (Conservative Balanced)
+2025-10-17 19:55:18.233 -05:00 [INF] Created portfolio "2f78e0ed-0adc-4a32-abe7-5ecd371a0ed0"
+2025-10-17 19:55:18.233 -05:00 [INF] Executing CreatedAtActionResult, writing value of type 'RiskPortfolio.Api.Models.Responses.PortfolioResponse'.
+2025-10-17 19:55:18.234 -05:00 [INF] Executed action RiskPortfolio.Api.Controllers.PortfoliosController.CreateAsync (RiskPortfolio.Api) in 23.5623ms
+2025-10-17 19:55:18.235 -05:00 [INF] Executed endpoint 'RiskPortfolio.Api.Controllers.PortfoliosController.CreateAsync (RiskPortfolio.Api)'
+2025-10-17 19:55:18.236 -05:00 [ERR] HTTP POST /api/portfolios responded 500 in 27.0443 ms
+System.InvalidOperationException: No route matches the supplied values.
+   at Microsoft.AspNetCore.Mvc.CreatedAtActionResult.OnFormatting(ActionContext context)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ObjectResultExecutor.ExecuteAsyncCore(ActionContext context, ObjectResult result, Type objectType, Object value)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ObjectResultExecutor.ExecuteAsync(ActionContext context, ObjectResult result)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ResourceInvoker.ResultNext[TFilter,TFilterAsync](State& next, Scope& scope, Object& state, Boolean& isCompleted)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ResourceInvoker.InvokeNextResultFilterAsync[TFilter,TFilterAsync]()
+--- End of stack trace from previous location ---
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ResourceInvoker.Rethrow(ResultExecutedContextSealed context)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ResourceInvoker.ResultNext[TFilter,TFilterAsync](State& next, Scope& scope, Object& state, Boolean& isCompleted)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ResourceInvoker.InvokeResultFilters()
+--- End of stack trace from previous location ---
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ResourceInvoker.<InvokeFilterPipelineAsync>g__Awaited|20_0(ResourceInvoker invoker, Task lastTask, State next, Scope scope, Object state, Boolean isCompleted)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ResourceInvoker.<InvokeAsync>g__Logged|17_1(ResourceInvoker invoker)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ResourceInvoker.<InvokeAsync>g__Logged|17_1(ResourceInvoker invoker)
+   at Microsoft.AspNetCore.Routing.EndpointMiddleware.<Invoke>g__AwaitRequestTask|7_0(Endpoint endpoint, Task requestTask, ILogger logger)
+   at Microsoft.AspNetCore.Authorization.AuthorizationMiddleware.Invoke(HttpContext context)
+   at Swashbuckle.AspNetCore.SwaggerUI.SwaggerUIMiddleware.Invoke(HttpContext httpContext)
+   at Swashbuckle.AspNetCore.Swagger.SwaggerMiddleware.Invoke(HttpContext httpContext, ISwaggerProvider swaggerProvider)
+   at Serilog.AspNetCore.RequestLoggingMiddleware.Invoke(HttpContext httpContext)
+2025-10-17 19:55:18.240 -05:00 [ERR] An unhandled exception has occurred while executing the request.
+System.InvalidOperationException: No route matches the supplied values.
+   at Microsoft.AspNetCore.Mvc.CreatedAtActionResult.OnFormatting(ActionContext context)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ObjectResultExecutor.ExecuteAsyncCore(ActionContext context, ObjectResult result, Type objectType, Object value)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ObjectResultExecutor.ExecuteAsync(ActionContext context, ObjectResult result)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ResourceInvoker.ResultNext[TFilter,TFilterAsync](State& next, Scope& scope, Object& state, Boolean& isCompleted)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ResourceInvoker.InvokeNextResultFilterAsync[TFilter,TFilterAsync]()
+--- End of stack trace from previous location ---
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ResourceInvoker.Rethrow(ResultExecutedContextSealed context)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ResourceInvoker.ResultNext[TFilter,TFilterAsync](State& next, Scope& scope, Object& state, Boolean& isCompleted)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ResourceInvoker.InvokeResultFilters()
+--- End of stack trace from previous location ---
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ResourceInvoker.<InvokeFilterPipelineAsync>g__Awaited|20_0(ResourceInvoker invoker, Task lastTask, State next, Scope scope, Object state, Boolean isCompleted)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ResourceInvoker.<InvokeAsync>g__Logged|17_1(ResourceInvoker invoker)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ResourceInvoker.<InvokeAsync>g__Logged|17_1(ResourceInvoker invoker)
+   at Microsoft.AspNetCore.Routing.EndpointMiddleware.<Invoke>g__AwaitRequestTask|7_0(Endpoint endpoint, Task requestTask, ILogger logger)
+   at Microsoft.AspNetCore.Authorization.AuthorizationMiddleware.Invoke(HttpContext context)
+   at Swashbuckle.AspNetCore.SwaggerUI.SwaggerUIMiddleware.Invoke(HttpContext httpContext)
+   at Swashbuckle.AspNetCore.Swagger.SwaggerMiddleware.Invoke(HttpContext httpContext, ISwaggerProvider swaggerProvider)
+   at Serilog.AspNetCore.RequestLoggingMiddleware.Invoke(HttpContext httpContext)
+   at Microsoft.AspNetCore.Authentication.AuthenticationMiddleware.Invoke(HttpContext context)
+   at Microsoft.AspNetCore.Diagnostics.DeveloperExceptionPageMiddlewareImpl.Invoke(HttpContext context)
+2025-10-17 19:55:18.244 -05:00 [INF] Request finished HTTP/1.1 POST http://localhost:5012/api/portfolios - 500 null text/plain; charset=utf-8 37.3466ms
+2025-10-17 19:55:18.748 -05:00 [INF] Request starting HTTP/1.1 POST http://localhost:5012/api/portfolios - application/json 1005
+2025-10-17 19:55:18.750 -05:00 [INF] Executing endpoint 'RiskPortfolio.Api.Controllers.PortfoliosController.CreateAsync (RiskPortfolio.Api)'
+2025-10-17 19:55:18.751 -05:00 [INF] Route matched with {action = "Create", controller = "Portfolios"}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.ActionResult`1[RiskPortfolio.Api.Models.Responses.PortfolioResponse]] CreateAsync(RiskPortfolio.Api.Models.Requests.CreatePortfolioRequest, System.Threading.CancellationToken) on controller RiskPortfolio.Api.Controllers.PortfoliosController (RiskPortfolio.Api).
+2025-10-17 19:55:18.752 -05:00 [INF] Calculated risk for portfolio "cbeb9144-c262-4d09-b209-ab9192b8f139" - Score: 55.15, VAR: 111548.20, Classification: "Elevated"
+2025-10-17 19:55:18.760 -05:00 [INF] Executed DbCommand (6ms) [Parameters=[@p0='?' (DbType = Guid), @p1='?' (Size = 3), @p2='?' (DbType = DateTime), @p3='?' (DbType = DateTime), @p4='?' (Size = 17), @p5='?' (Size = 11), @p6='?' (DbType = Decimal), @p7='?' (DbType = Decimal)], CommandType='"Text"', CommandTimeout='30']
+INSERT INTO "Portfolios" ("Id", "BaseCurrency", "CreatedAt", "LastEvaluatedAt", "Name", "Owner", "RiskScore", "ValueAtRisk")
+VALUES (@p0, @p1, @p2, @p3, @p4, @p5, @p6, @p7);
+2025-10-17 19:55:18.762 -05:00 [INF] Executed DbCommand (0ms) [Parameters=[@p0='?' (DbType = Guid), @p1='?' (DbType = Decimal), @p2='?' (DbType = Decimal), @p3='?' (DbType = Guid), @p4='?' (DbType = Decimal), @p5='?' (Size = 4), @p6='?' (DbType = Decimal)], CommandType='"Text"', CommandTimeout='30']
+INSERT INTO "AssetPositions" ("Id", "AveragePrice", "CurrentPrice", "PortfolioId", "Quantity", "Symbol", "Volatility")
+VALUES (@p0, @p1, @p2, @p3, @p4, @p5, @p6);
+2025-10-17 19:55:18.763 -05:00 [INF] Executed DbCommand (0ms) [Parameters=[@p0='?' (DbType = Guid), @p1='?' (DbType = Decimal), @p2='?' (DbType = Decimal), @p3='?' (DbType = Guid), @p4='?' (DbType = Decimal), @p5='?' (Size = 2), @p6='?' (DbType = Decimal)], CommandType='"Text"', CommandTimeout='30']
+INSERT INTO "AssetPositions" ("Id", "AveragePrice", "CurrentPrice", "PortfolioId", "Quantity", "Symbol", "Volatility")
+VALUES (@p0, @p1, @p2, @p3, @p4, @p5, @p6);
+2025-10-17 19:55:18.764 -05:00 [INF] Executed DbCommand (0ms) [Parameters=[@p0='?' (DbType = Guid), @p1='?' (DbType = Decimal), @p2='?' (DbType = Decimal), @p3='?' (DbType = Guid), @p4='?' (DbType = Decimal), @p5='?' (Size = 4), @p6='?' (DbType = Decimal)], CommandType='"Text"', CommandTimeout='30']
+INSERT INTO "AssetPositions" ("Id", "AveragePrice", "CurrentPrice", "PortfolioId", "Quantity", "Symbol", "Volatility")
+VALUES (@p0, @p1, @p2, @p3, @p4, @p5, @p6);
+2025-10-17 19:55:18.766 -05:00 [INF] Executed DbCommand (0ms) [Parameters=[@p0='?' (DbType = Guid), @p1='?' (DbType = Decimal), @p2='?' (DbType = Decimal), @p3='?' (DbType = Guid), @p4='?' (DbType = Decimal), @p5='?' (Size = 4), @p6='?' (DbType = Decimal)], CommandType='"Text"', CommandTimeout='30']
+INSERT INTO "AssetPositions" ("Id", "AveragePrice", "CurrentPrice", "PortfolioId", "Quantity", "Symbol", "Volatility")
+VALUES (@p0, @p1, @p2, @p3, @p4, @p5, @p6);
+2025-10-17 19:55:18.767 -05:00 [INF] Executed DbCommand (0ms) [Parameters=[@p0='?' (DbType = Guid), @p1='?' (DbType = Decimal), @p2='?' (DbType = Decimal), @p3='?' (DbType = Guid), @p4='?' (DbType = Decimal), @p5='?' (Size = 4), @p6='?' (DbType = Decimal)], CommandType='"Text"', CommandTimeout='30']
+INSERT INTO "AssetPositions" ("Id", "AveragePrice", "CurrentPrice", "PortfolioId", "Quantity", "Symbol", "Volatility")
+VALUES (@p0, @p1, @p2, @p3, @p4, @p5, @p6);
+2025-10-17 19:55:18.769 -05:00 [INF] Executed DbCommand (0ms) [Parameters=[@p0='?' (DbType = Guid), @p1='?' (DbType = Decimal), @p2='?' (DbType = Decimal), @p3='?' (DbType = Guid), @p4='?' (DbType = Decimal), @p5='?' (Size = 4), @p6='?' (DbType = Decimal)], CommandType='"Text"', CommandTimeout='30']
+INSERT INTO "AssetPositions" ("Id", "AveragePrice", "CurrentPrice", "PortfolioId", "Quantity", "Symbol", "Volatility")
+VALUES (@p0, @p1, @p2, @p3, @p4, @p5, @p6);
+2025-10-17 19:55:18.774 -05:00 [INF] Persisted new portfolio "cbeb9144-c262-4d09-b209-ab9192b8f139" (Aggressive Growth)
+2025-10-17 19:55:18.775 -05:00 [INF] Created portfolio "cbeb9144-c262-4d09-b209-ab9192b8f139"
+2025-10-17 19:55:18.775 -05:00 [INF] Executing CreatedAtActionResult, writing value of type 'RiskPortfolio.Api.Models.Responses.PortfolioResponse'.
+2025-10-17 19:55:18.776 -05:00 [INF] Executed action RiskPortfolio.Api.Controllers.PortfoliosController.CreateAsync (RiskPortfolio.Api) in 24.3557ms
+2025-10-17 19:55:18.777 -05:00 [INF] Executed endpoint 'RiskPortfolio.Api.Controllers.PortfoliosController.CreateAsync (RiskPortfolio.Api)'
+2025-10-17 19:55:18.778 -05:00 [ERR] HTTP POST /api/portfolios responded 500 in 27.8221 ms
+System.InvalidOperationException: No route matches the supplied values.
+   at Microsoft.AspNetCore.Mvc.CreatedAtActionResult.OnFormatting(ActionContext context)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ObjectResultExecutor.ExecuteAsyncCore(ActionContext context, ObjectResult result, Type objectType, Object value)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ObjectResultExecutor.ExecuteAsync(ActionContext context, ObjectResult result)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ResourceInvoker.ResultNext[TFilter,TFilterAsync](State& next, Scope& scope, Object& state, Boolean& isCompleted)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ResourceInvoker.InvokeNextResultFilterAsync[TFilter,TFilterAsync]()
+--- End of stack trace from previous location ---
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ResourceInvoker.Rethrow(ResultExecutedContextSealed context)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ResourceInvoker.ResultNext[TFilter,TFilterAsync](State& next, Scope& scope, Object& state, Boolean& isCompleted)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ResourceInvoker.InvokeResultFilters()
+--- End of stack trace from previous location ---
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ResourceInvoker.<InvokeFilterPipelineAsync>g__Awaited|20_0(ResourceInvoker invoker, Task lastTask, State next, Scope scope, Object state, Boolean isCompleted)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ResourceInvoker.<InvokeAsync>g__Logged|17_1(ResourceInvoker invoker)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ResourceInvoker.<InvokeAsync>g__Logged|17_1(ResourceInvoker invoker)
+   at Microsoft.AspNetCore.Routing.EndpointMiddleware.<Invoke>g__AwaitRequestTask|7_0(Endpoint endpoint, Task requestTask, ILogger logger)
+   at Microsoft.AspNetCore.Authorization.AuthorizationMiddleware.Invoke(HttpContext context)
+   at Swashbuckle.AspNetCore.SwaggerUI.SwaggerUIMiddleware.Invoke(HttpContext httpContext)
+   at Swashbuckle.AspNetCore.Swagger.SwaggerMiddleware.Invoke(HttpContext httpContext, ISwaggerProvider swaggerProvider)
+   at Serilog.AspNetCore.RequestLoggingMiddleware.Invoke(HttpContext httpContext)
+2025-10-17 19:55:18.782 -05:00 [ERR] An unhandled exception has occurred while executing the request.
+System.InvalidOperationException: No route matches the supplied values.
+   at Microsoft.AspNetCore.Mvc.CreatedAtActionResult.OnFormatting(ActionContext context)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ObjectResultExecutor.ExecuteAsyncCore(ActionContext context, ObjectResult result, Type objectType, Object value)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ObjectResultExecutor.ExecuteAsync(ActionContext context, ObjectResult result)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ResourceInvoker.ResultNext[TFilter,TFilterAsync](State& next, Scope& scope, Object& state, Boolean& isCompleted)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ResourceInvoker.InvokeNextResultFilterAsync[TFilter,TFilterAsync]()
+--- End of stack trace from previous location ---
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ResourceInvoker.Rethrow(ResultExecutedContextSealed context)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ResourceInvoker.ResultNext[TFilter,TFilterAsync](State& next, Scope& scope, Object& state, Boolean& isCompleted)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ResourceInvoker.InvokeResultFilters()
+--- End of stack trace from previous location ---
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ResourceInvoker.<InvokeFilterPipelineAsync>g__Awaited|20_0(ResourceInvoker invoker, Task lastTask, State next, Scope scope, Object state, Boolean isCompleted)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ResourceInvoker.<InvokeAsync>g__Logged|17_1(ResourceInvoker invoker)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ResourceInvoker.<InvokeAsync>g__Logged|17_1(ResourceInvoker invoker)
+   at Microsoft.AspNetCore.Routing.EndpointMiddleware.<Invoke>g__AwaitRequestTask|7_0(Endpoint endpoint, Task requestTask, ILogger logger)
+   at Microsoft.AspNetCore.Authorization.AuthorizationMiddleware.Invoke(HttpContext context)
+   at Swashbuckle.AspNetCore.SwaggerUI.SwaggerUIMiddleware.Invoke(HttpContext httpContext)
+   at Swashbuckle.AspNetCore.Swagger.SwaggerMiddleware.Invoke(HttpContext httpContext, ISwaggerProvider swaggerProvider)
+   at Serilog.AspNetCore.RequestLoggingMiddleware.Invoke(HttpContext httpContext)
+   at Microsoft.AspNetCore.Authentication.AuthenticationMiddleware.Invoke(HttpContext context)
+   at Microsoft.AspNetCore.Diagnostics.DeveloperExceptionPageMiddlewareImpl.Invoke(HttpContext context)
+2025-10-17 19:55:18.786 -05:00 [INF] Request finished HTTP/1.1 POST http://localhost:5012/api/portfolios - 500 null text/plain; charset=utf-8 37.7589ms
+2025-10-17 19:56:02.416 -05:00 [INF] Request starting HTTP/1.1 POST http://localhost:5012/api/portfolios - application/json 256
+2025-10-17 19:56:02.418 -05:00 [INF] Executing endpoint 'RiskPortfolio.Api.Controllers.PortfoliosController.CreateAsync (RiskPortfolio.Api)'
+2025-10-17 19:56:02.419 -05:00 [INF] Route matched with {action = "Create", controller = "Portfolios"}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.ActionResult`1[RiskPortfolio.Api.Models.Responses.PortfolioResponse]] CreateAsync(RiskPortfolio.Api.Models.Requests.CreatePortfolioRequest, System.Threading.CancellationToken) on controller RiskPortfolio.Api.Controllers.PortfoliosController (RiskPortfolio.Api).
+2025-10-17 19:56:02.421 -05:00 [INF] Calculated risk for portfolio "35f5db1d-94a5-4f84-91a5-f58aa79c47b4" - Score: 25.00, VAR: 1019.38, Classification: "Moderate"
+2025-10-17 19:56:02.423 -05:00 [INF] Executed DbCommand (1ms) [Parameters=[@p0='?' (DbType = Guid), @p1='?' (Size = 3), @p2='?' (DbType = DateTime), @p3='?' (DbType = DateTime), @p4='?' (Size = 14), @p5='?' (Size = 10), @p6='?' (DbType = Decimal), @p7='?' (DbType = Decimal)], CommandType='"Text"', CommandTimeout='30']
+INSERT INTO "Portfolios" ("Id", "BaseCurrency", "CreatedAt", "LastEvaluatedAt", "Name", "Owner", "RiskScore", "ValueAtRisk")
+VALUES (@p0, @p1, @p2, @p3, @p4, @p5, @p6, @p7);
+2025-10-17 19:56:02.425 -05:00 [INF] Executed DbCommand (0ms) [Parameters=[@p0='?' (DbType = Guid), @p1='?' (DbType = Decimal), @p2='?' (DbType = Decimal), @p3='?' (DbType = Guid), @p4='?' (DbType = Decimal), @p5='?' (Size = 4), @p6='?' (DbType = Decimal)], CommandType='"Text"', CommandTimeout='30']
+INSERT INTO "AssetPositions" ("Id", "AveragePrice", "CurrentPrice", "PortfolioId", "Quantity", "Symbol", "Volatility")
+VALUES (@p0, @p1, @p2, @p3, @p4, @p5, @p6);
+2025-10-17 19:56:02.431 -05:00 [INF] Persisted new portfolio "35f5db1d-94a5-4f84-91a5-f58aa79c47b4" (Test Portfolio)
+2025-10-17 19:56:02.432 -05:00 [INF] Created portfolio "35f5db1d-94a5-4f84-91a5-f58aa79c47b4"
+2025-10-17 19:56:02.432 -05:00 [INF] Executing CreatedAtActionResult, writing value of type 'RiskPortfolio.Api.Models.Responses.PortfolioResponse'.
+2025-10-17 19:56:02.433 -05:00 [INF] Executed action RiskPortfolio.Api.Controllers.PortfoliosController.CreateAsync (RiskPortfolio.Api) in 13.35ms
+2025-10-17 19:56:02.434 -05:00 [INF] Executed endpoint 'RiskPortfolio.Api.Controllers.PortfoliosController.CreateAsync (RiskPortfolio.Api)'
+2025-10-17 19:56:02.434 -05:00 [ERR] HTTP POST /api/portfolios responded 500 in 16.2081 ms
+System.InvalidOperationException: No route matches the supplied values.
+   at Microsoft.AspNetCore.Mvc.CreatedAtActionResult.OnFormatting(ActionContext context)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ObjectResultExecutor.ExecuteAsyncCore(ActionContext context, ObjectResult result, Type objectType, Object value)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ObjectResultExecutor.ExecuteAsync(ActionContext context, ObjectResult result)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ResourceInvoker.ResultNext[TFilter,TFilterAsync](State& next, Scope& scope, Object& state, Boolean& isCompleted)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ResourceInvoker.InvokeNextResultFilterAsync[TFilter,TFilterAsync]()
+--- End of stack trace from previous location ---
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ResourceInvoker.Rethrow(ResultExecutedContextSealed context)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ResourceInvoker.ResultNext[TFilter,TFilterAsync](State& next, Scope& scope, Object& state, Boolean& isCompleted)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ResourceInvoker.InvokeResultFilters()
+--- End of stack trace from previous location ---
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ResourceInvoker.<InvokeFilterPipelineAsync>g__Awaited|20_0(ResourceInvoker invoker, Task lastTask, State next, Scope scope, Object state, Boolean isCompleted)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ResourceInvoker.<InvokeAsync>g__Logged|17_1(ResourceInvoker invoker)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ResourceInvoker.<InvokeAsync>g__Logged|17_1(ResourceInvoker invoker)
+   at Microsoft.AspNetCore.Routing.EndpointMiddleware.<Invoke>g__AwaitRequestTask|7_0(Endpoint endpoint, Task requestTask, ILogger logger)
+   at Microsoft.AspNetCore.Authorization.AuthorizationMiddleware.Invoke(HttpContext context)
+   at Swashbuckle.AspNetCore.SwaggerUI.SwaggerUIMiddleware.Invoke(HttpContext httpContext)
+   at Swashbuckle.AspNetCore.Swagger.SwaggerMiddleware.Invoke(HttpContext httpContext, ISwaggerProvider swaggerProvider)
+   at Serilog.AspNetCore.RequestLoggingMiddleware.Invoke(HttpContext httpContext)
+2025-10-17 19:56:02.438 -05:00 [ERR] An unhandled exception has occurred while executing the request.
+System.InvalidOperationException: No route matches the supplied values.
+   at Microsoft.AspNetCore.Mvc.CreatedAtActionResult.OnFormatting(ActionContext context)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ObjectResultExecutor.ExecuteAsyncCore(ActionContext context, ObjectResult result, Type objectType, Object value)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ObjectResultExecutor.ExecuteAsync(ActionContext context, ObjectResult result)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ResourceInvoker.ResultNext[TFilter,TFilterAsync](State& next, Scope& scope, Object& state, Boolean& isCompleted)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ResourceInvoker.InvokeNextResultFilterAsync[TFilter,TFilterAsync]()
+--- End of stack trace from previous location ---
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ResourceInvoker.Rethrow(ResultExecutedContextSealed context)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ResourceInvoker.ResultNext[TFilter,TFilterAsync](State& next, Scope& scope, Object& state, Boolean& isCompleted)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ResourceInvoker.InvokeResultFilters()
+--- End of stack trace from previous location ---
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ResourceInvoker.<InvokeFilterPipelineAsync>g__Awaited|20_0(ResourceInvoker invoker, Task lastTask, State next, Scope scope, Object state, Boolean isCompleted)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ResourceInvoker.<InvokeAsync>g__Logged|17_1(ResourceInvoker invoker)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ResourceInvoker.<InvokeAsync>g__Logged|17_1(ResourceInvoker invoker)
+   at Microsoft.AspNetCore.Routing.EndpointMiddleware.<Invoke>g__AwaitRequestTask|7_0(Endpoint endpoint, Task requestTask, ILogger logger)
+   at Microsoft.AspNetCore.Authorization.AuthorizationMiddleware.Invoke(HttpContext context)
+   at Swashbuckle.AspNetCore.SwaggerUI.SwaggerUIMiddleware.Invoke(HttpContext httpContext)
+   at Swashbuckle.AspNetCore.Swagger.SwaggerMiddleware.Invoke(HttpContext httpContext, ISwaggerProvider swaggerProvider)
+   at Serilog.AspNetCore.RequestLoggingMiddleware.Invoke(HttpContext httpContext)
+   at Microsoft.AspNetCore.Authentication.AuthenticationMiddleware.Invoke(HttpContext context)
+   at Microsoft.AspNetCore.Diagnostics.DeveloperExceptionPageMiddlewareImpl.Invoke(HttpContext context)
+2025-10-17 19:56:02.442 -05:00 [INF] Request finished HTTP/1.1 POST http://localhost:5012/api/portfolios - 500 null text/plain; charset=utf-8 25.6349ms

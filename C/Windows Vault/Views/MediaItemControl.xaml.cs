@@ -258,17 +258,35 @@ namespace WindowsVault.Views
                                     var mediaFileService = mediaFileServiceField.GetValue(vm) as Services.IMediaFileService;
                                     if (mediaFileService != null)
                                     {
-                                        await mediaFileService.DeleteMediaFileAsync(mediaFile.Id);
+                                        var success = await mediaFileService.DeleteMediaFileAsync(mediaFile.Id);
                                         
-                                        // Refresh the view
-                                        var refreshMethod = vm.GetType().GetMethod("LoadMediaFilesAsync", 
-                                            System.Reflection.BindingFlags.NonPublic | System.Reflection.BindingFlags.Instance);
-                                        if (refreshMethod != null)
+                                        if (success)
                                         {
-                                            await (refreshMethod.Invoke(vm, null) as System.Threading.Tasks.Task);
+                                            // Remove from collections on UI thread with error handling
+                                            await System.Windows.Application.Current.Dispatcher.InvokeAsync(() =>
+                                            {
+                                                try
+                                                {
+                                                    // Safe removal - check if exists first
+                                                    if (vm.MediaFiles.Contains(mediaFile))
+                                                        vm.MediaFiles.Remove(mediaFile);
+                                                    if (vm.FilteredMediaFiles.Contains(mediaFile))
+                                                        vm.FilteredMediaFiles.Remove(mediaFile);
+                                                    if (vm.SelectedMediaFiles.Contains(mediaFile))
+                                                        vm.SelectedMediaFiles.Remove(mediaFile);
+                                                }
+                                                catch (Exception ex)
+                                                {
+                                                    System.Diagnostics.Debug.WriteLine($"Error removing item from UI collections: {ex.Message}");
+                                                }
+                                            }, System.Windows.Threading.DispatcherPriority.Normal);
+                                            
+                                            await ModernDialog.ShowSuccessAsync("Media file deleted successfully!");
                                         }
-                                        
-                                        await ModernDialog.ShowSuccessAsync("Media file deleted successfully!");
+                                        else
+                                        {
+                                            await ModernDialog.ShowErrorAsync("Failed to delete media file from database.");
+                                        }
                                     }
                                 }
                             }

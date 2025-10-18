@@ -60,7 +60,7 @@ namespace WindowsVault.ViewModels
             MediaFiles.Clear();
             foreach (var file in mediaFiles)
             {
-                MediaFiles.Add(new BulkMediaFileItem
+                var item = new BulkMediaFileItem
                 {
                     MediaFile = file,
                     IsSelected = true,
@@ -68,7 +68,18 @@ namespace WindowsVault.ViewModels
                     FileInfo = $"{file.MediaType} • {FormatFileSize(file.FileSizeBytes)}",
                     ThumbnailPath = file.ThumbnailPath,
                     CurrentTags = new ObservableCollection<Tag>(file.Tags)
-                });
+                };
+                
+                // Subscribe to selection changes
+                item.PropertyChanged += (s, e) => {
+                    if (e.PropertyName == nameof(BulkMediaFileItem.IsSelected))
+                    {
+                        UpdateSelectedCount();
+                        UpdateSummary();
+                    }
+                };
+                
+                MediaFiles.Add(item);
             }
 
             // Load all tags
@@ -76,14 +87,24 @@ namespace WindowsVault.ViewModels
             _allTags.Clear();
             foreach (var tag in tags)
             {
-                _allTags.Add(new TagSelectionItem
+                var tagItem = new TagSelectionItem
                 {
                     Tag = tag,
                     Name = tag.Name,
                     Color = tag.Color,
                     UsageCount = tag.UsageCount,
                     IsSelected = false
-                });
+                };
+                
+                // Subscribe to tag selection changes
+                tagItem.PropertyChanged += (s, e) => {
+                    if (e.PropertyName == nameof(TagSelectionItem.IsSelected))
+                    {
+                        UpdateSummary();
+                    }
+                };
+                
+                _allTags.Add(tagItem);
             }
             FilteredTags = new ObservableCollection<TagSelectionItem>(_allTags);
 
@@ -191,7 +212,7 @@ namespace WindowsVault.ViewModels
             var folderTags = new HashSet<string>();
             foreach (var file in MediaFiles.Where(f => f.IsSelected))
             {
-                var directory = System.IO.Path.GetDirectoryName(file.MediaFile.OriginalPath);
+                var directory = System.IO.Path.GetDirectoryName(file.MediaFile.FilePath);
                 if (!string.IsNullOrEmpty(directory))
                 {
                     var folderName = System.IO.Path.GetFileName(directory);
@@ -314,6 +335,7 @@ namespace WindowsVault.ViewModels
             var selectedTags = _allTags.Where(t => t.IsSelected).Select(t => t.Tag).ToList();
             var selectedFiles = MediaFiles.Where(f => f.IsSelected).Select(f => f.MediaFile).ToList();
 
+            // Bulk mode - apply tags to all selected files
             foreach (var file in selectedFiles)
             {
                 foreach (var tag in selectedTags)
@@ -322,11 +344,27 @@ namespace WindowsVault.ViewModels
                 }
             }
 
+            // Update the display for all selected files
+            foreach (var fileItem in MediaFiles.Where(f => f.IsSelected))
+            {
+                // Add new tags to display (avoid duplicates)
+                foreach (var tag in selectedTags)
+                {
+                    if (!fileItem.CurrentTags.Any(t => t.Id == tag.Id))
+                    {
+                        fileItem.CurrentTags.Add(tag);
+                    }
+                }
+            }
+
             // Save recent tags
             if (RememberSettings && selectedTags.Any())
             {
                 await _settingsService.SaveRecentTagIdsAsync(selectedTags.Select(t => t.Id).ToList());
             }
+
+            // Show feedback
+            Summary = $"Applied {selectedTags.Count} tag(s) to {selectedFiles.Count} file(s)";
         }
 
         [RelayCommand]
@@ -334,6 +372,65 @@ namespace WindowsVault.ViewModels
         {
             // Close dialog without applying tags
         }
+
+        [RelayCommand]
+        private async Task AssignIndividualTags(BulkMediaFileItem mediaFileItem)
+        {
+            if (mediaFileItem?.MediaFile == null) return;
+
+            // Get currently selected tags (the ones checked in the UI)
+            var selectedTags = _allTags.Where(t => t.IsSelected).Select(t => t.Tag).ToList();
+            var file = mediaFileItem.MediaFile;
+            
+            // Replace all tags on this file with the currently selected tags
+            // First, remove all existing tags from this file
+            var existingTags = file.Tags.ToList();
+            foreach (var existingTag in existingTags)
+            {
+                await _mediaFileService.RemoveTagFromMediaFileAsync(file.Id, existingTag.Id);
+            }
+
+            // Then add the currently selected tags to this file only
+            foreach (var tag in selectedTags)
+            {
+                await _mediaFileService.AddTagToMediaFileAsync(file.Id, tag.Id);
+            }
+
+            // Update the current tags display for this file
+            mediaFileItem.CurrentTags.Clear();
+            foreach (var tag in selectedTags)
+            {
+                mediaFileItem.CurrentTags.Add(tag);
+            }
+
+            // Show feedback
+            if (selectedTags.Any())
+            {
+                Summary = $"✅ Applied {selectedTags.Count} tag(s) to '{mediaFileItem.FileName}'. Select different tags and click 🏷️ on next file.";
+            }
+            else
+            {
+                Summary = $"✅ Cleared all tags from '{mediaFileItem.FileName}'. Select tags and click 🏷️ on next file.";
+            }
+            
+            // Save recent tags if enabled
+            if (RememberSettings && selectedTags.Any())
+            {
+                await _settingsService.SaveRecentTagIdsAsync(selectedTags.Select(t => t.Id).ToList());
+            }
+
+            // Automatically deselect all tags so user can select different ones for the next file
+            foreach (var tagItem in _allTags)
+            {
+                tagItem.IsSelected = false;
+            }
+
+            UpdateSummary();
+        }
+
+
+
+
 
         private void UpdateSelectedCount()
         {
@@ -347,17 +444,17 @@ namespace WindowsVault.ViewModels
 
             if (selectedTagCount == 0)
             {
-                Summary = "No tags selected";
-                CanApplyTags = false;
+                Summary = "Select tag(s), then click 🏷️ on individual files OR select files + 'Apply Tags' for bulk assignment";
+                CanApplyTags = selectedFileCount > 0; // Allow applying even with no tags (will clear tags)
             }
             else if (selectedFileCount == 0)
             {
-                Summary = "No files selected";
+                Summary = $"{selectedTagCount} tag(s) selected - Click 🏷️ on individual files OR select files for bulk assignment";
                 CanApplyTags = false;
             }
             else
             {
-                Summary = $"Apply {selectedTagCount} tag(s) to {selectedFileCount} file(s)";
+                Summary = $"Ready: {selectedTagCount} tag(s) + {selectedFileCount} file(s) selected - Use 'Apply Tags' for bulk OR 🏷️ for individual";
                 CanApplyTags = true;
             }
         }

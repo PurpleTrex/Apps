@@ -65,7 +65,6 @@ namespace WindowsVault.Services
             return await _context.MediaFiles
                 .Include(m => m.MediaFileTags)
                     .ThenInclude(mft => mft.Tag)
-                .Where(m => !m.IsDeleted)
                 .OrderByDescending(m => m.DateAdded)
                 .ToListAsync();
         }
@@ -75,7 +74,7 @@ namespace WindowsVault.Services
             return await _context.MediaFiles
                 .Include(m => m.MediaFileTags)
                     .ThenInclude(mft => mft.Tag)
-                .Where(m => m.MediaType == mediaType && !m.IsDeleted)
+                .Where(m => m.MediaType == mediaType)
                 .OrderByDescending(m => m.DateAdded)
                 .ToListAsync();
         }
@@ -89,7 +88,7 @@ namespace WindowsVault.Services
             return await _context.MediaFiles
                 .Include(m => m.MediaFileTags)
                     .ThenInclude(mft => mft.Tag)
-                .Where(m => !m.IsDeleted && (
+                .Where(m => (
                     m.FileName.ToLower().Contains(query) ||
                     (m.Description != null && m.Description.ToLower().Contains(query)) ||
                     m.MediaFileTags.Any(mft => mft.Tag.Name.ToLower().Contains(query))
@@ -107,8 +106,7 @@ namespace WindowsVault.Services
             return await _context.MediaFiles
                 .Include(m => m.MediaFileTags)
                     .ThenInclude(mft => mft.Tag)
-                .Where(m => !m.IsDeleted && 
-                       m.MediaFileTags.Any(mft => tagIdList.Contains(mft.TagId)))
+                .Where(m => m.MediaFileTags.Any(mft => tagIdList.Contains(mft.TagId)))
                 .OrderByDescending(m => m.DateAdded)
                 .ToListAsync();
         }
@@ -118,7 +116,7 @@ namespace WindowsVault.Services
             return await _context.MediaFiles
                 .Include(m => m.MediaFileTags)
                     .ThenInclude(mft => mft.Tag)
-                .FirstOrDefaultAsync(m => m.Id == id && !m.IsDeleted);
+                .FirstOrDefaultAsync(m => m.Id == id);
         }
 
         /// <summary>
@@ -260,18 +258,21 @@ namespace WindowsVault.Services
                 if (id <= 0)
                     throw new ArgumentException("Invalid media file ID", nameof(id));
 
-                var mediaFile = await _context.MediaFiles.FindAsync(id);
+                var mediaFile = await _context.MediaFiles
+                    .Include(m => m.MediaFileTags) // Include the actual navigation property for tag relationships
+                    .FirstOrDefaultAsync(m => m.Id == id);
                 if (mediaFile == null)
                 {
                     _logger.LogWarning($"Attempted to delete non-existent media file with ID: {id}");
                     return false;
                 }
 
-                mediaFile.IsDeleted = true;
+                // Actually remove from database instead of just marking as deleted
+                _context.MediaFiles.Remove(mediaFile);
                 var result = await _context.SaveChangesAsync() > 0;
 
                 if (result)
-                    _logger.LogInformation($"Media file marked as deleted: ID {id}");
+                    _logger.LogInformation($"Media file removed from database: ID {id}");
 
                 return result;
             }
@@ -294,6 +295,7 @@ namespace WindowsVault.Services
                     throw new ArgumentException("All IDs must be positive integers", nameof(ids));
 
                 var mediaFiles = await _context.MediaFiles
+                    .Include(m => m.MediaFileTags) // Include the actual navigation property for tag relationships
                     .Where(m => ids.Contains(m.Id))
                     .ToListAsync();
 
@@ -303,10 +305,8 @@ namespace WindowsVault.Services
                     return 0;
                 }
 
-                foreach (var mediaFile in mediaFiles)
-                {
-                    mediaFile.IsDeleted = true;
-                }
+                // Actually remove from database instead of just marking as deleted
+                _context.MediaFiles.RemoveRange(mediaFiles);
 
                 var deletedCount = await _context.SaveChangesAsync();
                 _logger.LogInformation($"Batch deleted {deletedCount} media files");
@@ -330,7 +330,7 @@ namespace WindowsVault.Services
             return await _context.MediaFiles
                 .Include(m => m.MediaFileTags)
                     .ThenInclude(mft => mft.Tag)
-                .Where(m => m.IsFavorite && !m.IsDeleted)
+                .Where(m => m.IsFavorite)
                 .OrderByDescending(m => m.DateAdded)
                 .ToListAsync();
         }
@@ -417,7 +417,7 @@ namespace WindowsVault.Services
 
         public async Task<bool> IsDuplicateAsync(string fileHash)
         {
-            return await _context.MediaFiles.AnyAsync(m => m.FileHash == fileHash && !m.IsDeleted);
+            return await _context.MediaFiles.AnyAsync(m => m.FileHash == fileHash);
         }
 
         public async Task ImportDirectoryAsync(string directoryPath, IProgress<string>? progress = null)
@@ -603,7 +603,7 @@ namespace WindowsVault.Services
 
                 var mediaFile = await _context.MediaFiles
                     .Include(m => m.MediaFileTags)
-                    .FirstOrDefaultAsync(m => m.Id == mediaFileId && !m.IsDeleted);
+                    .FirstOrDefaultAsync(m => m.Id == mediaFileId);
 
                 if (mediaFile == null)
                 {
@@ -678,6 +678,37 @@ namespace WindowsVault.Services
             catch
             {
                 return false;
+            }
+        }
+
+        /// <summary>
+        /// Cleanup method to remove all previously soft-deleted records from the database.
+        /// This is needed after switching from soft delete (IsDeleted = true) to hard delete.
+        /// </summary>
+        public async Task<int> CleanupDeletedRecordsAsync()
+        {
+            try
+            {
+                var deletedRecords = await _context.MediaFiles
+                    .Where(m => m.IsDeleted)
+                    .ToListAsync();
+
+                if (!deletedRecords.Any())
+                {
+                    _logger.LogInformation("No deleted records found to cleanup");
+                    return 0;
+                }
+
+                _context.MediaFiles.RemoveRange(deletedRecords);
+                var removedCount = await _context.SaveChangesAsync();
+                
+                _logger.LogInformation($"Cleaned up {removedCount} previously deleted records");
+                return removedCount;
+            }
+            catch (Exception ex)
+            {
+                _logger.LogError("Error cleaning up deleted records", ex);
+                throw;
             }
         }
     }

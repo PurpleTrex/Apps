@@ -32,7 +32,7 @@ namespace WindowsVault
             }
         }
         
-        private void InitializeApplication()
+        private async void InitializeApplication()
         {
             try
             {
@@ -88,6 +88,14 @@ namespace WindowsVault
                 {
                     var context = scope.ServiceProvider.GetRequiredService<VaultDbContext>();
                     context.Database.EnsureCreated();
+                    
+                    // Cleanup previously soft-deleted records after switching to hard delete
+                    var mediaFileService = scope.ServiceProvider.GetRequiredService<IMediaFileService>();
+                    var cleanedUpCount = await mediaFileService.CleanupDeletedRecordsAsync();
+                    if (cleanedUpCount > 0)
+                    {
+                        Log.Information($"Cleaned up {cleanedUpCount} previously deleted media file records");
+                    }
                 }
 
                 // Show main window

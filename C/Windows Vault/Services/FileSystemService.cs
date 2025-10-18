@@ -315,8 +315,9 @@ namespace WindowsVault.Services
             if (string.IsNullOrWhiteSpace(extension))
                 return false;
 
-            // Remove leading dot if present
-            extension = extension.TrimStart('.');
+            // Ensure extension starts with a dot for consistency
+            if (!extension.StartsWith("."))
+                extension = "." + extension;
 
             var imageExtensions = _configuration.GetSection("VaultSettings:SupportedImageFormats").Get<string[]>() ?? Array.Empty<string>();
             var videoExtensions = _configuration.GetSection("VaultSettings:SupportedVideoFormats").Get<string[]>() ?? Array.Empty<string>();

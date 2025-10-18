@@ -1,0 +1,20 @@
+﻿WindowsVault
+1.0.0.0
+
+winexe
+C#
+.cs
+C:\Users\purple\Desktop\Dev\Git\C\Windows Vault\obj\Release\net9.0-windows\
+WindowsVault
+none
+false
+TRACE;RELEASE;NET;NET9_0;NETCOREAPP;WINDOWS;WINDOWS7_0;NET5_0_OR_GREATER;NET6_0_OR_GREATER;NET7_0_OR_GREATER;NET8_0_OR_GREATER;NET9_0_OR_GREATER;NETCOREAPP3_0_OR_GREATER;NETCOREAPP3_1_OR_GREATER;WINDOWS7_0_OR_GREATER
+C:\Users\purple\Desktop\Dev\Git\C\Windows Vault\App.xaml
+91466486702
+
+401023613885
+2701730122538
+Styles\VaultStyles.xaml;Views\BulkTagAssignmentDialog.xaml;Views\ColorPickerDialog.xaml;Views\MainWindow.xaml;Views\MediaDetailWindow.xaml;Views\MediaItemControl.xaml;Views\SettingsWindow.xaml;Views\TagManagementWindow.xaml;Views\TagSelectionDialog.xaml;
+
+False
+

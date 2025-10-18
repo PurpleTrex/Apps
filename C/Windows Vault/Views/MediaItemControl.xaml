@@ -37,6 +37,12 @@
                 <RowDefinition Height="Auto"/>
             </Grid.RowDefinitions>
             
+            <!-- Selection Overlay -->
+            <Border Grid.RowSpan="3" 
+                    Background="#4000BFFF" 
+                    CornerRadius="4"
+                    Visibility="{Binding IsSelected, Converter={StaticResource BooleanToVisibilityConverter}}"/>
+            
             <!-- Thumbnail -->
             <Border Grid.Row="0" Background="Black" CornerRadius="4" Margin="0,0,0,8">
                 <Grid>

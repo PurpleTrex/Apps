@@ -1,6 +1,6 @@
 using FluentValidation;
 using Hangfire;
-using Hangfire.SqlServer;
+using Hangfire.InMemory;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.OpenApi.Models;
 using Prometheus;
@@ -45,20 +45,11 @@ builder.Services.AddScoped<IValidator<UpdatePortfolioOwnerRequest>, UpdatePortfo
 
 builder.Services.AddHangfire((serviceProvider, configuration) =>
 {
-    var dbOptions = serviceProvider.GetRequiredService<Microsoft.Extensions.Options.IOptions<DatabaseOptions>>().Value;
     configuration
         .SetDataCompatibilityLevel(CompatibilityLevel.Version_180)
         .UseSimpleAssemblyNameTypeSerializer()
         .UseRecommendedSerializerSettings()
-        .UseSqlServerStorage(dbOptions.HangfireConnectionString, new SqlServerStorageOptions
-        {
-            SchemaName = "hangfire",
-            CommandBatchMaxTimeout = TimeSpan.FromMinutes(5),
-            SlidingInvisibilityTimeout = TimeSpan.FromMinutes(5),
-            QueuePollInterval = TimeSpan.FromSeconds(15),
-            UseRecommendedIsolationLevel = true,
-            DisableGlobalLocks = false
-        });
+        .UseInMemoryStorage();
 });
 
 builder.Services.AddHangfireServer();

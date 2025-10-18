@@ -76,5 +76,42 @@ namespace WindowsVault.Helpers
 
             return await dialog.ShowAsync();
         }
+
+        public static async Task<ContentDialogResult> ShowChoiceAsync(
+            string title,
+            string content,
+            string primaryButtonText,
+            string secondaryButtonText)
+        {
+            var dialog = new ContentDialog
+            {
+                Title = title,
+                Content = content,
+                PrimaryButtonText = primaryButtonText,
+                SecondaryButtonText = secondaryButtonText,
+                CloseButtonText = "Cancel",
+                DefaultButton = ContentDialogButton.Primary
+            };
+
+            return await dialog.ShowAsync();
+        }
+
+        public static async Task<ContentDialogResult> ShowConfirmationAsync(
+            string title,
+            string content,
+            string confirmText = "Yes",
+            string cancelText = "No")
+        {
+            var dialog = new ContentDialog
+            {
+                Title = title,
+                Content = content,
+                PrimaryButtonText = confirmText,
+                CloseButtonText = cancelText,
+                DefaultButton = ContentDialogButton.Primary
+            };
+
+            return await dialog.ShowAsync();
+        }
     }
 }

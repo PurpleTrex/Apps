@@ -8,7 +8,7 @@ public class PortfolioEntityTypeConfiguration : IEntityTypeConfiguration<Portfol
 {
     public void Configure(EntityTypeBuilder<Portfolio> builder)
     {
-        builder.ToTable("Portfolios", schema: "portfolio");
+        builder.ToTable("Portfolios");
 
         builder.HasKey(p => p.Id);
 
@@ -31,16 +31,14 @@ public class PortfolioEntityTypeConfiguration : IEntityTypeConfiguration<Portfol
             .HasPrecision(18, 2);
 
         builder.Property(p => p.CreatedAt)
-            .HasDefaultValueSql("SYSUTCDATETIME()");
+            .HasDefaultValueSql("datetime('now')");
 
         builder.Property(p => p.LastEvaluatedAt);
 
-        builder.HasMany<AssetPosition>("_positions")
+        builder.HasMany(p => p.Positions)
             .WithOne()
             .HasForeignKey(p => p.PortfolioId)
             .OnDelete(DeleteBehavior.Cascade);
-
-        builder.Navigation("_positions").UsePropertyAccessMode(PropertyAccessMode.Field);
 
         builder.Ignore(p => p.TotalValue);
     }

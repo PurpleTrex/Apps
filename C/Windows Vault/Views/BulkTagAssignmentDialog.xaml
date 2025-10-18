@@ -20,16 +20,21 @@
 
         <!-- Header -->
         <Border Grid.Row="0"
-                Background="{DynamicResource SystemControlBackgroundChromeMediumLowBrush}"
+                Background="{DynamicResource SystemControlBackgroundAccentBrush}"
                 Padding="20">
             <StackPanel>
                 <TextBlock Text="Smart Tag Assignment"
                            FontSize="24"
-                           FontWeight="SemiBold"/>
-                <TextBlock Text="{Binding MediaFileCount, StringFormat='Assigning tags to {0} media file(s)'}"
-                           FontSize="14"
-                           Foreground="{DynamicResource SystemControlForegroundBaseMediumBrush}"
-                           Margin="0,4,0,0"/>
+                           FontWeight="SemiBold"
+                           Foreground="White"/>
+                <TextBlock FontSize="13"
+                           Foreground="White"
+                           Opacity="0.9"
+                           Margin="0,6,0,0">
+                    <Run Text="🏷️ Individual: Select tags → Click"/>
+                    <Run Text="Tag This File" FontWeight="SemiBold"/>
+                    <Run Text="• 📦 Bulk: Select files + tags → Apply Tags"/>
+                </TextBlock>
             </StackPanel>
         </Border>
 
@@ -63,67 +68,130 @@
                         <ItemsControl ItemsSource="{Binding MediaFiles}">
                             <ItemsControl.ItemTemplate>
                                 <DataTemplate>
-                                    <Border Margin="0,2"
+                                    <Border Margin="0,3"
                                             Background="{DynamicResource SystemControlBackgroundBaseLowBrush}"
-                                            CornerRadius="4"
-                                            Padding="8">
+                                            BorderBrush="{DynamicResource SystemControlBackgroundChromeHighBrush}"
+                                            BorderThickness="1"
+                                            CornerRadius="6"
+                                            Padding="12">
                                         <Grid>
                                             <Grid.ColumnDefinitions>
                                                 <ColumnDefinition Width="Auto"/>
-                                                <ColumnDefinition Width="50"/>
+                                                <ColumnDefinition Width="60"/>
                                                 <ColumnDefinition Width="*"/>
                                                 <ColumnDefinition Width="Auto"/>
                                             </Grid.ColumnDefinitions>
+                                            <Grid.RowDefinitions>
+                                                <RowDefinition Height="Auto"/>
+                                                <RowDefinition Height="Auto"/>
+                                            </Grid.RowDefinitions>
 
+                                            <!-- Bulk Selection Checkbox -->
                                             <CheckBox Grid.Column="0"
+                                                      Grid.Row="0"
                                                       IsChecked="{Binding IsSelected}"
-                                                      VerticalAlignment="Center"
-                                                      Margin="0,0,8,0"/>
+                                                      VerticalAlignment="Top"
+                                                      Margin="0,2,12,0"
+                                                      ToolTip="Include in bulk operations"/>
 
                                             <!-- Thumbnail -->
                                             <Border Grid.Column="1"
-                                                    Width="40"
-                                                    Height="40"
-                                                    CornerRadius="4"
-                                                    Margin="0,0,8,0">
-                                                <Border.Background>
-                                                    <ImageBrush ImageSource="{Binding ThumbnailPath}"
-                                                                Stretch="UniformToFill"/>
-                                                </Border.Background>
+                                                    Grid.Row="0"
+                                                    Grid.RowSpan="2"
+                                                    Width="50"
+                                                    Height="50"
+                                                    CornerRadius="6"
+                                                    Margin="0,0,12,0"
+                                                    Background="{DynamicResource SystemControlBackgroundBaseMediumBrush}">
+                                                <Border.Effect>
+                                                    <DropShadowEffect Color="Black" 
+                                                                      Opacity="0.1" 
+                                                                      ShadowDepth="1" 
+                                                                      BlurRadius="3"/>
+                                                </Border.Effect>
+                                                <Image Source="{Binding ThumbnailPath}"
+                                                       Stretch="UniformToFill"
+                                                       RenderOptions.BitmapScalingMode="HighQuality"/>
                                             </Border>
 
-                                            <!-- File Info -->
-                                            <StackPanel Grid.Column="2" VerticalAlignment="Center">
+                                            <!-- File Info Row -->
+                                            <StackPanel Grid.Column="2" 
+                                                        Grid.Row="0" 
+                                                        VerticalAlignment="Center"
+                                                        Margin="0,0,8,0">
                                                 <TextBlock Text="{Binding FileName}"
-                                                           FontWeight="Medium"
+                                                           FontWeight="SemiBold"
+                                                           FontSize="13"
                                                            TextTrimming="CharacterEllipsis"/>
                                                 <TextBlock Text="{Binding FileInfo}"
                                                            FontSize="11"
-                                                           Foreground="{DynamicResource SystemControlForegroundBaseMediumBrush}"/>
+                                                           Foreground="{DynamicResource SystemControlForegroundBaseMediumBrush}"
+                                                           Margin="0,2,0,0"/>
                                             </StackPanel>
 
-                                            <!-- Current Tags -->
-                                            <ItemsControl Grid.Column="3"
-                                                          ItemsSource="{Binding CurrentTags}"
-                                                          VerticalAlignment="Center">
-                                                <ItemsControl.ItemsPanel>
-                                                    <ItemsPanelTemplate>
-                                                        <WrapPanel Orientation="Horizontal"/>
-                                                    </ItemsPanelTemplate>
-                                                </ItemsControl.ItemsPanel>
-                                                <ItemsControl.ItemTemplate>
-                                                    <DataTemplate>
-                                                        <Border Background="{Binding Color}"
-                                                                CornerRadius="3"
-                                                                Padding="4,2"
-                                                                Margin="2">
-                                                            <TextBlock Text="{Binding Name}"
-                                                                       FontSize="10"
-                                                                       Foreground="White"/>
-                                                        </Border>
-                                                    </DataTemplate>
-                                                </ItemsControl.ItemTemplate>
-                                            </ItemsControl>
+                                            <!-- Individual Tag Assignment Button -->
+                                            <Button Grid.Column="3"
+                                                    Grid.Row="0"
+                                                    Content="🏷️ Tag This File"
+                                                    MinWidth="100"
+                                                    Height="32"
+                                                    FontSize="11"
+                                                    FontWeight="Medium"
+                                                    VerticalAlignment="Center"
+                                                    Style="{StaticResource AccentButtonStyle}"
+                                                    ToolTip="Apply currently selected tags to ONLY this file"
+                                                    Command="{Binding DataContext.AssignIndividualTagsCommand, RelativeSource={RelativeSource AncestorType=UserControl}}"
+                                                    CommandParameter="{Binding}"/>
+
+                                            <!-- Current Tags Row -->
+                                            <StackPanel Grid.Column="2"
+                                                        Grid.ColumnSpan="2"
+                                                        Grid.Row="1"
+                                                        Orientation="Vertical"
+                                                        Margin="0,8,0,0">
+                                                <TextBlock Text="Current Tags:"
+                                                           FontSize="10"
+                                                           FontWeight="Medium"
+                                                           Foreground="{DynamicResource SystemControlForegroundBaseMediumBrush}"
+                                                           Margin="0,0,0,4"
+                                                           Visibility="{Binding CurrentTags.Count, Converter={StaticResource CountToVisibilityConverter}}"/>
+                                                <ItemsControl ItemsSource="{Binding CurrentTags}"
+                                                              Visibility="{Binding CurrentTags.Count, Converter={StaticResource CountToVisibilityConverter}}">
+                                                    <ItemsControl.ItemsPanel>
+                                                        <ItemsPanelTemplate>
+                                                            <WrapPanel Orientation="Horizontal"/>
+                                                        </ItemsPanelTemplate>
+                                                    </ItemsControl.ItemsPanel>
+                                                    <ItemsControl.ItemTemplate>
+                                                        <DataTemplate>
+                                                            <Border Background="{Binding Color}"
+                                                                    CornerRadius="12"
+                                                                    Padding="8,3"
+                                                                    Margin="2">
+                                                                <TextBlock Text="{Binding Name}"
+                                                                           FontSize="10"
+                                                                           FontWeight="Medium"
+                                                                           Foreground="White"/>
+                                                            </Border>
+                                                        </DataTemplate>
+                                                    </ItemsControl.ItemTemplate>
+                                                </ItemsControl>
+                                                <TextBlock Text="No tags assigned - click 🏷️ Tag This File to add some!"
+                                                           FontSize="10"
+                                                           FontStyle="Italic"
+                                                           Foreground="{DynamicResource SystemControlForegroundBaseMediumBrush}">
+                                                    <TextBlock.Style>
+                                                        <Style TargetType="TextBlock">
+                                                            <Setter Property="Visibility" Value="Collapsed"/>
+                                                            <Style.Triggers>
+                                                                <DataTrigger Binding="{Binding CurrentTags.Count}" Value="0">
+                                                                    <Setter Property="Visibility" Value="Visible"/>
+                                                                </DataTrigger>
+                                                            </Style.Triggers>
+                                                        </Style>
+                                                    </TextBlock.Style>
+                                                </TextBlock>
+                                            </StackPanel>
                                         </Grid>
                                     </Border>
                                 </DataTemplate>
@@ -147,7 +215,7 @@
                     <Button Content="Invert"
                             Command="{Binding InvertSelectionCommand}"
                             Width="90"/>
-                    <TextBlock Text="{Binding SelectedCount, StringFormat='{0} selected'}"
+                    <TextBlock Text="{Binding SelectedCount, StringFormat={}{0} selected}"
                                VerticalAlignment="Center"
                                Margin="12,0,0,0"
                                FontWeight="Medium"/>
@@ -237,10 +305,17 @@
                             <RowDefinition Height="*"/>
                         </Grid.RowDefinitions>
 
-                        <TextBlock Grid.Row="0"
-                                   Text="Available Tags"
-                                   FontWeight="SemiBold"
-                                   Margin="0,0,0,8"/>
+                        <StackPanel Grid.Row="0">
+                            <TextBlock Text="Tag Selection"
+                                       FontWeight="SemiBold"
+                                       FontSize="14"
+                                       Margin="0,0,0,4"/>
+                            <TextBlock Text="✨ Select tags below, then click 🏷️ Tag This File on individual media files"
+                                       FontSize="11"
+                                       Foreground="{DynamicResource SystemControlForegroundBaseMediumBrush}"
+                                       TextWrapping="Wrap"
+                                       Margin="0,0,0,8"/>
+                        </StackPanel>
 
                         <!-- Search Box -->
                         <TextBox Grid.Row="1"
@@ -260,7 +335,7 @@
                                                          Fill="{Binding Color}"
                                                          Margin="0,0,8,0"/>
                                                 <TextBlock Text="{Binding Name}"/>
-                                                <TextBlock Text="{Binding UsageCount, StringFormat=' ({0})'}"
+                                                <TextBlock Text="{Binding UsageCount, StringFormat={} ({0})}"
                                                            Foreground="{DynamicResource SystemControlForegroundBaseMediumBrush}"
                                                            FontSize="11"/>
                                             </StackPanel>
@@ -292,14 +367,22 @@
                 </Grid.ColumnDefinitions>
 
                 <!-- Summary -->
-                <StackPanel Grid.Column="0"
-                            Orientation="Horizontal"
-                            VerticalAlignment="Center">
-                    <TextBlock Text="Summary: "
-                               FontWeight="SemiBold"/>
-                    <TextBlock Text="{Binding Summary}"
-                               Margin="4,0,0,0"/>
-                </StackPanel>
+                <Border Grid.Column="0"
+                        Background="{DynamicResource SystemControlBackgroundBaseLowBrush}"
+                        CornerRadius="6"
+                        Padding="12,8"
+                        VerticalAlignment="Center">
+                    <StackPanel Orientation="Horizontal">
+                        <TextBlock Text="💡"
+                                   FontSize="14"
+                                   VerticalAlignment="Center"
+                                   Margin="0,0,8,0"/>
+                        <TextBlock Text="{Binding Summary}"
+                                   FontSize="12"
+                                   TextWrapping="Wrap"
+                                   VerticalAlignment="Center"/>
+                    </StackPanel>
+                </Border>
 
                 <!-- Action Buttons -->
                 <StackPanel Grid.Column="1"
@@ -315,11 +398,12 @@
                             Width="100"
                             Margin="0,0,8,0"/>
 
-                    <Button Content="Apply Tags"
+                    <Button Content="Apply Tags (Bulk)"
                             Click="ApplyButton_Click"
-                            Width="120"
+                            Width="130"
                             Style="{StaticResource AccentButtonStyle}"
-                            IsEnabled="{Binding CanApplyTags}"/>
+                            IsEnabled="{Binding CanApplyTags}"
+                            ToolTip="Apply selected tags to all selected files"/>
                 </StackPanel>
             </Grid>
         </Border>

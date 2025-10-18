@@ -103,6 +103,7 @@ namespace WindowsVault.ViewModels
         [RelayCommand]
         private async Task AddMediaAsync()
         {
+            System.Diagnostics.Debug.WriteLine("===== AddMediaAsync called =====");
             try
             {
                 StatusText = "Opening file dialog...";
@@ -429,15 +430,11 @@ namespace WindowsVault.ViewModels
             }
         }
 
-        private async Task PromptForTagAssignmentAsync(List<MediaFile> mediaFiles)
+        public async Task PromptForTagAssignmentAsync(List<MediaFile> mediaFiles)
         {
             try
             {
-                // Get all available tags
-                var allTags = await _tagService.GetAllTagsAsync();
-
-                // Always show the bulk tag assignment dialog, even if no tags exist yet
-                // (users can create tags directly in the dialog)
+                // Show the bulk tag assignment dialog with enhanced individual selection
                 var bulkTagViewModel = _serviceProvider.GetRequiredService<BulkTagAssignmentViewModel>();
                 await bulkTagViewModel.InitializeAsync(mediaFiles);
 
@@ -467,6 +464,8 @@ namespace WindowsVault.ViewModels
                 System.Diagnostics.Debug.WriteLine($"PromptForTagAssignment Error: {ex}");
             }
         }
+
+
 
         [RelayCommand]
         private void ToggleSelectionMode()
@@ -537,15 +536,37 @@ namespace WindowsVault.ViewModels
                 StatusText = $"Deleting {SelectedMediaFiles.Count} items...";
                 
                 var idsToDelete = SelectedMediaFiles.Select(m => m.Id).ToList();
+                var filesToRemove = SelectedMediaFiles.ToList(); // Save the list before clearing
                 
                 try
                 {
                     var deletedCount = await _mediaFileService.DeleteMediaFilesAsync(idsToDelete);
                     
-                    SelectedMediaFiles.Clear();
-                    IsSelectionMode = false;
-                    await LoadMediaFilesAsync();
-                    ApplyFilters();
+                    // Perform all UI collection modifications on the UI thread with proper synchronization
+                    await Application.Current.Dispatcher.InvokeAsync(() =>
+                    {
+                        try
+                        {
+                            // Clear selection first
+                            SelectedMediaFiles.Clear();
+                            IsSelectionMode = false;
+                            
+                            // Remove deleted items from collections safely
+                            foreach (var file in filesToRemove)
+                            {
+                                // Use safe removal that checks if item exists first
+                                if (MediaFiles.Contains(file))
+                                    MediaFiles.Remove(file);
+                                if (FilteredMediaFiles.Contains(file))
+                                    FilteredMediaFiles.Remove(file);
+                            }
+                        }
+                        catch (Exception ex)
+                        {
+                            System.Diagnostics.Debug.WriteLine($"Error updating UI collections after delete: {ex.Message}");
+                        }
+                    }, System.Windows.Threading.DispatcherPriority.Normal);
+                    
                     IsLoading = false;
                     StatusText = $"Deleted {deletedCount} items successfully";
                     
