@@ -1,11 +1,8 @@
 [phases.setup]
-nixPkgs = ["dotnet-sdk_9"]
+nixPkgs = ["dotnet-sdk_8"]
 
 [phases.build]
 cmds = ["dotnet publish -c Release -o out"]
-
-[phases.deploy]
-cmds = ["dotnet out/RiskPortfolio.Api.dll"]
 
 [start]
 cmd = "dotnet out/RiskPortfolio.Api.dll"
