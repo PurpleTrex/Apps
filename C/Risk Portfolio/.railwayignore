@@ -1,0 +1,24 @@
+## Build artifacts - Railway will rebuild from source
+**/bin/
+**/obj/
+**/out/
+
+## Node modules - Railway will restore these
+**/node_modules/
+**/dist/
+
+## IDE files
+.vs/
+.vscode/
+.idea/
+
+## Logs
+**/Logs/
+*.log
+
+## Tests - don't need to upload test projects
+RiskPortfolio.Tests/
+
+## Git
+.git/
+.gitignore

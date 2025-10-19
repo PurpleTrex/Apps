@@ -1,0 +1,40 @@
+## .NET build artifacts
+bin/
+obj/
+out/
+*.dll
+*.exe
+*.pdb
+*.user
+*.suo
+*.cache
+*.log
+
+## Node/Frontend
+node_modules/
+dist/
+.vite/
+*.local
+
+## IDE
+.vs/
+.vscode/
+.idea/
+*.swp
+*.swo
+
+## OS
+.DS_Store
+Thumbs.db
+
+## Logs
+Logs/
+*.log
+
+## Environment
+.env
+.env.local
+*.env
+
+## Railway
+.railway/
