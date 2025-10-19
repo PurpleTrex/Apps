@@ -1,7 +1,7 @@
 # Enhanced Seed Portfolio Data Script with Live Market Prices
 # Fetches real prices from Alpha Vantage API and creates portfolios
 
-$apiUrl = "http://localhost:5012/api/portfolios"
+$apiUrl = "https://riskportfolio-production.up.railway.app/api/portfolios"
 $alphaVantageKey = "5687GYS0UKPVU3OZ"
 $alphaVantageUrl = "https://www.alphavantage.co/query"
 

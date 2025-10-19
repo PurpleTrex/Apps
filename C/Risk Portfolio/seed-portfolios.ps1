@@ -1,7 +1,7 @@
 # Seed Portfolio Data Script
 # Creates 10 realistic portfolios with positions via the API
 
-$apiUrl = "http://localhost:5012/api/portfolios"
+$apiUrl = "https://riskportfolio-production.up.railway.app/api/portfolios"
 
 # Define 10 portfolios with realistic data
 $portfolios = @(

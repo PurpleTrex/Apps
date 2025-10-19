@@ -110,7 +110,7 @@ public sealed class PortfoliosController : ControllerBase
 
         _logger.LogInformation("Created portfolio {PortfolioId}", portfolio.Id);
 
-        return CreatedAtAction(nameof(GetByIdAsync), new { id = portfolio.Id }, portfolio.ToResponse(risk));
+        return CreatedAtRoute("GetByIdAsync", new { id = portfolio.Id }, portfolio.ToResponse(risk));
     }
 
     [HttpPut("{id:guid}/owner")]
