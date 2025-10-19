@@ -1,12 +1,9 @@
 {
-  "buildCommand": "npm run build",
+  "buildCommand": "VITE_API_BASE_URL=https://riskportfolio-production.up.railway.app npm run build",
   "outputDirectory": "dist",
   "devCommand": "npm run dev",
   "installCommand": "npm install",
   "framework": "vite",
-  "env": {
-    "VITE_API_BASE_URL": "https://riskportfolio-production.up.railway.app"
-  },
   "rewrites": [
     {
       "source": "/(.*)",
