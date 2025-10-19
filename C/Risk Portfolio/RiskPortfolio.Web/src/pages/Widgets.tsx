@@ -10,11 +10,6 @@ export default function Widgets() {
   const createWidget = useCreateWidget();
   const [showAddModal, setShowAddModal] = useState(false);
 
-  // Debug logging
-  console.log('Widget Types:', widgetTypes);
-  console.log('Types Loading:', typesLoading);
-  console.log('Types Error:', typesError);
-
   const handleDelete = (id: string) => {
     if (confirm('Are you sure you want to delete this widget?')) {
       deleteWidget.mutate(id);
@@ -22,11 +17,7 @@ export default function Widgets() {
   };
 
   const handleAddWidget = (type: string) => {
-    console.log('handleAddWidget called with type:', type);
-    console.log('Available widget types:', widgetTypes);
-    
     const widgetType = widgetTypes?.find(t => t.type === type);
-    console.log('Found widget type:', widgetType);
     
     if (!widgetType) {
       console.error('Widget type not found:', type);
@@ -43,12 +34,9 @@ export default function Widgets() {
       height: widgetType.defaultHeight,
       displayOrder: widgets?.length || 0
     };
-
-    console.log('Creating widget with request:', request);
     
     createWidget.mutate(request, {
       onSuccess: () => {
-        console.log('Widget created successfully');
         setShowAddModal(false);
       },
       onError: (error) => {
@@ -199,10 +187,6 @@ export default function Widgets() {
                     key={type.type}
                     type="button"
                     onClick={(e) => {
-                      console.log('===== BUTTON CLICKED =====');
-                      console.log('Button clicked for type:', type.type);
-                      console.log('Event:', e);
-                      alert(`Clicked: ${type.type}`);
                       e.preventDefault();
                       e.stopPropagation();
                       handleAddWidget(type.type);
