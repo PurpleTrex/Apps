@@ -11,6 +11,9 @@ public class RiskPortfolioDbContext : DbContext
 
     public DbSet<Portfolio> Portfolios => Set<Portfolio>();
     public DbSet<AssetPosition> Positions => Set<AssetPosition>();
+    public DbSet<PortfolioSnapshot> PortfolioSnapshots => Set<PortfolioSnapshot>();
+    public DbSet<Transaction> Transactions => Set<Transaction>();
+    public DbSet<DashboardWidget> DashboardWidgets => Set<DashboardWidget>();
 
     protected override void OnModelCreating(ModelBuilder modelBuilder)
     {

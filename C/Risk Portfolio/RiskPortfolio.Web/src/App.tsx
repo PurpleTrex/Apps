@@ -6,6 +6,7 @@ import PortfolioList from '@/pages/PortfolioList';
 import PortfolioDetails from '@/pages/PortfolioDetails';
 import CreatePortfolio from '@/pages/CreatePortfolio';
 import Analytics from '@/pages/Analytics';
+import Widgets from '@/pages/Widgets';
 
 const queryClient = new QueryClient({
   defaultOptions: {
@@ -28,6 +29,7 @@ function App() {
             <Route path="/portfolios/new" element={<CreatePortfolio />} />
             <Route path="/portfolios/:id" element={<PortfolioDetails />} />
             <Route path="/analytics" element={<Analytics />} />
+            <Route path="/widgets" element={<Widgets />} />
             <Route path="*" element={<Navigate to="/" replace />} />
           </Routes>
         </Layout>

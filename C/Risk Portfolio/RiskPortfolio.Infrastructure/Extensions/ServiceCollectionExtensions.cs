@@ -38,6 +38,7 @@ public static class ServiceCollectionExtensions
 
         services.AddScoped<IPortfolioRepository, PortfolioRepository>();
         services.AddScoped<IRiskAssessmentService, RiskAssessmentService>();
+        services.AddScoped<IWidgetRepository, WidgetRepository>();
         services.AddSingleton<IRiskMetricCache, PortfolioRiskCache>();
         services.AddSingleton<IRedisConnectionFactory, RedisConnectionFactory>();
         
@@ -68,6 +69,7 @@ public static class ServiceCollectionExtensions
 
         services.AddHostedService<MigrationHostedService>();
         services.AddHostedService<MarketDataRefreshJob>();
+        services.AddHostedService<PortfolioSnapshotJob>();
 
         return services;
     }

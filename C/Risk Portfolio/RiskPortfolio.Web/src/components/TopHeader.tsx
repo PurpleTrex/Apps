@@ -173,6 +173,33 @@ export default function TopHeader() {
                 <p style={{ fontWeight: '600', color: 'white', fontSize: '0.875rem' }}>All Portfolios</p>
               </div>
             </button>
+            <button
+              onClick={() => {
+                navigate('/widgets');
+                setIsDropdownOpen(false);
+              }}
+              style={{
+                width: '100%',
+                borderRadius: '0.5rem',
+                padding: '0.75rem',
+                textAlign: 'left',
+                fontSize: '0.875rem',
+                backgroundColor: 'transparent',
+                border: 'none',
+                cursor: 'pointer',
+                transition: 'background-color 200ms',
+                marginBottom: '0.5rem'
+              }}
+              onMouseEnter={(e) => e.currentTarget.style.backgroundColor = 'rgba(148, 163, 184, 0.15)'}
+              onMouseLeave={(e) => e.currentTarget.style.backgroundColor = 'transparent'}
+            >
+              <div style={{ display: 'flex', alignItems: 'center', gap: '0.5rem' }}>
+                <svg style={{ height: '1rem', width: '1rem', color: '#38bdf8' }} fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M4 5a1 1 0 011-1h4a1 1 0 011 1v7a1 1 0 01-1 1H5a1 1 0 01-1-1V5zM14 5a1 1 0 011-1h4a1 1 0 011 1v4a1 1 0 01-1 1h-4a1 1 0 01-1-1V5zM4 16a1 1 0 011-1h4a1 1 0 011 1v3a1 1 0 01-1 1H5a1 1 0 01-1-1v-3zM14 13a1 1 0 011-1h4a1 1 0 011 1v6a1 1 0 01-1 1h-4a1 1 0 01-1-1v-6z" />
+                </svg>
+                <p style={{ fontWeight: '600', color: 'white', fontSize: '0.875rem' }}>Widgets</p>
+              </div>
+            </button>
             <div style={{ 
               padding: '0.75rem 0.5rem', 
               borderBottom: '1px solid rgba(148, 163, 184, 0.2)',

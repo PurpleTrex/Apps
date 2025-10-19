@@ -107,14 +107,27 @@ app.MapGet("/metrics", async context =>
     await Metrics.DefaultRegistry.CollectAndExportAsTextAsync(context.Response.Body, context.RequestAborted);
 });
 
+// Configure Hangfire recurring jobs
 using (var scope = app.Services.CreateScope())
 {
-    RecurringJob.AddOrUpdate<RiskRecalculationJob>(
-        "risk-portfolio-hourly",
-        job => job.ExecuteAsync(CancellationToken.None),
-        Cron.Hourly);
+    var logger = scope.ServiceProvider.GetRequiredService<ILogger<Program>>();
+    logger.LogInformation("Configuring Hangfire recurring jobs...");
 
+    // Risk Recalculation - Every hour
+    RecurringJob.AddOrUpdate<RiskRecalculationJob>(
+        "risk-recalculation-hourly",
+        job => job.ExecuteAsync(CancellationToken.None),
+        Cron.Hourly,
+        new RecurringJobOptions
+        {
+            TimeZone = TimeZoneInfo.Utc
+        });
+
+    logger.LogInformation("Configured recurring job: risk-recalculation-hourly (Hourly)");
+
+    // Trigger initial risk calculation on startup
     BackgroundJob.Enqueue<RiskRecalculationJob>(job => job.ExecuteAsync(CancellationToken.None));
+    logger.LogInformation("Enqueued initial risk recalculation job");
 }
 
 app.Run();
