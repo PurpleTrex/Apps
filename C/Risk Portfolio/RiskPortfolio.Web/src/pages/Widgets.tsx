@@ -5,10 +5,15 @@ import type { CreateWidgetRequest } from '@/types/widgets';
 
 export default function Widgets() {
   const { data: widgets, isLoading } = useWidgets(true);
-  const { data: widgetTypes } = useWidgetTypes();
+  const { data: widgetTypes, isLoading: typesLoading, error: typesError } = useWidgetTypes();
   const deleteWidget = useDeleteWidget();
   const createWidget = useCreateWidget();
   const [showAddModal, setShowAddModal] = useState(false);
+
+  // Debug logging
+  console.log('Widget Types:', widgetTypes);
+  console.log('Types Loading:', typesLoading);
+  console.log('Types Error:', typesError);
 
   const handleDelete = (id: string) => {
     if (confirm('Are you sure you want to delete this widget?')) {
@@ -157,6 +162,21 @@ export default function Widgets() {
             </div>
 
             <div style={{ padding: '1.5rem' }}>
+              {typesLoading && (
+                <div style={{ textAlign: 'center', color: '#64748b', padding: '2rem' }}>
+                  Loading widget types...
+                </div>
+              )}
+              {typesError && (
+                <div style={{ textAlign: 'center', color: '#fb7185', padding: '2rem' }}>
+                  Error loading widget types: {String(typesError)}
+                </div>
+              )}
+              {!typesLoading && !widgetTypes?.length && (
+                <div style={{ textAlign: 'center', color: '#64748b', padding: '2rem' }}>
+                  No widget types available
+                </div>
+              )}
               <div style={{ display: 'grid', gap: '1rem' }}>
                 {widgetTypes?.map((type) => (
                   <button
