@@ -21,15 +21,25 @@ public class MigrationHostedService : IHostedService
 
     public Task StartAsync(CancellationToken cancellationToken)
     {
-        _logger.LogInformation("Applying database migrations...");
-
-        using (var scope = _serviceProvider.CreateScope())
+        try
         {
-            var migrationRunner = scope.ServiceProvider.GetRequiredService<IMigrationRunner>();
-            migrationRunner.MigrateUp();
+            _logger.LogInformation("Starting database migration process...");
+
+            using (var scope = _serviceProvider.CreateScope())
+            {
+                var migrationRunner = scope.ServiceProvider.GetRequiredService<IMigrationRunner>();
+                
+                _logger.LogInformation("Applying database migrations...");
+                migrationRunner.MigrateUp();
+                _logger.LogInformation("Database migrations completed successfully");
+            }
+        }
+        catch (Exception ex)
+        {
+            _logger.LogError(ex, "Failed to apply database migrations");
+            throw; // Fail fast if migrations fail
         }
 
-        _logger.LogInformation("Database migrations completed");
         return Task.CompletedTask;
     }
 

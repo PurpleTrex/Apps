@@ -1,5 +1,6 @@
 using System.Text.Json;
 using System.Text.Json.Serialization;
+using Microsoft.Extensions.Caching.Memory;
 using Microsoft.Extensions.Logging;
 using Microsoft.Extensions.Options;
 using RiskPortfolio.Core.Interfaces;
@@ -15,13 +16,13 @@ public class AlphaVantageMarketDataService : IMarketDataService
     private readonly HttpClient _httpClient;
     private readonly ILogger<AlphaVantageMarketDataService> _logger;
     private readonly AlphaVantageOptions _options;
-    private readonly IRiskMetricCache? _cache;
+    private readonly IMemoryCache? _cache;
 
     public AlphaVantageMarketDataService(
         HttpClient httpClient,
         ILogger<AlphaVantageMarketDataService> logger,
         IOptions<AlphaVantageOptions> options,
-        IRiskMetricCache? cache = null)
+        IMemoryCache? cache = null)
     {
         _httpClient = httpClient;
         _logger = logger;
@@ -44,14 +45,10 @@ public class AlphaVantageMarketDataService : IMarketDataService
         {
             // Check cache first
             var cacheKey = $"market_quote_{symbol}";
-            if (_cache != null)
+            if (_cache != null && _cache.TryGetValue<MarketQuote>(cacheKey, out var cached))
             {
-                var cached = await _cache.GetAsync<MarketQuote>(cacheKey, cancellationToken);
-                if (cached != null)
-                {
-                    _logger.LogDebug("Returning cached quote for {Symbol}", symbol);
-                    return cached;
-                }
+                _logger.LogDebug("Returning cached quote for {Symbol}", symbol);
+                return cached;
             }
 
             // Fetch from API
@@ -88,7 +85,7 @@ public class AlphaVantageMarketDataService : IMarketDataService
             // Cache the result
             if (_cache != null && quote != null)
             {
-                await _cache.SetAsync(cacheKey, quote, TimeSpan.FromMinutes(_options.CacheDurationMinutes), cancellationToken);
+                _cache.Set(cacheKey, quote, TimeSpan.FromMinutes(_options.CacheDurationMinutes));
             }
 
             return quote;
@@ -132,14 +129,10 @@ public class AlphaVantageMarketDataService : IMarketDataService
 
             // Check cache first
             var cacheKey = $"symbol_search_{keyword.ToLower()}";
-            if (_cache != null)
+            if (_cache != null && _cache.TryGetValue<List<SymbolSearchResult>>(cacheKey, out var cached))
             {
-                var cached = await _cache.GetAsync<List<SymbolSearchResult>>(cacheKey, cancellationToken);
-                if (cached != null)
-                {
-                    _logger.LogDebug("Returning cached search results for {Keyword}", keyword);
-                    return cached;
-                }
+                _logger.LogDebug("Returning cached search results for {Keyword}", keyword);
+                return cached;
             }
 
             // Fetch from API
@@ -181,7 +174,7 @@ public class AlphaVantageMarketDataService : IMarketDataService
             // Cache the results
             if (_cache != null)
             {
-                await _cache.SetAsync(cacheKey, searchResults, TimeSpan.FromMinutes(_options.CacheDurationMinutes), cancellationToken);
+                _cache.Set(cacheKey, searchResults, TimeSpan.FromMinutes(_options.CacheDurationMinutes));
             }
 
             _logger.LogInformation("Found {Count} matches for {Keyword}", searchResults.Count, keyword);

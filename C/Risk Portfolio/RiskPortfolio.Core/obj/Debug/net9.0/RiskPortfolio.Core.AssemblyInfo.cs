@@ -13,7 +13,7 @@ using System.Reflection;
 [assembly: System.Reflection.AssemblyCompanyAttribute("RiskPortfolio.Core")]
 [assembly: System.Reflection.AssemblyConfigurationAttribute("Debug")]
 [assembly: System.Reflection.AssemblyFileVersionAttribute("1.0.0.0")]
-[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+b4caefb423bc39a7f2f5f0854a973e51f8727d79")]
+[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+b52618b215cfd58aa2129c1d676800b93ef98ce5")]
 [assembly: System.Reflection.AssemblyProductAttribute("RiskPortfolio.Core")]
 [assembly: System.Reflection.AssemblyTitleAttribute("RiskPortfolio.Core")]
 [assembly: System.Reflection.AssemblyVersionAttribute("1.0.0.0")]

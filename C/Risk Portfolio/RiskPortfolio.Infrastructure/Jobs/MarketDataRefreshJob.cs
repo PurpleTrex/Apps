@@ -112,13 +112,13 @@ public class MarketDataRefreshJob : BackgroundService
                                 foreach (var position in positions)
                                 {
                                     var oldPrice = position.CurrentPrice;
-                                    position.UpdatePrice(quote.Price);
                                     
-                                    // Update volatility if available
-                                    if (quote.Volatility.HasValue && quote.Volatility.Value > 0)
-                                    {
-                                        position.UpdateVolatility(quote.Volatility.Value);
-                                    }
+                                    // Use existing volatility if quote doesn't provide one
+                                    var volatility = quote.Volatility.HasValue && quote.Volatility.Value > 0 
+                                        ? quote.Volatility.Value 
+                                        : position.Volatility;
+                                    
+                                    position.UpdateMarketData(quote.Price, volatility);
                                     
                                     updatedCount++;
                                     _logger.LogDebug("Updated {Symbol}: ${OldPrice} -> ${NewPrice}", 
@@ -145,7 +145,7 @@ public class MarketDataRefreshJob : BackgroundService
                     {
                         try
                         {
-                            await riskAssessmentService.RecalculateRiskAsync(portfolio, cancellationToken);
+                            await riskAssessmentService.CalculateAsync(portfolio, cancellationToken);
                             await portfolioRepository.UpdateAsync(portfolio, cancellationToken);
                             
                             _logger.LogInformation("Portfolio {Name} updated: {Count} positions refreshed, new total value: ${Value:N2}", 
