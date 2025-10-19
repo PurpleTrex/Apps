@@ -22,8 +22,16 @@ export default function Widgets() {
   };
 
   const handleAddWidget = (type: string) => {
+    console.log('handleAddWidget called with type:', type);
+    console.log('Available widget types:', widgetTypes);
+    
     const widgetType = widgetTypes?.find(t => t.type === type);
-    if (!widgetType) return;
+    console.log('Found widget type:', widgetType);
+    
+    if (!widgetType) {
+      console.error('Widget type not found:', type);
+      return;
+    }
 
     const request: CreateWidgetRequest = {
       title: widgetType.type,
@@ -36,8 +44,16 @@ export default function Widgets() {
       displayOrder: widgets?.length || 0
     };
 
+    console.log('Creating widget with request:', request);
+    
     createWidget.mutate(request, {
-      onSuccess: () => setShowAddModal(false)
+      onSuccess: () => {
+        console.log('Widget created successfully');
+        setShowAddModal(false);
+      },
+      onError: (error) => {
+        console.error('Failed to create widget:', error);
+      }
     });
   };
 
@@ -181,7 +197,12 @@ export default function Widgets() {
                 {widgetTypes?.map((type) => (
                   <button
                     key={type.type}
-                    onClick={() => handleAddWidget(type.type)}
+                    onClick={(e) => {
+                      console.log('Button clicked for type:', type.type);
+                      e.preventDefault();
+                      e.stopPropagation();
+                      handleAddWidget(type.type);
+                    }}
                     style={{
                       padding: '1rem',
                       textAlign: 'left',
