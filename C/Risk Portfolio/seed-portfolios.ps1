@@ -141,7 +141,7 @@ foreach ($portfolio in $portfolios) {
     try {
         $body = $portfolio | ConvertTo-Json -Depth 10
         
-        $response = Invoke-RestMethod -Uri $apiUrl -Method Post -Body $body -ContentType "application/json" -ErrorAction Stop
+        $response = Invoke-RestMethod -Uri $apiUrl -Method Post -Body $body -ContentType "application/json" -AllowInsecureRedirect -ErrorAction Stop
         
         Write-Host "   ✅ Created successfully (ID: $($response.id))" -ForegroundColor Green
         Write-Host "   💰 Total Value: $([math]::Round($response.totalValue, 2))" -ForegroundColor Cyan
