@@ -120,7 +120,7 @@ export default function Dashboard() {
         padding: '1.5rem'
       }}>
           <div style={{ marginBottom: '1.5rem' }}>
-            <h1 style={{ fontSize: '1.125rem', color: 'white', marginBottom: '0.5rem', fontWeight: 'bold' }}>Mein Vermögen</h1>
+            <h1 style={{ fontSize: '1.125rem', color: 'white', marginBottom: '0.5rem', fontWeight: 'bold' }}>My Portfolio</h1>
             <div style={{ display: 'flex', alignItems: 'baseline', gap: '0.625rem' }}>
               <span style={{ fontSize: '1.875rem', color: 'white', fontWeight: 'bold' }}>
                 {formatCurrency(dashboardData.totalValue, 'USD', 0)}
@@ -160,7 +160,7 @@ export default function Dashboard() {
           </div>
 
           {/* Section Title */}
-          <h3 style={{ marginBottom: '1rem', fontSize: '10px', letterSpacing: '0.1em', color: '#64748b', fontWeight: 'bold', textTransform: 'uppercase' }}>Assetklassen</h3>
+          <h3 style={{ marginBottom: '1rem', fontSize: '10px', letterSpacing: '0.1em', color: '#64748b', fontWeight: 'bold', textTransform: 'uppercase' }}>Asset Classes</h3>
 
           {/* Donut Chart */}
           <div style={{ display: 'flex', justifyContent: 'center', marginBottom: '2rem' }}>
