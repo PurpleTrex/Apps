@@ -19,10 +19,11 @@ public class Migration_20241019_AddSnapshotsAndTransactions : Migration
             .WithColumn("DailyReturn").AsDecimal(18, 4).NotNullable().WithDefaultValue(0)
             .WithColumn("CreatedAt").AsDateTime().NotNullable().WithDefault(SystemMethods.CurrentDateTime);
 
-        Create.ForeignKey("FK_PortfolioSnapshots_Portfolios")
-            .FromTable("PortfolioSnapshots").ForeignColumn("PortfolioId")
-            .ToTable("Portfolios").PrimaryColumn("Id")
-            .OnDelete(System.Data.Rule.Cascade);
+        // SQLite foreign keys are handled through PRAGMA statements, not explicit constraints
+        // Create.ForeignKey("FK_PortfolioSnapshots_Portfolios")
+        //     .FromTable("PortfolioSnapshots").ForeignColumn("PortfolioId")
+        //     .ToTable("Portfolios").PrimaryColumn("Id")
+        //     .OnDelete(System.Data.Rule.Cascade);
 
         Create.Index("IX_PortfolioSnapshots_Portfolio_Date")
             .OnTable("PortfolioSnapshots")
@@ -48,10 +49,11 @@ public class Migration_20241019_AddSnapshotsAndTransactions : Migration
             .WithColumn("Notes").AsString(500).Nullable()
             .WithColumn("CreatedAt").AsDateTime().NotNullable().WithDefault(SystemMethods.CurrentDateTime);
 
-        Create.ForeignKey("FK_Transactions_Portfolios")
-            .FromTable("Transactions").ForeignColumn("PortfolioId")
-            .ToTable("Portfolios").PrimaryColumn("Id")
-            .OnDelete(System.Data.Rule.Cascade);
+        // SQLite foreign keys are handled through PRAGMA statements, not explicit constraints
+        // Create.ForeignKey("FK_Transactions_Portfolios")
+        //     .FromTable("Transactions").ForeignColumn("PortfolioId")
+        //     .ToTable("Portfolios").PrimaryColumn("Id")
+        //     .OnDelete(System.Data.Rule.Cascade);
 
         Create.Index("IX_Transactions_Portfolio")
             .OnTable("Transactions")
