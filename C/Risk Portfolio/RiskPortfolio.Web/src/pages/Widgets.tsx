@@ -197,8 +197,12 @@ export default function Widgets() {
                 {widgetTypes?.map((type) => (
                   <button
                     key={type.type}
+                    type="button"
                     onClick={(e) => {
+                      console.log('===== BUTTON CLICKED =====');
                       console.log('Button clicked for type:', type.type);
+                      console.log('Event:', e);
+                      alert(`Clicked: ${type.type}`);
                       e.preventDefault();
                       e.stopPropagation();
                       handleAddWidget(type.type);
@@ -210,7 +214,10 @@ export default function Widgets() {
                       border: '1px solid rgba(148, 163, 184, 0.1)',
                       borderRadius: '0.375rem',
                       cursor: 'pointer',
-                      transition: 'all 200ms'
+                      transition: 'all 200ms',
+                      pointerEvents: 'auto',
+                      position: 'relative',
+                      zIndex: 1
                     }}
                     onMouseEnter={(e) => {
                       e.currentTarget.style.backgroundColor = 'rgba(59, 130, 246, 0.1)';
