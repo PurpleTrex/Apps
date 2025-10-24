@@ -1,0 +1,116 @@
+<!DOCTYPE html>
+  <html lang="en">
+  <head>
+      <meta charset="UTF-8">
+      <meta name="viewport" content="width=device-width, initial-scale=1.0">
+      <title>PurpleTalk - Messages</title>
+      <link rel="stylesheet" href="chat-styles.css">
+  </head>
+  <body>
+      <div class="chat-container">
+          <!-- Sidebar -->
+          <div class="sidebar">
+              <div class="sidebar-header">
+                  <div class="logo">
+                      <span class="logo-icon">🔒</span>
+                      <span class="logo-text">PurpleTalk</span>
+                  </div>
+                  <button class="btn-new-chat" id="newChatBtn">
+                      <span>+</span> New Chat
+                  </button>
+              </div>
+
+              <div class="search-box">
+                  <input type="text" id="searchInput" placeholder="Search conversations...">
+              </div>
+
+              <div class="room-list" id="roomList">
+                  <!-- Rooms will be loaded here -->
+                  <div class="loading">Loading conversations...</div>
+              </div>
+
+              <div class="sidebar-footer">
+                  <div class="user-info">
+                      <div class="user-avatar" id="userAvatar">👤</div>
+                      <div class="user-details">
+                          <div class="user-name" id="userName">Loading...</div>
+                          <div class="user-status">Online</div>
+                      </div>
+                  </div>
+                  <div class="footer-actions">
+                      <button class="btn-icon" title="Settings" onclick="location.href='account.html'">⚙️</button>
+                      <button class="btn-icon" title="Logout" id="logoutBtn">🚪</button>
+                  </div>
+              </div>
+          </div>
+
+          <!-- Chat Area -->
+          <div class="chat-area">
+              <div class="chat-header" id="chatHeader" style="display: none;">
+                  <div class="chat-info">
+                      <div class="chat-avatar">👤</div>
+                      <div class="chat-details">
+                          <div class="chat-name" id="chatName">Select a conversation</div>
+                          <div class="chat-status" id="chatStatus">Click on a conversation to start</div>
+                      </div>
+                  </div>
+                  <div class="chat-actions">
+                      <button class="btn-icon" title="Voice Call">📞</button>
+                      <button class="btn-icon" title="Video Call">📹</button>
+                      <button class="btn-icon" title="Info" id="infoBtn">ℹ️</button>
+                  </div>
+              </div>
+
+              <div class="messages-container" id="messagesContainer">
+                  <div class="no-conversation">
+                      <div class="empty-state">
+                          <div class="empty-icon">💬</div>
+                          <h3>Welcome to PurpleTalk</h3>
+                          <p>Select a conversation from the left or start a new chat</p>
+                          <p class="security-note">🔒 All messages are end-to-end encrypted</p>
+                      </div>
+                  </div>
+              </div>
+
+              <div class="message-input-container" id="messageInputContainer" style="display: none;">
+                  <div class="typing-indicator" id="typingIndicator" style="display: none;">
+                      <span id="typingText">Someone is typing...</span>
+                  </div>
+                  <div class="message-input-box">
+                      <button class="btn-attach" title="Attach file">📎</button>
+                      <input type="file" id="fileInput" style="display: none;"
+  accept="image/*,video/*,audio/*,.pdf,.doc,.docx">
+                      <input type="text" id="messageInput" placeholder="Type a message..." autocomplete="off">
+                      <button class="btn-emoji" title="Emoji">😊</button>
+                      <button class="btn-send" id="sendBtn" title="Send">
+                          <svg width="24" height="24" viewBox="0 0 24 24" fill="currentColor">
+                              <path d="M2 21l21-9L2 3v7l15 2-15 2v7z"/>
+                          </svg>
+                      </button>
+                  </div>
+              </div>
+          </div>
+
+          <!-- New Chat Modal -->
+          <div class="modal" id="newChatModal" style="display: none;">
+              <div class="modal-content">
+                  <div class="modal-header">
+                      <h2>Start New Conversation</h2>
+                      <button class="modal-close" id="closeModalBtn">×</button>
+                  </div>
+                  <div class="modal-body">
+                      <input type="text" id="newChatInput" placeholder="Enter phone number or Matrix ID">
+                      <p class="hint">Enter a phone number (e.g., +1234567890) or Matrix ID (@user:server.com)</p>
+                  </div>
+                  <div class="modal-footer">
+                      <button class="btn btn-cancel" id="cancelNewChatBtn">Cancel</button>
+                      <button class="btn btn-primary" id="startChatBtn">Start Chat</button>
+                  </div>
+              </div>
+          </div>
+      </div>
+
+      <script src="https://unpkg.com/matrix-js-sdk/dist/browser-matrix.min.js"></script>
+      <script src="matrix-client.js"></script>
+  </body>
+  </html>

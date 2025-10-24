@@ -1,0 +1,590 @@
+<!DOCTYPE html>
+  <html lang="en">
+  <head>
+      <meta charset="UTF-8">
+      <meta name="viewport" content="width=device-width, initial-scale=1.0">
+      <title>Support PurpleTalk - Donate</title>
+      <script src="https://www.paypal.com/sdk/js?client-id=AWixlpP3ptuQM-FsN2XuyIdtMMlw5b1yKpFJmS_TVfBAv2B35TWwwIQ5Y
+  p-w_wBKGh3syJXA25MnTdPN&currency=USD"></script>
+      <style>
+          * {
+              margin: 0;
+              padding: 0;
+              box-sizing: border-box;
+          }
+
+          body {
+              font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+              background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+              min-height: 100vh;
+              color: #fff;
+          }
+
+          .container {
+              max-width: 1200px;
+              margin: 0 auto;
+              padding: 20px;
+          }
+
+          header {
+              padding: 20px 0;
+              display: flex;
+              justify-content: space-between;
+              align-items: center;
+          }
+
+          .logo {
+              font-size: 28px;
+              font-weight: bold;
+              display: flex;
+              align-items: center;
+              gap: 10px;
+              text-decoration: none;
+              color: #fff;
+          }
+
+          .logo-icon {
+              width: 40px;
+              height: 40px;
+              background: rgba(255, 255, 255, 0.2);
+              border-radius: 8px;
+              display: flex;
+              align-items: center;
+              justify-content: center;
+              font-size: 24px;
+          }
+
+          .btn {
+              padding: 10px 20px;
+              border: none;
+              border-radius: 8px;
+              cursor: pointer;
+              font-size: 14px;
+              font-weight: 600;
+              text-decoration: none;
+              display: inline-block;
+              transition: all 0.3s;
+          }
+
+          .btn-secondary {
+              background: rgba(255, 255, 255, 0.2);
+              color: #fff;
+          }
+
+          .btn-secondary:hover {
+              background: rgba(255, 255, 255, 0.3);
+          }
+
+          .content {
+              background: rgba(255, 255, 255, 0.95);
+              padding: 60px 40px;
+              border-radius: 20px;
+              box-shadow: 0 20px 60px rgba(0, 0, 0, 0.3);
+              margin-top: 40px;
+              color: #333;
+          }
+
+          h1 {
+              font-size: 42px;
+              margin-bottom: 20px;
+              color: #667eea;
+              text-align: center;
+          }
+
+          .subtitle {
+              font-size: 18px;
+              text-align: center;
+              color: #666;
+              margin-bottom: 40px;
+          }
+
+          .donation-options {
+              display: grid;
+              grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+              gap: 30px;
+              margin-bottom: 40px;
+          }
+
+          .donation-method {
+              background: #f5f5f7;
+              padding: 30px;
+              border-radius: 12px;
+              text-align: center;
+              transition: transform 0.3s, box-shadow 0.3s;
+          }
+
+          .donation-method:hover {
+              transform: translateY(-5px);
+              box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+          }
+
+          .method-icon {
+              font-size: 48px;
+              margin-bottom: 20px;
+          }
+
+          .method-title {
+              font-size: 24px;
+              color: #333;
+              margin-bottom: 15px;
+              font-weight: 600;
+          }
+
+          .method-description {
+              color: #666;
+              margin-bottom: 20px;
+              font-size: 14px;
+          }
+
+          .amount-selector {
+              display: flex;
+              gap: 10px;
+              justify-content: center;
+              margin-bottom: 20px;
+              flex-wrap: wrap;
+          }
+
+          .amount-btn {
+              padding: 10px 20px;
+              background: white;
+              border: 2px solid #667eea;
+              border-radius: 8px;
+              cursor: pointer;
+              transition: all 0.3s;
+              color: #667eea;
+              font-weight: 600;
+          }
+
+          .amount-btn:hover,
+          .amount-btn.active {
+              background: #667eea;
+              color: white;
+          }
+
+          .custom-amount {
+              width: 100%;
+              padding: 12px;
+              border: 2px solid #e0e0e0;
+              border-radius: 8px;
+              font-size: 16px;
+              margin-bottom: 20px;
+          }
+
+          #paypal-button-container {
+              min-height: 45px;
+          }
+
+          .crypto-addresses {
+              background: white;
+              padding: 20px;
+              border-radius: 12px;
+              margin-top: 20px;
+          }
+
+          .crypto-item {
+              display: flex;
+              justify-content: space-between;
+              align-items: center;
+              padding: 15px;
+              border-bottom: 1px solid #e0e0e0;
+              transition: background 0.3s;
+          }
+
+          .crypto-item:hover {
+              background: #f5f5f7;
+          }
+
+          .crypto-item:last-child {
+              border-bottom: none;
+          }
+
+          .crypto-info {
+              display: flex;
+              align-items: center;
+              gap: 10px;
+              flex: 1;
+          }
+
+          .crypto-icon {
+              width: 40px;
+              height: 40px;
+              border-radius: 50%;
+              display: flex;
+              align-items: center;
+              justify-content: center;
+              font-size: 20px;
+          }
+
+          .bitcoin-icon { background: #f7931a; color: white; }
+          .ethereum-icon { background: #627eea; color: white; }
+          .solana-icon { background: linear-gradient(135deg, #00FFA3, #DC1FFF); color: white; }
+          .dogecoin-icon { background: #c2a633; color: white; }
+
+          .crypto-name {
+              font-weight: 600;
+              color: #333;
+          }
+
+          .crypto-address {
+              font-family: monospace;
+              font-size: 12px;
+              color: #666;
+              word-break: break-all;
+              flex: 1;
+              padding: 0 10px;
+          }
+
+          .copy-btn {
+              padding: 8px 15px;
+              background: #667eea;
+              color: white;
+              border: none;
+              border-radius: 6px;
+              cursor: pointer;
+              font-size: 12px;
+              transition: background 0.3s;
+          }
+
+          .copy-btn:hover {
+              background: #764ba2;
+          }
+
+          .copy-btn.copied {
+              background: #10b981;
+          }
+
+          .qr-code {
+              margin-top: 10px;
+              text-align: center;
+              display: none;
+          }
+
+          .qr-code img {
+              max-width: 200px;
+              border: 2px solid #e0e0e0;
+              border-radius: 8px;
+              padding: 10px;
+              background: white;
+          }
+
+          .show-qr {
+              color: #667eea;
+              text-decoration: underline;
+              cursor: pointer;
+              font-size: 12px;
+          }
+
+          .why-donate {
+              background: #e3f2fd;
+              padding: 30px;
+              border-radius: 12px;
+              margin-top: 40px;
+          }
+
+          .why-donate h3 {
+              color: #1976d2;
+              margin-bottom: 15px;
+          }
+
+          .why-donate ul {
+              list-style: none;
+              padding: 0;
+          }
+
+          .why-donate li {
+              padding: 10px 0;
+              display: flex;
+              align-items: center;
+              gap: 10px;
+              color: #333;
+          }
+
+          .success-message {
+              background: #d4edda;
+              color: #155724;
+              padding: 20px;
+              border-radius: 12px;
+              text-align: center;
+              display: none;
+              margin-bottom: 30px;
+          }
+
+          .error-message {
+              background: #f8d7da;
+              color: #721c24;
+              padding: 20px;
+              border-radius: 12px;
+              text-align: center;
+              display: none;
+              margin-bottom: 30px;
+          }
+
+          .loading-spinner {
+              border: 3px solid #f3f3f3;
+              border-top: 3px solid #667eea;
+              border-radius: 50%;
+              width: 40px;
+              height: 40px;
+              animation: spin 1s linear infinite;
+              margin: 20px auto;
+              display: none;
+          }
+
+          @keyframes spin {
+              0% { transform: rotate(0deg); }
+              100% { transform: rotate(360deg); }
+          }
+
+          @media (max-width: 768px) {
+              .content {
+                  padding: 40px 20px;
+              }
+
+              h1 {
+                  font-size: 32px;
+              }
+
+              .donation-options {
+                  grid-template-columns: 1fr;
+              }
+          }
+      </style>
+  </head>
+  <body>
+      <div class="container">
+          <header>
+              <a href="index.html" class="logo">
+                  <div class="logo-icon">🔒</div>
+                  <span>PurpleTalk</span>
+              </a>
+              <a href="index.html" class="btn btn-secondary">← Back to Home</a>
+          </header>
+
+          <div class="content">
+              <h1>Support PurpleTalk</h1>
+              <p class="subtitle">Help us keep secure messaging free and private for everyone</p>
+
+              <div class="success-message" id="successMessage">
+                  ✓ Thank you for your donation! Your support helps keep PurpleTalk free and secure.
+              </div>
+
+              <div class="error-message" id="errorMessage">
+                  Something went wrong. Please try again.
+              </div>
+
+              <div class="donation-options">
+                  <!-- PayPal Section -->
+                  <div class="donation-method">
+                      <div class="method-icon">💳</div>
+                      <h3 class="method-title">PayPal / Card</h3>
+                      <p class="method-description">Quick and secure payment via PayPal or credit/debit card</p>
+
+                      <div class="amount-selector">
+                          <button class="amount-btn" data-amount="5">$5</button>
+                          <button class="amount-btn" data-amount="10">$10</button>
+                          <button class="amount-btn active" data-amount="25">$25</button>
+                          <button class="amount-btn" data-amount="50">$50</button>
+                          <button class="amount-btn" data-amount="100">$100</button>
+                      </div>
+
+                      <input type="number" class="custom-amount" id="customAmount" placeholder="Enter custom amount
+  (USD)" min="1">
+
+                      <div id="paypal-button-container"></div>
+                      <div class="loading-spinner" id="paypalSpinner"></div>
+                  </div>
+
+                  <!-- Cryptocurrency Section -->
+                  <div class="donation-method">
+                      <div class="method-icon">₿</div>
+                      <h3 class="method-title">Cryptocurrency</h3>
+                      <p class="method-description">Donate anonymously with your preferred cryptocurrency</p>
+
+                      <div class="crypto-addresses">
+                          <div class="crypto-item">
+                              <div class="crypto-info">
+                                  <div class="crypto-icon bitcoin-icon">₿</div>
+                                  <span class="crypto-name">Bitcoin</span>
+                              </div>
+                              <button class="copy-btn"
+  onclick="copyAddress('bc1qlfax9cl6z246q2ht4hfw6l35fdmts5dmqc6ysa', this)">Copy</button>
+                          </div>
+                          <div class="crypto-address">bc1qlfax9cl6z246q2ht4hfw6l35fdmts5dmqc6ysa</div>
+                          <div class="qr-code" id="btc-qr">
+                              <img src="https://api.qrserver.com/v1/create-qr-code/?size=200x200&data=bitcoin:bc1qlf
+  ax9cl6z246q2ht4hfw6l35fdmts5dmqc6ysa" alt="Bitcoin QR">
+                          </div>
+                          <span class="show-qr" onclick="toggleQR('btc-qr')">Show QR Code</span>
+
+                          <div class="crypto-item" style="margin-top: 15px;">
+                              <div class="crypto-info">
+                                  <div class="crypto-icon ethereum-icon">Ξ</div>
+                                  <span class="crypto-name">Ethereum</span>
+                              </div>
+                              <button class="copy-btn"
+  onclick="copyAddress('0xE2bB859B4BBDE94e8A8410b980E0fBC3F9296E92', this)">Copy</button>
+                          </div>
+                          <div class="crypto-address">0xE2bB859B4BBDE94e8A8410b980E0fBC3F9296E92</div>
+                          <div class="qr-code" id="eth-qr">
+                              <img src="https://api.qrserver.com/v1/create-qr-code/?size=200x200&data=ethereum:0xE2b
+  B859B4BBDE94e8A8410b980E0fBC3F9296E92" alt="Ethereum QR">
+                          </div>
+                          <span class="show-qr" onclick="toggleQR('eth-qr')">Show QR Code</span>
+
+                          <div class="crypto-item" style="margin-top: 15px;">
+                              <div class="crypto-info">
+                                  <div class="crypto-icon solana-icon">S</div>
+                                  <span class="crypto-name">Solana</span>
+                              </div>
+                              <button class="copy-btn"
+  onclick="copyAddress('32LUmqP7hR4acDcgYECKE1gD3Miw6iJ4Yoxvi1kZXLa7', this)">Copy</button>
+                          </div>
+                          <div class="crypto-address">32LUmqP7hR4acDcgYECKE1gD3Miw6iJ4Yoxvi1kZXLa7</div>
+                          <div class="qr-code" id="sol-qr">
+                              <img src="https://api.qrserver.com/v1/create-qr-code/?size=200x200&data=solana:32LUmqP
+  7hR4acDcgYECKE1gD3Miw6iJ4Yoxvi1kZXLa7" alt="Solana QR">
+                          </div>
+                          <span class="show-qr" onclick="toggleQR('sol-qr')">Show QR Code</span>
+
+                          <div class="crypto-item" style="margin-top: 15px;">
+                              <div class="crypto-info">
+                                  <div class="crypto-icon dogecoin-icon">Ð</div>
+                                  <span class="crypto-name">Dogecoin</span>
+                              </div>
+                              <button class="copy-btn" onclick="copyAddress('DSWdDWHsZgSzkhgTeBeGVHwKVQeRCZ13mX',
+  this)">Copy</button>
+                          </div>
+                          <div class="crypto-address">DSWdDWHsZgSzkhgTeBeGVHwKVQeRCZ13mX</div>
+                          <div class="qr-code" id="doge-qr">
+                              <img
+  src="https://api.qrserver.com/v1/create-qr-code/?size=200x200&data=dogecoin:DSWdDWHsZgSzkhgTeBeGVHwKVQeRCZ13mX"
+  alt="Dogecoin QR">
+                          </div>
+                          <span class="show-qr" onclick="toggleQR('doge-qr')">Show QR Code</span>
+                      </div>
+                  </div>
+              </div>
+
+              <div class="why-donate">
+                  <h3>🎯 Why Your Donation Matters</h3>
+                  <ul>
+                      <li>✓ Keep PurpleTalk 100% free for all users</li>
+                      <li>✓ Maintain privacy-first infrastructure in Iceland</li>
+                      <li>✓ Cover server costs with 1984.hosting</li>
+                      <li>✓ Develop new security features</li>
+                      <li>✓ Keep the platform ad-free forever</li>
+                      <li>✓ Support open-source development</li>
+                  </ul>
+              </div>
+          </div>
+
+          <footer style="text-align: center; padding: 40px 20px; margin-top: 40px; opacity: 0.9;">
+              <p>&copy; 2025 PurpleTalk. Privacy-first messaging powered by Matrix.</p>
+              <p style="margin-top: 10px; font-size: 14px;">
+                  All donations are processed securely. Cryptocurrency donations are anonymous.
+              </p>
+          </footer>
+      </div>
+
+      <script>
+          let selectedAmount = 25;
+
+          // Amount selector
+          document.querySelectorAll('.amount-btn').forEach(btn => {
+              btn.addEventListener('click', function() {
+                  document.querySelectorAll('.amount-btn').forEach(b => b.classList.remove('active'));
+                  this.classList.add('active');
+                  selectedAmount = parseInt(this.dataset.amount);
+                  document.getElementById('customAmount').value = '';
+              });
+          });
+
+          // Custom amount input
+          document.getElementById('customAmount').addEventListener('input', function() {
+              if (this.value) {
+                  selectedAmount = parseInt(this.value);
+                  document.querySelectorAll('.amount-btn').forEach(b => b.classList.remove('active'));
+              }
+          });
+
+          // PayPal Integration
+          paypal.Buttons({
+              createOrder: function(data, actions) {
+                  const amount = selectedAmount || 25;
+                  return actions.order.create({
+                      purchase_units: [{
+                          amount: {
+                              value: amount.toString(),
+                              currency_code: 'USD'
+                          },
+                          description: 'PurpleTalk Donation'
+                      }],
+                      application_context: {
+                          brand_name: 'PurpleTalk',
+                          shipping_preference: 'NO_SHIPPING'
+                      }
+                  });
+              },
+              onApprove: function(data, actions) {
+                  document.getElementById('paypalSpinner').style.display = 'block';
+                  return actions.order.capture().then(function(details) {
+                      document.getElementById('paypalSpinner').style.display = 'none';
+
+                      // Log donation (optional)
+                      fetch('donation-handler.php', {
+                          method: 'POST',
+                          headers: {
+                              'Content-Type': 'application/json',
+                          },
+                          body: JSON.stringify({
+                              type: 'paypal',
+                              amount: selectedAmount,
+                              transaction_id: details.id,
+                              payer_email: details.payer.email_address
+                          })
+                      });
+
+                      // Show success message
+                      document.getElementById('successMessage').style.display = 'block';
+                      document.getElementById('successMessage').innerHTML =
+                          `✓ Thank you ${details.payer.name.given_name}! Your $${selectedAmount} donation helps keep
+   PurpleTalk free and secure.`;
+
+                      // Scroll to top
+                      window.scrollTo({ top: 0, behavior: 'smooth' });
+                  });
+              },
+              onError: function(err) {
+                  console.error('PayPal Error:', err);
+                  document.getElementById('errorMessage').style.display = 'block';
+                  document.getElementById('errorMessage').textContent =
+                      'Payment failed. Please try again or use cryptocurrency option.';
+                  window.scrollTo({ top: 0, behavior: 'smooth' });
+              },
+              onCancel: function(data) {
+                  // User cancelled payment
+                  console.log('Payment cancelled');
+              }
+          }).render('#paypal-button-container');
+
+          // Copy crypto address
+          function copyAddress(address, button) {
+              navigator.clipboard.writeText(address).then(function() {
+                  const originalText = button.textContent;
+                  button.textContent = 'Copied!';
+                  button.classList.add('copied');
+                  setTimeout(() => {
+                      button.textContent = originalText;
+                      button.classList.remove('copied');
+                  }, 2000);
+              });
+          }
+
+          // Toggle QR code
+          function toggleQR(qrId) {
+              const qrElement = document.getElementById(qrId);
+              qrElement.style.display = qrElement.style.display === 'none' ? 'block' : 'none';
+          }
+      </script>
+  </body>
+  </html>
