@@ -1,0 +1,36 @@
+================================================================================
+                        ROM FILE INSTRUCTIONS
+================================================================================
+
+This emulator requires you to provide your own NES ROM file for
+The Legend of Zelda.
+
+HOW TO ADD YOUR ROM:
+
+1. Obtain a legal copy of "The Legend of Zelda" ROM file (zelda.nes)
+   - You must own the original game cartridge
+   - ROM files are copyrighted material
+
+2. Place the ROM file in this directory:
+   Android/ZeldaEmulator/app/src/main/assets/zelda.nes
+
+3. Rebuild the app in Android Studio
+
+LEGAL NOTICE:
+
+- NES ROM files are copyrighted by Nintendo
+- This emulator is for PERSONAL USE ONLY
+- Do not distribute ROM files
+- Use at your own legal responsibility
+
+================================================================================
+
+Expected file:
+  Name: zelda.nes
+  Location: app/src/main/assets/zelda.nes
+  Type: NES ROM file (.nes)
+
+Without this file, the app will launch but display a test pattern instead
+of the actual game.
+
+================================================================================
