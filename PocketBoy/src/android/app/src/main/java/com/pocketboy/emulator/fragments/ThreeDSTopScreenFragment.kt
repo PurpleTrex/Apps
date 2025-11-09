@@ -17,6 +17,7 @@ import android.widget.Toast
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.activityViewModels
 import androidx.lifecycle.lifecycleScope
+import androidx.preference.PreferenceManager
 import com.pocketboy.emulator.R
 import com.pocketboy.emulator.activities.EmulationActivity
 import com.pocketboy.emulator.model.Game
@@ -47,6 +48,11 @@ class ThreeDSTopScreenFragment : Fragment() {
 
     enum class FilterMode {
         ALL, FAVORITES, RECENT
+    }
+
+    companion object {
+        private const val FAVORITES_PREFERENCE_KEY = "pocketboy_game_favorites"
+        fun newInstance() = ThreeDSTopScreenFragment()
     }
 
     override fun onCreateView(
@@ -108,8 +114,18 @@ class ThreeDSTopScreenFragment : Fragment() {
     private fun observeGames() {
         lifecycleScope.launch {
             gamesViewModel.games.collectLatest { games ->
+                // Load favorites from preferences for each game
+                loadFavoritesFromPreferences(games)
                 displayGames(applyFilter(games))
             }
+        }
+    }
+
+    private fun loadFavoritesFromPreferences(games: List<Game>) {
+        val preferences = PreferenceManager.getDefaultSharedPreferences(requireContext())
+        val favoritesSet = preferences.getStringSet(FAVORITES_PREFERENCE_KEY, emptySet()) ?: emptySet()
+        games.forEach { game ->
+            game.isFavorite = favoritesSet.contains(game.filename)
         }
     }
 
@@ -218,14 +234,29 @@ class ThreeDSTopScreenFragment : Fragment() {
         val favoriteText = if (game.isFavorite) "Added to favorites" else "Removed from favorites"
         Toast.makeText(requireContext(), favoriteText, Toast.LENGTH_SHORT).show()
 
-        // TODO: Persist favorite status to preferences/database
+        // Persist favorite status to SharedPreferences
+        saveFavoritesToPreferences()
+    }
+
+    private fun saveFavoritesToPreferences() {
+        try {
+            val preferences = PreferenceManager.getDefaultSharedPreferences(requireContext())
+            val favorites = gameTiles.keys.filter { filename ->
+                gameTiles[filename]?.let { tile ->
+                    // Check if the game is marked as favorite in the ViewModel
+                    gamesViewModel.games.value.find { it.filename == filename }?.isFavorite ?: false
+                } ?: false
+            }.toSet()
+
+            preferences.edit()
+                .putStringSet(FAVORITES_PREFERENCE_KEY, favorites)
+                .apply()
+        } catch (e: Exception) {
+            e.printStackTrace()
+        }
     }
 
     private fun dpToPx(dp: Int): Int {
         return (dp * resources.displayMetrics.density).toInt()
-    }
-
-    companion object {
-        fun newInstance() = ThreeDSTopScreenFragment()
     }
 }
