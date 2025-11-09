@@ -909,6 +909,7 @@
     <string name="3ds_settings_title">Settings</string>
     <string name="3ds_games_grid">Games</string>
     <string name="3ds_no_games">No games found. Add games to get started.</string>
+    <string name="3ds_no_games_found">No games found</string>
     <string name="3ds_browse_games">Browse Games</string>
     <string name="3ds_loading_games">Loading games...</string>
     <string name="3ds_game_details">Game Details</string>
@@ -918,5 +919,15 @@
     <string name="3ds_graphics">Graphics</string>
     <string name="3ds_audio">Audio</string>
     <string name="3ds_system">System</string>
+    <string name="3ds_top_screen">Top Screen</string>
+    <string name="3ds_bottom_screen">Bottom Screen</string>
+    <string name="3ds_top">TOP</string>
+    <string name="3ds_bottom">BOTTOM</string>
+    <string name="menu">Menu</string>
+    <string name="settings">Settings</string>
+    <string name="applications">Applications</string>
+    <string name="refresh">Refresh</string>
+    <string name="favorites">Favorites</string>
+    <string name="recent">Recent</string>
 
 </resources>

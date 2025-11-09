@@ -1,0 +1,151 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/pb3ds_background"
+    tools:context=".fragments.ThreeDSTopScreenFragment">
+
+    <!-- Header with PocketBoy Title -->
+    <LinearLayout
+        android:id="@+id/header"
+        android:layout_width="match_parent"
+        android:layout_height="72dp"
+        android:layout_alignParentTop="true"
+        android:background="@color/pb3ds_surface"
+        android:gravity="center_vertical"
+        android:orientation="horizontal"
+        android:paddingHorizontal="20dp">
+
+        <TextView
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:text="@string/app_name"
+            android:textColor="@color/pb3ds_text_primary"
+            android:textSize="26sp"
+            android:textStyle="bold" />
+
+        <ImageButton
+            android:id="@+id/btn_refresh"
+            android:layout_width="40dp"
+            android:layout_height="40dp"
+            android:background="?attr/selectableItemBackgroundBorderless"
+            android:contentDescription="@string/refresh"
+            android:scaleType="centerInside"
+            android:src="@drawable/ic_refresh" />
+    </LinearLayout>
+
+    <!-- Game Grid (Scrollable) -->
+    <ScrollView
+        android:id="@+id/games_scroll"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_below="@+id/header"
+        android:layout_above="@+id/bottom_nav"
+        android:background="@color/pb3ds_background"
+        android:overScrollMode="never"
+        android:paddingBottom="8dp">
+
+        <GridLayout
+            android:id="@+id/games_grid"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:columnCount="3"
+            android:paddingStart="12dp"
+            android:paddingTop="16dp"
+            android:paddingEnd="12dp"
+            android:paddingBottom="16dp">
+            <!-- Game tiles populated dynamically -->
+        </GridLayout>
+    </ScrollView>
+
+    <!-- Empty State -->
+    <LinearLayout
+        android:id="@+id/empty_state"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_below="@+id/header"
+        android:layout_above="@+id/bottom_nav"
+        android:gravity="center"
+        android:orientation="vertical"
+        android:visibility="gone">
+
+        <ImageView
+            android:layout_width="80dp"
+            android:layout_height="80dp"
+            android:alpha="0.4"
+            android:contentDescription="@null"
+            android:src="@drawable/ic_pocketboy" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="16dp"
+            android:text="@string/3ds_no_games_found"
+            android:textColor="@color/pb3ds_text_secondary"
+            android:textSize="16sp" />
+    </LinearLayout>
+
+    <!-- Quick Action Bar at Bottom -->
+    <LinearLayout
+        android:id="@+id/bottom_nav"
+        android:layout_width="match_parent"
+        android:layout_height="56dp"
+        android:layout_alignParentBottom="true"
+        android:background="@color/pb3ds_surface"
+        android:gravity="center_vertical"
+        android:orientation="horizontal"
+        android:paddingHorizontal="12dp">
+
+        <ImageButton
+            android:id="@+id/btn_search"
+            android:layout_width="0dp"
+            android:layout_height="40dp"
+            android:layout_weight="1"
+            android:background="?attr/selectableItemBackgroundBorderless"
+            android:contentDescription="@string/home_search"
+            android:scaleType="centerInside"
+            android:src="@drawable/ic_search"
+            android:tint="@color/pb3ds_text_primary" />
+
+        <ImageButton
+            android:id="@+id/btn_favorites"
+            android:layout_width="0dp"
+            android:layout_height="40dp"
+            android:layout_weight="1"
+            android:background="?attr/selectableItemBackgroundBorderless"
+            android:contentDescription="@string/favorites"
+            android:scaleType="centerInside"
+            android:src="@drawable/ic_favorite"
+            android:tint="@color/pb3ds_text_primary" />
+
+        <ImageButton
+            android:id="@+id/btn_recent"
+            android:layout_width="0dp"
+            android:layout_height="40dp"
+            android:layout_weight="1"
+            android:background="?attr/selectableItemBackgroundBorderless"
+            android:contentDescription="@string/recent"
+            android:scaleType="centerInside"
+            android:src="@drawable/ic_history"
+            android:tint="@color/pb3ds_text_primary" />
+
+        <View
+            android:layout_width="1dp"
+            android:layout_height="40dp"
+            android:background="@color/pb3ds_tile_border" />
+
+        <ImageButton
+            android:id="@+id/btn_info"
+            android:layout_width="0dp"
+            android:layout_height="40dp"
+            android:layout_weight="1"
+            android:background="?attr/selectableItemBackgroundBorderless"
+            android:contentDescription="@string/about"
+            android:scaleType="centerInside"
+            android:src="@drawable/ic_info"
+            android:tint="@color/pb3ds_text_primary" />
+    </LinearLayout>
+
+</RelativeLayout>

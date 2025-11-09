@@ -1,0 +1,218 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/pb3ds_background"
+    android:orientation="vertical"
+    tools:context=".fragments.ThreeDSBottomScreenFragment">
+
+    <!-- Header -->
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="72dp"
+        android:background="@color/pb3ds_surface">
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentStart="true"
+            android:layout_centerVertical="true"
+            android:layout_marginStart="20dp"
+            android:text="@string/menu"
+            android:textColor="@color/pb3ds_text_primary"
+            android:textSize="26sp"
+            android:textStyle="bold" />
+    </RelativeLayout>
+
+    <!-- Menu Content (Scrollable) -->
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight="1"
+        android:background="@color/pb3ds_background"
+        android:overScrollMode="never">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            android:paddingVertical="8dp">
+
+            <!-- Settings Section Header -->
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="40dp"
+                android:background="@color/pb3ds_surface_light"
+                android:gravity="center_vertical"
+                android:paddingStart="20dp"
+                android:text="@string/settings"
+                android:textColor="@color/pb3ds_text_primary"
+                android:textSize="16sp"
+                android:textStyle="bold" />
+
+            <!-- Settings Button -->
+            <Button
+                android:id="@+id/btn_system_settings"
+                android:layout_width="match_parent"
+                android:layout_height="56dp"
+                android:background="@drawable/menu_item_background"
+                android:contentDescription="@string/grid_menu_core_settings"
+                android:gravity="start|center_vertical"
+                android:paddingStart="20dp"
+                android:paddingEnd="16dp"
+                android:text="@string/grid_menu_core_settings"
+                android:textAlignment="textStart"
+                android:textColor="@color/pb3ds_text_primary"
+                android:textSize="16sp" />
+
+            <!-- Divider -->
+            <View
+                android:layout_width="match_parent"
+                android:layout_height="1dp"
+                android:background="@color/pb3ds_menu_divider" />
+
+            <!-- Game Management Section Header -->
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="40dp"
+                android:background="@color/pb3ds_surface_light"
+                android:gravity="center_vertical"
+                android:paddingStart="20dp"
+                android:text="@string/applications"
+                android:textColor="@color/pb3ds_text_primary"
+                android:textSize="16sp"
+                android:textStyle="bold" />
+
+            <!-- Install CIA Button -->
+            <Button
+                android:id="@+id/btn_install_cia"
+                android:layout_width="match_parent"
+                android:layout_height="56dp"
+                android:background="@drawable/menu_item_background"
+                android:contentDescription="@string/install_game_content"
+                android:gravity="start|center_vertical"
+                android:paddingStart="20dp"
+                android:paddingEnd="16dp"
+                android:text="@string/install_game_content"
+                android:textAlignment="textStart"
+                android:textColor="@color/pb3ds_text_primary"
+                android:textSize="16sp" />
+
+            <!-- Divider -->
+            <View
+                android:layout_width="match_parent"
+                android:layout_height="1dp"
+                android:background="@color/pb3ds_menu_divider" />
+
+            <!-- Select Games Folder -->
+            <Button
+                android:id="@+id/btn_select_games_folder"
+                android:layout_width="match_parent"
+                android:layout_height="56dp"
+                android:background="@drawable/menu_item_background"
+                android:contentDescription="@string/select_games_folder"
+                android:gravity="start|center_vertical"
+                android:paddingStart="20dp"
+                android:paddingEnd="16dp"
+                android:text="@string/select_games_folder"
+                android:textAlignment="textStart"
+                android:textColor="@color/pb3ds_text_primary"
+                android:textSize="16sp" />
+
+            <!-- Divider -->
+            <View
+                android:layout_width="match_parent"
+                android:layout_height="1dp"
+                android:background="@color/pb3ds_menu_divider" />
+
+            <!-- GPU Drivers Section Header -->
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="40dp"
+                android:background="@color/pb3ds_surface_light"
+                android:gravity="center_vertical"
+                android:paddingStart="20dp"
+                android:text="@string/gpu_driver_manager"
+                android:textColor="@color/pb3ds_text_primary"
+                android:textSize="16sp"
+                android:textStyle="bold" />
+
+            <!-- GPU Driver Button -->
+            <Button
+                android:id="@+id/btn_gpu_driver"
+                android:layout_width="match_parent"
+                android:layout_height="56dp"
+                android:background="@drawable/menu_item_background"
+                android:contentDescription="@string/install_gpu_driver"
+                android:gravity="start|center_vertical"
+                android:paddingStart="20dp"
+                android:paddingEnd="16dp"
+                android:text="@string/install_gpu_driver"
+                android:textAlignment="textStart"
+                android:textColor="@color/pb3ds_text_primary"
+                android:textSize="16sp" />
+
+            <!-- Divider -->
+            <View
+                android:layout_width="match_parent"
+                android:layout_height="1dp"
+                android:background="@color/pb3ds_menu_divider" />
+
+            <!-- About Section Header -->
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="40dp"
+                android:background="@color/pb3ds_surface_light"
+                android:gravity="center_vertical"
+                android:paddingStart="20dp"
+                android:text="@string/about"
+                android:textColor="@color/pb3ds_text_primary"
+                android:textSize="16sp"
+                android:textStyle="bold" />
+
+            <!-- About Button -->
+            <Button
+                android:id="@+id/btn_about"
+                android:layout_width="match_parent"
+                android:layout_height="56dp"
+                android:background="@drawable/menu_item_background"
+                android:contentDescription="@string/about_description"
+                android:gravity="start|center_vertical"
+                android:paddingStart="20dp"
+                android:paddingEnd="16dp"
+                android:text="@string/about_description"
+                android:textAlignment="textStart"
+                android:textColor="@color/pb3ds_text_primary"
+                android:textSize="16sp" />
+
+            <!-- Divider -->
+            <View
+                android:layout_width="match_parent"
+                android:layout_height="1dp"
+                android:background="@color/pb3ds_menu_divider" />
+
+            <!-- Share Log Button -->
+            <Button
+                android:id="@+id/btn_share_log"
+                android:layout_width="match_parent"
+                android:layout_height="56dp"
+                android:background="@drawable/menu_item_background"
+                android:contentDescription="@string/share_log"
+                android:gravity="start|center_vertical"
+                android:paddingStart="20dp"
+                android:paddingEnd="16dp"
+                android:text="@string/share_log"
+                android:textAlignment="textStart"
+                android:textColor="@color/pb3ds_text_primary"
+                android:textSize="16sp" />
+
+            <!-- Bottom Padding -->
+            <View
+                android:layout_width="match_parent"
+                android:layout_height="16dp" />
+
+        </LinearLayout>
+    </ScrollView>
+
+</LinearLayout>

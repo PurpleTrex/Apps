@@ -1,0 +1,84 @@
+<?xml version="1.0" encoding="utf-8"?>
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/pb3ds_background">
+
+    <!-- Top Screen View (Main Content) -->
+    <FrameLayout
+        android:id="@+id/top_screen_container"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:background="@color/pb3ds_background" />
+
+    <!-- Bottom Screen View (Hidden by default) -->
+    <FrameLayout
+        android:id="@+id/bottom_screen_container"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:background="@color/pb3ds_background"
+        android:visibility="gone" />
+
+    <!-- Floating Screen Indicator & Toggle Button -->
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="60dp"
+        android:layout_gravity="bottom"
+        android:background="@color/pb3ds_surface"
+        android:gravity="center"
+        android:orientation="horizontal"
+        android:paddingHorizontal="16dp">
+
+        <!-- Current Screen Label -->
+        <TextView
+            android:id="@+id/screen_indicator"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:text="@string/3ds_top_screen"
+            android:textColor="@color/pb3ds_text_primary"
+            android:textSize="16sp"
+            android:textStyle="bold" />
+
+        <!-- Screen Divider -->
+        <View
+            android:layout_width="1dp"
+            android:layout_height="40dp"
+            android:background="@color/pb3ds_tile_border" />
+
+        <!-- Screen Toggle Buttons Container -->
+        <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="16dp"
+            android:gravity="center"
+            android:orientation="horizontal"
+            android:spacing="8dp">
+
+            <!-- Top Screen Button -->
+            <Button
+                android:id="@+id/btn_top_screen"
+                android:layout_width="60dp"
+                android:layout_height="40dp"
+                android:layout_margin="4dp"
+                android:background="@drawable/button_screen_toggle_top"
+                android:contentDescription="@string/3ds_top_screen"
+                android:text="@string/3ds_top"
+                android:textColor="@color/pb3ds_text_primary"
+                android:textSize="11sp" />
+
+            <!-- Bottom Screen Button -->
+            <Button
+                android:id="@+id/btn_bottom_screen"
+                android:layout_width="60dp"
+                android:layout_height="40dp"
+                android:layout_margin="4dp"
+                android:background="@drawable/button_screen_toggle_bottom"
+                android:contentDescription="@string/3ds_bottom_screen"
+                android:text="@string/3ds_bottom"
+                android:textColor="@color/pb3ds_text_primary"
+                android:textSize="11sp" />
+        </LinearLayout>
+    </LinearLayout>
+
+</FrameLayout>
