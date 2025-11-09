@@ -304,7 +304,7 @@ if (USE_SYSTEM_JSON)
     target_link_libraries(json-headers INTERFACE nlohmann_json::nlohmann_json)
     get_target_property(NLOHMANN_PREFIX nlohmann_json::nlohmann_json INTERFACE_INCLUDE_DIRECTORIES)
     # The nlohmann-json3 package expects "#include <nlohmann/json.hpp>"
-    # Citra uses "#include <json.hpp>" so we have to add this manually
+    # PocketBoy uses "#include <json.hpp>" so we have to add this manually
     target_include_directories(json-headers SYSTEM INTERFACE "${NLOHMANN_PREFIX}/nlohmann")
 else()
     target_include_directories(json-headers INTERFACE ./json)
@@ -337,7 +337,7 @@ add_library(httplib INTERFACE)
 if(USE_SYSTEM_CPP_HTTPLIB)
     find_package(CppHttp 0.14.1)
     # Detect if system cpphttplib is a shared library
-    # this breaks building as Citra relies on functions that are moved
+    # this breaks building as PocketBoy relies on functions that are moved
     # into the shared object.
     get_target_property(HTTP_LIBS httplib::httplib INTERFACE_LINK_LIBRARIES)
     if(HTTP_LIBS)

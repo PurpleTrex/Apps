@@ -1,8 +1,8 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <style name="Theme.V35.Citra" parent="Theme.Citra">
+    <style name="Theme.V35.PocketBoy" parent="Theme.PocketBoy">
         <item name="android:windowOptOutEdgeToEdgeEnforcement">true</item>
     </style>
 
-    <style name="Theme.Citra.Main" parent="Theme.V35.Citra" />
+    <style name="Theme.PocketBoy.Main" parent="Theme.V35.PocketBoy" />
 </resources>

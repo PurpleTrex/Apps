@@ -1,10 +1,10 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
 
-    <string name="app_disclaimer">Este software irá executar aplicativos feitos para o console portátil Nintendo 3DS. Nenhum jogo está incluído.\n\nAntes de começar a emulação, selecione uma pasta para armazenar os dados do usuário do Azahar.\n\nO que é isto:\n<a href='https://web.archive.org/web/20240304193549/https://github.com/citra-emu/citra/wiki/Citra-Android-user-data-and-storage'>Wiki - Dados e armazenamento do usuário do Azahar para Android</a></string>
-    <string name="app_notification_channel_description">Notificações do emulador Azahar 3DS</string>
-    <string name="app_notification_running">Azahar está Executando</string>
-    <string name="app_game_install_description">Em seguida, você precisará selecionar uma pasta de Aplicativos. O Azahar exibirá todas as ROMs de 3DS dentro da pasta selecionada no aplicativo.\n\nROMs, atualizações e DLC no formato CIA precisarão ser instaladas separadamente clicando no ícone da pasta e selecionando Instalar CIA.</string>
+    <string name="app_disclaimer">Este software irá executar aplicativos feitos para o console portátil Nintendo 3DS. Nenhum jogo está incluído.\n\nAntes de começar a emulação, selecione uma pasta para armazenar os dados do usuário do PocketBoy.\n\nO que é isto:\n<a href='https://web.archive.org/web/20240304193549/https://github.com/pocketboy-emu/pocketboy/wiki/PocketBoy-Android-user-data-and-storage'>Wiki - Dados e armazenamento do usuário do PocketBoy para Android</a></string>
+    <string name="app_notification_channel_description">Notificações do emulador PocketBoy 3DS</string>
+    <string name="app_notification_running">PocketBoy está Executando</string>
+    <string name="app_game_install_description">Em seguida, você precisará selecionar uma pasta de Aplicativos. O PocketBoy exibirá todas as ROMs de 3DS dentro da pasta selecionada no aplicativo.\n\nROMs, atualizações e DLC no formato CIA precisarão ser instaladas separadamente clicando no ícone da pasta e selecionando Instalar CIA.</string>
 
     <!-- Home Strings -->
     <string name="grid_menu_core_settings">Configurações</string>
@@ -15,7 +15,7 @@
     <string name="install_game_content">Instalar arquivo CIA</string>
     <string name="install_game_content_description">Instalar aplicativos, atualizações ou DLC</string>
     <string name="share_log">Compartilhar Registro</string>
-    <string name="share_log_description">Compartilhe o arquivo de log do Azahar para depurar problemas</string>
+    <string name="share_log_description">Compartilhe o arquivo de log do PocketBoy para depurar problemas</string>
     <string name="gpu_driver_manager">Gerenciador de Driver da GPU</string>
     <string name="install_gpu_driver">Instalar driver da GPU</string>
     <string name="install_gpu_driver_description">Instale drivers alternativos para poder obter desempenho ou precisão</string>
@@ -24,15 +24,15 @@
     <string name="custom_driver_not_supported_description">O carregamento de driver personalizado não é suportado atualmente para este dispositivo.\nVerifique esta opção novamente no futuro para ver se o suporte foi adicionado!</string>
     <string name="share_log_not_found">Nenhum arquivo de log encontrado</string>
     <string name="select_games_folder">Selecione a Pasta de Aplicativos</string>
-    <string name="select_games_folder_description">Permitir que o Azahar preencha a lista de aplicativos</string>
+    <string name="select_games_folder_description">Permitir que o PocketBoy preencha a lista de aplicativos</string>
     <string name="about">Sobre</string>
-    <string name="citra_description">Um emulador de 3DS de código aberto</string>
+    <string name="pocketboy_description">Um emulador de 3DS de código aberto</string>
     <string name="about_description">Versão da compilação, créditos e mais</string>
     <string name="games_dir_selected">Diretório do aplicativo selecionado</string>
-    <string name="select_citra_user_folder_home_description">Altera os arquivos que o Azahar usa para carregar aplicativos</string>
+    <string name="select_pocketboy_user_folder_home_description">Altera os arquivos que o PocketBoy usa para carregar aplicativos</string>
     <string name="theme_and_color_description">Modificar a aparência do aplicativo</string>
     <string name="install_cia_title">Instalar arquivo CIA</string>
-    <string name="warning_3ds_files"><![CDATA[Arquivos criptografados e arquivos .3ds não são mais suportados. Talvez seja necessário descriptografá-los e/ou renomeá-los para .cci. <a href=\"https://azahar-emu.org/blog/game-loading-changes/\">Saiba mais.</a>]]></string>
+    <string name="warning_3ds_files"><![CDATA[Arquivos criptografados e arquivos .3ds não são mais suportados. Talvez seja necessário descriptografá-los e/ou renomeá-los para .cci. <a href=\"https://pocketboy-emu.org/blog/game-loading-changes/\">Saiba mais.</a>]]></string>
 
     <!-- GPU driver installation -->
     <string name="select_gpu_driver">Selecionar driver da GPU</string>
@@ -48,13 +48,13 @@
     <!-- About screen strings -->
     <string name="copied_to_clipboard">Copiado para a área de transferência</string>
     <string name="contributors">Contribuidores</string>
-    <string name="contributors_description">Contribuidores que tornaram o Azahar possível</string>
-    <string name="licenses_description">Projetos usados pelo Azahar para Android</string>
+    <string name="contributors_description">Contribuidores que tornaram o PocketBoy possível</string>
+    <string name="licenses_description">Projetos usados pelo PocketBoy para Android</string>
     <string name="build">Compilação</string>
     <string name="licenses">Licenças</string>
     <!-- Setup strings -->
     <string name="welcome">Bem-vindo</string>
-    <string name="welcome_description">Aprenda a como configurar o &lt;b>Azahar&lt;/b> e pule para a emulação.</string>
+    <string name="welcome_description">Aprenda a como configurar o &lt;b>PocketBoy&lt;/b> e pule para a emulação.</string>
     <string name="get_started">Comece agora</string>
     <string name="step_complete">Concluído!</string>
     <string name="games">Aplicativos</string>
@@ -66,7 +66,7 @@
     <string name="notifications_description">Conceda a permissão de notificação com o botão abaixo.</string>
     <string name="give_permission">Conceder permissão</string>
     <string name="notification_warning">Ignorar a solicitação de notificação?</string>
-    <string name="notification_warning_description">O Azahar não poderá te notificar de informações importantes.</string>
+    <string name="notification_warning_description">O PocketBoy não poderá te notificar de informações importantes.</string>
     <string name="camera_permission">Câmera</string>
     <string name="camera_permission_description">Conceda acesso a câmera abaixo para emular a câmera do 3DS.</string>
     <string name="microphone_permission">Microfone</string>
@@ -81,17 +81,17 @@
     <string name="warning_help">Ajuda</string>
     <string name="warning_skip">Pular</string>
     <string name="warning_cancel">Cancelar</string>
-    <string name="select_citra_user_folder">Selecione a Pasta do Usuário</string>
-    <string name="select_citra_user_folder_description"><![CDATA[Selecione o seu diretório de <a href=\"https://web.archive.org/web/20240304193549/https://github.com/citra-emu/citra/wiki/Citra-Android-user-data-and-storage\">dados de usuário</a>com o botão abaixo.]]></string>
-    <string name="select_which_user_directory_to_use">Parece que você tem diretórios de usuários configurados para ambos o Lime3DS e o Azahar. Isso ocorreu devido a você ter atualizado para o Azahar, e quando solicitado, escolha um diretório de usuário diferente daquele que foi usado pelo Lime3DS.\n\nIsso pode ter resultado em você pensar que tenha perdidos dados salvos ou outras configurações - pedimos desculpas caso isso tenha acontecido.\n\nGostaria de voltar a usar sua pasta de usuário original do Lime3DS, restaurar configurações e salvar os jogos do Lime3DS, ou manter o diretório de usuário do Azahar atual?\n\nNenhum dos diretórios serão excluídos, independente de sua escolha, sinta-se livre para trocar entre elas usando a opção Selecionar Pasta de Usuário.</string>
-    <string name="keep_current_azahar_directory">Manter diretório atual do Azahar</string>
-    <string name="use_prior_lime3ds_directory">Usar o diretório antigo do Lime3DS</string>
+    <string name="select_pocketboy_user_folder">Selecione a Pasta do Usuário</string>
+    <string name="select_pocketboy_user_folder_description"><![CDATA[Selecione o seu diretório de <a href=\"https://web.archive.org/web/20240304193549/https://github.com/pocketboy-emu/pocketboy/wiki/PocketBoy-Android-user-data-and-storage\">dados de usuário</a>com o botão abaixo.]]></string>
+    <string name="select_which_user_directory_to_use">Parece que você tem diretórios de usuários configurados para ambos o PocketBoy e o PocketBoy. Isso ocorreu devido a você ter atualizado para o PocketBoy, e quando solicitado, escolha um diretório de usuário diferente daquele que foi usado pelo PocketBoy.\n\nIsso pode ter resultado em você pensar que tenha perdidos dados salvos ou outras configurações - pedimos desculpas caso isso tenha acontecido.\n\nGostaria de voltar a usar sua pasta de usuário original do PocketBoy, restaurar configurações e salvar os jogos do PocketBoy, ou manter o diretório de usuário do PocketBoy atual?\n\nNenhum dos diretórios serão excluídos, independente de sua escolha, sinta-se livre para trocar entre elas usando a opção Selecionar Pasta de Usuário.</string>
+    <string name="keep_current_pocketboy_directory">Manter diretório atual do PocketBoy</string>
+    <string name="use_prior_pocketboy_directory">Usar o diretório antigo do PocketBoy</string>
     <string name="select">Selecionar</string>
     <string name="cannot_skip">Você não pode pular a configuração da pasta do usuário.</string>
-    <string name="cannot_skip_directory_description">Este passo é necessário para permitir que o Azahar funcione. Selecione um diretório para continuar.</string>
-    <string name="selecting_user_directory_without_write_permissions">Você perdeu suas permissões de escrita no seu diretório de <a href="https://web.archive.org/web/20240304193549/https://github.com/citra-emu/citra/wiki/Citra-Android-user-data-and-storage">dados de usuário</a>, onde dados salvos e outras informações são guardadas.  Isso pode acontecer depois que algum app ou Android atualiza. Re-selecione o diretório para reobter as permissões para que você possa continuar.</string>
+    <string name="cannot_skip_directory_description">Este passo é necessário para permitir que o PocketBoy funcione. Selecione um diretório para continuar.</string>
+    <string name="selecting_user_directory_without_write_permissions">Você perdeu suas permissões de escrita no seu diretório de <a href="https://web.archive.org/web/20240304193549/https://github.com/pocketboy-emu/pocketboy/wiki/PocketBoy-Android-user-data-and-storage">dados de usuário</a>, onde dados salvos e outras informações são guardadas.  Isso pode acontecer depois que algum app ou Android atualiza. Re-selecione o diretório para reobter as permissões para que você possa continuar.</string>
     <string name="set_up_theme_settings">Configurações de Tema</string>
-    <string name="setup_theme_settings_description">Configure suas preferências de tema para o Azahar.</string>
+    <string name="setup_theme_settings_description">Configure suas preferências de tema para o PocketBoy.</string>
     <string name="setup_set_theme">Definir Tema</string>
 
     <!-- Search Strings -->
@@ -137,10 +137,10 @@
     <string name="setup_system_files">Arquivos do Sistema</string>
     <string name="setup_system_files_description">Executar operações de arquivos do sistema, como instalar arquivos do sistema ou iniciar o Menu Principal.</string>
     <string name="setup_tool_connect">Conectar à Ferramenta de Configuração do Artic</string>
-    <string name="setup_system_files_preamble"><![CDATA[O Azahar precisa dos dados exclusivos do console e arquivos de firmware de um console real para que seja possível usar alguns de seus recursos. Tais arquivos e dados podem ser configurados através da <a href=https://github.com/azahar-emu/ArticSetupTool>Ferramenta de Configuração Artic do Azahar</a>.<br>Notas:<ul><li><b>Esta operação instalará os dados exclusivos do console para o Azahar, não compartilhe sua pasta de usuário ou nand depois de realizar este processo!</b></li><li>Enquanto estiver realizando o processo de configuração, o Azahar irá vincular-se ao console executando a ferramenta de configuração. Você poderá desvincular o console mais tarde na aba Sistema no menu de configuração do emulador.</li><li>Não entre no online com ambos Azahar e seu console 3DS ao mesmo tempo depois de configurar os arquivos de sistema, já que isso poderá causar problemas.</li><li>A configuração do Antigo 3DS é necessária para a configuração do Novo 3DS funcionar (realizar ambas as configurações é recomendado).</li><li>Ambos os modos de configuração irão funcionar independente do modelo do console executando a ferramenta de configuração.</li></ul>]]></string>
+    <string name="setup_system_files_preamble"><![CDATA[O PocketBoy precisa dos dados exclusivos do console e arquivos de firmware de um console real para que seja possível usar alguns de seus recursos. Tais arquivos e dados podem ser configurados através da <a href=https://github.com/pocketboy-emu/ArticSetupTool>Ferramenta de Configuração Artic do PocketBoy</a>.<br>Notas:<ul><li><b>Esta operação instalará os dados exclusivos do console para o PocketBoy, não compartilhe sua pasta de usuário ou nand depois de realizar este processo!</b></li><li>Enquanto estiver realizando o processo de configuração, o PocketBoy irá vincular-se ao console executando a ferramenta de configuração. Você poderá desvincular o console mais tarde na aba Sistema no menu de configuração do emulador.</li><li>Não entre no online com ambos PocketBoy e seu console 3DS ao mesmo tempo depois de configurar os arquivos de sistema, já que isso poderá causar problemas.</li><li>A configuração do Antigo 3DS é necessária para a configuração do Novo 3DS funcionar (realizar ambas as configurações é recomendado).</li><li>Ambos os modos de configuração irão funcionar independente do modelo do console executando a ferramenta de configuração.</li></ul>]]></string>
     <string name="setup_system_files_detect">Buscando o status atual dos arquivos do sistema, por favor, aguarde...</string>
     <string name="delete_system_files">Desvincular dados exclusivos do console</string>
-    <string name="delete_system_files_description"><![CDATA[Esta ação irá desvincular seu console real do Azahar, com as seguintes consequências:<br><ul><li>Seu OTP, SecureInfo e LocalFriendCodeSeed serão removidos do Azahar.</li><li>Sua lista de amigos será redefinida e sua sessão será finalizada em sua conta NNID/PNID.</li><li>Arquivos do sistema e títulos da eshop obtidos pelo Azahar se tornarão inacessíveis até que o mesmo console seja vinculado de novo usando a ferramenta de configuração (dados salvos não serão perdidos).</li></ul><br>Deseja continuar?]]></string>
+    <string name="delete_system_files_description"><![CDATA[Esta ação irá desvincular seu console real do PocketBoy, com as seguintes consequências:<br><ul><li>Seu OTP, SecureInfo e LocalFriendCodeSeed serão removidos do PocketBoy.</li><li>Sua lista de amigos será redefinida e sua sessão será finalizada em sua conta NNID/PNID.</li><li>Arquivos do sistema e títulos da eshop obtidos pelo PocketBoy se tornarão inacessíveis até que o mesmo console seja vinculado de novo usando a ferramenta de configuração (dados salvos não serão perdidos).</li></ul><br>Deseja continuar?]]></string>
     <string name="setup_system_files_o3ds">Configuração do Antigo 3DS</string>
     <string name="setup_system_files_n3ds">Configuração do Novo 3DS</string>
     <string name="setup_system_files_possible">É possível configurar.</string>
@@ -297,7 +297,7 @@
     <string name="renderer_debug">Renderizador de Depuração</string>
     <string name="renderer_debug_description">Registre informações adicionais de depuração relacionadas a gráficos. Quando ativado, o desempenho do jogo será significativamente reduzido.</string>
     <string name="instant_debug_log">Limpar a saída do log a cada mensagem</string>
-    <string name="instant_debug_log_description">Grava imediatamente o log de depuração no arquivo. Use isto se o Azahar travar e a saída do log estiver sendo cortada.</string>
+    <string name="instant_debug_log_description">Grava imediatamente o log de depuração no arquivo. Use isto se o PocketBoy travar e a saída do log estiver sendo cortada.</string>
     <string name="delay_start_lle_modules">Atraso na inicialização com módulos LLE</string>
     <string name="delay_start_lle_modules_description">Atrasa a inicialização do aplicativo quando os módulos LLE estão ativados.</string>
     <string name="deterministic_async_operations">Operações Assíncronas Determinísticas</string>
@@ -334,7 +334,7 @@
     <string name="learn_more">Saber mais</string>
     <string name="close">Fechar</string>
     <string name="reset_to_default">Redefinir para o Padrão</string>
-    <string name="redump_games"><![CDATA[Por favor, siga os tutoriais para recarregar seus <a href=\"https://web.archive.org/web/20240304210021/https://citra-emu.org/wiki/dumping-game-cartridges/\">cartuchos de jogos</a> ou <a href=\"https://web.archive.org/web/20240304210011/https://citra-emu.org/wiki/dumping-installed-titles/\">títulos instalados</a>.]]></string>
+    <string name="redump_games"><![CDATA[Por favor, siga os tutoriais para recarregar seus <a href=\"https://web.archive.org/web/20240304210021/https://pocketboy-emu.org/wiki/dumping-game-cartridges/\">cartuchos de jogos</a> ou <a href=\"https://web.archive.org/web/20240304210011/https://pocketboy-emu.org/wiki/dumping-installed-titles/\">títulos instalados</a>.]]></string>
     <string name="option_default">Padrão</string>
     <string name="none">Nenhum</string>
     <string name="auto">Automático</string>
@@ -464,7 +464,7 @@
     <string name="write_permission_needed">Você precisa permitir o acesso de escrita no armazenamento externo para que o emulador funcione</string>
     <string name="load_settings">Carregando configurações...</string>
 
-    <string name="external_storage_not_mounted">O armazenamento externo precisa estar disponível para poder usar o Azahar</string>
+    <string name="external_storage_not_mounted">O armazenamento externo precisa estar disponível para poder usar o PocketBoy</string>
 
     <string name="select_dir">Selecionar esta pasta</string>
     <string name="empty_gamelist">Nenhum arquivo foi encontrado ou nenhuma pasta de jogos foi selecionada ainda.</string>
@@ -494,11 +494,11 @@
     <!-- Camera -->
     <string name="camera_select_image">Selecionar Imagem</string>
     <string name="camera">Câmera</string>
-    <string name="camera_permission_needed">O Azahar precisa de acesso à sua câmera para emular as câmeras do 3DS.\n\nVocê também tem a opção de definir a \"Origem da imagem\" como \"Imagem estática\" nas configurações de câmera.</string>
+    <string name="camera_permission_needed">O PocketBoy precisa de acesso à sua câmera para emular as câmeras do 3DS.\n\nVocê também tem a opção de definir a \"Origem da imagem\" como \"Imagem estática\" nas configurações de câmera.</string>
 
     <!-- Microphone -->
     <string name="microphone">Microfone</string>
-    <string name="microphone_permission_needed">O Azahar precisa acessar seu microfone para emular o microfone do 3DS.\n\nComo alternativa, você também pode alterar o \"Dispositivo de Entrada de Áudio\" nas Configurações de Áudio.</string>
+    <string name="microphone_permission_needed">O PocketBoy precisa acessar seu microfone para emular o microfone do 3DS.\n\nComo alternativa, você também pode alterar o \"Dispositivo de Entrada de Áudio\" nas Configurações de Áudio.</string>
 
     <!-- Core Errors -->
     <string name="abort_button">Parar</string>
@@ -582,7 +582,7 @@
         <item quantity="many">instalando %d arquivos. Veja a notificação para mais detalhes.</item>
         <item quantity="other">instalando %d arquivos. Veja a notificação para mais detalhes.</item>
     </plurals>
-    <string name="cia_install_notification_channel_description">Notificações do Azahar durante a instalação do CIA</string>
+    <string name="cia_install_notification_channel_description">Notificações do PocketBoy durante a instalação do CIA</string>
     <string name="cia_install_notification_title">Instalando CIA</string>
     <string name="cia_install_notification_installing">Instalando %1$s (%2$d/%3$d)</string>
     <string name="cia_install_notification_success_title">CIA Instalado com sucesso</string>
@@ -590,7 +590,7 @@
     <string name="cia_install_success">\"%s\" foi instalado com sucesso</string>
     <string name="cia_install_error_aborted">A instalação de \"%s\" foi interrompida.\n Por favor, consulte o registro para mais detalhes</string>
     <string name="cia_install_error_invalid">\"%s\" não é um CIA válido</string>
-    <string name="cia_install_error_encrypted">\"%s\" deve ser descriptografado antes de ser usado com o Azahar.\n É necessário um 3DS real</string>
+    <string name="cia_install_error_encrypted">\"%s\" deve ser descriptografado antes de ser usado com o PocketBoy.\n É necessário um 3DS real</string>
     <string name="cia_install_error_unknown">Ocorreu um erro desconhecido durante a instalação de \"%s\".\n Consulte o registro para obter mais detalhes</string>
 
     <!-- Memory Sizes -->

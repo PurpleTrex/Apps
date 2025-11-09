@@ -1,10 +1,10 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
 
-    <string name="app_disclaimer">Den här programvaran kommer att köra applikationer för den handhållna spelkonsolen Nintendo 3DS. Inga speltitlar ingår.\n\nFör att du ska kunna börja emulera måste du välja en mapp att lagra Azahars användardata i.\n\nVad är det här:\n<a href='https://web.archive.org/web/20240304193549/https://github.com/citra-emu/citra/wiki/Citra-Android-user-data-and-storage'>Wiki - Citra Android användardata och lagring</a></string>
-    <string name="app_notification_channel_description">Aviseringar för Azahar 3DS-emulator</string>
-    <string name="app_notification_running">Azahar är igång</string>
-    <string name="app_game_install_description">Näst måste du välja en applikationsmapp. Azahar kommer att visa alla 3DS ROM i den valda mappen i appen.\n\nCIA ROM, uppdateringar och DLC måste installeras separat genom att klicka på mappikonen och välja Installera CIA.</string>
+    <string name="app_disclaimer">Den här programvaran kommer att köra applikationer för den handhållna spelkonsolen Nintendo 3DS. Inga speltitlar ingår.\n\nFör att du ska kunna börja emulera måste du välja en mapp att lagra PocketBoys användardata i.\n\nVad är det här:\n<a href='https://web.archive.org/web/20240304193549/https://github.com/pocketboy-emu/pocketboy/wiki/PocketBoy-Android-user-data-and-storage'>Wiki - PocketBoy Android användardata och lagring</a></string>
+    <string name="app_notification_channel_description">Aviseringar för PocketBoy 3DS-emulator</string>
+    <string name="app_notification_running">PocketBoy är igång</string>
+    <string name="app_game_install_description">Näst måste du välja en applikationsmapp. PocketBoy kommer att visa alla 3DS ROM i den valda mappen i appen.\n\nCIA ROM, uppdateringar och DLC måste installeras separat genom att klicka på mappikonen och välja Installera CIA.</string>
 
     <!-- Home Strings -->
     <string name="grid_menu_core_settings">Inställningar</string>
@@ -15,7 +15,7 @@
     <string name="install_game_content">Installera CIA-fil</string>
     <string name="install_game_content_description">Installera program, uppdateringar eller DLC</string>
     <string name="share_log">Dela logg</string>
-    <string name="share_log_description">Dela Azahars loggfil för att felsöka problem</string>
+    <string name="share_log_description">Dela PocketBoys loggfil för att felsöka problem</string>
     <string name="gpu_driver_manager">GPU-drivrutinshanterare</string>
     <string name="install_gpu_driver">Installera GPU-drivrutin</string>
     <string name="install_gpu_driver_description">Installera alternativa drivrutiner för potentiellt bättre prestanda eller noggrannhet</string>
@@ -24,12 +24,12 @@
     <string name="custom_driver_not_supported_description">Inläsning av anpassade drivrutiner stöds för närvarande inte för den här enheten.\nKontrollera det här alternativet igen i framtiden för att se om stöd har lagts till!</string>
     <string name="share_log_not_found">Ingen loggfil hittad</string>
     <string name="select_games_folder">Välj applikationsmapp</string>
-    <string name="select_games_folder_description">Låter Azahar fylla i programlistan</string>
+    <string name="select_games_folder_description">Låter PocketBoy fylla i programlistan</string>
     <string name="about">Om</string>
-    <string name="citra_description">En 3DS-emulator med öppen källkod</string>
+    <string name="pocketboy_description">En 3DS-emulator med öppen källkod</string>
     <string name="about_description">Byggversion, krediter och mer</string>
     <string name="games_dir_selected">Applikationskatalog vald</string>
-    <string name="select_citra_user_folder_home_description">Ändrar de filer som Azahar använder för att ladda applikationer</string>
+    <string name="select_pocketboy_user_folder_home_description">Ändrar de filer som PocketBoy använder för att ladda applikationer</string>
     <string name="theme_and_color_description">Modifiera utseendet på appen</string>
     <string name="install_cia_title">Installera CIA</string>
     <!-- GPU driver installation -->
@@ -46,13 +46,13 @@
     <!-- About screen strings -->
     <string name="copied_to_clipboard">Kopierat till urklipp</string>
     <string name="contributors">Bidragsgivare</string>
-    <string name="contributors_description">Bidragsgivare som gjorde Azahar möjligt</string>
-    <string name="licenses_description">Projekt som används av Azahar för Android</string>
+    <string name="contributors_description">Bidragsgivare som gjorde PocketBoy möjligt</string>
+    <string name="licenses_description">Projekt som används av PocketBoy för Android</string>
     <string name="build">Byggd</string>
     <string name="licenses">Licenser</string>
     <!-- Setup strings -->
     <string name="welcome">Välkommen!</string>
-    <string name="welcome_description">Lär dig hur du ställer in &lt;b>Azahar&lt;/b> och börjar med emulering.</string>
+    <string name="welcome_description">Lär dig hur du ställer in &lt;b>PocketBoy&lt;/b> och börjar med emulering.</string>
     <string name="get_started">Gå igång</string>
     <string name="step_complete">Färdigt! </string>
     <string name="games">Applikationer</string>
@@ -64,7 +64,7 @@
     <string name="notifications_description">Ge tillstånd för aviseringar med knappen nedan.</string>
     <string name="give_permission">Ge tillstånd</string>
     <string name="notification_warning">Hoppa över att ge tillstånd för avisering? </string>
-    <string name="notification_warning_description">Azahar kommer inte att kunna meddela dig viktig information.</string>
+    <string name="notification_warning_description">PocketBoy kommer inte att kunna meddela dig viktig information.</string>
     <string name="camera_permission">Kamera</string>
     <string name="camera_permission_description">Ge kameratillståndet nedan för att emulera 3DS-kameran.</string>
     <string name="microphone_permission">Mikrofon</string>
@@ -75,12 +75,12 @@
     <string name="warning_help">Hjälp</string>
     <string name="warning_skip">Hoppa över</string>
     <string name="warning_cancel">Avbryt</string>
-    <string name="select_citra_user_folder">Välj användarmapp</string>
-    <string name="select_citra_user_folder_description"><![CDATA[Välj din <a href="https://web.archive.org/web/20240304193549/https://github.com/citra-emu/citra/wiki/Citra-Android-user-data-and-storage">användardatakatalog</a> med knappen nedan.]]></string>
+    <string name="select_pocketboy_user_folder">Välj användarmapp</string>
+    <string name="select_pocketboy_user_folder_description"><![CDATA[Välj din <a href="https://web.archive.org/web/20240304193549/https://github.com/pocketboy-emu/pocketboy/wiki/PocketBoy-Android-user-data-and-storage">användardatakatalog</a> med knappen nedan.]]></string>
     <string name="select">Välj</string>
-    <string name="cannot_skip_directory_description">Detta steg krävs för att Azahar ska fungera. Välj en katalog och sedan kan du fortsätta.</string>
+    <string name="cannot_skip_directory_description">Detta steg krävs för att PocketBoy ska fungera. Välj en katalog och sedan kan du fortsätta.</string>
     <string name="set_up_theme_settings">Temainställningar</string>
-    <string name="setup_theme_settings_description">Konfigurera dina temapreferenser för Azahar.</string>
+    <string name="setup_theme_settings_description">Konfigurera dina temapreferenser för PocketBoy.</string>
     <string name="setup_set_theme">Ställ in tema</string>
 
     <!-- Search Strings -->
@@ -262,7 +262,7 @@
     <string name="renderer_debug">Felsök renderingsprogrammet</string>
     <string name="renderer_debug_description">Loggar ytterligare grafikrelaterad felsökningsinformation. När den är aktiverad kommer spelets prestanda att minska avsevärt.</string>
     <string name="instant_debug_log">Töm loggen för varje meddelande</string>
-    <string name="instant_debug_log_description">Överför omedelbart felsökningsloggen till fil. Använd detta om Azahar kraschar och loggutmatningen skärs av.</string>
+    <string name="instant_debug_log_description">Överför omedelbart felsökningsloggen till fil. Använd detta om PocketBoy kraschar och loggutmatningen skärs av.</string>
     <string name="delay_start_lle_modules">Försenad start med LLE-moduler</string>
     <string name="delay_start_lle_modules_description">Fördröjer starten av appen när LLE-moduler är aktiverade.</string>
     <string name="deterministic_async_operations">Deterministiska asynkrona operationer</string>
@@ -286,7 +286,7 @@
     <string name="learn_more">Lär dig mer</string>
     <string name="close">Stäng</string>
     <string name="reset_to_default">Återställ till standard</string>
-    <string name="redump_games"><![CDATA[Följ guiderna för att dumpa dina <a href="https://web.archive.org/web/20240304210021/https://citra-emu.org/wiki/dumping-game-cartridges/">spelkassetter</a> igen eller <a href="https://web.archive.org/web/20240304210011/https://citra-emu.org/wiki/dumping-installed-titles/">installerade titlar</a>.]]></string>
+    <string name="redump_games"><![CDATA[Följ guiderna för att dumpa dina <a href="https://web.archive.org/web/20240304210021/https://pocketboy-emu.org/wiki/dumping-game-cartridges/">spelkassetter</a> igen eller <a href="https://web.archive.org/web/20240304210011/https://pocketboy-emu.org/wiki/dumping-installed-titles/">installerade titlar</a>.]]></string>
     <string name="option_default">Standard</string>
     <string name="none">Ingen</string>
     <string name="auto">Auto</string>
@@ -404,7 +404,7 @@
     <string name="write_permission_needed">Du måste tillåta skrivåtkomst till extern lagring för att emulatorn ska fungera</string>
     <string name="load_settings">Läser in inställningar...</string>
 
-    <string name="external_storage_not_mounted">Den externa lagringen måste vara tillgänglig för att Azahar ska kunna användas</string>
+    <string name="external_storage_not_mounted">Den externa lagringen måste vara tillgänglig för att PocketBoy ska kunna användas</string>
 
     <string name="select_dir">Välj den här katalogen</string>
     <string name="empty_gamelist">Inga filer hittades eller ingen spelkatalog har valts ännu.</string>
@@ -434,11 +434,11 @@
     <!-- Camera -->
     <string name="camera_select_image">Välj bild</string>
     <string name="camera">Kamera</string>
-    <string name="camera_permission_needed">Azahar behöver tillgång till din kamera för att emulera 3DS:s kameror.\n\nAlternativt kan du också ställa in \"Bildkälla\" till \"Stillbild\" i kamerainställningarna.</string>
+    <string name="camera_permission_needed">PocketBoy behöver tillgång till din kamera för att emulera 3DS:s kameror.\n\nAlternativt kan du också ställa in \"Bildkälla\" till \"Stillbild\" i kamerainställningarna.</string>
 
     <!-- Microphone -->
     <string name="microphone">Mikrofon</string>
-    <string name="microphone_permission_needed">Azahar behöver tillgång till din mikrofon för att emulera 3DS:ens mikrofon.\n\nAlternativt kan du också ändra "Ljudinmatningsenhet" i Ljudinställningar.</string>
+    <string name="microphone_permission_needed">PocketBoy behöver tillgång till din mikrofon för att emulera 3DS:ens mikrofon.\n\nAlternativt kan du också ändra "Ljudinmatningsenhet" i Ljudinställningar.</string>
 
     <!-- Core Errors -->
     <string name="abort_button">Avbryt</string>
@@ -475,14 +475,14 @@
         <item quantity="one">Installerar %d fil. Se meddelande för mer information.</item>
         <item quantity="other">Installerar %d filer. Se meddelande för mer information.</item>
     </plurals>
-    <string name="cia_install_notification_channel_description">Azahar-meddelanden under CIA-installation</string>
+    <string name="cia_install_notification_channel_description">PocketBoy-meddelanden under CIA-installation</string>
     <string name="cia_install_notification_title">Installation av CIA</string>
     <string name="cia_install_notification_success_title">Har installerat CIA</string>
     <string name="cia_install_notification_error_title">Installation av CIA misslyckades</string>
     <string name="cia_install_success">\"%s\" har installerats framgångsrikt</string>
     <string name="cia_install_error_aborted">Installationen av \"%s\" avbröts.\n Se loggen för mer information</string>
     <string name="cia_install_error_invalid">\"%s\" är inte en giltig CIA</string>
-    <string name="cia_install_error_encrypted">\"%s\" måste dekrypteras innan det kan användas med Azahar.\n En riktig 3DS krävs</string>
+    <string name="cia_install_error_encrypted">\"%s\" måste dekrypteras innan det kan användas med PocketBoy.\n En riktig 3DS krävs</string>
     <string name="cia_install_error_unknown">Ett okänt fel inträffade under installationen av \"%s\".\n Se loggen för mer information</string>
 
     <!-- Memory Sizes -->

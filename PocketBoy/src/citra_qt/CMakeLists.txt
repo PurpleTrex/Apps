@@ -7,7 +7,7 @@ if (POLICY CMP0071)
     cmake_policy(SET CMP0071 NEW)
 endif()
 
-add_library(citra_qt STATIC EXCLUDE_FROM_ALL
+add_library(pocketboy_qt STATIC EXCLUDE_FROM_ALL
     aboutdialog.cpp
     aboutdialog.h
     aboutdialog.ui
@@ -27,8 +27,8 @@ add_library(citra_qt STATIC EXCLUDE_FROM_ALL
     camera/qt_camera_base.h
     camera/qt_multimedia_camera.cpp
     camera/qt_multimedia_camera.h
-    citra_qt.cpp
-    citra_qt.h
+    pocketboy_qt.cpp
+    pocketboy_qt.h
     configuration/config.cpp
     configuration/config.h
     configuration/configure.ui
@@ -191,7 +191,7 @@ add_library(citra_qt STATIC EXCLUDE_FROM_ALL
 )
 
 if (APPLE)
-  target_sources(citra_qt PUBLIC
+  target_sources(pocketboy_qt PUBLIC
     qt_swizzle.h
     qt_swizzle.mm
   )
@@ -204,9 +204,9 @@ file(GLOB_RECURSE ICONS ${PROJECT_SOURCE_DIR}/dist/icons/*)
 file(GLOB_RECURSE THEMES ${PROJECT_SOURCE_DIR}/dist/qt_themes/*)
 
 if (ENABLE_QT_UPDATE_CHECKER)
-    target_link_libraries(citra_qt PRIVATE httplib json-headers)
-    target_sources(citra_qt PRIVATE update_checker.cpp)
-    target_compile_definitions(citra_qt PUBLIC ENABLE_QT_UPDATE_CHECKER)
+    target_link_libraries(pocketboy_qt PRIVATE httplib json-headers)
+    target_sources(pocketboy_qt PRIVATE update_checker.cpp)
+    target_compile_definitions(pocketboy_qt PUBLIC ENABLE_QT_UPDATE_CHECKER)
 endif()
 
 if (ENABLE_QT_TRANSLATION)
@@ -215,13 +215,13 @@ if (ENABLE_QT_TRANSLATION)
 
     # Update source TS file if enabled
     if (GENERATE_QT_TRANSLATION)
-        get_target_property(QT_SRCS citra_qt SOURCES)
-        get_target_property(QT_INCLUDES citra_qt INCLUDE_DIRECTORIES)
-        qt_add_lupdate(citra_qt TS_FILES ${CITRA_QT_LANGUAGES}/en.ts
+        get_target_property(QT_SRCS pocketboy_qt SOURCES)
+        get_target_property(QT_INCLUDES pocketboy_qt INCLUDE_DIRECTORIES)
+        qt_add_lupdate(pocketboy_qt TS_FILES ${CITRA_QT_LANGUAGES}/en.ts
             SOURCES ${QT_SRCS} ${UIS}
             INCLUDE_DIRECTORIES ${QT_INCLUDES}
             NO_GLOBAL_TARGET)
-        add_custom_target(translation ALL DEPENDS citra_qt_lupdate)
+        add_custom_target(translation ALL DEPENDS pocketboy_qt_lupdate)
     endif()
 
     # Find all TS files except en.ts
@@ -229,7 +229,7 @@ if (ENABLE_QT_TRANSLATION)
     list(REMOVE_ITEM LANGUAGES_TS ${CITRA_QT_LANGUAGES}/en.ts)
 
     # Compile TS files to QM files
-    qt_add_lrelease(citra_qt TS_FILES ${LANGUAGES_TS} NO_GLOBAL_TARGET QM_FILES_OUTPUT_VARIABLE LANGUAGES_QM)
+    qt_add_lrelease(pocketboy_qt TS_FILES ${LANGUAGES_TS} NO_GLOBAL_TARGET QM_FILES_OUTPUT_VARIABLE LANGUAGES_QM)
 
     # Build a QRC file from the QM file list
     set(LANGUAGES_QRC ${CMAKE_CURRENT_BINARY_DIR}/languages.qrc)
@@ -246,7 +246,7 @@ else()
     set(LANGUAGES)
 endif()
 
-target_sources(citra_qt
+target_sources(pocketboy_qt
     PRIVATE
         ${COMPAT_LIST}
         ${ICONS}
@@ -255,43 +255,43 @@ target_sources(citra_qt
 )
 
 if (WIN32)
-    target_link_libraries(citra_qt PRIVATE Qt6::EntryPointImplementation)
+    target_link_libraries(pocketboy_qt PRIVATE Qt6::EntryPointImplementation)
 endif()
 
 if(ENABLE_SDL2)
-    target_link_libraries(citra_qt PRIVATE SDL2::SDL2)
-    target_compile_definitions(citra_qt PRIVATE HAVE_SDL2)
+    target_link_libraries(pocketboy_qt PRIVATE SDL2::SDL2)
+    target_compile_definitions(pocketboy_qt PRIVATE HAVE_SDL2)
 endif()
 
-create_target_directory_groups(citra_qt)
+create_target_directory_groups(pocketboy_qt)
 
-target_link_libraries(citra_qt PRIVATE audio_core citra_common citra_core input_common network video_core)
-target_link_libraries(citra_qt PRIVATE Boost::boost nihstro-headers Qt6::Widgets Qt6::Multimedia Qt6::Concurrent)
-target_link_libraries(citra_qt PRIVATE ${PLATFORM_LIBRARIES} Threads::Threads)
+target_link_libraries(pocketboy_qt PRIVATE audio_core pocketboy_common pocketboy_core input_common network video_core)
+target_link_libraries(pocketboy_qt PRIVATE Boost::boost nihstro-headers Qt6::Widgets Qt6::Multimedia Qt6::Concurrent)
+target_link_libraries(pocketboy_qt PRIVATE ${PLATFORM_LIBRARIES} Threads::Threads)
 
 if (ENABLE_OPENGL)
-    target_link_libraries(citra_qt PRIVATE glad)
+    target_link_libraries(pocketboy_qt PRIVATE glad)
 endif()
 
 if (ENABLE_VULKAN)
-    target_link_libraries(citra_qt PRIVATE vulkan-headers)
+    target_link_libraries(pocketboy_qt PRIVATE vulkan-headers)
 endif()
 
 if (NOT WIN32)
     find_package(Qt6 REQUIRED COMPONENTS Core Gui Widgets)
     if(Qt6_VERSION VERSION_GREATER_EQUAL "6.10.0")
         find_package(Qt6 REQUIRED COMPONENTS GuiPrivate)
-        target_link_libraries(citra_qt PRIVATE Qt6::GuiPrivate)
+        target_link_libraries(pocketboy_qt PRIVATE Qt6::GuiPrivate)
     else()
-        target_include_directories(citra_qt PRIVATE ${Qt6Gui_PRIVATE_INCLUDE_DIRS})
+        target_include_directories(pocketboy_qt PRIVATE ${Qt6Gui_PRIVATE_INCLUDE_DIRS})
     endif()
 endif()
 
 if (UNIX AND NOT APPLE)
-    target_link_libraries(citra_qt PRIVATE Qt6::DBus gamemode)
+    target_link_libraries(pocketboy_qt PRIVATE Qt6::DBus gamemode)
 endif()
 
-target_compile_definitions(citra_qt PRIVATE
+target_compile_definitions(pocketboy_qt PRIVATE
     # Use QStringBuilder for string concatenation to reduce
     # the overall number of temporary strings created.
     -DQT_USE_QSTRINGBUILDER
@@ -311,18 +311,18 @@ target_compile_definitions(citra_qt PRIVATE
 )
 
 if (USE_DISCORD_PRESENCE)
-    target_sources(citra_qt PUBLIC
+    target_sources(pocketboy_qt PUBLIC
         discord_impl.cpp
         discord_impl.h
     )
-    target_link_libraries(citra_qt PRIVATE discord-rpc)
-    target_compile_definitions(citra_qt PRIVATE -DUSE_DISCORD_PRESENCE)
+    target_link_libraries(pocketboy_qt PRIVATE discord-rpc)
+    target_compile_definitions(pocketboy_qt PRIVATE -DUSE_DISCORD_PRESENCE)
 endif()
 
 if (ENABLE_WEB_SERVICE)
-    target_link_libraries(citra_qt PRIVATE web_service)
+    target_link_libraries(pocketboy_qt PRIVATE web_service)
 endif()
 
 if (CITRA_USE_PRECOMPILED_HEADERS)
-    target_precompile_headers(citra_qt PRIVATE precompiled_headers.h)
+    target_precompile_headers(pocketboy_qt PRIVATE precompiled_headers.h)
 endif()

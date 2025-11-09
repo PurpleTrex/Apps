@@ -190,28 +190,28 @@ if (ENABLE_TESTS)
 endif()
 
 if (ENABLE_SDL2_FRONTEND)
-    add_subdirectory(citra_sdl)
+    add_subdirectory(pocketboy_sdl)
 endif()
 
 if (ENABLE_QT)
-    add_subdirectory(citra_qt)
+    add_subdirectory(pocketboy_qt)
 endif()
 
 if (ENABLE_QT OR ENABLE_SDL2_FRONTEND)
-    add_subdirectory(citra_meta)
+    add_subdirectory(pocketboy_meta)
 endif()
 
 if (ENABLE_ROOM)
-    add_subdirectory(citra_room)
+    add_subdirectory(pocketboy_room)
 endif()
 
 if (ENABLE_ROOM_STANDALONE)
-    add_subdirectory(citra_room_standalone)
+    add_subdirectory(pocketboy_room_standalone)
 endif()
 
 if (ANDROID)
     add_subdirectory(android/app/src/main/jni)
-    target_include_directories(citra-android PRIVATE android/app/src/main)
+    target_include_directories(pocketboy-android PRIVATE android/app/src/main)
 endif()
 
 if (ENABLE_WEB_SERVICE)

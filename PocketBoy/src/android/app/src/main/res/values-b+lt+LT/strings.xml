@@ -1,8 +1,8 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
 
-    <string name="app_notification_channel_description">Azahar 3DS emulatorius</string>
-    <string name="app_notification_running">Azahar veikia</string>
+    <string name="app_notification_channel_description">PocketBoy 3DS emulatorius</string>
+    <string name="app_notification_running">PocketBoy veikia</string>
     <!-- Home Strings -->
     <string name="grid_menu_core_settings">Nustatymai</string>
     <string name="home_options">Pasirinkimai</string>
@@ -11,7 +11,7 @@
     <string name="share_log">Dalintis žurnalu</string>
     <string name="share_log_not_found">Žurnalas nerastas</string>
     <string name="about">Apie</string>
-    <string name="citra_description">Atviro kodo 3DS emulatorius</string>
+    <string name="pocketboy_description">Atviro kodo 3DS emulatorius</string>
     <string name="select_gpu_driver_install">Instaliuoti</string>
     <string name="licenses">Licencijos</string>
     <!-- Setup strings -->
@@ -28,7 +28,7 @@
     <string name="warning_help">Pagalba</string>
     <string name="warning_skip">Praleisti</string>
     <string name="warning_cancel">Atšaukti</string>
-    <string name="select_citra_user_folder">Pasirinkti vartotojo aplanką</string>
+    <string name="select_pocketboy_user_folder">Pasirinkti vartotojo aplanką</string>
     <string name="select">Pasirinkti</string>
     <string name="search_recently_played">Nesenai žaista</string>
     <string name="search_recently_added">Nesenai pridėta</string>

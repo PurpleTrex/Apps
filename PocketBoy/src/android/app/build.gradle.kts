@@ -1,4 +1,4 @@
-// Copyright Citra Emulator Project / Azahar Emulator Project
+// Copyright PocketBoy Emulator Project
 // Licensed under GPLv2 or any later version
 // Refer to the license.txt file included.
 
@@ -26,7 +26,7 @@ val downloadedJniLibsPath = "${layout.buildDirectory.get().asFile.path}/download
 
 @Suppress("UnstableApiUsage")
 android {
-    namespace = "org.citra.citra_emu"
+    namespace = "com.pocketboy.emulator"
 
     compileSdkVersion = "android-35"
     ndkVersion = "27.1.12297006"
@@ -63,7 +63,7 @@ android {
     defaultConfig {
         // The application ID refers to Lime3DS to allow for
         // the Play Store listing, which was originally set up for Lime3DS, to still be used.
-        applicationId = "io.github.lime3ds.android"
+        applicationId = "com.pocketboy.emulator"
         minSdk = 29
         targetSdk = 35
         versionCode = autoVersion

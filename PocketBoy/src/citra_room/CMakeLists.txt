@@ -1,35 +1,35 @@
 set(CMAKE_MODULE_PATH ${CMAKE_MODULE_PATH} ${PROJECT_SOURCE_DIR}/CMakeModules)
 
-add_library(citra_room STATIC EXCLUDE_FROM_ALL
+add_library(pocketboy_room STATIC EXCLUDE_FROM_ALL
     precompiled_headers.h
-    citra_room.cpp
-    citra_room.h
-    citra_room.rc
+    pocketboy_room.cpp
+    pocketboy_room.h
+    pocketboy_room.rc
 )
 
-create_target_directory_groups(citra_room)
+create_target_directory_groups(pocketboy_room)
 
-target_link_libraries(citra_room PRIVATE citra_common network)
+target_link_libraries(pocketboy_room PRIVATE pocketboy_common network)
 if (ENABLE_WEB_SERVICE)
-    target_link_libraries(citra_room PRIVATE web_service)
+    target_link_libraries(pocketboy_room PRIVATE web_service)
 endif()
 
-target_link_libraries(citra_room PRIVATE cryptopp)
+target_link_libraries(pocketboy_room PRIVATE cryptopp)
 if (MSVC)
-    target_link_libraries(citra_room PRIVATE getopt)
+    target_link_libraries(pocketboy_room PRIVATE getopt)
 endif()
-target_link_libraries(citra_room PRIVATE ${PLATFORM_LIBRARIES} Threads::Threads)
+target_link_libraries(pocketboy_room PRIVATE ${PLATFORM_LIBRARIES} Threads::Threads)
 
 if(UNIX AND NOT APPLE)
-    install(TARGETS citra_room RUNTIME DESTINATION "${CMAKE_INSTALL_PREFIX}/bin")
+    install(TARGETS pocketboy_room RUNTIME DESTINATION "${CMAKE_INSTALL_PREFIX}/bin")
 endif()
 
 if (CITRA_USE_PRECOMPILED_HEADERS)
-    target_precompile_headers(citra_room PRIVATE precompiled_headers.h)
+    target_precompile_headers(pocketboy_room PRIVATE precompiled_headers.h)
 endif()
 
 # Bundle in-place on MSVC so dependencies can be resolved by builds.
 if (MSVC)
     include(BundleTarget)
-    bundle_target_in_place(citra_room)
+    bundle_target_in_place(pocketboy_room)
 endif()

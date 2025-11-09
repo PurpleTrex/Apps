@@ -19,7 +19,7 @@ include(DownloadExternals)
 include(CMakeDependentOption)
 include(FindPkgConfig)
 
-project(citra LANGUAGES C CXX ASM)
+project(pocketboy LANGUAGES C CXX ASM)
 if (CMAKE_SYSTEM_NAME STREQUAL "Darwin" OR CMAKE_SYSTEM_NAME STREQUAL "iOS")
     enable_language(OBJC OBJCXX)
 endif()
@@ -156,7 +156,7 @@ if(ENABLE_SSE42 AND (CMAKE_SYSTEM_PROCESSOR MATCHES "x86_64|AMD64"))
     endif()
 endif()
 
-include(CitraHandleSystemLibs)
+include(PocketBoyHandleSystemLibs)
 
 if (CITRA_USE_PRECOMPILED_HEADERS)
     message(STATUS "Using Precompiled Headers.")
@@ -392,7 +392,7 @@ if (NOT CLANG_FORMAT)
         message(STATUS "Clang format not found! Downloading...")
         set(CLANG_FORMAT "${PROJECT_BINARY_DIR}/externals/clang-format${CLANG_FORMAT_POSTFIX}.exe")
         file(DOWNLOAD
-            https://github.com/citra-emu/ext-windows-bin/raw/master/clang-format${CLANG_FORMAT_POSTFIX}.exe
+            https://github.com/pocketboy-emu/ext-windows-bin/raw/master/clang-format${CLANG_FORMAT_POSTFIX}.exe
             "${CLANG_FORMAT}" SHOW_PROGRESS
             STATUS DOWNLOAD_SUCCESS)
         if (NOT DOWNLOAD_SUCCESS EQUAL 0)
@@ -505,19 +505,19 @@ endif()
 
 add_subdirectory(src)
 
-set_property(DIRECTORY ${CMAKE_CURRENT_SOURCE_DIR} PROPERTY VS_STARTUP_PROJECT citra_meta)
+set_property(DIRECTORY ${CMAKE_CURRENT_SOURCE_DIR} PROPERTY VS_STARTUP_PROJECT pocketboy_meta)
 
 # Create target for outputting distributable bundles.
 # Not supported for mobile platforms as distributables are built differently.
 if (NOT ANDROID AND NOT IOS)
     include(BundleTarget)
     if (ENABLE_QT)
-        qt_bundle_target(citra_meta)
+        qt_bundle_target(pocketboy_meta)
     elseif (ENABLE_SDL2_FRONTEND)
-        bundle_target(citra_meta)
+        bundle_target(pocketboy_meta)
     endif()
     if (ENABLE_ROOM_STANDALONE)
-        bundle_target(citra_room_standalone)
+        bundle_target(pocketboy_room_standalone)
     endif()
 endif()
 
@@ -529,15 +529,15 @@ endif()
 # http://standards.freedesktop.org/icon-theme-spec/icon-theme-spec-latest.html
 # http://standards.freedesktop.org/shared-mime-info-spec/shared-mime-info-spec-latest.html
 if(ENABLE_QT AND UNIX AND NOT APPLE)
-    install(FILES "${PROJECT_SOURCE_DIR}/dist/azahar.desktop"
+    install(FILES "${PROJECT_SOURCE_DIR}/dist/pocketboy.desktop"
             DESTINATION "${CMAKE_INSTALL_PREFIX}/share/applications"
-            RENAME "org.azahar_emu.Azahar.desktop")
-    install(FILES "${PROJECT_SOURCE_DIR}/dist/azahar.svg"
+            RENAME "org.pocketboy_emu.PocketBoy.desktop")
+    install(FILES "${PROJECT_SOURCE_DIR}/dist/pocketboy.svg"
             DESTINATION "${CMAKE_INSTALL_PREFIX}/share/icons/hicolor/scalable/apps"
-            RENAME "org.azahar_emu.Azahar.svg")
-    install(FILES "${PROJECT_SOURCE_DIR}/dist/azahar.png"
+            RENAME "org.pocketboy_emu.PocketBoy.svg")
+    install(FILES "${PROJECT_SOURCE_DIR}/dist/pocketboy.png"
             DESTINATION "${CMAKE_INSTALL_PREFIX}/share/icons/hicolor/512x512/apps"
-            RENAME "org.azahar_emu.Azahar.png")
-    install(FILES "${PROJECT_SOURCE_DIR}/dist/org.azahar_emu.Azahar.xml"
+            RENAME "org.pocketboy_emu.PocketBoy.png")
+    install(FILES "${PROJECT_SOURCE_DIR}/dist/org.pocketboy_emu.PocketBoy.xml"
             DESTINATION "${CMAKE_INSTALL_PREFIX}/share/mime/packages")
 endif()

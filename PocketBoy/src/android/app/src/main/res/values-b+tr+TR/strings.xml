@@ -1,10 +1,10 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
 
-    <string name="app_disclaimer">Bu yazılım Nintendo 3DS el konsolu uygulamalarını çalıştırmak içindir. Hiçbir oyun dosyası içermez. \n\nEmülasyon yapmaya başlamadan önce lütfen Azahar kullanıcı verilerinin depolanması için bir dosya seçin. \n\nBu nedir?:\n<a href='https://web.archive.org/web/20240304193549/https://github.com/citra-emu/citra/wiki/Citra-Android-user-data-and-storage'>Wiki - Citra Android Kullanıcı verileri ve depolama</a></string>
-    <string name="app_notification_channel_description">Azahar 3DS emülatörü bildirimleri</string>
-    <string name="app_notification_running">Azahar çalışıyor</string>
-    <string name="app_game_install_description">Sırada, bir Uygulama Dosyası seçmelisiniz. Azahar seçili dosyadaki bütün 3DS ROM\'larını uygulamada gösterecektir.\n\nCİA ROM\'larının, güncellemelerin ve DLC\'lerin; dosya ikonuna tıklanıp \"CIA İndir\"i seçerek ayrı olarak indirilmesi gerekir.</string>
+    <string name="app_disclaimer">Bu yazılım Nintendo 3DS el konsolu uygulamalarını çalıştırmak içindir. Hiçbir oyun dosyası içermez. \n\nEmülasyon yapmaya başlamadan önce lütfen PocketBoy kullanıcı verilerinin depolanması için bir dosya seçin. \n\nBu nedir?:\n<a href='https://web.archive.org/web/20240304193549/https://github.com/pocketboy-emu/pocketboy/wiki/PocketBoy-Android-user-data-and-storage'>Wiki - PocketBoy Android Kullanıcı verileri ve depolama</a></string>
+    <string name="app_notification_channel_description">PocketBoy 3DS emülatörü bildirimleri</string>
+    <string name="app_notification_running">PocketBoy çalışıyor</string>
+    <string name="app_game_install_description">Sırada, bir Uygulama Dosyası seçmelisiniz. PocketBoy seçili dosyadaki bütün 3DS ROM\'larını uygulamada gösterecektir.\n\nCİA ROM\'larının, güncellemelerin ve DLC\'lerin; dosya ikonuna tıklanıp \"CIA İndir\"i seçerek ayrı olarak indirilmesi gerekir.</string>
 
     <!-- Home Strings -->
     <string name="grid_menu_core_settings">Ayarlar</string>
@@ -15,7 +15,7 @@
     <string name="install_game_content">CIA Dosyası Yükle</string>
     <string name="install_game_content_description">Uygulamalar, güncellemeler veya DLC yükle</string>
     <string name="share_log">Log\'u Paylaş</string>
-    <string name="share_log_description">Sorunları gidermek için Azahar\'ın log dosyasını paylaş</string>
+    <string name="share_log_description">Sorunları gidermek için PocketBoy\'ın log dosyasını paylaş</string>
     <string name="gpu_driver_manager">GPU Sürücü Yöneticisi</string>
     <string name="install_gpu_driver">GPU Sürücüsü Yükle</string>
     <string name="install_gpu_driver_description">Daha iyi performans veya doğruluk olasılığı için alternatif sürücü yükle</string>
@@ -24,15 +24,15 @@
     <string name="custom_driver_not_supported_description">Bu cihaz için özel sürücü yükleme henüz desteklenmiyor. \nLütfen gelecekte destek eklenmiş mi diye tekrar kontrol edin! </string>
     <string name="share_log_not_found">Log dosyası bulunamadı</string>
     <string name="select_games_folder">Uygulamalar Dosyasını Seç</string>
-    <string name="select_games_folder_description">Azahar\'ın uygulama listesini doldurmasına izin verir</string>
+    <string name="select_games_folder_description">PocketBoy\'ın uygulama listesini doldurmasına izin verir</string>
     <string name="about">Hakkında</string>
-    <string name="citra_description">Açık kaynaklı bir 3DS emülatörü</string>
+    <string name="pocketboy_description">Açık kaynaklı bir 3DS emülatörü</string>
     <string name="about_description">Yapı sürümü, katkıda bulunanlar ve daha fazlası</string>
     <string name="games_dir_selected">Uygulama dizini seçildi</string>
-    <string name="select_citra_user_folder_home_description">Azahar\'ın uygulama yüklemek için kullandığı dosyaları değiştirir</string>
+    <string name="select_pocketboy_user_folder_home_description">PocketBoy\'ın uygulama yüklemek için kullandığı dosyaları değiştirir</string>
     <string name="theme_and_color_description">Uygulamanın görünüşünü değiştir</string>
     <string name="install_cia_title">CIA Yükle</string>
-    <string name="warning_3ds_files"><![CDATA[Şifrelenmiş dosyalar ve .3ds dosyaları artık desteklenmemektedir. Dosyanın şifresinin çözülmesi ve/veya .cci olarak yeniden adlandırması gerekli olabilir.<a href=\"https://azahar-emu.org/blog/game-loading-changes/\">Daha fazla öğren.</a>]]></string>
+    <string name="warning_3ds_files"><![CDATA[Şifrelenmiş dosyalar ve .3ds dosyaları artık desteklenmemektedir. Dosyanın şifresinin çözülmesi ve/veya .cci olarak yeniden adlandırması gerekli olabilir.<a href=\"https://pocketboy-emu.org/blog/game-loading-changes/\">Daha fazla öğren.</a>]]></string>
 
     <!-- GPU driver installation -->
     <string name="select_gpu_driver">GPU Sürücüsü seç</string>
@@ -48,13 +48,13 @@
     <!-- About screen strings -->
     <string name="copied_to_clipboard">Panoya kopyalandı</string>
     <string name="contributors">Katkıda Bulunanlar</string>
-    <string name="contributors_description">Azahar\'ı mümkün kılan kişiler</string>
-    <string name="licenses_description">Android için Azahar tarafından kullanılan projeler</string>
+    <string name="contributors_description">PocketBoy\'ı mümkün kılan kişiler</string>
+    <string name="licenses_description">Android için PocketBoy tarafından kullanılan projeler</string>
     <string name="build">Yapı</string>
     <string name="licenses">Lisanslar</string>
     <!-- Setup strings -->
     <string name="welcome">Hoş geldiniz!</string>
-    <string name="welcome_description">&lt;b>Azahar&lt;/b>\'ı nasıl kuracağını öğren ve emülasyona başla.</string>
+    <string name="welcome_description">&lt;b>PocketBoy&lt;/b>\'ı nasıl kuracağını öğren ve emülasyona başla.</string>
     <string name="get_started">Başlayın</string>
     <string name="step_complete">Tamamlandı!</string>
     <string name="games">Uygulamalar</string>
@@ -66,7 +66,7 @@
     <string name="notifications_description">Aşağıdaki buton ile bildirim izni verin.</string>
     <string name="give_permission">İzin ver</string>
     <string name="notification_warning">Bildirim izni vermeyi geçmek istediğinizden emin misiniz?</string>
-    <string name="notification_warning_description">Azahar sizi önemli bilgiler hakkında bilgilendiremeyecek.</string>
+    <string name="notification_warning_description">PocketBoy sizi önemli bilgiler hakkında bilgilendiremeyecek.</string>
     <string name="camera_permission">Kamera</string>
     <string name="camera_permission_description">3DS kamera emülasyonu için aşağıdaki izni verin.</string>
     <string name="microphone_permission">Mikrofon</string>
@@ -77,16 +77,16 @@
     <string name="warning_help">Yardım</string>
     <string name="warning_skip">Atla</string>
     <string name="warning_cancel">İptal et</string>
-    <string name="select_citra_user_folder">Kullanıcı Dosyası Seç</string>
-    <string name="select_citra_user_folder_description"><![CDATA[Aşağıdaki butonla <a href=\"https://web.archive.org/web/20240304193549/https://github.com/citra-emu/citra/wiki/Citra-Android-user-data-and-storage\">kullanıcı verileri</a>dizinini seçin.]]></string>
-    <string name="select_which_user_directory_to_use">Hem Lime3DS hem de Azahar için ayarlanmış kullanıcı dizinleriniz var gibi görünüyor. Bunun nedeni muhtemelen Azahar\'a geçmiş olmanız ve sorulduğunda Lime3DS için kullanılandan farklı bir kullanıcı dizini seçmiş olmanızdır.\n\nBu, kayıtları veya diğer ayarları kaybettiğinizi düşünmenize neden olmuş olabilir - böyle bir şey olduysa özür dileriz. \n\nOrijinal Lime3DS kullanıcı dizininizi kullanmaya geri dönmek, Lime3DS\'deki ayarları ve oyun kayıtlarını geri yüklemek mi istersiniz; yoksa mevcut Azahar kullanıcı dizininizi korumak mı? \n\nSeçiminiz ne olursa olsun her iki dizin de silinmeyecektir ve Kullanıcı Klasörü Seç seçeneğini kullanarak aralarında serbestçe geçiş yapabilirsiniz.</string>
-    <string name="keep_current_azahar_directory">Şimdiki Azahar Dizinini Koru</string>
-    <string name="use_prior_lime3ds_directory">Eski Lime3DS Dizinini Kullan</string>
+    <string name="select_pocketboy_user_folder">Kullanıcı Dosyası Seç</string>
+    <string name="select_pocketboy_user_folder_description"><![CDATA[Aşağıdaki butonla <a href=\"https://web.archive.org/web/20240304193549/https://github.com/pocketboy-emu/pocketboy/wiki/PocketBoy-Android-user-data-and-storage\">kullanıcı verileri</a>dizinini seçin.]]></string>
+    <string name="select_which_user_directory_to_use">Hem PocketBoy hem de PocketBoy için ayarlanmış kullanıcı dizinleriniz var gibi görünüyor. Bunun nedeni muhtemelen PocketBoy\'a geçmiş olmanız ve sorulduğunda PocketBoy için kullanılandan farklı bir kullanıcı dizini seçmiş olmanızdır.\n\nBu, kayıtları veya diğer ayarları kaybettiğinizi düşünmenize neden olmuş olabilir - böyle bir şey olduysa özür dileriz. \n\nOrijinal PocketBoy kullanıcı dizininizi kullanmaya geri dönmek, PocketBoy\'deki ayarları ve oyun kayıtlarını geri yüklemek mi istersiniz; yoksa mevcut PocketBoy kullanıcı dizininizi korumak mı? \n\nSeçiminiz ne olursa olsun her iki dizin de silinmeyecektir ve Kullanıcı Klasörü Seç seçeneğini kullanarak aralarında serbestçe geçiş yapabilirsiniz.</string>
+    <string name="keep_current_pocketboy_directory">Şimdiki PocketBoy Dizinini Koru</string>
+    <string name="use_prior_pocketboy_directory">Eski PocketBoy Dizinini Kullan</string>
     <string name="select">Seç</string>
-    <string name="cannot_skip_directory_description">Bu adım Azahar\'ın çalışması için gereklidir. Lütfen devam etmek için bir dizin seçin.</string>
-    <string name="selecting_user_directory_without_write_permissions">Kayıtların ve diğer bilgilerin depolandığı <a href="https://web.archive.org/web/20240304193549/https://github.com/citra-emu/citra/wiki/Citra-Android-user-data-and-storage">kullanıcı verileri</a>dizininizdeki yazma izinlerini kaybettiniz. Bu durum bazı uygulama veya Android güncellemelerinden sonra meydana gelebilir. Devam edebilmeniz için lütfen izinleri yeniden kazanmak üzere dizini yeniden seçin.</string>
+    <string name="cannot_skip_directory_description">Bu adım PocketBoy\'ın çalışması için gereklidir. Lütfen devam etmek için bir dizin seçin.</string>
+    <string name="selecting_user_directory_without_write_permissions">Kayıtların ve diğer bilgilerin depolandığı <a href="https://web.archive.org/web/20240304193549/https://github.com/pocketboy-emu/pocketboy/wiki/PocketBoy-Android-user-data-and-storage">kullanıcı verileri</a>dizininizdeki yazma izinlerini kaybettiniz. Bu durum bazı uygulama veya Android güncellemelerinden sonra meydana gelebilir. Devam edebilmeniz için lütfen izinleri yeniden kazanmak üzere dizini yeniden seçin.</string>
     <string name="set_up_theme_settings">Tema Ayarları</string>
-    <string name="setup_theme_settings_description">Azahar için tema tercihlerinizi yapılandırın.</string>
+    <string name="setup_theme_settings_description">PocketBoy için tema tercihlerinizi yapılandırın.</string>
     <string name="setup_set_theme">Tema Ayarla</string>
 
     <!-- Search Strings -->
@@ -275,7 +275,7 @@
     <string name="renderer_debug">Hata Ayıklama İşleyicisi</string>
     <string name="renderer_debug_description">Grafiklerle ilgili ek hata ayıklama bilgilerini günlüğe kaydedin. Etkinleştirildiğinde, oyun performansı önemli ölçüde azalacaktır.</string>
     <string name="instant_debug_log">Her mesajda günlük çıktısını temizle</string>
-    <string name="instant_debug_log_description">Hata ayıklama günlüğünü hemen dosyaya işler. Azahar çöküyor ve günlük çıktısı kesiliyorsa bunu kullanın.</string>
+    <string name="instant_debug_log_description">Hata ayıklama günlüğünü hemen dosyaya işler. PocketBoy çöküyor ve günlük çıktısı kesiliyorsa bunu kullanın.</string>
     <string name="delay_start_lle_modules">LLE modülleriyle başlamayı geciktir</string>
     <string name="delay_start_lle_modules_description">LLE modülleri etkinken uygulamanın başlamasını geciktirir</string>
     <string name="deterministic_async_operations">Deterministik Asenkron İşlemler</string>
@@ -300,7 +300,7 @@
     <string name="learn_more">Daha Fazla Öğren </string>
     <string name="close">Kapat</string>
     <string name="reset_to_default">Varsayılanlara Sıfırla</string>
-    <string name="redump_games"><![CDATA[Lütfen <a href=\"https://web.archive.org/web/20240304210021/https://citra-emu.org/wiki/dumping-game-cartridges/\">oyun kartuşlarınızı</a> veya <a href=\"https://web.archive.org/web/20240304210011/https://citra-emu.org/wiki/dumping-installed-titles/\">yüklü başlıklarınızı</a>yeniden yüklemek için kılavuzları izleyin.]]></string>
+    <string name="redump_games"><![CDATA[Lütfen <a href=\"https://web.archive.org/web/20240304210021/https://pocketboy-emu.org/wiki/dumping-game-cartridges/\">oyun kartuşlarınızı</a> veya <a href=\"https://web.archive.org/web/20240304210011/https://pocketboy-emu.org/wiki/dumping-installed-titles/\">yüklü başlıklarınızı</a>yeniden yüklemek için kılavuzları izleyin.]]></string>
     <string name="option_default">Varsayılan</string>
     <string name="off">Kapalı</string>
     <string name="install">Yükle</string>
@@ -415,7 +415,7 @@
     <string name="write_permission_needed">Emülatörün çalışması için harici depolama alanına yazma erişimine izin vermeniz gerekir</string>
     <string name="load_settings">Ayarlar Yükleniyor...</string>
 
-    <string name="external_storage_not_mounted">Azahar\'ı kullanmak için harici depolama alanının kullanılabilir olması gerekir</string>
+    <string name="external_storage_not_mounted">PocketBoy\'ı kullanmak için harici depolama alanının kullanılabilir olması gerekir</string>
 
     <string name="select_dir">Bu Dizini Seç</string>
     <string name="empty_gamelist">Hiçbir dosya bulunamadı veya henüz hiçbir oyun dizini seçilmedi.</string>
@@ -445,11 +445,11 @@
     <!-- Camera -->
     <string name="camera_select_image">Resim Seçin</string>
     <string name="camera">Kamera</string>
-    <string name="camera_permission_needed">Azahar\'ın 3DS\'in kameralarını taklit etmek için kameranıza erişmesi gerekir.\n\nAlternatif olarak, Kamera Ayarlarında “Görüntü Kaynağı ”nı “Hareketsiz Görüntü” olarak da ayarlayabilirsiniz.</string>
+    <string name="camera_permission_needed">PocketBoy\'ın 3DS\'in kameralarını taklit etmek için kameranıza erişmesi gerekir.\n\nAlternatif olarak, Kamera Ayarlarında “Görüntü Kaynağı ”nı “Hareketsiz Görüntü” olarak da ayarlayabilirsiniz.</string>
 
     <!-- Microphone -->
     <string name="microphone">Mikrofon</string>
-    <string name="microphone_permission_needed">Azahar\'ın 3DS\'in mikrofonunu taklit etmek için mikrofonunuza erişmesi gerekir.\n\nAlternatif olarak, Ses Ayarları\'nda “Ses Giriş Aygıtı ”nı da değiştirebilirsiniz.</string>
+    <string name="microphone_permission_needed">PocketBoy\'ın 3DS\'in mikrofonunu taklit etmek için mikrofonunuza erişmesi gerekir.\n\nAlternatif olarak, Ses Ayarları\'nda “Ses Giriş Aygıtı ”nı da değiştirebilirsiniz.</string>
 
     <!-- Core Errors -->
     <string name="abort_button">İptal et</string>
@@ -499,7 +499,7 @@
         <item quantity="one">%ddosyası indiriliyor. Daha fazla detay için bildirime bakın.</item>
         <item quantity="other">%ddosyaları indiriliyor. Daha fazla detay için bildirime bakın.</item>
     </plurals>
-    <string name="cia_install_notification_channel_description">CIA Kurulumu sırasında Azahar bildirimleri</string>
+    <string name="cia_install_notification_channel_description">CIA Kurulumu sırasında PocketBoy bildirimleri</string>
     <string name="cia_install_notification_title">CİA Yükleniyor</string>
     <string name="cia_install_notification_installing">Yükleniyor %1$s(%2$d/%3$d)</string>
     <string name="cia_install_notification_success_title">CİA başarıyla yüklendi</string>
@@ -507,7 +507,7 @@
     <string name="cia_install_success">\"%s\" başarıyla yüklendi</string>
     <string name="cia_install_error_aborted">\"%s\" yüklemesi durduruldu.\nDaha fazla detay için lütfen log a bakın.</string>
     <string name="cia_install_error_invalid">\"%s\" geçerli bir CİA değil</string>
-    <string name="cia_install_error_encrypted">\"%s\" Azahar\'la kullanılmadan önce şifresi çözülmelidir. \n Gerçek bir 3DS gereklidir.</string>
+    <string name="cia_install_error_encrypted">\"%s\" PocketBoy\'la kullanılmadan önce şifresi çözülmelidir. \n Gerçek bir 3DS gereklidir.</string>
     <string name="cia_install_error_unknown">\"%s\" yüklenirken bilinmeyen bir hata meydana geldi.\n Daha fazla detay için lütfen log a bakın</string>
 
     <!-- Memory Sizes -->

@@ -1,11 +1,11 @@
-add_executable(citra_room_standalone
-    citra_room_standalone.cpp
+add_executable(pocketboy_room_standalone
+    pocketboy_room_standalone.cpp
 )
 
-set_target_properties(citra_room_standalone PROPERTIES OUTPUT_NAME "azahar-room")
+set_target_properties(pocketboy_room_standalone PROPERTIES OUTPUT_NAME "pocketboy-room")
 
-target_link_libraries(citra_room_standalone PRIVATE citra_room)
+target_link_libraries(pocketboy_room_standalone PRIVATE pocketboy_room)
 
 if(UNIX AND NOT APPLE)
-    install(TARGETS citra_room_standalone RUNTIME DESTINATION "${CMAKE_INSTALL_PREFIX}/bin")
+    install(TARGETS pocketboy_room_standalone RUNTIME DESTINATION "${CMAKE_INSTALL_PREFIX}/bin")
 endif()
