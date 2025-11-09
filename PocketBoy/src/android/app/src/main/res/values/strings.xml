@@ -901,4 +901,22 @@
     <string name="emulation_occupied_quicksave_slot">Quicksave - %1$tF %1$tR</string>
     <string name="quickload_not_found">No Quicksave available.</string>
 
+    <!-- 3DS UI Strings -->
+    <string name="apply_settings">Apply</string>
+    <string name="cancel">Cancel</string>
+    <string name="back">Back</string>
+    <string name="3ds_home_title">Home</string>
+    <string name="3ds_settings_title">Settings</string>
+    <string name="3ds_games_grid">Games</string>
+    <string name="3ds_no_games">No games found. Add games to get started.</string>
+    <string name="3ds_browse_games">Browse Games</string>
+    <string name="3ds_loading_games">Loading games...</string>
+    <string name="3ds_game_details">Game Details</string>
+    <string name="3ds_achievements">Achievements</string>
+    <string name="3ds_cheats">Cheats</string>
+    <string name="3ds_controls">Controls</string>
+    <string name="3ds_graphics">Graphics</string>
+    <string name="3ds_audio">Audio</string>
+    <string name="3ds_system">System</string>
+
 </resources>

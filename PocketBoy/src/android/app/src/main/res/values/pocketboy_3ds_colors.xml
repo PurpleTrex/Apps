@@ -1,0 +1,49 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <!-- 3DS Primary Colors - Deep Blue Background (iconic 3DS look) -->
+    <color name="pb3ds_background">#1A1A2E</color>
+    <color name="pb3ds_background_light">#16213E</color>
+    <color name="pb3ds_surface">#0F3460</color>
+    <color name="pb3ds_surface_light">#533483</color>
+
+    <!-- 3DS Text Colors -->
+    <color name="pb3ds_text_primary">#FFFFFF</color>
+    <color name="pb3ds_text_secondary">#B0B0B0</color>
+    <color name="pb3ds_text_tertiary">#808080</color>
+
+    <!-- 3DS Accent Colors -->
+    <color name="pb3ds_accent_blue">#2E7D32</color>
+    <color name="pb3ds_accent_orange">#FF6B35</color>
+    <color name="pb3ds_accent_red">#E63946</color>
+    <color name="pb3ds_accent_green">#06A77D</color>
+    <color name="pb3ds_accent_purple">#7B68EE</color>
+    <color name="pb3ds_accent_cyan">#00BCD4</color>
+
+    <!-- 3DS UI Elements -->
+    <color name="pb3ds_tile_background">#1A1A3E</color>
+    <color name="pb3ds_tile_highlight">#2D5A6D</color>
+    <color name="pb3ds_tile_border">#3A3A5E</color>
+
+    <!-- 3DS Shadows & Effects -->
+    <color name="pb3ds_shadow_dark">#00000066</color>
+    <color name="pb3ds_shadow_medium">#00000099</color>
+    <color name="pb3ds_highlight">#FFFFFF33</color>
+    <color name="pb3ds_overlay">#000000AA</color>
+
+    <!-- 3DS Menu Colors -->
+    <color name="pb3ds_menu_item_bg">#162342</color>
+    <color name="pb3ds_menu_item_selected">#2D5A7D</color>
+    <color name="pb3ds_menu_divider">#2A3F5F</color>
+
+    <!-- 3DS Status Colors -->
+    <color name="pb3ds_status_success">#4CAF50</color>
+    <color name="pb3ds_status_warning">#FFC107</color>
+    <color name="pb3ds_status_error">#F44336</color>
+    <color name="pb3ds_status_info">#2196F3</color>
+
+    <!-- Transparent Variants -->
+    <color name="pb3ds_black_transparent_30">#4C000000</color>
+    <color name="pb3ds_black_transparent_50">#80000000</color>
+    <color name="pb3ds_white_transparent_10">#1AFFFFFF</color>
+    <color name="pb3ds_white_transparent_20">#33FFFFFF</color>
+</resources>
