@@ -32,7 +32,7 @@ class AboutFragment : Fragment() {
     private var _binding: FragmentAboutBinding? = null
     private val binding get() = _binding!!
 
-    private val homeViewModel: HomeViewModel by activityViewModels()
+    private var homeViewModel: HomeViewModel? = null
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -51,11 +51,23 @@ class AboutFragment : Fragment() {
     }
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
-        homeViewModel.setNavigationVisibility(visible = false, animated = true)
-        homeViewModel.setStatusBarShadeVisibility(visible = false)
+        // Try to get HomeViewModel if available (MainActivity context)
+        try {
+            val vms: HomeViewModel by activityViewModels()
+            homeViewModel = vms
+            homeViewModel?.setNavigationVisibility(visible = false, animated = true)
+            homeViewModel?.setStatusBarShadeVisibility(visible = false)
+        } catch (e: Exception) {
+            // HomeViewModel not available (DualScreenActivity context) - ignore
+        }
 
         binding.toolbarAbout.setNavigationOnClickListener {
-            binding.root.findNavController().popBackStack()
+            try {
+                binding.root.findNavController().popBackStack()
+            } catch (e: Exception) {
+                // Navigation component not available - use fragment back stack
+                parentFragmentManager.popBackStack()
+            }
         }
 
         binding.buttonContributors.setOnClickListener {
@@ -65,7 +77,12 @@ class AboutFragment : Fragment() {
         }
         binding.buttonLicenses.setOnClickListener {
             exitTransition = MaterialSharedAxis(MaterialSharedAxis.X, true)
-            binding.root.findNavController().navigate(R.id.action_aboutFragment_to_licensesFragment)
+            try {
+                binding.root.findNavController().navigate(R.id.action_aboutFragment_to_licensesFragment)
+            } catch (e: Exception) {
+                // Navigation not available - show toast
+                Toast.makeText(requireContext(), "Licenses not available", Toast.LENGTH_SHORT).show()
+            }
         }
 
         binding.textBuildHash.text = BuildConfig.VERSION_NAME
