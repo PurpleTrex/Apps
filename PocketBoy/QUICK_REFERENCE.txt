@@ -1,0 +1,115 @@
+POCKETBOY EMULATOR - QUICK REFERENCE GUIDE
+==========================================
+
+VIEWMODELS (7 total) - File paths:
+├── GamesViewModel ..................... COMPLETE
+├── EmulationViewModel ................. COMPLETE
+├── HomeViewModel ...................... COMPLETE
+├── TaskViewModel ...................... COMPLETE
+├── DriverViewModel .................... COMPLETE
+├── SettingsViewModel .................. PARTIAL (just container)
+└── CheatsViewModel .................... COMPLETE
+
+ACTIVITIES (5 total):
+├── MainActivity ....................... COMPLETE (main hub, hosts 8 fragments)
+├── DualScreenActivity ................. PARTIAL (isolated, wiring gaps)
+├── EmulationActivity .................. COMPLETE (game rendering)
+├── SettingsActivity ................... COMPLETE (settings UI)
+└── CheatsActivity ..................... COMPLETE (cheat management)
+
+KEY FRAGMENTS & STATUS:
+├── Single-Screen (MainActivity):
+│   ├── GamesFragment ................. COMPLETE
+│   ├── SearchFragment ................ PARTIAL (filters broken)
+│   ├── HomeSettingsFragment .......... COMPLETE
+│   ├── EmulationFragment ............. COMPLETE
+│   ├── CheatsFragment ................ COMPLETE
+│   └── ...4 more fragments
+│
+└── Dual-Screen (DualScreenActivity):
+    ├── ThreeDSTopScreenFragment ....... PARTIAL (isFavorite missing, own ViewModel)
+    └── ThreeDSBottomScreenFragment ... PARTIAL (many TODOs, no settings connection)
+
+CRITICAL WIRING GAPS:
+======================
+1. Game.isFavorite property missing (but used in ThreeDSTopScreenFragment & SearchFragment)
+2. ThreeDSTopScreenFragment creates own GamesViewModel (not shared)
+3. ThreeDSBottomScreenFragment not connected to any ViewModels
+4. DualScreenActivity isolated from MainActivity navigation system
+5. Play time tracking not stored/retrieved properly
+6. CIA installation has TODO comment
+7. Search filters partially broken
+
+COMPLETE FEATURES:
+==================
+✓ Game library management & discovery
+✓ Game launching (intent-based)
+✓ Game search (with string similarity)
+✓ Emulation core (rendering, input, pause/resume)
+✓ Settings management (50+ settings)
+✓ GPU driver management
+✓ Cheats system (create, edit, enable/disable)
+✓ CIA installation (partial)
+✓ System file browser
+✓ UI with Material Design 3
+✓ Window insets & edge-to-edge display
+
+FEATURES NEEDING WORK FOR DUAL-SCREEN:
+======================================
+- Fix Game model (add isFavorite, recent tracking)
+- Wire ThreeDSTopScreenFragment to shared ViewModels
+- Wire ThreeDSBottomScreenFragment to SettingsViewModel
+- Connect DualScreenActivity to navigation system
+- Implement CIA installation
+- Implement GPU driver management UI
+- Implement search feature in dual-screen
+- Add play time tracking
+- Add favorites functionality
+
+NAVIGATION:
+===========
+Single-Screen: AndroidX Navigation component + Bottom navigation
+Dual-Screen: Manual fragment container switching (incompatible approach)
+Problem: Two different navigation patterns = difficult to maintain
+
+SETTINGS FLOW:
+==============
+1. Stored in: SharedPreferences + INI files
+2. Loaded in: MainActivity.onCreate() via SettingsViewModel
+3. Used in: EmulationActivity, EmulationFragment
+4. Saved in: SettingsActivity via SettingsFile
+5. Gap: DualScreenActivity doesn't load settings
+
+DATA DEPENDENCIES:
+==================
+GamesViewModel
+├── Provides: games, searchedGames, isReloading, searchFocused
+├── Used by: GamesFragment, SearchFragment, (should be: ThreeDSTopScreenFragment)
+└── Depends on: GameHelper, SharedPreferences
+
+HomeViewModel
+├── Provides: navigationVisible, statusBarShadeVisible, dirs, progress
+├── Used by: MainActivity, GamesFragment, SearchFragment, CheatsFragment
+└── Depends on: SharedPreferences, PocketBoyDirectoryHelper
+
+SettingsViewModel
+├── Provides: settings object
+├── Used by: MainActivity, EmulationActivity, SettingsActivity, EmulationFragment
+└── Missing: DualScreenActivity usage
+
+CheatsViewModel
+├── Provides: cheats list, selection state, edit events
+├── Used by: CheatsFragment, CheatListFragment, CheatDetailsFragment
+└── Depends on: CheatEngine (native)
+
+FILES TO EXAMINE FOR FIXES:
+===========================
+/home/user/Apps/PocketBoy/src/android/app/src/main/java/com/pocketboy/emulator/
+├── model/Game.kt ........................... ADD: isFavorite, lastPlayedTime
+├── fragments/ThreeDSTopScreenFragment.kt .. WIRE: activityViewModels()
+├── fragments/ThreeDSBottomScreenFragment.kt WIRE: All ViewModels + implement TODOs
+├── ui/activities/DualScreenActivity.kt .... REFACTOR: Add ViewModel support
+├── viewmodel/GamesViewModel.kt ............ OK (no changes needed)
+├── viewmodel/HomeViewModel.kt ............ OK (no changes needed)
+├── features/settings/model/SettingsViewModel.kt OK (no changes needed)
+└── features/cheats/model/CheatsViewModel.kt .... OK (no changes needed)

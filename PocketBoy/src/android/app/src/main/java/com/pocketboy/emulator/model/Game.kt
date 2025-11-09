@@ -28,9 +28,12 @@ class Game(
     val icon: IntArray? = null,
     val fileType: String = "",
     val filename: String,
+    var isFavorite: Boolean = false,
+    var lastPlayedTime: Long = 0L,
 ) : Parcelable {
     val keyAddedToLibraryTime get() = "${filename}_AddedToLibraryTime"
     val keyLastPlayedTime get() = "${filename}_LastPlayed"
+    val keyIsFavorite get() = "${filename}_IsFavorite"
 
     val launchIntent: Intent
         get() = Intent(PocketBoyApplication.appContext, EmulationActivity::class.java).apply {

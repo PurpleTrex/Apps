@@ -4,6 +4,7 @@
 
 package com.pocketboy.emulator.fragments
 
+import android.content.Intent
 import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
@@ -12,13 +13,16 @@ import android.widget.GridLayout
 import android.widget.ImageButton
 import android.widget.LinearLayout
 import android.widget.ScrollView
+import android.widget.Toast
 import androidx.fragment.app.Fragment
-import androidx.fragment.app.viewModels
+import androidx.fragment.app.activityViewModels
 import androidx.lifecycle.lifecycleScope
 import com.pocketboy.emulator.R
+import com.pocketboy.emulator.activities.EmulationActivity
 import com.pocketboy.emulator.model.Game
 import com.pocketboy.emulator.ui.views.GameTileView
 import com.pocketboy.emulator.viewmodel.GamesViewModel
+import kotlinx.coroutines.flow.collectLatest
 import kotlinx.coroutines.launch
 
 /**
@@ -26,7 +30,7 @@ import kotlinx.coroutines.launch
  */
 class ThreeDSTopScreenFragment : Fragment() {
 
-    private val gamesViewModel: GamesViewModel by viewModels()
+    private val gamesViewModel: GamesViewModel by activityViewModels()
 
     private lateinit var gamesGrid: GridLayout
     private lateinit var gamesScroll: ScrollView
@@ -74,39 +78,52 @@ class ThreeDSTopScreenFragment : Fragment() {
 
         btnSearch.setOnClickListener {
             // TODO: Open search interface
+            Toast.makeText(requireContext(), "Search coming soon", Toast.LENGTH_SHORT).show()
         }
 
         btnFavorites.setOnClickListener {
-            filterMode = FilterMode.FAVORITES
+            filterMode = if (filterMode == FilterMode.FAVORITES) {
+                FilterMode.ALL
+            } else {
+                FilterMode.FAVORITES
+            }
             loadGames()
         }
 
         btnRecent.setOnClickListener {
-            filterMode = FilterMode.RECENT
+            filterMode = if (filterMode == FilterMode.RECENT) {
+                FilterMode.ALL
+            } else {
+                FilterMode.RECENT
+            }
             loadGames()
         }
 
         btnInfo.setOnClickListener {
             // TODO: Open game info/about
+            Toast.makeText(requireContext(), "Game info coming soon", Toast.LENGTH_SHORT).show()
         }
     }
 
     private fun observeGames() {
         lifecycleScope.launch {
-            gamesViewModel.gameList.observe(viewLifecycleOwner) { games ->
+            gamesViewModel.games.collectLatest { games ->
                 displayGames(applyFilter(games))
             }
         }
     }
 
     private fun loadGames() {
-        gamesViewModel.reloadGameList()
+        gamesViewModel.reloadGames(false)
     }
 
     private fun applyFilter(games: List<Game>): List<Game> {
         return when (filterMode) {
             FilterMode.FAVORITES -> games.filter { it.isFavorite }
-            FilterMode.RECENT -> games.take(6) // Show only 6 most recent
+            FilterMode.RECENT -> games
+                .filter { it.lastPlayedTime > 0 } // Only show games that have been played
+                .sortedByDescending { it.lastPlayedTime } // Most recent first
+                .take(10) // Show top 10 recent games
             FilterMode.ALL -> games
         }
     }
@@ -129,10 +146,10 @@ class ThreeDSTopScreenFragment : Fragment() {
                 tileTitle = game.title
                 accentColor = getAccentColorForGame(game)
                 setOnClickListener {
-                    selectGame(game)
+                    launchGame(game)
                 }
                 setOnLongClickListener {
-                    openGameOptions(game)
+                    toggleGameFavorite(game)
                     true
                 }
             }
@@ -174,7 +191,7 @@ class ThreeDSTopScreenFragment : Fragment() {
         return colors[game.filename.hashCode().toInt() % colors.size]
     }
 
-    private fun selectGame(game: Game) {
+    private fun launchGame(game: Game) {
         selectedGame = game
 
         // Update visual states
@@ -182,10 +199,26 @@ class ThreeDSTopScreenFragment : Fragment() {
             tile.setSelectedState(false, animate = true)
         }
         gameTiles[game.filename]?.setSelectedState(true, animate = true)
+
+        // Track last played time
+        game.lastPlayedTime = System.currentTimeMillis()
+
+        // Launch the emulation activity with the selected game
+        val intent = Intent(requireActivity(), EmulationActivity::class.java).apply {
+            putExtra("game", game)
+        }
+        startActivity(intent)
     }
 
-    private fun openGameOptions(game: Game) {
-        // TODO: Open context menu or options dialog for game
+    private fun toggleGameFavorite(game: Game) {
+        // Toggle favorite status
+        game.isFavorite = !game.isFavorite
+
+        // Show feedback
+        val favoriteText = if (game.isFavorite) "Added to favorites" else "Removed from favorites"
+        Toast.makeText(requireContext(), favoriteText, Toast.LENGTH_SHORT).show()
+
+        // TODO: Persist favorite status to preferences/database
     }
 
     private fun dpToPx(dp: Int): Int {

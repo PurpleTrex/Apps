@@ -12,18 +12,25 @@ import android.widget.Button
 import android.widget.FrameLayout
 import android.widget.TextView
 import android.view.animation.DecelerateInterpolator
+import androidx.activity.viewModels
 import androidx.appcompat.app.AppCompatActivity
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.FragmentTransaction
 import com.pocketboy.emulator.R
 import com.pocketboy.emulator.fragments.ThreeDSTopScreenFragment
 import com.pocketboy.emulator.fragments.ThreeDSBottomScreenFragment
+import com.pocketboy.emulator.viewmodel.GamesViewModel
+import com.pocketboy.emulator.features.settings.model.SettingsViewModel
 
 /**
  * Main activity managing the dual-screen 3DS experience.
  * Handles switching between top screen (game tiles) and bottom screen (settings/menu).
  */
 class DualScreenActivity : AppCompatActivity() {
+
+    // ViewModels - shared with fragments
+    val gamesViewModel: GamesViewModel by viewModels()
+    val settingsViewModel: SettingsViewModel by viewModels()
 
     private lateinit var topScreenContainer: FrameLayout
     private lateinit var bottomScreenContainer: FrameLayout
