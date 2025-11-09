@@ -165,7 +165,7 @@ class ThreeDSTopScreenFragment : Fragment() {
                     launchGame(game)
                 }
                 setOnLongClickListener {
-                    toggleGameFavorite(game)
+                    showGameContextMenu(game)
                     true
                 }
             }
@@ -224,6 +224,28 @@ class ThreeDSTopScreenFragment : Fragment() {
             putExtra("game", game)
         }
         startActivity(intent)
+    }
+
+    private fun showGameContextMenu(game: Game) {
+        val contextMenu = GameContextMenuFragment.newInstance(
+            game,
+            onCheatsClick = {
+                Toast.makeText(requireContext(), "Opening cheats for ${game.title}", Toast.LENGTH_SHORT).show()
+            },
+            onAchievementsClick = {
+                Toast.makeText(requireContext(), "Viewing achievements for ${game.title}", Toast.LENGTH_SHORT).show()
+            },
+            onMarkCompletedClick = {
+                Toast.makeText(requireContext(), "${game.title} marked as completed", Toast.LENGTH_SHORT).show()
+            },
+            onViewStatsClick = {
+                Toast.makeText(requireContext(), "Viewing stats for ${game.title}", Toast.LENGTH_SHORT).show()
+            },
+            onRemoveClick = {
+                Toast.makeText(requireContext(), "${game.title} removed from library", Toast.LENGTH_SHORT).show()
+            }
+        )
+        contextMenu.show(parentFragmentManager, "GameContextMenu")
     }
 
     private fun toggleGameFavorite(game: Game) {
