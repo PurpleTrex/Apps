@@ -174,14 +174,21 @@ dependencies {
     implementation("androidx.navigation:navigation-ui-ktx:2.8.0")
     implementation("androidx.preference:preference-ktx:1.2.1")
     implementation("androidx.recyclerview:recyclerview:1.3.2")
+    implementation("androidx.room:room-runtime:2.6.1")
+    implementation("androidx.room:room-ktx:2.6.1")
     implementation("androidx.slidingpanelayout:slidingpanelayout:1.2.0")
     implementation("androidx.swiperefreshlayout:swiperefreshlayout:1.1.0")
     implementation("androidx.work:work-runtime:2.9.1")
     implementation("com.google.android.material:material:1.9.0")
+    implementation("com.squareup.retrofit2:retrofit:2.11.0")
+    implementation("com.squareup.retrofit2:converter-gson:2.11.0")
     implementation("info.debatty:java-string-similarity:2.0.0")
     implementation("io.coil-kt:coil:2.7.0")
     implementation("org.ini4j:ini4j:0.5.4")
     implementation("org.jetbrains.kotlinx:kotlinx-serialization-json:1.7.2")
+
+    // Room annotation processor (needed for compilation)
+    annotationProcessor("androidx.room:room-compiler:2.6.1")
 }
 
 // Download Vulkan Validation Layers from the KhronosGroup GitHub.
