@@ -39,6 +39,39 @@
             android:orientation="vertical"
             android:paddingVertical="8dp">
 
+            <!-- Player Profile Section Header -->
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="40dp"
+                android:background="@color/pb3ds_surface_light"
+                android:gravity="center_vertical"
+                android:paddingStart="20dp"
+                android:text="@string/player"
+                android:textColor="@color/pb3ds_text_primary"
+                android:textSize="16sp"
+                android:textStyle="bold" />
+
+            <!-- Profile Button -->
+            <Button
+                android:id="@+id/btn_profile_stats"
+                android:layout_width="match_parent"
+                android:layout_height="56dp"
+                android:background="@drawable/menu_item_background"
+                android:contentDescription="Profile and statistics"
+                android:gravity="start|center_vertical"
+                android:paddingStart="20dp"
+                android:paddingEnd="16dp"
+                android:text="Profile &amp; Statistics"
+                android:textAlignment="textStart"
+                android:textColor="@color/pb3ds_text_primary"
+                android:textSize="16sp" />
+
+            <!-- Divider -->
+            <View
+                android:layout_width="match_parent"
+                android:layout_height="1dp"
+                android:background="@color/pb3ds_menu_divider" />
+
             <!-- Settings Section Header -->
             <TextView
                 android:layout_width="match_parent"

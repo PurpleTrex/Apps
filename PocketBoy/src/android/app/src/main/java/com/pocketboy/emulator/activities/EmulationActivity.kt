@@ -49,6 +49,13 @@ import com.pocketboy.emulator.utils.EmulationMenuSettings
 import com.pocketboy.emulator.utils.Log
 import com.pocketboy.emulator.utils.ThemeUtil
 import com.pocketboy.emulator.viewmodel.EmulationViewModel
+import com.pocketboy.emulator.viewmodel.GameStatisticsViewModel
+import com.pocketboy.emulator.viewmodel.AchievementsViewModel
+import com.pocketboy.emulator.viewmodel.UserProfileViewModel
+import com.pocketboy.emulator.viewmodel.PocketBoyViewModelFactory
+import androidx.lifecycle.ViewModelProvider
+import kotlinx.coroutines.GlobalScope
+import kotlinx.coroutines.launch
 
 class EmulationActivity : AppCompatActivity() {
     private val preferences: SharedPreferences
@@ -56,11 +63,16 @@ class EmulationActivity : AppCompatActivity() {
     var isActivityRecreated = false
     private val emulationViewModel: EmulationViewModel by viewModels()
     val settingsViewModel: SettingsViewModel by viewModels()
+    private lateinit var gameStatisticsViewModel: GameStatisticsViewModel
+    private lateinit var achievementsViewModel: AchievementsViewModel
+    private lateinit var userProfileViewModel: UserProfileViewModel
 
     private lateinit var binding: ActivityEmulationBinding
     private lateinit var screenAdjustmentUtil: ScreenAdjustmentUtil
     private lateinit var hotkeyUtility: HotkeyUtility
     private lateinit var secondaryDisplay: SecondaryDisplay
+    private var gameSessionStartTime: Long = 0L
+    private var currentGame: Game? = null
 
     private val onShutdown = Runnable {
         if (intent.getBooleanExtra("launched_from_shortcut", false)) {
@@ -85,6 +97,13 @@ class EmulationActivity : AppCompatActivity() {
         ThemeUtil.setTheme(this)
         settingsViewModel.settings.loadSettings()
         super.onCreate(savedInstanceState)
+
+        // Initialize ViewModels for achievement and statistics tracking
+        val factory = PocketBoyViewModelFactory(this)
+        gameStatisticsViewModel = ViewModelProvider(this, factory).get(GameStatisticsViewModel::class.java)
+        achievementsViewModel = ViewModelProvider(this, factory).get(AchievementsViewModel::class.java)
+        userProfileViewModel = ViewModelProvider(this, factory).get(UserProfileViewModel::class.java)
+
         secondaryDisplay = SecondaryDisplay(this)
         secondaryDisplay.updateDisplay()
 
@@ -128,6 +147,14 @@ class EmulationActivity : AppCompatActivity() {
             return
         }
 
+        // Store game reference and record session start time
+        currentGame = game
+        gameSessionStartTime = System.currentTimeMillis()
+        Log.info("[EmulationActivity] Game session started: ${game.title} at $gameSessionStartTime")
+
+        // Trigger achievement sync if RetroAchievements is linked
+        triggerAchievementSync(game)
+
         NativeLibrary.playTimeManagerStart(game.titleId)
     }
 
@@ -169,12 +196,53 @@ class EmulationActivity : AppCompatActivity() {
     override fun onDestroy() {
         EmulationLifecycleUtil.removeHook(onShutdown)
         NativeLibrary.playTimeManagerStop()
+
+        // Record game session to database
+        currentGame?.let { game ->
+            val sessionDuration = System.currentTimeMillis() - gameSessionStartTime
+            Log.info("[EmulationActivity] Game session ended: ${game.title}, duration: ${sessionDuration}ms")
+
+            // Record session in database asynchronously
+            GlobalScope.launch {
+                try {
+                    gameStatisticsViewModel.recordGameSession(
+                        titleId = game.titleId,
+                        playDuration = sessionDuration,
+                        filename = game.filename
+                    )
+                    Log.info("[EmulationActivity] Session recorded for ${game.title}")
+                } catch (e: Exception) {
+                    Log.error("[EmulationActivity] Failed to record game session: ${e.message}")
+                }
+            }
+        }
+
         isEmulationRunning = false
         instance = null
         secondaryDisplay.releasePresentation()
         secondaryDisplay.releaseVD()
 
         super.onDestroy()
+    }
+
+    private fun triggerAchievementSync(game: Game) {
+        // Check if user has linked RetroAchievements account
+        GlobalScope.launch {
+            try {
+                // This will observe the user profile and trigger sync if linked
+                userProfileViewModel.userProfile.collect { profile ->
+                    if (profile != null && profile.isRetroAchievementsLinked && profile.retroAchievementsUsername.isNotEmpty()) {
+                        Log.info("[EmulationActivity] Syncing achievements for ${game.title} with RA account: ${profile.retroAchievementsUsername}")
+                        achievementsViewModel.syncWithRetroAchievements(
+                            gameId = game.titleId,
+                            username = profile.retroAchievementsUsername
+                        )
+                    }
+                }
+            } catch (e: Exception) {
+                Log.error("[EmulationActivity] Failed to sync achievements: ${e.message}")
+            }
+        }
     }
 
     override fun onRequestPermissionsResult(

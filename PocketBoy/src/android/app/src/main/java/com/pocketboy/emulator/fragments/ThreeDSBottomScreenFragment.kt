@@ -34,6 +34,7 @@ class ThreeDSBottomScreenFragment : Fragment() {
     private val settingsViewModel: SettingsViewModel by activityViewModels()
     private val gamesViewModel: GamesViewModel by activityViewModels()
 
+    private lateinit var btnProfileStats: Button
     private lateinit var btnSystemSettings: Button
     private lateinit var btnInstallCia: Button
     private lateinit var btnSelectGamesFolder: Button
@@ -69,6 +70,7 @@ class ThreeDSBottomScreenFragment : Fragment() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
+        btnProfileStats = view.findViewById(R.id.btn_profile_stats)
         btnSystemSettings = view.findViewById(R.id.btn_system_settings)
         btnInstallCia = view.findViewById(R.id.btn_install_cia)
         btnSelectGamesFolder = view.findViewById(R.id.btn_select_games_folder)
@@ -80,6 +82,10 @@ class ThreeDSBottomScreenFragment : Fragment() {
     }
 
     private fun setupEventListeners() {
+        btnProfileStats.setOnClickListener {
+            openProfileStats()
+        }
+
         btnSystemSettings.setOnClickListener {
             openSettings()
         }
@@ -102,6 +108,27 @@ class ThreeDSBottomScreenFragment : Fragment() {
 
         btnShareLog.setOnClickListener {
             shareLog()
+        }
+    }
+
+    private fun openProfileStats() {
+        try {
+            // Navigate to ProfileStatsFragment within the bottom screen
+            parentFragmentManager.beginTransaction()
+                .replace(
+                    (requireActivity() as? DualScreenActivity)?.let { R.id.bottom_screen_container } ?: R.id.bottom_screen_container,
+                    ProfileStatsFragment()
+                )
+                .addToBackStack(null)
+                .commit()
+            Log.info("[ThreeDSBottomScreenFragment] ProfileStatsFragment opened")
+        } catch (e: Exception) {
+            Log.error("[ThreeDSBottomScreenFragment] Failed to open profile stats: ${e.message}")
+            Toast.makeText(
+                requireContext(),
+                "Failed to open profile",
+                Toast.LENGTH_SHORT
+            ).show()
         }
     }
 
