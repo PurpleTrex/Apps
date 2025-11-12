@@ -1,0 +1,46 @@
+# ROM files - don't commit game files
+*.cia
+*.3ds
+*.cci
+*.cxi
+*.ncch
+*.cfa
+*.app
+
+# Decrypted output files
+*-decrypted.*
+
+# Log files
+log/
+*.log
+*.txt
+
+# Build artifacts
+build/
+*.o
+*.a
+*.so
+
+# Binary executables (except seeddb.bin)
+bin/ctrtool
+bin/makerom
+bin/3dstool
+bin/*.app
+bin/content*
+bin/tmp.*
+bin/CTR_Content.txt
+
+# Temporary files
+*.tmp
+*.bak
+*.swp
+*~
+.DS_Store
+
+# IDE and editor files
+.vscode/
+.idea/
+*.sublime-*
+
+# System files
+Thumbs.db
