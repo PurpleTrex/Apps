@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <color name="colorPrimary">#6200EE</color>
+    <color name="colorPrimaryDark">#3700B3</color>
+    <color name="colorAccent">#03DAC5</color>
+    <color name="black">#FF000000</color>
+    <color name="white">#FFFFFFFF</color>
+    <color name="nature">#2D5016</color>
+    <color name="flame">#DC143C</color>
+    <color name="aqua">#4682B4</color>
+    <color name="storm">#FFD700</color>
+    <color name="void">#4B0082</color>
+    <color name="radiant">#FFFFFF</color>
+    <color name="mineral">#696969</color>
+    <color name="mystic">#FF69B4</color>
+</resources>

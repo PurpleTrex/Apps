@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="app_name">Aether</string>
+    <string name="new_game">New Game</string>
+    <string name="continue_game">Continue</string>
+    <string name="settings">Settings</string>
+    <string name="exit">Exit</string>
+    <string name="battle">Battle</string>
+    <string name="gauntlet">Gauntlet</string>
+    <string name="ethereal">Ethereal</string>
+    <string name="flee">Flee</string>
+    <string name="attack">Attack</string>
+    <string name="capture">Capture</string>
+    <string name="item">Item</string>
+    <string name="save_game">Save Game</string>
+    <string name="load_game">Load Game</string>
+</resources>
